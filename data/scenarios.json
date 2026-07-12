@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "doctrine": "Every scenario set is a dated, explicit analytical judgment — never sourced fact. Each set is graded against reality at expiry: HIT (the weighted outcome occurred), MISS (it did not), PARTIAL (materially right, wrong in mechanism), OPEN (not yet expired). Misses are kept forever; the lesson field is the product.",
+    "updated": "12 JUL 2026"
+  },
+  "ledger": [
+    {
+      "issued": "09 JUL 2026",
+      "horizon": "24-72h",
+      "graded": "12 JUL 2026",
+      "entries": [
+        {
+          "prob": "35%", "kind": "base", "lab": "Two-night campaign is the peak; de-escalation follows",
+          "outcome": "MISS",
+          "lesson": "The prior-cycle template (sharp exchange, then step-back) broke. A third strike round followed on 11 Jul and Iran escalated to a formal closure declaration. The April/June pattern-match was doing too much work in the weighting."
+        },
+        {
+          "prob": "40%", "kind": "risk", "lab": "Sustained multi-night campaign continues, no clear de-escalation trigger",
+          "outcome": "HIT",
+          "lesson": "Correctly the modal outcome, and correctly weighted above base. The tell was identified in real time: two consecutive nights, three GCC states, record toll — trajectory beats template."
+        },
+        {
+          "prob": "25%", "kind": "tail", "lab": "Iran executes a stated option — Bab-el-Mandeb closure or NPT withdrawal",
+          "outcome": "MISS",
+          "lesson": "Iran did execute a maximal option — just not one from its own floated list. Hormuz closure was not in the option set because Iran had not floated it. Standing correction: when Iran floats options, ALSO weight the un-floated option it controls most directly. The float is misdirection as much as signal."
+        }
+      ]
+    },
+    {
+      "issued": "12 JUL 2026",
+      "horizon": "24-72h",
+      "graded": null,
+      "entries": [
+        {
+          "prob": "40%", "kind": "base", "lab": "Muscat produces a strikes pause; closure stays declaratory",
+          "outcome": "OPEN",
+          "lesson": null
+        },
+        {
+          "prob": "35%", "kind": "risk", "lab": "Closure hardens — enforcement fire on any southern transit, round 4",
+          "outcome": "OPEN",
+          "lesson": null
+        },
+        {
+          "prob": "25%", "kind": "tail", "lab": "Israel re-enters — the MOU dies in fact",
+          "outcome": "OPEN",
+          "lesson": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+#!/bin/sh
+# HORMUZ·LIVE guardrail — §5 of the build seed made mandatory.
+# Enable once per clone:  git config core.hooksPath .githooks
+node scripts/validate.mjs || {
+  echo ""
+  echo "pre-commit: validation failed — commit blocked."
+  exit 1
+}
