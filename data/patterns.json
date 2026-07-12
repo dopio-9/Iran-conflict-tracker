@@ -1,0 +1,107 @@
+{
+  "meta": {
+    "states": ["HYPOTHESIS", "ACTIVE", "STRESSED", "CONFIRMED", "BROKEN"],
+    "doctrine": "Patterns move HYPOTHESIS → ACTIVE → STRESSED → CONFIRMED or BROKEN. A CONFIRMED pattern is load-bearing for analysis; a BROKEN pattern must never be silently reused. Every state change carries the evidence that caused it.",
+    "updated": "12 JUL 2026"
+  },
+  "patterns": [
+    {
+      "id": "irgc-diplomatic-split",
+      "name": "IRGC overrides the diplomatic track",
+      "state": "CONFIRMED",
+      "confidence": "high",
+      "rule": "Trust Khamenei Telegram for operational intent; treat Araghchi/MFA as diplomatic narrative only.",
+      "evidence": "IRGC publicly overrode the FM since Apr 2026 (UK Commons Library). Escalated 8 Jul: Witkoff and Kushner told Trump that Araghchi could not guarantee the IRGC would stop firing on shipping — and the renewed US strikes followed directly from that report (Israel Hayom). The split is no longer just an Iran-reading problem; it now drives US targeting decisions.",
+      "history": [
+        { "date": "APR 2026", "state": "ACTIVE", "note": "IRGC publicly contradicts FM on Hormuz" },
+        { "date": "JUN 2026", "state": "CONFIRMED", "note": "UK Commons Library confirms Mojtaba-Pezeshkian divergence on MOU" },
+        { "date": "08 JUL", "state": "CONFIRMED", "note": "Split becomes a US casus belli via Witkoff/Kushner report" }
+      ]
+    },
+    {
+      "id": "signal-before-act",
+      "name": "Iran signals before acting",
+      "state": "BROKEN",
+      "confidence": "high",
+      "rule": "Assume Iranian kinetic action can come with zero prior signal. Absence of warning is not absence of intent.",
+      "evidence": "Broken 18 Apr (IRGC fired without VHF warning). Re-validated 11 Jul: the GFS Galaxy was hit and disabled with a crew member missing — and Iran itself styled the strike a ‘warning shot.’ The warning IS the strike now.",
+      "history": [
+        { "date": "MAR 2026", "state": "ACTIVE", "note": "VHF warnings preceded interceptions" },
+        { "date": "18 APR", "state": "BROKEN", "note": "Fire without warning" },
+        { "date": "11 JUL", "state": "BROKEN", "note": "GFS Galaxy: the ‘warning shot’ disables the ship" }
+      ]
+    },
+    {
+      "id": "lebanon-equals-hormuz",
+      "name": "Lebanon drives Hormuz re-closures",
+      "state": "STRESSED",
+      "confidence": "medium",
+      "rule": "Check the Lebanon front on every Hormuz event — but no longer assume it is the only driver.",
+      "evidence": "Every re-closure through June traced to Lebanon (it is MOU Point 1). The 11 Jul closure declaration broke the chain: it traced to route enforcement (GFS Galaxy / southern-lane jurisdiction), not Lebanon. The Israel-Hezbollah ceasefire (19 Jun) is holding but fragile — Israel refuses withdrawal (Katz: security zones ‘for an unlimited period’). Downgraded CONFIRMED → STRESSED: the route war is now an independent closure driver.",
+      "history": [
+        { "date": "MAY 2026", "state": "ACTIVE", "note": "Two re-closures trace to Lebanon" },
+        { "date": "JUN 2026", "state": "CONFIRMED", "note": "MOU makes Lebanon Point 1" },
+        { "date": "11 JUL", "state": "STRESSED", "note": "First closure NOT traced to Lebanon — route enforcement instead" }
+      ]
+    },
+    {
+      "id": "trump-deadline-cycle",
+      "name": "Trump maximal rhetoric, preserved off-ramp",
+      "state": "CONFIRMED",
+      "confidence": "high",
+      "rule": "Never read Trump’s rhetoric as policy. Read the delegation manifest instead.",
+      "evidence": "Upgraded ACTIVE → CONFIRMED 11 Jul on the cleanest instance yet: within hours of ‘1000 missiles locked and loaded’ and declaring the MOU dead, the most senior US team of the war (Vance, Rubio, Witkoff, Kushner) was dispatched toward Muscat. The rhetoric and the off-ramp are the same policy.",
+      "history": [
+        { "date": "JUN 2026", "state": "ACTIVE", "note": "‘It’s over’ / ‘scum’ while talks continue" },
+        { "date": "08 JUL", "state": "ACTIVE", "note": "Ceasefire ‘over’ at NATO; talks not terminated" },
+        { "date": "11 JUL", "state": "CONFIRMED", "note": "Decimation threats + most senior delegation of the war, same day" }
+      ]
+    },
+    {
+      "id": "floats-maximal-executes-calibrated",
+      "name": "Iran floats maximal options, executes calibrated ones",
+      "state": "STRESSED",
+      "confidence": "medium",
+      "rule": "Stated options (NPT, Bab-el-Mandeb) are bargaining inventory, not warning orders — but the calibration ceiling is rising.",
+      "evidence": "Held in form on 11 Jul: NPT withdrawal and Bab-el-Mandeb (floated 8 Jul) stayed unexecuted; Iran instead closed its own strait — the maximal option fully inside its control. Marked STRESSED because ‘calibrated’ now includes a formal closure declaration: the gap between floated and executed options is narrowing with each cycle.",
+      "history": [
+        { "date": "FEB-JUN", "state": "ACTIVE", "note": "Bab-el-Mandeb threatened repeatedly, never executed" },
+        { "date": "08 JUL", "state": "ACTIVE", "note": "NPT + Bab-el-Mandeb floated as options" },
+        { "date": "11 JUL", "state": "STRESSED", "note": "Executed option (closure) is itself near-maximal" }
+      ]
+    },
+    {
+      "id": "israel-reentry-on-stall",
+      "name": "Israel re-enters when US-Iran talks stall",
+      "state": "HYPOTHESIS",
+      "confidence": "low",
+      "rule": "Watch for T2 confirmation of Israeli force movement whenever Muscat/Doha stalls. Israeli-official leaks during negotiations are also pressure instruments.",
+      "evidence": "New 11 Jul: Ynet (‘more serious than any other time in the past’) and ToI report Israel preparing to rejoin strikes as talks make little headway — all Israeli-official sourcing, no T2 confirmation. Test: does a package launch while the US team is physically in Muscat? A launch would confirm; a quiet stand-down as talks progress would suggest the leaks were leverage.",
+      "history": [
+        { "date": "11 JUL", "state": "HYPOTHESIS", "note": "First explicit re-entry signalling since the MOU" }
+      ]
+    },
+    {
+      "id": "escalate-negotiate-parallel",
+      "name": "Strikes and talks run as parallel tracks, not alternatives",
+      "state": "HYPOTHESIS",
+      "confidence": "medium",
+      "rule": "Do not read strike rounds as talks collapsing, or talks as strikes ending. Grade each track separately.",
+      "evidence": "New 12 Jul: the week produced three US strike rounds AND the war’s most senior diplomatic surge, simultaneously, from both sides (Araghchi in Muscat between retaliation salvos). If this holds, single-track analysis (‘the deal is dead’ / ‘peace is near’) will systematically misread the war.",
+      "history": [
+        { "date": "12 JUL", "state": "HYPOTHESIS", "note": "Three strike rounds + senior delegations in the same week" }
+      ]
+    },
+    {
+      "id": "uae-exemption",
+      "name": "Iran deliberately exempts the UAE from retaliation rounds",
+      "state": "HYPOTHESIS",
+      "confidence": "low",
+      "rule": "UAE quiet ≠ UAE safe. Track the exemption itself as a signal: its end would mark a strategic decision, not an accident.",
+      "evidence": "New 12 Jul: this round Iran struck Bahrain, Kuwait, Qatar and Jordan — but not the UAE, despite the UAE being the war’s most-targeted state pre-MOU (1,800+ projectiles). Possible drivers: reconstruction-fund economics, Abu Dhabi back-channel, or target saturation elsewhere. Watch UAE MOD/WAM language for the first crack.",
+      "history": [
+        { "date": "12 JUL", "state": "HYPOTHESIS", "note": "Four states hit this round; UAE conspicuously excluded" }
+      ]
+    }
+  ]
+}
