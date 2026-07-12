@@ -126,12 +126,12 @@ if (ledger) {
   });
 }
 
-/* ── 5. site/index.html — the §5 bug class ───────────────────── */
-const html = readFileSync(join(root, "site/index.html"), "utf8");
+/* ── 5. index.html — the §5 bug class ───────────────────── */
+const html = readFileSync(join(root, "index.html"), "utf8");
 
 // 5a. node --check on the script block (§5 bug 3: non-negotiable pipeline step)
 const scripts = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map((m) => m[1]);
-if (!scripts.length) fail("site/index.html: no <script> block found");
+if (!scripts.length) fail("index.html: no <script> block found");
 for (const [i, js] of scripts.entries()) {
   const dir = mkdtempSync(join(tmpdir(), "hormuz-"));
   const f = join(dir, `block${i}.js`);
@@ -139,7 +139,7 @@ for (const [i, js] of scripts.entries()) {
   try {
     execFileSync(process.execPath, ["--check", f], { stdio: "pipe" });
   } catch (e) {
-    fail(`site/index.html <script> block ${i} failed node --check:\n${e.stderr}`);
+    fail(`index.html <script> block ${i} failed node --check:\n${e.stderr}`);
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }
@@ -148,18 +148,18 @@ for (const [i, js] of scripts.entries()) {
 // 5b. §5 bug 2: no JS ternary syntax inside CSS
 const styles = [...html.matchAll(/<style>([\s\S]*?)<\/style>/g)].map((m) => m[1]).join("\n");
 if (/===|!==/.test(styles) || /\?[^;{}]*:[^;{}]*\}/.test(styles.replace(/\/\*[\s\S]*?\*\//g, "").split("\n").filter(l => l.includes("===")).join("\n")))
-  fail("site/index.html: JS ternary/comparison syntax detected inside <style> (§5 bug 2)");
+  fail("index.html: JS ternary/comparison syntax detected inside <style> (§5 bug 2)");
 
 // 5c. §5 bug 4: no web storage (artifact-compat rule)
 if (/localStorage|sessionStorage/.test(html))
-  fail("site/index.html: localStorage/sessionStorage is banned (§5 bug 4)");
+  fail("index.html: localStorage/sessionStorage is banned (§5 bug 4)");
 
 // 5d. straight apostrophe inside single-quoted JS strings is the original killer bug.
 // The template renders from JSON so content strings never live in the JS; still, flag suspicious lines.
 for (const js of scripts) {
   js.split("\n").forEach((line, n) => {
     if (/'[A-Za-z ]+'[a-z]/.test(line) && !/\\'/.test(line))
-      warn(`site/index.html script line ${n + 1}: possible unescaped apostrophe in single-quoted string — "${line.trim().slice(0, 60)}…"`);
+      warn(`index.html script line ${n + 1}: possible unescaped apostrophe in single-quoted string — "${line.trim().slice(0, 60)}…"`);
   });
 }
 

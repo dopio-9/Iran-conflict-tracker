@@ -8,7 +8,7 @@ analyst's "so what", every forecast is graded against reality when it expires.
 ## Architecture — data/template split
 
 ```
-site/index.html        static template (both themes) — fetches /data/*.json, rarely changes
+index.html             static template (both themes) — fetches /data/*.json, rarely changes
 data/data.json         the tracker payload — rewritten every update (~4k)
 data/sources.json      110-source registry with tiers (T2 / T1 / T1-ELEVATED / T1-UNRELIABLE / SPECIALIST / META)
 data/patterns.json     learned-pattern state machine (HYPOTHESIS → ACTIVE → STRESSED → CONFIRMED / BROKEN)
@@ -16,7 +16,7 @@ data/scenarios.json    forecast ledger — every scenario set graded HIT/MISS on
 scripts/validate.mjs   pipeline guardrail — schema + intelligence-rule checks + node --check on the template
 agents/                update-pipeline prompts (GATHER → REASON) and the pipeline spec
 .githooks/pre-commit   runs the validator; enable with:  git config core.hooksPath .githooks
-vercel.json            static hosting config (/ → /site/, /data/* served no-cache)
+vercel.json            static hosting config (/data/* served no-cache)
 ```
 
 Updating the tracker = rewriting `data/data.json` and pushing. The template is
@@ -39,7 +39,7 @@ update" cost and the apostrophe-kills-the-page bug class with it.
 
 ```sh
 npm run validate          # guardrail — must pass before any commit
-npm run serve             # http://localhost:8080/site/
+npm run serve             # http://localhost:8080/
 npm run hooks             # enable the pre-commit validator (once per clone)
 ```
 
