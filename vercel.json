@@ -1,20 +1,9 @@
 {
-  "cleanUrls": true,
-  "outputDirectory": ".",
-  "rewrites": [
-    { "source": "/", "destination": "/site/index.html" }
-  ],
   "headers": [
     {
       "source": "/data/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "no-cache, max-age=0, must-revalidate" }
-      ]
-    },
-    {
-      "source": "/site/(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=300, stale-while-revalidate=3600" }
       ]
     }
   ]
