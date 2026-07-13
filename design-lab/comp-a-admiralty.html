@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="data:,">
+<title>COMP A — ADMIRALTY PLOT</title>
+<style>
+  :root{
+    --sea:#0a141f; --sea2:#0c1826; --land:#101d29; --line:#1d3547;
+    --bone:#d8e2e2; --mute:#7d919c; --faint:#3d5666;
+    --hostile:#ff5c4a; --caution:#ffb648; --diplo:#45d693; --info:#5ad0e0;
+    --serif:'Bitstream Charter',serif; --mono:'DejaVu Sans Mono',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#1a1c20;display:flex;justify-content:center;padding:26px 0;font-family:var(--mono)}
+  .phone{width:430px;background:var(--sea);color:var(--bone);box-shadow:0 30px 80px rgba(0,0,0,.75);overflow:hidden}
+
+  /* ── chart title block ─────────────────────────── */
+  .tblock{padding:18px 18px 12px;border-bottom:1px solid var(--line)}
+  .tb-top{display:flex;justify-content:space-between;align-items:baseline}
+  .tb-agency{font-size:8px;letter-spacing:.34em;color:var(--mute)}
+  .tb-no{font-size:8px;letter-spacing:.2em;color:var(--mute)}
+  h1{font-family:var(--serif);font-weight:700;font-size:27px;letter-spacing:.02em;margin-top:7px;color:#fff}
+  h1 span{color:var(--info)}
+  .tb-ed{font-size:8.5px;letter-spacing:.22em;color:var(--mute);margin-top:5px}
+  .notices{margin-top:12px;border:1.5px solid var(--hostile);padding:9px 11px;position:relative}
+  .notices .nt{position:absolute;top:-7px;left:9px;background:var(--sea);padding:0 6px;
+    font-size:8px;letter-spacing:.26em;color:var(--hostile);font-weight:bold}
+  .notices p{font-family:var(--serif);font-size:12.5px;line-height:1.5;color:var(--bone)}
+  .notices b{color:var(--hostile)}
+
+  /* ── the chart ─────────────────────────────────── */
+  .chartwrap{position:relative;border-bottom:1px solid var(--line)}
+  svg.chart{display:block;width:100%;background:
+    radial-gradient(ellipse 90% 60% at 50% 55%, #0d1a29 0%, var(--sea) 78%)}
+  .cframe{fill:none;stroke:var(--faint);stroke-width:1}
+  .gratlbl{font-family:var(--mono);font-size:7px;fill:var(--faint);letter-spacing:.12em}
+  .landfill{fill:var(--land);stroke:#28455c;stroke-width:1.1}
+  .landhatch{fill:url(#hatch)}
+  .landname{font-family:var(--serif);font-size:11px;letter-spacing:.5em;fill:#41607a;font-weight:bold}
+  .sound{font-family:var(--mono);font-size:7.5px;fill:#31506a;font-style:italic}
+  .contour{fill:none;stroke:#1c3852;stroke-width:.7;stroke-dasharray:1 4}
+  .route{fill:none;stroke-width:2;stroke-linecap:round}
+  .routelbl{font-family:var(--mono);font-size:7.5px;font-weight:bold;letter-spacing:.14em}
+  .tss{fill:url(#tsshatch);stroke:var(--hostile);stroke-width:.8;stroke-dasharray:5 4;opacity:.85}
+  .burst{stroke:var(--hostile);stroke-width:1.4;fill:none}
+  .burstcore{fill:var(--hostile)}
+  .keynum{font-family:var(--mono);font-size:8.5px;font-weight:bold}
+  .keycirc{stroke-width:1.2;fill:#0a141f}
+  .leader{stroke:var(--faint);stroke-width:.7;stroke-dasharray:2 3;fill:none}
+  .evtlbl{font-family:var(--mono);font-size:7.5px;letter-spacing:.1em;fill:var(--bone)}
+  .evtsub{font-family:var(--mono);font-size:6.8px;fill:var(--mute)}
+  .rose line{stroke:var(--faint);stroke-width:1}
+  .rose text{font-family:var(--serif);font-size:9px;fill:var(--mute)}
+  .homering{fill:none;stroke:var(--info);stroke-width:1;opacity:.7}
+
+  /* ── contact log ───────────────────────────────── */
+  .sect{padding:14px 18px 4px}
+  .secthead{display:flex;justify-content:space-between;align-items:baseline;
+    border-bottom:1.5px solid var(--line);padding-bottom:6px;margin-bottom:2px}
+  .secthead .sh-t{font-size:9px;letter-spacing:.3em;color:var(--bone);font-weight:bold}
+  .secthead .sh-s{font-size:7.5px;letter-spacing:.14em;color:var(--mute)}
+  .clog{list-style:none}
+  .clog li{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid #14283a;align-items:flex-start}
+  .clog li:last-child{border-bottom:none}
+  .ckey{width:20px;height:20px;border-radius:50%;border:1.2px solid;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:bold;margin-top:1px}
+  .k-hostile{border-color:var(--hostile);color:var(--hostile)}
+  .k-caution{border-color:var(--caution);color:var(--caution)}
+  .k-diplo{border-color:var(--diplo);color:var(--diplo)}
+  .k-info{border-color:var(--info);color:var(--info)}
+  .cbody{flex:1}
+  .cline{font-family:var(--serif);font-size:12.5px;line-height:1.4;color:#eef4f4}
+  .cmeta{font-size:7.5px;letter-spacing:.1em;color:var(--mute);margin-top:3px;display:flex;gap:8px;flex-wrap:wrap}
+  .tier{padding:1px 5px;border:1px solid;font-weight:bold}
+  .t-v2{color:var(--diplo);border-color:var(--diplo)}
+  .t-fl{color:var(--hostile);border-color:var(--hostile)}
+  .t-pd{color:var(--caution);border-color:var(--caution)}
+
+  /* ── tidal predictions = scenarios ─────────────── */
+  .tides{display:flex;gap:9px;padding:10px 18px 2px}
+  .tide{flex:1;border:1px solid var(--line);background:var(--sea2);padding:9px 9px 7px}
+  .tide svg{display:block;width:100%;margin:4px 0 2px}
+  .tide .tp{font-family:var(--serif);font-weight:bold;font-size:19px;color:#fff}
+  .tide .tk{font-size:7px;letter-spacing:.2em;font-weight:bold;padding:2px 0;display:inline-block}
+  .tide .tn{font-size:7.2px;line-height:1.5;color:var(--mute);margin-top:3px}
+  .tk.base{color:var(--diplo)} .tk.risk{color:var(--caution)} .tk.tail{color:var(--hostile)}
+
+  /* ── warnings + inset ──────────────────────────── */
+  .warn{margin:12px 18px 0;border:1px solid var(--caution);padding:10px 12px;position:relative}
+  .warn .nt{position:absolute;top:-7px;left:9px;background:var(--sea);padding:0 6px;
+    font-size:8px;letter-spacing:.26em;color:var(--caution);font-weight:bold}
+  .warn ol{list-style:none}
+  .warn li{display:flex;gap:9px;font-size:10.5px;line-height:1.45;color:var(--bone);padding:4px 0}
+  .warn li b{color:#fff}
+  .warn .wn{color:var(--caution);font-weight:bold;flex-shrink:0}
+  .inset{margin:12px 18px 0;border:1px solid var(--info);background:
+    linear-gradient(180deg,rgba(90,208,224,.07),transparent);padding:11px 12px;position:relative}
+  .inset .nt{position:absolute;top:-7px;left:9px;background:var(--sea);padding:0 6px;
+    font-size:8px;letter-spacing:.26em;color:var(--info);font-weight:bold}
+  .inset p{font-family:var(--serif);font-size:12px;line-height:1.6;color:#e9f2f2}
+  .inset b{color:var(--info)}
+
+  /* ── footer legend ─────────────────────────────── */
+  .foot{margin-top:14px;border-top:1px solid var(--line);padding:10px 18px 16px;
+    display:flex;justify-content:space-between;align-items:center}
+  .legend{font-size:7px;letter-spacing:.1em;color:var(--mute);line-height:1.8}
+  .legend i{font-style:normal;font-weight:bold}
+  .legend .lh{color:var(--hostile)} .legend .lc{color:var(--caution)}
+  .legend .ld{color:var(--diplo)} .legend .li{color:var(--info)}
+  .stamp{border:1.5px solid var(--info);color:var(--info);font-size:9px;font-weight:bold;
+    letter-spacing:.18em;padding:6px 9px;transform:rotate(-3deg)}
+</style>
+</head>
+<body>
+<div class="phone">
+
+  <!-- TITLE BLOCK -->
+  <div class="tblock">
+    <div class="tb-top">
+      <span class="tb-agency">GULF DESK HYDROGRAPHIC</span>
+      <span class="tb-no">CHART No. 135</span>
+    </div>
+    <h1>STRAIT OF HORMUZ <span>·</span> LIVE PLOT</h1>
+    <div class="tb-ed">EDITION 12 JUL 2026 · 14:00 GST · CORRECTED TO LATEST INTELLIGENCE</div>
+    <div class="notices">
+      <span class="nt">NOTICES TO MARINERS</span>
+      <p><b>IRGC NAVY DECLARES STRAIT CLOSED “UNTIL FURTHER NOTICE.”</b> Third US strike round in five days. M/V GFS Galaxy disabled, one crew missing. Southern lane at zero AIS intent. Muscat channel open.</p>
+    </div>
+  </div>
+
+  <!-- THE CHART -->
+  <div class="chartwrap">
+  <svg class="chart" viewBox="0 0 430 560">
+    <defs>
+      <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="6" stroke="#1e3a4f" stroke-width="1"/>
+      </pattern>
+      <pattern id="tsshatch" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(-35)">
+        <line x1="0" y1="0" x2="0" y2="9" stroke="rgba(255,92,74,.30)" stroke-width="3"/>
+      </pattern>
+    </defs>
+
+    <!-- graticule border -->
+    <rect x="14" y="14" width="402" height="532" class="cframe"/>
+    <g>
+      <text class="gratlbl" x="20" y="26">56°00′E</text>
+      <text class="gratlbl" x="330" y="26">56°45′E</text>
+      <text class="gratlbl" x="20" y="540" >26°10′N</text>
+      
+      <text class="gratlbl" x="18" y="290" transform="rotate(-90 22 290)">26°34′N</text>
+    </g>
+
+    <!-- IRAN landmass -->
+    <path class="landfill" d="M14,14 L416,14 L416,88 C390,96 372,118 352,116 C326,113 318,92 296,96 C270,100 262,120 236,118 C210,116 200,96 172,98 C146,100 138,116 112,112 C86,108 76,88 52,92 C36,95 24,104 14,102 Z"/>
+    <path class="landhatch" d="M14,14 L416,14 L416,88 C390,96 372,118 352,116 C326,113 318,92 296,96 C270,100 262,120 236,118 C210,116 200,96 172,98 C146,100 138,116 112,112 C86,108 76,88 52,92 C36,95 24,104 14,102 Z" opacity=".5"/>
+    <text class="landname" x="150" y="52">I R A N</text>
+
+    <!-- QESHM island -->
+    <path class="landfill" d="M60,148 C96,138 150,140 196,150 C230,157 252,168 244,176 C226,190 168,188 120,180 C84,174 40,158 60,148 Z"/>
+    <text class="landname" x="108" y="170" style="font-size:8px;letter-spacing:.3em">QESHM</text>
+
+    <!-- MUSANDAM peninsula -->
+    <path class="landfill" d="M258,546 C262,498 270,452 292,416 C306,392 330,376 344,352 C354,334 356,318 370,314 C388,310 396,332 390,360 C382,398 360,440 348,480 C338,514 336,546 336,546 Z"/>
+    <path class="landhatch" d="M258,546 C262,498 270,452 292,416 C306,392 330,376 344,352 C354,334 356,318 370,314 C388,310 396,332 390,360 C382,398 360,440 348,480 C338,514 336,546 336,546 Z" opacity=".5"/>
+    <text class="landname" x="272" y="500" style="font-size:7.5px;letter-spacing:.2em">MUSANDAM</text>
+
+    <!-- UAE coast (bottom-left) -->
+    <path class="landfill" d="M14,546 L14,508 C48,500 96,506 138,516 C176,524 210,538 224,546 Z"/>
+    <text class="landname" x="40" y="536" style="font-size:8px;letter-spacing:.28em">U.A.E.</text>
+
+    <!-- depth contours + soundings -->
+    <ellipse class="contour" cx="210" cy="260" rx="150" ry="70"/>
+    <ellipse class="contour" cx="215" cy="265" rx="100" ry="44"/>
+    <g class="sound">
+      <text x="120" y="228">62</text><text x="250" y="222">84</text>
+      <text x="312" y="258">71</text><text x="180" y="300">90</text>
+      <text x="92" y="330">55</text><text x="258" y="318">78</text>
+      <text x="150" y="260">88</text><text x="330" y="200">44</text>
+    </g>
+
+    <!-- TSS separation zone (closed) -->
+    <path class="tss" d="M30,236 C120,224 260,224 340,246 C360,252 372,262 378,274 L378,290 C368,280 352,270 334,264 C258,242 122,242 32,254 Z"/>
+    <text x="96" y="245" style="font-family:'DejaVu Sans Mono';font-size:7.5px;letter-spacing:.22em;fill:#ff5c4a;font-weight:bold">TSS — CLOSED BY DECLARATION</text>
+
+    <!-- N ROUTE (permit) -->
+    <path class="route" stroke="#ffb648" stroke-dasharray="7 5" d="M30,206 C130,192 250,194 330,214 C356,221 372,232 382,248"/>
+    <text class="routelbl" x="52" y="196" fill="#ffb648">N ROUTE · IRAN PERMIT — NO CONFIRMED TRANSIT</text>
+
+    <!-- S ROUTE (zero AIS) -->
+    <path class="route" stroke="#ff5c4a" d="M30,296 C120,284 240,286 316,306 C348,315 372,332 388,356"/>
+    <text class="routelbl" x="80" y="330" fill="#ff5c4a">S ROUTE · OMAN/JMIC — ZERO AIS INTENT</text>
+
+    <!-- strike bursts -->
+    <g transform="translate(96,96)">
+      <circle class="burstcore" r="3"/>
+      <path class="burst" d="M0,-11 L0,-5 M8,-8 L4,-4 M11,0 L5,0 M8,8 L4,4 M0,11 L0,5 M-8,8 L-4,4 M-11,0 L-5,0 M-8,-8 L-4,-4"/>
+      <circle class="keycirc" r="8" cx="16" cy="-12" stroke="#ff5c4a"/>
+      <text class="keynum" x="16" y="-9" text-anchor="middle" fill="#ff5c4a">1</text>
+      <text class="evtlbl" x="24" y="-22">BANDAR ABBAS ×3</text>
+    </g>
+    <g transform="translate(206,162)">
+      <circle class="burstcore" r="3"/>
+      <path class="burst" d="M0,-11 L0,-5 M8,-8 L4,-4 M11,0 L5,0 M8,8 L4,4 M0,11 L0,5 M-8,8 L-4,4 M-11,0 L-5,0 M-8,-8 L-4,-4"/>
+      <circle class="keycirc" r="8" cx="18" cy="-10" stroke="#ff5c4a"/>
+      <text class="keynum" x="18" y="-7" text-anchor="middle" fill="#ff5c4a">2</text>
+      <text class="evtlbl" x="28" y="-18">QESHM</text>
+    </g>
+    <g transform="translate(360,92)">
+      <circle class="burstcore" r="3"/>
+      <path class="burst" d="M0,-11 L0,-5 M8,-8 L4,-4 M11,0 L5,0 M8,8 L4,4 M0,11 L0,5 M-8,8 L-4,4 M-11,0 L-5,0 M-8,-8 L-4,-4"/>
+      <circle class="keycirc" r="8" cx="-20" cy="-12" stroke="#ff5c4a"/>
+      <text class="keynum" x="-20" y="-9" text-anchor="middle" fill="#ff5c4a">3</text>
+      <text class="evtlbl" x="-56" y="-22">SIRIK ×2</text>
+    </g>
+
+    <!-- GFS GALAXY stricken vessel -->
+    <g transform="translate(392,380)">
+      <circle r="7.5" fill="none" stroke="#ff5c4a" stroke-width="1.6"/>
+      <path d="M-5,-5 L5,5 M-5,5 L5,-5" stroke="#ff5c4a" stroke-width="1.6"/>
+      <path class="leader" d="M-8,0 L-64,26"/>
+      <circle class="keycirc" r="8" cx="-76" cy="30" stroke="#ff5c4a"/>
+      <text class="keynum" x="-76" y="33" text-anchor="middle" fill="#ff5c4a">4</text>
+      <text class="evtlbl" x="-118" y="48">M/V GFS GALAXY</text>
+      <text class="evtsub" x="-118" y="58">DISABLED · 1 CREW MISSING</text>
+    </g>
+
+    <!-- MUSCAT diplomatic (off-chart arrow) -->
+    <g transform="translate(300,532)">
+      <rect x="-5" y="-5" width="10" height="10" transform="rotate(45)" fill="none" stroke="#45d693" stroke-width="1.6"/>
+      <circle r="2" fill="#45d693"/>
+      <circle class="keycirc" r="8" cx="0" cy="-20" stroke="#45d693"/>
+      <text class="keynum" x="0" y="-17" text-anchor="middle" fill="#45d693">5</text>
+      <text class="evtlbl" x="12" y="-17" fill="#45d693">MUSCAT 420KM ↘</text>
+    </g>
+
+    <!-- UAE home marker -->
+    <g transform="translate(118,522)">
+      <circle class="homering" r="6"/><circle class="homering" r="11" opacity=".35"/>
+      <circle r="2.5" fill="#5ad0e0"/>
+      <circle class="keycirc" r="8" cx="-2" cy="-20" stroke="#5ad0e0"/>
+      <text class="keynum" x="-2" y="-17" text-anchor="middle" fill="#5ad0e0">6</text>
+      <text class="evtlbl" x="10" y="-17" fill="#5ad0e0">YOU ARE HERE</text>
+    </g>
+
+    <!-- compass rose -->
+    <g class="rose" transform="translate(66,420)">
+      <line x1="0" y1="-20" x2="0" y2="20"/><line x1="-20" y1="0" x2="20" y2="0"/>
+      <line x1="-12" y1="-12" x2="12" y2="12" opacity=".4"/><line x1="-12" y1="12" x2="12" y2="-12" opacity=".4"/>
+      <path d="M0,-20 L4,-4 L0,-8 L-4,-4 Z" fill="#7d919c"/>
+      <text x="-3" y="-26">N</text>
+    </g>
+  </svg>
+  </div>
+
+  <!-- CONTACT LOG -->
+  <div class="sect">
+    <div class="secthead"><span class="sh-t">CONTACT LOG</span><span class="sh-s">KEYED TO PLOT · NEWEST FIRST</span></div>
+    <ul class="clog">
+      <li><span class="ckey k-hostile">1–3</span><div class="cbody">
+        <div class="cline">Third US strike round in five days — Bandar Abbas, Sirik, Qeshm hit after Trump orders retaliation.</div>
+        <div class="cmeta"><span class="tier t-fl">FLASH</span><span>03:15 · 12 JUL</span><span>CENTCOM · CNN · MEHR</span></div></div></li>
+      <li><span class="ckey k-hostile">4</span><div class="cbody">
+        <div class="cline">IRGC hits GFS Galaxy 9nm E of Oman, then declares the strait CLOSED “until further notice.”</div>
+        <div class="cmeta"><span class="tier t-v2">VER ×2</span><span>18:40–22:30 · 11 JUL</span><span>CENTCOM vs IRGC · BLOOMBERG</span></div></div></li>
+      <li><span class="ckey k-diplo">5</span><div class="cbody">
+        <div class="cline">Muscat channel live — Oman two-corridor draft; Vance, Rubio, Witkoff, Kushner expected.</div>
+        <div class="cmeta"><span class="tier t-v2">VER ×2</span><span>14:00 · 11 JUL</span><span>CNN · MUSCAT DAILY · CBS</span></div></div></li>
+      <li><span class="ckey k-caution">⚠</span><div class="cbody">
+        <div class="cline">Israel signals readiness to rejoin strikes — Israeli-official sourcing only, no T2 confirmation.</div>
+        <div class="cmeta"><span class="tier t-pd">PENDING</span><span>12:00 · 11 JUL</span><span>YNET · TOI · FOX</span></div></div></li>
+      <li><span class="ckey k-info">6</span><div class="cbody">
+        <div class="cline">UAE unstruck through all three rounds — airspace open, flights normal. The exemption is the signal.</div>
+        <div class="cmeta"><span class="tier t-v2">VER ×2</span><span>STANDING</span><span>OPSGROUP · UAE MOD</span></div></div></li>
+    </ul>
+  </div>
+
+  <!-- TIDAL PREDICTIONS = SCENARIOS -->
+  <div class="sect" style="padding-bottom:0">
+    <div class="secthead"><span class="sh-t">TIDAL PREDICTIONS</span><span class="sh-s">SCENARIO SET 12 JUL · NEXT 72H · ANALYST JUDGMENT</span></div>
+  </div>
+  <div class="tides">
+    <div class="tide">
+      <span class="tk base">▲ BASE — EBB</span>
+      <div class="tp">40%</div>
+      <svg viewBox="0 0 100 26"><path d="M0,8 C20,6 40,14 60,18 C75,21 90,22 100,22" fill="none" stroke="#45d693" stroke-width="2"/></svg>
+      <div class="tn">Muscat produces a strikes pause; closure stays declaratory.</div>
+    </div>
+    <div class="tide">
+      <span class="tk risk">▬ RISK — STAND</span>
+      <div class="tp">35%</div>
+      <svg viewBox="0 0 100 26"><path d="M0,14 C20,12 40,16 60,13 C75,11 90,14 100,13" fill="none" stroke="#ffb648" stroke-width="2"/></svg>
+      <div class="tn">Closure hardens; enforcement fire on any southern transit.</div>
+    </div>
+    <div class="tide">
+      <span class="tk tail">▲ TAIL — SURGE</span>
+      <div class="tp">25%</div>
+      <svg viewBox="0 0 100 26"><path d="M0,20 C25,19 45,18 62,14 C78,10 90,4 100,2" fill="none" stroke="#ff5c4a" stroke-width="2"/></svg>
+      <div class="tn">Israel re-enters — the MOU dies in fact.</div>
+    </div>
+  </div>
+
+  <!-- WARNINGS -->
+  <div class="warn">
+    <span class="nt">WARNINGS IN FORCE</span>
+    <ol>
+      <li><span class="wn">W1</span><span><b>First vessel to test the southern lane</b> — transit unmolested = bluff; fired on = combat zone.</span></li>
+      <li><span class="wn">W2</span><span><b>US team physically seated in Muscat</b> — the clearest off-ramp signal. Cancellation is the counter-signal.</span></li>
+      <li><span class="wn">W3</span><span><b>Any T2-confirmed Israeli force movement</b> — converts the tail scenario to base.</span></li>
+    </ol>
+  </div>
+
+  <!-- UAE INSET -->
+  <div class="inset">
+    <span class="nt">FOR THE EMIRATES</span>
+    <p>Airspace <b>fully open</b> through three strike rounds; flights normal. Exposure runs through <b>shipping, not skies</b> — war-risk cover ~5% of hull value. Iran has struck four states this round and conspicuously <b>not the UAE</b>; the exemption is deliberate, and reversible. <b>T−36</b> to the toll-free window expiry.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="foot">
+    <div class="legend">
+      <i class="lh">⊗</i> HOSTILE / STRICKEN &nbsp; <i class="lc">◌</i> PENDING&nbsp;/ PERMIT<br>
+      <i class="ld">◈</i> DIPLOMATIC &nbsp; <i class="li">◎</i> HOME / VERIFIED FLOW
+    </div>
+    <div class="stamp">DAY 135 · T−36</div>
+  </div>
+</div>
+</body>
+</html>

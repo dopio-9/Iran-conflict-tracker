@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="data:,">
+<title>X2 — THERMOGRAM</title>
+<style>
+  :root{ --hud:#f2f6f4; --dim:#9fb3ac; --mono:'DejaVu Sans Mono',monospace; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#000;display:flex;justify-content:center;padding:30px 0;font-family:var(--mono)}
+  .frame{width:430px;height:900px;background:#03030a;position:relative;overflow:hidden;
+    box-shadow:0 34px 90px rgba(0,0,0,.9)}
+
+  /* ── the heat field ─────────────────────────────── */
+  .field{position:absolute;inset:0;filter:blur(0px)}
+  .blob{position:absolute;border-radius:50%;mix-blend-mode:screen;filter:blur(26px)}
+  /* cold land masses = deep blue/indigo */
+  .land-n{top:-140px;left:-80px;width:640px;height:420px;filter:blur(50px);
+    background:radial-gradient(ellipse, #131c4a 0%, #0b1030 55%, transparent 75%)}
+  .land-s{bottom:-180px;left:-60px;width:620px;height:430px;filter:blur(50px);
+    background:radial-gradient(ellipse, #101740 0%, #090d28 55%, transparent 75%)}
+  /* the hot channel */
+  .chan{top:290px;left:-70px;width:600px;height:280px;border-radius:50%;filter:blur(40px);
+    background:radial-gradient(ellipse, rgba(150,20,90,.85) 0%, rgba(90,12,80,.55) 45%, transparent 72%)}
+  .chan2{top:330px;left:0px;width:470px;height:180px;border-radius:50%;filter:blur(30px);
+    background:radial-gradient(ellipse, rgba(230,60,40,.8) 0%, rgba(170,30,70,.5) 50%, transparent 75%)}
+  /* white-hot cores */
+  .core1{top:352px;left:96px;width:130px;height:88px;filter:blur(16px);
+    background:radial-gradient(ellipse, rgba(255,240,190,.95) 0%, rgba(255,140,40,.85) 38%, rgba(220,50,40,.4) 66%, transparent 80%)}
+  .core1b{top:376px;left:130px;width:56px;height:34px;filter:blur(5px);
+    background:radial-gradient(ellipse, #fffbe8 0%, rgba(255,210,120,.9) 55%, transparent 80%)}
+  .core2{top:430px;left:268px;width:104px;height:72px;filter:blur(14px);
+    background:radial-gradient(ellipse, rgba(255,220,160,.9) 0%, rgba(255,120,40,.75) 42%, transparent 76%)}
+  .core2b{top:450px;left:296px;width:42px;height:26px;filter:blur(4px);
+    background:radial-gradient(ellipse, #fff6da 0%, rgba(255,190,90,.85) 60%, transparent 82%)}
+  .core3{top:520px;left:180px;width:80px;height:56px;filter:blur(13px);
+    background:radial-gradient(ellipse, rgba(255,170,90,.8) 0%, rgba(230,80,50,.5) 55%, transparent 78%)}
+  /* ambient magenta wash */
+  .wash{top:220px;left:-120px;width:720px;height:460px;filter:blur(80px);
+    background:radial-gradient(ellipse, rgba(120,20,120,.30), transparent 70%)}
+  /* cool ember specks */
+  .ember{position:absolute;border-radius:50%;mix-blend-mode:screen}
+
+  /* sensor grain + scanlines */
+  .grain{position:absolute;inset:0;mix-blend-mode:overlay;opacity:.5;pointer-events:none;
+    background-image:radial-gradient(rgba(255,255,255,.13) .6px,transparent .7px);background-size:3px 3px}
+  .scan{position:absolute;inset:0;pointer-events:none;opacity:.6;
+    background:repeating-linear-gradient(180deg,rgba(0,0,0,.16) 0 1px,transparent 1px 4px)}
+  .vig{position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(ellipse 76% 68% at 50% 48%, transparent 62%, rgba(0,0,5,.72) 100%)}
+
+  /* ── HUD ────────────────────────────────────────── */
+  .hud{position:absolute;inset:0;color:var(--hud);z-index:5}
+  .cornr{position:absolute;width:26px;height:26px;border:1.6px solid var(--hud);opacity:.85}
+  .c-tl{top:16px;left:16px;border-right:none;border-bottom:none}
+  .c-tr{top:16px;right:16px;border-left:none;border-bottom:none}
+  .c-bl{bottom:16px;left:16px;border-right:none;border-top:none}
+  .c-br{bottom:16px;right:16px;border-left:none;border-top:none}
+
+  .h-top{position:absolute;top:24px;left:54px;right:54px;display:flex;justify-content:space-between;
+    font-size:9px;letter-spacing:.18em}
+  .h-title{position:absolute;top:44px;left:54px;font-size:15px;font-weight:bold;letter-spacing:.3em}
+  .h-sub{position:absolute;top:64px;left:54px;font-size:7.5px;letter-spacing:.22em;color:var(--dim)}
+
+  /* center reticle */
+  .ret{position:absolute;top:404px;left:50%;transform:translate(-50%,-50%)}
+  .ret .c{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border:1px solid rgba(242,246,244,.8);border-radius:50%}
+  .ret .c1{width:66px;height:66px}
+  .ret .c2{width:118px;height:118px;border-style:dashed;opacity:.4}
+  .ret .l{position:absolute;background:var(--hud)}
+  .ret .lh1{width:26px;height:1px;left:-72px;top:0}
+  .ret .lh2{width:26px;height:1px;left:46px;top:0}
+  .ret .lv1{width:1px;height:26px;top:-72px;left:0}
+  .ret .lv2{width:1px;height:26px;top:46px;left:0}
+
+  /* spot markers */
+  .spot{position:absolute;font-size:8px;letter-spacing:.1em}
+  .spot .x{display:inline-block;width:13px;height:13px;position:relative;vertical-align:-3px;margin-right:6px}
+  .spot .x::before,.spot .x::after{content:"";position:absolute;background:var(--hud)}
+  .spot .x::before{left:6px;top:0;width:1px;height:13px}
+  .spot .x::after{top:6px;left:0;height:1px;width:13px}
+  .spot .t{color:#ffd9a8}
+  .spot .ln{position:absolute;height:1px;background:linear-gradient(90deg,var(--hud),transparent);opacity:.5}
+
+  /* temperature scale */
+  .scale{position:absolute;right:22px;top:170px;bottom:230px;width:12px;border:1px solid rgba(242,246,244,.7);
+    background:linear-gradient(180deg,#fffbe8 0%, #ffc85e 18%, #ff7c30 36%, #e0343c 54%, #a11a6e 70%, #4b1c86 84%, #10123c 100%)}
+  .scale .tick{position:absolute;right:14px;font-size:7px;letter-spacing:.08em;color:var(--dim);white-space:nowrap;text-align:right;width:56px}
+
+  /* readout block */
+  .read{position:absolute;left:54px;bottom:104px;font-size:8.6px;line-height:2.1;letter-spacing:.12em}
+  .read b{font-weight:normal;color:#ffd9a8}
+  .read .cold{color:#8fa8ff}
+  .alertline{position:absolute;left:54px;right:54px;bottom:64px;border:1px solid rgba(255,120,80,.85);
+    background:rgba(120,20,10,.25);padding:7px 10px;font-size:8.4px;letter-spacing:.16em;color:#ffc9b0}
+  .h-bot{position:absolute;bottom:24px;left:54px;right:54px;display:flex;justify-content:space-between;
+    font-size:7.5px;letter-spacing:.16em;color:var(--dim)}
+</style>
+</head>
+<body>
+<div class="frame">
+  <!-- HEAT FIELD -->
+  <div class="field">
+    <div class="blob wash"></div>
+    <div class="blob land-n"></div>
+    <div class="blob land-s"></div>
+    <div class="blob chan"></div>
+    <div class="blob chan2"></div>
+    <div class="blob core1"></div>
+    <div class="blob core1b"></div>
+    <div class="blob core2"></div>
+    <div class="blob core2b"></div>
+    <div class="blob core3"></div>
+    <div class="ember" style="top:610px;left:120px;width:22px;height:14px;filter:blur(6px);background:radial-gradient(ellipse,rgba(255,140,70,.7),transparent 75%)"></div>
+    <div class="ember" style="top:250px;left:330px;width:26px;height:16px;filter:blur(7px);background:radial-gradient(ellipse,rgba(255,110,60,.6),transparent 75%)"></div>
+    <div class="ember" style="top:660px;left:300px;width:18px;height:12px;filter:blur(6px);background:radial-gradient(ellipse,rgba(230,90,120,.55),transparent 75%)"></div>
+  </div>
+  <div class="grain"></div>
+  <div class="scan"></div>
+  <div class="vig"></div>
+
+  <!-- HUD -->
+  <div class="hud">
+    <span class="cornr c-tl"></span><span class="cornr c-tr"></span>
+    <span class="cornr c-bl"></span><span class="cornr c-br"></span>
+
+    <div class="h-top"><span>SENSOR: LWIR · IRONBOW</span><span>PASS 135</span></div>
+    <div class="h-title">IRAN CONFLICT TRACKER</div>
+    <div class="h-sub">THERMOGRAM · 26°34′N 056°15′E · 12 JUL 14:00Z</div>
+
+    <div class="ret">
+      <span class="c c1"></span><span class="c c2"></span>
+      <span class="l lh1"></span><span class="l lh2"></span><span class="l lv1"></span><span class="l lv2"></span>
+    </div>
+
+    <!-- spot readouts -->
+    <div class="spot" style="top:346px;left:74px"><span class="x"></span>SP1 <span class="t">△T +941</span></div>
+    <div class="spot" style="top:424px;left:296px"><span class="x"></span>SP2 <span class="t">△T +612</span></div>
+    <div class="spot" style="top:540px;left:158px"><span class="x"></span>SP3 <span class="t">△T +287</span></div>
+    <div class="spot" style="top:196px;left:210px"><span class="x"></span>SP4 <span class="t" style="color:#8fa8ff">△T −12 QUIET</span></div>
+
+    <!-- temp scale -->
+    <div class="scale">
+      <span class="tick" style="top:-3px">SATURATED</span>
+      <span class="tick" style="top:34%">ACTIVE</span>
+      <span class="tick" style="top:66%">ELEVATED</span>
+      <span class="tick" style="bottom:-3px">AMBIENT</span>
+    </div>
+
+    <div class="read">
+      FIELD STATE&nbsp;&nbsp;: <b>CHANNEL SATURATED — 3 CORES RESOLVED</b><br>
+      HOTTEST&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <b>SP1 — RISING 5 CONSECUTIVE FRAMES</b><br>
+      COOLING&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <b class="cold">NONE OBSERVED THIS PASS</b><br>
+      NEXT PASS&nbsp;&nbsp;&nbsp;: <b>+72H — 3 TRAJECTORIES · 40/35/25</b>
+    </div>
+
+    <div class="alertline">▲ BLOOM ADVISORY — HEAT SIGNATURE EXCEEDS ALL PRIOR PASSES SINCE DAY 110</div>
+
+    <div class="h-bot"><span>NUC OK · GAIN AUTO</span><span>DAY 135 · T−36 TO WINDOW</span><span>REC ●</span></div>
+  </div>
+</div>
+</body>
+</html>
