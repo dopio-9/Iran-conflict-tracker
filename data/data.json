@@ -1,207 +1,182 @@
 {
   "meta": {
-    "day": 135,
-    "date": "12 JUL 2026",
-    "updated": "12 JUL 2026 · 14:00 GST",
+    "day": 136,
+    "date": "13 JUL 2026",
+    "updated": "13 JUL 2026 · 12:00 GST",
     "coords": "26°34′N 056°15′E · GULF DESK",
-    "subline": "12 JUL 2026 · 14:00 GST · IRGC DECLARES HORMUZ CLOSED · US ROUND-3 STRIKES · TRUMP–MOJTABA THREAT EXCHANGE · MUSCAT CHANNEL LIVE",
+    "subline": "13 JUL 2026 · 12:00 GST · US ROUND-4: 140 TARGETS, FIRST SEA-DRONE STRIKES · IRAN HITS 3+ GCC STATES · MUSCAT TALKS COLLAPSE · STRAIT OPEN/CLOSED DISPUTED · BRENT ~$79",
     "deadline": { "label": "TOLL-FREE WINDOW EXPIRES", "date": "2026-08-17" },
     "banner": {
       "level": "alarm",
-      "html": "<b>IRGC NAVY HAS DECLARED THE STRAIT CLOSED ‘UNTIL FURTHER NOTICE.’</b> Third US strike round in five days · <span style=\"color:var(--alarm)\">GFS Galaxy hit — crew member missing · southern lane at zero AIS intent</span> · <span style=\"color:var(--warn)\">Muscat channel live: Oman two-corridor draft, senior US team expected</span>"
+      "html": "<b>US LAUNCHES A FOURTH STRIKE ROUND — 140 TARGETS, FIRST-EVER SEA-DRONE STRIKES.</b> Iran retaliates against GCC bases · <span style=\"color:var(--alarm)\">Muscat talks collapse with nothing agreed — Iran accuses US of pressuring Oman</span> · <span style=\"color:var(--warn)\">Strait status now openly disputed: Trump says ‘open,’ Iran says passage ‘not possible’</span>"
     }
   },
   "wire": [
     {
-      "t": "03:15", "d": "12 JUL", "geo": "IR", "tier": "flash",
-      "src": "CENTCOM · CNN · Mehr/IRIB",
-      "title": "<b>Third round of US strikes in five days</b> — explosions reported in Bandar Abbas (3), Sirik (2) and on Qeshm Island after Trump orders retaliation for the GFS Galaxy attack.",
-      "full": "CENTCOM said the strikes began 19:15 ET on 11 Jul (03:15 GST) and were ordered directly by Trump, targeting ‘Iran’s ability to attack commercial vessels.’ IRIB reported three blasts in Bandar Abbas and two in Sirik; Mehr reported explosions on Qeshm Island. No casualty figures yet for this round — the 8-9 Jul rounds killed 14 and wounded 78 across five provinces, with 47 still hospitalised per Iran’s government press office.",
-      "why": "Round 3 settles the 9 Jul scenario question: this is a sustained campaign, not a two-night spike. The stated target framing — ‘ability to attack commercial vessels’ — ties US strikes explicitly to strait access. This is now a naval-access war, no longer a punitive exchange."
+      "t": "06:00", "d": "13 JUL", "geo": "IR", "tier": "flash",
+      "src": "CENTCOM · The Hill · CBS · Al Jazeera",
+      "title": "<b>US Round 4 — CENTCOM says it struck 140 Iranian military targets</b>, using one-way attack <b>sea drones for the first time</b> alongside aircraft, warships and aerial drones.",
+      "full": "CENTCOM said Trump ordered the strikes to ‘hold Iranian forces accountable’ and degrade Iran’s ability to attack commercial shipping. Targets: air-defence systems, coastal radar sites, missile and drone capabilities, and small boats. The debut of one-way attack unmanned surface vessels (USVs) is the notable new capability — previously only aerial drones and manned platforms were used. Reporting on scale varies: CENTCOM/The Hill cite 140 targets; CNBC and Al Jazeera frame it as ‘dozens’ of additional targets in a fourth wave.",
+      "why": "Two firsts in one strike package. Hitting coastal radar and air-defence (not just boats and ports) means the US is now dismantling the sensor-and-shooter network Iran needs to enforce closure — a shift from punishing attacks to disabling the capability itself. The sea-drone debut signals the US intends to contest the water directly, cheaply and without risking crews."
     },
     {
-      "t": "22:30", "d": "11 JUL", "geo": "HORMUZ", "tier": "ver2",
-      "src": "IRGC Navy stmt · Bloomberg · Times of Israel",
-      "title": "<b>IRGC Navy declares the Strait of Hormuz CLOSED ‘until further notice’</b> — and until the end of US ‘interference’ in the region.",
-      "full": "The declaration came after the IRGC fired on a vessel it said attempted to transit along an ‘unapproved’ route — the first formal closure declaration since the MOU was signed. The US response, via officials quoted by RFE/RL: Iran ‘does not control’ the Strait of Hormuz. Whether the declaration is enforceable is decomposed in VERIFY.",
-      "why": "Note what Iran actually executed. Not Bab-el-Mandeb, not NPT withdrawal — the closure of its own strait, the one maximal option fully inside its control. The ‘floats maximal, executes calibrated’ pattern held in form, but the calibrated option has now ratcheted up to a formal closure. The declaration is also a legal position: it converts every southern-route transit into a claimed violation."
+      "t": "05:30", "d": "13 JUL", "geo": "GCC", "tier": "ver2",
+      "src": "IRGC · CBS · CNBC",
+      "title": "Iran retaliates against <b>US bases across the GCC</b> — Bahrain, Kuwait and Jordan confirmed; some reporting adds Qatar and Oman.",
+      "full": "The IRGC said it struck US-linked military sites in response to Round 4. Bahrain, Kuwait and Jordan are named consistently across sources; broader lists (ms.now, some CNBC copy) add Qatar and — most consequentially — Oman, the very state mediating the talks. Whether Oman was targeted is decomposed in VERIFY. No confirmed casualties reported; Gulf air defences claim interceptions.",
+      "why": "If Oman was genuinely struck, Iran hit its own mediator on the same weekend the mediation collapsed — either a loss of control or a message that no US-hosting state is exempt, mediator or not. That single disputed fact changes how to read the diplomatic track entirely, which is why it belongs in VERIFY rather than the headline."
+    },
+    {
+      "t": "22:00", "d": "12 JUL", "geo": "OMAN", "tier": "ver2",
+      "src": "Reuters · ms.now · CNN",
+      "title": "<b>Muscat talks collapse with nothing agreed</b> — Iran accuses the US of ‘overt and covert pressure’ on Oman that blocked a Hormuz-management deal.",
+      "full": "Saturday’s Araghchi–Albusaidi talks in Muscat ‘wrapped with little decided.’ Iran publicly blamed US pressure on Oman for preventing agreement on arrangements to manage the strait and its traffic routes. Trump separately says talks will continue under the Vance/Rubio/Witkoff/Kushner team — but confirms the June ceasefire is ‘scrapped.’ The two-corridor formula that was on the table 11 Jul did not close.",
+      "why": "This is the load-bearing failure of the day. The base-case scenario from 12 Jul — Muscat produces a pause — is now failing in real time: the talks that were supposed to be the off-ramp produced nothing, and each side is blaming the other in public. The parallel-tracks pattern is under stress: the diplomatic track didn’t just stall, it broke while the kinetic track accelerated to Round 4."
+    },
+    {
+      "t": "09:01", "d": "13 JUL", "geo": "MARKETS", "tier": "ver2",
+      "src": "LSEG · Al Jazeera · The National · Goldman",
+      "title": "<b>Brent jumps to ~$79</b> (+3.9–4.1%), reversing the retreat toward pre-war levels; just <b>6 vessels</b> tracked crossing Hormuz in a 12-hour window.",
+      "full": "Brent traded around $78.96–$79.16 by 09:01 GST, up ~4% on the day and building on +5.4% last week; WTI near $74. LSEG/tanker tracking recorded only six vessels crossing the strait between 18:00 GMT Thu and 06:00 GMT Fri, versus 18–22 daily crossings earlier this month. Goldman: ‘a serious re-escalation could reintensify the short-run upside risk to oil prices.’",
+      "why": "The market has stopped treating the closure as pure posture. A ~4% jump on top of last week’s 5.4% — with transit collapsing to single digits — is traders pricing real supply risk, not a negotiating bluff. For a UAE resident this is the first day the price signal and the physical signal (6 ships) point the same way: the disruption is real, not rhetorical."
+    },
+    {
+      "t": "08:00", "d": "13 JUL", "geo": "HORMUZ", "tier": "disputed",
+      "src": "Trump/CENTCOM vs Iran strait authority",
+      "title": "<b>Strait status openly disputed</b> — Trump and CENTCOM insist the waterway is ‘open’; Iran’s strait authority says passage is ‘not possible.’",
+      "full": "The US position: Iran ‘does not control’ Hormuz and it remains open to traffic. Iran’s position: following the closure declaration and Round-4 exchange, passage is ‘not possible.’ The physical evidence sits between the two claims — six transits in twelve hours is neither a normal open strait (~18–22/day) nor a hard zero. Both governments are asserting the reading that suits them.",
+      "why": "The open-vs-closed dispute is now the informational battleground, and the honest answer is neither label. ‘Open’ and ‘not possible’ are both political claims; the operational truth is a strait that is transitable only by those willing to run a gauntlet, which is why traffic is down ~70% but not zero. Watch transit counts, not adjectives."
     },
     {
       "t": "18:40", "d": "11 JUL", "geo": "HORMUZ", "tier": "ver2",
       "src": "CENTCOM · ABC · Middle East Eye",
-      "title": "IRGC hits <b>M/V GFS Galaxy</b>, Cyprus-flagged container ship, 9nm east of Oman — one crew member missing, engine-room fire, vessel disabled.",
-      "full": "CENTCOM: Iranian forces ‘blatantly attacked’ the GFS Galaxy transiting the strait; a civilian crew member is missing and the vessel cannot continue due to fire and significant engine-room damage. Iran’s account directly contradicts the framing: the IRGC Navy says it fired a ‘warning shot’ at a vessel on an ‘unapproved route.’ Both accounts agree on the operative fact — the ship was on the southern route, without an Iranian permit.",
-      "why": "The entire route war in one incident: Iran calls southern-route transit a violation; the US calls firing on it an attack. A possible crew fatality would be the first commercial mariner killed since the MOU — a threshold with its own escalation logic. Framing dispute decomposed in VERIFY."
-    },
-    {
-      "t": "17:00", "d": "11 JUL", "geo": "US/IR", "tier": "ver2",
-      "src": "PBS/AP · France 24 · Al Jazeera",
-      "title": "<b>Trump and Mojtaba Khamenei trade direct threats</b> — ‘1000 missiles locked and loaded’ vs a vow that avenging his father ‘must certainly be carried out.’",
-      "full": "Trump warned that ‘1000 Missiles are Locked and Loaded and aimed at the Islamic Republic of Iran’ if Tehran acts on threats to assassinate him, adding the US would ‘completely decimate and destroy all areas of Iran.’ Mojtaba Khamenei answered that revenge for his father’s death ‘is the will of our nation and must certainly be carried out.’ The exchange follows open calls for Trump’s killing at Ali Khamenei’s funeral (4-6 Jul).",
-      "why": "First direct, personal Trump–Mojtaba exchange of the war. The assassination-revenge axis is a separate escalation channel from the strait dispute — it does not de-escalate when shipping does, and it is the channel Mojtaba personally owns. Per the standing rule, read Trump’s maximal rhetoric against his simultaneous dispatch of negotiators (next item)."
-    },
-    {
-      "t": "14:00", "d": "11 JUL", "geo": "OMAN", "tier": "ver2",
-      "src": "CNN · Muscat Daily · CBS",
-      "title": "<b>Muscat channel goes live</b> — Araghchi meets Omani FM; Oman circulates a two-corridor draft; Vance, Rubio, Witkoff and Kushner expected in Muscat.",
-      "full": "Araghchi met Omani FM Sayyid Badr Albusaidi in Muscat on Saturday; both agreed to further technical and political talks on safe passage. Oman’s draft: two separately controlled corridors, both open — the southern corridor through Omani waters under free pre-war navigation, the northern through Iranian waters requiring prior Iranian approval but with NO tolls. Both sides expressed a desire to return to MOU conditions, but there is no agreement on the wording of Article 5 (transit administration). A senior US team — VP Vance, Sec. Rubio, Witkoff, Kushner — is expected in Muscat.",
-      "why": "The most senior US delegation of the war, dispatched within hours of Trump declaring the deal dead — the deadline-extension cycle operating in plain view. The Oman draft is the first written formula that gives Iran its permit regime while killing tolls, which is the exact Trump red line. Article 5 wording is now the entire war compressed into one clause."
+      "title": "Context — the trigger for this cycle: IRGC hit <b>M/V GFS Galaxy</b> 9nm off Oman, one crew missing, then declared the strait closed ‘until further notice.’",
+      "full": "The Cyprus-flagged container ship was disabled by engine-room fire; a civilian crew member remains missing. CENTCOM called it a ‘blatant attack’; the IRGC called it a ‘warning shot’ at a vessel on an ‘unapproved route.’ The closure declaration and the three prior strike rounds (7–12 Jul) set up today’s Round 4.",
+      "why": "Kept on the wire as the causal anchor: every event today traces back to this single incident 48 hours ago. The missing mariner remains unresolved — still the most likely trip-wire for a further hardening if confirmed dead."
     },
     {
       "t": "12:00", "d": "11 JUL", "geo": "IL", "tier": "pending",
       "src": "Ynet · Times of Israel · Fox — Israeli officials; no T2 confirmation",
-      "title": "Israeli leadership <b>signals readiness to rejoin strikes on Iran</b> — officials call the moment ‘more serious than any other time in the past.’",
-      "full": "Ynet, quoting Israeli officials: Israel is poised to strike Iran, with preparations described as more serious than at any prior point. Times of Israel: Israel is preparing for a renewal of the war if US-Iran negotiations fail, while Trump says Tehran has ‘days’ to make a deal. Israel has not been a party to the MOU and never accepted the Lebanon withdrawal linkage.",
-      "why": "Labelled PENDING deliberately: all sourcing is Israeli-official via Israeli outlets — no T2 confirmation, and ‘officials say’ leaks are also a pressure instrument in the negotiation. If a T2 source confirms force movements, this becomes the single most consequential item on the board: Israeli re-entry is the one event that makes the MOU unrecoverable."
-    },
-    {
-      "t": "20:00", "d": "10 JUL", "geo": "HORMUZ", "tier": "ver2",
-      "src": "CBS OSINT review · Kpler · IMO",
-      "title": "<b>Southern lane at zero</b> — open-source AIS review finds no commercial vessel broadcasting intent to transit the southern shipping lane; IMO advises avoiding the strait.",
-      "full": "A CBS News review of open-source maritime tracking data on Friday found zero commercial vessels publicly broadcasting locations indicating intent to transit the southern lane. Kpler had recorded 108 transits over 3-5 Jul (a 30-60/day ‘new normal’ range vs ~138/day pre-war per JMIC) before traffic collapsed following the 7-8 Jul vessel attacks. The IMO formally advised ships to avoid the waterway until crew safety can be assured.",
-      "why": "The de facto closure preceded the de jure one: commercial traffic had already stopped a full day before the IRGC declaration. Iran declared closed a strait that shipping had already abandoned — which is why the declaration was cheap for Tehran to make and why reopening confidence, not the declaration itself, is the metric to watch."
-    },
-    {
-      "t": "18:00", "d": "10 JUL", "geo": "MARKETS", "tier": "ver",
-      "src": "LSEG/TradingEconomics · Polymarket · Lloyd’s LMA",
-      "title": "Brent closes ~$75.5, <b>+4.7% on the week</b> — Polymarket prices just 4.5% on Hormuz traffic normalising by 31 Jul ($13.8M matched).",
-      "full": "Brent slipped to ~$75.5 into Friday’s close but held a ~4.7% weekly gain on the renewed disruption (it had traded below $70 on 1 Jul). Polymarket’s normalisation-by-31-Jul market fell from 8.5% to 4.5% across the week. Lloyd’s Market Association: hull war-risk premiums around 5% of vessel value are the emerging market norm for Hormuz transits; softening after the MOU reversed after this week’s attacks. Goldman: Brent above $100 through 2026 if closure runs another month.",
-      "why": "The market read is calm-ish price, catastrophic probability: a 4.7% weekly move is small against a formal closure because traders assume the closure is a negotiating posture. The 4.5% normalisation odds are the honest number — the market believes the strait stays abnormal through July regardless of what Muscat produces."
-    },
-    {
-      "t": "15:00", "d": "10 JUL", "geo": "US", "tier": "ver",
-      "src": "ABC News (US official)",
-      "title": "US official: Iran has downed <b>~30 US MQ-9 Reaper drones</b> since the war began — the 7 Jul Bushehr shootdown claim remains unconfirmed individually.",
-      "full": "A US official told ABC that roughly 30 MQ-9s have been lost to Iranian air defences over the course of the war — corroborating the general credibility of IRGC shootdown claims while leaving the specific 7 Jul Khormoj/Bushehr claim unconfirmed. Independent trackers had put cumulative losses between 11 and 24 before this week; treat all totals as a range.",
-      "why": "Quietly resolves the open VERIFY item from Day 132 at the class level: IRGC drone-kill claims are not propaganda inventions — the loss rate is real and large. It also explains US caution: persistent ISR over Iran is being attrited at ~$30M per airframe."
-    },
-    {
-      "t": "09:00", "d": "09 JUL", "geo": "GCC", "tier": "ver2",
-      "src": "RFE/RL · Kuwait MOD · Arab News",
-      "title": "Iran’s regular army joins retaliation — kamikaze drones against <b>a Patriot battery in Kuwait, an early-warning radar in Qatar, and fuel tanks in Bahrain</b>; Jordan also reports intercepts.",
-      "full": "Iran’s army (Artesh, distinct from the IRGC) said it launched one-way attack drones at named military systems in Kuwait, Qatar and Bahrain. Kuwait’s Defence Ministry said it intercepted 3 ballistic missiles, 1 cruise missile and 10 drones, with debris wounding one person. Bahrain reported intercepting ‘several treacherous Iranian aerial attacks.’ Arab News and The National report Jordan among states condemning attacks on its airspace. Saudi Arabia and the GCC issued unified condemnations of Iran — none criticised the preceding US strikes.",
-      "why": "Two details matter beyond the Day 132 picture: the regular army firing (not just the IRGC) signals institutional breadth behind retaliation, and the target list is precise counter-air-defence work — Patriots and radars — not symbolic fires. Iran is mapping and degrading the GCC intercept architecture while calibrating to zero fatalities."
+      "title": "Still open: Israel <b>‘poised’ to rejoin strikes</b> — no fresh T2 confirmation of force movement as of today.",
+      "full": "The 11 Jul Israeli-official readiness signals have not been followed, as of this update, by any T2-confirmed strike package or force movement. Israel remains outside the MOU and has not accepted the Lebanon-withdrawal linkage. This item is carried forward, unchanged in status, precisely because its resolution would be the single highest-consequence development.",
+      "why": "Deliberately held at PENDING for a second day. The value is in what has NOT happened: through a fourth US strike round and a diplomatic collapse, Israel has still not visibly re-entered. Each day of non-entry modestly lowers the tail scenario — but a single T2 confirmation would reverse that instantly."
     }
   ],
   "status": [
-    { "k": "Strait of Hormuz", "v": "DECLARED CLOSED by IRGC Navy ‘until further notice.’ Southern lane at zero AIS intent since Friday; IMO advises avoidance; no confirmed transit on either corridor since the declaration.", "c": "alarm" },
-    { "k": "Military campaign", "v": "Third US strike round in five days (Bandar Abbas, Sirik, Qeshm). Cumulative 8-9 Jul toll: 14 killed, 78 wounded. Israel signalling readiness to rejoin — unconfirmed by any T2 source.", "c": "alarm" },
-    { "k": "Diplomacy", "v": "Muscat channel live: Araghchi met Omani FM; Oman two-corridor draft circulating (no tolls, Iranian permits on northern route); Vance, Rubio, Witkoff, Kushner expected. Article 5 wording is the sticking point.", "c": "warn" },
-    { "k": "Leadership rhetoric", "v": "Trump: ‘1000 missiles locked and loaded’ / ‘decimate all areas of Iran.’ Mojtaba: revenge for his father ‘must certainly be carried out.’ Assassination-revenge axis now explicit and personal.", "c": "alarm" }
+    { "k": "Military campaign", "v": "US Round 4 in six days: CENTCOM reports 140 targets and the first-ever use of one-way attack sea drones, hitting air-defence, coastal radar, missile/drone sites and small boats. The campaign has shifted from punishing attacks to dismantling Iran’s enforcement capability.", "c": "alarm" },
+    { "k": "Iranian retaliation", "v": "IRGC struck US bases across the GCC — Bahrain, Kuwait, Jordan confirmed; Qatar and Oman reported by some sources (disputed). No confirmed casualties; Gulf air defences claim interceptions.", "c": "alarm" },
+    { "k": "Diplomacy", "v": "COLLAPSED for now. Muscat talks ended with nothing agreed; Iran accuses the US of pressuring Oman. Trump says talks continue under the Vance team but confirms the June ceasefire is ‘scrapped.’ The two-corridor formula did not close.", "c": "alarm" },
+    { "k": "Strait of Hormuz", "v": "Disputed open/closed: US says open, Iran says passage ‘not possible.’ Physical reality between the two — 6 transits in 12h vs ~18–22/day. Brent ~$79 (+4%).", "c": "alarm" }
   ],
   "gauges": [
-    { "v": "CLOSED", "l": "STRAIT (DECLARED)", "c": "alarm" },
-    { "v": "3", "l": "US STRIKE ROUNDS / 5 DAYS", "c": "alarm" },
-    { "v": "4.5%", "l": "NORMAL BY 31 JUL (MKT)", "c": "warn" },
-    { "v": "T-36", "l": "DAYS TO TOLL EXPIRY", "c": "accent" }
+    { "v": "140", "l": "TARGETS · US ROUND 4", "c": "alarm" },
+    { "v": "1st", "l": "SEA-DRONE STRIKES", "c": "alarm" },
+    { "v": "$79", "l": "BRENT · +4%", "c": "warn" },
+    { "v": "T−35", "l": "DAYS TO TOLL EXPIRY", "c": "accent" }
   ],
   "dials": [
-    { "v": "CLOSED", "l": "STRAIT STATE", "c": "alarm", "rot": 60 },
-    { "v": "ROUND 3", "l": "US CAMPAIGN", "c": "alarm", "rot": 54 },
-    { "v": "LIVE", "l": "MUSCAT CHANNEL", "c": "warn", "rot": 24 },
-    { "v": "POISED", "l": "ISRAEL RE-ENTRY", "c": "alarm", "rot": 46 }
+    { "v": "ROUND 4", "l": "US CAMPAIGN", "c": "alarm", "rot": 58 },
+    { "v": "COLLAPSED", "l": "MUSCAT TALKS", "c": "alarm", "rot": 54 },
+    { "v": "DISPUTED", "l": "STRAIT STATUS", "c": "warn", "rot": 20 },
+    { "v": "POISED", "l": "ISRAEL RE-ENTRY", "c": "warn", "rot": 44 }
   ],
   "strait": {
-    "stamp": "DECLARED CLOSED · MUSCAT TALKS LIVE",
+    "stamp": "DISPUTED · 6 TRANSITS / 12H · TALKS COLLAPSED",
     "stampColor": "alarm",
-    "tsslbl": "TRAFFIC SEPARATION — CLOSED BY DECLARATION",
+    "tsslbl": "TRAFFIC SEPARATION — CONTESTED, ~70% BELOW NORMAL",
     "corridors": [
-      { "pos": "top", "label": "N ROUTE · IRAN PERMIT — NO CONFIRMED TRANSIT", "cls": "warn" },
-      { "pos": "bottom", "label": "S ROUTE · OMAN/JMIC — ZERO AIS INTENT", "cls": "alarm" }
+      { "pos": "top", "label": "N ROUTE · IRAN PERMIT — IRAN SAYS PASSAGE ‘NOT POSSIBLE’", "cls": "alarm" },
+      { "pos": "bottom", "label": "S ROUTE · US SAYS ‘OPEN’ — 6 TRANSITS IN 12H", "cls": "warn" }
     ],
     "vessels": [
-      { "left": "14%", "top": 92, "uturn": true },
-      { "left": "34%", "top": 97, "uturn": true },
-      { "left": "58%", "top": 94, "uturn": true }
+      { "left": "20%", "top": 94, "uturn": true },
+      { "left": "48%", "top": 90, "uturn": false },
+      { "left": "70%", "top": 96, "uturn": true }
     ]
   },
   "verify": [
     {
-      "who": "Is the Strait of Hormuz actually closed?",
-      "handle": "IRGC Navy declaration · 11 Jul",
-      "avatar": "IRGC",
-      "reach": "state media · Bloomberg · ToI",
-      "quote": "The Strait of Hormuz is closed until further notice — until the end of American interference in the region.",
+      "who": "Was Oman — the mediator — actually struck by Iran?",
+      "handle": "IRGC retaliation target list · 13 Jul",
+      "avatar": "OMN",
+      "reach": "IRGC claim · CBS · ms.now/CNBC",
+      "quote": "Iran’s strikes targeted American military bases in Kuwait, Bahrain, Jordan, Oman and Qatar. — broader source list",
       "rows": [
-        { "verdict": "confirmed", "cls": "v-confirmed", "c": "The declaration was made, and it is Iran’s first formal closure declaration since the MOU.", "n": "Carried by Iranian state media and confirmed by Bloomberg and Times of Israel reporting of the IRGC Navy statement.", "src": "VERIFIED ×2 · Bloomberg · ToI/Mehr" },
-        { "verdict": "confirmed", "cls": "v-confirmed", "c": "Commercial traffic through the southern lane has genuinely collapsed.", "n": "CBS open-source AIS review found zero vessels broadcasting transit intent on Friday; the IMO has advised avoiding the strait. The collapse preceded the declaration by a day.", "src": "VERIFIED ×2 · CBS OSINT · IMO" },
-        { "verdict": "disputed", "cls": "v-disputed", "c": "Whether Iran can enforce closure against opposed traffic.", "n": "US officials: Iran ‘does not control’ the strait, and US strikes target its anti-ship capability. Against that: the IRGC has demonstrated it can hit unescorted merchants at will (GFS Galaxy, Al Rekayat, Wedyan), which is the only enforcement that matters commercially.", "src": "US officials via RFE/RL vs demonstrated IRGC strikes" },
-        { "verdict": "unverified", "cls": "v-unverified", "c": "Whether northern-route permit holders can still transit ‘closed’ waters.", "n": "Iran frames the closure as applying to ‘unapproved’ transit — implying its permit regime survives its own closure. No confirmed northern-corridor transit since the declaration to test it.", "src": "0 test cases since declaration" }
+        { "verdict": "confirmed", "cls": "v-confirmed", "c": "Iran struck US bases in Bahrain, Kuwait and Jordan.", "n": "These three appear consistently across CBS, CNBC and Al Jazeera reporting of the IRGC statement — the reliable core of the retaliation.", "src": "VERIFIED ×2 · CBS · CNBC/AJ" },
+        { "verdict": "disputed", "cls": "v-disputed", "c": "Whether Qatar and Oman were also targeted.", "n": "Broader source lists (ms.now, some CNBC copy) add Qatar and Oman; the narrower, more-cited lists do not. Oman being hit while hosting the talks is extraordinary if true — hence held as disputed until a Gulf-state official source (QNA, Oman MoD) confirms or denies.", "src": "single/secondary sourcing — awaiting Gulf-state confirmation" },
+        { "verdict": "unverified", "cls": "v-unverified", "c": "Casualties from the GCC strikes.", "n": "No confirmed casualties reported on either side of the exchange; Gulf air defences claim interceptions. No independent battle-damage assessment yet.", "src": "0 confirmed casualties" }
       ]
     },
     {
-      "who": "M/V GFS Galaxy — ‘blatant attack’ vs ‘warning shot’",
-      "handle": "CENTCOM vs IRGC Navy · 11 Jul",
-      "avatar": "GFS",
-      "reach": "CENTCOM stmt · IRGC stmt · ABC/MEE",
-      "quote": "Iranian forces blatantly attacked M/V GFS Galaxy, a Cyprus-flagged container ship transiting the Strait of Hormuz. — CENTCOM",
+      "who": "Is the Strait of Hormuz open or closed?",
+      "handle": "Trump/CENTCOM vs Iran strait authority · 13 Jul",
+      "avatar": "HRZ",
+      "reach": "US officials · Iran strait authority · LSEG",
+      "quote": "The US says the strait is open and Iran ‘does not control’ it; Iran’s strait authority says passage is ‘not possible.’",
       "rows": [
-        { "verdict": "confirmed", "cls": "v-confirmed", "c": "The vessel was hit 9nm east of Oman: engine-room fire, significant damage, unable to continue, one civilian crew member missing.", "n": "CENTCOM statement with vessel-level detail, consistent with maritime-safety reporting; Iran does not deny firing.", "src": "VERIFIED ×2 · CENTCOM · IRGC (fact of firing)" },
-        { "verdict": "disputed", "cls": "v-disputed", "c": "Intent: deliberate attack on shipping vs ‘warning shot’ at an ‘unapproved route’ transit.", "n": "Both framings agree on the operative fact — the ship was on the southern route without an Iranian permit. The dispute IS the route war: Iran claims jurisdiction, the US claims freedom of navigation. Do not resolve; render.", "src": "CENTCOM vs IRGC — irreconcilable by design" },
-        { "verdict": "unverified", "cls": "v-unverified", "c": "The fate of the missing crew member.", "n": "If confirmed dead, this is the first commercial mariner killed since the MOU — a threshold event with its own escalation logic. No recovery or fatality confirmation yet.", "src": "0 confirmation either way" }
+        { "verdict": "disputed", "cls": "v-disputed", "c": "The open/closed label itself.", "n": "Both are political assertions. Do not adopt either as fact — render the conflict. The US needs it to be ‘open’ to deny Iran leverage; Iran needs it ‘closed’ to assert control.", "src": "irreconcilable by design — US vs Iran" },
+        { "verdict": "confirmed", "cls": "v-confirmed", "c": "Traffic has collapsed to roughly 6 transits in 12 hours.", "n": "LSEG/tanker tracking: six crossings in a twelve-hour window vs ~18–22/day earlier this month — a ~70% drop. This is the measurable ground truth beneath the dueling adjectives.", "src": "VERIFIED · LSEG tracking data" },
+        { "verdict": "partial", "cls": "v-partial", "c": "‘Open’ is technically truer than ‘closed’ — but misleading.", "n": "Ships CAN transit (six did) so it is not a hard closure; but at ~70% below normal and under fire, it is not a functioning open strait either. The honest reading is ‘transitable under threat,’ which neither government will say.", "src": "PARTIAL · physical data splits the difference" }
       ]
     },
     {
-      "who": "IRGC MQ-9 shootdown claims — the running ledger",
-      "handle": "claim class re-graded · 10 Jul",
-      "avatar": "MQ9",
-      "reach": "ABC (US official) · trackers",
-      "quote": "Iran has shot down roughly 30 US MQ-9 Reaper drones since the start of the war. — US official, to ABC",
+      "who": "Did the US really use sea drones for the first time?",
+      "handle": "CENTCOM Round-4 weapons claim · 13 Jul",
+      "avatar": "USV",
+      "reach": "CENTCOM · CNBC · Al Jazeera",
+      "quote": "American forces struck using fighter aircraft, naval vessels, one-way attack aerial drones and one-way attack sea drones for the first time.",
       "rows": [
-        { "verdict": "confirmed", "cls": "v-confirmed", "c": "The claim class is real: MQ-9 losses to Iranian air defences are large-scale and acknowledged inside the US government.", "n": "A US official putting the figure near 30 validates the pattern of IRGC shootdown claims, resolving the Day 132 open question at the class level.", "src": "VERIFIED · ABC citing US official" },
-        { "verdict": "unverified", "cls": "v-unverified", "c": "The specific 7 Jul shootdown over Khormoj/Bushehr.", "n": "Five days on, no CENTCOM confirmation of that individual airframe. Consistent with US practice of not confirming losses individually.", "src": "1 source (IRGC) — still uncorroborated" },
-        { "verdict": "partial", "cls": "v-partial", "c": "Cumulative totals vary wildly by counter: 11, 17, 24, ~30.", "n": "Independent trackers ran 11-24 before this week; the US official says ~30. Treat every total as a range, never a point estimate.", "src": "PARTIAL · multiple counters, no registry" }
+        { "verdict": "confirmed", "cls": "v-confirmed", "c": "The first-use claim is carried by multiple outlets attributing it to CENTCOM.", "n": "CNBC and Al Jazeera both report the sea-drone (USV) debut, sourced to CENTCOM’s own account of the strike package.", "src": "VERIFIED ×2 · CNBC · Al Jazeera (per CENTCOM)" },
+        { "verdict": "unverified", "cls": "v-unverified", "c": "Independent confirmation of USV use and effect.", "n": "As with the target count, this rests on CENTCOM’s account; no independent OSINT imagery or battle-damage assessment has corroborated the sea-drone strikes specifically yet.", "src": "1 origin (CENTCOM) — awaiting OSINT corroboration" }
       ]
     }
   ],
   "market": {
-    "num": "+4.7%",
-    "txt": "Brent ~$75.5 at Friday’s close, +4.7% on the week (sub-$70 on 1 Jul). Polymarket: 4.5% on Hormuz traffic normal by 31 Jul, $13.8M matched. Hull war-risk ~5% of vessel value is the new norm (LMA). Goldman: Brent >$100 through 2026 if closure runs another month. Weekend markets closed — Monday open prices in the closure declaration."
+    "num": "+4%",
+    "txt": "Brent ~$78.96–$79.16 by 09:01 GST, up ~4% on the day and building on +5.4% last week; WTI near $74. Only 6 vessels crossed Hormuz in a 12-hour window (vs ~18–22/day). Goldman warns a serious re-escalation could reintensify short-run upside risk to prices. The market and the physical transit signal are now pointing the same way for the first time this cycle — both saying real disruption, not posture."
   },
   "scenarios": [
-    { "prob": "40%", "lab": "Muscat produces a strikes pause; closure stays declaratory", "kind": "base", "cls": "k-base",
-      "p": "The pattern under the noise: both sides escalated kinetically while upgrading their delegations — strikes and talks as parallel tracks. The most senior US team of the war lands in Muscat with a written Omani formula (permits yes, tolls no) that both capitals can sell as victory on Article 5. Iran’s closure declaration becomes the concession it trades away; a pause and a re-drafted Article 5 emerge within 72h. Analytical judgment, not sourced fact." },
-    { "prob": "35%", "lab": "Closure hardens — enforcement fire on any southern transit, round 4", "kind": "risk", "cls": "k-risk",
-      "p": "Article 5 wording stays deadlocked; the IRGC treats the declaration as standing rules of engagement and fires on the first vessel that tests the southern lane. The US answers with round 4 and escort operations, converting the strait into a live US-Iran naval engagement zone. No Israeli participation yet. The longer no vessel tests the lane, the longer this scenario can smoulder without resolving." },
-    { "prob": "25%", "lab": "Israel re-enters — the MOU dies in fact, not just in rhetoric", "kind": "tail", "cls": "k-tail",
-      "p": "Israeli readiness signals become an actual strike package — triggered by talks collapse, an Iranian move on the nuclear file (NPT withdrawal floated 8 Jul), or the assassination-revenge axis producing an attempt. Israeli re-entry is the one event no mediator can walk back: it voids the MOU’s premise, forces Iran to fight on two fronts, and takes strait reopening off the table indefinitely. Elevated from background risk because this is the first explicit Israeli re-entry signalling since the MOU." }
+    { "prob": "45%", "lab": "Contested-strait stalemate — strikes continue, talks limp on, no clean resolution", "kind": "risk", "cls": "k-risk",
+      "p": "Now the modal outcome. Round 4 degraded Iran’s enforcement kit but did not stop it; the Muscat channel produced nothing but continues on life support under the Vance team. The strait stays ‘transitable under threat’ — neither reopened nor hard-closed — with periodic strike rounds and retaliation salvos. This is escalation without resolution, and the trajectory of the last 48 hours points here. Analytical judgment, not sourced fact." },
+    { "prob": "30%", "lab": "Off-ramp reopens — a face-saving Hormuz-management deal within days", "kind": "base", "cls": "k-base",
+      "p": "The parallel-tracks pattern reasserts: both sides keep the Vance team engaged, and the two-corridor formula (permits yes, tolls no) is revived with new wording on the disputed Article 5. Downgraded from 40% because the base case’s core mechanism — Muscat producing a pause — just visibly failed, and each side is now blaming the other in public, which raises the cost of climbing down." },
+    { "prob": "25%", "lab": "Rupture — Israel re-enters and/or a mass-casualty event ends the deal outright", "kind": "tail", "cls": "k-tail",
+      "p": "A confirmed mariner death on the GFS Galaxy, a lethal hit on a GCC base, or a T2-confirmed Israeli strike package converts the crisis into an unrecoverable war. Held at 25%: through four US strike rounds and a diplomatic collapse, none of these trip-wires has yet been crossed — but the collapse of the talks removes the strongest brake that was holding this scenario down." }
   ],
-  "uae_means": "The strait is now formally closed for the first time since the MOU — but for UAE residents the operative facts are steadier than the headline. UAE airspace remains fully open with no new restrictions through three strike rounds (only Kuwait keeps an overflight ban, to 4 Aug); Emirates and Etihad are flying full schedules. The economic exposure runs through shipping, not skies: with the southern lane at zero and war-risk cover at ~5% of hull value, import costs and fuel-price pass-through resume climbing, and ADNOC’s 2027 full-recovery guidance now looks optimistic rather than conservative. Watch three UAE-specific things: (1) any Iranian projectile aimed at UAE territory — Iran has hit Bahrain, Kuwait, Qatar and Jordan this round but conspicuously NOT the UAE, the war’s most-targeted state pre-MOU; that omission is deliberate and reversible; (2) WAM/UAE MOD language shifting from condemning attacks on neighbours to invoking UAE self-defence; (3) the Muscat channel — the two-corridor formula is the only path back to normal Gulf logistics. Stock of essentials is unaffected; there is no indicator of panic-buying conditions. Treat this as severe-but-contained, one Israeli strike package away from uncontained.",
+  "uae_means": "Day 136 is the first day the numbers and the ships agree: Brent up ~4% to ~$79 AND only six vessels crossing the strait in twelve hours — the disruption is now real, not rhetorical, and import and fuel costs will feel it. Yet the personal-safety picture for a UAE resident is still steadier than the headlines: through four US strike rounds Iran has hit Bahrain, Kuwait and Jordan (Qatar and Oman disputed) and — for a sixth straight day — has NOT struck the UAE, the war’s most-targeted state pre-MOU. Airspace remains open; flights are running. The two things that changed today and matter locally: (1) the diplomatic off-ramp visibly failed at Muscat, so the ‘this de-escalates within days’ base case is weaker than it was 24 hours ago — plan for a contested strait for weeks, not days; and (2) the strait is now a genuine combat zone with US sea drones in the water, so shipping-dependent costs (fuel, imports, war-risk insurance) resume climbing. Watch three things: UAE MOD/WAM language for any shift toward self-defence, whether Oman was actually struck (it would mean even mediators aren’t exempt), and the Vance team’s movements — their re-engagement is the clearest signal the off-ramp isn’t dead. Severe and worsening, still contained — but the brake that was diplomacy just slipped.",
   "triggers": [
-    { "m": "01", "t": "<b>First vessel to test the southern lane</b> — if it transits unmolested the closure is bluff; if it is fired on, the strait is a combat zone. Either way the ambiguity ends." },
-    { "m": "02", "t": "<b>The US team actually sits down in Muscat</b> — Vance/Rubio/Witkoff/Kushner arriving and meeting is the single clearest signal the off-ramp is real. Their cancellation is the counter-signal." },
-    { "m": "03", "t": "<b>Any T2 confirmation of Israeli force movement</b> — the Ynet/ToI readiness reports upgrading from Israeli-official leaks to confirmed preparations converts the tail scenario to base." },
-    { "m": "04", "t": "<b>Khamenei Telegram on the closure</b> — the only reliable IRGC-intent signal. Mojtaba personally endorsing ‘until further notice’ makes it policy; his silence leaves it an IRGC Navy position." },
-    { "m": "05", "t": "<b>A confirmed fatality on the GFS Galaxy</b> — first commercial mariner killed post-MOU would force JWC/insurers to war-zone the entire Gulf and harden every Western position overnight." }
+    { "m": "01", "t": "<b>Confirmation on whether Oman was struck</b> — a Gulf-state source (QNA, Oman MoD) resolving the disputed target list. If yes, mediators are no longer exempt and the diplomatic track is in deeper trouble than it looks." },
+    { "m": "02", "t": "<b>The Vance team’s next move</b> — re-engagement (new venue, new draft) is the clearest de-escalation signal; a public walk-away is the counter-signal that the risk scenario is locking in." },
+    { "m": "03", "t": "<b>Any T2-confirmed Israeli force movement</b> — still the single highest-consequence trigger. Six days of non-entry; one confirmation flips the tail scenario to base." },
+    { "m": "04", "t": "<b>A confirmed fatality — GFS Galaxy mariner or a GCC base</b> — the first death of this cycle would harden every Western position and could end the deal outright." },
+    { "m": "05", "t": "<b>Transit count, not adjectives</b> — if crossings fall toward zero, ‘not possible’ becomes true; if they climb back toward ~18/day, ‘open’ wins. The number settles the open/closed dispute that words cannot." }
   ],
-  "hist": "War began <b>28 Feb 2026</b> — Ali Khamenei killed; Mojtaba Khamenei became Supreme Leader. Iran fired 1,800+ projectiles at the UAE alone (13 killed, 224 injured; 537 ballistic missiles intercepted). <b>MOU signed 17 Jun</b> (Versailles/Tehran; press now styles it the ‘Islamabad Memorandum’ after Pakistan’s mediation): 14 points, 60-day toll-free Hormuz, $300bn reconstruction. Peak of 70 crossings 24 Jun, then the Ever Lovely strike and the 25-27 Jun exchange. <b>4-6 Jul: Ali Khamenei’s state funeral</b> — crowds openly called for Trump’s death. <b>7 Jul: Al Rekayat (Qatari LNG) and Wedyan (Saudi VLCC) struck</b>, a third vessel within 24h; US hit ~90 targets and re-imposed oil sanctions. <b>8-9 Jul:</b> two more strike nights (14 killed, 78 wounded); Iran’s army and IRGC hit Bahrain, Kuwait, Qatar and Jordan; Trump declared the ceasefire ‘over.’ <b>10 Jul:</b> southern-lane traffic collapsed to zero AIS intent. <b>11 Jul:</b> IRGC hit the GFS Galaxy, declared the strait <b>CLOSED ‘until further notice’</b>; US round-3 strikes answered; Trump and Mojtaba traded personal threats; and the Muscat channel opened — Oman’s two-corridor draft on the table, the most senior US team of the war expected. Day 135: the strait is formally closed, and the deal’s fate compresses into Article 5.",
+  "hist": "War began <b>28 Feb 2026</b> — Ali Khamenei killed; Mojtaba Khamenei became Supreme Leader; Iran fired 1,800+ projectiles at the UAE alone (13 killed, 224 injured). <b>MOU signed 17 Jun</b> (the ‘Islamabad Memorandum’): 14 points, 60-day toll-free Hormuz, $300bn reconstruction. Peak of 70 crossings 24 Jun. <b>4–6 Jul: Ali Khamenei’s state funeral</b> — crowds called for Trump’s death. <b>7 Jul: two tankers struck</b>, a third within 24h; US hit ~90 targets, re-imposed oil sanctions. <b>8–9 Jul:</b> two strike nights (14 killed, 78 wounded); Iran hit four Gulf states; Trump declared the ceasefire ‘over.’ <b>10 Jul:</b> southern-lane traffic collapsed. <b>11 Jul:</b> IRGC hit the GFS Galaxy and declared the strait <b>CLOSED</b>; US Round 3 followed; Trump and Mojtaba traded personal threats; the Muscat channel opened. <b>12 Jul:</b> the two-corridor formula was on the table. <b>13 Jul (Day 136):</b> <b>US Round 4 — 140 targets and the first-ever sea-drone strikes</b>; Iran retaliated across the GCC; the <b>Muscat talks collapsed</b> with nothing agreed; the strait’s status split into a US-‘open’ / Iran-‘not possible’ dispute; Brent hit ~$79 as transit fell to 6 ships in 12 hours. The off-ramp that opened two days ago has, for now, closed.",
   "mini": [
     { "k": "28 Feb", "v": "War begins · Ali Khamenei killed" },
     { "k": "17 Jun", "v": "MOU signed · 60-day toll-free window" },
-    { "k": "24 Jun", "v": "Peak: 70 crossings" },
-    { "k": "25-27 Jun", "v": "Ever Lovely strike · exchange of fire" },
-    { "k": "04-06 Jul", "v": "Khamenei funeral · death-to-Trump chants" },
-    { "k": "07 Jul", "v": "Al Rekayat + Wedyan struck · US hits ~90 targets" },
-    { "k": "08-09 Jul", "v": "Strike nights 1-2 · Iran hits 4 states · 14 killed" },
+    { "k": "07 Jul", "v": "Tankers struck · US hits ~90 targets" },
+    { "k": "08-09 Jul", "v": "Strike nights · Iran hits 4 states · 14 killed" },
     { "k": "10 Jul", "v": "Southern lane collapses to zero AIS intent" },
-    { "k": "11 Jul", "v": "GFS Galaxy hit · IRGC DECLARES STRAIT CLOSED · US round 3" },
-    { "k": "11 Jul", "v": "Trump–Mojtaba threats · Muscat channel opens" },
-    { "k": "12 Jul", "v": "Day 135 · Article 5 is the war now" }
+    { "k": "11 Jul", "v": "GFS Galaxy hit · STRAIT DECLARED CLOSED · Round 3" },
+    { "k": "12 Jul", "v": "Muscat channel opens · two-corridor draft on table" },
+    { "k": "13 Jul (Round 4)", "v": "140 targets · first sea-drone strikes · Iran hits GCC" },
+    { "k": "13 Jul", "v": "MUSCAT TALKS COLLAPSE · strait open/closed disputed · Brent ~$79 · Day 136" }
   ],
   "trace": {
-    "label": "ESCALATION TRACE — 135 DAYS",
-    "sublabel": "↑ CLOSURE DECLARED",
+    "label": "ESCALATION TRACE — 136 DAYS",
+    "sublabel": "↑ ROUND 4 · TALKS COLLAPSE",
     "lines": [
-      { "cls": "sig-line", "points": "0,96 12,14 22,40 34,28 50,52 74,46 98,68 118,62 138,80 150,76 160,44 170,70 186,58 210,74 240,68 258,38 272,64 296,70 310,74" },
-      { "cls": "sig-hot", "points": "310,74 318,88 330,60 344,66 352,44 362,50 372,34 382,42 390,18 396,22" }
+      { "cls": "sig-line", "points": "0,96 12,14 22,40 34,28 50,52 74,46 98,68 118,62 138,80 150,76 160,44 170,70 186,58 210,74 240,68 258,38 272,64 296,70 306,74" },
+      { "cls": "sig-hot", "points": "306,74 314,86 326,58 340,64 350,42 360,48 370,30 380,40 388,20 394,10" }
     ],
     "events": [
       { "x": 12, "y": 14, "label": "28 FEB WAR", "lx": 18, "ly": 11 },
       { "x": 160, "y": 44, "label": "08 APR C/FIRE", "lx": 126, "ly": 38 },
       { "x": 258, "y": 38, "label": "11 JUN STRIKES", "lx": 214, "ly": 30 },
-      { "x": 318, "y": 88, "label": "17 JUN MOU", "lx": 282, "ly": 102 },
-      { "x": 372, "y": 34, "label": "07 JUL SHIPS", "lx": 322, "ly": 26 },
-      { "x": 390, "y": 18, "label": "11 JUL CLOSED", "lx": 316, "ly": 10 }
+      { "x": 314, "y": 86, "label": "17 JUN MOU", "lx": 278, "ly": 100 },
+      { "x": 370, "y": 30, "label": "11 JUL CLOSED", "lx": 322, "ly": 24 },
+      { "x": 394, "y": 10, "label": "13 JUL R4", "lx": 360, "ly": 8 }
     ],
     "axis": ["MAR", "APR", "MAY", "JUN", "JUL"]
   }

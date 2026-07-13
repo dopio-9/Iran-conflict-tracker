@@ -84,12 +84,13 @@
     {
       "id": "escalate-negotiate-parallel",
       "name": "Strikes and talks run as parallel tracks, not alternatives",
-      "state": "HYPOTHESIS",
+      "state": "STRESSED",
       "confidence": "medium",
-      "rule": "Do not read strike rounds as talks collapsing, or talks as strikes ending. Grade each track separately.",
-      "evidence": "New 12 Jul: the week produced three US strike rounds AND the war’s most senior diplomatic surge, simultaneously, from both sides (Araghchi in Muscat between retaliation salvos). If this holds, single-track analysis (‘the deal is dead’ / ‘peace is near’) will systematically misread the war.",
+      "rule": "Grade the kinetic and diplomatic tracks separately — but do not assume the diplomatic track is durable. It can break while the kinetic one accelerates.",
+      "evidence": "Proposed 12 Jul (three strike rounds + senior delegations at once). Stressed 13 Jul: the tracks diverged rather than ran parallel — the US went to Round 4 (140 targets, sea-drone debut) on the SAME day the Muscat talks collapsed with nothing agreed and each side blamed the other in public. Parallelism held as a description of the week, but the diplomatic rail is no longer load-bearing; ‘grade separately’ now means being willing to mark one track BROKEN while the other runs hot.",
       "history": [
-        { "date": "12 JUL", "state": "HYPOTHESIS", "note": "Three strike rounds + senior delegations in the same week" }
+        { "date": "12 JUL", "state": "HYPOTHESIS", "note": "Three strike rounds + senior delegations in the same week" },
+        { "date": "13 JUL", "state": "STRESSED", "note": "Round 4 accelerates as Muscat talks collapse — tracks diverge, not parallel" }
       ]
     },
     {
@@ -100,7 +101,8 @@
       "rule": "UAE quiet ≠ UAE safe. Track the exemption itself as a signal: its end would mark a strategic decision, not an accident.",
       "evidence": "New 12 Jul: this round Iran struck Bahrain, Kuwait, Qatar and Jordan — but not the UAE, despite the UAE being the war’s most-targeted state pre-MOU (1,800+ projectiles). Possible drivers: reconstruction-fund economics, Abu Dhabi back-channel, or target saturation elsewhere. Watch UAE MOD/WAM language for the first crack.",
       "history": [
-        { "date": "12 JUL", "state": "HYPOTHESIS", "note": "Four states hit this round; UAE conspicuously excluded" }
+        { "date": "12 JUL", "state": "HYPOTHESIS", "note": "Four states hit this round; UAE conspicuously excluded" },
+        { "date": "13 JUL", "state": "HYPOTHESIS", "note": "Sixth straight day: Round-4 retaliation hit Bahrain/Kuwait/Jordan (±Qatar/Oman) — UAE still untouched" }
       ]
     }
   ]
