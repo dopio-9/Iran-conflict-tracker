@@ -47,6 +47,29 @@
           "lesson": null
         }
       ]
+    },
+    {
+      "issued": "13 JUL 2026",
+      "horizon": "24-72h",
+      "graded": null,
+      "note": "Prior (12 Jul) set still OPEN — its 72h window runs to ~15 Jul — but its base case (Muscat pause) is already failing: talks collapsed 12-13 Jul and Round 4 followed. Weighting shifted toward the contested-stalemate risk case accordingly.",
+      "entries": [
+        {
+          "prob": "45%", "kind": "risk", "lab": "Contested-strait stalemate — strikes continue, talks limp on, no clean resolution",
+          "outcome": "OPEN",
+          "lesson": null
+        },
+        {
+          "prob": "30%", "kind": "base", "lab": "Off-ramp reopens — a face-saving Hormuz-management deal within days",
+          "outcome": "OPEN",
+          "lesson": null
+        },
+        {
+          "prob": "25%", "kind": "tail", "lab": "Rupture — Israel re-enters and/or a mass-casualty event ends the deal",
+          "outcome": "OPEN",
+          "lesson": null
+        }
+      ]
     }
   ]
 }
