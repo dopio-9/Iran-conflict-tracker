@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="data:,">
+<title>COMP C — OPS WALL</title>
+<style>
+  :root{
+    --wall:#101216; --panel:#171a20; --face:#1d2129; --recess:#0b0d11; --edge:#272c36; --etch:#3a4150;
+    --ink:#dde4ea; --mute:#78828f; --dim:#4a525e;
+    --red:#ff4f43; --amber:#ffb340; --green:#43e08c; --cyan:#55c8e8; --off:#343b46;
+    --mono:'DejaVu Sans Mono',monospace; --sans:'Liberation Sans',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#0a0b0d;display:flex;justify-content:center;padding:26px 0;font-family:var(--mono)}
+  .phone{width:430px;background:var(--wall);color:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.85);padding:12px 12px 16px}
+
+  .module{background:var(--panel);border:1px solid var(--edge);border-radius:7px;margin-bottom:10px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.045), 0 2px 6px rgba(0,0,0,.5);overflow:hidden}
+  .mlabel{font-size:7.5px;font-weight:bold;letter-spacing:.3em;color:var(--mute);
+    padding:7px 11px 6px;border-bottom:1px solid var(--recess);display:flex;justify-content:space-between;align-items:center}
+  .mlabel .sub{letter-spacing:.12em;color:var(--dim);font-weight:normal}
+  .screw{width:5px;height:5px;border-radius:50%;background:#2b313c;box-shadow:inset 0 -1px 1px rgba(0,0,0,.8);display:inline-block}
+
+  /* header strip */
+  .hdr{display:flex;justify-content:space-between;align-items:center;padding:4px 4px 12px}
+  .hdr .id{font-size:10px;font-weight:bold;letter-spacing:.3em}
+  .hdr .id b{color:var(--cyan)}
+  .hdr .clock{font-size:9px;color:var(--mute);letter-spacing:.12em;display:flex;align-items:center;gap:7px}
+  .rec{width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 8px var(--red)}
+
+  /* row 1 : threatcon / day / countdown */
+  .r1{display:flex;gap:10px}
+  .r1 .module{flex:1;margin-bottom:10px}
+  .lampbox{padding:12px 11px;display:flex;align-items:center;gap:10px}
+  .lamp{width:26px;height:26px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 36% 32%, #ff9a90, var(--red) 62%);
+    box-shadow:0 0 16px rgba(255,79,67,.75), inset 0 -3px 5px rgba(0,0,0,.4);border:2px solid #0b0d11}
+  .lampbox .lv{font-family:var(--sans);font-weight:bold;font-size:17px;letter-spacing:.04em;color:var(--red)}
+  .lampbox .lk{font-size:7px;letter-spacing:.2em;color:var(--mute);display:block;margin-top:2px}
+  .flap{display:flex;gap:4px;padding:10px 11px 12px;justify-content:center}
+  .flap .f{width:26px;height:38px;background:linear-gradient(180deg,#242933 48%, #1a1e26 52%);
+    border:1px solid var(--recess);border-radius:4px;display:flex;align-items:center;justify-content:center;
+    font-size:21px;font-weight:bold;color:#f2f6f9;position:relative;box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+  .flap .f::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:#0a0c10}
+  .fcap{text-align:center;font-size:7px;letter-spacing:.2em;color:var(--mute);padding-bottom:9px;display:block}
+  .tmin{padding:12px 11px 10px;text-align:center}
+  .tmin .tv{font-family:var(--sans);font-size:23px;font-weight:bold;color:var(--amber);letter-spacing:.02em}
+  .tmin .tk{font-size:6.6px;letter-spacing:.16em;color:var(--mute);display:block;margin-top:4px;line-height:1.6}
+
+  /* strait flow schematic */
+  .schem{padding:6px 6px 2px}
+  .schem svg{display:block;width:100%}
+  .pipe{stroke:#2b323e;stroke-width:7;stroke-linecap:round;fill:none}
+  .flowlbl{font-family:var(--mono);font-size:8px;font-weight:bold;letter-spacing:.12em}
+  .flowsub{font-family:var(--mono);font-size:7px;letter-spacing:.08em;fill:var(--mute)}
+  .readout{fill:var(--recess);stroke:var(--edge)}
+  .rtext{font-family:var(--mono);font-size:9.5px;font-weight:bold}
+  .schemfoot{display:flex;justify-content:space-between;padding:2px 11px 10px;font-size:7px;letter-spacing:.12em;color:var(--dim)}
+
+  /* scenario meters */
+  .meters{display:flex;padding:8px 6px 10px}
+  .meter{flex:1;text-align:center;padding:0 4px}
+  .meter svg{display:block;width:100%}
+  .mval{font-family:var(--sans);font-weight:bold;font-size:16px;margin-top:1px}
+  .mkind{font-size:6.8px;font-weight:bold;letter-spacing:.2em;display:block;margin-top:2px}
+  .mdesc{font-size:6.6px;line-height:1.5;color:var(--mute);margin-top:4px;letter-spacing:.02em}
+  .arcbg{fill:none;stroke:var(--recess);stroke-width:6;stroke-linecap:round}
+  .arcz{fill:none;stroke-width:6;stroke-linecap:round;opacity:.28}
+  .needle{stroke:#eef3f7;stroke-width:1.8;stroke-linecap:round}
+  .hub{fill:#eef3f7}
+  .ticky{stroke:var(--etch);stroke-width:1}
+
+  /* relay board */
+  .relays{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--recess)}
+  .relay{background:var(--face);padding:9px 10px;display:flex;align-items:center;gap:8px}
+  .rlamp{width:9px;height:9px;border-radius:50%;flex-shrink:0;border:1.5px solid #0b0d11}
+  .rl-g{background:var(--green);box-shadow:0 0 7px rgba(67,224,140,.7)}
+  .rl-a{background:var(--amber);box-shadow:0 0 7px rgba(255,179,64,.7)}
+  .rl-r{background:var(--red);box-shadow:0 0 7px rgba(255,79,67,.7)}
+  .rl-w{background:#c7d1da;box-shadow:0 0 6px rgba(199,209,218,.5)}
+  .rname{font-size:7.6px;letter-spacing:.05em;line-height:1.4;color:var(--ink);flex:1}
+  .rstate{font-size:6.4px;font-weight:bold;letter-spacing:.14em}
+  .rs-g{color:var(--green)} .rs-a{color:var(--amber)} .rs-r{color:var(--red)} .rs-w{color:#c7d1da}
+
+  /* teleprinter */
+  .tape{background:var(--recess);margin:8px;border-radius:4px;padding:8px 0;position:relative}
+  .tape::before,.tape::after{content:"";position:absolute;top:0;bottom:0;width:10px;
+    background-image:radial-gradient(circle, #2e3540 1.6px, transparent 1.8px);background-size:10px 11px;background-position:center}
+  .tape::before{left:3px}.tape::after{right:3px}
+  .tline{font-size:8.6px;letter-spacing:.04em;padding:4px 20px;color:var(--mute);line-height:1.5}
+  .tline b{color:var(--ink);font-weight:normal}
+  .tline.hot{color:var(--ink);background:rgba(255,79,67,.09)}
+  .tline .tag{font-weight:bold;padding:0 4px;font-size:7.4px}
+  .tg-r{color:var(--red)} .tg-g{color:var(--green)} .tg-a{color:var(--amber)}
+
+  /* CRT trace */
+  .crt{margin:8px;background:#0a1410;border-radius:6px;border:1px solid #1c2a24;position:relative;overflow:hidden}
+  .crt::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(180deg,rgba(0,0,0,.22) 0 1px,transparent 1px 3px);pointer-events:none}
+  .crt svg{display:block;width:100%}
+  .crtline{fill:none;stroke:#49e6a1;stroke-width:1.4;filter:drop-shadow(0 0 4px rgba(73,230,161,.8))}
+  .crtline.hot{stroke:#ff5a49;filter:drop-shadow(0 0 5px rgba(255,90,73,.9))}
+  .crtlbl{font-family:var(--mono);font-size:7px;fill:#3f7a62;letter-spacing:.14em}
+  .crtnow{stroke:#ff5a49;stroke-width:1;stroke-dasharray:3 3}
+
+  .wallfoot{text-align:center;font-size:7px;letter-spacing:.34em;color:var(--dim);padding-top:4px}
+</style>
+</head>
+<body>
+<div class="phone">
+
+  <div class="hdr">
+    <span class="id">GULF DESK <b>—</b> SITBOARD 135</span>
+    <span class="clock"><span class="rec"></span>12 JUL · 14:00 GST</span>
+  </div>
+
+  <!-- ROW 1 -->
+  <div class="r1">
+    <div class="module">
+      <div class="mlabel">THREATCON <span class="screw"></span></div>
+      <div class="lampbox"><span class="lamp"></span><div><span class="lv">SEVERE</span><span class="lk">STRAIT DECLARED CLOSED</span></div></div>
+    </div>
+    <div class="module" style="max-width:112px">
+      <div class="mlabel">DAY</div>
+      <div class="flap"><span class="f">1</span><span class="f">3</span><span class="f">5</span></div>
+    </div>
+    <div class="module" style="max-width:96px">
+      <div class="mlabel">EXPIRY</div>
+      <div class="tmin"><span class="tv">T−36</span><span class="tk">TOLL-FREE WINDOW<br>17 AUG</span></div>
+    </div>
+  </div>
+
+  <!-- STRAIT FLOW -->
+  <div class="module">
+    <div class="mlabel">STRAIT FLOW — TWO-CORRIDOR SCHEMATIC <span class="sub">PRE-WAR 138 VSL/DAY</span></div>
+    <div class="schem">
+      <svg viewBox="0 0 406 118">
+        <!-- N corridor -->
+        <path class="pipe" d="M14,34 H392"/>
+        <path d="M14,34 H186 M226,34 H392" stroke="#3d4553" stroke-width="7" stroke-linecap="round" fill="none"/>
+        <!-- gate valve half -->
+        <g transform="translate(206,34)">
+          <circle r="15" fill="var(--recess)" stroke="var(--amber)" stroke-width="2"/>
+          <path d="M-6,-6 L6,6 M-6,6 L-1,1" stroke="var(--amber)" stroke-width="2.4" stroke-linecap="round"/>
+        </g>
+        <text class="flowlbl" x="14" y="16" fill="var(--amber)">N ROUTE · IRAN PERMIT</text>
+        <text class="flowsub" x="258" y="16">GATE: PERMIT ONLY</text>
+        <rect class="readout" x="330" y="24" width="62" height="20" rx="3"/>
+        <text class="rtext" x="361" y="38" text-anchor="middle" fill="var(--amber)">— 0 —</text>
+
+        <!-- S corridor -->
+        <path class="pipe" d="M14,88 H392"/>
+        <g transform="translate(206,88)">
+          <circle r="15" fill="var(--recess)" stroke="var(--red)" stroke-width="2"/>
+          <path d="M-6,-6 L6,6 M-6,6 L6,-6" stroke="var(--red)" stroke-width="2.6" stroke-linecap="round"/>
+        </g>
+        <text class="flowlbl" x="14" y="70" fill="var(--red)">S ROUTE · OMAN / JMIC</text>
+        <text class="flowsub" x="258" y="70">VALVE SHUT · ZERO AIS INTENT</text>
+        <rect class="readout" x="330" y="78" width="62" height="20" rx="3"/>
+        <text class="rtext" x="361" y="92" text-anchor="middle" fill="var(--red)">0 AIS</text>
+      </svg>
+    </div>
+    <div class="schemfoot"><span>LAST GOOD FLOW: 108 VSL · 3–5 JUL</span><span>IMO: AVOID TRANSIT</span></div>
+  </div>
+
+  <!-- SCENARIO METERS -->
+  <div class="module">
+    <div class="mlabel">SCENARIO PRESSURE — NEXT 72H <span class="sub">ANALYST JUDGMENT · GRADED AT EXPIRY</span></div>
+    <div class="meters">
+      <div class="meter">
+        <svg viewBox="0 0 110 62">
+          <path class="arcbg" d="M13,56 A42,42 0 0 1 97,56"/>
+          <path class="arcz" stroke="var(--green)" d="M13,56 A42,42 0 0 1 42.6,18.0"/>
+          <line class="ticky" x1="55" y1="12" x2="55" y2="19"/><line class="ticky" x1="15" y1="52" x2="21" y2="48"/><line class="ticky" x1="95" y1="52" x2="89" y2="48"/>
+          <line class="needle" x1="55" y1="56" x2="42.6" y2="18.0"/>
+          <circle class="hub" cx="55" cy="56" r="3.4"/>
+        </svg>
+        <div class="mval" style="color:var(--green)">40%</div>
+        <span class="mkind" style="color:var(--green)">■ BASE</span>
+        <div class="mdesc">MUSCAT PAUSE · CLOSURE STAYS DECLARATORY</div>
+      </div>
+      <div class="meter">
+        <svg viewBox="0 0 110 62">
+          <path class="arcbg" d="M13,56 A42,42 0 0 1 97,56"/>
+          <path class="arcz" stroke="var(--amber)" d="M13,56 A42,42 0 0 1 36.8,20.4"/>
+          <line class="ticky" x1="55" y1="12" x2="55" y2="19"/><line class="ticky" x1="15" y1="52" x2="21" y2="48"/><line class="ticky" x1="95" y1="52" x2="89" y2="48"/>
+          <line class="needle" x1="55" y1="56" x2="36.8" y2="20.4"/>
+          <circle class="hub" cx="55" cy="56" r="3.4"/>
+        </svg>
+        <div class="mval" style="color:var(--amber)">35%</div>
+        <span class="mkind" style="color:var(--amber)">▲ RISK</span>
+        <div class="mdesc">ENFORCEMENT FIRE · ROUND FOUR</div>
+      </div>
+      <div class="meter">
+        <svg viewBox="0 0 110 62">
+          <path class="arcbg" d="M13,56 A42,42 0 0 1 97,56"/>
+          <path class="arcz" stroke="var(--red)" d="M13,56 A42,42 0 0 1 26.7,27.7"/>
+          <line class="ticky" x1="55" y1="12" x2="55" y2="19"/><line class="ticky" x1="15" y1="52" x2="21" y2="48"/><line class="ticky" x1="95" y1="52" x2="89" y2="48"/>
+          <line class="needle" x1="55" y1="56" x2="26.7" y2="27.7"/>
+          <circle class="hub" cx="55" cy="56" r="3.4"/>
+        </svg>
+        <div class="mval" style="color:var(--red)">25%</div>
+        <span class="mkind" style="color:var(--red)">● TAIL</span>
+        <div class="mdesc">ISRAEL RE-ENTERS · MOU DIES IN FACT</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PATTERN RELAY BOARD -->
+  <div class="module">
+    <div class="mlabel">PATTERN RELAY BOARD <span class="sub">STATE MACHINE · 8 CIRCUITS</span></div>
+    <div class="relays">
+      <div class="relay"><span class="rlamp rl-g"></span><span class="rname">IRGC OVERRIDES DIPLOMATS</span><span class="rstate rs-g">CONFIRMED</span></div>
+      <div class="relay"><span class="rlamp rl-g"></span><span class="rname">TRUMP RHETORIC ≠ POLICY</span><span class="rstate rs-g">CONFIRMED</span></div>
+      <div class="relay"><span class="rlamp rl-r"></span><span class="rname">IRAN SIGNALS BEFORE ACTING</span><span class="rstate rs-r">TRIPPED</span></div>
+      <div class="relay"><span class="rlamp rl-a"></span><span class="rname">LEBANON DRIVES CLOSURES</span><span class="rstate rs-a">STRESSED</span></div>
+      <div class="relay"><span class="rlamp rl-a"></span><span class="rname">FLOATS MAX · EXECUTES CAL.</span><span class="rstate rs-a">STRESSED</span></div>
+      <div class="relay"><span class="rlamp rl-w"></span><span class="rname">ISRAEL RE-ENTRY ON STALL</span><span class="rstate rs-w">HYPOTH.</span></div>
+      <div class="relay"><span class="rlamp rl-w"></span><span class="rname">STRIKES ∥ TALKS PARALLEL</span><span class="rstate rs-w">HYPOTH.</span></div>
+      <div class="relay"><span class="rlamp rl-w"></span><span class="rname">UAE EXEMPTION DELIBERATE</span><span class="rstate rs-w">HYPOTH.</span></div>
+    </div>
+  </div>
+
+  <!-- TELEPRINTER -->
+  <div class="module">
+    <div class="mlabel">WIRE — TELEPRINTER <span class="sub">NEWEST FIRST</span></div>
+    <div class="tape">
+      <div class="tline hot"><span class="tag tg-r">FLASH</span> 03:15 <b>ROUND-3 STRIKES — BANDAR ABBAS ×3 · SIRIK ×2 · QESHM</b></div>
+      <div class="tline"><span class="tag tg-g">VER×2</span> 22:30 <b>IRGC NAVY DECLARES STRAIT CLOSED “UNTIL FURTHER NOTICE”</b></div>
+      <div class="tline"><span class="tag tg-g">VER×2</span> 18:40 GFS GALAXY DISABLED 9NM E OMAN · 1 CREW MISSING</div>
+      <div class="tline"><span class="tag tg-g">VER×2</span> 14:00 MUSCAT CHANNEL LIVE · TWO-CORRIDOR DRAFT · US TEAM INBOUND</div>
+      <div class="tline"><span class="tag tg-a">PENDG</span> 12:00 ISRAEL “POISED” TO REJOIN — NO T2 CONFIRMATION</div>
+    </div>
+  </div>
+
+  <!-- CRT TRACE -->
+  <div class="module">
+    <div class="mlabel">ESCALATION TRACE — 135 DAYS <span class="sub">CRT-2</span></div>
+    <div class="crt">
+      <svg viewBox="0 0 406 96">
+        <text class="crtlbl" x="34" y="12">28 FEB WAR</text>
+        <text class="crtlbl" x="238" y="88">17 JUN MOU</text>
+        <text class="crtlbl" x="306" y="14">11 JUL CLOSED</text>
+        <polyline class="crtline" points="8,84 20,14 32,40 48,28 66,50 92,44 116,64 138,58 158,74 172,70 184,42 196,66 214,55 240,70 268,64 284,36 298,60 314,68"/>
+        <polyline class="crtline hot" points="314,68 322,82 334,56 348,62 356,42 366,48 376,32 386,40 394,16"/>
+        <line class="crtnow" x1="394" y1="8" x2="394" y2="88"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="wallfoot">SPEED FIRST · VERIFY SECOND · FORECAST THIRD</div>
+</div>
+</body>
+</html>
