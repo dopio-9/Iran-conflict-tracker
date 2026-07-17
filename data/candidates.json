@@ -130,6 +130,20 @@
       "risks": "Advocacy-adjacent think tank (hawkish Iran line) — aggregation only, decompose to primaries, never cite the brief itself.",
       "status": "nominated",
       "review": null
+    },
+    {
+      "id": "c-010",
+      "nominated": "17 JUL 2026",
+      "type": "new-source",
+      "name": "OPSGROUP (ops.group)",
+      "platform": "Web",
+      "language": "English",
+      "proposed_tier": "SPECIALIST",
+      "fills": "Professional flight-ops intelligence on Middle East airspace — FIR closures, routing corridors, risk airspace — the authoritative layer under the UAE flights question the tracker answers every cycle.",
+      "evidence": "Its 'Middle East Airspace — Current Operational Picture' carried the Day-140 detail no news outlet had: no new Gulf FIR closures, temporary RNAV corridors in use, Europe-Asia routings via Egypt-Saudi-Oman/UAE or the Caucasus.",
+      "risks": "Aimed at flight crews/dispatchers; some content membership-gated — use the public blog and record via:.",
+      "status": "nominated",
+      "review": null
     }
   ]
 }

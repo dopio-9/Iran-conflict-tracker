@@ -1,7 +1,7 @@
 {
   "meta": {
     "doctrine": "Every scenario set is a dated, explicit analytical judgment — never sourced fact. Each set is graded against reality at expiry: HIT (the weighted outcome occurred), MISS (it did not), PARTIAL (materially right, wrong in mechanism), OPEN (not yet expired). Misses are kept forever; the lesson field is the product.",
-    "updated": "12 JUL 2026"
+    "updated": "17 JUL 2026"
   },
   "ledger": [
     {
@@ -29,43 +29,67 @@
     {
       "issued": "12 JUL 2026",
       "horizon": "24-72h",
-      "graded": null,
+      "graded": "17 JUL 2026",
+      "note": "Graded two days past its ~15 Jul expiry — the grading cadence slipped during the gathering-layer rebuild. Late grading is itself a logged process failure: the 13 Jul set was issued while this one was already visibly failing.",
       "entries": [
         {
           "prob": "40%", "kind": "base", "lab": "Muscat produces a strikes pause; closure stays declaratory",
-          "outcome": "OPEN",
-          "lesson": null
+          "outcome": "MISS",
+          "lesson": "Both clauses failed within 48h: the talks collapsed with nothing agreed, and the closure went from declaratory to kinetic (enforcement fire on the al-Bahiya and Mombasa, one crew member killed). The base case assumed the mediator's table conferred leverage — but a channel only restrains the parties if walking away costs them something, and here it cost nothing. Grade a mediation's coercive backing, not its existence."
         },
         {
           "prob": "35%", "kind": "risk", "lab": "Closure hardens — enforcement fire on any southern transit, round 4",
-          "outcome": "OPEN",
-          "lesson": null
+          "outcome": "HIT",
+          "lesson": "Both named mechanisms occurred as specified: US Round 4 (140 targets, sea-drone debut) and Iranian enforcement fire on southern-route tankers. The improved gather later showed the enforcement fire was worse than known at issue time (a fatality the original cycle missed). Mechanism-level specificity is what made this gradeable — keep writing scenarios with named mechanisms."
         },
         {
           "prob": "25%", "kind": "tail", "lab": "Israel re-enters — the MOU dies in fact",
-          "outcome": "OPEN",
-          "lesson": null
+          "outcome": "MISS",
+          "lesson": "Israel stayed out through the window despite the talks collapsing — the stall-triggers-Israel hypothesis under-weighted Iran's own agency in keeping Israel out (Israeli assessments now say Iran actively avoids drawing the IDF in). The tail requires an Iranian decision or mistake, not escalation momentum. Note the MOU half was directionally right: both sides now accuse the other of violating it."
         }
       ]
     },
     {
       "issued": "13 JUL 2026",
       "horizon": "24-72h",
-      "graded": null,
-      "note": "Prior (12 Jul) set still OPEN — its 72h window runs to ~15 Jul — but its base case (Muscat pause) is already failing: talks collapsed 12-13 Jul and Round 4 followed. Weighting shifted toward the contested-stalemate risk case accordingly.",
+      "graded": "17 JUL 2026",
+      "note": "Issued at the 12:00 GST cut on 13 Jul; expired ~16 Jul; graded 17 Jul against the Day 137-140 record.",
       "entries": [
         {
           "prob": "45%", "kind": "risk", "lab": "Contested-strait stalemate — strikes continue, talks limp on, no clean resolution",
-          "outcome": "OPEN",
-          "lesson": null
+          "outcome": "HIT",
+          "lesson": "The modal call was right and correctly weighted first — strikes ran nightly through the window, no resolution came, and the strait stayed contested. But 'talks limp on' was generous: the diplomatic track went fully dormant (podcast assurances, no sessions). The stalemate also deepened in kind (blockade enforcement fire, infrastructure targets) — the scenario captured the trajectory but under-specified how much escalation fits inside a 'stalemate.'"
         },
         {
           "prob": "30%", "kind": "base", "lab": "Off-ramp reopens — a face-saving Hormuz-management deal within days",
+          "outcome": "MISS",
+          "lesson": "No venue, no draft, no session in the window — the parallel-tracks pattern this rested on was already STRESSED at issue time and the weighting didn't discount it enough. When a load-bearing pattern is STRESSED, the scenarios leaning on it should pay a haircut explicitly, not implicitly."
+        },
+        {
+          "prob": "25%", "kind": "tail", "lab": "Rupture — Israel re-enters and/or a mass-casualty event ends the deal outright",
+          "outcome": "MISS",
+          "lesson": "A fatality DID occur in the window (the Mombasa crewman, killed 13 Jul) and the deal did NOT die outright — both sides kept invoking the MOU while violating it. The rupture threshold was set too low: single casualties get absorbed by this war's momentum. A rupture tail needs a defined threshold (mass-casualty event, named trip-wire) or it grades as a miss on definition, not on reality."
+        }
+      ]
+    },
+    {
+      "issued": "17 JUL 2026",
+      "horizon": "24-72h",
+      "graded": null,
+      "note": "Inherits three lessons explicitly: (1) grade mediation channels by coercive backing, not existence — hence the base case requires a venue with a date; (2) STRESSED patterns pay an explicit haircut — no scenario leans on the parallel-tracks pattern; (3) rupture tails need defined thresholds — the tail names its mechanisms (Bab el-Mandeb execution, second GCC infrastructure strike, Israeli trip-wire).",
+      "entries": [
+        {
+          "prob": "50%", "kind": "risk", "lab": "Attrition deepens — nightly strikes, kinetic blockade, no talks, strait contested",
           "outcome": "OPEN",
           "lesson": null
         },
         {
-          "prob": "25%", "kind": "tail", "lab": "Rupture — Israel re-enters and/or a mass-casualty event ends the deal",
+          "prob": "30%", "kind": "tail", "lab": "Horizontal spread — Bab el-Mandeb executes, more GCC infrastructure hit, or Israel drawn in",
+          "outcome": "OPEN",
+          "lesson": null
+        },
+        {
+          "prob": "20%", "kind": "base", "lab": "Exhaustion off-ramp — the Vance channel converts to a table and tempo drops",
           "outcome": "OPEN",
           "lesson": null
         }

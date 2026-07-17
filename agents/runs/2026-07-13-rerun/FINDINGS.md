@@ -101,7 +101,11 @@ first-seen:  13 JUL · LANE EN · IRGC statement via wire copy
 ladder:      rung 2 → pending-med (single origin, multi-outlet echo)
 sightings:   IRGC statement (FA lane origin); CNN/US News carriage (EN lane, not independent)
 ttl:         14 JUL 12:00 GST
-lifecycle:   open at emit — mining claim unconfirmed by UKMTO/BIMCO at time of run; if UKMTO issues a mine advisory it promotes; if transits continue unhindered on the claimed route it expires. EITHER outcome is load-bearing for war-risk premiums.
+lifecycle:   EXPIRED (closed 17 JUL, Day-140 cycle) — four days on: no UKMTO mine
+             advisory, no BIMCO warning, no mine incident; 7-13 vessels/day plus
+             US-escorted convoys crossed without a strike. The claim goes to the
+             expiry log; rendered in the Day-140 VERIFY as evidence AGAINST
+             wide-area mining. First completed listener lifecycle.
 
 FAST 2
 claim:       US to charge 20% toll on Hormuz cargo ("GUARDIAN OF THE HORMUZ STRAIT")

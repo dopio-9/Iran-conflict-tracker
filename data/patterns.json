@@ -2,7 +2,7 @@
   "meta": {
     "states": ["HYPOTHESIS", "ACTIVE", "STRESSED", "CONFIRMED", "BROKEN"],
     "doctrine": "Patterns move HYPOTHESIS → ACTIVE → STRESSED → CONFIRMED or BROKEN. A CONFIRMED pattern is load-bearing for analysis; a BROKEN pattern must never be silently reused. Every state change carries the evidence that caused it.",
-    "updated": "12 JUL 2026"
+    "updated": "17 JUL 2026"
   },
   "patterns": [
     {
@@ -50,11 +50,12 @@
       "state": "CONFIRMED",
       "confidence": "high",
       "rule": "Never read Trump’s rhetoric as policy. Read the delegation manifest instead.",
-      "evidence": "Upgraded ACTIVE → CONFIRMED 11 Jul on the cleanest instance yet: within hours of ‘1000 missiles locked and loaded’ and declaring the MOU dead, the most senior US team of the war (Vance, Rubio, Witkoff, Kushner) was dispatched toward Muscat. The rhetoric and the off-ramp are the same policy.",
+      "evidence": "Upgraded ACTIVE → CONFIRMED 11 Jul on the cleanest instance yet: within hours of ‘1000 missiles locked and loaded’ and declaring the MOU dead, the most senior US team of the war (Vance, Rubio, Witkoff, Kushner) was dispatched toward Muscat. Re-validated 13-14 Jul in the economic domain: the ‘Guardian of the Strait’ 20% toll was announced and abandoned within ~24 hours while the operational policy (blockade + escorts) never wavered. The rhetoric and the off-ramp are the same policy; read the operations, not the announcements.",
       "history": [
         { "date": "JUN 2026", "state": "ACTIVE", "note": "‘It’s over’ / ‘scum’ while talks continue" },
         { "date": "08 JUL", "state": "ACTIVE", "note": "Ceasefire ‘over’ at NATO; talks not terminated" },
-        { "date": "11 JUL", "state": "CONFIRMED", "note": "Decimation threats + most senior delegation of the war, same day" }
+        { "date": "11 JUL", "state": "CONFIRMED", "note": "Decimation threats + most senior delegation of the war, same day" },
+        { "date": "14 JUL", "state": "CONFIRMED", "note": "20% toll floated and dropped in ~24h; blockade policy unchanged throughout" }
       ]
     },
     {
@@ -63,11 +64,12 @@
       "state": "STRESSED",
       "confidence": "medium",
       "rule": "Stated options (NPT, Bab-el-Mandeb) are bargaining inventory, not warning orders — but the calibration ceiling is rising.",
-      "evidence": "Held in form on 11 Jul: NPT withdrawal and Bab-el-Mandeb (floated 8 Jul) stayed unexecuted; Iran instead closed its own strait — the maximal option fully inside its control. Marked STRESSED because ‘calibrated’ now includes a formal closure declaration: the gap between floated and executed options is narrowing with each cycle.",
+      "evidence": "Held in form on 11 Jul: NPT withdrawal and Bab-el-Mandeb (floated 8 Jul) stayed unexecuted; Iran instead closed its own strait — the maximal option fully inside its control. Marked STRESSED because ‘calibrated’ now includes a formal closure declaration. New form 16 Jul: Bab el-Mandeb returns not as a float but as a reported CONDITIONAL order to the Houthis with a trigger (strikes on Iranian power infrastructure) that has since been met. A conditional order with a satisfied trigger is a different object from a float — it pre-commits, shifts execution to a proxy, and lets Iran deny agency. Watch execution, not restatement.",
       "history": [
         { "date": "FEB-JUN", "state": "ACTIVE", "note": "Bab-el-Mandeb threatened repeatedly, never executed" },
         { "date": "08 JUL", "state": "ACTIVE", "note": "NPT + Bab-el-Mandeb floated as options" },
-        { "date": "11 JUL", "state": "STRESSED", "note": "Executed option (closure) is itself near-maximal" }
+        { "date": "11 JUL", "state": "STRESSED", "note": "Executed option (closure) is itself near-maximal" },
+        { "date": "16 JUL", "state": "STRESSED", "note": "Bab el-Mandeb re-emerges as a conditional proxy order; trigger condition met, unexecuted so far" }
       ]
     },
     {
@@ -75,10 +77,11 @@
       "name": "Israel re-enters when US-Iran talks stall",
       "state": "HYPOTHESIS",
       "confidence": "low",
-      "rule": "Watch for T2 confirmation of Israeli force movement whenever Muscat/Doha stalls. Israeli-official leaks during negotiations are also pressure instruments.",
-      "evidence": "New 11 Jul: Ynet (‘more serious than any other time in the past’) and ToI report Israel preparing to rejoin strikes as talks make little headway — all Israeli-official sourcing, no T2 confirmation. Test: does a package launch while the US team is physically in Muscat? A launch would confirm; a quiet stand-down as talks progress would suggest the leaks were leverage.",
+      "rule": "The stall-trigger framing is weakening — replace with the two-condition frame: Israel re-enters on a direct Iranian attack or a US request. Israeli-official leaks during negotiations are still pressure instruments.",
+      "evidence": "New 11 Jul: Ynet and ToI report Israel preparing to rejoin as talks stall — all Israeli-official sourcing. Counter-evidence 13-16 Jul: the talks didn't just stall, they collapsed entirely, and through six subsequent strike nights Israel STILL did not enter. Israeli officials now state the two conditions explicitly (direct attack or US request), and Israeli assessments say Iran is deliberately avoiding drawing the IDF in. The hypothesis as originally stated (stall → entry) failed its cleanest test; what remains is the two-condition frame plus Iranian targeting discipline as the active variable.",
       "history": [
-        { "date": "11 JUL", "state": "HYPOTHESIS", "note": "First explicit re-entry signalling since the MOU" }
+        { "date": "11 JUL", "state": "HYPOTHESIS", "note": "First explicit re-entry signalling since the MOU" },
+        { "date": "16 JUL", "state": "HYPOTHESIS", "note": "Stall-trigger version failed (total collapse, no entry); reframed to the two-condition trip-wires" }
       ]
     },
     {
@@ -87,10 +90,11 @@
       "state": "STRESSED",
       "confidence": "medium",
       "rule": "Grade the kinetic and diplomatic tracks separately — but do not assume the diplomatic track is durable. It can break while the kinetic one accelerates.",
-      "evidence": "Proposed 12 Jul (three strike rounds + senior delegations at once). Stressed 13 Jul: the tracks diverged rather than ran parallel — the US went to Round 4 (140 targets, sea-drone debut) on the SAME day the Muscat talks collapsed with nothing agreed and each side blamed the other in public. Parallelism held as a description of the week, but the diplomatic rail is no longer load-bearing; ‘grade separately’ now means being willing to mark one track BROKEN while the other runs hot.",
+      "evidence": "Proposed 12 Jul (three strike rounds + senior delegations at once). Stressed 13 Jul: the tracks diverged rather than ran parallel — Round 4 on the same day the Muscat talks collapsed. Held at STRESSED (not BROKEN) 17 Jul on a technicality with teeth: four days with zero formal sessions against six strike nights means there is currently only ONE track — but the channel's principals still meet (White House, 15 Jul) and Vance still publicly owns the MOU trajectory ('right… just really messy'). The pattern survives only if a venue reappears; the 17 Jul scenario set already refuses to lean on it (explicit haircut per ledger lesson).",
       "history": [
         { "date": "12 JUL", "state": "HYPOTHESIS", "note": "Three strike rounds + senior delegations in the same week" },
-        { "date": "13 JUL", "state": "STRESSED", "note": "Round 4 accelerates as Muscat talks collapse — tracks diverge, not parallel" }
+        { "date": "13 JUL", "state": "STRESSED", "note": "Round 4 accelerates as Muscat talks collapse — tracks diverge, not parallel" },
+        { "date": "17 JUL", "state": "STRESSED", "note": "Four days, zero sessions, six strike nights — one track running; BROKEN if no venue by ~24 Jul" }
       ]
     },
     {
@@ -98,11 +102,23 @@
       "name": "Iran deliberately exempts the UAE from retaliation rounds",
       "state": "HYPOTHESIS",
       "confidence": "low",
-      "rule": "UAE quiet ≠ UAE safe. Track the exemption itself as a signal: its end would mark a strategic decision, not an accident.",
-      "evidence": "New 12 Jul: this round Iran struck Bahrain, Kuwait, Qatar and Jordan — but not the UAE, despite the UAE being the war’s most-targeted state pre-MOU (1,800+ projectiles). Possible drivers: reconstruction-fund economics, Abu Dhabi back-channel, or target saturation elsewhere. Watch UAE MOD/WAM language for the first crack.",
+      "rule": "REFINED: the exemption covers UAE TERRITORY, not UAE assets or interests. UAE quiet ≠ UAE safe. Track the exemption itself as a signal: its end would mark a strategic decision, not an accident.",
+      "evidence": "New 12 Jul: Iran struck four states but not the UAE, the war’s most-targeted state pre-MOU. The improved gather (13 Jul re-run) forced a split definition: Iranian cruise missiles struck the UAE tankers al-Bahiya and Mombasa on 13 Jul, killing a crew member — and the UAE issued its first missile alert in months on 12 Jul (threats intercepted before entering its airspace). So UAE soil is exempt (day 10 and holding through six rounds), UAE assets are not. The Kuwait desalination strike (17 Jul) further narrows what the exemption is worth: GCC civilian utilities are now a demonstrated target class. Possible drivers unchanged: reconstruction-fund economics, Abu Dhabi back-channel, target saturation. Watch UAE MOD/WAM/NCEMA language for the first crack.",
       "history": [
         { "date": "12 JUL", "state": "HYPOTHESIS", "note": "Four states hit this round; UAE conspicuously excluded" },
-        { "date": "13 JUL", "state": "HYPOTHESIS", "note": "Sixth straight day: Round-4 retaliation hit Bahrain/Kuwait/Jordan (±Qatar/Oman) — UAE still untouched" }
+        { "date": "13 JUL", "state": "HYPOTHESIS", "note": "UAE tankers struck (1 killed) while UAE soil stays untouched — exemption narrows to territory" },
+        { "date": "17 JUL", "state": "HYPOTHESIS", "note": "Day 10 of territorial exemption; Kuwait utility strike puts GCC infrastructure in the target class" }
+      ]
+    },
+    {
+      "id": "infrastructure-reciprocity",
+      "name": "Infrastructure strikes are answered in kind, category for category",
+      "state": "HYPOTHESIS",
+      "confidence": "low",
+      "rule": "When one side widens the target set to a new infrastructure category, expect the other to answer in the same category within ~48h — on whatever territory it can reach. Watch the category, not the geography.",
+      "evidence": "Proposed 17 Jul on one clean sequence: US night-six strikes hit southern Iran's civilian infrastructure (bridges, airports, power, rail — days after Trump publicly threatened Iranian infrastructure); within ~24h Iran struck Kuwait's power-and-desalination station, its first GCC civilian-infrastructure target of the war. One instance = hypothesis only. Test: does the next US infrastructure category (ports? refineries?) produce a matching Iranian answer in the GCC? Confirmation would make every US target-set decision a direct predictor of GCC civilian risk — the single most UAE-relevant pattern on the board if it holds.",
+      "history": [
+        { "date": "17 JUL", "state": "HYPOTHESIS", "note": "Proposed: US infra strikes (night 6) answered by Kuwait desalination hit within ~24h" }
       ]
     }
   ]
