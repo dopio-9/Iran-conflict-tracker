@@ -23,17 +23,31 @@ The upstream layers (0a/0b) feed the verification discipline; they never bypass
 it. Nothing auto-writes to WIRE, and a SCOUT nomination carries no citation
 weight until approved into `sources.json`.
 
-## Cadence
+## Cadence & model assignment (function-level rule)
 
-| Layer | Model | Frequency | Touches |
-|---|---|---|---|
-| Listen (fast signals) | Haiku lanes → Sonnet | per update, first | findings block only |
-| Scout (source discovery) | Haiku sweeps → Fable review | after each grading; on any 24h+ dispute | `data/candidates.json` |
-| Gather + Reason | Haiku → Sonnet | per update (1-3×/day in crisis) | `data/data.json` |
-| Pattern revision | Fable / weekly | weekly, or on any state change | `data/patterns.json` |
-| Forecast grading | Fable / weekly | at every scenario-set expiry (24-72h) | `data/scenarios.json` |
-| Template / design | Fable | rarely | `site/index.html` |
-| Source registry | Fable | when a source is added/re-tiered | `data/sources.json` |
+Each function is pinned to a model. The rule: **cheapest model that can do the
+job; the heaviest reasoning gets Opus, not Fable.** Fable is retained only for
+what it is uniquely good at — authoring visual/motion grammars and concepts —
+not for analytical weighting.
+
+| Layer | Model | Why this tier | Frequency | Touches |
+|---|---|---|---|---|
+| Listen — lane listeners | **Haiku** | raw sighting capture, no judgment | per update, first | findings block |
+| Listen — aggregator | **Sonnet** | convergence/independence judgment | per update | findings block |
+| Scout — sweeps | **Haiku** | search & dedupe | after each grading; on any 24h+ dispute | `data/candidates.json` |
+| Scout — tiering review | **Opus** | source-trust judgment is load-bearing | on review | `data/candidates.json` |
+| Gather | **Haiku** | search + compress, no analysis | per update (1-3×/day) | findings block |
+| Reason — daily `data.json` | **Sonnet** | routine authoring against rules | per update | `data/data.json` |
+| Reason — high-stakes cycle | **Opus** | when a dispute closes a war-tail, a pattern breaks, or weighting swings ≥15pts | as needed | `data/data.json` |
+| Forecast grading | **Opus** | the big reasoning — HIT/MISS calls + lessons compound forward | at every set expiry | `data/scenarios.json` |
+| Pattern revision | **Opus** | state changes are the model of the war; wrong = load-bearing error | weekly / on state change | `data/patterns.json` |
+| Template / design / motion | **Fable** | concept + grammar authoring, Fable's niche | rarely | `index.html`, `design-lab/` |
+| Source registry edits | **Opus** | tiering is a trust judgment | on add/re-tier | `data/sources.json` |
+
+**Escalation rule:** REASON runs on Sonnet by default and escalates the whole
+cycle to Opus when any of the high-stakes triggers fire (tail-closing dispute,
+pattern break, ≥15-point scenario swing). The daily loop must never run inline
+on one model — that is a testing shortcut, not production.
 
 ## Non-negotiable rules (enforced by `scripts/validate.mjs`)
 
