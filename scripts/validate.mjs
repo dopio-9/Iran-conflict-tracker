@@ -126,6 +126,29 @@ if (ledger) {
   });
 }
 
+/* ── 4b. candidates.json (SCOUT nomination queue) ────────────── */
+const candidates = loadJSON("data/candidates.json");
+if (candidates) {
+  const cStatuses = ["nominated", "approved", "rejected", "stale"];
+  const cTypes = ["new-source", "mirror", "retier", "replace-placeholder"];
+  (candidates.queue ?? []).forEach((c, i) => {
+    for (const k of ["id", "nominated", "type", "name", "proposed_tier", "fills", "evidence", "status"])
+      if (!c[k]) fail(`candidates[${i}]: missing "${k}" — a nomination without evidence/fills is noise`);
+    if (!cStatuses.includes(c.status)) fail(`candidates[${i}] (${c.id}): bad status "${c.status}"`);
+    if (!cTypes.includes(c.type)) fail(`candidates[${i}] (${c.id}): bad type "${c.type}"`);
+    if (["approved", "rejected"].includes(c.status) && !c.review)
+      fail(`candidates[${i}] (${c.id}): ${c.status} without a review note — reviews teach the scout`);
+  });
+  // A nominated candidate must never already be a citable registry source.
+  if (sources) {
+    const names = new Set(sources.map((s) => s.name.toLowerCase()));
+    (candidates.queue ?? []).forEach((c, i) => {
+      if (c.status === "nominated" && names.has(c.name?.toLowerCase()))
+        fail(`candidates[${i}] (${c.id}): "${c.name}" already in sources.json — dedupe before nominating`);
+    });
+  }
+}
+
 /* ── 5. index.html — the §5 bug class ───────────────────── */
 const html = readFileSync(join(root, "index.html"), "utf8");
 

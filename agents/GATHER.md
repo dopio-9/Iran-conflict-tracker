@@ -21,7 +21,31 @@ findings block small enough (~5k tokens) for the reasoner to consume whole.
 5. **Gap protocol** — when a named source is unreachable (paywall, 403, dead),
    find its content through mirrors, wire re-publication, or web-search snippets,
    and record `via:` the actual channel used. Never leave a tier unsampled because
-   its flagship source was blocked.
+   its flagship source was blocked. Report every unreachable source in the run
+   log — three straight reports puts it on SCOUT's decay-audit list.
+6. **Dispute-targeted fan-out** — before compressing, read the open VERIFY
+   disputes in the current `data.json` and run 2-3 searches aimed at each
+   specifically (the closing source class, not the original outlets: e.g. the
+   Oman-struck dispute wants QNA/ONA/Oman MoD, not more US cable copy). An open
+   dispute is a standing search order until it closes.
+
+## Decomposition rule (aggregators & AI-search engines)
+
+Any synthesized answer — Perplexity, AI overviews, blended aggregator copy —
+must be decomposed back to the primary sources it cites BEFORE tiering. The
+synthesis itself is never a source; a blend that picks a winner between
+conflicting primaries violates the render-the-conflict rule. Cite the primaries
+you actually verified, `via:` the engine that surfaced them.
+
+## Boundaries with the other layers
+
+- **LISTEN** hands you its fast block; append it unchanged after your findings.
+  If one of your T2 findings confirms a fast item, mark that item `promoted` in
+  the block rather than duplicating it as a finding.
+- **Candidates are not citable.** A source in `data/candidates.json` with
+  status `nominated` may not appear on a `sources:` line. If a candidate is the
+  only carrier of a claim, record the claim as a rung-1 fast signal and file the
+  gap in the run log.
 
 ## Output format (one block per finding)
 
