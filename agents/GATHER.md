@@ -38,6 +38,22 @@ synthesis itself is never a source; a blend that picks a winner between
 conflicting primaries violates the render-the-conflict rule. Cite the primaries
 you actually verified, `via:` the engine that surfaced them.
 
+**Date-stamp every decomposed primary.** The characteristic failure of a
+synthesis engine is not source-blending but *temporal* blending: it fuses
+events months apart into a single present-tense picture, producing a
+false-present that reads as more urgent than the evidence supports. Observed
+live 17 Jul 2026 — a Perplexity answer merged a 14 Mar UAE-ports evacuation
+warning, May DXB airport-debris incidents, and the July escalation into "risk
+to DXB/AUH tonight is elevated," never flagging that its "latest Fars text" was
+four months old. Rule: read the publish date of every citation; a claim whose
+only verifiable instance is stale is a RECIRCULATION, not a fresh finding, and
+must be tiered as such. Freshness is a tier input, not an assumption.
+
+Perplexity is a Haiku-tier gatherer, never a verifier: superb recall and
+citation-surfacing, poor temporal/confidence judgment. Its findings feed the
+candidates queue and the findings block; its narrative never reaches WIRE or
+the LISTEN ladder.
+
 ## Boundaries with the other layers
 
 - **LISTEN** hands you its fast block; append it unchanged after your findings.
