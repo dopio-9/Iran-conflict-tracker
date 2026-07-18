@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TRACE — Seismograph v2 · concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0D0B;          /* recording surface */
+    --mint:#9FFFC8;        /* phosphor / burn / deficit */
+    --mint-hi:#CFFFE3;     /* bright trace core, pen-head */
+    --amber:#FFD27A;       /* intake / surplus */
+    --amber-hi:#FFE6B0;
+    --ink:#E8E4DC;
+    --dim:rgba(232,228,220,.5);
+  }
+  *{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent;}
+  html,body{background:radial-gradient(120% 90% at 50% 0%, #0B0F0D 0%, #07090A 55%, #050606 100%);}
+  body{
+    font-family:'IBM Plex Mono','Courier New',monospace;
+    color:var(--ink);
+    min-height:100vh;
+    padding:30px 16px 56px;
+    display:flex;flex-direction:column;align-items:center;
+  }
+
+  /* ── concept header ── */
+  .head{width:100%;max-width:392px;margin-bottom:22px;}
+  .eyebrow{font-size:9px;letter-spacing:.34em;color:rgba(159,255,200,.55);}
+  .head h1{font-size:21px;font-weight:600;letter-spacing:.02em;margin-top:8px;color:var(--ink);}
+  .head h1 b{color:var(--mint);font-weight:600;}
+  .head .sub{font-size:10.5px;color:var(--dim);margin-top:7px;letter-spacing:.04em;}
+  .goals{
+    margin-top:14px;padding:11px 13px;border:1px solid rgba(159,255,200,.16);
+    border-radius:9px;background:rgba(159,255,200,.025);
+    font-size:10px;line-height:1.85;letter-spacing:.02em;color:rgba(232,228,220,.78);
+  }
+  .goals .g{color:rgba(159,255,200,.6);}
+
+  /* ── phone ── */
+  .phone{
+    position:relative;width:min(92vw,392px);
+    padding:9px;border-radius:42px;
+    background:linear-gradient(155deg,#1b1f22,#0d0f11 60%);
+    border:1px solid rgba(255,255,255,.07);
+    box-shadow:0 40px 90px -30px rgba(0,0,0,.9),0 0 0 1px rgba(0,0,0,.5),
+               inset 0 1px 1px rgba(255,255,255,.06);
+  }
+  .screen{position:relative;border-radius:34px;overflow:hidden;background:var(--bg);}
+  .screen svg{display:block;width:100%;height:auto;}
+  .notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);
+    width:96px;height:7px;border-radius:6px;background:#000;opacity:.55;z-index:6;}
+
+  /* texture overlays */
+  .scan{position:absolute;inset:0;z-index:2;pointer-events:none;
+    background:repeating-linear-gradient(0deg, rgba(255,255,255,.022) 0 1px, transparent 1px 3px);
+    mix-blend-mode:overlay;}
+  .vig{position:absolute;inset:0;z-index:3;pointer-events:none;
+    background:radial-gradient(120% 80% at 50% 42%, transparent 55%, rgba(0,0,0,.55) 100%);}
+
+  /* numbered pins */
+  .pin{position:absolute;z-index:5;transform:translate(-50%,-50%);
+    width:19px;height:19px;border-radius:50%;
+    background:rgba(8,12,10,.85);border:1px solid rgba(159,255,200,.7);
+    color:var(--mint-hi);font-size:10px;font-weight:600;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 0 10px rgba(159,255,200,.45);backdrop-filter:blur(2px);}
+
+  /* ── legend ── */
+  .legend{width:min(92vw,392px);margin-top:26px;}
+  .legend .lh{font-size:9px;letter-spacing:.3em;color:rgba(159,255,200,.5);
+    padding-bottom:9px;border-bottom:1px solid rgba(159,255,200,.14);}
+  .row{display:flex;gap:12px;padding:13px 2px;border-bottom:1px solid rgba(255,255,255,.06);}
+  .num{flex:0 0 19px;height:19px;border-radius:50%;
+    border:1px solid rgba(159,255,200,.5);color:var(--mint);
+    font-size:10px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+  .row .t{flex:1;}
+  .row .change{font-size:12.5px;color:var(--ink);line-height:1.4;}
+  .row .fix{font-size:10px;color:var(--dim);margin-top:4px;line-height:1.5;letter-spacing:.01em;}
+  .row .fix b{color:rgba(255,210,122,.7);font-weight:400;}
+  .foot{font-size:9.5px;color:rgba(232,228,220,.4);letter-spacing:.06em;
+    margin-top:16px;line-height:1.7;text-align:center;}
+
+  /* animation */
+  @keyframes penPulse{0%,100%{transform:scale(.85);opacity:.85;}50%{transform:scale(1.55);opacity:.15;}}
+  #penGlow{transform-origin:250px 504px;animation:penPulse 1.9s ease-in-out infinite;}
+  @keyframes recBlink{50%{opacity:.2;}}
+  #rec{animation:recBlink 1.4s step-end infinite;}
+  @media (prefers-reduced-motion:reduce){#penGlow,#rec{animation:none;}}
+</style>
+</head>
+<body>
+
+  <div class="head">
+    <div class="eyebrow">CONCEPT · METABOLIC TRACE</div>
+    <h1>TRACE — <b>Seismograph</b> v2</h1>
+    <div class="sub">A redesign that recommits to the instrument: spikes, bloom, and a pen that's alive at&nbsp;NOW.</div>
+    <div class="goals">
+      <span class="g">GOALS&nbsp;&nbsp;</span>① make it read as a seismograph again &nbsp;·&nbsp; ② make the trace luminous &nbsp;·&nbsp; ③ make the present moment feel like a live recording &nbsp;·&nbsp; ④ let balance be legible at a glance.
+    </div>
+  </div>
+
+  <div class="phone">
+    <div class="screen">
+      <div class="notch"></div>
+
+      <svg viewBox="0 0 390 760" preserveAspectRatio="xMidYMid meet" role="img"
+           aria-label="Improved Seismograph metabolic trace screen, a surplus day at 17:30">
+        <defs>
+          <linearGradient id="gAmber" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#FFD27A" stop-opacity="0.18"/>
+            <stop offset="1" stop-color="#FFD27A" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="gMint" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#9FFFC8" stop-opacity="0.16"/>
+            <stop offset="1" stop-color="#9FFFC8" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="gTrack" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0"   stop-color="#9FFFC8" stop-opacity="0.85"/>
+            <stop offset="0.5" stop-color="#3a4640" stop-opacity="0.9"/>
+            <stop offset="1"   stop-color="#FFD27A" stop-opacity="0.85"/>
+          </linearGradient>
+          <radialGradient id="gPen" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0" stop-color="#EFFFF6" stop-opacity="0.95"/>
+            <stop offset="0.4" stop-color="#9FFFC8" stop-opacity="0.6"/>
+            <stop offset="1" stop-color="#9FFFC8" stop-opacity="0"/>
+          </radialGradient>
+          <filter id="fBig" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4.2"/></filter>
+          <filter id="fMid" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="1.6"/></filter>
+          <filter id="fAxis" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.4"/></filter>
+          <clipPath id="clipRight"><rect x="195" y="110" width="195" height="540"/></clipPath>
+          <clipPath id="clipLeft"><rect x="0" y="110" width="195" height="540"/></clipPath>
+        </defs>
+
+        <!-- ╌╌ HEADER ╌╌ -->
+        <text x="16" y="42" fill="rgba(159,255,200,.55)" font-size="9" letter-spacing="1.4">SUBJECT_01</text>
+        <text x="16" y="55" fill="rgba(159,255,200,.5)" font-size="9" letter-spacing="1.2">REC. SUN 14 JUN 2026</text>
+        <text x="16" y="68" fill="rgba(159,255,200,.5)" font-size="9" letter-spacing="1.2">INSTRUMENT: METABOLIC</text>
+        <circle id="rec" cx="20" cy="84" r="3" fill="#FF6B5A"/>
+        <text x="29" y="87" fill="rgba(255,107,90,.85)" font-size="8" letter-spacing="2">REC</text>
+
+        <text x="374" y="58" text-anchor="end" fill="#FFD27A" font-size="34" font-weight="600" letter-spacing="-1">+245</text>
+        <text x="374" y="72" text-anchor="end" fill="rgba(255,210,122,.55)" font-size="8.5" letter-spacing="1.8">NET KCAL · BALANCE</text>
+        <text x="374" y="85" text-anchor="end" fill="rgba(255,255,255,.32)" font-size="7.5" letter-spacing="1">IDLE −47.2/HR · SURPLUS</text>
+
+        <line x1="16" y1="98" x2="374" y2="98" stroke="rgba(159,255,200,.18)" stroke-width="1"/>
+        <line x1="16" y1="93" x2="16" y2="103" stroke="rgba(159,255,200,.3)" stroke-width="1"/>
+        <line x1="374" y1="93" x2="374" y2="103" stroke="rgba(159,255,200,.3)" stroke-width="1"/>
+
+        <!-- ╌╌ GRID + AXIS ╌╌ -->
+        <g stroke="rgba(159,255,200,.05)" stroke-width="1">
+          <line x1="0" y1="177.5" x2="390" y2="177.5"/>
+          <line x1="0" y1="312.5" x2="390" y2="312.5"/>
+          <line x1="0" y1="447.5" x2="390" y2="447.5"/>
+          <line x1="0" y1="582.5" x2="390" y2="582.5"/>
+        </g>
+        <g stroke="rgba(159,255,200,.1)" stroke-width="1">
+          <line x1="0" y1="245" x2="390" y2="245"/>
+          <line x1="0" y1="380" x2="390" y2="380"/>
+          <line x1="0" y1="515" x2="390" y2="515"/>
+        </g>
+        <g fill="rgba(159,255,200,.32)" font-size="8" letter-spacing="1">
+          <text x="14" y="242">06:00</text>
+          <text x="14" y="377">12:00</text>
+          <text x="14" y="512">18:00</text>
+        </g>
+        <!-- center axis (zero / balance) with glow -->
+        <line x1="195" y1="110" x2="195" y2="650" stroke="rgba(159,255,200,.18)" stroke-width="2.5" filter="url(#fAxis)" opacity=".5"/>
+        <line x1="195" y1="110" x2="195" y2="650" stroke="rgba(159,255,200,.22)" stroke-width="1"/>
+
+        <!-- ╌╌ BALANCE WASH (amber surplus right, mint deficit left) ╌╌ -->
+        <g clip-path="url(#clipRight)">
+          <path d="M195,110 L228,113 L207,119 L203,140 L200,165 L195,190 L189,220 L187,250 L188,280 L190,310 L191,332 L226,335 L196,340 L198,354 L213,357 L200,361 L204,385 L300,390 L246,393 L292,397 L255,401 L260,414 L262,423 L231,426 L261,429 L266,440 L297,447 L270,451 L266,468 L241,476 L258,479 L254,492 L250,503 L195,503 Z" fill="url(#gAmber)"/>
+        </g>
+        <g clip-path="url(#clipLeft)">
+          <path d="M195,110 L228,113 L207,119 L203,140 L200,165 L195,190 L189,220 L187,250 L188,280 L190,310 L191,332 L226,335 L196,340 L198,354 L213,357 L200,361 L204,385 L300,390 L246,393 L292,397 L255,401 L260,414 L262,423 L231,426 L261,429 L266,440 L297,447 L270,451 L266,468 L241,476 L258,479 L254,492 L250,503 L195,503 Z" fill="url(#gMint)"/>
+        </g>
+
+        <!-- ╌╌ THE TRACE — phosphor bloom (halo / mid / core) ╌╌ -->
+        <path d="M195,110 L228,113 L207,119 L203,140 L200,165 L195,190 L189,220 L187,250 L188,280 L190,310 L191,332 L226,335 L196,340 L198,354 L213,357 L200,361 L204,385 L300,390 L246,393 L292,397 L255,401 L260,414 L262,423 L231,426 L261,429 L266,440 L297,447 L270,451 L266,468 L241,476 L258,479 L254,492 L250,503"
+              fill="none" stroke="#9FFFC8" stroke-width="6.5" stroke-opacity="0.16" stroke-linejoin="round" filter="url(#fBig)"/>
+        <path d="M195,110 L228,113 L207,119 L203,140 L200,165 L195,190 L189,220 L187,250 L188,280 L190,310 L191,332 L226,335 L196,340 L198,354 L213,357 L200,361 L204,385 L300,390 L246,393 L292,397 L255,401 L260,414 L262,423 L231,426 L261,429 L266,440 L297,447 L270,451 L266,468 L241,476 L258,479 L254,492 L250,503"
+              fill="none" stroke="#9FFFC8" stroke-width="2.4" stroke-opacity="0.5" stroke-linejoin="round" filter="url(#fMid)"/>
+        <path d="M195,110 L228,113 L207,119 L203,140 L200,165 L195,190 L189,220 L187,250 L188,280 L190,310 L191,332 L226,335 L196,340 L198,354 L213,357 L200,361 L204,385 L300,390 L246,393 L292,397 L255,401 L260,414 L262,423 L231,426 L261,429 L266,440 L297,447 L270,451 L266,468 L241,476 L258,479 L254,492 L250,503"
+              fill="none" stroke="#CFFFE3" stroke-width="1.3" stroke-linejoin="round"/>
+
+        <!-- residual carried from yesterday (dashed) -->
+        <circle cx="228" cy="113" r="4" fill="none" stroke="rgba(159,255,200,.6)" stroke-width="1" stroke-dasharray="2 2"/>
+        <text x="240" y="116" fill="rgba(159,255,200,.55)" font-size="8" letter-spacing=".5">RESIDUAL +160</text>
+
+        <!-- event dots -->
+        <g stroke="#0A0D0B" stroke-width="1">
+          <circle cx="226" cy="335" r="3.4" fill="#FFD27A"/>
+          <circle cx="213" cy="357" r="3.1" fill="#FFD27A"/>
+          <circle cx="300" cy="390" r="3.6" fill="#FFD27A"/>
+          <circle cx="292" cy="397" r="3.2" fill="#FFD27A"/>
+          <circle cx="231" cy="426" r="3.4" fill="#9FFFC8"/>
+          <circle cx="297" cy="447" r="3.2" fill="#FFD27A"/>
+          <circle cx="241" cy="476" r="3.1" fill="#9FFFC8"/>
+        </g>
+
+        <!-- labels with leader lines -->
+        <g stroke="rgba(255,255,255,.22)" stroke-width="0.8">
+          <line x1="229" y1="335" x2="306" y2="334"/>
+          <line x1="303" y1="390" x2="314" y2="389"/>
+          <line x1="300" y1="447" x2="312" y2="447"/>
+          <line x1="228" y1="426" x2="158" y2="426"/>
+        </g>
+        <g font-size="9" letter-spacing=".4">
+          <text x="374" y="332" text-anchor="end" fill="rgba(255,255,255,.82)">COFFEE <tspan fill="#FFD27A">+98</tspan></text>
+          <text x="374" y="342" text-anchor="end" fill="rgba(255,255,255,.3)" font-size="7.5">10:00</text>
+          <text x="374" y="386" text-anchor="end" fill="rgba(255,255,255,.82)">PAROTTA <tspan fill="#FFD27A">+250</tspan></text>
+          <text x="374" y="396" text-anchor="end" fill="rgba(255,255,255,.3)" font-size="7.5">12:30</text>
+          <text x="374" y="445" text-anchor="end" fill="rgba(255,255,255,.82)">MARSHMLLW <tspan fill="#FFD27A">+75</tspan></text>
+          <text x="374" y="455" text-anchor="end" fill="rgba(255,255,255,.3)" font-size="7.5">15:00</text>
+          <text x="18" y="423" fill="rgba(255,255,255,.82)">STEPS <tspan fill="#9FFFC8">−57</tspan></text>
+          <text x="18" y="433" fill="rgba(255,255,255,.3)" font-size="7.5">14:00</text>
+        </g>
+
+        <!-- density note -->
+        <text x="195" y="624" text-anchor="middle" fill="rgba(159,255,200,.32)" font-size="8" letter-spacing="1.5">+ 17 MORE EVENTS LOGGED · SCROLL FOR ALL</text>
+
+        <!-- ╌╌ NOW: sweep line + live pen-head ╌╌ -->
+        <line x1="16" y1="503.5" x2="374" y2="503.5" stroke="rgba(159,255,200,.28)" stroke-width="0.8" stroke-dasharray="1 4"/>
+        <circle id="penGlow" cx="250" cy="504" r="13" fill="url(#gPen)"/>
+        <circle cx="250" cy="504" r="3.6" fill="#EFFFF6"/>
+        <text x="263" y="500" fill="rgba(207,255,227,.9)" font-size="8" letter-spacing="1">NOW · 17:30</text>
+        <text x="263" y="510" fill="rgba(159,255,200,.45)" font-size="7" letter-spacing="1">PEN ACTIVE</text>
+
+        <!-- burn / intake -->
+        <text x="18" y="646" fill="rgba(159,255,200,.4)" font-size="8" letter-spacing="2.5">← BURN</text>
+        <text x="374" y="646" text-anchor="end" fill="rgba(255,210,122,.4)" font-size="8" letter-spacing="2.5">INTAKE →</text>
+
+        <!-- ╌╌ FOOTER: balance gauge + readouts ╌╌ -->
+        <line x1="0" y1="654" x2="390" y2="654" stroke="rgba(159,255,200,.14)" stroke-width="1"/>
+        <text x="40" y="678" fill="rgba(159,255,200,.45)" font-size="7.5" letter-spacing="1.5">DEFICIT</text>
+        <text x="350" y="678" text-anchor="end" fill="rgba(255,210,122,.5)" font-size="7.5" letter-spacing="1.5">SURPLUS</text>
+        <!-- gauge track -->
+        <rect x="40" y="686" width="310" height="5" rx="2.5" fill="url(#gTrack)"/>
+        <line x1="195" y1="682" x2="195" y2="695" stroke="rgba(232,228,220,.45)" stroke-width="1"/>
+        <!-- needle at +245 on a ±500 scale -->
+        <polygon points="271,684 267,678 275,678" fill="#FFD27A"/>
+        <line x1="271" y1="684" x2="271" y2="693" stroke="#FFD27A" stroke-width="1.5"/>
+        <g fill="rgba(232,228,220,.3)" font-size="7" letter-spacing=".5">
+          <text x="40" y="706">−500</text>
+          <text x="195" y="706" text-anchor="middle">0</text>
+          <text x="350" y="706" text-anchor="end">+500</text>
+        </g>
+        <!-- readouts -->
+        <g text-anchor="middle">
+          <text x="62" y="734" fill="rgba(255,210,122,.85)" font-size="14" font-weight="600">1908</text>
+          <text x="62" y="746" fill="rgba(255,255,255,.3)" font-size="7" letter-spacing="2">IN</text>
+          <text x="150" y="734" fill="rgba(159,255,200,.85)" font-size="14" font-weight="600">1663</text>
+          <text x="150" y="746" fill="rgba(255,255,255,.3)" font-size="7" letter-spacing="2">OUT</text>
+          <text x="240" y="734" fill="#FFD27A" font-size="14" font-weight="600">+245</text>
+          <text x="240" y="746" fill="rgba(255,255,255,.3)" font-size="7" letter-spacing="2">NET</text>
+          <text x="328" y="734" fill="rgba(255,255,255,.75)" font-size="14" font-weight="600">92</text>
+          <text x="328" y="746" fill="rgba(255,255,255,.3)" font-size="7" letter-spacing="2">IN-LEFT</text>
+        </g>
+        <line x1="106" y1="722" x2="106" y2="744" stroke="rgba(159,255,200,.1)" stroke-width="1"/>
+        <line x1="195" y1="722" x2="195" y2="744" stroke="rgba(159,255,200,.1)" stroke-width="1"/>
+        <line x1="284" y1="722" x2="284" y2="744" stroke="rgba(159,255,200,.1)" stroke-width="1"/>
+      </svg>
+
+      <div class="scan"></div>
+      <div class="vig"></div>
+
+      <!-- numbered pins -->
+      <div class="pin" style="left:38%;top:30%">1</div>
+      <div class="pin" style="left:64%;top:66.5%">2</div>
+      <div class="pin" style="left:79%;top:51%">3</div>
+      <div class="pin" style="left:57%;top:39%">4</div>
+      <div class="pin" style="left:88%;top:44%">5</div>
+      <div class="pin" style="left:50%;top:90.5%">6</div>
+    </div>
+  </div>
+
+  <!-- ── legend: change → weakness it fixes ── -->
+  <div class="legend">
+    <div class="lh">WHAT CHANGED · AND WHY</div>
+
+    <div class="row"><div class="num">1</div><div class="t">
+      <div class="change">Phosphor bloom on the trace</div>
+      <div class="fix"><b>was:</b> a flat 1.2px hairline with no glow — the least luminous element of the most luminous metaphor. Now a layered halo + bright core, like a real CRT/oscilloscope line.</div>
+    </div></div>
+
+    <div class="row"><div class="num">2</div><div class="t">
+      <div class="change">A live pen-head at NOW, with a sweep line</div>
+      <div class="fix"><b>was:</b> the trace just stopped, dead, at the current time. The drama of a seismograph is the pen <i>writing</i> — so NOW is a pulsing point on the leading edge.</div>
+    </div></div>
+
+    <div class="row"><div class="num">3</div><div class="t">
+      <div class="change">Event spikes restored — deflection size = kcal</div>
+      <div class="fix"><b>was:</b> the metaphor was abandoned for a smooth meander (the unused <code>mag</code> field is the fossil of this). It read like a thermocline, not a seismograph. Each event now fires a sharp spike — intake right, burn left.</div>
+    </div></div>
+
+    <div class="row"><div class="num">4</div><div class="t">
+      <div class="change">Balance-tinted glow — mint deficit, amber surplus</div>
+      <div class="fix"><b>was:</b> the trace was always green, even deep in surplus, and green meant both "the recording" and "burn." The wash under the curve now warms to amber as you climb into surplus, cools to mint when you're under.</div>
+    </div></div>
+
+    <div class="row"><div class="num">5</div><div class="t">
+      <div class="change">Leader lines tie each label to its event</div>
+      <div class="fix"><b>was:</b> on a busy day, staggered labels chained downward and detached from their dots — and burn labels sat far left of dots that were far right. Thin leaders re-anchor name → moment.</div>
+    </div></div>
+
+    <div class="row"><div class="num">6</div><div class="t">
+      <div class="change">An integrated balance gauge (−500 … +500)</div>
+      <div class="fix"><b>was:</b> a generic four-column number strip. The needle now shows where you sit against neutral at a glance — the readouts stay underneath for the exact figures.</div>
+    </div></div>
+
+    <div class="foot">
+      Also fixed quietly: SVG no longer stretches the trace (was&nbsp;<code>preserveAspectRatio="none"</code>), the zero-axis now glows as a real datum, and overnight idle-drain reads as a cool drift before the day's first spike.<br>
+      Concept mockup · surplus day, 17:30 · the pulse and REC light are ambient, not decorative.
+    </div>
+  </div>
+
+</body>
+</html>
