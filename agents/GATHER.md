@@ -52,7 +52,12 @@ must be tiered as such. Freshness is a tier input, not an assumption.
 Perplexity is a Haiku-tier gatherer, never a verifier: superb recall and
 citation-surfacing, poor temporal/confidence judgment. Its findings feed the
 candidates queue and the findings block; its narrative never reaches WIRE or
-the LISTEN ladder.
+the LISTEN ladder. **Tooling:** `scripts/perplexity.mjs` enforces both
+disciplines mechanically — `decompose()` drops the prose and date-stamps every
+citation, flagging RECIRCULATION when the freshest dated primary is stale
+(`--selftest` proves it on the 17 Jul evacuation case). Key: `PERPLEXITY_API_KEY`
+(Actions secret; api.perplexity.ai is off the sandbox allowlist, so it runs in
+the runner, not the Claude Code session).
 
 ## Boundaries with the other layers
 
