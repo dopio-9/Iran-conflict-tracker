@@ -1,659 +1,523 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="water">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HORMUZ TRACKER — Dark Water / Pressure</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Azeret+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#05090d">
+<title>HORMUZ·LIVE</title>
 <style>
-  /* ─── THEME TOKENS ─────────────────────────────────────────── */
-  :root[data-theme="water"]{
-    --bg:#06121a; --surface:#0a1d29; --surface2:#0c2230; --line:#16374a; --grid:#0e2836;
-    --text:#cfe6ee; --bright:#ffffff; --mute:#5e8398;
-    --accent:#62d8e8; --alarm:#ff5e4d; --warn:#ffb347; --ok:#3ddc97; --hot:#ff5e4d; --info:#62d8e8;
-    --display:'Archivo',sans-serif; --mono:'Azeret Mono',monospace;
-    --gridshow:block; --tlabel:"SOUNDINGS"; --radar:1;
-  }
-  :root[data-theme="pressure"]{
-    --bg:#0d0c0a; --surface:#161410; --surface2:#1b1813; --line:#2a261e; --grid:transparent;
-    --text:#ece5d8; --bright:#fffaf0; --mute:#857c6a;
-    --accent:#ffae33; --alarm:#ff4f3d; --warn:#ffae33; --ok:#9dc08b; --hot:#ff4f3d; --info:#ffae33;
-    --display:'Space Grotesk',sans-serif; --mono:'Spline Sans Mono',monospace;
-    --gridshow:none; --tlabel:"READINGS"; --radar:0;
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{background:#03080b;display:flex;justify-content:center;padding:20px 8px;
-    font-family:var(--mono);transition:background .4s}
-  .phone{width:min(430px,100%);min-height:860px;background:var(--bg);color:var(--text);
-    box-shadow:0 24px 70px rgba(0,0,0,.7);overflow:hidden;position:relative;
-    background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
-    background-size:46px 46px;transition:background-color .4s,color .4s}
+:root{
+  --bg:#05090d; --surface:#0b1117; --surface2:#0e161e; --line:#16212b; --line2:#1e2c38;
+  --ink:#d9e4ec; --bright:#f4f9fc; --dim:#5b6a76; --faint:#38434d;
+  --flash:#5ea2ff; --pending:#ffb020; --ver:#34d399; --danger:#ff4a3d;
+  --disp:#ffb020; --lead:#8f7bff;
+  --mono:ui-monospace,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace;
+  --sans:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --disp-face:'Arial Black','Helvetica Neue',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{background:var(--bg)}
+body{
+  background:var(--bg); color:var(--ink); font-family:var(--sans);
+  font-size:14px; line-height:1.55; max-width:560px; margin:0 auto;
+  padding:0 14px calc(28px + env(safe-area-inset-bottom));
+  -webkit-font-smoothing:antialiased;
+}
+.mono{font-family:var(--mono)}
 
-  /* ─── HEADER ───────────────────────────────────────────────── */
-  .top{padding:14px 16px 10px;background:linear-gradient(180deg,color-mix(in srgb,var(--surface) 95%,transparent),color-mix(in srgb,var(--surface) 60%,transparent));
-    border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40;backdrop-filter:blur(6px)}
-  .toprow{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
-  .brand{font-size:9px;letter-spacing:.2em;color:var(--mute)}
-  h1{font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:.04em;margin-top:4px;line-height:1}
-  h1 b{color:var(--accent)}
-  .sub{font-size:9px;color:var(--mute);letter-spacing:.12em;margin-top:5px}
-  .daycol{display:flex;flex-direction:column;gap:4px;align-items:flex-end}
-  .day{font-family:var(--display);font-weight:800;font-size:11px;color:var(--bright);
-    background:var(--line);border-radius:4px;padding:3px 8px;white-space:nowrap}
-  .tchip{font-family:var(--mono);font-size:7.5px;font-weight:600;letter-spacing:.1em;color:var(--accent);
-    border:1px solid color-mix(in srgb,var(--accent) 40%,var(--line));border-radius:4px;padding:2px 6px;white-space:nowrap}
-  /* flip control */
-  .flip{display:flex;align-items:center;gap:0;margin-top:8px;border:1px solid var(--line);
-    border-radius:6px;overflow:hidden;width:fit-content}
-  .flip button{font-family:var(--mono);font-size:8.5px;font-weight:600;letter-spacing:.14em;
-    padding:5px 11px;border:none;cursor:pointer;background:transparent;color:var(--mute);transition:.2s}
-  .flip button.on{background:var(--accent);color:var(--bg)}
-  .flip .ico{font-size:10px;color:var(--mute);padding:0 6px}
+/* ── HERO: THREAT FIELD ─────────────────────────────────────────── */
+.hero{position:relative; padding:26px 4px 18px; overflow:hidden}
+.field{
+  position:absolute; inset:-60px -80px auto -80px; height:300px; pointer-events:none;
+  background:radial-gradient(ellipse 70% 60% at 50% 30%, var(--tcolor-glow) 0%, transparent 70%);
+  opacity:.55; animation:breathe var(--pulse,6s) ease-in-out infinite;
+}
+@keyframes breathe{0%,100%{opacity:.30}50%{opacity:.72}}
+.masthead{display:flex; justify-content:space-between; align-items:baseline; position:relative}
+.wordmark{font-family:var(--mono); font-size:11px; font-weight:700; letter-spacing:.28em; color:var(--dim)}
+.wordmark b{color:var(--ink)}
+.stamp{font-family:var(--mono); font-size:10px; color:var(--faint); letter-spacing:.06em; text-align:right}
+.threatword{
+  position:relative; font-family:var(--disp-face); font-weight:900; text-transform:uppercase;
+  font-size:clamp(52px,17vw,84px); line-height:.94; letter-spacing:-.01em;
+  color:var(--tcolor); margin-top:16px;
+  text-shadow:0 0 42px var(--tcolor-glow);
+}
+.threatmeta{position:relative; display:flex; align-items:center; gap:10px; margin-top:8px; font-family:var(--mono); font-size:11px; letter-spacing:.1em}
+.dir{font-weight:700; color:var(--tcolor)}
+.scale{display:flex; gap:4px; margin-left:auto}
+.scale i{width:16px; height:5px; border-radius:2px; background:var(--line2)}
+.scale i.on{background:var(--tcolor)}
+.uaeline{
+  position:relative; margin-top:16px; padding:13px 14px;
+  border:1px solid var(--line2); border-left:3px solid var(--tcolor);
+  background:linear-gradient(180deg,var(--surface2),var(--surface));
+  border-radius:0 8px 8px 0;
+}
+.uaeline .k{font-family:var(--mono); font-size:9px; font-weight:700; letter-spacing:.22em; color:var(--dim); margin-bottom:5px}
+.uaeline .v{font-size:15px; line-height:1.5; color:var(--bright); font-weight:500}
+.uaeline .act{margin-top:8px; font-size:13px; color:var(--tcolor); font-weight:600}
+.uaeline .act::before{content:"→ "}
+.chips{position:relative; display:flex; gap:8px; margin-top:12px; overflow-x:auto; scrollbar-width:none; padding-bottom:2px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex-shrink:0; display:flex; flex-direction:column; gap:1px; padding:7px 11px; border:1px solid var(--line2); border-radius:7px; background:var(--surface)}
+.chip .l{font-family:var(--mono); font-size:8px; letter-spacing:.18em; color:var(--dim); font-weight:700}
+.chip .d{font-family:var(--mono); font-size:12px; font-weight:700; color:var(--ink)}
+.chip.hot .d{color:var(--danger)}
+.chip.warm .d{color:var(--pending)}
 
-  /* thesis banner — level-driven (--pc set per level) */
-  .banner{display:flex;align-items:center;gap:9px;padding:9px 16px;--pc:var(--ok);
-    background:color-mix(in srgb,var(--pc) 12%,transparent);border-bottom:1px solid var(--line)}
-  .banner.warn{--pc:var(--warn)}
-  .banner.alarm{--pc:var(--alarm)}
-  .banner .pulse{width:8px;height:8px;border-radius:50%;background:var(--pc);flex-shrink:0;
-    box-shadow:0 0 0 0 color-mix(in srgb,var(--pc) 70%,transparent);animation:pulse 2.4s infinite}
-  @keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--pc) 55%,transparent)}70%{box-shadow:0 0 0 9px transparent}100%{box-shadow:0 0 0 0 transparent}}
-  .banner .b-txt{font-size:10px;line-height:1.4;color:var(--text)}
-  .banner .b-txt b{color:var(--pc);font-weight:600;letter-spacing:.04em}
+/* ── SIGNALS ────────────────────────────────────────────────────── */
+.lanehead{display:flex; align-items:baseline; gap:10px; margin:26px 2px 4px}
+.lanehead h2{font-family:var(--mono); font-size:12px; font-weight:700; letter-spacing:.3em; color:var(--bright)}
+.lanehead .live{width:7px;height:7px;border-radius:50%;background:var(--danger); animation:blink 1.4s steps(2) infinite; align-self:center}
+@keyframes blink{50%{opacity:.15}}
+.lanehead .sub{font-family:var(--mono); font-size:9px; color:var(--faint); letter-spacing:.08em; margin-left:auto}
+.ladder{font-family:var(--mono); font-size:9px; letter-spacing:.06em; color:var(--faint); margin:0 2px 12px}
+.ladder b{font-weight:600}
+.ladder .lf{color:var(--flash)} .ladder .lp{color:var(--pending)} .ladder .lv{color:var(--ver)} .ladder .ld{color:var(--disp)}
 
-  /* tabs */
-  .tabs{display:flex;gap:2px;padding:8px 12px 0;overflow-x:auto;scrollbar-width:none;
-    border-bottom:1px solid var(--line);background:var(--surface)}
-  .tabs::-webkit-scrollbar{display:none}
-  .tab{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.12em;
-    padding:7px 12px;border:none;cursor:pointer;background:transparent;color:var(--mute);
-    border-radius:5px 5px 0 0;white-space:nowrap;transition:.2s}
-  .tab.on{background:var(--accent);color:var(--bg)}
-  .tab .n{opacity:.6;font-size:8px;margin-left:3px}
+.sig{
+  border:1px solid var(--line); border-left-width:3px; border-radius:8px;
+  background:var(--surface); margin-bottom:10px; padding:12px 13px 11px; position:relative;
+}
+.sig.flash{border-left-color:var(--flash); animation:sigpulse 2.1s ease-in-out infinite}
+.sig.pending{border-left-color:var(--pending); animation:sigpulse 4.2s ease-in-out infinite}
+.sig.ver,.sig.ver2{border-left-color:var(--ver); animation:none}
+.sig.disputed{
+  border-left:none; animation:none;
+  border-top:3px solid transparent;
+  border-image:repeating-linear-gradient(45deg,var(--disp) 0 8px,#20160a 8px 16px) 1;
+  border-radius:0;
+}
+@keyframes sigpulse{0%,100%{box-shadow:inset 3px 0 0 -1px transparent}50%{box-shadow:-4px 0 14px -6px currentColor}}
+.sig.flash{color:var(--flash)} .sig.pending{color:var(--pending)}
+.sig *{color:var(--ink)}
+.sigtop{display:flex; align-items:center; gap:7px; flex-wrap:wrap; margin-bottom:7px}
+.tier{font-family:var(--mono); font-size:9px; font-weight:700; letter-spacing:.12em; padding:2px 7px; border-radius:4px}
+.tier.flash{color:var(--flash); border:1px solid var(--flash); background:transparent}
+.tier.pending{color:var(--pending); border:1px solid var(--pending); background:transparent}
+.tier.ver{color:var(--ver); border:1px solid var(--ver); background:transparent}
+.tier.ver2{color:#04140d; background:var(--ver); border:1px solid var(--ver)}
+.tier.disputed{color:#140e02; background:var(--disp); border:1px solid var(--disp)}
+.reg{font-family:var(--mono); font-size:9px; letter-spacing:.1em; color:var(--dim); font-weight:600}
+.age{font-family:var(--mono); font-size:10px; color:var(--dim); margin-left:auto}
+.age.live::before{content:""; display:inline-block; width:6px;height:6px;border-radius:50%;background:var(--flash); margin-right:5px; animation:blink 1.2s steps(2) infinite; vertical-align:1px}
+.claim{font-size:15px; line-height:1.45; color:var(--bright); font-weight:500}
+.sig.ver2 .claim{font-weight:600}
 
-  /* ─── CONTENT SHELL ────────────────────────────────────────── */
-  .wrap{padding:12px 14px 28px}
-  .panel{display:none}
-  .panel.on{display:block;animation:fade .3s}
-  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+/* convergence meter — the signature */
+.meter{display:flex; align-items:center; gap:6px; margin-top:10px}
+.slots{display:flex; gap:4px}
+.slot{display:flex; flex-direction:column; align-items:center; gap:3px}
+.slot i{width:26px; height:7px; border-radius:2px; background:var(--line2)}
+.slot.on i{background:var(--slotc,var(--ver)); box-shadow:0 0 8px -1px var(--slotc,var(--ver))}
+.slot em{font-style:normal; font-family:var(--mono); font-size:7px; letter-spacing:.08em; color:var(--faint)}
+.slot.on em{color:var(--dim)}
+.mlabel{font-family:var(--mono); font-size:9px; letter-spacing:.05em; color:var(--dim); margin-left:auto; text-align:right; line-height:1.4}
+.mlabel .up{color:var(--ver); font-weight:700}
+.mlabel .dn{color:var(--dim); font-weight:700}
+.mlabel .hold{color:var(--faint); font-weight:700}
 
-  .card{background:var(--surface);border:1px solid var(--line);border-radius:8px;margin-bottom:10px;overflow:hidden}
-  .card.flag{border-left:3px solid var(--hot)}
-  .chead{font-size:9px;letter-spacing:.18em;color:var(--mute);padding:8px 12px;
-    border-bottom:1px solid var(--line);background:var(--bg);display:flex;justify-content:space-between;align-items:center}
-  .chead .stamp{font-weight:600}
-  .cbody{padding:11px 13px}
+/* provenance & sources */
+.prov{display:flex; gap:6px; flex-wrap:wrap; margin-top:9px}
+.leadchip{font-family:var(--mono); font-size:8px; font-weight:700; letter-spacing:.12em; color:var(--lead); border:1px dashed var(--lead); border-radius:4px; padding:2px 7px}
+.stale{font-family:var(--mono); font-size:8px; font-weight:700; letter-spacing:.12em; color:var(--danger); border:1px solid var(--danger); border-radius:4px; padding:2px 7px; animation:blink 1.6s steps(2) infinite}
+.srcs{margin-top:9px; border-top:1px solid var(--line); padding-top:0; max-height:0; overflow:hidden; transition:max-height .25s ease, padding .25s ease}
+.sig.open .srcs{max-height:560px; padding-top:9px}
+.src{display:flex; gap:8px; align-items:baseline; font-family:var(--mono); font-size:10px; padding:3px 0; color:var(--dim)}
+.src b{color:var(--ink); font-weight:600; min-width:96px}
+.src .med{font-size:8px; letter-spacing:.1em; color:var(--faint); border:1px solid var(--line2); border-radius:3px; padding:1px 4px}
+.src .dt{margin-left:auto; color:var(--faint)}
+.src.staled b, .src.staled .dt{color:var(--danger)}
+.signote{margin-top:8px; font-size:12px; color:var(--dim); line-height:1.5}
+.tapline{font-family:var(--mono); font-size:8px; letter-spacing:.14em; color:var(--faint); margin-top:8px}
 
-  .tag{font-family:var(--mono);font-size:8px;font-weight:600;letter-spacing:.1em;
-    padding:2px 6px;border-radius:3px;display:inline-block}
-  .t-flash{background:color-mix(in srgb,var(--alarm) 18%,transparent);color:var(--alarm)}
-  .t-ver2{background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok)}
-  .t-ver{background:color-mix(in srgb,var(--ok) 11%,transparent);color:var(--ok)}
-  .t-pending{background:color-mix(in srgb,var(--warn) 14%,transparent);color:var(--warn)}
-  .t-disputed{background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent)}
-  .t-geo{background:color-mix(in srgb,var(--mute) 18%,transparent);color:var(--text)}
+/* disputed split */
+.vs{display:grid; grid-template-columns:1fr; gap:0; margin-top:8px}
+.vsblock{padding:9px 11px; border:1px solid var(--line2); background:var(--surface2)}
+.vsblock:first-child{border-radius:7px 7px 0 0; border-bottom:none}
+.vsblock:last-child{border-radius:0 0 7px 7px}
+.vsdivider{display:flex; align-items:center; gap:8px; font-family:var(--mono); font-size:9px; font-weight:700; letter-spacing:.2em; color:var(--disp); padding:4px 0}
+.vsdivider::before,.vsdivider::after{content:""; flex:1; height:1px; background:repeating-linear-gradient(90deg,var(--disp) 0 6px,transparent 6px 12px); opacity:.5}
+.vsblock .who{font-family:var(--mono); font-size:9px; letter-spacing:.1em; color:var(--dim); margin-bottom:3px}
+.vsblock .what{font-size:13px; color:var(--bright)}
+.dropped{font-family:var(--mono); font-size:9px; letter-spacing:.08em; color:var(--faint); text-align:center; margin:4px 0 2px; line-height:1.6}
 
-  /* ─── WIRE ─────────────────────────────────────────────────── */
-  .wirehead{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-  .wirehead .meta{font-size:9px;color:var(--mute);letter-spacing:.1em}
-  .filters{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:10px}
-  .fbtn{font-family:var(--mono);font-size:8.5px;letter-spacing:.08em;padding:4px 8px;border-radius:4px;
-    border:1px solid var(--line);background:transparent;color:var(--mute);cursor:pointer;transition:.15s}
-  .fbtn.on{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 15%,transparent);color:var(--accent)}
-  .ping{display:flex;gap:0;border:1px solid var(--line);border-radius:8px;margin-bottom:7px;
-    background:var(--surface);overflow:hidden;cursor:pointer;transition:.15s}
-  .ping:hover{border-color:color-mix(in srgb,var(--accent) 40%,var(--line))}
-  .ping.flashrail{border-left:3px solid var(--alarm)}
-  .ping.disprail{border-left:3px solid var(--accent)}
-  .ping.pendrail{border-left:3px solid var(--warn)}
-  .ping.verrail{border-left:3px solid var(--ok)}
-  .gutter{width:46px;flex-shrink:0;padding:11px 0;text-align:center;border-right:1px solid var(--line);
-    background:var(--bg)}
-  .gutter .g-t{font-size:9px;color:var(--text);font-weight:600}
-  .gutter .g-d{font-size:7.5px;color:var(--mute);letter-spacing:.06em;margin-top:2px}
-  .pbody{flex:1;padding:10px 12px;min-width:0}
-  .ptags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:5px;align-items:center}
-  .ptags .src{font-size:8px;color:var(--mute);letter-spacing:.08em;margin-left:auto}
-  .ptitle{font-size:12px;line-height:1.45;color:var(--bright)}
-  .ptitle b{font-weight:600}
-  .pfull{font-size:11px;line-height:1.6;color:var(--mute);margin-top:8px;
-    border-top:1px solid var(--line);padding-top:8px;display:none}
-  .ping.open .pfull{display:block}
-  .pfull .why{color:var(--text);display:block;margin-top:6px;font-style:italic}
+/* ── DEPTH ON DEMAND ────────────────────────────────────────────── */
+details{border:1px solid var(--line); border-radius:8px; background:var(--surface); margin-top:12px; overflow:hidden}
+summary{
+  list-style:none; cursor:pointer; padding:13px 14px;
+  display:flex; align-items:center; gap:10px;
+  font-family:var(--mono); font-size:11px; font-weight:700; letter-spacing:.24em; color:var(--dim);
+}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+"; margin-left:auto; font-size:14px; color:var(--faint); font-weight:400}
+details[open] summary::after{content:"–"}
+details[open] summary{color:var(--ink); border-bottom:1px solid var(--line)}
+summary .cnt{font-family:var(--mono); font-size:9px; color:var(--faint); letter-spacing:.1em; font-weight:400}
+.dbody{padding:4px 14px 14px}
+.item{padding:10px 0; border-bottom:1px solid var(--line)}
+.item:last-child{border-bottom:none}
+.item .h{display:flex; align-items:baseline; gap:8px; margin-bottom:3px; flex-wrap:wrap}
+.item .h b{font-family:var(--mono); font-size:11px; font-weight:600; color:var(--bright); letter-spacing:.03em}
+.item .h .st{font-family:var(--mono); font-size:8px; font-weight:700; letter-spacing:.1em; padding:2px 6px; border-radius:3px}
+.item .h .dt{font-family:var(--mono); font-size:9px; color:var(--faint); margin-left:auto}
+.item p{font-size:12.5px; color:var(--dim); line-height:1.55}
+.st.red{color:var(--danger); border:1px solid var(--danger)}
+.st.amber{color:var(--pending); border:1px solid var(--pending)}
+.st.green{color:var(--ver); border:1px solid var(--ver)}
+.st.grey{color:var(--dim); border:1px solid var(--line2)}
+.ledres{font-family:var(--mono); font-size:9px; font-weight:700; letter-spacing:.1em; margin-left:auto}
+.ledres.right{color:var(--ver)} .ledres.wrong{color:var(--danger)} .ledres.open{color:var(--pending)} .ledres.partial{color:var(--lead)}
 
-  /* ─── SIGNALS (live, unverified — speed before proof) ──────── */
-  .signals{border:1px dashed color-mix(in srgb,var(--warn) 55%,var(--line));border-radius:8px;
-    background:color-mix(in srgb,var(--warn) 6%,transparent);padding:9px 10px;margin-bottom:12px}
-  .signals-h{display:flex;align-items:center;gap:6px;margin-bottom:6px}
-  .signals-h .dotpulse{width:7px;height:7px;border-radius:50%;background:var(--warn);animation:pulse 1.8s ease-in-out infinite}
-  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}
-  .signals-h .lbl{font-family:var(--mono);font-size:8.5px;font-weight:600;letter-spacing:.16em;color:var(--warn)}
-  .signals-h .sub{font-family:var(--mono);font-size:7px;letter-spacing:.08em;color:var(--mute);margin-left:auto}
-  .sig{display:flex;gap:8px;padding:7px 0;border-top:1px solid color-mix(in srgb,var(--warn) 20%,var(--line))}
-  .sig:first-of-type{border-top:none}
-  .sig .rung{flex-shrink:0;font-family:var(--mono);font-size:7.5px;font-weight:600;letter-spacing:.05em;
-    padding:2px 5px;border-radius:3px;height:fit-content;
-    background:color-mix(in srgb,var(--warn) 16%,transparent);color:var(--warn)}
-  .sig.converging .rung{background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--accent)}
-  .sig.contradicted .rung{background:color-mix(in srgb,var(--alarm) 16%,transparent);color:var(--alarm)}
-  .sig-b{min-width:0}
-  .sig-claim{font-size:11px;line-height:1.45;color:var(--bright)}
-  .sig-claim b{font-weight:600}
-  .sig.contradicted .sig-claim{color:var(--mute)}
-  .sig-meta{font-family:var(--mono);font-size:7.5px;letter-spacing:.05em;color:var(--mute);margin-top:3px}
-  .sig-meta .st{font-weight:600}
-  .sig.open .st{color:var(--warn)} .sig.converging .st{color:var(--accent)} .sig.contradicted .st{color:var(--alarm)}
-  .sig-note{font-size:10px;line-height:1.45;color:var(--text);font-style:italic;margin-top:3px}
+/* scenarios */
+.scen{display:flex; gap:11px; align-items:flex-start; padding:11px 0; border-bottom:1px solid var(--line)}
+.scen:last-child{border-bottom:none}
+.scen .pct{font-family:var(--mono); font-weight:700; font-size:16px; min-width:46px; line-height:1.1}
+.scen.risk .pct{color:var(--pending)} .scen.tail .pct{color:var(--danger)} .scen.base .pct{color:var(--ver)}
+.scen .lab{font-size:13px; color:var(--bright); font-weight:600; margin-bottom:3px; line-height:1.35}
+.scen p{font-size:12px; color:var(--dim); line-height:1.5}
 
-  /* ─── NOW (signatures) ─────────────────────────────────────── */
-  .sig-water{display:block}
-  [data-theme="pressure"] .sig-water{display:none}
-  [data-theme="water"] .sig-pressure{display:none}
-  .channel .chart{position:relative;height:122px;background:var(--surface2)}
-  .land{position:absolute;background:#13242e}
-  [data-theme="pressure"] .land{background:#242019}
-  .land.iran{top:0;left:0;right:0;height:34px;clip-path:polygon(0 0,100% 0,100% 40%,72% 100%,38% 62%,0 78%)}
-  .land.oman{bottom:0;left:0;right:0;height:30px;clip-path:polygon(0 100%,100% 100%,100% 30%,55% 0,22% 55%,0 22%)}
-  .landlbl{position:absolute;font-size:8px;letter-spacing:.22em;color:var(--mute)}
-  .tss{position:absolute;left:0;right:0;top:52px;height:26px;
-    background:repeating-linear-gradient(90deg,color-mix(in srgb,var(--alarm) 16%,transparent) 0 14px,transparent 14px 26px);
-    border-top:1px dashed var(--alarm);border-bottom:1px dashed var(--alarm)}
-  .tsslbl{position:absolute;top:58px;width:100%;text-align:center;font-size:8.5px;letter-spacing:.24em;color:var(--alarm);font-weight:600}
-  .cor{position:absolute;left:6%;right:6%;height:0;border-top:1.5px dashed}
-  .cor.warn{border-color:var(--warn)} .cor.alarm{border-color:var(--alarm)} .cor.ok{border-color:var(--ok)}
-  .corlbl{position:absolute;font-size:6.5px;letter-spacing:.1em;font-weight:600}
-  .corlbl.warn{color:var(--warn)} .corlbl.alarm{color:var(--alarm)} .corlbl.ok{color:var(--ok)}
-  .vessel{position:absolute;width:7px;height:7px;border-radius:50%;border:1.5px solid var(--warn)}
-  .vessel.uturn::after{content:"⮌";position:absolute;left:9px;top:-6px;color:var(--warn);font-size:10px}
-  .sweep{position:absolute;inset:0;background:conic-gradient(from 0deg at 84% 50%,color-mix(in srgb,var(--accent) 12%,transparent),transparent 70deg);animation:rot 7s linear infinite;mix-blend-mode:screen}
-  @keyframes rot{to{transform:rotate(360deg)}}
+/* escalation trace */
+.tracewrap{padding:6px 0 2px}
+.tracecap{font-family:var(--mono); font-size:9px; letter-spacing:.12em; color:var(--dim); display:flex; justify-content:space-between; margin-bottom:6px}
+.tracecap b{color:var(--danger); font-weight:700}
+svg.trace{width:100%; height:82px; overflow:visible; display:block}
+svg.trace .base{fill:none; stroke:var(--dim); stroke-width:1.4; opacity:.7}
+svg.trace .hot{fill:none; stroke:var(--danger); stroke-width:2.2}
 
-  /* pressure dials */
-  .dials{display:flex}
-  .dial{flex:1;padding:14px 6px 12px;text-align:center;border-right:1px solid var(--line)}
-  .dial:last-child{border-right:none}
-  .needlebox{height:28px;position:relative;margin-bottom:7px}
-  .arc{position:absolute;left:50%;bottom:0;width:46px;height:23px;transform:translateX(-50%);
-    border:2px solid var(--line);border-bottom:none;border-radius:46px 46px 0 0}
-  .pin{position:absolute;left:50%;bottom:0;width:2px;height:21px;background:var(--hot);transform-origin:bottom center}
-  .dial .dv{font-family:var(--display);font-weight:700;font-size:11px;letter-spacing:.04em}
-  .dial .dl{font-size:8px;letter-spacing:.12em;color:var(--mute);display:block;margin-top:2px}
+.recallrule{font-size:12px; color:var(--dim); line-height:1.6; padding:10px 0 4px}
+.recallrule b{color:var(--lead); font-family:var(--mono); font-size:10px; letter-spacing:.06em}
+.recallrule .ok{color:var(--ver)}
 
-  /* shared gauges row */
-  .gauges{display:flex;border-top:1px solid var(--line)}
-  .gauge{flex:1;padding:10px 5px;text-align:center;border-right:1px solid var(--line)}
-  .gauge:last-child{border-right:none}
-  .gauge .gv{font-family:var(--display);font-weight:800;font-size:15px}
-  .gauge .gl{font-size:8px;letter-spacing:.12em;color:var(--mute);display:block;margin-top:2px}
-  .c-alarm{color:var(--alarm)} .c-warn{color:var(--warn)} .c-ok{color:var(--ok)} .c-accent{color:var(--accent)} .c-mute{color:var(--mute)}
+/* footer */
+.foot{margin-top:22px; font-family:var(--mono); font-size:9px; color:var(--faint); letter-spacing:.06em; line-height:1.8; text-align:center}
+.foot b{color:var(--dim)}
 
-  .statline{display:flex;align-items:flex-start;gap:9px;padding:9px 0;border-bottom:1px solid var(--line)}
-  .statline:last-child{border-bottom:none}
-  .statline .dot{width:8px;height:8px;border-radius:50%;margin-top:4px;flex-shrink:0}
-  .statline .sl-k{font-size:11px;color:var(--bright);font-weight:600}
-  .statline .sl-v{font-size:10.5px;color:var(--mute);line-height:1.5;margin-top:2px}
-
-  /* ─── VERIFY ───────────────────────────────────────────────── */
-  .claimsrc{display:flex;align-items:center;gap:9px;padding:11px 13px;background:var(--surface2);border-bottom:1px solid var(--line)}
-  .avatar{width:30px;height:30px;border-radius:50%;background:var(--line);display:flex;align-items:center;justify-content:center;
-    font-family:var(--display);font-size:8px;font-weight:800;color:var(--text);flex-shrink:0;letter-spacing:.02em}
-  .claimsrc .who{font-size:11px;color:var(--bright);font-weight:600}
-  .claimsrc .handle{font-size:9px;color:var(--mute)}
-  .claimsrc .reach{margin-left:auto;text-align:right;font-size:8.5px;color:var(--mute);letter-spacing:.08em}
-  .claimquote{padding:11px 13px;font-size:11px;line-height:1.55;color:var(--text);font-style:italic;border-bottom:1px solid var(--line)}
-  .verdict{padding:0 13px}
-  .vrow{display:flex;gap:10px;padding:11px 0;border-bottom:1px solid var(--line)}
-  .vrow:last-child{border-bottom:none}
-  .vbadge{flex-shrink:0;width:74px;font-size:8px;font-weight:600;letter-spacing:.08em;text-align:center;
-    padding:4px 0;border-radius:4px;height:fit-content}
-  .v-confirmed{background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok)}
-  .v-disputed{background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--accent)}
-  .v-unverified{background:color-mix(in srgb,var(--alarm) 16%,transparent);color:var(--alarm)}
-  .v-partial{background:color-mix(in srgb,var(--warn) 16%,transparent);color:var(--warn)}
-  .vtext{flex:1}
-  .vtext .vc{font-size:11px;color:var(--bright);line-height:1.4}
-  .vtext .vn{font-size:10px;color:var(--mute);line-height:1.5;margin-top:4px}
-  .vtext .vs{font-size:8.5px;color:var(--mute);letter-spacing:.08em;margin-top:5px}
-  .vtext .vs b{color:var(--ok);font-weight:600}
-
-  /* ─── NEXT ─────────────────────────────────────────────────── */
-  .market{display:flex;align-items:center;gap:12px;padding:12px 13px}
-  .market .mnum{font-family:var(--display);font-weight:800;font-size:26px;color:var(--accent);line-height:1}
-  .market .mtxt{font-size:10px;color:var(--mute);line-height:1.5}
-  .scen{border:1px solid var(--line);border-radius:8px;margin-bottom:8px;overflow:hidden;background:var(--surface)}
-  .scenhead{display:flex;align-items:center;gap:8px;padding:9px 12px;border-bottom:1px solid var(--line)}
-  .scenhead .prob{font-family:var(--display);font-weight:800;font-size:16px}
-  .scenhead .lab{font-size:11px;font-weight:600;color:var(--bright);letter-spacing:.02em}
-  .scenhead .kind{font-size:8px;letter-spacing:.12em;padding:2px 6px;border-radius:3px;margin-left:auto}
-  .k-base{background:color-mix(in srgb,var(--ok) 14%,transparent);color:var(--ok)}
-  .k-risk{background:color-mix(in srgb,var(--warn) 14%,transparent);color:var(--warn)}
-  .k-tail{background:color-mix(in srgb,var(--alarm) 14%,transparent);color:var(--alarm)}
-  .scen p{font-size:11px;line-height:1.6;color:var(--mute);padding:10px 12px}
-  .uaebox{background:color-mix(in srgb,var(--accent) 8%,transparent);border:1px solid color-mix(in srgb,var(--accent) 30%,var(--line))}
-  .uaebox .chead{color:var(--accent)}
-  .uaebox p{color:var(--text)}
-  .triggers .trow{display:flex;gap:9px;padding:9px 0;border-bottom:1px solid var(--line);align-items:flex-start}
-  .triggers .trow:last-child{border-bottom:none}
-  .triggers .tmark{font-family:var(--display);font-size:9px;font-weight:800;color:var(--accent);margin-top:2px;min-width:16px}
-  .triggers .tt{font-size:11px;color:var(--text);line-height:1.45}
-  .triggers .tt b{color:var(--bright);font-weight:600}
-
-  /* ─── PATTERNS ─────────────────────────────────────────────── */
-  .pat{border:1px solid var(--line);border-radius:8px;margin-bottom:8px;background:var(--surface);overflow:hidden}
-  .pathead{display:flex;align-items:center;gap:8px;padding:9px 12px;border-bottom:1px solid var(--line);cursor:pointer}
-  .pathead .pname{font-size:11px;font-weight:600;color:var(--bright);flex:1;line-height:1.35}
-  .pstate{font-size:8px;font-weight:600;letter-spacing:.1em;padding:3px 7px;border-radius:3px;flex-shrink:0}
-  .ps-CONFIRMED{background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok)}
-  .ps-ACTIVE{background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--accent)}
-  .ps-STRESSED{background:color-mix(in srgb,var(--warn) 16%,transparent);color:var(--warn)}
-  .ps-BROKEN{background:color-mix(in srgb,var(--alarm) 16%,transparent);color:var(--alarm)}
-  .ps-HYPOTHESIS{background:color-mix(in srgb,var(--mute) 18%,transparent);color:var(--text)}
-  .patbody{padding:10px 12px;display:none}
-  .pat.open .patbody{display:block}
-  .patrule{font-size:10.5px;color:var(--text);line-height:1.55;font-style:italic;margin-bottom:7px}
-  .patev{font-size:10px;color:var(--mute);line-height:1.55}
-  .pathist{margin-top:9px;border-top:1px solid var(--line);padding-top:7px}
-  .phrow{display:flex;gap:8px;padding:3px 0;font-size:9px;align-items:baseline}
-  .phrow .phd{color:var(--mute);min-width:56px;letter-spacing:.06em}
-  .phrow .phs{font-weight:600;min-width:78px}
-  .phrow .phn{color:var(--mute);flex:1}
-  /* forecast ledger */
-  .ledset{border:1px solid var(--line);border-radius:8px;margin-bottom:8px;background:var(--surface);overflow:hidden}
-  .ledhead{display:flex;justify-content:space-between;padding:8px 12px;border-bottom:1px solid var(--line);
-    font-size:9px;letter-spacing:.14em;color:var(--mute);background:var(--bg)}
-  .lrow{display:flex;gap:9px;padding:9px 12px;border-bottom:1px solid var(--line);align-items:flex-start}
-  .lrow:last-child{border-bottom:none}
-  .lrow .lprob{font-family:var(--display);font-weight:800;font-size:13px;min-width:38px}
-  .lrow .llab{flex:1;font-size:10.5px;color:var(--bright);line-height:1.4}
-  .lrow .llab .lesson{display:block;font-size:9.5px;color:var(--mute);margin-top:4px;line-height:1.5;font-style:italic}
-  .obadge{font-size:8px;font-weight:600;letter-spacing:.1em;padding:3px 7px;border-radius:3px;flex-shrink:0}
-  .o-HIT{background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok)}
-  .o-MISS{background:color-mix(in srgb,var(--alarm) 16%,transparent);color:var(--alarm)}
-  .o-PARTIAL{background:color-mix(in srgb,var(--warn) 16%,transparent);color:var(--warn)}
-  .o-OPEN{background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--accent)}
-
-  /* ─── SOURCES ──────────────────────────────────────────────── */
-  .srch{width:100%;font-family:var(--mono);font-size:10px;color:var(--text);background:var(--surface);
-    border:1px solid var(--line);border-radius:6px;padding:8px 10px;margin-bottom:8px;outline:none}
-  .srch::placeholder{color:var(--mute)}
-  .srch:focus{border-color:var(--accent)}
-  .srow{display:flex;gap:9px;padding:8px 0;border-bottom:1px solid var(--line);align-items:flex-start}
-  .srow:last-child{border-bottom:none}
-  .stier{flex-shrink:0;width:88px;font-size:7.5px;font-weight:600;letter-spacing:.08em;text-align:center;
-    padding:3px 0;border-radius:3px;height:fit-content}
-  .st-T2{background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok)}
-  .st-T1{background:color-mix(in srgb,var(--warn) 14%,transparent);color:var(--warn)}
-  .st-T1E{background:color-mix(in srgb,var(--accent) 18%,transparent);color:var(--accent)}
-  .st-T1U{background:color-mix(in srgb,var(--alarm) 16%,transparent);color:var(--alarm)}
-  .st-SPEC{background:color-mix(in srgb,var(--accent) 10%,transparent);color:var(--accent)}
-  .st-META{background:color-mix(in srgb,var(--mute) 18%,transparent);color:var(--text)}
-  .sinfo{flex:1;min-width:0}
-  .sname{font-size:10.5px;color:var(--bright);font-weight:600}
-  .smeta{font-size:8px;color:var(--mute);letter-spacing:.06em;margin-top:2px}
-  .snote{font-size:9px;color:var(--mute);line-height:1.5;margin-top:3px}
-
-  /* ─── CONTEXT (trace) ──────────────────────────────────────── */
-  .tracewrap{padding:12px 0 6px}
-  .tracelbl{display:flex;justify-content:space-between;padding:0 13px 8px;font-size:8.5px;letter-spacing:.16em;color:var(--mute)}
-  .tracelbl b{color:var(--hot)}
-  svg.trace{display:block;width:100%}
-  .gl{stroke:var(--line);stroke-width:.5;stroke-dasharray:2 4}
-  .sig-line{fill:none;stroke:var(--text);stroke-width:1.4;stroke-linejoin:round;opacity:.65}
-  .sig-hot{fill:none;stroke:var(--hot);stroke-width:1.7;filter:drop-shadow(0 0 4px color-mix(in srgb,var(--hot) 60%,transparent))}
-  .evt{font-size:7px;fill:var(--mute);letter-spacing:.08em}
-  .evtdot{fill:var(--hot)}
-  .nowline{stroke:var(--hot);stroke-width:1;stroke-dasharray:3 3}
-  .axis{display:flex;justify-content:space-between;padding:5px 13px 10px;font-size:8px;letter-spacing:.16em;color:var(--mute)}
-  .histp{font-size:11px;line-height:1.7;color:var(--text);padding:11px 13px}
-  .histp b{color:var(--bright);font-weight:600}
-  .miniline{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);font-size:10.5px}
-  .miniline:last-child{border-bottom:none}
-  .miniline .mk{color:var(--mute);letter-spacing:.06em;white-space:nowrap}
-  .miniline .mv{color:var(--text);text-align:right}
-
-  .foot{text-align:center;font-size:8.5px;letter-spacing:.14em;color:var(--mute);padding:14px 0 6px}
-  .loaderr{padding:30px 16px;text-align:center;font-size:11px;line-height:1.7;color:var(--warn)}
-  :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-  @media (prefers-reduced-motion:reduce){.sweep{animation:none}.banner .pulse{animation:none}.panel.on{animation:none}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important; transition:none !important}
+}
 </style>
 </head>
 <body>
-<div class="phone">
-  <!-- HEADER -->
-  <div class="top">
-    <div class="toprow">
-      <div>
-        <div class="brand" id="brand">GULF DESK</div>
-        <h1>HORMUZ<b>·</b>LIVE</h1>
-        <div class="sub" id="subline">LOADING…</div>
-      </div>
-      <div class="daycol">
-        <div class="day" id="daychip">—</div>
-        <div class="tchip" id="tchip" style="display:none"></div>
-      </div>
-    </div>
-    <div class="flip">
-      <button id="fw" class="on" onclick="setTheme('water')">DARK WATER</button>
-      <span class="ico">⇄</span>
-      <button id="fp" onclick="setTheme('pressure')">PRESSURE</button>
-    </div>
-  </div>
 
-  <!-- THESIS BANNER -->
-  <div class="banner" id="banner" style="display:none">
-    <span class="pulse"></span>
-    <div class="b-txt" id="bannertxt"></div>
-  </div>
+<!-- ═══════════════════════════════════════════════════════════════════
+     THE DATA FILE. This block is the entire update surface.
+     Edit it (or paste a fresh blob over it); nothing else ever changes.
+     ═══════════════════════════════════════════════════════════════════ -->
+<script id="data" type="application/json">
+{
+  "meta": { "updated": "19 JUL 2026 · 16:20 GST", "day": 141, "phase": "INFRASTRUCTURE + NUCLEAR-SITE WAR" },
 
-  <!-- TABS -->
-  <div class="tabs" id="tabs"></div>
+  "threat": {
+    "level": 3,
+    "word": "SEVERE",
+    "direction": "▲ WORSENING",
+    "uae_line": "The war crossed two new lines today — the US struck an Iranian nuclear power site (Darkhovin), and two US troops were killed in Jordan, driving an eighth straight strike night. Iran has re-issued a conditional threat naming Dubai/Abu Dhabi airports and Fujairah/Jebel Ali. UAE soil is still untouched, but the exemption is being tested harder than at any point in the war.",
+    "action": "No change to daily movement yet. Keep fuel topped and ~2 weeks of essentials. Watch NCEMA / UAE MOD wording — not viral posts — and Red Sea AIS for Bab el-Mandeb. Verify before reacting to any 'evacuate tonight' claim."
+  },
 
-  <!-- CONTENT -->
-  <div class="wrap">
-    <div class="panel on" id="p-wire"></div>
-    <div class="panel" id="p-now"></div>
-    <div class="panel" id="p-verify"></div>
-    <div class="panel" id="p-next"></div>
-    <div class="panel" id="p-patterns"></div>
-    <div class="panel" id="p-context"></div>
-    <div class="panel" id="p-sources"></div>
-    <div class="foot" id="foot"></div>
-  </div>
-</div>
+  "strait": { "status": "BLOCKADED", "hot": true, "detail": "US blockade enforced by fire · transits collapsed · Brent ~$87" },
+
+  "deadlines": [
+    { "label": "MOU STATUS", "date": "SUSPENDED", "hot": true,  "note": "Iran suspended commitments 18 Jul" },
+    { "label": "BAB-M TRIGGER", "date": "MET", "hot": true, "note": "power/nuclear sites struck" },
+    { "label": "BRENT", "date": "~$87", "hot": false, "note": "+10% on the week, 1-month high" }
+  ],
+
+  "signals": [
+    {
+      "id": "s-darkhovin", "tier": "ver", "region": "KHUZESTAN · SW IRAN", "age": "~4h", "live": true,
+      "claim": "US struck the under-construction Darkhovin nuclear power plant with multiple projectiles — Iran's atomic agency (AEOI) condemns it as the first US hit on an Iranian nuclear power site.",
+      "momentum": "gaining",
+      "via_recall": true,
+      "sources": [
+        { "name": "Tasnim / Mehr", "medium": "STATE", "lang": "FA", "date": "19 Jul 2026" },
+        { "name": "AEOI statement", "medium": "OFF", "lang": "FA/EN", "date": "19 Jul 2026" },
+        { "name": "Middle East Eye", "medium": "WIRE", "lang": "EN", "date": "19 Jul 2026" },
+        { "name": "France 24 (‘near’)", "medium": "WIRE", "lang": "EN", "date": "19 Jul 2026" }
+      ],
+      "note": "Held at VER, not VER2: every source traces to one origin — Iranian state. Western wires RELAY Iran's claim, they do not independently confirm it, so they are not a second medium for the ladder. Extent is disputed — Tasnim says a direct multi-projectile hit, France 24 says 'near' the plant; no CENTCOM statement or independent battle-damage assessment yet. Iran condemning damage to its own flagship reactor makes the fact of a strike high-confidence; the details are not. Recall lane and web search both surfaced it."
+    },
+    {
+      "id": "s-babmandeb", "tier": "pending", "region": "RED SEA", "age": "3d", "live": true,
+      "claim": "Iran reportedly ordered the Houthis to close Bab el-Mandeb if its power grid is struck — that trigger is now met. EU is reinforcing its Red Sea mission. No closure executed.",
+      "momentum": "holding",
+      "via_recall": true,
+      "sources": [
+        { "name": "Reuters exclusive", "medium": "WIRE", "lang": "EN", "date": "16 Jul 2026" },
+        { "name": "FDD / Long War Jrnl", "medium": "OSINT", "lang": "EN", "date": "17 Jul 2026" },
+        { "name": "Haaretz", "medium": "WIRE", "lang": "EN", "date": "16 Jul 2026" },
+        { "name": "Euronews (EU mission)", "medium": "WIRE", "lang": "EN", "date": "17 Jul 2026" }
+      ],
+      "note": "Better-sourced than a week ago, but the wire versions trace to one Reuters 'sources close to the Houthis' exclusive — converging, not independently confirmed. Trigger condition (Iranian power/nuclear sites hit) is satisfied; still no Houthi attack, no UKMTO advisory, no Red Sea AIS shift. The gap between met-condition and non-execution is the signal — watch AIS, not statements."
+    },
+    {
+      "id": "s-uae-evac", "tier": "disputed", "region": "UAE", "age": "~1d", "live": true,
+      "claim": "Iran's Fars re-issues a threat naming Dubai/Abu Dhabi airports and Fujairah/Jebel Ali ports for evacuation if strikes on Iranian infrastructure continue. Aggregators frame it as 'evacuate tonight.'",
+      "momentum": "holding",
+      "via_recall": true,
+      "conflict": {
+        "a": { "who": "Fars (semi-official) · STATE · FA/EN · 18 Jul, amplified 19 Jul", "what": "If US strikes on Iranian civilian infrastructure continue, the airports of Dubai and Abu Dhabi and the ports of Fujairah and Jebel Ali 'must be immediately evacuated.'" },
+        "b": { "who": "UAE Foreign Ministry · OFF · EN · 19 Jul", "what": "Calls for the utmost restraint to avoid dangerous repercussions; no evacuation ordered, daily life and flights continuing normally." }
+      },
+      "sources": [],
+      "note": "LEARNING UPDATE: on 17 Jul we filed the earlier version as pure recirculation of a 14 Mar warning and let it expire. A fresh Fars statement did follow (18 Jul, amplified through 19 Jul) — so it is shown as a live dispute, not expired. DATE-STAMP CHECK (recall lane + web search agree): the evac-specific primaries are dated 18 Jul and carried by aggregators (247ureports, dailybaku, EurasianTimes); the Fars origin post is undated; 19 Jul citations are general war coverage, not the evac order. So the threat is real but CONDITIONAL ('if US strikes continue'), aggregator-amplified into 'evacuate tonight,' and the UAE is not evacuating. Rendered as conflict — never averaged."
+    }
+  ],
+  "dropped_note": "1 signal dropped: IRGC 'mined-route' claim (13 Jul) expired — 6 days, no UKMTO/BIMCO mine advisory, no mine strike across 7–13 transits/day. Dead rumors leave no graveyard.",
+
+  "verified": [
+    { "t": "US troops killed in Jordan; 8th strike night", "st": "CONFIRMED", "stc": "red", "dt": "18 Jul",
+      "p": "Two US service members were killed and one is missing after an Iranian attack in Jordan — the first US military fatalities from Iranian fire since March. CENTCOM launched an eighth consecutive night of strikes to 'swiftly punish' Iran. This is the hinge event of the cycle: it hardens the US posture and removes most of the off-ramp." },
+    { "t": "Iran suspends the MOU", "st": "CONFIRMED", "stc": "red", "dt": "18 Jul",
+      "p": "Tehran says it is suspending its commitments to the June memorandum; the Supreme Leader derided Trump's signature as 'worthless.' The diplomatic framework that underpinned the toll-free-window countdown is now formally in abeyance — both sides accuse the other of violating it." },
+    { "t": "US blockade of Iranian ports — kinetic", "st": "ACTIVE", "stc": "amber", "dt": "15 Jul",
+      "p": "Naval blockade reinstated 14 Jul and enforced by fire: the tanker M/T Belma was disabled off Kharg Island (Hellfires to the smokestack), two other vessels turned back. Shipping now faces two competing enforcement regimes — Iran's 'unapproved route' fire and the US blockade — which is why transits keep falling even with US escorts on offer." },
+    { "t": "GCC civilian infrastructure hit — twice", "st": "CONFIRMED", "stc": "red", "dt": "19 Jul",
+      "p": "Kuwait's combined power-and-desalination station was struck 17 Jul ('widespread damage'); Kuwait was hit again 18–19 Jul with a Kuwait Petroleum oil facility damaged and workers injured. First confirmed hits on GCC civilian utilities of the war — the target class that matters most to every Gulf resident. UAE territory remains untouched." },
+    { "t": "Casualty toll rising", "st": "IRAN CLAIM", "stc": "amber", "dt": "18 Jul",
+      "p": "Iran says US strikes have killed at least 50 and wounded more than 500 this month. Figures are single-sourced to Iranian officials — treat the numbers as claims; the escalation they describe is corroborated." },
+    { "t": "Signal-before-act doctrine broken", "st": "PATTERN BREAK", "stc": "red", "dt": "13 Jul",
+      "p": "Iran previously threatened before acting. Tankers were fired on without warning; escalation can now arrive with no public signal first. Prior low-probability reassurances (e.g. Bab el-Mandeb 'signalling only') are correspondingly less reliable." }
+  ],
+
+  "triggers": [
+    { "t": "Any Houthi move on Bab el-Mandeb", "st": "TRIGGER MET", "stc": "red", "dt": "watch AIS",
+      "p": "The single highest-impact observable now. The reported order's condition is satisfied; execution converts one chokepoint into two. Watch UKMTO advisories and Red Sea AIS — not statements." },
+    { "t": "A third GCC infrastructure strike", "st": "WATCH", "stc": "amber", "dt": "watch",
+      "p": "Two Kuwaiti utility/energy hits made GCC infrastructure a demonstrated target class. A hit on a second state's water/power confirms a deliberate campaign, not a Kuwait-specific one — and narrows the UAE exemption." },
+    { "t": "UAE territorial exemption", "st": "HOLDING", "stc": "amber", "dt": "day 11",
+      "p": "Iran has hit Bahrain, Kuwait, Qatar, Oman, Jordan and Syria while leaving UAE soil untouched. Any strike inside UAE borders — or a shift in NCEMA/UAE MOD language from solidarity to self-defence — is the local escalation that matters. The Fars evac threat tests it rhetorically, not yet kinetically." },
+    { "t": "Israel's two trip-wires", "st": "OUT", "stc": "green", "dt": "day 11",
+      "p": "Israel re-enters only on a direct Iranian attack on Israel or a US request. Iran is visibly working to avoid both; a stray hit on Israeli-linked assets is the mistake that widens the war." },
+    { "t": "A formal negotiation venue", "st": "ABSENT", "stc": "amber", "dt": "past 24 Jul kills base case",
+      "p": "With the MOU suspended and US troops killed, a table with a date is the only real de-escalation signal. Its continued absence locks in the attrition path." }
+  ],
+
+  "scenarios": [
+    { "prob": "50%", "lab": "Attrition deepens — nightly strikes, kinetic blockade, no talks, strait stays contested", "kind": "risk",
+      "p": "The modal outcome. Eight strike nights, a blockade enforced by fire, retaliation widening to Syria and GCC utilities, and no diplomatic table. Nothing in the last 96h points to resolution. Falsifier: a formal venue is announced, or strike tempo drops for 48+ hours." },
+    { "prob": "35%", "lab": "Horizontal spread — Bab el-Mandeb executes, more GCC infrastructure, or Israel is drawn in", "kind": "tail",
+      "p": "Raised from 30%. The Darkhovin nuclear-site strike and the US fatalities both push escalation; the Houthi trigger is met; GCC utilities are proven targets. Any one of the three converts a one-chokepoint crisis into a regional-systems crisis. Falsifier: Red Sea traffic unaffected 72h AND no further infrastructure strikes either side." },
+    { "prob": "15%", "lab": "Exhaustion off-ramp — a channel converts to a table and tempo drops", "kind": "base",
+      "p": "Downgraded from 20%. The MOU is suspended and two US troops are dead — the political room for a quiet deal just shrank. Still possible if both capitals prefer a messy deal to an open-ended grind, but the track record is eight nights of strikes and no session. Falsifier: a week with no venue announced." }
+  ],
+
+  "ledger": [
+    { "call": "The 20% Hormuz toll was rhetoric; the blockade is the real policy", "made": "14 Jul", "res": "RIGHT", "p": "Toll floated and dropped within 24h; blockade + escorts persisted and went kinetic. Rule banked: separate Trump's maximal announcements from operational policy." },
+    { "call": "IRGC 'mined-route' claim is uncorroborated and will expire", "made": "13 Jul", "res": "RIGHT", "p": "Six days on: no UKMTO/BIMCO advisory, no mine strike across continued transits. Listener lifecycle worked — logged, held at pending, expired on TTL." },
+    { "call": "Bab el-Mandeb threat is signalling; low near-term execution", "made": "08 Jul", "res": "OPEN", "p": "Trigger condition now met and reporting has broadened, yet still unexecuted. Confidence formally reduced after the 13 Jul pattern break; not closed." },
+    { "call": "UAE 'evacuate tonight' warning is pure recirculation", "made": "17 Jul", "res": "PARTIAL", "p": "The alarm was right — no evacuation occurred. But 'pure recirculation' was too dismissive: a fresh Fars statement followed on 19 Jul. Lesson banked: downgrade a reissue to disputed and keep watching; do not expire it as settled." },
+    { "call": "Attrition is the modal outcome (50%)", "made": "17 Jul", "res": "OPEN", "p": "Holding — eight strike nights and no table since. Tracked against the falsifier (formal venue / 48h tempo drop)." },
+    { "call": "Israel stays out absent an Iranian mistake or US request", "made": "10 Jul", "res": "OPEN", "p": "Holding at day 11. Iran's targeting discipline continues to spare Israel while hitting six other states." }
+  ],
+
+  "patterns": [
+    { "t": "Khamenei Telegram > diplomatic statements", "p": "The Supreme Leader's channel is the only reliable predictor of IRGC action (T1-ELEVATED). Foreign-ministry and MOU language is narrative, not intent (T1-UNRELIABLE) — proven again by the MOU suspension coming from the top while diplomats stayed vague." },
+    { "t": "Target-class ratchet", "p": "The set of 'things that get hit' only widens: US bases → dual-use infrastructure → civilian utilities (Kuwait water/power) → a nuclear power site (Darkhovin). Each rung makes the next one cheaper. Track the ratchet, not any single strike." },
+    { "t": "Single-thread → hold at pending", "p": "A claim carried by one reporting thread or 'sources close to X' does not climb the ladder until an independent medium or official word lands. Wire outlets relaying one exclusive are convergence, not confirmation." },
+    { "t": "Aggregator 'tonight / imminent' = synthesis hype", "p": "A conditional threat gets dressed as an imminent order by aggregators. The defence is the DATE: check the freshest primary before believing. Perplexity's date-stamped recall exists to catch exactly this recirculation failure." },
+    { "t": "Reissue ≠ recirculation (new, 19 Jul)", "p": "Banked from the UAE evac case: an old warning can be genuinely re-issued. Do not expire such an item as 'just recirc' — hold it as a live dispute and keep the date discipline on each new primary." }
+  ],
+
+  "trace": {
+    "label": "ESCALATION TRACE",
+    "days": "141 DAYS",
+    "tail": "▲ NIGHT 8 · NUCLEAR-SITE STRIKE",
+    "base": "0,96 12,14 40,44 80,40 120,52 160,44 210,60 258,38 306,74 340,60 360,42 380,30 392,16",
+    "hot": "392,16 396,12 400,6"
+  },
+
+  "practical": [
+    { "t": "Fuel", "p": "Keep vehicles above half through the week. Pump prices reprice after oil spikes; Brent is up ~10% and at a one-month high." },
+    { "t": "Food & water", "p": "Two weeks of staples. Gulf desalination is now a demonstrated target class (Kuwait) — the risk to imported goods and utilities is no longer hypothetical." },
+    { "t": "Flights", "p": "DXB running near-normal (~1% cancellations). Book flexible fares; expect fare jumps as jet fuel reprices. Ignore 'airport evacuation' virals — verify against NCEMA first." },
+    { "t": "Info hygiene", "p": "Dubai authorities have rebutted fake 'explosion' posts and warned they will act against spreaders. The information war is at the local layer — verify before reacting or resharing." }
+  ]
+}
+</script>
+
+<div id="app"></div>
 
 <script>
-/* ════════ HORMUZ·LIVE next-gen template ════════
-   All content lives in /data/*.json — this file is layout + render only.
-   Theme flip logic is unchanged from the reference build. Do not touch. */
+const D = JSON.parse(document.getElementById('data').textContent);
+const app = document.getElementById('app');
 
-let DATA=null, SOURCES=[], PATTERNS=null, LEDGER=null;
-let filter=null, srcTier=null, srcQuery="";
+/* threat grammar: color + pulse rate per level 0–4 */
+const LEVELS = [
+  { c:'#2dd28c', pulse:'9s'   },  /* CALM      */
+  { c:'#b8cf5a', pulse:'7s'   },  /* GUARDED   */
+  { c:'#ffb020', pulse:'5s'   },  /* ELEVATED  */
+  { c:'#ff7a45', pulse:'3.2s' },  /* SEVERE    */
+  { c:'#ff4a3d', pulse:'1.8s' }   /* CRITICAL  */
+];
+const L = LEVELS[D.threat.level] || LEVELS[2];
+document.documentElement.style.setProperty('--tcolor', L.c);
+document.documentElement.style.setProperty('--tcolor-glow', L.c + '33');
+document.documentElement.style.setProperty('--pulse', L.pulse);
 
-const tierClass={flash:"flashrail",disputed:"disprail",pending:"pendrail",ver2:"verrail",ver:"verrail"};
-const tierTag={flash:["FLASH","t-flash"],ver2:["VERIFIED ×2","t-ver2"],ver:["VERIFIED","t-ver"],pending:["PENDING","t-pending"],disputed:["DISPUTED","t-disputed"]};
-const srcTierMap={"T2":["T2 · CONFIRM","st-T2"],"T1":["T1 · SPEED","st-T1"],"T1-ELEVATED":["T1 · ELEVATED","st-T1E"],"T1-UNRELIABLE":["T1 · UNRELIABLE","st-T1U"],"SPECIALIST":["SPECIALIST","st-SPEC"],"META":["META","st-META"]};
-const srcTierOrder=["T2","T1-ELEVATED","T1","T1-UNRELIABLE","SPECIALIST","META"];
+const MEDIUMS = ['OFF','WIRE','OSINT','STATE','SOC'];
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-/* ── data loading (works at Vercel root and local static serve) ── */
-async function loadJSON(name){
-  const paths=["/data/"+name,"../data/"+name,"./data/"+name];
-  for(const p of paths){
-    try{
-      const r=await fetch(p,{cache:"no-store"});
-      if(r.ok) return await r.json();
-    }catch(e){/* try next path */}
-  }
-  throw new Error("could not load "+name);
+function meter(sig){
+  const present = new Set((sig.sources||[]).filter(s=>!s.stale).map(s=>s.medium));
+  const n = present.size;
+  const slotColor = sig.tier==='flash' ? 'var(--flash)' : sig.tier==='pending' ? 'var(--pending)' : 'var(--ver)';
+  const slots = MEDIUMS.map(m =>
+    `<div class="slot ${present.has(m)?'on':''}" style="--slotc:${slotColor}"><i></i><em>${m}</em></div>`).join('');
+  const mm = sig.momentum==='gaining' ? '<span class="up">▲ gaining</span>'
+           : sig.momentum==='fading'  ? '<span class="dn">▼ fading</span>'
+           : '<span class="hold">— holding</span>';
+  const ind = sig.tier==='disputed' ? 'in conflict'
+            : n===0 ? 'no live primary'
+            : n===1 ? '1 medium · not independent'
+            : `${n} mediums present · relays share origin`;
+  return `<div class="meter"><div class="slots">${slots}</div><div class="mlabel">${ind}<br>${mm}</div></div>`;
 }
 
-function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
-
-/* ════════ HEADER ════════ */
-function renderHeader(){
-  const m=DATA.meta;
-  document.getElementById("brand").textContent=m.coords;
-  document.getElementById("subline").textContent=m.subline;
-  document.getElementById("daychip").textContent="DAY "+m.day;
-  if(m.deadline&&m.deadline.date){
-    const days=Math.ceil((new Date(m.deadline.date+"T00:00:00Z")-Date.now())/86400000);
-    const chip=document.getElementById("tchip");
-    if(days>0){chip.style.display="block";chip.textContent="T−"+days+" · "+m.deadline.label;}
-    else{chip.style.display="block";chip.textContent=m.deadline.label+" — EXPIRED";chip.style.color="var(--alarm)";}
-  }
-  const b=m.banner;
-  if(b&&b.html){
-    const el=document.getElementById("banner");
-    el.style.display="flex";
-    el.classList.remove("warn","alarm");
-    if(b.level==="warn"||b.level==="alarm") el.classList.add(b.level);
-    document.getElementById("bannertxt").innerHTML=b.html;
-  }
-  document.getElementById("foot").textContent="HORMUZ·LIVE · DAY "+m.day+" · "+m.updated+" · SPEED FIRST, VERIFY SECOND, FORECAST THIRD";
+function srcRows(sig){
+  if(!sig.sources || !sig.sources.length) return '';
+  const rows = sig.sources.map(s=>
+    `<div class="src ${s.stale?'staled':''}"><b>${esc(s.name)}</b><span class="med">${s.medium}·${esc(s.lang)}</span><span class="dt">${esc(s.date)}${s.stale?' ⚠':''}</span></div>`).join('');
+  return `<div class="srcs">${rows}${sig.note?`<div class="signote">${esc(sig.note)}</div>`:''}</div><div class="tapline">TAP FOR PRIMARIES + READ</div>`;
 }
 
-/* ════════ TABS ════════ */
-function tabDefs(){
-  return [
-    {id:"wire",label:"WIRE",n:DATA.wire.length},
-    {id:"now",label:"NOW"},
-    {id:"verify",label:"VERIFY",n:DATA.verify.length},
-    {id:"next",label:"NEXT"},
-    {id:"patterns",label:"PATTERNS",n:PATTERNS.patterns.length},
-    {id:"context",label:"CONTEXT"},
-    {id:"sources",label:"SOURCES",n:SOURCES.length},
-  ];
-}
-function renderTabs(){
-  document.getElementById("tabs").innerHTML=tabDefs().map((t,i)=>
-    `<button class="tab ${i===0?'on':''}" data-tab="${t.id}" onclick="go('${t.id}',this)">${t.label}${t.n?`<span class="n">${t.n}</span>`:''}</button>`).join("");
-}
-function go(id,el){
-  document.querySelectorAll(".tab").forEach(b=>b.classList.remove("on"));
-  el.classList.add("on");
-  document.querySelectorAll(".panel").forEach(p=>p.classList.remove("on"));
-  document.getElementById("p-"+id).classList.add("on");
-}
-
-/* ════════ WIRE ════════ */
-function renderWire(){
-  const items=DATA.wire.filter(w=>!filter||w.tier===filter);
-  const fbtns=[["ALL",null],["FLASH","flash"],["VERIFIED","ver2"],["DISPUTED","disputed"],["PENDING","pending"]]
-    .map(([lab,val])=>`<button class="fbtn ${(filter===val||(val===null&&!filter))?'on':''}" onclick="setFilter(${val?`'${val}'`:'null'})">${lab}</button>`).join("");
-  const list=items.map(w=>{
-    const[tt,tc]=tierTag[w.tier]||["—","t-geo"];
-    return `<div class="ping ${tierClass[w.tier]||''}" onclick="this.classList.toggle('open')">
-      <div class="gutter"><div class="g-t">${w.t}</div><div class="g-d">${w.d}</div></div>
-      <div class="pbody">
-        <div class="ptags"><span class="tag ${tc}">${tt}</span><span class="tag t-geo">${w.geo}</span><span class="src">${w.src}</span></div>
-        <div class="ptitle">${w.title}</div>
-        <div class="pfull">${w.full}<span class="why">↳ ${w.why}</span></div>
-      </div></div>`;
-  }).join("");
-  document.getElementById("p-wire").innerHTML=
-    signalsHTML()+
-    `<div class="wirehead"><span class="meta">${items.length} CONTACTS · LAST 7 DAYS · TAP TO EXPAND</span></div>
-     <div class="filters">${fbtns}</div>${list}`;
-}
-function setFilter(v){filter=v;renderWire();}
-function signalsHTML(){
-  const sg=DATA.signals||[];
-  if(!sg.length) return "";
-  const rows=sg.map(s=>`<div class="sig ${s.state}">
-    <span class="rung">R${s.rung}</span>
-    <div class="sig-b">
-      <div class="sig-claim">${s.claim}</div>
-      <div class="sig-meta"><span class="st">${s.state.toUpperCase()}</span> · ${s.src} · ${s.lane} · TTL ${s.ttl}</div>
-      ${s.note?`<div class="sig-note">↳ ${s.note}</div>`:""}
-    </div></div>`).join("");
-  return `<div class="signals">
-    <div class="signals-h"><span class="dotpulse"></span><span class="lbl">LIVE SIGNALS · UNVERIFIED</span>
-      <span class="sub">NOT WIRE — SPEED BEFORE PROOF</span></div>
-    ${rows}</div>`;
-}
-
-/* ════════ NOW ════════ */
-function renderNow(){
-  const s=DATA.strait||{};
-  const statlines=DATA.status.map(x=>
-    `<div class="statline"><span class="dot" style="background:var(--${x.c})"></span>
-     <div><div class="sl-k">${x.k}</div><div class="sl-v">${x.v}</div></div></div>`).join("");
-  const gauges=DATA.gauges.map(g=>`<div class="gauge"><div class="gv c-${g.c}">${g.v}</div><span class="gl">${g.l}</span></div>`).join("");
-  const dials=DATA.dials.map(d=>
-    `<div class="dial"><div class="needlebox"><div class="arc"></div><div class="pin" style="transform:translateX(-50%) rotate(${d.rot}deg)"></div></div>
-     <div class="dv c-${d.c}">${d.v}</div><span class="dl">${d.l}</span></div>`).join("");
-  const vessels=(s.vessels||[]).map(v=>
-    `<div class="vessel${v.uturn?' uturn':''}" style="left:${v.left};top:${v.top}px"></div>`).join("");
-  const cors=(s.corridors||[]).map(c=>{
-    const y=c.pos==="top"?40:86, ly=c.pos==="top"?29:103;
-    return `<div class="cor ${c.cls}" style="top:${y}px"></div>
-      <div class="corlbl ${c.cls}" style="top:${ly}px;left:7%">${c.label}</div>`;
-  }).join("");
-  document.getElementById("p-now").innerHTML=`
-    <div class="card flag">
-      <div class="chead"><span>STRAIT STATE</span><span class="stamp" style="color:var(--${s.stampColor||'alarm'})">${s.stamp||''}</span></div>
-      <div class="sig-water"><div class="channel"><div class="chart">
-        <div class="land iran"></div><div class="landlbl" style="top:8px;left:13px">IRAN</div>
-        <div class="land oman"></div><div class="landlbl" style="bottom:6px;right:13px">OMAN · MUSANDAM</div>
-        <div class="tss"></div><div class="tsslbl">${s.tsslbl||''}</div>
-        ${cors}${vessels}
-        <div class="sweep"></div>
-      </div></div></div>
-      <div class="sig-pressure"><div class="dials">${dials}</div></div>
-      <div class="gauges">${gauges}</div>
+function signalCard(sig){
+  const tierLabel = {flash:'FLASH',pending:'PENDING',ver:'VER',ver2:'VER²',disputed:'DISPUTED'}[sig.tier];
+  let inner = `
+    <div class="sigtop">
+      <span class="tier ${sig.tier}">${tierLabel}</span>
+      <span class="reg">${esc(sig.region)}</span>
+      <span class="age ${sig.live?'live':''}">${esc(sig.age)}</span>
     </div>
-    <div class="card"><div class="chead">CURRENT POSTURE — Updated ${DATA.meta.updated}</div>
-      <div class="cbody">${statlines}</div></div>`;
-}
-
-/* ════════ VERIFY ════════ */
-function renderVerify(){
-  const blocks=DATA.verify.map(v=>{
-    const rows=v.rows.map(r=>
-      `<div class="vrow"><span class="vbadge ${r.cls}">${r.verdict.toUpperCase()}</span>
-        <div class="vtext"><div class="vc">${r.c}</div><div class="vn">${r.n}</div><div class="vs">${r.src.replace(/VERIFIED[^·]*/,m=>`<b>${m}</b>`)}</div></div></div>`).join("");
-    return `<div class="card flag">
-      <div class="claimsrc"><div class="avatar">${v.avatar}</div>
-        <div><div class="who">${v.who}</div><div class="handle">${v.handle}</div></div>
-        <div class="reach">${v.reach}</div></div>
-      <div class="claimquote">${v.quote}</div>
-      <div class="verdict">${rows}</div></div>`;
-  }).join("");
-  document.getElementById("p-verify").innerHTML=
-    `<div class="wirehead"><span class="meta">CLAIMS IN MOTION · SPEED-FIRST, THEN GRADED</span></div>${blocks}`;
-}
-
-/* ════════ NEXT ════════ */
-function renderNext(){
-  const scen=DATA.scenarios.map(s=>
-    `<div class="scen"><div class="scenhead"><span class="prob c-${s.kind==='base'?'ok':s.kind==='risk'?'warn':'alarm'}">${s.prob}</span>
-      <span class="lab">${s.lab}</span><span class="kind ${s.cls}">${s.kind.toUpperCase()}</span></div>
-      <p>${s.p}</p></div>`).join("");
-  const trig=DATA.triggers.map(t=>`<div class="trow"><span class="tmark">${t.m}</span><span class="tt">${t.t}</span></div>`).join("");
-  document.getElementById("p-next").innerHTML=`
-    <div class="card"><div class="chead">MARKET-IMPLIED — next 24h read</div>
-      <div class="market"><div class="mnum">${DATA.market.num}</div><div class="mtxt">${DATA.market.txt}</div></div></div>
-    <div class="wirehead"><span class="meta">SCENARIOS · WEIGHTED · NEXT 24–72H · ANALYTICAL JUDGMENT, NOT SOURCED FACT</span></div>
-    ${scen}
-    <div class="card uaebox"><div class="chead">WHAT THIS MEANS FOR YOU · UAE</div>
-      <div class="cbody" style="font-size:11.5px;line-height:1.7;color:var(--text)">${DATA.uae_means}</div></div>
-    <div class="card"><div class="chead">TRIGGERS TO WATCH</div>
-      <div class="cbody triggers">${trig}</div></div>`;
-}
-
-/* ════════ PATTERNS + FORECAST LEDGER ════════ */
-function renderPatterns(){
-  const pats=PATTERNS.patterns.map(p=>{
-    const hist=(p.history||[]).map(h=>
-      `<div class="phrow"><span class="phd">${h.date}</span><span class="phs ps-${h.state}" style="background:none;padding:0">${h.state}</span><span class="phn">${h.note}</span></div>`).join("");
-    return `<div class="pat" onclick="this.classList.toggle('open')">
-      <div class="pathead"><span class="pname">${p.name}</span><span class="pstate ps-${p.state}">${p.state}</span></div>
-      <div class="patbody">
-        <div class="patrule">RULE: ${p.rule}</div>
-        <div class="patev">${p.evidence}</div>
-        <div class="pathist">${hist}</div>
-      </div></div>`;
-  }).join("");
-  const sets=LEDGER.ledger.map(set=>{
-    const rows=set.entries.map(e=>{
-      const pc=e.kind==="base"?"ok":e.kind==="risk"?"warn":"alarm";
-      return `<div class="lrow"><span class="lprob c-${pc}">${e.prob}</span>
-        <span class="llab">${e.lab}${e.lesson?`<span class="lesson">↳ ${e.lesson}</span>`:''}</span>
-        <span class="obadge o-${e.outcome}">${e.outcome}</span></div>`;
-    }).join("");
-    return `<div class="ledset">
-      <div class="ledhead"><span>ISSUED ${set.issued} · ${set.horizon}</span><span>${set.graded?`GRADED ${set.graded}`:'OPEN'}</span></div>
-      ${rows}</div>`;
-  }).join("");
-  const graded=LEDGER.ledger.flatMap(s=>s.entries).filter(e=>e.outcome!=="OPEN");
-  const hits=graded.filter(e=>e.outcome==="HIT").length;
-  const partials=graded.filter(e=>e.outcome==="PARTIAL").length;
-  const score=graded.length?`${hits} HIT · ${partials} PARTIAL · ${graded.length-hits-partials} MISS of ${graded.length} graded`:"no graded forecasts yet";
-  document.getElementById("p-patterns").innerHTML=`
-    <div class="wirehead"><span class="meta">LEARNED PATTERNS · STATE MACHINE · TAP TO EXPAND</span></div>
-    ${pats}
-    <div class="wirehead" style="margin-top:14px"><span class="meta">FORECAST LEDGER · EVERY CALL GRADED ON EXPIRY · ${score}</span></div>
-    ${sets}
-    <div class="card"><div class="cbody" style="font-size:9.5px;line-height:1.6;color:var(--mute)">${PATTERNS.meta.doctrine}</div></div>`;
-}
-
-/* ════════ SOURCES ════════ */
-function renderSources(){
-  const q=srcQuery.trim().toLowerCase();
-  const items=SOURCES.filter(s=>
-    (!srcTier||s.tier===srcTier)&&
-    (!q||(s.name+" "+s.domain+" "+s.geography+" "+(s.notes||"")).toLowerCase().includes(q)));
-  const counts={};SOURCES.forEach(s=>counts[s.tier]=(counts[s.tier]||0)+1);
-  const fbtns=[["ALL",null],...srcTierOrder.map(t=>[t.replace("-ELEVATED","·EL").replace("-UNRELIABLE","·UN")+" "+(counts[t]||0),t])]
-    .map(([lab,val])=>`<button class="fbtn ${(srcTier===val||(val===null&&!srcTier))?'on':''}" onclick="setSrcTier(${val?`'${val}'`:'null'})">${lab}</button>`).join("");
-  const groups=srcTierOrder.filter(t=>items.some(s=>s.tier===t)).map(t=>{
-    const[tl]=srcTierMap[t];
-    const rows=items.filter(s=>s.tier===t).map(s=>{
-      const[lab,cls]=srcTierMap[s.tier]||[s.tier,"st-META"];
-      return `<div class="srow"><span class="stier ${cls}">${lab}</span>
-        <div class="sinfo"><div class="sname">${esc(s.name)}</div>
-        <div class="smeta">${esc(s.platform)} · ${esc(s.language)} · ${esc(s.domain)} · ${esc(s.geography)} · ${esc(s.role).toUpperCase()}</div>
-        ${s.notes?`<div class="snote">${esc(s.notes)}</div>`:''}</div></div>`;
-    }).join("");
-    return `<div class="card"><div class="chead"><span>${tl}</span><span class="stamp">${items.filter(s=>s.tier===t).length}</span></div>
-      <div class="cbody">${rows}</div></div>`;
-  }).join("");
-  document.getElementById("p-sources").innerHTML=`
-    <div class="wirehead"><span class="meta">${items.length} OF ${SOURCES.length} REGISTERED SOURCES · THE VERIFICATION MACHINE, VISIBLE</span></div>
-    <input class="srch" type="search" placeholder="search name, domain, geography, notes…" value="${esc(srcQuery)}" oninput="setSrcQuery(this.value)">
-    <div class="filters">${fbtns}</div>${groups}`;
-  const inp=document.querySelector("#p-sources .srch");
-  if(q&&inp){inp.focus();inp.setSelectionRange(inp.value.length,inp.value.length);}
-}
-function setSrcTier(v){srcTier=v;renderSources();}
-function setSrcQuery(v){srcQuery=v;renderSources();}
-
-/* ════════ CONTEXT ════════ */
-function renderContext(){
-  const tr=DATA.trace;
-  const lines=tr.lines.map(l=>`<polyline class="${l.cls}" points="${l.points}"/>`).join("");
-  const evts=tr.events.map(e=>
-    `<circle class="evtdot" cx="${e.x}" cy="${e.y}" r="2.5"/><text class="evt" x="${e.lx}" y="${e.ly}">${e.label}</text>`).join("");
-  const axis=tr.axis.map(a=>`<span>${a}</span>`).join("");
-  document.getElementById("p-context").innerHTML=`
-    <div class="card">
-      <div class="tracewrap">
-        <div class="tracelbl"><span>${tr.label}</span><b>${tr.sublabel}</b></div>
-        <svg class="trace" viewBox="0 0 400 112">
-          <line class="gl" x1="0" y1="30" x2="400" y2="30"/><line class="gl" x1="0" y1="60" x2="400" y2="60"/><line class="gl" x1="0" y1="90" x2="400" y2="90"/>
-          ${lines}${evts}
-          <line class="nowline" x1="396" y1="6" x2="396" y2="106"/>
-        </svg>
-        <div class="axis">${axis}</div>
-      </div>
-    </div>
-    <div class="card"><div class="chead">HOW WE GOT HERE</div><div class="histp">${DATA.hist}</div></div>
-    <div class="card"><div class="chead">TIMELINE</div><div class="cbody">
-      ${DATA.mini.map(m=>`<div class="miniline"><span class="mk">${m.k}</span><span class="mv">${m.v}</span></div>`).join("")}
-    </div></div>`;
-}
-
-/* ════════ THEME FLIP — unchanged, do not touch ════════ */
-function setTheme(name){
-  document.documentElement.setAttribute("data-theme",name);
-  document.getElementById("fw").classList.toggle("on",name==="water");
-  document.getElementById("fp").classList.toggle("on",name==="pressure");
-}
-
-/* ════════ INIT ════════ */
-async function init(){
-  try{
-    const[d,s,p,l]=await Promise.all([
-      loadJSON("data.json"),loadJSON("sources.json"),loadJSON("patterns.json"),loadJSON("scenarios.json")]);
-    DATA=d;SOURCES=s;PATTERNS=p;LEDGER=l;
-    renderHeader();renderTabs();renderWire();renderNow();renderVerify();renderNext();renderPatterns();renderContext();renderSources();
-  }catch(err){
-    document.getElementById("subline").textContent="DATA LOAD FAILED";
-    document.getElementById("p-wire").innerHTML=
-      `<div class="loaderr">Could not load /data/*.json.<br>Serve the repo root over HTTP (e.g. <b>python3 -m http.server</b> from the repository root, then open /site/) — fetch() cannot read local files over file://.<br><br>${esc(err.message)}</div>`;
+    <div class="claim">${esc(sig.claim)}</div>`;
+  if(sig.tier==='disputed' && sig.conflict){
+    inner += `<div class="vs">
+      <div class="vsblock"><div class="who">${esc(sig.conflict.a.who)}</div><div class="what">${esc(sig.conflict.a.what)}</div></div>
+      <div class="vsdivider">VS — NOT AVERAGED</div>
+      <div class="vsblock"><div class="who">${esc(sig.conflict.b.who)}</div><div class="what">${esc(sig.conflict.b.what)}</div></div>
+    </div>`;
+    const chips2 = [];
+    if(sig.via_recall) chips2.push('<span class="leadchip">LEAD · RECALL ENGINE — NOT A SOURCE</span>');
+    if(chips2.length) inner += `<div class="prov">${chips2.join('')}</div>`;
+    inner += `${sig.note?`<div class="signote">${esc(sig.note)}</div>`:''}`;
+  } else {
+    inner += meter(sig);
+    const chips = [];
+    if(sig.via_recall) chips.push('<span class="leadchip">LEAD · RECALL ENGINE — NOT A SOURCE</span>');
+    if(sig.stale_primary) chips.push('<span class="stale">⚠ STALE PRIMARY — DATED ' + esc((sig.sources[0]||{}).date||'') + '</span>');
+    if(chips.length) inner += `<div class="prov">${chips.join('')}</div>`;
+    inner += srcRows(sig);
   }
+  return `<article class="sig ${sig.tier}" data-id="${sig.id}">${inner}</article>`;
 }
-init();
+
+function items(list, ledger){
+  return list.map(it=>{
+    if(ledger){
+      return `<div class="item"><div class="h"><b>${esc(it.call)}</b><span class="st grey">${esc(it.made)}</span><span class="ledres ${it.res.toLowerCase()}">${esc(it.res)}</span></div><p>${esc(it.p)}</p></div>`;
+    }
+    const st = it.st ? `<span class="st ${it.stc||'grey'}">${esc(it.st)}</span>` : '';
+    const dt = it.dt ? `<span class="dt">${esc(it.dt)}</span>` : '';
+    return `<div class="item"><div class="h"><b>${esc(it.t)}</b>${st}${dt}</div><p>${esc(it.p)}</p></div>`;
+  }).join('');
+}
+
+function scenarios(list){
+  return list.map(s=>`<div class="scen ${s.kind}"><div class="pct">${esc(s.prob)}</div><div><div class="lab">${esc(s.lab)}</div><p>${esc(s.p)}</p></div></div>`).join('');
+}
+
+function traceSVG(t){
+  if(!t) return '';
+  return `<div class="tracewrap">
+    <div class="tracecap"><span>${esc(t.label)} · ${esc(t.days)}</span><b>${esc(t.tail)}</b></div>
+    <svg class="trace" viewBox="0 0 400 100" preserveAspectRatio="none" aria-hidden="true">
+      <polyline class="base" points="${esc(t.base)}"></polyline>
+      <polyline class="hot" points="${esc(t.hot)}"></polyline>
+    </svg>
+  </div>`;
+}
+
+app.innerHTML = `
+  <header class="hero">
+    <div class="field"></div>
+    <div class="masthead">
+      <div class="wordmark">HORMUZ<b>·LIVE</b></div>
+      <div class="stamp">DAY ${D.meta.day} · ${esc(D.meta.phase)}<br>${esc(D.meta.updated)}</div>
+    </div>
+    <div class="threatword">${esc(D.threat.word)}</div>
+    <div class="threatmeta">
+      <span class="dir">${esc(D.threat.direction)}</span>
+      <div class="scale">${[0,1,2,3,4].map(i=>`<i class="${i<=D.threat.level?'on':''}"></i>`).join('')}</div>
+    </div>
+    <div class="uaeline">
+      <div class="k">YOUR LINE — UAE</div>
+      <div class="v">${esc(D.threat.uae_line)}</div>
+      <div class="act">${esc(D.threat.action)}</div>
+    </div>
+    <div class="chips">
+      <div class="chip ${D.strait.hot?'hot':''}"><span class="l">STRAIT</span><span class="d">${esc(D.strait.status)}</span></div>
+      ${D.deadlines.map(d=>`<div class="chip ${d.hot?'hot':'warm'}"><span class="l">${esc(d.label)}</span><span class="d">${esc(d.date)}</span></div>`).join('')}
+    </div>
+  </header>
+
+  <section>
+    <div class="lanehead"><span class="live"></span><h2>SIGNALS</h2><span class="sub">unconfirmed lives here — never above</span></div>
+    <div class="ladder"><b class="lf">FLASH</b> raw → <b class="lp">PENDING</b> → <b class="lv">VER</b> one source → <b class="lv">VER²</b> multi-source, independent mediums → <b class="ld">DISPUTED</b> shown as conflict. Nothing tops out on one source. Dead rumors drop.</div>
+    ${D.signals.map(signalCard).join('')}
+    <div class="dropped">${esc(D.dropped_note)}</div>
+  </section>
+
+  <details open>
+    <summary>VERIFIED PICTURE <span class="cnt">${D.verified.length}</span></summary>
+    <div class="dbody">${items(D.verified)}</div>
+  </details>
+
+  <details>
+    <summary>WATCH TRIGGERS <span class="cnt">${D.triggers.length}</span></summary>
+    <div class="dbody">${items(D.triggers)}</div>
+  </details>
+
+  <details>
+    <summary>FORECAST &amp; SCENARIOS</summary>
+    <div class="dbody">${traceSVG(D.trace)}${scenarios(D.scenarios)}</div>
+  </details>
+
+  <details>
+    <summary>FORECAST LEDGER — GRADED <span class="cnt">learning</span></summary>
+    <div class="dbody">${items(D.ledger, true)}</div>
+  </details>
+
+  <details>
+    <summary>PATTERNS &amp; LEARNING <span class="cnt">registry</span></summary>
+    <div class="dbody">${items(D.patterns)}</div>
+  </details>
+
+  <details>
+    <summary>UAE PRACTICAL <span class="cnt">${D.practical.length}</span></summary>
+    <div class="dbody">${items(D.practical)}</div>
+  </details>
+
+  <details>
+    <summary>RECALL ENGINE — RULES</summary>
+    <div class="dbody"><div class="recallrule">
+      <b class="ok">STATUS: LIVE + VERIFIED.</b> The web-recall engine (Perplexity) is proven against the live API (CI run 29687989324) and runs as a <b>second recall lane beside web search</b>. It is a lead-finder, never a source: its output is decomposed to primaries, each date-stamped; it never sets a tier, never verifies, never appears as a WIRE source.<br><br>
+      <b>WHY TWO ENGINES.</b> Web search and Perplexity are independent recall paths. When both surface the same primary, confidence rises (cross-engine convergence). When they diverge, that is a flag. Perplexity's per-primary dates are the mechanism that catches recirculation — an old think-piece dressed as 'now.'<br><br>
+      <b>THE PIPE.</b> Recall proposes → primaries are extracted &amp; dated → each primary lights one medium slot → tier is earned from independent mediums only → the <span class="mono" style="color:var(--lead)">LEAD·RECALL</span> chip stays on the card as provenance. Any primary older than the claim window is flagged <span class="mono" style="color:var(--danger)">STALE PRIMARY</span> and the signal is held weightless.
+    </div></div>
+  </details>
+
+  <div class="foot">
+    ONE PAGE · ONE DATA BLOCK — update by editing the JSON at the top of this file. no build, no host, no runner required.<br>
+    <b>hormuz-live.html</b> · Day ${D.meta.day} · signals lane is the product
+  </div>
+`;
+
+/* tap to expand primaries */
+document.querySelectorAll('.sig').forEach(el=>{
+  el.addEventListener('click', ()=> el.classList.toggle('open'));
+});
 </script>
 </body>
 </html>
