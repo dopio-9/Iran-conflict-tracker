@@ -123,11 +123,35 @@ async function smoke() {
   console.log(`✔ smoke PASS — ${dec.primaries.length} primaries, note: ${dec.note}`);
 }
 
+/* ── gather lane: real recall to COMPLEMENT web search (runs in CI) ──── */
+/* Reads agents/gather-queries.json, runs each through Perplexity, prints the
+ * decomposed + date-stamped primaries. This is the second, independent recall
+ * engine: convergence between this and the session's web search raises signal
+ * confidence; its per-primary dates are what catch recirculation. */
+async function gather() {
+  const fs = await import("node:fs");
+  const qpath = new URL("../agents/gather-queries.json", import.meta.url);
+  const queries = JSON.parse(fs.readFileSync(qpath, "utf8"));
+  for (const q of queries) {
+    try {
+      const r = await queryPerplexity(q, { recency: "week", maxTokens: 400 });
+      const d = decompose(r, { query: q, recencyDays: 3 });
+      const rows = d.primaries.slice(0, 6)
+        .map((p) => `    · [${p.date ?? "undated"}${p.ageDays != null ? ` ${p.ageDays}d` : ""}] ${(p.title ?? "").slice(0, 70)} — ${p.url}`)
+        .join("\n");
+      console.log(`\n▸ ${q}\n  ${d.note}\n${rows}`);
+    } catch (e) {
+      console.log(`\n▸ ${q}\n  ERROR: ${String(e.message).replace(/pplx-[A-Za-z0-9]+/g, "pplx-REDACTED")}`);
+    }
+  }
+}
+
 /* ── CLI ───────────────────────────────────────────────────────────── */
 if (import.meta.url === `file://${process.argv[1]}`) {
   const arg = process.argv[2];
   if (arg === "--selftest") selftest();
   else if (arg === "--smoke") smoke().catch((e) => { console.error(String(e.message).replace(/pplx-[A-Za-z0-9]+/g, "pplx-REDACTED")); process.exit(1); });
+  else if (arg === "--gather") gather().catch((e) => { console.error(String(e.message).replace(/pplx-[A-Za-z0-9]+/g, "pplx-REDACTED")); process.exit(1); });
   else if (!arg) {
     console.error('usage: node scripts/perplexity.mjs "<query>"   |   --selftest');
     process.exit(2);

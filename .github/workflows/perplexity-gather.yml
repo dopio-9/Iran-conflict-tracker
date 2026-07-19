@@ -1,0 +1,29 @@
+name: perplexity-gather
+# Runs the Perplexity recall lane against agents/gather-queries.json and prints
+# decomposed, date-stamped primaries to the log — a second recall engine that
+# complements the session's web search. Fires on push when the queries or the
+# client change (and manually). Read the run log to fold results into signals.
+on:
+  workflow_dispatch:
+  push:
+    branches: [claude/signals-live-layer]
+    paths:
+      - agents/gather-queries.json
+      - scripts/perplexity.mjs
+      - .github/workflows/perplexity-gather.yml
+jobs:
+  gather:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Perplexity recall gather
+        env:
+          PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
+        run: |
+          if [ -z "$PERPLEXITY_API_KEY" ]; then
+            echo "PERPLEXITY_API_KEY secret not set"; exit 1
+          fi
+          node scripts/perplexity.mjs --gather
