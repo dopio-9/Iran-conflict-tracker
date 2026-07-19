@@ -33,22 +33,25 @@ const API = "https://api.perplexity.ai/chat/completions";
 const DAY_MS = 86_400_000;
 
 /** Call Perplexity. Returns the raw API JSON. Needs network + key. */
-export async function queryPerplexity(query, { model = "sonar", recency = "week", maxTokens = 800 } = {}) {
+export async function queryPerplexity(query, { model = "sonar", recency = "week", maxTokens = 800, searchDomains = [] } = {}) {
   const key = process.env.PERPLEXITY_API_KEY;
   if (!key) throw new Error("PERPLEXITY_API_KEY not set");
+  const body = {
+    model,
+    messages: [
+      { role: "system", content: "You are a regional-source scout. Prefer primary and local-language sources — Iranian (Tasnim, Mehr, Fars, IRNA, IRGC Telegram), Gulf/Arabic (Al Mayadeen, Al-Manar, Houthi Almasirah), and OSINT/Telegram/X mirrors — over Western wire aggregators. Return sourced facts with citations, keep each source's own date, and never merge events from different dates." },
+      { role: "user", content: query },
+    ],
+    search_recency_filter: recency, // day|week|month|year — bias toward fresh
+    return_citations: true,
+    max_tokens: maxTokens,
+  };
+  // Domain steering: whitelist regional domains or blacklist mainstream ("-domain").
+  if (searchDomains.length) body.search_domain_filter = searchDomains;
   const res = await fetch(API, {
     method: "POST",
     headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
-    body: JSON.stringify({
-      model,
-      messages: [
-        { role: "system", content: "Return sourced facts with citations. Do not editorialize; do not merge events from different dates." },
-        { role: "user", content: query },
-      ],
-      search_recency_filter: recency, // day|week|month|year — bias toward fresh
-      return_citations: true,
-      max_tokens: maxTokens,
-    }),
+    body: JSON.stringify(body),
   });
   if (!res.ok) throw new Error(`Perplexity HTTP ${res.status}: ${await res.text().catch(() => "")}`);
   return res.json();
@@ -132,9 +135,12 @@ async function gather() {
   const fs = await import("node:fs");
   const qpath = new URL("../agents/gather-queries.json", import.meta.url);
   const queries = JSON.parse(fs.readFileSync(qpath, "utf8"));
+  // Blacklist the biggest Western aggregators to push Perplexity off the beaten
+  // path and into the regional/social layer (3 domains — API filter cap).
+  const OFF_MAINSTREAM = ["-wikipedia.org", "-cnn.com", "-nytimes.com"];
   for (const q of queries) {
     try {
-      const r = await queryPerplexity(q, { recency: "day", maxTokens: 400 });
+      const r = await queryPerplexity(q, { recency: "day", maxTokens: 400, searchDomains: OFF_MAINSTREAM });
       const d = decompose(r, { query: q, recencyDays: 1 });
       const rows = d.primaries.slice(0, 6)
         .map((p) => `    · [${p.date ?? "undated"}${p.ageDays != null ? ` ${p.ageDays}d` : ""}] ${(p.title ?? "").slice(0, 70)} — ${p.url}`)
