@@ -134,8 +134,8 @@ async function gather() {
   const queries = JSON.parse(fs.readFileSync(qpath, "utf8"));
   for (const q of queries) {
     try {
-      const r = await queryPerplexity(q, { recency: "week", maxTokens: 400 });
-      const d = decompose(r, { query: q, recencyDays: 3 });
+      const r = await queryPerplexity(q, { recency: "day", maxTokens: 400 });
+      const d = decompose(r, { query: q, recencyDays: 1 });
       const rows = d.primaries.slice(0, 6)
         .map((p) => `    · [${p.date ?? "undated"}${p.ageDays != null ? ` ${p.ageDays}d` : ""}] ${(p.title ?? "").slice(0, 70)} — ${p.url}`)
         .join("\n");
