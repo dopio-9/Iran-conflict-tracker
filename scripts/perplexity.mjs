@@ -19,13 +19,12 @@
  * egress allowlist — run it from the GitHub Actions runner or locally, not the
  * Claude Code sandbox. `--selftest` exercises the decomposition logic offline.
  *
- * STATUS: the response-shape handling (model id `sonar`, citations[] /
- * search_results[]) is UNVERIFIED against the live API — it was written from
- * docs, not a real call. The gate is `--smoke` via
- * .github/workflows/perplexity-smoke.yml: it makes one real call and asserts
- * the shape. Do not treat this client as working until that workflow is green.
- * The client reads both citations[] and search_results[] so it survives either
- * documented shape; --smoke reports which one the API actually returns.
+ * STATUS: VERIFIED against the live API by CI run 29687989324 (19 Jul 2026,
+ * `on: push` smoke on this branch). Real shape returned by model `sonar`:
+ *   { citations: 14, search_results: 14 }  — BOTH arrays present.
+ * `search_results` carries the dates; decompose() read them and returned a
+ * correct FRESH verdict (freshest primary 2d old). The citations[] fallback is
+ * kept only as a defensive hedge — search_results is the confirmed dated path.
  *
  * Key: PERPLEXITY_API_KEY (env / Actions secret). Never commit it.
  */

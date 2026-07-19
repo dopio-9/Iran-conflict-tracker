@@ -33,14 +33,17 @@ Separation + labeling is the discipline — not suppression.
   rung 1-2, one-line note "recirc of 14 Mar ports warning; NCEMA stable" then
   let it drop on TTL. Do NOT expand the evacuation debunk on the page.
 
-## STATUS (compression point, 19 Jul)
+## STATUS (19 Jul)
 Branch `claude/signals-live-layer`. DONE: SIGNALS lane (§A) — built, rendered,
-validated, pushed. `scripts/perplexity.mjs` — built but **UNVERIFIED against
-live API** (sandbox blocks api.perplexity.ai AND the docs sites). Gate =
-`.github/workflows/perplexity-smoke.yml`: user adds `PERPLEXITY_API_KEY` secret,
-runs it, must be green before Perplexity counts as working. Key was pasted in
-chat — rotate it. NOT DONE: §C runner (needs `ANTHROPIC_API_KEY` secret), §D IA
-declutter. Do NOT claim Perplexity works until the smoke workflow passes.
+validated, pushed. Perplexity (§B) — **VERIFIED live** by CI run 29687989324
+(push-triggered smoke, green): real shape `{citations:14, search_results:14}`,
+dates on `search_results`, decompose() returned FRESH. Client proven end-to-end;
+no shape fix needed. Trigger mechanism: `on: push` smoke on the branch — no
+dispatch permission and no default-branch requirement (that was the earlier
+plumbing dead-end). Key was pasted in chat — still rotate it.
+NOT DONE: §C runner (needs `ANTHROPIC_API_KEY` secret), §D IA declutter (now
+superseded by the Fable next-gen template — one self-contained file, retire the
+old index.html).
 
 ## B. Perplexity integration (needs API key from user)
 
