@@ -18,7 +18,9 @@ turn — we do not rebuild it.**
 ## Roster (11 lanes)
 | Lane | Narrow scope | WEB seed | PPLX key |
 |---|---|---|---|
-| strikes_ops | US & Iran strike waves, targets, casualties | "US Iran strikes latest targets casualties today" | (add) |
+| strikes_ops | US & Iran strike waves, targets, casualties | "US Iran strikes latest targets casualties today" | strikes_ops |
+| threats | ultimatums, red lines, retaliation warnings | "Iran IRGC ultimatum threat red line US UAE today" | threats |
+| cyber_sabotage | cyberattacks, sabotage, drone-on-infra | "Iran cyberattack sabotage Gulf UAE Saudi infrastructure today" | cyber_sabotage |
 | diplomacy | back-channels, mediation, ceasefire drafts | "Iran US mediation Oman Qatar Egypt Russia China ceasefire today" | diplomacy |
 | leadership_internal | Supreme Leader, IRGC command, internal power | "Iran leadership IRGC commanders internal power struggle today" | leadership_internal |
 | maritime_incidents | Hormuz vessel incidents, seizures, disablements | "Strait of Hormuz vessel incident seizure IRGC navy today" | maritime_incidents |
@@ -48,3 +50,4 @@ turn — we do not rebuild it.**
 
 ## Lane improvement log (append one line per turn)
 - (start) roster established; PPLX matrix has 10/11 lanes; `strikes_ops` PPLX key still to add.
+- closed topic gap: added `strikes_ops`, `threats`, `cyber_sabotage` PPLX lanes → 14 lanes, full coverage of troops/naval/air/military/trade/strikes/retaliations/geopolitics/government/threats/escalation/cyber.

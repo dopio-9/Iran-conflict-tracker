@@ -1,4 +1,8 @@
 {
+  "strikes_ops": [
+    "US Iran strike waves targets casualties damage latest today CENTCOM Tasnim",
+    "حملات آمریکا به ایران؛ اهداف، تلفات و مناطق آسیب‌دیده شب گذشته و امروز"
+  ],
   "diplomacy": [
     "وساطة عمان قطر مصر روسيا الصين بين إيران وأمريكا قنوات خلفية وقف التصعيد اليوم",
     "Iran US back-channel mediation Oman Qatar Egypt Russia China ceasefire draft accord last 24 hours"
@@ -37,6 +41,13 @@
   ],
   "israel_intel": [
     "ישראל איראן הערכת מודיעין מעורבות מלחמה מיצר הורמוז מוג'תבא חמינאי היום"
+  ],
+  "threats": [
+    "Iran IRGC ultimatum threat retaliation red line warning US UAE Gulf latest today",
+    "تهدید و هشدار سپاه پاسداران درباره انتقام و خط قرمز علیه آمریکا و متحدانش امروز"
+  ],
+  "cyber_sabotage": [
+    "Iran cyberattack sabotage hacking drone incident Gulf UAE Saudi banking energy infrastructure claim today"
   ],
   "nuclear": [
     "IAEA Iran nuclear material Darkhovin inspection Grossi radiological risk statement today"
