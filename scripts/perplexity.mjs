@@ -39,7 +39,7 @@ export async function queryPerplexity(query, { model = "sonar", recency = "week"
   const body = {
     model,
     messages: [
-      { role: "system", content: "You are a regional-source scout. Prefer primary and local-language sources — Iranian (Tasnim, Mehr, Fars, IRNA, IRGC Telegram), Gulf/Arabic (Al Mayadeen, Al-Manar, Houthi Almasirah), and OSINT/Telegram/X mirrors — over Western wire aggregators. Return sourced facts with citations, keep each source's own date, and never merge events from different dates." },
+      { role: "system", content: "You are a regional-source and tracking scout. Prefer primary and local-language sources — Iranian (Tasnim, Mehr, Fars, IRNA, IRGC Telegram), Gulf/Arabic (Al Mayadeen, Al-Manar, Houthi Almasirah), Israeli (Mako, Walla, Ynet), OSINT/Telegram/X mirrors, and hard tracking feeds (fleet trackers like USNI/TWZ, AIS/marine traffic, ADS-B/flight monitors, NOTAM/airspace notices, and port/UKMTO/MARAD advisories) — over Western wire aggregators. Return sourced facts with citations, keep each source's own date, and never merge events from different dates." },
       { role: "user", content: query },
     ],
     search_recency_filter: recency, // day|week|month|year — bias toward fresh
@@ -134,7 +134,8 @@ async function smoke() {
 async function gather() {
   const fs = await import("node:fs");
   const qpath = new URL("../agents/gather-queries.json", import.meta.url);
-  const queries = JSON.parse(fs.readFileSync(qpath, "utf8"));
+  const raw = JSON.parse(fs.readFileSync(qpath, "utf8"));
+  const groups = Array.isArray(raw) ? { all: raw } : raw; // categorized matrix or flat list
   // Blacklist YouTube + the biggest Western aggregators to push Perplexity off
   // the beaten path (3 domains — API filter cap). YouTube is also post-filtered.
   const OFF_MAINSTREAM = ["-youtube.com", "-wikipedia.org", "-cnn.com"];
@@ -142,7 +143,9 @@ async function gather() {
   const MAINSTREAM = ["cnn.com", "nytimes.com", "reuters.com", "aljazeera.com", "bbc.com", "foxnews.com", "apnews.com", "abcnews.com", "cbsnews.com", "nbcnews.com", "timesofisrael.com", "france24.com", "independent.co.uk", "hindustantimes.com", "ndtv.com", "news18.com", "washingtonpost.com", "cnbc.com", "pbs.org", "scmp.com", "arabnews.com", "gulf-times.com", "jpost.com"];
   const isYT = (u) => /youtube\.com|youtu\.be/i.test(u || "");
   const seen = new Set();
-  for (const q of queries) {
+  for (const [lane, qs] of Object.entries(groups)) {
+   console.log(`\n══ LANE: ${lane} ══`);
+   for (const q of qs) {
     try {
       const r = await queryPerplexity(q, { recency: "day", maxTokens: 400, searchDomains: OFF_MAINSTREAM });
       const d = decompose(r, { query: q, recencyDays: 1 });
@@ -159,6 +162,7 @@ async function gather() {
     } catch (e) {
       console.log(`\n▸ ${q}\n  ERROR: ${String(e.message).replace(/pplx-[A-Za-z0-9]+/g, "pplx-REDACTED")}`);
     }
+   }
   }
 }
 

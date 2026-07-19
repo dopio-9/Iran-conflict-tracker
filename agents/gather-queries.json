@@ -1,16 +1,44 @@
-[
-  "وساطة عمان قطر مصر روسيا الصين بين إيران وأمريكا قنوات خلفية وقف التصعيد اليوم",
-  "Iran US back-channel mediation Oman Qatar Egypt Russia China ceasefire talks last 24 hours",
-  "مجتبی خامنه‌ای رهبر محل حضور فرماندهان سپاه تغییرات داخلی ایران امروز",
-  "Iran internal unrest protests IRGC commanders leadership Mojtaba Khamenei whereabouts reports today",
-  "Strait of Hormuz vessel incident tanker seizure AIS anomaly ship name Tasnim UKMTO today",
-  "حادث ناقلة سفينة مضيق هرمز الحرس الثوري احتجاز اليوم",
-  "حزب الله العراق الحشد الحوثيون تحركات عمليات ضد القوات الأمريكية اليوم",
-  "Iraqi militia PMF Hezbollah Houthi new attack claim on US forces region Telegram today",
-  "Iran cyberattack sabotage drone incident Gulf UAE Saudi banking energy infrastructure today",
-  "war risk insurance premium tanker rerouting Hormuz Bab el-Mandeb Lloyd's List gCaptain TradeWinds today",
-  "ישראל איראן הערכת מודיעין מעורבות מלחמה מיצר הורמוז חיזבאללה היום",
-  "UAE Fujairah Jebel Ali Dubai NCEMA advisory residents shipping Gulf regional social media today",
-  "IAEA Iran nuclear material Darkhovin inspection Grossi statement today",
-  "کانال تلگرام اخبار فوری جنگ ایران آمریکا تنگه هرمز حمله سپاه امروز"
-]
+{
+  "diplomacy": [
+    "وساطة عمان قطر مصر روسيا الصين بين إيران وأمريكا قنوات خلفية وقف التصعيد اليوم",
+    "Iran US back-channel mediation Oman Qatar Egypt Russia China ceasefire draft accord last 24 hours"
+  ],
+  "leadership_internal": [
+    "مجتبی خامنه‌ای رهبر محل حضور سلامت فرماندهان سپاه تغییرات داخلی ایران امروز",
+    "Iran internal power struggle IRGC commanders Mojtaba Khamenei whereabouts soft coup reports today"
+  ],
+  "maritime_incidents": [
+    "Strait of Hormuz vessel incident tanker seizure disabled ship name Tasnim IRGC navy today",
+    "حادث ناقلة احتجاز سفينة مضيق هرمز الحرس الثوري اليوم"
+  ],
+  "naval_military_movement": [
+    "USNI Fleet and Marine Tracker carrier amphibious positions Middle East Arabian Sea Gulf of Oman today",
+    "US carrier Abraham Lincoln George H.W. Bush strike group movement TWZ where are the carriers Iran today",
+    "Iranian navy IRGC fast boats mine-laying vessel deployment Strait of Hormuz OSINT today"
+  ],
+  "air_traffic_airspace": [
+    "Flightradar24 ADS-B Exchange US military aircraft tankers surveillance flights Gulf Iran today",
+    "NOTAM airspace closure warning Iran Gulf Hormuz OPSGROUP safeairspace airlines reroute today"
+  ],
+  "ports_advisories": [
+    "UKMTO MARAD MSCI JMIC advisory incident Gulf of Oman Strait of Hormuz Red Sea today",
+    "Fujairah Jebel Ali Kharg Bandar Abbas port notice bunkering vessel queue disruption today",
+    "MarineTraffic VesselFinder straits.live AIS Strait of Hormuz transit count tanker positions today"
+  ],
+  "proxy_axis": [
+    "حزب الله العراق الحشد الحوثيون تحركات عمليات ضد القوات الأمريكية اليوم",
+    "Iraqi militia PMF Hezbollah Houthi drone attack claim US forces Erbil consulate Telegram today"
+  ],
+  "war_risk_economy": [
+    "war risk insurance premium tanker rerouting Hormuz Bab el-Mandeb Maersk surcharge Lloyd's List gCaptain today"
+  ],
+  "uae_local": [
+    "UAE Fujairah Jebel Ali Dubai NCEMA air defence engagement advisory residents shipping Gulf today"
+  ],
+  "israel_intel": [
+    "ישראל איראן הערכת מודיעין מעורבות מלחמה מיצר הורמוז מוג'תבא חמינאי היום"
+  ],
+  "nuclear": [
+    "IAEA Iran nuclear material Darkhovin inspection Grossi radiological risk statement today"
+  ]
+}

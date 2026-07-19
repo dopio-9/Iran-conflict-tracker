@@ -111,3 +111,18 @@ plain Claude chat / page / cron, not only Claude Code — **needs
 before any Fable visual pass. Live doctrine proof this session: Perplexity
 temporally-blended a 14 Mar UAE-ports warning into a false "elevated tonight"
 (captured in GATHER.md).
+
+## 10. GATHER DEPTH — read agents/PERPLEXITY-PLAYBOOK.md (durable capability)
+Tracker rebuilt on the Fable next-gen template (self-contained `index.html`,
+one inline JSON block = the update surface; intelligence layers kept: signals,
+verified, triggers, scenarios, graded ledger, patterns, trace). Perplexity is
+**LIVE + VERIFIED** (smoke + gather workflows green in CI; sandbox can't reach
+the host, CI can). The recall lane's method is institutionalised in
+**`agents/PERPLEXITY-PLAYBOOK.md`** + the categorized **`agents/gather-queries.json`**
+matrix (angle × language × source-type, incl. hard tracking lanes: naval
+movement, AIS/port, air/NOTAM, war-risk). Max-effect levers: **native-language
+queries** (Farsi/Arabic/Hebrew), name the source/mirror, domain-steer off
+mainstream, recency=day, ★-flag novel, drop YouTube, dedup. Loop: edit
+gather-queries.json → push → `perplexity-gather` CI runs it → read log ★ items →
+tier → fold into `signals[]`. A fresh session inherits this by reading the
+playbook — do not re-derive it.
