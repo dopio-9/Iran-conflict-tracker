@@ -135,17 +135,27 @@ async function gather() {
   const fs = await import("node:fs");
   const qpath = new URL("../agents/gather-queries.json", import.meta.url);
   const queries = JSON.parse(fs.readFileSync(qpath, "utf8"));
-  // Blacklist the biggest Western aggregators to push Perplexity off the beaten
-  // path and into the regional/social layer (3 domains — API filter cap).
-  const OFF_MAINSTREAM = ["-wikipedia.org", "-cnn.com", "-nytimes.com"];
+  // Blacklist YouTube + the biggest Western aggregators to push Perplexity off
+  // the beaten path (3 domains — API filter cap). YouTube is also post-filtered.
+  const OFF_MAINSTREAM = ["-youtube.com", "-wikipedia.org", "-cnn.com"];
+  // Mainstream wires: a primary NOT from one of these is flagged ★ (novel layer).
+  const MAINSTREAM = ["cnn.com", "nytimes.com", "reuters.com", "aljazeera.com", "bbc.com", "foxnews.com", "apnews.com", "abcnews.com", "cbsnews.com", "nbcnews.com", "timesofisrael.com", "france24.com", "independent.co.uk", "hindustantimes.com", "ndtv.com", "news18.com", "washingtonpost.com", "cnbc.com", "pbs.org", "scmp.com", "arabnews.com", "gulf-times.com", "jpost.com"];
+  const isYT = (u) => /youtube\.com|youtu\.be/i.test(u || "");
+  const seen = new Set();
   for (const q of queries) {
     try {
       const r = await queryPerplexity(q, { recency: "day", maxTokens: 400, searchDomains: OFF_MAINSTREAM });
       const d = decompose(r, { query: q, recencyDays: 1 });
-      const rows = d.primaries.slice(0, 6)
-        .map((p) => `    · [${p.date ?? "undated"}${p.ageDays != null ? ` ${p.ageDays}d` : ""}] ${(p.title ?? "").slice(0, 70)} — ${p.url}`)
+      const rows = d.primaries
+        .filter((p) => p.url && !isYT(p.url) && !seen.has(p.url) && seen.add(p.url))
+        .slice(0, 6)
+        .map((p) => {
+          const host = (p.url.match(/^https?:\/\/([^/]+)/) || [])[1] || "";
+          const novel = !MAINSTREAM.some((m) => host.includes(m));
+          return `   ${novel ? "★" : " "} [${p.date ?? "undated"}${p.ageDays != null ? ` ${p.ageDays}d` : ""}] ${(p.title ?? "").slice(0, 64)} — ${p.url}`;
+        })
         .join("\n");
-      console.log(`\n▸ ${q}\n  ${d.note}\n${rows}`);
+      console.log(`\n▸ ${q}\n  ${d.note}\n${rows || "   (no non-YouTube primaries)"}`);
     } catch (e) {
       console.log(`\n▸ ${q}\n  ERROR: ${String(e.message).replace(/pplx-[A-Za-z0-9]+/g, "pplx-REDACTED")}`);
     }
