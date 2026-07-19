@@ -11,6 +11,30 @@
       "html": "<b>THE WAR HAS SHIFTED TO INFRASTRUCTURE AND ENFORCEMENT.</b> US disables a tanker off Kharg Island — the blockade is now kinetic · <span style=\"color:var(--alarm)\">Night 6 of US strikes hits bridges, power and rail in southern Iran; Iran hits Kuwait's power-and-water plant</span> · <span style=\"color:var(--warn)\">Tehran reportedly pre-authorises a Houthi Bab el-Mandeb closure if its power grid is hit — that condition has now been met</span>"
     }
   },
+  "signals": [
+    {
+      "id": "sig-babmandeb",
+      "claim": "Reported: Tehran has pre-authorised the Houthis to close <b>Bab el-Mandeb</b> if Iranian power infrastructure is struck — a condition now met.",
+      "seen": "16 JUL",
+      "src": "regional single-thread",
+      "lane": "MKT/EN",
+      "rung": 2,
+      "state": "open",
+      "ttl": "watch UKMTO / Red Sea AIS",
+      "note": "One reporting thread, no Iranian/Houthi official word. Trigger satisfied (power hit 16 Jul); no execution seen. Promotes on any UKMTO advisory; drops if the Red Sea stays quiet."
+    },
+    {
+      "id": "sig-uae-evac",
+      "claim": "Circulating as breaking: Iran warns the UAE to <b>evacuate Dubai/Abu Dhabi airports + Fujairah/Jebel Ali</b> ‘tonight.’",
+      "seen": "17 JUL",
+      "src": "Fars via aggregators",
+      "lane": "EN/FA",
+      "rung": 1,
+      "state": "contradicted",
+      "ttl": "expired",
+      "note": "Recirculation of a 14 Mar ports-only warning that produced no attack; the ‘airports’ detail is aggregator synthesis; NCEMA 17 Jul says stable, threats outside borders. No T2 wire carries a fresh version."
+    }
+  ],
   "wire": [
     {
       "t": "14:00", "d": "17 JUL", "geo": "GCC", "tier": "ver",
@@ -39,13 +63,6 @@
       "title": "<b>First blockade-enforcement strike:</b> US aircraft disable the Curacao-flagged tanker <b>M/T Belma</b> near Kharg Island — Hellfires into the smokestack; two other vessels turned back.",
       "full": "The blockade of Iranian ports resumed 14 Jul (16:00 EDT). Within its first 24 hours, CENTCOM says two compliant vessels were redirected and the Belma — which ignored repeated warnings en route to Kharg Island — was disabled by Hellfire missiles fired into its smokestack, a deliberate propulsion kill designed to avoid rupturing cargo tanks. First US enforcement fire on a commercial vessel since the blockade was reinstated.",
       "why": "The mirror image of the GFS Galaxy: now BOTH sides disable merchant ships that defy their rules in these waters. Shipping faces two competing enforcement regimes — Iran's 'unapproved route' fire and America's blockade fire — which is why transits keep falling even with US escorts on offer. War-risk pricing has no precedent for a two-sided enforcement gauntlet."
-    },
-    {
-      "t": "12:00", "d": "16 JUL", "geo": "MARKETS", "tier": "pending",
-      "src": "regional reporting — single-thread, no T2 confirmation",
-      "title": "Reported: Tehran has <b>pre-authorised the Houthis to close Bab el-Mandeb</b> if Iranian power infrastructure comes under attack — a condition US strikes have now met.",
-      "full": "Reporting circulating 15-16 Jul says Iran instructed Yemen's Houthis to close the Bab el-Mandeb Strait — the Red Sea chokepoint for Saudi-bound and Suez-bound traffic — if Iranian power infrastructure were hit. Power facilities in southern Iran were struck on night six. No Houthi action, UKMTO advisory, or Red Sea traffic change has been observed as of this update. Held at PENDING: single reporting thread, but the trigger condition is now objectively satisfied.",
-      "why": "This is the exact structure the ledger taught us to weight: a floated option is misdirection, but a CONDITIONAL order with a met trigger is a loaded mechanism. If it executes, the war jumps from one chokepoint to two, and even the around-Africa reroute options that keep UAE imports flowing get repriced. Watch UKMTO and Red Sea AIS, not statements."
     },
     {
       "t": "18:00", "d": "14 JUL", "geo": "US", "tier": "ver2",

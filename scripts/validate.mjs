@@ -49,6 +49,25 @@ if (data) {
       fail(`wire[${i}]: tier ver2 but src "${w.src}" names a single source — Rule 1: nothing gets ver2 on one source, ever`);
   });
 
+  // SIGNALS lane (optional): live unverified items. Lean by rule — never a WIRE badge, capped.
+  if (data.signals) {
+    if (!Array.isArray(data.signals)) fail(`data.json: signals must be an array`);
+    else {
+      if (data.signals.length > 6) fail(`signals: ${data.signals.length} entries — cap is 6 (lean lane, no debunk-museum)`);
+      const sigStates = ["open", "converging", "contradicted"];
+      const sigRungs = [1, 2, 3, "3★"];
+      data.signals.forEach((s, i) => {
+        for (const k of ["id", "claim", "src", "lane", "rung", "state", "ttl"])
+          if (s[k] === undefined || s[k] === "") fail(`signals[${i}]: missing "${k}"`);
+        if (!sigStates.includes(s.state)) fail(`signals[${i}] (${s.id}): state must be open|converging|contradicted, got "${s.state}"`);
+        if (!sigRungs.includes(s.rung)) fail(`signals[${i}] (${s.id}): rung must be 1|2|3|3★, got "${s.rung}"`);
+        // Rule: a signal is NOT verified — it may never wear a WIRE tier badge.
+        if (["ver2", "ver"].includes(s.tier)) fail(`signals[${i}] (${s.id}): a signal may never carry a ver/ver2 badge — that is WIRE's, not SIGNALS' (no laundering)`);
+        if ((s.note ?? "").length > 260) fail(`signals[${i}] (${s.id}): note too long — keep it one line`);
+      });
+    }
+  }
+
   if ((data.status ?? []).length !== 4) warn(`status has ${data.status?.length} rows (expected 4)`);
   if ((data.gauges ?? []).length !== 4) warn(`gauges has ${data.gauges?.length} entries (expected 4)`);
   if ((data.dials ?? []).length !== 4) warn(`dials has ${data.dials?.length} entries (expected 4)`);

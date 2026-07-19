@@ -122,6 +122,30 @@
   .ping.open .pfull{display:block}
   .pfull .why{color:var(--text);display:block;margin-top:6px;font-style:italic}
 
+  /* ─── SIGNALS (live, unverified — speed before proof) ──────── */
+  .signals{border:1px dashed color-mix(in srgb,var(--warn) 55%,var(--line));border-radius:8px;
+    background:color-mix(in srgb,var(--warn) 6%,transparent);padding:9px 10px;margin-bottom:12px}
+  .signals-h{display:flex;align-items:center;gap:6px;margin-bottom:6px}
+  .signals-h .dotpulse{width:7px;height:7px;border-radius:50%;background:var(--warn);animation:pulse 1.8s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}
+  .signals-h .lbl{font-family:var(--mono);font-size:8.5px;font-weight:600;letter-spacing:.16em;color:var(--warn)}
+  .signals-h .sub{font-family:var(--mono);font-size:7px;letter-spacing:.08em;color:var(--mute);margin-left:auto}
+  .sig{display:flex;gap:8px;padding:7px 0;border-top:1px solid color-mix(in srgb,var(--warn) 20%,var(--line))}
+  .sig:first-of-type{border-top:none}
+  .sig .rung{flex-shrink:0;font-family:var(--mono);font-size:7.5px;font-weight:600;letter-spacing:.05em;
+    padding:2px 5px;border-radius:3px;height:fit-content;
+    background:color-mix(in srgb,var(--warn) 16%,transparent);color:var(--warn)}
+  .sig.converging .rung{background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--accent)}
+  .sig.contradicted .rung{background:color-mix(in srgb,var(--alarm) 16%,transparent);color:var(--alarm)}
+  .sig-b{min-width:0}
+  .sig-claim{font-size:11px;line-height:1.45;color:var(--bright)}
+  .sig-claim b{font-weight:600}
+  .sig.contradicted .sig-claim{color:var(--mute)}
+  .sig-meta{font-family:var(--mono);font-size:7.5px;letter-spacing:.05em;color:var(--mute);margin-top:3px}
+  .sig-meta .st{font-weight:600}
+  .sig.open .st{color:var(--warn)} .sig.converging .st{color:var(--accent)} .sig.contradicted .st{color:var(--alarm)}
+  .sig-note{font-size:10px;line-height:1.45;color:var(--text);font-style:italic;margin-top:3px}
+
   /* ─── NOW (signatures) ─────────────────────────────────────── */
   .sig-water{display:block}
   [data-theme="pressure"] .sig-water{display:none}
@@ -427,10 +451,26 @@ function renderWire(){
       </div></div>`;
   }).join("");
   document.getElementById("p-wire").innerHTML=
+    signalsHTML()+
     `<div class="wirehead"><span class="meta">${items.length} CONTACTS · LAST 7 DAYS · TAP TO EXPAND</span></div>
      <div class="filters">${fbtns}</div>${list}`;
 }
 function setFilter(v){filter=v;renderWire();}
+function signalsHTML(){
+  const sg=DATA.signals||[];
+  if(!sg.length) return "";
+  const rows=sg.map(s=>`<div class="sig ${s.state}">
+    <span class="rung">R${s.rung}</span>
+    <div class="sig-b">
+      <div class="sig-claim">${s.claim}</div>
+      <div class="sig-meta"><span class="st">${s.state.toUpperCase()}</span> · ${s.src} · ${s.lane} · TTL ${s.ttl}</div>
+      ${s.note?`<div class="sig-note">↳ ${s.note}</div>`:""}
+    </div></div>`).join("");
+  return `<div class="signals">
+    <div class="signals-h"><span class="dotpulse"></span><span class="lbl">LIVE SIGNALS · UNVERIFIED</span>
+      <span class="sub">NOT WIRE — SPEED BEFORE PROOF</span></div>
+    ${rows}</div>`;
+}
 
 /* ════════ NOW ════════ */
 function renderNow(){

@@ -39,14 +39,19 @@ tracker shows, applying the same tier rules as always.
 
 ## Convergence confidence ladder (aggregator logic)
 
-| Rung | Condition | Emit as |
+| Rung | Condition | State on the SIGNALS strip |
 |---|---|---|
-| 1 | one source, one lane | `pending` (low) — logged, not shown |
-| 2 | 2+ sources, same lane | `pending` (medium) — same-substrate echo ≠ independence |
-| 3 | 2+ independent sources across lanes | `flash` — cross-substrate convergence |
-| 3★ | Khamenei Telegram alone | `flash` — the standing exception (T1-ELEVATED); no other single source gets this |
-| 4 | any T2 source lands | hand to GATHER — it exits the speed layer |
-| ✕ | lanes contradict | `disputed` — render the conflict, never average it |
+| 1 | one source, one lane | `open` — **shown, lowest confidence** (doctrine is speed FIRST; never hide it) |
+| 2 | 2+ sources, same lane | `open` — same-substrate echo ≠ independence, but still shown |
+| 3 | 2+ independent sources across lanes | `converging` — cross-substrate convergence |
+| 3★ | Khamenei Telegram alone | `converging` — the standing exception (T1-ELEVATED); no other single source gets this |
+| 4 | any T2 source lands | **promote** → graduate to WIRE; it exits the speed layer |
+| ✕ | lanes contradict / a rebuttal lands | `contradicted` — render the conflict, never average it |
+
+The rung governs the **confidence label shown**, never whether an item is
+shown. Rung-1 is surfaced on the SIGNALS strip marked lowest-confidence — the
+old "logged, not shown" rule is retired: hiding early news is verify-first,
+which inverts the doctrine.
 
 Independence test before climbing to rung 3: two sightings are NOT independent
 if one visibly quotes, screenshots, or translates the other, or both cite the
@@ -55,17 +60,23 @@ same single origin. Shared-origin sightings collapse to one source.
 ## Lifecycle — every emitted item must end in one of three states
 
 ```
-emit(pending|flash) ──► PROMOTED      a T2 source confirmed it; GATHER/REASON take over.
-                   ──► CONTRADICTED   a T2 source or cross-lane evidence refuted it;
-                                      logged with what the early read got wrong.
-                   ──► EXPIRED        TTL passed with no confirmation. Logged, like a
-                                      graded forecast. pending TTL: 12h. flash TTL: 24h.
+show(open|converging) ─► PROMOTED      a T2 source confirmed it; graduate to WIRE.
+                    ──► CONTRADICTED   a rebuttal/cross-lane evidence refuted it; show it
+                                       marked contradicted briefly, then DROP.
+                    ──► EXPIRED        TTL passed, no confirmation. DROP from the strip
+                                       (one-line archive count only). open TTL: 12h;
+                                       converging TTL: 24h.
 ```
 
-The log of promotions/contradictions/expiries is the listener's ledger — it is
-how lane weights get tuned (a lane whose flashes keep expiring loses standing;
-a lane that keeps getting promoted earns it). Review it at the weekly Fable
-pass, exactly like forecast grading.
+**Lean rule (standing user constraint):** the strip surfaces what is LIVE. Do
+not accumulate dead rumors — an expired or resolved item drops off; keep at
+most a one-line archive tally, never a visible graveyard. Debunking past news
+is not a feature; surfacing live news is. Cap the strip at ~5 items.
+
+The promote/contradict/expire *tally* (not the items) is the listener's ledger —
+how lane weights get tuned: a lane whose signals keep expiring loses standing; a
+lane that keeps getting promoted earns it. Review the tally at the weekly Opus
+pass, like forecast grading.
 
 ## v1 substrate: web-search-only (the current build)
 
