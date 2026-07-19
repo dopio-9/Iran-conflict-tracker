@@ -19,6 +19,14 @@
  * egress allowlist — run it from the GitHub Actions runner or locally, not the
  * Claude Code sandbox. `--selftest` exercises the decomposition logic offline.
  *
+ * STATUS: the response-shape handling (model id `sonar`, citations[] /
+ * search_results[]) is UNVERIFIED against the live API — it was written from
+ * docs, not a real call. The gate is `--smoke` via
+ * .github/workflows/perplexity-smoke.yml: it makes one real call and asserts
+ * the shape. Do not treat this client as working until that workflow is green.
+ * The client reads both citations[] and search_results[] so it survives either
+ * documented shape; --smoke reports which one the API actually returns.
+ *
  * Key: PERPLEXITY_API_KEY (env / Actions secret). Never commit it.
  */
 
@@ -102,10 +110,25 @@ function selftest() {
   process.exit(pass ? 0 : 1);
 }
 
+/* ── live smoke test: one real call, assert the shape (runs in CI) ──── */
+async function smoke() {
+  const r = await queryPerplexity("In one sentence, what is the Strait of Hormuz?", { maxTokens: 120 });
+  const content = r?.choices?.[0]?.message?.content;
+  const cites = r?.citations ?? [];
+  const results = r?.search_results ?? [];
+  const shape = { model: r?.model, has_content: typeof content === "string", citations: cites.length, search_results: results.length };
+  console.log("live shape:", JSON.stringify(shape));
+  const ok = shape.has_content && (cites.length > 0 || results.length > 0);
+  if (!ok) { console.error("✖ smoke FAIL — no content or no citations/search_results (use a sonar model)"); process.exit(1); }
+  const dec = decompose(r, { query: "smoke" });
+  console.log(`✔ smoke PASS — ${dec.primaries.length} primaries, note: ${dec.note}`);
+}
+
 /* ── CLI ───────────────────────────────────────────────────────────── */
 if (import.meta.url === `file://${process.argv[1]}`) {
   const arg = process.argv[2];
   if (arg === "--selftest") selftest();
+  else if (arg === "--smoke") smoke().catch((e) => { console.error(String(e.message).replace(/pplx-[A-Za-z0-9]+/g, "pplx-REDACTED")); process.exit(1); });
   else if (!arg) {
     console.error('usage: node scripts/perplexity.mjs "<query>"   |   --selftest');
     process.exit(2);

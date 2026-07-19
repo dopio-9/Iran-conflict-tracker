@@ -33,6 +33,15 @@ Separation + labeling is the discipline — not suppression.
   rung 1-2, one-line note "recirc of 14 Mar ports warning; NCEMA stable" then
   let it drop on TTL. Do NOT expand the evacuation debunk on the page.
 
+## STATUS (compression point, 19 Jul)
+Branch `claude/signals-live-layer`. DONE: SIGNALS lane (§A) — built, rendered,
+validated, pushed. `scripts/perplexity.mjs` — built but **UNVERIFIED against
+live API** (sandbox blocks api.perplexity.ai AND the docs sites). Gate =
+`.github/workflows/perplexity-smoke.yml`: user adds `PERPLEXITY_API_KEY` secret,
+runs it, must be green before Perplexity counts as working. Key was pasted in
+chat — rotate it. NOT DONE: §C runner (needs `ANTHROPIC_API_KEY` secret), §D IA
+declutter. Do NOT claim Perplexity works until the smoke workflow passes.
+
 ## B. Perplexity integration (needs API key from user)
 
 Seat: **Haiku-tier GATHER recall booster + SCOUT source-finder. Never a

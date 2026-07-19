@@ -1,0 +1,23 @@
+name: perplexity-smoke
+# One real Perplexity call to prove the client works end-to-end against the
+# live API — the sandbox that built it cannot reach api.perplexity.ai, so this
+# is where "does it actually work" gets answered. Add PERPLEXITY_API_KEY as a
+# repo Actions secret, then run this workflow manually (Actions tab → Run).
+on:
+  workflow_dispatch:
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Perplexity live smoke test
+        env:
+          PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
+        run: |
+          if [ -z "$PERPLEXITY_API_KEY" ]; then
+            echo "PERPLEXITY_API_KEY secret not set — add it in repo Settings → Secrets → Actions"; exit 1
+          fi
+          node scripts/perplexity.mjs --smoke
