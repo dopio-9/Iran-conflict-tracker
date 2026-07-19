@@ -90,3 +90,24 @@ Governing principle: **additions feed the verification discipline, they never by
 
 ## 8. First prompt for the fresh session
 > Read HANDOFF.md, then agents/PIPELINE.md and agents/GATHER.md/REASON.md. We're at step 2 of the roadmap: wiring the gathering layer. Start web-search-only. Build `agents/SCOUT.md` (blind-spot scout → candidates queue) and the fast-signal listener design, then re-run the 13 Jul update through the improved gather and show me the delta vs the current Day 136 data on main.
+
+---
+
+## 9. STATE as of Day 140 build (17 Jul 2026) — READ agents/BUILD.md next
+Gathering layer done: `agents/SCOUT.md` + `LISTEN.md` + `candidates.json` (10
+noms) built; GATHER/REASON/PIPELINE wired with **function-level model tiers**
+(Haiku gather · Sonnet reason · **Opus grading/patterns/tiering/high-stakes** ·
+Fable visual-only). 13 Jul A/B in `agents/runs/2026-07-13-rerun/`. Day-140 data
+live on branch (blockade, infra war, Kuwait plant, Bab el-Mandeb order). Ledger
+graded 12+13 Jul; new pattern `infrastructure-reciprocity`.
+
+**Now on branch `claude/signals-live-layer`.** Next build is fully specced in
+**`agents/BUILD.md`**: (A) SIGNALS lean lane — a strip not a tab, surface live
+unverified news, no debunk-museum; (B) Perplexity as Haiku-tier gather booster
+behind decomposition+date-stamp — **needs `PERPLEXITY_API_KEY` from user**;
+(C) Actions runner (`run-update.mjs` + `update.yml`) so updates fire from a
+plain Claude chat / page / cron, not only Claude Code — **needs
+`ANTHROPIC_API_KEY` secret**; (D) redesign sequencing — IA declutter (Opus)
+before any Fable visual pass. Live doctrine proof this session: Perplexity
+temporally-blended a 14 Mar UAE-ports warning into a false "elevated tonight"
+(captured in GATHER.md).
