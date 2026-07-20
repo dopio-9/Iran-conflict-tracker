@@ -25,7 +25,8 @@
  */
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 
-const DARK_AFTER = 3; // consecutive non-empty misses before flagging unreachable-dark
+const DARK_AFTER = 3;   // consecutive non-empty misses before flagging unreachable-dark
+const RETIRE_AFTER = 5; // consecutive misses before auto-retiring — scoring IS the review
 
 function readScoreboard(arg) {
   let raw;
@@ -44,6 +45,7 @@ const byId = new Map(reg.map((s) => [s.id, s]));
 const board = readScoreboard(process.argv[2]);
 let applied = 0;
 const nowDark = [];
+const nowRetired = [];
 for (const c of board.channels) {
   const s = byId.get(c.id);
   if (!s) continue;
@@ -59,6 +61,9 @@ for (const c of board.channels) {
     if (c.reason === "empty") { s.dark = { reason: "empty", since: board.ts }; nowDark.push(`#${s.id} ${s.name} (empty)`); }
     else if (c.reason === "stale") { s.lowTempo = true; delete s.dark; }
     else if (s.consecutiveMisses >= DARK_AFTER) { s.dark = { reason: "unreachable", since: board.ts }; nowDark.push(`#${s.id} ${s.name} (unreachable)`); }
+    // auto-retire — the review with teeth: a source that keeps missing is dropped
+    // from the active set (excluded from steering/gather), not carried forever.
+    if (s.consecutiveMisses >= RETIRE_AFTER && !s.retired) { s.retired = { since: board.ts, after: s.consecutiveMisses }; nowRetired.push(`#${s.id} ${s.name}`); }
   }
   applied++;
 }
@@ -72,4 +77,5 @@ const darkNow = reg.filter((s) => s.dark).length;
 console.log(`applied ${applied} outcomes from ${board.engine} @ ${board.ts}`);
 console.log(`registry totals — hits:${totHit} misses:${totMiss} · dark sources:${darkNow}`);
 if (nowDark.length) console.log(`flagged dark this run: ${nowDark.join(", ")}`);
+if (nowRetired.length) console.log(`AUTO-RETIRED this run (${RETIRE_AFTER}+ misses): ${nowRetired.join(", ")}`);
 console.log(`→ replenishment loop (objective 6) should fix-or-replace the ${darkNow} dark source(s)`);

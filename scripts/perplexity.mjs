@@ -142,7 +142,7 @@ async function gather() {
   const reg = JSON.parse(fs.readFileSync(new URL("../data/sources.json", import.meta.url), "utf8"));
   const TIER_RANK = { "T1-ELEVATED": 0, "T1": 1, "T2": 2, "SPECIALIST": 3, "META": 4, "T1-UNRELIABLE": 5 };
   const steerFor = (lane) => {
-    const live = reg.filter((s) => Array.isArray(s.lanes) && s.lanes.includes(lane) && !s.dark);
+    const live = reg.filter((s) => Array.isArray(s.lanes) && s.lanes.includes(lane) && !s.dark && !s.retired);
     live.sort((a, b) => (TIER_RANK[a.tier] ?? 9) - (TIER_RANK[b.tier] ?? 9) || (b.hits || 0) - (a.hits || 0));
     return { names: live.slice(0, 6).map((s) => s.name), sites: [...new Set(live.filter((s) => s.site).map((s) => s.site))].slice(0, 3) };
   };

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "doctrine": "SCOUT nominations only — a candidate carries no citation weight until approved into sources.json by the human/Fable tiering review. Rejections are kept with their reasons; they teach the scout. See agents/SCOUT.md.",
+    "doctrine": "AUTO-PROMOTE policy (20 Jul): every nominated candidate is promoted straight into sources.json by scripts/promote.mjs — NO manual review gate. The SCORING loop is the review: promoted sources enter at a conservative tier as lead-finders (DISPUTED-until-corroborated, never confirmation), earn their place by hit-rate, and are dark-flagged then auto-retired when they go silent. Quality is enforced post-hoc by scoring + the discovery junk filter, not by pre-approval. See agents/SCOUT.md.",
     "statuses": [
       "nominated",
       "approved",
@@ -21,8 +21,8 @@
       "fills": "The exact source class the Oman-struck VERIFY dispute was waiting on — registry has QNA and WAM but no Omani official channel, despite Oman hosting the mediation.",
       "evidence": "ONA official-source statement on the 13 Jul Duqm drone strike (two drones, one injured, debris near fuel storage) closed the dispute in the A/B re-run; reached via Anadolu/Argus republication.",
       "risks": "State wire — reflects Omani government position; slow on anything Muscat wants quiet.",
-      "status": "nominated",
-      "review": null
+      "status": "approved",
+      "review": "auto-promoted → registry #111 (no-manual-review policy); scoring will review by hit-rate"
     },
     {
       "id": "c-002",
@@ -35,8 +35,8 @@
       "fills": "Direct read on the mediator's posture — statements published same-day during the 13 Jul cycle; the diplomatic-track health check for Muscat talks.",
       "evidence": "fm.gov.om statement 13 Jul condemning attacks and calling for an immediate regional halt, hours after hosting Iran's FM.",
       "risks": "Official diplomatic language only; deliberately non-specific on operational detail.",
-      "status": "nominated",
-      "review": null
+      "status": "approved",
+      "review": "auto-promoted → registry #112 (no-manual-review policy); scoring will review by hit-rate"
     },
     {
       "id": "c-003",
@@ -49,8 +49,8 @@
       "fills": "Gulf-official-wire gap: Bahrain is a confirmed retaliation target every round and hosts NSA Bahrain / 5th Fleet; no Bahraini official channel in the registry.",
       "evidence": "Bahrain named in every round's confirmed strike list; confirmations currently arrive only via US/Qatari media carriage.",
       "risks": "State wire; incident detail may lag or be suppressed for base-security reasons.",
-      "status": "nominated",
-      "review": null
+      "status": "approved",
+      "review": "auto-promoted → registry #113 (no-manual-review policy); scoring will review by hit-rate"
     },
     {
       "id": "c-004",
@@ -63,8 +63,8 @@
       "fills": "Same Gulf-official-wire gap as BNA — Kuwait is a standing retaliation target with no official channel in the registry.",
       "evidence": "Kuwait in every confirmed strike list 12-13 Jul; no direct Kuwaiti official sighting in any gather run to date.",
       "risks": "State wire; same caveats as BNA.",
-      "status": "nominated",
-      "review": null
+      "status": "approved",
+      "review": "auto-promoted → registry #114 (no-manual-review policy); scoring will review by hit-rate"
     },
     {
       "id": "c-005",
@@ -77,8 +77,8 @@
       "fills": "USV/naval-platform identification — the sea-drone war makes platform-level naval OSINT load-bearing (pattern-stress driver from 13 Jul).",
       "evidence": "Same-day identification of the 3 Saronic Corsair USVs and the Bandar Abbas submarine/maintenance target in the Round-4 strikes — detail neither wire copy nor CENTCOM's own post carried.",
       "risks": "Trade press — strong on platforms, not a confirmation source for contested kinetic claims.",
-      "status": "nominated",
-      "review": null
+      "status": "approved",
+      "review": "auto-promoted → registry #115 (no-manual-review policy); scoring will review by hit-rate"
     },
     {
       "id": "c-006",
@@ -91,8 +91,8 @@
       "fills": "Energy-market wire with fast Gulf incident coverage — bridges the market lane and the kinetic lane (Kpler/Windward cover flows, not incidents).",
       "evidence": "Carried the Oman Duqm drone-attack report with ONA sourcing on 13 Jul, ahead of most general-news outlets.",
       "risks": "Some content paywalled; use via headlines/snippets and record via:.",
-      "status": "nominated",
-      "review": null
+      "status": "approved",
+      "review": "auto-promoted → registry #116 (no-manual-review policy); scoring will review by hit-rate"
     },
     {
       "id": "c-007",
@@ -105,8 +105,8 @@
       "fills": "War-risk/insurance-market lane reachable without the Lloyd's paywall — and it carried the AIS-dark transit story the transit-count decomposition depends on.",
       "evidence": "13 Jul piece 'Ships Transit Hormuz in Secret' (Kpler data: all six Sunday transits AIS-dark) — the key to decomposing the 6-vs-14-vs-8.5M-bbl number conflict.",
       "risks": "Republishes wire/Bloomberg copy — decompose to primaries per GATHER rule.",
-      "status": "nominated",
-      "review": null
+      "status": "approved",
+      "review": "auto-promoted → registry #117 (no-manual-review policy); scoring will review by hit-rate"
     },
     {
       "id": "c-008",
@@ -119,8 +119,8 @@
       "fills": "Redundancy for the live-transit dashboards (straits.live, hormuztracking.com) — dashboard divergence is itself a signal when AIS goes dark.",
       "evidence": "Live ship-data page surfaced in the 13 Jul re-run alongside the two registry dashboards; cross-checking three trackers exposes methodology gaps.",
       "risks": "Unknown operator and methodology; treat as T1 until its counts are benchmarked against PortWatch.",
-      "status": "nominated",
-      "review": null
+      "status": "approved",
+      "review": "auto-promoted → registry #118 (no-manual-review policy); scoring will review by hit-rate"
     },
     {
       "id": "c-009",
@@ -133,8 +133,8 @@
       "fills": "Daily curated round-up of Iran/Gulf coverage with primary links — a cheap morning sweep seed for the EN lane.",
       "evidence": "13 Jul edition aggregated the day's Iran-war coverage with source links; useful as a query-seeder, never as a citation.",
       "risks": "Advocacy-adjacent think tank (hawkish Iran line) — aggregation only, decompose to primaries, never cite the brief itself.",
-      "status": "nominated",
-      "review": null
+      "status": "approved",
+      "review": "auto-promoted → registry #119 (no-manual-review policy); scoring will review by hit-rate"
     },
     {
       "id": "c-010",
@@ -147,8 +147,8 @@
       "fills": "Professional flight-ops intelligence on Middle East airspace — FIR closures, routing corridors, risk airspace — the authoritative layer under the UAE flights question the tracker answers every cycle.",
       "evidence": "Its 'Middle East Airspace — Current Operational Picture' carried the Day-140 detail no news outlet had: no new Gulf FIR closures, temporary RNAV corridors in use, Europe-Asia routings via Egypt-Saudi-Oman/UAE or the Caucasus.",
       "risks": "Aimed at flight crews/dispatchers; some content membership-gated — use the public blog and record via:.",
-      "status": "nominated",
-      "review": null
+      "status": "approved",
+      "review": "auto-promoted → registry #120 (no-manual-review policy); scoring will review by hit-rate"
     },
     {
       "id": "c-011",
@@ -166,8 +166,8 @@
       "evidence": "Bahrain, Kuwait and Qatar report Iranian attacks — english.ahram.org.eg (2026-07-20)",
       "risks": null,
       "via": "discovery",
-      "status": "nominated",
-      "review": null
+      "status": "approved",
+      "review": "auto-promoted → registry #121 (no-manual-review policy); scoring will review by hit-rate"
     },
     {
       "id": "c-012",
@@ -185,8 +185,8 @@
       "evidence": "US strikes Iran for ninth day; Iran says two oil tankers struck — al-monitor.com (2026-07-20)",
       "risks": null,
       "via": "discovery",
-      "status": "nominated",
-      "review": null
+      "status": "approved",
+      "review": "auto-promoted → registry #122 (no-manual-review policy); scoring will review by hit-rate"
     },
     {
       "id": "c-013",
@@ -204,8 +204,8 @@
       "evidence": "The U.S.-Iran War Escalates and Expands Horizontally — thesoufancenter.org IntelBrief (2026-07-20)",
       "risks": null,
       "via": "discovery",
-      "status": "nominated",
-      "review": null
+      "status": "approved",
+      "review": "auto-promoted → registry #123 (no-manual-review policy); scoring will review by hit-rate"
     },
     {
       "id": "c-014",
@@ -223,8 +223,8 @@
       "evidence": "Yemeni Houthis announced a naval blockade of Saudi Arabia — iz.ru (2026-07-20)",
       "risks": null,
       "via": "discovery",
-      "status": "nominated",
-      "review": null
+      "status": "approved",
+      "review": "auto-promoted → registry #124 (no-manual-review policy); scoring will review by hit-rate"
     },
     {
       "id": "c-015",
@@ -242,8 +242,8 @@
       "evidence": "Йеменские хуситы объявили морскую блокаду — kommersant.ru (2026-07-20)",
       "risks": null,
       "via": "discovery",
-      "status": "nominated",
-      "review": null
+      "status": "approved",
+      "review": "auto-promoted → registry #125 (no-manual-review policy); scoring will review by hit-rate"
     },
     {
       "id": "c-016",
@@ -261,8 +261,8 @@
       "evidence": "Khalil al-Hayya elected as Hamas new political bureau chief — caliber.az (2026-07-20)",
       "risks": null,
       "via": "discovery",
-      "status": "nominated",
-      "review": null
+      "status": "approved",
+      "review": "auto-promoted → registry #126 (no-manual-review policy); scoring will review by hit-rate"
     },
     {
       "id": "c-017",
@@ -280,8 +280,8 @@
       "evidence": "Hamas elects Khalil al-Hayya as its new leader — timesofisrael.com (2026-07-20)",
       "risks": null,
       "via": "discovery",
-      "status": "nominated",
-      "review": null
+      "status": "approved",
+      "review": "auto-promoted → registry #127 (no-manual-review policy); scoring will review by hit-rate"
     },
     {
       "id": "c-018",
@@ -299,8 +299,8 @@
       "evidence": "IRONSIGHT real-time OSINT dashboard, 27+ TG channels (Hebrew/Arabic/Farsi) auto-translated, no API key (2026)",
       "risks": null,
       "via": "web-hunt",
-      "status": "nominated",
-      "review": null
+      "status": "approved",
+      "review": "auto-promoted → registry #128 (no-manual-review policy); scoring will review by hit-rate"
     },
     {
       "id": "c-019",
@@ -318,8 +318,8 @@
       "evidence": "Live kinetic-event tracker updating every 2h; maps verified strikes + Hormuz crisis (Day 142, 2026)",
       "risks": null,
       "via": "web-hunt",
-      "status": "nominated",
-      "review": null
+      "status": "approved",
+      "review": "auto-promoted → registry #129 (no-manual-review policy); scoring will review by hit-rate"
     },
     {
       "id": "c-020",
@@ -337,8 +337,8 @@
       "evidence": "Real-time OSINT dashboard aggregating social/news/broadcast for Iran (2026)",
       "risks": null,
       "via": "web-hunt",
-      "status": "nominated",
-      "review": null
+      "status": "approved",
+      "review": "auto-promoted → registry #130 (no-manual-review policy); scoring will review by hit-rate"
     },
     {
       "id": "c-021",
@@ -356,8 +356,8 @@
       "evidence": "JMIC maintains Gulf/Hormuz maritime threat ratings (2026 maritime forecast)",
       "risks": null,
       "via": "web-hunt",
-      "status": "nominated",
-      "review": null
+      "status": "approved",
+      "review": "auto-promoted → registry #131 (no-manual-review policy); scoring will review by hit-rate"
     },
     {
       "id": "c-022",
@@ -375,8 +375,8 @@
       "evidence": "Named across OSINT source guides for Gulf military-movement tracking (2026)",
       "risks": "OSINT X account — UW study flags dominant OSINT accounts for weaker editorial safeguards; DISPUTED-until-corroborated, never a confirmation source",
       "via": "web-hunt",
-      "status": "nominated",
-      "review": null
+      "status": "approved",
+      "review": "auto-promoted → registry #132 (no-manual-review policy); scoring will review by hit-rate"
     },
     {
       "id": "c-023",
@@ -394,8 +394,8 @@
       "evidence": "Military air-tracking OSINT collective (~21K), named in 2026 conflict source guides",
       "risks": "OSINT crowd-sourced; corroborate against ADS-B Exchange before tiering",
       "via": "web-hunt",
-      "status": "nominated",
-      "review": null
+      "status": "approved",
+      "review": "auto-promoted → registry #133 (no-manual-review policy); scoring will review by hit-rate"
     },
     {
       "id": "c-024",
@@ -413,8 +413,8 @@
       "evidence": "Named across OSINT source guides for Middle East real-time events (2026)",
       "risks": "OSINT account; lead-finder only, verify before confirmation",
       "via": "web-hunt",
-      "status": "nominated",
-      "review": null
+      "status": "approved",
+      "review": "auto-promoted → registry #134 (no-manual-review policy); scoring will review by hit-rate"
     }
   ]
 }

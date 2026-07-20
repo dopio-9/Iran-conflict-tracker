@@ -44,7 +44,7 @@ const LANE_DESC = {
 
 // live (non-dark) source count per lane
 const liveByLane = Object.fromEntries(LANES.map((l) => [l, 0]));
-for (const s of reg) if (!s.dark && Array.isArray(s.lanes)) for (const l of s.lanes) if (l in liveByLane) liveByLane[l]++;
+for (const s of reg) if (!s.dark && !s.retired && Array.isArray(s.lanes)) for (const l of s.lanes) if (l in liveByLane) liveByLane[l]++;
 
 const sparseLanes = LANES.filter((l) => liveByLane[l] < MIN_LIVE).sort((a, b) => liveByLane[a] - liveByLane[b]);
 const darkSources = reg.filter((s) => s.dark);
