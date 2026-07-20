@@ -23,3 +23,5 @@ jobs:
         run: node scripts/telegram.mjs --smoke
       - name: Telegram DIRECT gather (registry channels)
         run: node scripts/telegram.mjs --gather
+      - name: Score channels (emit SCOREBOARD for the scoring loop)
+        run: node scripts/telegram.mjs --score

@@ -123,11 +123,48 @@ async function gather() {
   console.log(`\n${ok} ok · ${fail} failed of ${tg.length} wired`);
 }
 
+/* ── score: per-channel outcome for the scoring loop (runs in CI) ──── */
+/* Emits a machine-readable SCOREBOARD line the session reads (get_job_logs) and
+ * feeds to apply-score.mjs, which writes hits/misses/dark back to the registry.
+ * Split (fetch in CI, write in session) avoids CI commit-back loops; the Routine
+ * later does both in one context. Outcome per channel:
+ *   hit  = has a post within TTL_FRESH
+ *   miss = 0 posts (reason:empty → private/bad-handle) OR only stale posts (reason:stale) */
+const TTL_FRESH_MIN = 4320; // 3 days — a channel silent longer is not feeding signals now
+async function score() {
+  const fs = await import("node:fs");
+  const reg = JSON.parse(fs.readFileSync(new URL("../data/sources.json", import.meta.url), "utf8"));
+  const tg = reg.filter((s) => s.feed?.kind === "telegram-web" && s.feed.url);
+  const channels = [];
+  for (const s of tg) {
+    const handle = s.feed.url.replace(/.*t\.me\/s\//, "");
+    let postCount = 0, freshestMin = null, reason = "empty", outcome = "miss";
+    try {
+      const posts = parsePosts(await fetchChannel(handle)).filter((p) => p.text);
+      postCount = posts.length;
+      const ages = posts.filter((p) => p.ageMin != null).map((p) => p.ageMin);
+      freshestMin = ages.length ? Math.min(...ages) : null;
+      if (postCount === 0) reason = "empty";
+      else if (freshestMin != null && freshestMin <= TTL_FRESH_MIN) { reason = "live"; outcome = "hit"; }
+      else reason = "stale";
+    } catch (e) {
+      reason = "error";
+    }
+    channels.push({ id: s.id, name: s.name, outcome, reason, freshestMin, postCount });
+  }
+  const board = { ts: new Date().toISOString(), engine: "telegram", channels };
+  console.log("SCOREBOARD:" + JSON.stringify(board));
+  const hits = channels.filter((c) => c.outcome === "hit").length;
+  const empty = channels.filter((c) => c.reason === "empty").length;
+  console.log(`\nscored ${channels.length} channels — ${hits} hit · ${empty} empty(dark) · ${channels.length - hits - empty} stale/err`);
+}
+
 /* ── CLI ───────────────────────────────────────────────────────────── */
 if (import.meta.url === `file://${process.argv[1]}`) {
   const arg = process.argv[2];
   if (arg === "--smoke") smoke().catch((e) => { console.error(e.message); process.exit(1); });
   else if (arg === "--gather") gather().catch((e) => { console.error(e.message); process.exit(1); });
+  else if (arg === "--score") score().catch((e) => { console.error(e.message); process.exit(1); });
   else if (arg && !arg.startsWith("--")) fetchChannel(arg).then((h) => console.log(JSON.stringify(parsePosts(h).slice(-5), null, 2))).catch((e) => { console.error(e.message); process.exit(1); });
-  else { console.error('usage: node scripts/telegram.mjs --smoke | --gather | <handle>'); process.exit(2); }
+  else { console.error('usage: node scripts/telegram.mjs --smoke | --gather | --score | <handle>'); process.exit(2); }
 }
