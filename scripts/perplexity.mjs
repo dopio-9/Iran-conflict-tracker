@@ -136,6 +136,16 @@ async function gather() {
   const qpath = new URL("../agents/gather-queries.json", import.meta.url);
   const raw = JSON.parse(fs.readFileSync(qpath, "utf8"));
   const groups = Array.isArray(raw) ? { all: raw } : raw; // categorized matrix or flat list
+  // OBJ 3 — source-driven: steer each lane's queries by the REGISTRY's live sources
+  // for that lane (dark excluded), ranked by tier then hit-rate. This ties the
+  // engine to the curated + scored registry instead of freeform topic strings.
+  const reg = JSON.parse(fs.readFileSync(new URL("../data/sources.json", import.meta.url), "utf8"));
+  const TIER_RANK = { "T1-ELEVATED": 0, "T1": 1, "T2": 2, "SPECIALIST": 3, "META": 4, "T1-UNRELIABLE": 5 };
+  const steerFor = (lane) => {
+    const live = reg.filter((s) => Array.isArray(s.lanes) && s.lanes.includes(lane) && !s.dark);
+    live.sort((a, b) => (TIER_RANK[a.tier] ?? 9) - (TIER_RANK[b.tier] ?? 9) || (b.hits || 0) - (a.hits || 0));
+    return { names: live.slice(0, 6).map((s) => s.name), sites: [...new Set(live.filter((s) => s.site).map((s) => s.site))].slice(0, 3) };
+  };
   // Blacklist YouTube + the biggest Western aggregators to push Perplexity off
   // the beaten path (3 domains — API filter cap). YouTube is also post-filtered.
   const OFF_MAINSTREAM = ["-youtube.com", "-wikipedia.org", "-cnn.com"];
@@ -144,10 +154,14 @@ async function gather() {
   const isYT = (u) => /youtube\.com|youtu\.be/i.test(u || "");
   const seen = new Set();
   for (const [lane, qs] of Object.entries(groups)) {
-   console.log(`\n══ LANE: ${lane} ══`);
+   const steer = steerFor(lane);
+   console.log(`\n══ LANE: ${lane} ══  prioritize→ ${steer.names.slice(0, 4).join(", ") || "(no live registry source)"}${steer.sites.length ? ` | sites: ${steer.sites.join(", ")}` : ""}`);
    for (const q of qs) {
+    // soft source-steer: name the registry's live sources in the prompt (keeps
+    // breadth via the OFF_MAINSTREAM blacklist rather than hard-whitelisting).
+    const query = steer.names.length ? `${q}\nPrioritize these sources where relevant: ${steer.names.join(", ")}.` : q;
     try {
-      const r = await queryPerplexity(q, { recency: "day", maxTokens: 400, searchDomains: OFF_MAINSTREAM });
+      const r = await queryPerplexity(query, { recency: "day", maxTokens: 400, searchDomains: OFF_MAINSTREAM });
       const d = decompose(r, { query: q, recencyDays: 1 });
       const rows = d.primaries
         .filter((p) => p.url && !isYT(p.url) && !seen.has(p.url) && seen.add(p.url))
