@@ -40,6 +40,12 @@ When you add a source I supply: register it, wire it into this lane's seed + the
 
 (`nuclear` runs as an on-demand lane off `gather-queries.json` when a nuclear item is live.)
 
+## Fan-out (how the lanes actually run)
+The 14 lanes execute inside **5 theater workers** — `agents/THEATERS.md`. Each worker
+owns its theater's lanes + the aligned registry's sources, runs BOTH engines in parallel,
+and hands claims to the Sonnet aggregator; Opus tiers on escalation. Run the fan-out, not
+14 flat sweeps. The per-turn loop below is what each worker + the aggregator do.
+
 ## Per-turn loop (do this — do not rebuild)
 1. **Run** the WEB seeds (breadth) + trigger the PPLX gather (depth). Both, every turn.
 2. **Merge** → candidate signals; dedup by claim; date-stamp each source; tier from

@@ -34,14 +34,14 @@ L3 PIPE — how we reach them (freshness ceiling)
    └───────────────┴────────────────┴───────────────────────┘
               │  date-stamped primaries (★ = novel layer)
               ▼
-L1 LANES — 14 lanes ● , grouped into THEATERS ◇
-   Hormuz/RedSea · Iraq-Syria-Yemen · Israel-Lebanon ·
-   Tehran-internal · Gulf-states/UAE
+L1 LANES — 14 lanes ● , grouped into 5 THEATERS ● (agents/THEATERS.md)
+   Tehran-internal[21] · Israel-Lebanon[20] · Hormuz/RedSea[15] ·
+   Gulf-states/UAE[9] · Iraq-Syria-Yemen[4⚠]   + shared baseline cross-theater[41]
    topics (strikes threats military retaliations…) = TAGS, not lanes
               │
 L2 AGENTS — who executes + reasons
-   ◇ theater workers (Haiku)   → gather · extract · date-stamp
-              │                   (● today: one orchestrator, serial)
+   ● theater workers (Haiku ×5) → gather · extract · date-stamp · PARALLEL
+              │                    (spec: THEATERS.md; runtime fan-out at update time)
    ● AGGREGATOR (Sonnet)       → merge · dedup · convergence ladder
               │
    ● TIERING (Opus, on escalation) → independence · adversary = DISPUTED
