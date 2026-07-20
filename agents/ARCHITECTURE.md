@@ -19,7 +19,7 @@ it at FLASH, and L3 can see it yet. Cadence (L4) is not the bottleneck.
 
 L1 COVERAGE — what we watch
 ┌────────────────────────────────────────────────────────────┐
-│ SOURCES  (◇ sources.json = single registry, feeds lanes)     │
+│ SOURCES  (● data/sources.json = 110-entry registry, lane-tagged)│
 │  native   ● Tasnim Mehr Fars IRNA · AlMayadeen Almasirah     │
 │  Hebrew   ● Mako Walla Ynet     Russian ● iz.ru              │
 │  osint/soc● t.me/s mirrors · X accounts · analysts           │
@@ -65,10 +65,14 @@ L4 TRIGGER — when (just the clock)
 ```
 
 ## Source intake (fixed procedure when a source is supplied)
-1. **Classify** — theater, lane, medium (STATE/WIRE/OSINT/SOC/OFF), language, reliability (T1 / analyst / raw-social).
-2. **Register** — one canonical `sources.json`: `{name, handle, theater, lane, medium, lang, reliability, added, hits, misses}`.
-3. **Wire** — name it in that lane's gather query (registered ≠ monitored until queried).
-4. **Score** — track promote/expire per source; weight rises/falls with its hit rate.
+1. **Classify** — theater (5 + cross), lane(s) from the 14-roster, medium (STATE/WIRE/OSINT/SOC/OFF count for convergence; TRACK/ANALYST/MARKET/META = specialist/context), language, tier (T1 / T2 / T1-ELEVATED / T1-UNRELIABLE / SPECIALIST / META).
+2. **Register** — append to `data/sources.json`, one canonical schema:
+   `{id, name, platform, language, domain, geography, role, tier, theater, lanes[], medium, hits, misses, notes}`.
+   `validate.mjs` §2 rejects any source missing a valid theater / lane / medium — registered-but-orphaned can't ship.
+3. **Wire** — name it in that lane's WEB seed + `gather-queries.json` PPLX query (**registered ≠ monitored until queried**).
+4. **Score** — increment `hits`/`misses` as its signals promote/expire; weight rises/falls with its hit rate.
+
+**Live coverage (post-alignment):** thinnest lanes = `cyber_sabotage` (2), `nuclear` (3); thinnest theater = `iraq-syria-yemen` (4). These are the priority targets for supplied sources.
 
 ## Honest floor
 On a manual run, surfacing speed = as fresh as the reachable index (minutes–tens

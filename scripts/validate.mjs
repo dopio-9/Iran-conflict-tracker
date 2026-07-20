@@ -101,15 +101,29 @@ if (data) {
   });
 }
 
-/* ── 2. sources.json ─────────────────────────────────────────── */
+/* ── 2. sources.json — registry aligned to the lane/theater vocabulary ── */
 const sources = loadJSON("data/sources.json");
 if (sources) {
   if (!Array.isArray(sources) || sources.length < 100) fail(`sources.json: expected the full ~110-entry registry, got ${sources?.length}`);
   const validTiers = ["T1", "T2", "T1-ELEVATED", "T1-UNRELIABLE", "SPECIALIST", "META"];
+  // Roster of 14 lanes (LANES.md) — a source names one or more; keeps registry ↔ lane queryable.
+  const LANES = new Set(["strikes_ops", "threats", "cyber_sabotage", "diplomacy", "leadership_internal", "maritime_incidents", "naval_military_movement", "air_traffic_airspace", "ports_advisories", "proxy_axis", "war_risk_economy", "uae_local", "israel_intel", "nuclear"]);
+  // 5 theaters (ARCHITECTURE.md) + cross-theater for global tracking/wires/meta.
+  const THEATERS = new Set(["tehran-internal", "israel-lebanon", "iraq-syria-yemen", "hormuz-redsea", "gulf-uae", "cross-theater"]);
+  // Convergence mediums (OFF/WIRE/OSINT/STATE/SOC count for independence) + specialist buckets.
+  const MEDIA = new Set(["STATE", "WIRE", "OSINT", "SOC", "OFF", "TRACK", "ANALYST", "MARKET", "META"]);
+  const laneCov = {}; for (const l of LANES) laneCov[l] = 0;
   sources.forEach((s, i) => {
     if (!s.name) fail(`sources[${i}]: missing name`);
     if (!validTiers.includes(s.tier)) fail(`sources[${i}] (${s.name}): unknown tier "${s.tier}"`);
+    if (!THEATERS.has(s.theater)) fail(`sources[${i}] (${s.name}): theater "${s.theater}" not in the 5+cross roster — classify it (intake step 1)`);
+    if (!MEDIA.has(s.medium)) fail(`sources[${i}] (${s.name}): medium "${s.medium}" invalid`);
+    if (!Array.isArray(s.lanes) || s.lanes.length === 0) fail(`sources[${i}] (${s.name}): no lanes — a registered source that feeds no lane is never monitored (intake step 3)`);
+    else s.lanes.forEach((l) => { if (!LANES.has(l)) fail(`sources[${i}] (${s.name}): lane "${l}" not in the 14-lane roster`); else laneCov[l]++; });
+    if (typeof s.hits !== "number" || typeof s.misses !== "number") fail(`sources[${i}] (${s.name}): hits/misses must be numbers (intake step 4: scoring)`);
   });
+  // A lane with no registered source is a coverage hole, not a validation error — warn so intake targets it.
+  for (const [l, n] of Object.entries(laneCov)) if (n === 0) warn(`sources.json: lane "${l}" has 0 registered sources — coverage hole, feed it via intake`);
 }
 
 /* ── 3. patterns.json ────────────────────────────────────────── */

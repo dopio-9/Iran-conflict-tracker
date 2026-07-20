@@ -11,6 +11,12 @@ turn — we do not rebuild it.**
   OSINT/social, tracking feeds, date-stamped. `★` in the log = novel (non-mainstream).
   Method + source registry: `agents/PERPLEXITY-PLAYBOOK.md`.
 
+## Source registry (which real sources back each lane)
+`data/sources.json` — 110 entries, each tagged `theater` + `lanes[]` + `medium` + `hits/misses`.
+A lane's sources = filter the registry by that lane id. Intake procedure (classify → register →
+wire → score) + schema live in `agents/ARCHITECTURE.md`; `validate.mjs` §2 enforces the tags.
+When you add a source I supply: register it, wire it into this lane's seed + the PPLX query, score it.
+
 ## Standard output (what every lane returns, same shape every run)
 `{ claim, tier: flash|pending|ver|ver2|disputed, region,
    sources:[{name,medium,lang,date}], momentum, via_recall, note }`
@@ -51,3 +57,4 @@ turn — we do not rebuild it.**
 ## Lane improvement log (append one line per turn)
 - (start) roster established; PPLX matrix has 10/11 lanes; `strikes_ops` PPLX key still to add.
 - closed topic gap: added `strikes_ops`, `threats`, `cyber_sabotage` PPLX lanes → 14 lanes, full coverage of troops/naval/air/military/trade/strikes/retaliations/geopolitics/government/threats/escalation/cyber.
+- aligned `data/sources.json`: tagged all 110 sources with `theater` + `lanes[]` + `medium` + `hits/misses`; registry now queryable per-lane; `validate.mjs` §2 enforces the tags. Coverage report flags holes: `cyber_sabotage` (2), `nuclear` (3), theater `iraq-syria-yemen` (4) → intake priority.
