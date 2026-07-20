@@ -48,12 +48,22 @@ for (const s of reg) if (!s.dark && Array.isArray(s.lanes)) for (const l of s.la
 
 const sparseLanes = LANES.filter((l) => liveByLane[l] < MIN_LIVE).sort((a, b) => liveByLane[a] - liveByLane[b]);
 const darkSources = reg.filter((s) => s.dark);
+// unresolved-handle channels (display name, no t.me handle) — resolve by lookup,
+// never by guessing a handle (obj 4). Treated as a dark gap for discovery.
+const unresolved = reg.filter((s) => s.feed?.kind === "telegram-web" && !s.feed.url);
 
-// build the gap work-list, sparse lanes first, then dark sources, capped
+// build the gap work-list, sparse lanes first, then dark + unresolved, capped
 const gaps = [];
 for (const l of sparseLanes) gaps.push({ kind: "lane", lane: l });
+for (const s of unresolved) gaps.push({ kind: "dark", source: s, resolve: true });
 for (const s of darkSources) gaps.push({ kind: "dark", source: s });
 const work = gaps.slice(0, MAX_QUERIES);
+
+// junk filter — Perplexity returns navigational/tool/blog noise; drop the
+// obvious non-sources at the source (the review gate catches the rest).
+const JUNK_SITE = /(^|\.)(hermes-agent\.ai|iurlek\.com)|\.(ai)$|\/block$|(^|\.)svoboda\.org/i;
+const JUNK_TITLE = /troubleshoot|bot repl|how to (bypass|obtain)|обойти|блокировк|VPN|gateway/i;
+const isJunk = (url, title) => JUNK_SITE.test(url || "") || JUNK_TITLE.test(title || "");
 
 const nameFromUrl = (u) => {
   const m = (u || "").match(/^https?:\/\/([^/]+)(\/s\/([^/?#]+)|\/([^/?#]+))?/i);
@@ -89,6 +99,7 @@ async function discover() {
       for (const p of d.primaries) {
         if (!p.url || seen.has(p.url)) continue;
         seen.add(p.url);
+        if (isJunk(p.url, p.title)) continue;
         const { name, site, medium } = nameFromUrl(p.url);
         if (reg.some((s) => (s.site && site && s.site.toLowerCase() === site.toLowerCase()) || s.name.toLowerCase() === name.toLowerCase())) continue;
         out.push({
