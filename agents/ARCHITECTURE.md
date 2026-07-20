@@ -1,0 +1,77 @@
+# HORMUZ·LIVE — architecture (wire diagram + the layer model)
+
+Legend:  ● built now   ◇ planned / not wired
+
+## Four orthogonal layers (the fast-event miss lives in L1–L3, never L4)
+
+- **L1 COVERAGE** = lanes + source registry — *are we watching the right places?*
+- **L2 AGENTS**   = the workers that gather + reason — *do we query + tier + surface?*
+- **L3 PIPE**     = how we reach a source — *freshness ceiling* (index lag vs real-time)
+- **L4 TRIGGER**  = Routine or manual — *just the clock; manual bypasses it*
+
+A manual run at T+2min surfaces a fast event **iff** L1 has the source, L2 renders
+it at FLASH, and L3 can see it yet. Cadence (L4) is not the bottleneck.
+
+## Wire diagram
+
+```
+                    HORMUZ·LIVE — ARCHITECTURE
+
+L1 COVERAGE — what we watch
+┌────────────────────────────────────────────────────────────┐
+│ SOURCES  (◇ sources.json = single registry, feeds lanes)     │
+│  native   ● Tasnim Mehr Fars IRNA · AlMayadeen Almasirah     │
+│  Hebrew   ● Mako Walla Ynet     Russian ● iz.ru              │
+│  osint/soc● t.me/s mirrors · X accounts · analysts           │
+│  tracking ● USNI/TWZ · MarineTraffic/AIS · FR24/ADS-B ·      │
+│             UKMTO/MARAD/NOTAM · Lloyd's/Maersk               │
+└────────────────────────────────────────────────────────────┘
+              │
+L3 PIPE — how we reach them (freshness ceiling)
+   ┌───────────────┬────────────────┬───────────────────────┐
+   │ ● WebSearch   │ ● Perplexity   │ ◇ X / Telegram API    │
+   │  (in-session) │  (CI · adv.)   │   real-time — NOT wired│
+   └───────────────┴────────────────┴───────────────────────┘
+              │  date-stamped primaries (★ = novel layer)
+              ▼
+L1 LANES — 14 lanes ● , grouped into THEATERS ◇
+   Hormuz/RedSea · Iraq-Syria-Yemen · Israel-Lebanon ·
+   Tehran-internal · Gulf-states/UAE
+   topics (strikes threats military retaliations…) = TAGS, not lanes
+              │
+L2 AGENTS — who executes + reasons
+   ◇ theater workers (Haiku)   → gather · extract · date-stamp
+              │                   (● today: one orchestrator, serial)
+   ● AGGREGATOR (Sonnet)       → merge · dedup · convergence ladder
+              │
+   ● TIERING (Opus, on escalation) → independence · adversary = DISPUTED
+              │  candidate signals {claim,tier,region,sources,momentum,note}
+              ▼
+   ● SIGNALS LADDER   FLASH → PENDING → VER → VER²   · DISPUTED
+     rung-1 shown lowest-confidence · promote/expire · no YouTube · dedup
+              │  writes
+              ▼
+┌────────────────────────────────────────────────────────────┐
+│ ● index.html — inline JSON data block = the update surface   │
+│   hero (threat + UAE line + chips) │ SIGNALS │ depth folds:  │
+│   verified · triggers · forecast/scenarios · ledger ·        │
+│   patterns · practical · recall-rules                        │
+└────────────────────────────────────────────────────────────┘
+              │
+L4 TRIGGER — when (just the clock)
+   ● manual run        ◇ Routine cron 07:00 / 19:00 GST (Sonnet, Opus-esc)
+              │
+   PUBLISH ▼  git push → branch ● →(main ◇)→ Vercel deploy → phone
+```
+
+## Source intake (fixed procedure when a source is supplied)
+1. **Classify** — theater, lane, medium (STATE/WIRE/OSINT/SOC/OFF), language, reliability (T1 / analyst / raw-social).
+2. **Register** — one canonical `sources.json`: `{name, handle, theater, lane, medium, lang, reliability, added, hits, misses}`.
+3. **Wire** — name it in that lane's gather query (registered ≠ monitored until queried).
+4. **Score** — track promote/expire per source; weight rises/falls with its hit rate.
+
+## Honest floor
+On a manual run, surfacing speed = as fresh as the reachable index (minutes–tens
+of minutes). Removing that floor requires the ◇ X/Telegram API pipe (L3) — not a
+lane, agent, or Routine change. The "tripwire" is a run-profile over the fastest
+sources, **not** a substitute for real L1/L3 coverage.
