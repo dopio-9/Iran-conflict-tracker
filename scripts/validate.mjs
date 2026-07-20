@@ -258,6 +258,16 @@ for (const js of scripts) {
             fail(`index.html signals[${i}] (${s.id}): disputed but no conflict{a,b} or note — never confirm adversary-origin silently`);
         });
       }
+      // FULL FEED — everything gathered, deduped, UNCAPPED (must not limit to a few visible selections)
+      if (live.feed !== undefined) {
+        if (!Array.isArray(live.feed)) fail("index.html feed must be an array");
+        else live.feed.forEach((f, i) => {
+          for (const k of ["lane", "tier", "claim", "src"])
+            if (!f[k]) fail(`index.html feed[${i}]: missing "${k}"`);
+          if (f.tier && !tiers.includes(f.tier)) fail(`index.html feed[${i}]: unknown tier "${f.tier}"`);
+        });
+      }
+
       const probs = (live.scenarios ?? []).map((s) => parseFloat(s.prob));
       const sum = probs.reduce((a, b) => a + b, 0);
       if (live.scenarios && Math.abs(sum - 100) > 1) fail(`index.html scenarios: probs sum to ${sum}%, must total 100%`);

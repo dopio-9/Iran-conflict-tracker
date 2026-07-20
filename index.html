@@ -194,6 +194,22 @@ svg.trace .hot{fill:none; stroke:var(--danger); stroke-width:2.2}
 .foot{margin-top:22px; font-family:var(--mono); font-size:9px; color:var(--faint); letter-spacing:.06em; line-height:1.8; text-align:center}
 .foot b{color:var(--dim)}
 
+/* ── FULL FEED: everything gathered, deduped, uncapped ──────────── */
+.feedsub{font-family:var(--mono); font-size:9px; color:var(--faint); letter-spacing:.06em; margin:0 2px 10px}
+.feed{margin-top:2px}
+.frow{display:flex; gap:9px; align-items:flex-start; padding:9px 2px; border-bottom:1px solid var(--line)}
+.frow:last-child{border-bottom:none}
+.ftier{font-family:var(--mono); font-size:8px; font-weight:700; letter-spacing:.06em; padding:2px 0; border-radius:3px; flex-shrink:0; width:54px; text-align:center}
+.frow.flash .ftier{color:var(--flash); border:1px solid var(--flash)}
+.frow.pending .ftier{color:var(--pending); border:1px solid var(--pending)}
+.frow.ver .ftier,.frow.ver2 .ftier{color:var(--ver); border:1px solid var(--ver)}
+.frow.disputed .ftier{color:var(--disp); border:1px solid var(--disp)}
+.flane{font-family:var(--mono); font-size:8px; letter-spacing:.04em; color:var(--dim); flex-shrink:0; width:88px; padding-top:3px; line-height:1.3}
+.fbody{flex:1; min-width:0}
+.fclaim{font-size:13px; color:var(--ink); line-height:1.42}
+.fmeta{font-family:var(--mono); font-size:9px; color:var(--faint); margin-top:3px; letter-spacing:.02em}
+.fmeta .eng{color:var(--dim)}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none !important; transition:none !important}
 }
@@ -683,6 +699,251 @@ svg.trace .hot{fill:none; stroke:var(--danger); stroke-width:2.2}
       "t": "Info hygiene",
       "p": "Three items NOT to act on without official, dated confirmation: a 'major UAE strike' (single low-tier outlet), 'evacuate tonight' (aggregator-amplified), and today's 'UAE nuclear-plant drone' (a recycle of the 17 May Barakah strike). Verify against NCEMA / UAE-MOD first."
     }
+  ],
+  "feed": [
+    {
+      "lane": "strikes_ops",
+      "region": "IRAN·CROSS",
+      "tier": "ver",
+      "claim": "US launches 9th strike wave on Iran after a US soldier killed; Iran claims a strike on a US base in Jordan; ~14 reported killed",
+      "src": "Detroit News · CNN · Al Jazeera",
+      "date": "20 Jul",
+      "eng": "WEB/PPLX"
+    },
+    {
+      "lane": "strikes_ops",
+      "region": "TEHRAN",
+      "tier": "flash",
+      "claim": "IRGC-adjacent channel posting strike/threat updates in real time",
+      "src": "Sepahcybery (TG +7m)",
+      "date": "20 Jul",
+      "eng": "DIRECT"
+    },
+    {
+      "lane": "strikes_ops",
+      "region": "ISRAEL·WB/GAZA",
+      "tier": "flash",
+      "claim": "Breaking: Israeli airstrike casualties reported, West Bank/Gaza",
+      "src": "QudsNen (TG +3m)",
+      "date": "20 Jul",
+      "eng": "DIRECT"
+    },
+    {
+      "lane": "maritime_incidents",
+      "region": "HORMUZ",
+      "tier": "disputed",
+      "claim": "IRGC says two tankers exploded on mines in Hormuz after being 'deceived by US intel'; CENTCOM: 'this is false'",
+      "src": "Tasnim · MarineInsight · CENTCOM",
+      "date": "20 Jul",
+      "eng": "PPLX/WEB"
+    },
+    {
+      "lane": "maritime_incidents",
+      "region": "GULF·KUWAIT",
+      "tier": "ver",
+      "claim": "Satellite imagery: large smoke plumes over Kuwait's Al-Ahmadi port after strikes",
+      "src": "Kofia_News (TG +6m) · Ahram",
+      "date": "20 Jul",
+      "eng": "DIRECT"
+    },
+    {
+      "lane": "maritime_incidents",
+      "region": "HORMUZ",
+      "tier": "ver",
+      "claim": "Iran tightens grip on Hormuz; shipping forced into controlled routes; ~8–10 transits/day",
+      "src": "HSToday · Crisis Group",
+      "date": "20 Jul",
+      "eng": "WEB"
+    },
+    {
+      "lane": "naval_military_movement",
+      "region": "ARABIAN SEA",
+      "tier": "ver",
+      "claim": "Abraham Lincoln in Gulf of Oman, GHW Bush ~180km off Iran; Arabian Sea exclusion zone under reinstated blockade",
+      "src": "Maritime Executive · USNI · Army Recognition (sat)",
+      "date": "Jul",
+      "eng": "WEB"
+    },
+    {
+      "lane": "naval_military_movement",
+      "region": "US·GULF",
+      "tier": "ver",
+      "claim": "US force buildup: ~one-third of deployed fleet now aimed at Iran; three carrier groups referenced",
+      "src": "Gulf News · Army Recognition",
+      "date": "Jul",
+      "eng": "WEB"
+    },
+    {
+      "lane": "air_traffic_airspace",
+      "region": "GULF·UAE",
+      "tier": "ver",
+      "claim": "No NEW Gulf closures; Iran/Iraq/Bahrain/Kuwait closed; Emirates FIR partial/structured; 1,500+ flights hit",
+      "src": "OPSGROUP · EASA · AirlineRatings",
+      "date": "20 Jul",
+      "eng": "WEB"
+    },
+    {
+      "lane": "air_traffic_airspace",
+      "region": "REGION",
+      "tier": "ver",
+      "claim": "EASA advises avoiding Iran/Iraq/Lebanon airspace through 31 Aug; wider Gulf caution withdrawn",
+      "src": "OPSGROUP / EASA",
+      "date": "08 Jul",
+      "eng": "WEB"
+    },
+    {
+      "lane": "war_risk_economy",
+      "region": "HORMUZ",
+      "tier": "ver",
+      "claim": "Brent above $90 (~+30% off July lows) as US–Iran hostilities escalate",
+      "src": "Al Jazeera · TradingEconomics",
+      "date": "20 Jul",
+      "eng": "WEB"
+    },
+    {
+      "lane": "war_risk_economy",
+      "region": "HORMUZ",
+      "tier": "ver",
+      "claim": "War-risk premiums ~1% of hull/transit; container lines suspend Gulf transits, reroute via Cape (+3,800nm)",
+      "src": "militaryspend · Insurance Journal",
+      "date": "20 Jul",
+      "eng": "WEB"
+    },
+    {
+      "lane": "diplomacy",
+      "region": "REGIONAL",
+      "tier": "ver",
+      "claim": "Ceasefire declared 'over'; Qatar/Pakistan mediation moribund; Iran FM says no plans to negotiate",
+      "src": "CNN · Al Jazeera",
+      "date": "20 Jul",
+      "eng": "WEB"
+    },
+    {
+      "lane": "diplomacy",
+      "region": "IRAN·GULF",
+      "tier": "pending",
+      "claim": "After the broken ceasefire, Iran opens talks with Gulf leaders",
+      "src": "ms.now",
+      "date": "20 Jul",
+      "eng": "WEB"
+    },
+    {
+      "lane": "leadership_internal",
+      "region": "TEHRAN",
+      "tier": "disputed",
+      "claim": "Reports Mojtaba Khamenei 'not in Iran' + 'soft coup' talk (Israeli/Saudi origin); Iranian state denies; Araghchi admits Israeli intel breach",
+      "src": "Israel Hayom · Walla vs Qaani · Fararu",
+      "date": "20 Jul",
+      "eng": "PPLX"
+    },
+    {
+      "lane": "leadership_internal",
+      "region": "IRAN",
+      "tier": "pending",
+      "claim": "Real-time internal-Iran dashboard: sentiment, X feeds, flightradar, connectivity",
+      "src": "iranmonitor.org",
+      "date": "20 Jul",
+      "eng": "DISC"
+    },
+    {
+      "lane": "threats",
+      "region": "TEHRAN",
+      "tier": "pending",
+      "claim": "IRGC public warning: 'any US infiltration into Iran neutralized in the first instant'; early-warning radar notices",
+      "src": "DW Farsi · Ettelaat · Donya-e-Eqtesad",
+      "date": "20 Jul",
+      "eng": "PPLX"
+    },
+    {
+      "lane": "threats",
+      "region": "TEHRAN·KUWAIT",
+      "tier": "pending",
+      "claim": "New IRGC notice addressed to the people of Kuwait re: US 'support centres'",
+      "src": "Donya-e-Eqtesad (FA)",
+      "date": "20 Jul",
+      "eng": "PPLX"
+    },
+    {
+      "lane": "proxy_axis",
+      "region": "RED SEA·YEMEN",
+      "tier": "pending",
+      "claim": "Houthis announce a naval blockade of Saudi Arabia",
+      "src": "Izvestia · Kommersant · Irish Times",
+      "date": "20 Jul",
+      "eng": "PPLX/DISC"
+    },
+    {
+      "lane": "proxy_axis",
+      "region": "ISRAEL·AXIS",
+      "tier": "ver",
+      "claim": "Hamas elects Khalil al-Hayya as new political bureau chief",
+      "src": "Times of Israel · caliber.az",
+      "date": "20 Jul",
+      "eng": "DISC"
+    },
+    {
+      "lane": "proxy_axis",
+      "region": "BAHRAIN",
+      "tier": "pending",
+      "claim": "Bahrain air defences intercept an Iranian attack; attacks reported ongoing",
+      "src": "OSINTdefender (TG +59m)",
+      "date": "20 Jul",
+      "eng": "DIRECT"
+    },
+    {
+      "lane": "nuclear",
+      "region": "TEHRAN",
+      "tier": "ver",
+      "claim": "IAEA probes reported attack on under-construction Darkhovin plant; confirms NO nuclear material / no radiological risk",
+      "src": "IAEA · IranWire · Moneycontrol · World Nuclear News",
+      "date": "19–20 Jul",
+      "eng": "PPLX/WEB"
+    },
+    {
+      "lane": "uae_local",
+      "region": "UAE",
+      "tier": "flash",
+      "claim": "UAE territorial exemption tested at the airspace edge; air defences reportedly engaging",
+      "src": "NCEMA / UAE-MOD (baseline)",
+      "date": "20 Jul",
+      "eng": "WEB"
+    },
+    {
+      "lane": "uae_local",
+      "region": "UAE",
+      "tier": "disputed",
+      "claim": "'Drone on a UAE nuclear plant' circulating as fresh is the 17 May Barakah strike recycled — recirculation caught by date-check",
+      "src": "date-check vs World Nuclear News",
+      "date": "17 May",
+      "eng": "WEB"
+    },
+    {
+      "lane": "uae_local",
+      "region": "GULF",
+      "tier": "ver",
+      "claim": "Bahrain, Kuwait and Qatar all report Iranian attacks and air-defence engagements",
+      "src": "Ahram Online",
+      "date": "20 Jul",
+      "eng": "PPLX/WEB"
+    },
+    {
+      "lane": "cyber_sabotage",
+      "region": "GULF",
+      "tier": "pending",
+      "claim": "Gulf energy infrastructure comes under attack; inflation fears reignite",
+      "src": "The National · al-monitor",
+      "date": "20 Jul",
+      "eng": "PPLX/DISC"
+    },
+    {
+      "lane": "ports_advisories",
+      "region": "HORMUZ",
+      "tier": "ver",
+      "claim": "Navy-led maritime threat ratings elevated; controlled-route regime enforced across the strait",
+      "src": "JMIC · HSToday",
+      "date": "20 Jul",
+      "eng": "DISC/WEB"
+    }
   ]
 }
 </script>
@@ -773,6 +1034,12 @@ function items(list, ledger){
   }).join('');
 }
 
+function feedRows(list){
+  return (list||[]).map(f=>
+    `<div class="frow ${f.tier}"><span class="ftier">${f.tier.toUpperCase()}</span><span class="flane">${esc(f.lane)}<br>${esc(f.region||'')}</span><div class="fbody"><div class="fclaim">${esc(f.claim)}</div><div class="fmeta">${esc(f.src)} · ${esc(f.date)}${f.eng?` · <span class="eng">${esc(f.eng)}</span>`:''}</div></div></div>`
+  ).join('');
+}
+
 function scenarios(list){
   return list.map(s=>`<div class="scen ${s.kind}"><div class="pct">${esc(s.prob)}</div><div><div class="lab">${esc(s.lab)}</div><p>${esc(s.p)}</p></div></div>`).join('');
 }
@@ -816,6 +1083,12 @@ app.innerHTML = `
     <div class="ladder"><b class="lf">FLASH</b> raw → <b class="lp">PENDING</b> → <b class="lv">VER</b> one source → <b class="lv">VER²</b> multi-source, independent mediums → <b class="ld">DISPUTED</b> shown as conflict. Nothing tops out on one source. Dead rumors drop.</div>
     ${D.signals.map(signalCard).join('')}
     <div class="dropped">${esc(D.dropped_note)}</div>
+  </section>
+
+  <section>
+    <div class="lanehead"><h2>FULL FEED</h2><span class="sub">everything gathered · deduped</span></div>
+    <div class="feedsub">The strip above is the curated summary — this is the complete surface. ${(D.feed||[]).length} items · deduped · nothing filtered by verification (tier is a label, not a gate).</div>
+    <div class="feed">${feedRows(D.feed)}</div>
   </section>
 
   <details open>
