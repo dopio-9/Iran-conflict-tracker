@@ -10,6 +10,8 @@ on:
     paths:
       - agents/gather-queries.json
       - scripts/perplexity.mjs
+      - scripts/discover.mjs
+      - data/sources.json
       - .github/workflows/perplexity-gather.yml
 jobs:
   gather:
@@ -19,7 +21,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-      - name: Perplexity recall gather
+      - name: Perplexity recall gather (source-driven)
         env:
           PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
         run: |
@@ -27,3 +29,7 @@ jobs:
             echo "PERPLEXITY_API_KEY secret not set"; exit 1
           fi
           node scripts/perplexity.mjs --gather
+      - name: Replenishment discovery (dark/sparse → candidate sources)
+        env:
+          PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
+        run: node scripts/discover.mjs
