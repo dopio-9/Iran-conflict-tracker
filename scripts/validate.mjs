@@ -121,6 +121,14 @@ if (sources) {
     if (!Array.isArray(s.lanes) || s.lanes.length === 0) fail(`sources[${i}] (${s.name}): no lanes — a registered source that feeds no lane is never monitored (intake step 3)`);
     else s.lanes.forEach((l) => { if (!LANES.has(l)) fail(`sources[${i}] (${s.name}): lane "${l}" not in the 14-lane roster`); else laneCov[l]++; });
     if (typeof s.hits !== "number" || typeof s.misses !== "number") fail(`sources[${i}] (${s.name}): hits/misses must be numbers (intake step 4: scoring)`);
+    // optional DIRECT-engine feed wiring (Telegram real-time L3 pipe)
+    if (s.feed) {
+      const feedKinds = ["telegram-web", "official-web", "rss", "x-mirror", "x-only"];
+      if (!feedKinds.includes(s.feed.kind)) fail(`sources[${i}] (${s.name}): feed.kind "${s.feed.kind}" invalid`);
+      // a wired telegram-web feed must carry a url unless explicitly flagged for handle resolution
+      if (s.feed.kind === "telegram-web" && !s.feed.url && !s.feed.resolve)
+        fail(`sources[${i}] (${s.name}): telegram-web feed has no url and no resolve flag — wire the handle or mark resolve:true`);
+    }
   });
   // A lane with no registered source is a coverage hole, not a validation error — warn so intake targets it.
   for (const [l, n] of Object.entries(laneCov)) if (n === 0) warn(`sources.json: lane "${l}" has 0 registered sources — coverage hole, feed it via intake`);

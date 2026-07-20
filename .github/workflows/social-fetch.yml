@@ -1,0 +1,25 @@
+name: social-fetch
+# Telegram DIRECT engine — proves the runner can reach + parse t.me/s (the
+# real-time L3 pipe), then walks the registry's wired channels. No secret: t.me/s
+# is public, no auth. The build sandbox cannot reach t.me — this is where "does
+# it actually work" gets answered, same as the Perplexity smoke.
+on:
+  workflow_dispatch:
+  push:
+    branches: [claude/signals-live-layer]
+    paths:
+      - scripts/telegram.mjs
+      - .github/workflows/social-fetch.yml
+      - data/sources.json
+jobs:
+  social:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Telegram t.me/s reachability smoke
+        run: node scripts/telegram.mjs --smoke
+      - name: Telegram DIRECT gather (registry channels)
+        run: node scripts/telegram.mjs --gather
