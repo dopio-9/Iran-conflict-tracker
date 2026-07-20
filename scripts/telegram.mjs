@@ -19,7 +19,15 @@
  * here. `--smoke` answers "can the runner reach + parse t.me/s at all"; `--gather`
  * then walks the registry's wired channels.
  *
- * STATUS: UNVERIFIED until the CI smoke goes green. Do not claim it works before.
+ * STATUS: VERIFIED by CI run 29734013637 (20 Jul 2026, social-fetch on this
+ * branch). Smoke green: t.me/s reachable + parsed. Gather: 21/21 handles
+ * resolved, 0 HTTP failures. It immediately surfaced real-time regional signal
+ * WebSearch/Perplexity miss — e.g. an Arabic strike report on Kuwait's Al-Ahmadi
+ * port 6 MINUTES old, and OSINTdefender's live Bahrain-intercept thread. ~10 of
+ * 21 channels returned 0 posts (HTTP 200 but empty = private/restricted, or a
+ * handle that redirects) — a "dark channel" finding, not a parser fault (Farsi,
+ * Arabic, Hebrew and English all parsed). Date-stamping correctly exposed the
+ * low-tempo channels (6–40d stale) so none masquerade as fresh.
  */
 
 const DAY_MS = 86_400_000;

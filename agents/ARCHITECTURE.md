@@ -29,9 +29,12 @@ L1 COVERAGE — what we watch
               │
 L3 PIPE — how we reach them (freshness ceiling)
    ┌───────────────┬────────────────┬───────────────────────┐
-   │ ● WebSearch   │ ● Perplexity   │ ◇ X / Telegram API    │
-   │  (in-session) │  (CI · adv.)   │   real-time — NOT wired│
+   │ ● WebSearch   │ ● Perplexity   │ ● Telegram DIRECT     │
+   │  (in-session) │  (CI · adv.)   │  t.me/s (CI·REAL-TIME)│
+   │  breadth·lag  │  depth·lag     │  ◇ X: mirror-route/API│
    └───────────────┴────────────────┴───────────────────────┘
+   Telegram real-time pipe VERIFIED (CI 29734013637): 21/21 handles, 6-min-old
+   Arabic strike signal surfaced. X has no free feed — mirror-route 7, floor the rest.
               │  date-stamped primaries (★ = novel layer)
               ▼
 L1 LANES — 14 lanes ● , grouped into 5 THEATERS ● (agents/THEATERS.md)
@@ -75,7 +78,17 @@ L4 TRIGGER — when (just the clock)
 **Live coverage (post-alignment):** thinnest lanes = `cyber_sabotage` (2), `nuclear` (3); thinnest theater = `iraq-syria-yemen` (4). These are the priority targets for supplied sources.
 
 ## Honest floor
-On a manual run, surfacing speed = as fresh as the reachable index (minutes–tens
-of minutes). Removing that floor requires the ◇ X/Telegram API pipe (L3) — not a
-lane, agent, or Routine change. The "tripwire" is a run-profile over the fastest
-sources, **not** a substitute for real L1/L3 coverage.
+The **Telegram** half of the real-time floor is now removed: the DIRECT engine
+polls `t.me/s` in CI and sees posts minutes after they land (verified: 6-min-old
+signal). What remains floored is **X** — no free real-time feed; mirror-route the
+7 accounts that have a non-X home, ride OSINTdefender's Telegram relay for the
+rest, or buy the X API. WebSearch/Perplexity stay index-lagged by nature. The
+"tripwire" is a run-profile over these fastest sources, **not** a substitute for
+real L1/L3 coverage.
+
+**Open follow-ups surfaced by the verified run** (the improvement loop working):
+1. ~10 wired channels returned 0 posts (HTTP 200, empty) = private/restricted or a
+   redirecting handle — triage each as `dark` vs `fix-handle`; a registered-but-dark
+   channel is a finding, not coverage.
+2. 5 display-name channels await handle resolution — incl. **Khamenei (T1-ELEVATED)**
+   and **Tzeva Adom** (rocket alerts). High value; resolve next.
