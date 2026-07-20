@@ -18,7 +18,12 @@ const fail = (m) => errors.push(m);
 const warn = (m) => warns.push(m);
 
 function loadJSON(rel) {
-  const raw = readFileSync(join(root, rel), "utf8");
+  let raw;
+  try {
+    raw = readFileSync(join(root, rel), "utf8");
+  } catch {
+    return null; // missing file is not a failure — the live surface is index.html (obj 5)
+  }
   try {
     return JSON.parse(raw);
   } catch (e) {
@@ -225,6 +230,57 @@ for (const js of scripts) {
     if (/'[A-Za-z ]+'[a-z]/.test(line) && !/\\'/.test(line))
       warn(`index.html script line ${n + 1}: possible unescaped apostrophe in single-quoted string — "${line.trim().slice(0, 60)}…"`);
   });
+}
+
+/* ── 6. index.html inline data block — the LIVE surface (obj 5) ──── */
+/* The deployed tracker renders from <script id="data">…</script>, not the split
+ * data/data.json (now legacy/optional). This validates the file Vercel serves. */
+{
+  const m = html.match(/<script id="data" type="application\/json">([\s\S]*?)<\/script>/);
+  if (!m) fail("index.html: no inline <script id=\"data\"> block — the live surface is missing");
+  else {
+    let live = null;
+    try { live = JSON.parse(m[1]); } catch (e) { fail(`index.html inline data: invalid JSON — ${e.message}`); }
+    if (live) {
+      for (const k of ["meta", "signals", "scenarios", "triggers", "patterns", "ledger"])
+        if (!(k in live)) fail(`index.html inline data: missing top-level key "${k}"`);
+      const tiers = ["flash", "ver2", "ver", "pending", "disputed"];
+      const sig = live.signals;
+      if (!Array.isArray(sig)) fail("index.html inline data: signals must be an array");
+      else {
+        if (sig.length > 24) fail(`index.html signals: ${sig.length} entries — cap 24 (lean strip, not a firehose dump)`);
+        sig.forEach((s, i) => {
+          for (const k of ["id", "tier", "claim", "region"])
+            if (!s[k]) fail(`index.html signals[${i}]: missing "${k}"`);
+          if (s.tier && !tiers.includes(s.tier)) fail(`index.html signals[${i}] (${s.id}): unknown tier "${s.tier}"`);
+          // adversary discipline: a disputed signal must show WHY it's contested (conflict a/b or a note)
+          if (s.tier === "disputed" && !s.conflict && !s.note)
+            fail(`index.html signals[${i}] (${s.id}): disputed but no conflict{a,b} or note — never confirm adversary-origin silently`);
+        });
+      }
+      const probs = (live.scenarios ?? []).map((s) => parseFloat(s.prob));
+      const sum = probs.reduce((a, b) => a + b, 0);
+      if (live.scenarios && Math.abs(sum - 100) > 1) fail(`index.html scenarios: probs sum to ${sum}%, must total 100%`);
+    }
+  }
+}
+
+/* ── 7. coverage floor — a run must be BROAD (obj 2) ──────────────── */
+/* Reads data/last-run.json, the manifest the signals loop writes. If a run under-
+ * collects, this FAILS — "silent lane is a finding" becomes an enforced check,
+ * not a hope. Absent manifest = warn (no run recorded), never a hard fail. */
+const MIN_LANES = 8, MIN_THEATERS = 4, MIN_ITEMS = 12;
+const lastRun = loadJSON("data/last-run.json");
+if (!lastRun) warn("data/last-run.json absent — no signals run recorded yet; coverage floor not exercised");
+else {
+  const lanes = lastRun.lanes_covered?.length ?? 0;
+  const theaters = lastRun.theaters_covered?.length ?? 0;
+  const items = lastRun.items ?? (Array.isArray(lastRun.candidates) ? lastRun.candidates.length : 0);
+  if (lanes < MIN_LANES) fail(`last-run: only ${lanes} lanes covered (floor ${MIN_LANES}) — run is too narrow, widen collection before shipping`);
+  if (theaters < MIN_THEATERS) fail(`last-run: only ${theaters} theaters covered (floor ${MIN_THEATERS})`);
+  if (items < MIN_ITEMS) fail(`last-run: only ${items} candidate items (floor ${MIN_ITEMS}) — the funnel is too thin`);
+  if (lanes >= MIN_LANES && theaters >= MIN_THEATERS && items >= MIN_ITEMS)
+    console.log(`✔ coverage floor met — ${lanes} lanes · ${theaters} theaters · ${items} items (${lastRun.ts ?? "?"})`);
 }
 
 /* ── report ──────────────────────────────────────────────────── */
