@@ -224,28 +224,28 @@ svg.trace .hot{fill:none; stroke:var(--danger); stroke-width:2.2}
 <script id="data" type="application/json">
 {
   "meta": {
-    "updated": "20 JUL 2026 · 19:30 GST",
-    "day": 142,
-    "phase": "INFRASTRUCTURE WAR · CEASEFIRE COLLAPSED · TEHRAN LEADERSHIP IN QUESTION"
+    "updated": "21 JUL 2026 · 08:15 GST",
+    "day": 143,
+    "phase": "TENTH NIGHT OF STRIKES · IRAN HITS JORDAN · 10-DAY CEASEFIRE OFFERED"
   },
   "threat": {
     "level": 3,
     "word": "SEVERE",
     "direction": "▲ WORSENING",
-    "uae_line": "Day 142: the ceasefire is openly declared over, a ninth US strike wave followed a US soldier's death in Jordan, and Iran is hitting GCC utilities — smoke rose over Kuwait's Al-Ahmadi port and Bahrain, Kuwait and Qatar all report attacks. The IRGC now claims two tankers exploded on mines in Hormuz (CENTCOM calls it false), and the Houthis have announced a naval blockade of Saudi Arabia. UAE soil is still untouched, but its air-defence exemption is being tested and Qatar/Pakistan mediation has gone moribund. One relief: the 'drone on a UAE nuclear plant' going round today is a recycle of the 17 May Barakah strike — not a new hit.",
-    "action": "No change to daily movement. Keep fuel topped and ~2 weeks of essentials. Watch NCEMA / UAE-MOD wording and Red Sea + Gulf AIS — not viral posts. Treat 'evacuate tonight', 'major UAE strike', and today's 'UAE nuclear-plant drone' as unverified or recycled until an official, dated source confirms."
+    "uae_line": "Day 143: the US struck Iran for a tenth consecutive night after three US service members were killed (dignified transfer set for Wednesday at Dover). Iran answered by hitting Jordan directly for the first time — ballistic missiles at US aircraft on Aqaba's airport, intercepted, with Israel firing Iron Dome interceptors over Eilat at the fragments — plus fresh hits on Kuwait's Al-Adiri camp and Ali Al Salem Air Base and explosions over Erbil, Iraq. UKMTO independently confirms a tanker was struck by an unknown projectile near Limah, Oman; the IRGC's own 'mines' framing is still flatly denied by CENTCOM. The Houthis say their Saudi naval blockade is 'effective immediately.' The one counterweight: Qatar, Egypt and Pakistan have put a 10-day ceasefire proposal on the table to reopen Hormuz both ways — unaccepted so far, with Trump reportedly weighing a return to all-out war instead. UAE soil remains untouched.",
+    "action": "No change to daily movement. Keep fuel topped and ~2 weeks of essentials. Watch NCEMA / UAE-MOD wording and Red Sea + Gulf AIS — not viral posts. Treat any 'UAE strike' or 'evacuate' claim as unverified until an official, dated source confirms; the target set has now widened to Jordan and Iraq in 24 hours, so do not assume any state is exempt by precedent."
   },
   "strait": {
     "status": "BLOCKADED",
     "hot": true,
-    "detail": "US blockade enforced by fire · ~8–10 transits/day vs ~88 normal · Brent ~$90 (+~30% off July lows) · IRGC mine-claim disputed"
+    "detail": "US blockade enforced by fire · ~8–10 transits/day vs ~88 normal · Brent ~$88 (pared from a $91 intraday high) · UKMTO confirms a tanker struck by an unknown projectile off Limah, Oman 20–21 Jul · IRGC mine-cause claim still disputed by CENTCOM"
   },
   "deadlines": [
     {
       "label": "CEASEFIRE",
-      "date": "COLLAPSED",
+      "date": "10-DAY OFFER PENDING",
       "hot": true,
-      "note": "Trump: truce 'over'; Qatar/Pakistan mediation moribund"
+      "note": "Qatar/Egypt/Pakistan proposal to reopen Hormuz both ways; neither side has accepted"
     },
     {
       "label": "MOU STATUS",
@@ -255,94 +255,62 @@ svg.trace .hot{fill:none; stroke:var(--danger); stroke-width:2.2}
     },
     {
       "label": "BRENT",
-      "date": "~$90",
+      "date": "~$88",
       "hot": true,
-      "note": "+~30% off July lows; war-risk ~1% hull/transit"
+      "note": "Pared from $91 intraday high on the ceasefire proposal; still +~28% off July lows"
     }
   ],
   "signals": [
     {
-      "id": "s-leadership",
-      "tier": "disputed",
-      "region": "TEHRAN",
-      "age": "~1d",
+      "id": "s-jordan-strike",
+      "tier": "ver",
+      "region": "JORDAN · AQABA",
+      "age": "~14h",
       "live": true,
-      "claim": "Reports that new Supreme Leader Mojtaba Khamenei is absent / 'not in Iran' — with 'soft coup' talk and the IRGC said to be 'drafting statements.' FM Araghchi separately admits an Israeli intelligence breach 'to decision-making level.'",
-      "momentum": "holding",
-      "via_recall": true,
-      "conflict": {
-        "a": {
-          "who": "Israeli/Saudi source via Israel Hayom, TimesNow, Walla · 19–20 Jul",
-          "what": "Mojtaba Khamenei is not in Iran; internal power struggle deepening, IRGC drafting statements ('soft coup')."
-        },
-        "b": {
-          "who": "Iranian state — Qaani / Fararu · FA · 19–20 Jul",
-          "what": "Affirms 'the era of Ayatollah Mojtaba Khamenei's leadership'; resistance path continues — an implicit denial of any absence."
-        }
-      },
-      "sources": [],
-      "note": "Highest-value thread, adversary-origin — Israeli/Saudi outlets + Iranian diaspora vs Iranian state pushback. Held DISPUTED, never confirmed. Credible enough to show because Araghchi's own admission of Israeli penetration 'to decision-making level' is an unusual self-inflicted concession. Resolves on a Leader appearance or an authenticated Khamenei-channel post."
-    },
-    {
-      "id": "s-hormuz-mines",
-      "tier": "disputed",
-      "region": "STRAIT OF HORMUZ",
-      "age": "~10h",
-      "live": true,
-      "claim": "The IRGC says two oil tankers exploded and caught fire on naval mines in Hormuz after being 'deceived by US intelligence'; CENTCOM responds that, 'like most IRGC claims, this is false.'",
+      "claim": "Iran struck Jordan directly for the first time in the war: the IRGC says it hit US C-17 and P-8 aircraft at Aqaba airport with ballistic missiles, plus US assets at Kuwait's Al-Adiri camp and Ali Al Salem Air Base and in Syria. US air defences intercepted the missiles; Israel fired Iron Dome interceptors over Eilat at falling fragments.",
       "momentum": "gaining",
       "via_recall": true,
-      "conflict": {
-        "a": {
-          "who": "IRGC via Tasnim · STATE · EN/FA · 20 Jul",
-          "what": "Two tankers hit mines in a US-'deceived' route south of Hormuz; blames Washington."
-        },
-        "b": {
-          "who": "CENTCOM · OFF · EN · 20 Jul",
-          "what": "Denies any incident — 'this is false'; no maritime authority (UKMTO/Ambrey) has confirmed, tanker names undisclosed."
-        }
-      },
       "sources": [
         {
-          "name": "Tasnim (IRGC)",
+          "name": "Times of Israel / Haaretz",
+          "medium": "WIRE",
+          "lang": "EN",
+          "date": "20 Jul 2026"
+        },
+        {
+          "name": "Iran International / IRGC statement",
           "medium": "STATE",
           "lang": "EN/FA",
           "date": "20 Jul 2026"
         },
         {
-          "name": "MarineInsight / The Hill",
-          "medium": "WIRE",
+          "name": "OSINTdefender (Telegram)",
+          "medium": "OSINT",
           "lang": "EN",
-          "date": "20 Jul 2026"
-        },
-        {
-          "name": "CENTCOM (X)",
-          "medium": "OFF",
-          "lang": "EN",
-          "date": "20 Jul 2026"
+          "date": "20 Jul 2026 · +10h"
         }
       ],
-      "note": "DISPUTED, never confirmed: an adversary-origin claim with a flat US denial and no maritime-authority corroboration. The framing gap is the signal — Iran asserts a mined blockade the US says never happened. Promotes only on UKMTO/Ambrey or named-vessel AIS confirmation."
+      "note": "VER across independent wires, OSINT and the IRGC's own claim (converging on the fact of the strike, not on damage assessment). The first strike on Jordanian soil — a real widening of the target set beyond the Gulf states, and the first time Israel's air-defence engaged over an Iran-linked launch this war, even though defensively and outside Israeli territory."
     },
     {
-      "id": "s-strikes-9th",
+      "id": "s-strikes-10th",
       "tier": "ver",
       "region": "IRAN · CROSS-THEATER",
       "age": "current",
       "live": true,
-      "claim": "The US launched a ninth wave of strikes on Iran after a US soldier was killed; Iran claims it struck a US base in Jordan, with roughly 14 reported killed in the latest exchanges.",
+      "claim": "The US launched a tenth consecutive night of strikes on Iran after three US service members were killed and nearly 100 injured across recent weeks; a dignified transfer of the fallen is set for Wednesday at Dover Air Force Base.",
       "momentum": "gaining",
       "via_recall": false,
       "sources": [
         {
-          "name": "Detroit News / Daily Finland",
+          "name": "CBS News / NPR",
           "medium": "WIRE",
           "lang": "EN",
-          "date": "19–20 Jul 2026"
+          "date": "20 Jul 2026"
         },
         {
-          "name": "CNN live (US-Iran war)",
-          "medium": "WIRE",
+          "name": "CENTCOM",
+          "medium": "OFF",
           "lang": "EN",
           "date": "20 Jul 2026"
         },
@@ -350,29 +318,29 @@ svg.trace .hot{fill:none; stroke:var(--danger); stroke-width:2.2}
           "name": "Al Jazeera",
           "medium": "WIRE",
           "lang": "EN/AR",
-          "date": "20 Jul 2026"
+          "date": "21 Jul 2026"
         }
       ],
-      "note": "VER across independent wires. The night-8 → night-9 ratchet continues; a US fatality in Jordan is the hinge that hardened the posture. Force, not talks, is the operative mode after the ceasefire's collapse."
+      "note": "VER across independent wires and CENTCOM's own release. The casualty count on the US side has stepped up from one soldier to three killed and ~100 injured — the fatality tempo, not just the strike tempo, is what is hardening Washington's posture."
     },
     {
-      "id": "s-gcc-utilities",
+      "id": "s-target-ratchet",
       "tier": "ver",
-      "region": "GULF · KUWAIT / BAHRAIN",
-      "age": "~6h",
+      "region": "GULF · IRAQ",
+      "age": "~12h",
       "live": true,
-      "claim": "Iran is striking GCC utilities: satellite imagery shows large smoke plumes over Kuwait's Al-Ahmadi port after strikes, and Bahrain, Kuwait and Qatar all report Iranian attacks.",
+      "claim": "The target-set widening continues beyond Jordan: Kuwait's Al-Adiri camp and Ali Al Salem Air Base were hit, and multiple explosions were reported over Erbil and Sulaymaniyah in Iraq's Kurdistan region, triggering warning sirens at the US consulate in Erbil.",
       "momentum": "gaining",
       "via_recall": true,
       "sources": [
         {
-          "name": "Kofia_News (Telegram, Arabic)",
-          "medium": "SOC",
-          "lang": "AR",
-          "date": "20 Jul 2026 · +6m"
+          "name": "IRGC statement / NEWS.am",
+          "medium": "STATE",
+          "lang": "EN",
+          "date": "20 Jul 2026"
         },
         {
-          "name": "Ahram Online",
+          "name": "Shafaq News / Times of Israel liveblog",
           "medium": "WIRE",
           "lang": "EN",
           "date": "20 Jul 2026"
@@ -381,66 +349,167 @@ svg.trace .hot{fill:none; stroke:var(--danger); stroke-width:2.2}
           "name": "OSINTdefender (Telegram)",
           "medium": "OSINT",
           "lang": "EN",
-          "date": "20 Jul 2026"
+          "date": "20 Jul 2026 · +10h"
         }
       ],
-      "note": "Surfaced FASTEST on the direct Telegram layer (6 minutes old) and corroborated by wire — VER for GCC-utility strikes. This is the class that matters most to Gulf residents: Kuwait's port/power and Bahrain's air-defence engagements. UAE soil still untouched, but the GCC ring around it is being hit."
+      "note": "VER — wire, OSINT and the IRGC's own claim converge on the fact pattern. Iran designated Iraqi Kurdistan and the UAE 'hostile bases' subject to preemptive strikes back in May; today's Erbil blasts fit that stated doctrine, which is the reason the UAE exemption bears close watching, not comfort."
     },
     {
-      "id": "s-diplomacy-collapse",
+      "id": "s-hormuz-tanker-confirmed",
       "tier": "ver",
-      "region": "REGIONAL",
-      "age": "~12h",
+      "region": "STRAIT OF HORMUZ",
+      "age": "~8h",
       "live": true,
-      "claim": "The off-ramp is closing: the US–Iran ceasefire is declared 'over,' Qatar/Pakistan mediation has gone moribund, and Iran's foreign ministry says it has no plans to negotiate and is 'focused on defending the country.'",
-      "momentum": "fading",
+      "claim": "UKMTO received multiple reports that a tanker was struck by an unknown projectile in the Strait of Hormuz, 8NM northeast of Limah, Oman, and is now adrift; Reuters and other wires independently confirm the incident.",
+      "momentum": "gaining",
       "via_recall": true,
       "sources": [
         {
-          "name": "CNN (US-Iran live)",
+          "name": "UKMTO",
+          "medium": "OFF",
+          "lang": "EN",
+          "date": "20–21 Jul 2026"
+        },
+        {
+          "name": "Reuters",
           "medium": "WIRE",
           "lang": "EN",
           "date": "20 Jul 2026"
         },
         {
-          "name": "Al Jazeera",
+          "name": "DW / Xinhua",
+          "medium": "WIRE",
+          "lang": "EN",
+          "date": "21 Jul 2026"
+        }
+      ],
+      "note": "VER for the fact that a tanker was hit and is adrift — an official maritime authority plus independent wires. This is distinct from the IRGC's 'two tankers hit mines' claim below: UKMTO describes an unknown projectile, not a mine, and does not attribute cause. Treat the incident as real; treat the cause and attribution as still open."
+    },
+    {
+      "id": "s-hormuz-mines",
+      "tier": "disputed",
+      "region": "STRAIT OF HORMUZ",
+      "age": "~24h",
+      "live": true,
+      "claim": "The IRGC says two oil tankers exploded and caught fire on naval mines in Hormuz after being 'deceived by US intelligence'; CENTCOM responds that, 'like most IRGC claims, this is false.' A NAVAREA IX warning separately confirms drifting/uncharted mines near the Traffic Separation Scheme.",
+      "momentum": "holding",
+      "via_recall": true,
+      "conflict": {
+        "a": {
+          "who": "IRGC via Tasnim/Mehr · STATE · EN/FA · 20–21 Jul",
+          "what": "Two 'deviant' tankers hit mines on a US-'deceived' route south of Hormuz; blames Washington."
+        },
+        "b": {
+          "who": "CENTCOM · OFF · EN · 20 Jul",
+          "what": "Denies any incident — 'this is false'; no vessel names disclosed by Iran, and UKMTO's own confirmed incident (above) describes a projectile, not mines."
+        }
+      },
+      "sources": [
+        {
+          "name": "Tasnim / Mehr (IRGC)",
+          "medium": "STATE",
+          "lang": "EN/FA",
+          "date": "20–21 Jul 2026"
+        },
+        {
+          "name": "CENTCOM (X)",
+          "medium": "OFF",
+          "lang": "EN",
+          "date": "20 Jul 2026"
+        },
+        {
+          "name": "NAVAREA IX mine warning",
+          "medium": "OFF",
+          "lang": "EN",
+          "date": "20 Jul 2026"
+        }
+      ],
+      "note": "DISPUTED, never confirmed: adversary-origin cause claim with a flat US denial. Mines genuinely exist in the strait (NAVAREA confirms), but which incident they caused — if any — is unresolved. Kept separate from the UKMTO-confirmed projectile-strike signal above so the confirmed fact and the contested cause don't get laundered together."
+    },
+    {
+      "id": "s-ceasefire-proposal",
+      "tier": "pending",
+      "region": "REGIONAL",
+      "age": "~18h",
+      "live": true,
+      "claim": "Qatar, Egypt and Pakistan have presented the US and Iran with a 10-day ceasefire proposal: both sides would return to pre-9-July positions, reopening Hormuz's southern route (Omani waters, Iran-attack-free) and northern route (Iranian waters, blockade-free) while talks resume on the stalled MOU. Neither side has accepted; Axios reports Trump is weighing a return to all-out war instead.",
+      "momentum": "holding",
+      "via_recall": true,
+      "sources": [
+        {
+          "name": "The New Arab / Axios",
+          "medium": "WIRE",
+          "lang": "EN",
+          "date": "20–21 Jul 2026"
+        },
+        {
+          "name": "Ynet (senior Iranian official)",
+          "medium": "WIRE",
+          "lang": "HE",
+          "date": "20 Jul 2026"
+        }
+      ],
+      "note": "PENDING — a live, specific proposal (unlike yesterday's vaguer 'shuttle diplomacy'), but genuinely unaccepted by either side and running against a president reportedly leaning toward escalation. This is the one real counterweight to the target-set widening; watch for a formal accept/reject, not further shuttle talk."
+    },
+    {
+      "id": "s-leadership",
+      "tier": "disputed",
+      "region": "TEHRAN",
+      "age": "~1d",
+      "live": true,
+      "claim": "Multiple outlets (Israeli, diaspora, European wires) continue reporting new Supreme Leader Mojtaba Khamenei has not been seen since his 8 March appointment; a separate report says Iran has limited access to him and is probing the 28 February intelligence breach that let Israel kill his father. Israeli intelligence separately claims Iran moved thousands of centrifuges to a secret facility at Kolang Mountain in the Zagros range.",
+      "momentum": "holding",
+      "via_recall": true,
+      "conflict": {
+        "a": {
+          "who": "Israeli, diaspora and European wire outlets · 20–21 Jul",
+          "what": "Mojtaba Khamenei not seen since 8 March; access restricted; internal power struggle deepening."
+        },
+        "b": {
+          "who": "Iranian state media",
+          "what": "No public denial issued today; prior state messaging affirmed Mojtaba's leadership without addressing the absence claims directly."
+        }
+      },
+      "sources": [
+        {
+          "name": "dailypost.ng / Times of Israel",
+          "medium": "WIRE",
+          "lang": "EN",
+          "date": "20 Jul 2026"
+        },
+        {
+          "name": "Euronews Persian (Israeli intel claim)",
+          "medium": "WIRE",
+          "lang": "FA",
+          "date": "21 Jul 2026"
+        }
+      ],
+      "note": "Held DISPUTED, never confirmed — still an adversary/diaspora-origin cluster without an authenticated Khamenei-channel post or state denial addressing it directly. The centrifuge-relocation claim is separately Israeli-origin and unverified; both threads resolve only on a primary Iranian source, not further amplification."
+    },
+    {
+      "id": "s-houthi-saudi",
+      "tier": "ver",
+      "region": "RED SEA · YEMEN",
+      "age": "~1d",
+      "live": true,
+      "claim": "The Houthis have declared their naval blockade of Saudi Arabia 'effective immediately' — a widening of the maritime-chokepoint threat beyond the earlier Bab el-Mandeb order, in retaliation for a blockade on Yemen and a strike on Sanaa airport.",
+      "momentum": "gaining",
+      "via_recall": true,
+      "sources": [
+        {
+          "name": "Al Jazeera / France24 / DW",
           "medium": "WIRE",
           "lang": "EN/AR",
           "date": "20 Jul 2026"
         },
         {
-          "name": "Amwaj / regional",
-          "medium": "ANALYST",
-          "lang": "EN",
-          "date": "20 Jul 2026"
-        }
-      ],
-      "note": "The counter-weight to escalation has weakened, not vanished: back-channels existed a day ago; today the shuttle diplomacy is described as moribund and Trump calls the truce over. No table with a date. This is why the off-ramp scenario is nudged down."
-    },
-    {
-      "id": "s-houthi-saudi",
-      "tier": "pending",
-      "region": "RED SEA · YEMEN",
-      "age": "~8h",
-      "live": true,
-      "claim": "The Houthis have announced a naval blockade of Saudi Arabia — a widening of the maritime-chokepoint threat beyond the earlier Bab el-Mandeb order.",
-      "momentum": "gaining",
-      "via_recall": true,
-      "sources": [
-        {
-          "name": "Izvestia / Kommersant (RU)",
-          "medium": "WIRE",
-          "lang": "RU",
-          "date": "20 Jul 2026"
-        },
-        {
-          "name": "Irish Times",
+          "name": "Reuters (war-risk insurance follow-on)",
           "medium": "WIRE",
           "lang": "EN",
           "date": "20 Jul 2026"
         }
       ],
-      "note": "PENDING — an announced intent, carried so far by Russian and Western wire, not yet a confirmed interdiction or a UKMTO advisory. Execution would convert one chokepoint threat into two. Discovery-nominated Russian wires (iz.ru, Kommersant) surfaced this — the registry's proxy-axis gap being refilled."
+      "note": "VER for the announcement itself — now widely wire-confirmed as declared and 'effective immediately,' with Red Sea war-risk insurance costs already rising in response. Actual interdiction is not yet UKMTO-confirmed; execution would convert one chokepoint threat into two simultaneously."
     },
     {
       "id": "s-us-armada",
@@ -448,154 +517,160 @@ svg.trace .hot{fill:none; stroke:var(--danger); stroke-width:2.2}
       "region": "ARABIAN SEA · GULF OF OMAN",
       "age": "current",
       "live": true,
-      "claim": "US naval posture at a war footing: two carriers (Abraham Lincoln in the Gulf of Oman, George H.W. Bush ~180km off Iran), amphibious groups, an Arabian Sea maritime exclusion zone under the reinstated blockade.",
+      "claim": "US naval posture remains at a war footing: two carriers (Abraham Lincoln in the Gulf of Oman, George H.W. Bush ~180km off Iran), amphibious groups, and an Arabian Sea maritime exclusion zone under the reinstated blockade — while Iran continues targeting Gulf-state infrastructure rather than US naval assets directly.",
       "momentum": "holding",
       "via_recall": false,
       "sources": [
         {
-          "name": "Maritime Executive / USNI",
+          "name": "Al Jazeera analysis / USNI",
           "medium": "WIRE",
           "lang": "EN",
-          "date": "Jul 2026"
+          "date": "20 Jul 2026"
         },
         {
-          "name": "Army Recognition (satellite)",
-          "medium": "OSINT",
+          "name": "Reuters (Hormuz vessel-crossing data)",
+          "medium": "WIRE",
           "lang": "EN",
-          "date": "16 Jul 2026"
+          "date": "21 Jul 2026"
         }
       ],
-      "note": "Force-posture, not an event — VER. Both carriers positioned, amphibious groups give a Marine option, and the exclusion zone enforces the blockade. The standing weight behind the nightly strikes; watch a carrier reposition toward the strait as the next escalation tell."
+      "note": "Force-posture, not an event — VER. Both carriers positioned; Hormuz vessel crossings extend their slide on the fresh attacks. The standing weight behind the nightly strikes; watch a carrier reposition toward the strait as the next escalation tell."
     },
     {
       "id": "s-uae-exemption",
       "tier": "flash",
       "region": "UAE",
-      "age": "~10h",
+      "age": "~14h",
       "live": true,
-      "claim": "The UAE territorial exemption is being tested at the airspace edge — air defences reportedly engaging — while a 'drone strike on a UAE nuclear plant' recirculates today. The date check shows that is the 17 May Barakah strike, not a new hit.",
+      "claim": "UAE soil remains untouched even as the target set widens to Jordan and Iraqi Kurdistan — Iran's May doctrine names the UAE a 'hostile base' alongside Iraqi Kurdistan, subject to preemptive strikes. DXB is reported operating normally with airspace routing structured, not closed.",
       "momentum": "holding",
       "via_recall": true,
       "sources": [
         {
-          "name": "NCEMA / UAE-MOD (baseline)",
-          "medium": "OFF",
-          "lang": "EN/AR",
-          "date": "20 Jul 2026"
-        },
-        {
-          "name": "date-check vs World Nuclear News",
+          "name": "GCAA / gulfnews.com (UAE-Iran-Hormuz explainer)",
           "medium": "WIRE",
           "lang": "EN",
-          "date": "17 May 2026"
+          "date": "21 Jul 2026"
+        },
+        {
+          "name": "date-check vs Iran's May 'hostile bases' designation",
+          "medium": "ANALYST",
+          "lang": "EN",
+          "date": "May 2026"
         }
       ],
-      "note": "Kept at FLASH because you are in the UAE. Two things held apart by the date discipline: (1) the exemption is being tested at the airspace edge — real, watch NCEMA/UAE-MOD wording; (2) the 'UAE nuclear-plant drone' doing rounds today is a RECIRCULATION of the 17 May Barakah strike, caught by cross-engine date-stamping. Do not act on the recycled item."
+      "note": "Kept at FLASH because you are in the UAE. The exemption held again today, but the precedent value of 'exempt so far' just weakened — Jordan and Iraqi Kurdistan were exempt too, until they weren't. Watch NCEMA/UAE-MOD wording, not the calendar, for any shift."
     }
   ],
-  "dropped_note": "Settled → Verified: the Darkhovin nuclear-site strike (IAEA: no nuclear material). Corrected today by the date guard: the 'drone on a UAE nuclear plant' circulating as fresh is the 17 May Barakah strike recycled — not a new hit. Dead rumors leave no graveyard.",
+  "dropped_note": "Verified → Confirmed: a tanker WAS struck in the Strait of Hormuz 20–21 Jul — UKMTO and Reuters independently confirm it, adrift near Limah, Oman. What stays unresolved is the IRGC's specific 'mines, deceived by US intel' framing, which CENTCOM still calls false — the confirmed incident and the contested cause are tracked as two separate signals so one doesn't launder the other. Also holding: the 17 May Barakah-drone recycle stays dead, with no fresh sighting today.",
   "verified": [
     {
-      "t": "Ninth US strike wave · US soldier killed in Jordan",
-      "st": "CONFIRMED",
-      "stc": "red",
-      "dt": "19–20 Jul",
-      "p": "A US service member was killed and the US launched a ninth consecutive wave of strikes on Iran; Iran claims a strike on a US base in Jordan, with ~14 reported killed across the latest exchanges. The night-8 → night-9 ratchet and the first sustained US fatalities are the hinge that hardened Washington's posture."
-    },
-    {
-      "t": "Ceasefire collapsed · mediation moribund",
+      "t": "Iran strikes Jordan for the first time — Aqaba airport",
       "st": "CONFIRMED",
       "stc": "red",
       "dt": "20 Jul",
-      "p": "Trump declared the truce 'over'; Iran's foreign ministry says it has no plans to negotiate. The Qatar/Pakistan shuttle that sustained the June MOU is now described by regional diplomats as moribund. No formal venue with a date exists."
+      "p": "IRGC ballistic missiles targeted US C-17/P-8 aircraft at Aqaba airport, intercepted by US air defences; Israel fired Iron Dome interceptors over Eilat at falling fragments. The first strike on Jordanian territory this war — the clearest sign yet that the target set has no fixed ceiling."
     },
     {
-      "t": "GCC civilian utilities struck — Kuwait, Bahrain",
+      "t": "Tenth US strike wave · 3 US troops killed, ~100 injured",
       "st": "CONFIRMED",
       "stc": "red",
       "dt": "20 Jul",
-      "p": "Smoke over Kuwait's Al-Ahmadi port after strikes (surfaced on Telegram within minutes, wire-corroborated); Bahrain, Kuwait and Qatar all report Iranian attacks and air-defence engagements. The utility-strike class that matters most to Gulf residents keeps widening. UAE territory still untouched."
+      "p": "The US struck Iran for a tenth consecutive night; the American death toll over recent weeks has risen to three killed with nearly 100 injured. A dignified transfer is scheduled for Wednesday at Dover Air Force Base — the clearest marker yet of how much this has cost Washington."
     },
     {
-      "t": "Darkhovin nuclear-SITE struck — but no nuclear material",
+      "t": "UKMTO confirms a Hormuz tanker struck by an unknown projectile",
       "st": "CONFIRMED",
       "stc": "amber",
-      "dt": "19–20 Jul",
-      "p": "The US struck the under-construction Darkhovin plant; the IAEA confirms the site held NO nuclear material and there is no radiological risk — an early-stage construction site, not a fuelled reactor. Symbolically an escalation, physically not a radiological event."
+      "dt": "20–21 Jul",
+      "p": "UKMTO and Reuters confirm a tanker was hit and is adrift 8NM northeast of Limah, Oman. This is independent confirmation of AN incident — it does not confirm the IRGC's separate claim that mines caused it; CENTCOM still calls that claim false."
     },
     {
-      "t": "US blockade of Iranian ports — kinetic",
-      "st": "ACTIVE",
-      "stc": "amber",
-      "dt": "15 Jul",
-      "p": "Blockade reinstated 14 Jul, enforced by fire, with an Arabian Sea maritime exclusion zone. Two competing enforcement regimes keep transits at ~8–10/day vs ~88 normal; Brent ~$90."
+      "t": "Target set widens further — Kuwait bases, Erbil, Iraq",
+      "st": "CONFIRMED",
+      "stc": "red",
+      "dt": "20 Jul",
+      "p": "Kuwait's Al-Adiri camp and Ali Al Salem Air Base were hit; multiple explosions rocked Erbil and Sulaymaniyah in Iraqi Kurdistan, triggering sirens at the US consulate. Iran named Iraqi Kurdistan and the UAE 'hostile bases' in May — today's pattern fits that stated doctrine."
     },
     {
-      "t": "Hamas elects Khalil al-Hayya as new leader",
+      "t": "Houthis declare Saudi naval blockade 'effective immediately'",
       "st": "CONFIRMED",
       "stc": "amber",
       "dt": "20 Jul",
-      "p": "Hamas announced Khalil al-Hayya as its new political bureau chief — a leadership shift in the axis worth tracking for its effect on the Israel-Lebanon theatre and any widening of the war."
+      "p": "Wire-confirmed across multiple outlets; Red Sea war-risk insurance costs are already rising in response. A second chokepoint threat now stands alongside Hormuz, though physical interdiction is not yet UKMTO-confirmed."
+    },
+    {
+      "t": "10-day ceasefire proposal presented — unaccepted",
+      "st": "PENDING",
+      "stc": "amber",
+      "dt": "20 Jul",
+      "p": "Qatar, Egypt and Pakistan presented a specific 10-day ceasefire proposal to reopen Hormuz both ways. Neither Washington nor Tehran has accepted; Trump is reportedly weighing a return to all-out war instead. The one real counterweight to today's target-set widening."
     }
   ],
   "triggers": [
+    {
+      "t": "Target-set ceiling",
+      "st": "NO CEILING FOUND",
+      "stc": "red",
+      "dt": "ongoing",
+      "p": "Jordan and Iraqi Kurdistan joined the target list within 24 hours of Kuwait and Bahrain. The pattern is a widening ratchet, not a settled list of exempt states — the UAE's untouched status is precedent, not protection, and Iran's own May doctrine names it a legitimate target."
+    },
     {
       "t": "Tehran leadership continuity",
       "st": "IN QUESTION",
       "stc": "red",
       "dt": "ongoing",
-      "p": "Whether Supreme Leader Mojtaba Khamenei is present and functioning. A confirmed absence/incapacitation or a visible IRGC takeover would reprice everything — command of the strait, the blockade response, any deal. Resolve via a Leader appearance or an authenticated Khamenei-channel post, not adversary claims."
+      "p": "Whether Supreme Leader Mojtaba Khamenei is present and functioning. Today's reports of restricted access and a breach investigation add detail but not confirmation. Resolve via a Leader appearance or an authenticated Khamenei-channel post, not adversary or diaspora claims."
     },
     {
       "t": "UAE territorial exemption",
       "st": "TESTED",
       "stc": "amber",
-      "dt": "day 12",
-      "p": "Iran has hit six other states while sparing UAE soil — but UAE air defences are reportedly engaging at the airspace edge and the GCC ring (Kuwait, Bahrain) is being struck. Any strike inside UAE borders, or an NCEMA/UAE-MOD shift from solidarity to self-defence, is the local escalation that matters."
+      "dt": "day 13",
+      "p": "UAE soil is still untouched, but the exemption's precedent value weakened today as Jordan and Iraqi Kurdistan lost theirs. Any strike inside UAE borders, or an NCEMA/UAE-MOD shift from solidarity to self-defence, is the local escalation that matters."
     },
     {
       "t": "Houthi maritime escalation",
-      "st": "SAUDI BLOCKADE ANNOUNCED",
-      "stc": "amber",
+      "st": "BLOCKADE DECLARED EFFECTIVE",
+      "stc": "red",
       "dt": "watch AIS",
-      "p": "Beyond the standing Bab el-Mandeb order, the Houthis have now announced a naval blockade of Saudi Arabia. Announced, not yet executed or UKMTO-confirmed — watch Red Sea and Gulf AIS, not statements. Execution converts one chokepoint into two."
-    },
-    {
-      "t": "Israel's two trip-wires",
-      "st": "OUT",
-      "stc": "green",
-      "dt": "day 12",
-      "p": "Israel re-enters only on a direct Iranian attack on Israel or a US request. A stray hit on Israeli-linked assets is the mistake that widens the war — more likely if Tehran's command is in disarray."
+      "p": "Beyond the standing Bab el-Mandeb order, the Houthis now say their Saudi blockade is in force. Declared, not yet UKMTO-confirmed as executed — watch Red Sea and Gulf AIS, not statements. Execution converts one chokepoint into two."
     },
     {
       "t": "A formal negotiation venue",
-      "st": "MORIBUND",
-      "stc": "red",
-      "dt": "off-ramp closing",
-      "p": "The back-channels that existed a day ago are now described as moribund and Trump calls the truce over. A table with a date is the only real de-escalation signal — and it is receding, not approaching."
+      "st": "10-DAY OFFER ON TABLE",
+      "stc": "amber",
+      "dt": "unaccepted",
+      "p": "Upgraded from 'moribund' — Qatar/Egypt/Pakistan have now put a specific, dated proposal in front of both capitals. Still unaccepted, and Trump is reportedly weighing escalation instead. A formal accept is the real de-escalation signal; a formal reject would close the window entirely."
     }
   ],
   "scenarios": [
     {
-      "prob": "46%",
+      "prob": "44%",
       "lab": "Attrition deepens — nightly strikes, kinetic blockade, no talks",
       "kind": "risk",
-      "p": "Modal and firming as the ceasefire is declared over and mediation goes moribund. Nine strike nights, a blockade enforced by fire, GCC utilities hit, no table with a date. Falsifier: a formal venue is announced, or strike tempo drops 48h+."
+      "p": "Still modal but only narrowly ahead of the tail case now. Ten strike nights, a widening target set (Jordan, Iraq), and a kinetic blockade continue even as a ceasefire proposal sits on the table. Falsifier: a formal venue accepted, or strike tempo drops 48h+."
     },
     {
-      "prob": "40%",
-      "lab": "Horizontal spread OR Tehran instability — chokepoints, more GCC infra, Israel drawn in, or a leadership rupture",
+      "prob": "42%",
+      "lab": "Horizontal spread OR Tehran instability — new states hit, Israel drawn in, or a leadership rupture",
       "kind": "tail",
-      "p": "Raised. Two forces feed the tail: a widening maritime threat (Houthi Saudi-blockade announcement + met Bab el-Mandeb trigger + UAE air-defence engagement) and confirmed GCC-utility strikes; AND the open question over whether Iran's Supreme Leader is present — a command rupture could freeze or trigger a reckless escalation. Falsifier: Red Sea/Gulf quiet 72h, no new infra strikes, a visibly functioning Iranian leadership."
+      "p": "Raised again. Iran hit Jordan directly for the first time and Israel fired interceptors defensively over Eilat; the Houthis declared their Saudi blockade active; Iraqi Kurdistan was hit for the second time this week; and the Tehran leadership question remains open. Falsifier: 72h with no new states struck, Red Sea/Gulf quiet, a visibly functioning Iranian leadership."
     },
     {
       "prob": "14%",
-      "lab": "Exhaustion off-ramp — a back-channel converts to a table and tempo drops",
+      "lab": "Exhaustion off-ramp — the 10-day proposal converts to a real ceasefire",
       "kind": "base",
-      "p": "Nudged down from 17% because the mediation mechanism went moribund today and Iran says it has no plans to talk. Still possible if both capitals tire, but the off-ramp is receding. Falsifier: a week with no venue announced (now the base case)."
+      "p": "Held flat: a real proposal exists for the first time in days, which is a genuine change from yesterday's moribund shuttle — but neither side has accepted, and Trump is reportedly weighing all-out war instead. Falsifier: a formal accept from either Washington or Tehran, or a 10-day window that actually opens."
     }
   ],
   "ledger": [
+    {
+      "call": "The GCC-utility strike class (Kuwait/Bahrain) marks the outer edge of Iran's target set",
+      "made": "20 Jul",
+      "res": "WRONG",
+      "p": "Within 24 hours Iran struck Jordan (Aqaba, targeting US aircraft) and hit Iraqi Kurdistan again — both non-GCC. Lesson banked: never price in a target-class ceiling from the current edge; track the ratchet's direction, not its latest stopping point."
+    },
     {
       "call": "The mediation mechanism is a live off-ramp (raised off-ramp to 17%)",
       "made": "19 Jul",
@@ -612,92 +687,92 @@ svg.trace .hot{fill:none; stroke:var(--danger); stroke-width:2.2}
       "call": "UAE territorial exemption holds cleanly",
       "made": "10 Jul",
       "res": "PARTIAL",
-      "p": "Soil still untouched, but UAE air defences are engaging at the airspace edge and the GCC ring (Kuwait/Bahrain) is being hit. Downgraded HOLDING → TESTED."
+      "p": "Soil still untouched at day 13, but the exemption's precedent value keeps eroding as other states (Kuwait, Bahrain, now Jordan, Iraq) lose theirs. Downgraded HOLDING → TESTED, watching for further erosion."
     },
     {
       "call": "The 20% Hormuz toll was rhetoric; the blockade is the real policy",
       "made": "14 Jul",
       "res": "RIGHT",
-      "p": "Toll floated and dropped within 24h; blockade + escorts persisted and went kinetic. Rule banked: separate maximal announcements from operational policy."
+      "p": "Toll floated and dropped within 24h; blockade + escorts persisted and went kinetic, now with UKMTO-confirmed tanker strikes. Rule banked: separate maximal announcements from operational policy."
     },
     {
       "call": "Bab el-Mandeb threat is signalling; low near-term execution",
       "made": "08 Jul",
       "res": "OPEN",
-      "p": "Trigger met for days; today the Houthis announced a Saudi naval blockade — the threat is widening, not executing yet. Still open, escalating; watch AIS for the first real interdiction."
+      "p": "The Houthis have now declared the Saudi blockade 'effective immediately' — signalling has become a stated policy, though UKMTO has not yet confirmed physical interdiction. Still open, trending toward execution; watch AIS for the first real interception."
     },
     {
       "call": "UAE 'evacuate tonight' warning is pure recirculation",
       "made": "17 Jul",
       "res": "PARTIAL",
-      "p": "Alarm right (no evacuation), 'pure recirculation' too dismissive — a fresh Fars statement followed. Reinforced today: the 'UAE nuclear-plant drone' WAS pure recirculation of the 17 May Barakah strike, caught by the date guard. Both lessons banked: date-stamp every reissue."
+      "p": "Alarm right (no evacuation), 'pure recirculation' too dismissive — a fresh Fars statement followed, and the 17 May Barakah-drone recycle reappeared again on 20 Jul. Lesson reinforced: date-stamp every reissue, every time, not just once."
     },
     {
       "call": "Attrition is the modal outcome",
       "made": "17 Jul",
       "res": "OPEN",
-      "p": "Holding and firming — nine strike nights, ceasefire declared over, no table. Tracked against the falsifier (formal venue / 48h tempo drop)."
+      "p": "Holding and firming — ten strike nights, ceasefire declared over, target set widened to Jordan and Iraq, no table accepted yet. Tracked against the falsifier (formal venue accepted / 48h tempo drop)."
     },
     {
       "call": "Israel stays out absent an Iranian mistake or US request",
       "made": "10 Jul",
       "res": "OPEN",
-      "p": "Holding at day 12. Iran's targeting discipline continues to spare Israel while hitting GCC states."
+      "p": "Still technically holding at day 13 — Israel's Iron Dome fire over Eilat on 20 Jul was defensive, against fragments from missiles aimed at Jordan, not a direct Iranian strike on Israel. A close call worth flagging, not yet a breach."
     }
   ],
   "patterns": [
     {
+      "t": "The target set has no ceiling — track the ratchet, not the edge (new, 21 Jul)",
+      "p": "Kuwait and Bahrain looked like the outer edge yesterday; Jordan and Iraqi Kurdistan were hit within 24 hours. Iran's own May doctrine already named the UAE and Iraqi Kurdistan 'hostile bases' — the doctrine was public before the strikes caught up to it. Read stated doctrine, not precedent, for what's next."
+    },
+    {
+      "t": "Confirmed incident ≠ confirmed cause",
+      "p": "UKMTO/Reuters confirm a tanker was struck in Hormuz 20–21 Jul; the IRGC's 'mines, deceived by US intel' framing is a separate, still-disputed claim CENTCOM denies. Split the fact of an incident from the attribution of its cause — conflating them is how adversary framing gets laundered into a confirmed tier."
+    },
+    {
       "t": "Direct Telegram beats the wire on speed",
-      "p": "The Kuwait Al-Ahmadi port strike surfaced on the Arabic Telegram layer six minutes after posting — the fastest engine by far, ahead of wire corroboration. Real-time depth comes from polling the source directly, not waiting for the aggregated index."
+      "p": "The IRGC's own Sepahcybery/Iranictv channels carried the Hormuz tanker claim and 'black night for US radars' language 3+ hours before most wire pickup. Real-time depth comes from polling the source directly, not waiting for the aggregated index — even when the source is adversary-origin and still needs independent tiering."
     },
     {
-      "t": "Recirculation catch is load-bearing (new, 20 Jul)",
-      "p": "Today's 'UAE nuclear-plant drone' was the 17 May Barakah strike recycled with a fresh date; cross-engine date-stamping (WEB dating vs the PPLX item) flagged it before it reached the threat read. The date guard is now doing real work, not decoration."
-    },
-    {
-      "t": "Grade the off-ramp by a dated venue, not shuttle activity (new, 20 Jul)",
-      "p": "Visible mediation shuttling looked like a live off-ramp yesterday; it went moribund within a day. Score de-escalation only on a table with a date — persisting back-channels are narrative, not a mechanism."
-    },
-    {
-      "t": "Target-class ratchet",
-      "p": "The set of 'things that get hit' only widens: US bases → dual-use infrastructure → civilian utilities (Kuwait water/power, Al-Ahmadi port) → a nuclear power site (Darkhovin). Each rung makes the next cheaper. Track the ratchet, not any single strike."
+      "t": "Grade the off-ramp by a dated, accepted venue — not a proposal on the table",
+      "p": "Yesterday's 'live off-ramp' call (shuttle activity) went moribund within a day; today's 10-day proposal is more concrete (dated, specific terms) but still unaccepted by either side. Score de-escalation only on an ACCEPTED venue — a proposal is necessary but not sufficient."
     },
     {
       "t": "Khamenei Telegram > diplomatic statements",
-      "p": "The Supreme Leader's channel is the only reliable predictor of IRGC action (T1-ELEVATED). Foreign-ministry and MOU language is narrative, not intent (T1-UNRELIABLE)."
+      "p": "The Supreme Leader's channel remains the only reliable predictor of IRGC action (T1-ELEVATED) — still unresolved on handle, a live intake priority. Foreign-ministry and MOU language is narrative, not intent (T1-UNRELIABLE)."
     },
     {
       "t": "Adversary-origin cluster = DISPUTED, never confirmed",
-      "p": "The Mojtaba-absence and Hormuz-mine threads are both single-side-origin (Israeli/Saudi; IRGC) with the other side denying. Held DISPUTED with the conflict shown — never laundered to confirmed on one origin."
+      "p": "The Mojtaba-absence/centrifuge threads and the Hormuz-mines claim are both single-side-origin (Israeli/diaspora; IRGC) without the other side's confirmation. Held DISPUTED with the conflict shown — never laundered to confirmed on one origin, no matter how many outlets recirculate it."
     },
     {
       "t": "Native-language + tracking gather beats English keywords",
-      "p": "Leadership, Hormuz, GCC-utility and Houthi-blockade threads surfaced from Farsi/Arabic/Russian and direct Telegram — the English wire carried strikes alone. Depth comes from querying the native substrate and the registry's scored sources."
+      "p": "Leadership, Hormuz, target-ratchet and Houthi-blockade threads all surfaced first from Farsi/Arabic/Hebrew and direct Telegram — the English wire caught up hours later. Depth comes from querying the native substrate and the registry's scored sources, not from English search alone."
     }
   ],
   "trace": {
     "label": "ESCALATION TRACE",
-    "days": "142 DAYS",
-    "tail": "▲ NIGHT 9 · CEASEFIRE COLLAPSED · TEHRAN LEADERSHIP IN QUESTION",
+    "days": "143 DAYS",
+    "tail": "▲ NIGHT 10 · IRAN STRIKES JORDAN · 10-DAY CEASEFIRE OFFERED",
     "base": "0,96 12,14 40,44 80,40 120,52 160,44 210,60 258,38 306,74 340,60 360,42 380,30 392,16 400,12",
-    "hot": "392,16 400,12 406,5"
+    "hot": "392,16 400,12 406,5 412,10 418,14"
   },
   "practical": [
     {
       "t": "Fuel",
-      "p": "Keep vehicles above half. Brent ~$90 (+~30% off July lows); pump and jet-fuel prices reprice after oil spikes."
+      "p": "Keep vehicles above half. Brent ~$88 (pared from a $91 high on the ceasefire proposal, still +~28% off July lows); pump and jet-fuel prices stay repriced and volatile."
     },
     {
       "t": "Food & water",
-      "p": "Two weeks of staples. Gulf utilities are a demonstrated target class — Kuwait's power/water and Al-Ahmadi port were struck; imported-goods and utility risk is real, not hypothetical."
+      "p": "Two weeks of staples. The target class keeps widening — Kuwait's power/water, Al-Ahmadi port, and now bases in Jordan and Iraq were all hit within days of each other; imported-goods and utility risk is real, not hypothetical, even where you are not."
     },
     {
       "t": "Flights & shipping",
-      "p": "DXB near-normal but the Emirates FIR is under structured routing and 1,500+ regional flights have been hit; book flexible fares. Container lines are rerouting via the Cape (+3,800nm) — imported-goods costs will climb."
+      "p": "DXB reported operating normally with structured routing, but the Emirates FIR remains under congestion from regional reroutes; book flexible fares. Container lines keep rerouting via the Cape (+3,800nm); Red Sea war-risk insurance is now rising too on the Houthi blockade declaration — imported-goods costs will keep climbing."
     },
     {
       "t": "Info hygiene",
-      "p": "Three items NOT to act on without official, dated confirmation: a 'major UAE strike' (single low-tier outlet), 'evacuate tonight' (aggregator-amplified), and today's 'UAE nuclear-plant drone' (a recycle of the 17 May Barakah strike). Verify against NCEMA / UAE-MOD first."
+      "p": "Four items NOT to act on without official, dated confirmation: a 'major UAE strike' (single low-tier outlet), 'evacuate tonight' (aggregator-amplified), the 17 May Barakah-drone recycle (reappeared again 20 Jul), and the IRGC's 'mines' cause-claim for the Hormuz tanker (the strike itself is UKMTO-confirmed; the cause is not). Verify against NCEMA / UAE-MOD first."
     }
   ],
   "feed": [
@@ -705,248 +780,455 @@ svg.trace .hot{fill:none; stroke:var(--danger); stroke-width:2.2}
       "lane": "strikes_ops",
       "region": "IRAN·CROSS",
       "tier": "ver",
-      "claim": "US launches 9th strike wave on Iran after a US soldier killed; Iran claims a strike on a US base in Jordan; ~14 reported killed",
-      "src": "Detroit News · CNN · Al Jazeera",
-      "date": "20 Jul",
+      "claim": "US launches 10th consecutive night of strikes on Iran; 3 US troops killed, ~100 injured across recent weeks; dignified transfer Wed at Dover",
+      "src": "CBS News · NPR · CENTCOM · Al Jazeera",
+      "date": "20-21 Jul",
       "eng": "WEB/PPLX"
     },
     {
       "lane": "strikes_ops",
-      "region": "TEHRAN",
-      "tier": "flash",
-      "claim": "IRGC-adjacent channel posting strike/threat updates in real time",
-      "src": "Sepahcybery (TG +7m)",
+      "region": "JORDAN·AQABA",
+      "tier": "ver",
+      "claim": "IRGC ballistic missiles target US C-17/P-8 aircraft at Aqaba airport; intercepted by US air defence; Israel fires Iron Dome interceptors over Eilat at fragments",
+      "src": "Times of Israel · Haaretz · Iran International · NEWS.am",
       "date": "20 Jul",
+      "eng": "WEB/DIRECT"
+    },
+    {
+      "lane": "strikes_ops",
+      "region": "KUWAIT·SYRIA",
+      "tier": "ver",
+      "claim": "IRGC claims strikes on US assets at Kuwait's Al-Adiri camp and Ali Al Salem Air Base, and in Syria",
+      "src": "IRGC statement / NEWS.am",
+      "date": "20 Jul",
+      "eng": "WEB"
+    },
+    {
+      "lane": "strikes_ops",
+      "region": "IRAN·BANDAR ABBAS",
+      "tier": "pending",
+      "claim": "Explosions heard in Bandar Abbas, Qeshm and Bemani district, Hormozgan province, near the Strait of Hormuz",
+      "src": "Iranian state media (CNN pickup)",
+      "date": "20 Jul",
+      "eng": "WEB"
+    },
+    {
+      "lane": "strikes_ops",
+      "region": "IRAN·RADAR",
+      "tier": "pending",
+      "claim": "IRGC-adjacent channels claim a 'black night' for US radar/air-defence systems in the region; hit on a US early-warning radar system, equipment hangar",
+      "src": "Sepahcybery / Iranictv (Telegram, Farsi)",
+      "date": "21 Jul · +139-180m",
       "eng": "DIRECT"
     },
     {
       "lane": "strikes_ops",
       "region": "ISRAEL·WB/GAZA",
       "tier": "flash",
-      "claim": "Breaking: Israeli airstrike casualties reported, West Bank/Gaza",
-      "src": "QudsNen (TG +3m)",
-      "date": "20 Jul",
+      "claim": "Four Palestinians killed following an Israeli drone strike on a residential area, West Bank/Gaza",
+      "src": "QudsNen (TG +148m)",
+      "date": "21 Jul",
       "eng": "DIRECT"
     },
     {
+      "lane": "strikes_ops",
+      "region": "IRAQ·KURDISTAN",
+      "tier": "pending",
+      "claim": "Israel accused of using white phosphorus in Iraqi Kurdistan amid drone/PAK activity near Erbil",
+      "src": "Euronews Arabic",
+      "date": "20 Jul",
+      "eng": "PPLX"
+    },
+    {
       "lane": "maritime_incidents",
-      "region": "HORMUZ",
+      "region": "HORMUZ·LIMAH OMAN",
+      "tier": "ver",
+      "claim": "UKMTO confirms a tanker struck by an unknown projectile 8NM NE of Limah, Oman, now adrift; independently confirmed by Reuters/DW/Xinhua",
+      "src": "UKMTO · Reuters · DW · Xinhua",
+      "date": "20-21 Jul",
+      "eng": "WEB/PPLX"
+    },
+    {
+      "lane": "maritime_incidents",
+      "region": "STRAIT OF HORMUZ",
       "tier": "disputed",
-      "claim": "IRGC says two tankers exploded on mines in Hormuz after being 'deceived by US intel'; CENTCOM: 'this is false'",
-      "src": "Tasnim · MarineInsight · CENTCOM",
-      "date": "20 Jul",
-      "eng": "PPLX/WEB"
+      "claim": "IRGC says two 'deviant' tankers exploded on naval mines in Hormuz after being 'deceived by US intelligence'; CENTCOM: 'this is false'",
+      "src": "Tasnim/Mehr (IRGC) · CENTCOM (X)",
+      "date": "20-21 Jul",
+      "eng": "WEB/PPLX/DIRECT"
     },
     {
       "lane": "maritime_incidents",
-      "region": "GULF·KUWAIT",
+      "region": "STRAIT OF HORMUZ",
       "tier": "ver",
-      "claim": "Satellite imagery: large smoke plumes over Kuwait's Al-Ahmadi port after strikes",
-      "src": "Kofia_News (TG +6m) · Ahram",
-      "date": "20 Jul",
-      "eng": "DIRECT"
+      "claim": "NAVAREA IX warning confirms a suspected and a confirmed floating mine near the Traffic Separation Scheme; clearance/survey operations ongoing",
+      "src": "UKMTO / NCAGS",
+      "date": "16-20 Jul",
+      "eng": "WEB"
     },
     {
       "lane": "maritime_incidents",
-      "region": "HORMUZ",
+      "region": "GULF OF ADEN·YEMEN",
+      "tier": "pending",
+      "claim": "A ship illegally boarded in the Gulf of Aden off Yemen",
+      "src": "Ahram Online",
+      "date": "21 Jul",
+      "eng": "PPLX"
+    },
+    {
+      "lane": "maritime_incidents",
+      "region": "GULF·KUWAIT/BAHRAIN",
       "tier": "ver",
-      "claim": "Iran tightens grip on Hormuz; shipping forced into controlled routes; ~8–10 transits/day",
-      "src": "HSToday · Crisis Group",
+      "claim": "Smoke over Kuwait's Al-Ahmadi port after strikes; Bahrain, Kuwait, Qatar report Iranian attacks and air-defence engagement",
+      "src": "Kofia_News (TG) · Ahram Online · OSINTdefender",
       "date": "20 Jul",
-      "eng": "WEB"
+      "eng": "DIRECT/WEB"
     },
     {
       "lane": "naval_military_movement",
-      "region": "ARABIAN SEA",
+      "region": "GULF OF OMAN",
       "tier": "ver",
-      "claim": "Abraham Lincoln in Gulf of Oman, GHW Bush ~180km off Iran; Arabian Sea exclusion zone under reinstated blockade",
-      "src": "Maritime Executive · USNI · Army Recognition (sat)",
-      "date": "Jul",
-      "eng": "WEB"
+      "claim": "US carriers Abraham Lincoln (Gulf of Oman) and George H.W. Bush (~180km off Iran) hold position; amphibious groups, Arabian Sea exclusion zone under reinstated blockade",
+      "src": "USNI 'Where Are The Carriers' · Al Jazeera analysis",
+      "date": "20 Jul",
+      "eng": "WEB/PPLX"
     },
     {
       "lane": "naval_military_movement",
-      "region": "US·GULF",
+      "region": "STRAIT OF HORMUZ",
       "tier": "ver",
-      "claim": "US force buildup: ~one-third of deployed fleet now aimed at Iran; three carrier groups referenced",
-      "src": "Gulf News · Army Recognition",
-      "date": "Jul",
+      "claim": "Hormuz vessel crossings extend their slide on the fresh US-Iran attacks; transit near standstill",
+      "src": "Reuters · Business Standard",
+      "date": "20-21 Jul",
+      "eng": "PPLX"
+    },
+    {
+      "lane": "naval_military_movement",
+      "region": "IRAN",
+      "tier": "pending",
+      "claim": "'Another new front may have just opened' — reports of expanding naval/military activity tied to the Hormuz blockade",
+      "src": "Economic Times liveblog",
+      "date": "21 Jul",
+      "eng": "PPLX"
+    },
+    {
+      "lane": "air_traffic_airspace",
+      "region": "KUWAIT",
+      "tier": "ver",
+      "claim": "Kuwait's OKAC FIR remains closed to overflights, extended to at least 4 Aug; only arrivals/departures with prior approval permitted",
+      "src": "OPSGROUP / NOTAM tracking",
+      "date": "18-21 Jul",
       "eng": "WEB"
     },
     {
       "lane": "air_traffic_airspace",
-      "region": "GULF·UAE",
+      "region": "IRAN·IRAQ",
       "tier": "ver",
-      "claim": "No NEW Gulf closures; Iran/Iraq/Bahrain/Kuwait closed; Emirates FIR partial/structured; 1,500+ flights hit",
-      "src": "OPSGROUP · EASA · AirlineRatings",
-      "date": "20 Jul",
+      "claim": "EASA advises against operating in Tehran FIR at any altitude and against Iraq airspace; Iraq technically open but Western Iran remains restricted",
+      "src": "EASA CZIB 2026-05",
+      "date": "Jul 2026",
       "eng": "WEB"
     },
     {
       "lane": "air_traffic_airspace",
-      "region": "REGION",
+      "region": "UAE·DXB",
       "tier": "ver",
-      "claim": "EASA advises avoiding Iran/Iraq/Lebanon airspace through 31 Aug; wider Gulf caution withdrawn",
-      "src": "OPSGROUP / EASA",
-      "date": "08 Jul",
+      "claim": "DXB reported operating normally across terminals; UAE airspace routing structured, not closed, per GCAA",
+      "src": "Gulf News (UAE-Iran-Hormuz explainer)",
+      "date": "21 Jul",
+      "eng": "WEB"
+    },
+    {
+      "lane": "air_traffic_airspace",
+      "region": "GULF",
+      "tier": "pending",
+      "claim": "US 'prepares for return of all-out war' — additional jets reportedly sent to the Middle East",
+      "src": "The Telegraph",
+      "date": "20 Jul",
+      "eng": "PPLX"
+    },
+    {
+      "lane": "war_risk_economy",
+      "region": "GLOBAL·OIL",
+      "tier": "ver",
+      "claim": "Brent pared gains to ~$88/bbl after briefly topping $91, as the ceasefire proposal eased some supply concern",
+      "src": "Bloomberg · CNBC",
+      "date": "20-21 Jul",
       "eng": "WEB"
     },
     {
       "lane": "war_risk_economy",
       "region": "HORMUZ",
       "tier": "ver",
-      "claim": "Brent above $90 (~+30% off July lows) as US–Iran hostilities escalate",
-      "src": "Al Jazeera · TradingEconomics",
+      "claim": "War-risk insurance for Hormuz transits has spiked roughly sevenfold, an estimated $40bn in added cost",
+      "src": "Ahram Online",
+      "date": "21 Jul",
+      "eng": "PPLX"
+    },
+    {
+      "lane": "war_risk_economy",
+      "region": "RED SEA",
+      "tier": "ver",
+      "claim": "Red Sea war-insurance costs rise after the Houthi Saudi-blockade declaration",
+      "src": "Reuters",
       "date": "20 Jul",
+      "eng": "PPLX"
+    },
+    {
+      "lane": "war_risk_economy",
+      "region": "GLOBAL·SHIPPING",
+      "tier": "ver",
+      "claim": "Container lines continue rerouting via the Cape of Good Hope (+3,800nm); war-risk/emergency surcharges of $200-800/container remain in force across major carriers",
+      "src": "Maersk/Hapag-Lloyd/CMA CGM advisories",
+      "date": "Jul 2026",
       "eng": "WEB"
     },
     {
       "lane": "war_risk_economy",
-      "region": "HORMUZ",
-      "tier": "ver",
-      "claim": "War-risk premiums ~1% of hull/transit; container lines suspend Gulf transits, reroute via Cape (+3,800nm)",
-      "src": "militaryspend · Insurance Journal",
-      "date": "20 Jul",
-      "eng": "WEB"
+      "region": "EGYPT·SUEZ",
+      "tier": "pending",
+      "claim": "El-Sisi orders heightened Suez Canal readiness amid regional escalation",
+      "src": "Ahram Online",
+      "date": "21 Jul",
+      "eng": "PPLX"
     },
     {
       "lane": "diplomacy",
       "region": "REGIONAL",
-      "tier": "ver",
-      "claim": "Ceasefire declared 'over'; Qatar/Pakistan mediation moribund; Iran FM says no plans to negotiate",
-      "src": "CNN · Al Jazeera",
-      "date": "20 Jul",
-      "eng": "WEB"
+      "tier": "pending",
+      "claim": "Qatar, Egypt and Pakistan present a 10-day ceasefire proposal to reopen Hormuz both ways; neither side has accepted; Trump reportedly weighs all-out war instead",
+      "src": "The New Arab · Axios · Ynet",
+      "date": "20-21 Jul",
+      "eng": "WEB/PPLX"
     },
     {
       "lane": "diplomacy",
-      "region": "IRAN·GULF",
-      "tier": "pending",
-      "claim": "After the broken ceasefire, Iran opens talks with Gulf leaders",
-      "src": "ms.now",
+      "region": "UN·CAIRO",
+      "tier": "ver",
+      "claim": "UN says Egypt, Pakistan, Saudi Arabia and Qatar have played a key role in easing tension; regional mediators active",
+      "src": "Elwatan News / UN briefing",
       "date": "20 Jul",
-      "eng": "WEB"
+      "eng": "PPLX"
+    },
+    {
+      "lane": "diplomacy",
+      "region": "IRAN",
+      "tier": "pending",
+      "claim": "Iran says it has received mediation proposals from multiple parties",
+      "src": "Al Jazeera (Facebook feed)",
+      "date": "20 Jul",
+      "eng": "PPLX"
     },
     {
       "lane": "leadership_internal",
       "region": "TEHRAN",
       "tier": "disputed",
-      "claim": "Reports Mojtaba Khamenei 'not in Iran' + 'soft coup' talk (Israeli/Saudi origin); Iranian state denies; Araghchi admits Israeli intel breach",
-      "src": "Israel Hayom · Walla vs Qaani · Fararu",
+      "claim": "Multiple wires (Israeli/diaspora/European) report Mojtaba Khamenei not seen since 8 March appointment; Iran limits access to him and probes the 28 Feb intelligence breach",
+      "src": "dailypost.ng · upday (NL/IT) · FR/DE press",
       "date": "20 Jul",
       "eng": "PPLX"
     },
     {
       "lane": "leadership_internal",
-      "region": "IRAN",
+      "region": "TEHRAN",
+      "tier": "disputed",
+      "claim": "Israeli intelligence claims Iran moved thousands of centrifuges to a secret facility at Kolang Mountain, Zagros range",
+      "src": "Euronews Persian",
+      "date": "21 Jul",
+      "eng": "PPLX"
+    },
+    {
+      "lane": "leadership_internal",
+      "region": "TEHRAN",
       "tier": "pending",
-      "claim": "Real-time internal-Iran dashboard: sentiment, X feeds, flightradar, connectivity",
-      "src": "iranmonitor.org",
-      "date": "20 Jul",
-      "eng": "DISC"
+      "claim": "IRGC power consolidation continues; Mojtaba described by security officials as elevated under IRGC pressure, real power with the Supreme National Security Council/IRGC",
+      "src": "JNS analysis / NCRI",
+      "date": "Jul 2026",
+      "eng": "WEB"
     },
     {
       "lane": "threats",
-      "region": "TEHRAN",
-      "tier": "pending",
-      "claim": "IRGC public warning: 'any US infiltration into Iran neutralized in the first instant'; early-warning radar notices",
-      "src": "DW Farsi · Ettelaat · Donya-e-Eqtesad",
-      "date": "20 Jul",
+      "region": "REGIONAL",
+      "tier": "ver",
+      "claim": "US draws 'red line' for Iran — 'their behaviour has to change' — while keeping the door open to diplomacy",
+      "src": "Gulf News (Rubio)",
+      "date": "21 Jul",
       "eng": "PPLX"
     },
     {
       "lane": "threats",
-      "region": "TEHRAN·KUWAIT",
+      "region": "IRAN",
       "tier": "pending",
-      "claim": "New IRGC notice addressed to the people of Kuwait re: US 'support centres'",
-      "src": "Donya-e-Eqtesad (FA)",
+      "claim": "IRGC threatens continued strikes on 'enemy American targets and bases' in the region",
+      "src": "Fars News",
+      "date": "21 Jul",
+      "eng": "PPLX"
+    },
+    {
+      "lane": "threats",
+      "region": "IRAN",
+      "tier": "pending",
+      "claim": "Iran executes a 19-year-old protester; Trump condemns the execution",
+      "src": "Iran International",
       "date": "20 Jul",
       "eng": "PPLX"
     },
     {
       "lane": "proxy_axis",
       "region": "RED SEA·YEMEN",
-      "tier": "pending",
-      "claim": "Houthis announce a naval blockade of Saudi Arabia",
-      "src": "Izvestia · Kommersant · Irish Times",
-      "date": "20 Jul",
-      "eng": "PPLX/DISC"
-    },
-    {
-      "lane": "proxy_axis",
-      "region": "ISRAEL·AXIS",
       "tier": "ver",
-      "claim": "Hamas elects Khalil al-Hayya as new political bureau chief",
-      "src": "Times of Israel · caliber.az",
+      "claim": "Houthis declare naval blockade of Saudi Arabia 'effective immediately' in retaliation for a Yemen blockade and Sanaa airport strike",
+      "src": "Al Jazeera · France24 · DW",
       "date": "20 Jul",
-      "eng": "DISC"
+      "eng": "WEB/PPLX"
     },
     {
       "lane": "proxy_axis",
-      "region": "BAHRAIN",
-      "tier": "pending",
-      "claim": "Bahrain air defences intercept an Iranian attack; attacks reported ongoing",
-      "src": "OSINTdefender (TG +59m)",
+      "region": "IRAQ·ERBIL",
+      "tier": "ver",
+      "claim": "Multiple explosions in Erbil and Sulaymaniyah, Iraqi Kurdistan; sirens at the US consulate in Erbil",
+      "src": "Shafaq News · Times of Israel liveblog",
       "date": "20 Jul",
+      "eng": "WEB/DIRECT"
+    },
+    {
+      "lane": "proxy_axis",
+      "region": "IRAQ",
+      "tier": "pending",
+      "claim": "Drone intercepted near a US base in Iraq; drones described as a persistent airborne threat over Iraqi Kurdistan",
+      "src": "Devdiscourse · Forbes",
+      "date": "20-21 Jul",
+      "eng": "PPLX"
+    },
+    {
+      "lane": "proxy_axis",
+      "region": "LEBANON",
+      "tier": "ver",
+      "claim": "Israeli drone strike kills four in south Lebanon despite the framework agreement",
+      "src": "Ahram Online",
+      "date": "21 Jul",
+      "eng": "PPLX"
+    },
+    {
+      "lane": "proxy_axis",
+      "region": "GAZA·WB",
+      "tier": "flash",
+      "claim": "Israeli forces continue operations in West Bank/Gaza; new Hamas political leadership (Khalil al-Hayya) remains in place",
+      "src": "QudsNen (TG)",
+      "date": "21 Jul",
       "eng": "DIRECT"
     },
     {
       "lane": "nuclear",
-      "region": "TEHRAN",
+      "region": "IRAN·DARKHOVIN",
       "tier": "ver",
-      "claim": "IAEA probes reported attack on under-construction Darkhovin plant; confirms NO nuclear material / no radiological risk",
-      "src": "IAEA · IranWire · Moneycontrol · World Nuclear News",
-      "date": "19–20 Jul",
-      "eng": "PPLX/WEB"
+      "claim": "IAEA verifies the US strike on the under-construction Darkhovin nuclear plant; confirms no nuclear material present, no radiological risk",
+      "src": "IAEA statement (VTV/Vietnam.vn pickup)",
+      "date": "19-20 Jul",
+      "eng": "PPLX"
+    },
+    {
+      "lane": "nuclear",
+      "region": "IRAN",
+      "tier": "pending",
+      "claim": "Russia condemns the Darkhovin strike; Iranian UN envoy Iravani condemns the attack on the plant",
+      "src": "donya-e-eqtesad",
+      "date": "20-21 Jul",
+      "eng": "PPLX"
+    },
+    {
+      "lane": "nuclear",
+      "region": "IRAN·ZAGROS",
+      "tier": "disputed",
+      "claim": "Israeli claim: Iran moved thousands of centrifuges to a secret facility at Kolang Mountain, Zagros — unconfirmed by a primary Iranian source",
+      "src": "Euronews Persian",
+      "date": "21 Jul",
+      "eng": "PPLX"
+    },
+    {
+      "lane": "uae_local",
+      "region": "UAE",
+      "tier": "ver",
+      "claim": "DXB, Abu Dhabi and Sharjah airports report normal-to-near-normal operations after a mid-July disruption spike (340+ delays, 14 cancellations)",
+      "src": "nomadlawyer.org / trip.com",
+      "date": "Jul 2026",
+      "eng": "WEB"
+    },
+    {
+      "lane": "uae_local",
+      "region": "UAE",
+      "tier": "pending",
+      "claim": "Travel-advisory pieces continue asking 'is it safe to travel to Dubai/Abu Dhabi'; UK/foreign-office style guidance still current",
+      "src": "The Independent",
+      "date": "20 Jul",
+      "eng": "PPLX"
     },
     {
       "lane": "uae_local",
       "region": "UAE",
       "tier": "flash",
-      "claim": "UAE territorial exemption tested at the airspace edge; air defences reportedly engaging",
-      "src": "NCEMA / UAE-MOD (baseline)",
+      "claim": "Traveller account: 'as I flew in to join the tourists in Dubai, missiles started flying again' — anecdotal, not an official advisory",
+      "src": "Sydney Morning Herald (traveller piece)",
       "date": "20 Jul",
-      "eng": "WEB"
+      "eng": "PPLX"
     },
     {
-      "lane": "uae_local",
-      "region": "UAE",
-      "tier": "disputed",
-      "claim": "'Drone on a UAE nuclear plant' circulating as fresh is the 17 May Barakah strike recycled — recirculation caught by date-check",
-      "src": "date-check vs World Nuclear News",
-      "date": "17 May",
-      "eng": "WEB"
-    },
-    {
-      "lane": "uae_local",
-      "region": "GULF",
-      "tier": "ver",
-      "claim": "Bahrain, Kuwait and Qatar all report Iranian attacks and air-defence engagements",
-      "src": "Ahram Online",
+      "lane": "cyber_sabotage",
+      "region": "BAHRAIN",
+      "tier": "pending",
+      "claim": "Bahrain claims an Iranian attack on its air-navigation system",
+      "src": "Times of India",
       "date": "20 Jul",
-      "eng": "PPLX/WEB"
+      "eng": "PPLX"
     },
     {
       "lane": "cyber_sabotage",
       "region": "GULF",
       "tier": "pending",
-      "claim": "Gulf energy infrastructure comes under attack; inflation fears reignite",
-      "src": "The National · al-monitor",
+      "claim": "'Iran hedges as it escalates' — no new attributed cyber operation publicly reported this window; kinetic strikes remain the primary escalation vector, not cyber",
+      "src": "Politico",
       "date": "20 Jul",
-      "eng": "PPLX/DISC"
+      "eng": "PPLX"
     },
     {
       "lane": "ports_advisories",
       "region": "HORMUZ",
       "tier": "ver",
-      "claim": "Navy-led maritime threat ratings elevated; controlled-route regime enforced across the strait",
-      "src": "JMIC · HSToday",
+      "claim": "UKMTO warning 094/26: regional threat level SEVERE; transit permitted but expect visit-and-search checks, heavy US naval presence, persistent IRGC monitoring, increased VHF hails",
+      "src": "UKMTO JMIC Advisory Update 072",
+      "date": "16-20 Jul",
+      "eng": "WEB"
+    },
+    {
+      "lane": "ports_advisories",
+      "region": "GULF OF OMAN",
+      "tier": "ver",
+      "claim": "Oil-transfer activity in the Gulf of Oman slows further following the fresh ship attacks",
+      "src": "Reuters",
       "date": "20 Jul",
-      "eng": "DISC/WEB"
+      "eng": "PPLX"
+    },
+    {
+      "lane": "israel_intel",
+      "region": "ISRAEL",
+      "tier": "pending",
+      "claim": "Mediators press for a new ceasefire; Trump reportedly weighing a return to intense fighting per Israeli press",
+      "src": "Globes · Ynet · Mako",
+      "date": "20-21 Jul",
+      "eng": "PPLX"
+    },
+    {
+      "lane": "israel_intel",
+      "region": "ISRAEL·EILAT",
+      "tier": "ver",
+      "claim": "IDF fires Iron Dome interceptors over Eilat at fragments from Iranian missiles aimed at Aqaba, Jordan",
+      "src": "Times of Israel",
+      "date": "20 Jul",
+      "eng": "WEB"
     }
   ]
 }
-</script>
+    </script>
 
 <div id="app"></div>
 

@@ -1,30 +1,16 @@
 {
-  "ts": "2026-07-20T16:00Z",
+  "ts": "2026-07-21T04:15Z",
   "engines": ["web", "pplx", "direct"],
-  "note": "Three-engine signals run — WEB (live WebSearch) + PPLX (CI runs 8/9, source-driven) + DIRECT (Telegram t.me/s, scoring run). Aggregated + tiered by the session. Manifest feeds the coverage floor (validate.mjs §7).",
+  "note": "Day 143 three-engine run. WEB (live WebSearch, ~16 queries across 14 lanes/6 theaters) + PPLX (CI run 29800630225, source-driven gather + discovery) + DIRECT (Telegram t.me/s, CI run 29800630260, 21 channels gathered + scored). Registry learned: 21 telegram outcomes applied (6 hit/11 dark/4 stale), 7 candidates discovered + auto-promoted (110->141 sources). Headline: Iran struck Jordan (Aqaba) directly for the first time; UKMTO independently confirmed a Hormuz tanker hit; a 10-day ceasefire proposal is on the table, unaccepted.",
   "lanes_covered": [
     "strikes_ops", "maritime_incidents", "naval_military_movement", "air_traffic_airspace",
     "war_risk_economy", "diplomacy", "leadership_internal", "threats", "proxy_axis",
-    "nuclear", "uae_local", "cyber_sabotage"
+    "nuclear", "uae_local", "cyber_sabotage", "ports_advisories", "israel_intel"
   ],
   "theaters_covered": [
     "tehran-internal", "hormuz-redsea", "gulf-uae", "iraq-syria-yemen", "israel-lebanon", "cross-theater"
   ],
-  "items": 14,
-  "candidates": [
-    { "lane": "strikes_ops", "theater": "cross-theater", "tier": "ver", "claim": "US launches 9th wave of strikes on Iran after a US soldier killed; Iran claims strikes on US base in Jordan; ~14 reported killed", "engines": ["web", "pplx"] },
-    { "lane": "maritime_incidents", "theater": "hormuz-redsea", "tier": "disputed", "claim": "IRGC claims two oil tankers exploded on mines in Hormuz after being 'deceived by US intel'; CENTCOM: 'false'; no maritime-authority confirmation", "engines": ["direct", "pplx", "web"] },
-    { "lane": "naval_military_movement", "theater": "hormuz-redsea", "tier": "ver", "claim": "US blockade reinstated (13 Jul); Abraham Lincoln in Gulf of Oman, GHW Bush ~180km off Iran; Arabian Sea maritime exclusion zone", "engines": ["web"] },
-    { "lane": "air_traffic_airspace", "theater": "gulf-uae", "tier": "ver", "claim": "No NEW Gulf closures; Iran/Iraq/Bahrain/Kuwait closed; Emirates FIR partial/structured routing; 1500+ flights hit; EASA avoid Iran/Iraq/Lebanon through 31 Aug", "engines": ["web"] },
-    { "lane": "war_risk_economy", "theater": "hormuz-redsea", "tier": "ver", "claim": "Brent >$90 (~+30% off July lows); war-risk premiums ~1% hull/transit; container lines reroute via Cape (+3,800nm)", "engines": ["web"] },
-    { "lane": "diplomacy", "theater": "cross-theater", "tier": "ver", "claim": "Ceasefire collapsed; Trump: truce 'over'; Qatar/Pakistan mediation moribund; Iran FM: no plans to negotiate", "engines": ["web", "pplx"] },
-    { "lane": "leadership_internal", "theater": "tehran-internal", "tier": "disputed", "claim": "Reports Mojtaba Khamenei 'not in Iran' + IRGC 'soft coup' talk (Israeli/Saudi origin); Araghchi admits Israeli intel breach 'to decision-making level'; Iranian state denies", "engines": ["pplx"] },
-    { "lane": "threats", "theater": "tehran-internal", "tier": "pending", "claim": "IRGC public warning to the people of Kuwait; 'any US infiltration neutralized in the first instant'; early-warning radar notices (Farsi state)", "engines": ["pplx"] },
-    { "lane": "proxy_axis", "theater": "iraq-syria-yemen", "tier": "pending", "claim": "Houthis announce a naval blockade of Saudi Arabia", "engines": ["pplx", "discovery"] },
-    { "lane": "proxy_axis", "theater": "israel-lebanon", "tier": "ver", "claim": "Hamas elects Khalil al-Hayya as new political bureau chief", "engines": ["pplx", "discovery"] },
-    { "lane": "nuclear", "theater": "tehran-internal", "tier": "ver", "claim": "IAEA probes reported attack on under-construction Darkhovin plant; confirms NO nuclear material / no radiological risk", "engines": ["pplx", "web"] },
-    { "lane": "uae_local", "theater": "gulf-uae", "tier": "disputed", "claim": "PPLX cyber lane surfaced 'drone fire outside UAE nuclear plant' dated 20 Jul — but WEB places the Barakah drone strike on 17 May; treat as RECIRCULATION until a fresh primary confirms (date-stamp guard fired)", "engines": ["pplx", "web"] },
-    { "lane": "maritime_incidents", "theater": "gulf-uae", "tier": "pending", "claim": "DIRECT (Kofia_News, 6-225m old, Arabic): satellite imagery of smoke over Kuwait's Al-Ahmadi port after strikes; explosions in Bahrain — corroborated by ahram 'Bahrain/Kuwait/Qatar report Iranian attacks'", "engines": ["direct", "discovery"] },
-    { "lane": "strikes_ops", "theater": "israel-lebanon", "tier": "flash", "claim": "DIRECT (QudsNen, 3-27m old): breaking Israeli airstrike casualties, West Bank/Gaza", "engines": ["direct"] }
-  ]
+  "items": 45,
+  "sources_promoted": ["yjc.ir", "tag24.de", "fa.abna24.com", "entekhab.ir", "english.alarabiya.net", "ir.voanews.com", "newarab.com"],
+  "sources_flagged_dark": ["Hezbollah", "Ansarallah_MC", "Hamasps", "Qassam1brigades", "Spokesman_2020", "HamasOnline", "Nedalps", "Martyrs_Brigades", "QudsWeb", "Jenin_Qasam", "GeoConfirmed"]
 }
