@@ -1,16 +1,56 @@
 {
-  "ts": "2026-07-21T04:15Z",
-  "engines": ["web", "pplx", "direct"],
-  "note": "Day 143 three-engine run. WEB (live WebSearch, ~16 queries across 14 lanes/6 theaters) + PPLX (CI run 29800630225, source-driven gather + discovery) + DIRECT (Telegram t.me/s, CI run 29800630260, 21 channels gathered + scored). Registry learned: 21 telegram outcomes applied (6 hit/11 dark/4 stale), 7 candidates discovered + auto-promoted (110->141 sources). Headline: Iran struck Jordan (Aqaba) directly for the first time; UKMTO independently confirmed a Hormuz tanker hit; a 10-day ceasefire proposal is on the table, unaccepted.",
+  "ts": "2026-07-21T06:45Z",
+  "engines": [
+    "web",
+    "pplx",
+    "direct"
+  ],
+  "note": "Day 143 three-engine run. WEB (live WebSearch, ~16 queries across 14 lanes/6 theaters) + PPLX (CI run 29800630225, source-driven gather + discovery) + DIRECT (Telegram t.me/s, CI run 29800630260, 21 channels gathered + scored). Registry learned: 21 telegram outcomes applied (6 hit/11 dark/4 stale), 7 candidates discovered + auto-promoted (110->141 sources). Headline: UKMTO reports a vessel struck by an unknown projectile 17NM east of the UAE's Dibba — the closest maritime strike to UAE soil yet, elevated straight into signals (single-source, unattributed, OPEN vs the Limah incident). Plus: Iran struck Jordan (Aqaba) directly for the first time; a 10-day ceasefire proposal is on the table, unaccepted.",
   "lanes_covered": [
-    "strikes_ops", "maritime_incidents", "naval_military_movement", "air_traffic_airspace",
-    "war_risk_economy", "diplomacy", "leadership_internal", "threats", "proxy_axis",
-    "nuclear", "uae_local", "cyber_sabotage", "ports_advisories", "israel_intel"
+    "strikes_ops",
+    "maritime_incidents",
+    "naval_military_movement",
+    "air_traffic_airspace",
+    "war_risk_economy",
+    "diplomacy",
+    "leadership_internal",
+    "threats",
+    "proxy_axis",
+    "nuclear",
+    "uae_local",
+    "cyber_sabotage",
+    "ports_advisories",
+    "israel_intel"
   ],
   "theaters_covered": [
-    "tehran-internal", "hormuz-redsea", "gulf-uae", "iraq-syria-yemen", "israel-lebanon", "cross-theater"
+    "tehran-internal",
+    "hormuz-redsea",
+    "gulf-uae",
+    "iraq-syria-yemen",
+    "israel-lebanon",
+    "cross-theater"
   ],
-  "items": 45,
-  "sources_promoted": ["yjc.ir", "tag24.de", "fa.abna24.com", "entekhab.ir", "english.alarabiya.net", "ir.voanews.com", "newarab.com"],
-  "sources_flagged_dark": ["Hezbollah", "Ansarallah_MC", "Hamasps", "Qassam1brigades", "Spokesman_2020", "HamasOnline", "Nedalps", "Martyrs_Brigades", "QudsWeb", "Jenin_Qasam", "GeoConfirmed"]
+  "items": 46,
+  "sources_promoted": [
+    "yjc.ir",
+    "tag24.de",
+    "fa.abna24.com",
+    "entekhab.ir",
+    "english.alarabiya.net",
+    "ir.voanews.com",
+    "newarab.com"
+  ],
+  "sources_flagged_dark": [
+    "Hezbollah",
+    "Ansarallah_MC",
+    "Hamasps",
+    "Qassam1brigades",
+    "Spokesman_2020",
+    "HamasOnline",
+    "Nedalps",
+    "Martyrs_Brigades",
+    "QudsWeb",
+    "Jenin_Qasam",
+    "GeoConfirmed"
+  ]
 }
