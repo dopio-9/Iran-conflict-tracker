@@ -9,6 +9,15 @@ on:
   schedule:
     - cron: "0 3,15 * * *"   # 07:00 & 19:00 GST
   workflow_dispatch:
+  # A schedule/dispatch-only workflow was throwing empty "No jobs were run"
+  # startup-failure runs (→ failure emails) on every push to this branch — the
+  # only workflow here lacking a push trigger. Mirror the sibling workflows:
+  # declare push with a path filter so unrelated pushes are cleanly SKIPPED
+  # (never a startup failure), and guard the job so a push never does real work.
+  push:
+    branches: [claude/signals-live-layer]
+    paths:
+      - .github/workflows/routine-learn.yml
 permissions:
   contents: write
 concurrency:
@@ -16,6 +25,8 @@ concurrency:
   cancel-in-progress: false
 jobs:
   learn:
+    # real learning only on the schedule or a manual dispatch — never on push
+    if: github.event_name != 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
