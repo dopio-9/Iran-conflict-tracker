@@ -20,7 +20,7 @@
  * then walks the registry's wired channels.
  *
  * STATUS: VERIFIED by CI run 29734013637 (20 Jul 2026, social-fetch on this
- * branch). Smoke green: t.me/s reachable + parsed. Gather: 21/21 handles
+ * branch); re-run 21 Jul for the Day-143 update. Smoke green: t.me/s reachable + parsed. Gather: 21/21 handles
  * resolved, 0 HTTP failures. It immediately surfaced real-time regional signal
  * WebSearch/Perplexity miss — e.g. an Arabic strike report on Kuwait's Al-Ahmadi
  * port 6 MINUTES old, and OSINTdefender's live Bahrain-intercept thread. ~10 of
