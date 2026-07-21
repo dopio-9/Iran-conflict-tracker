@@ -1,0 +1,63 @@
+name: routine-learn
+# Autonomous SOURCE-INTELLIGENCE loop — the no-gate, no-API half of the Routine.
+# Twice daily it scores the Telegram layer, refills gaps via Perplexity discovery,
+# auto-promotes new sources, and commits the learned registry back to the branch.
+# It does NOT touch index.html or publish to production — the LLM-written tracker
+# update is the Claude Routine's job (agents/ROUTINE.md). This just keeps the
+# source registry compounding on schedule, for free.
+on:
+  schedule:
+    - cron: "0 3,15 * * *"   # 07:00 & 19:00 GST
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: routine-learn
+  cancel-in-progress: false
+jobs:
+  learn:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: claude/signals-live-layer
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Score the Telegram layer → apply (hits/misses/dark/retire)
+        run: |
+          node scripts/telegram.mjs --score > score.out || true
+          cat score.out || true
+          node scripts/apply-score.mjs score.out || true
+
+      - name: Discover replacements → nominate → auto-promote
+        env:
+          PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
+        run: |
+          if [ -n "$PERPLEXITY_API_KEY" ]; then
+            node scripts/discover.mjs > disc.out || true
+            cat disc.out || true
+            node scripts/candidates.mjs --apply disc.out || true
+          else
+            echo "PERPLEXITY_API_KEY not set — skipping discovery, scoring still applied"
+          fi
+          node scripts/promote.mjs || true
+
+      - name: Validate registry (self-check, non-blocking)
+        run: node scripts/validate.mjs || echo "validate flagged something — see log"
+
+      - name: Commit learned state back to the branch
+        run: |
+          rm -f score.out disc.out
+          git config user.name "hormuz-routine"
+          git config user.email "noreply@anthropic.com"
+          if git diff --quiet -- data/sources.json data/candidates.json; then
+            echo "no registry changes this run"
+          else
+            git add data/sources.json data/candidates.json
+            git commit -m "routine-learn: autonomous score + auto-promote [skip ci]
+
+Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>"
+            git push origin HEAD:claude/signals-live-layer
+          fi
