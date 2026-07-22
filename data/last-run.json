@@ -1,56 +1,11 @@
 {
-  "ts": "2026-07-21T07:10Z",
-  "engines": [
-    "web",
-    "pplx",
-    "direct"
-  ],
-  "note": "Day 143 three-engine run. WEB (live WebSearch, ~16 queries across 14 lanes/6 theaters) + PPLX (CI run 29800630225, source-driven gather + discovery) + DIRECT (Telegram t.me/s, CI run 29800630260, 21 channels gathered + scored). Registry learned: 21 telegram outcomes applied (6 hit/11 dark/4 stale), 7 candidates discovered + auto-promoted (110->141 sources). Headline: UKMTO reports a vessel struck by an unknown projectile 17NM east of the UAE's Dibba — the closest maritime strike to UAE soil yet, elevated straight into signals (single-source, unattributed, OPEN vs the Limah incident). Plus: Iran struck Jordan (Aqaba) directly for the first time; a 10-day ceasefire proposal is on the table, unaccepted.",
-  "lanes_covered": [
-    "strikes_ops",
-    "maritime_incidents",
-    "naval_military_movement",
-    "air_traffic_airspace",
-    "war_risk_economy",
-    "diplomacy",
-    "leadership_internal",
-    "threats",
-    "proxy_axis",
-    "nuclear",
-    "uae_local",
-    "cyber_sabotage",
-    "ports_advisories",
-    "israel_intel"
-  ],
-  "theaters_covered": [
-    "tehran-internal",
-    "hormuz-redsea",
-    "gulf-uae",
-    "iraq-syria-yemen",
-    "israel-lebanon",
-    "cross-theater"
-  ],
-  "items": 47,
-  "sources_promoted": [
-    "yjc.ir",
-    "tag24.de",
-    "fa.abna24.com",
-    "entekhab.ir",
-    "english.alarabiya.net",
-    "ir.voanews.com",
-    "newarab.com"
-  ],
-  "sources_flagged_dark": [
-    "Hezbollah",
-    "Ansarallah_MC",
-    "Hamasps",
-    "Qassam1brigades",
-    "Spokesman_2020",
-    "HamasOnline",
-    "Nedalps",
-    "Martyrs_Brigades",
-    "QudsWeb",
-    "Jenin_Qasam",
-    "GeoConfirmed"
-  ]
+  "ts": "2026-07-22T05:52Z",
+  "engines": ["web", "pplx", "direct", "x"],
+  "note": "Day 144 four-engine run. WEB (live gather) + PPLX (CI run 29894824175, source-driven gather + discovery) + DIRECT (Telegram t.me/s) + X (new x-gather engine, CI run 29894824175: 18 x-mirror handles scored, 4 hit / 14 lowTempo, applied to registry). NEW ENGINE this run: scripts/x-gather.mjs closed the long-standing gap where feed.kind x-mirror sources were never gathered or scored. Headline: CENTCOM completes 11th consecutive night of strikes; Iran WIDENS direct strikes to Kuwait (Keyvan tanker + desalination) and Bahrain (sirens; IRGC claims Amazon data-centre hit, DISPUTED); Hormuz crossings extend slide (fleet 700+, ~8-10 transits/day); Pentagon identifies 4th US service member killed. UAE soil still untouched but it is now the last unhit GCC state.",
+  "lanes_covered": ["strikes_ops", "maritime_incidents", "naval_military_movement", "air_traffic_airspace", "war_risk_economy", "diplomacy", "leadership_internal", "threats", "proxy_axis", "nuclear", "uae_local", "cyber_sabotage", "ports_advisories", "israel_intel"],
+  "theaters_covered": ["tehran-internal", "hormuz-redsea", "gulf-uae", "iraq-syria-yemen", "israel-lebanon", "cross-theater"],
+  "items": 65,
+  "signals": 15,
+  "sources_added": ["18 user-supplied X handles (ids 142-159)"],
+  "sources_scored_x": {"hit": 4, "lowTempo": 14}
 }
