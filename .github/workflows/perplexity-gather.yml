@@ -11,6 +11,7 @@ on:
       - agents/gather-queries.json
       - scripts/perplexity.mjs
       - scripts/discover.mjs
+      - scripts/x-gather.mjs
       - data/sources.json
       - .github/workflows/perplexity-gather.yml
 jobs:
@@ -29,6 +30,10 @@ jobs:
             echo "PERPLEXITY_API_KEY secret not set"; exit 1
           fi
           node scripts/perplexity.mjs --gather
+      - name: X / social gather + score (x-mirror handles → SCOREBOARD)
+        env:
+          PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
+        run: node scripts/x-gather.mjs --score
       - name: Replenishment discovery (dark/sparse → candidate sources)
         env:
           PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
