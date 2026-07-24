@@ -1,11 +1,10 @@
 {
-  "ts": "2026-07-22T05:52Z",
+  "ts": "2026-07-24T05:21Z",
   "engines": ["web", "pplx", "direct", "x"],
-  "note": "Day 144 four-engine run. WEB (live gather) + PPLX (CI run 29894824175, source-driven gather + discovery) + DIRECT (Telegram t.me/s) + X (new x-gather engine, CI run 29894824175: 18 x-mirror handles scored, 4 hit / 14 lowTempo, applied to registry). NEW ENGINE this run: scripts/x-gather.mjs closed the long-standing gap where feed.kind x-mirror sources were never gathered or scored. Headline: CENTCOM completes 11th consecutive night of strikes; Iran WIDENS direct strikes to Kuwait (Keyvan tanker + desalination) and Bahrain (sirens; IRGC claims Amazon data-centre hit, DISPUTED); Hormuz crossings extend slide (fleet 700+, ~8-10 transits/day); Pentagon identifies 4th US service member killed. UAE soil still untouched but it is now the last unhit GCC state.",
+  "note": "Day 146 four-engine run (CI run 30069034911 gather+X, 30069034883 Telegram). Headline: US 13th consecutive night of strikes; Iran declares 'eye-for-an-eye' operation; ~13 ships hit since the ceasefire COLLAPSED; Iran stopped 3 tankers in Hormuz + apparently seized a Greek-owned tanker; BOTH Hormuz and Bab el-Mandeb effectively shut; oil ~$100 (from ~$88); US revokes Iranian-oil sanctions waiver; Western intel says Iran may strike Israel first; Saudi-Israel Abraham Accords normalization reported mid-war; EASA warns airlines off Gulf airspace till 29 Jul. UAE soil still untouched, ring fully engaged. Scoring applied: Telegram 6 hit/11 dark/4 stale, X 2 hit/16 lowTempo.",
   "lanes_covered": ["strikes_ops", "maritime_incidents", "naval_military_movement", "air_traffic_airspace", "war_risk_economy", "diplomacy", "leadership_internal", "threats", "proxy_axis", "nuclear", "uae_local", "cyber_sabotage", "ports_advisories", "israel_intel"],
   "theaters_covered": ["tehran-internal", "hormuz-redsea", "gulf-uae", "iraq-syria-yemen", "israel-lebanon", "cross-theater"],
-  "items": 65,
-  "signals": 15,
-  "sources_added": ["18 user-supplied X handles (ids 142-159)"],
-  "sources_scored_x": {"hit": 4, "lowTempo": 14}
+  "items": 80,
+  "signals": 20,
+  "sources_scored": {"telegram": {"hit": 6, "dark": 11, "stale": 4}, "x": {"hit": 2, "lowTempo": 16}}
 }
