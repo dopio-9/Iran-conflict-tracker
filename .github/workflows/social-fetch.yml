@@ -26,3 +26,4 @@ jobs:
       - name: Score channels (emit SCOREBOARD for the scoring loop)
         run: node scripts/telegram.mjs --score
 # dispatch: fresh gather 2026-07-24T05:17Z
+# dispatch: fresh gather 2026-07-24T08:04Z
