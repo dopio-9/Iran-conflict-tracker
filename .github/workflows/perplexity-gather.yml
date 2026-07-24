@@ -38,3 +38,4 @@ jobs:
         env:
           PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
         run: node scripts/discover.mjs
+# dispatch: fresh gather 2026-07-24T05:17Z
