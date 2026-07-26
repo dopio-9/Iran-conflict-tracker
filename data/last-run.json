@@ -1,10 +1,12 @@
 {
-  "ts": "2026-07-24T05:21Z",
+  "ts": "2026-07-26T08:16Z",
   "engines": ["web", "pplx", "direct", "x"],
-  "note": "Day 146 four-engine run (CI run 30069034911 gather+X, 30069034883 Telegram). Headline: US 13th consecutive night of strikes; Iran declares 'eye-for-an-eye' operation; ~13 ships hit since the ceasefire COLLAPSED; Iran stopped 3 tankers in Hormuz + apparently seized a Greek-owned tanker; BOTH Hormuz and Bab el-Mandeb effectively shut; oil ~$100 (from ~$88); US revokes Iranian-oil sanctions waiver; Western intel says Iran may strike Israel first; Saudi-Israel Abraham Accords normalization reported mid-war; EASA warns airlines off Gulf airspace till 29 Jul. UAE soil still untouched, ring fully engaged. Scoring applied: Telegram 6 hit/11 dark/4 stale, X 2 hit/16 lowTempo.",
+  "note": "Day 148 four-engine run (CI run 30194204307). TURN IN THE WAR: the 13-consecutive-night strike tempo is no longer reported as an unbroken streak — coverage shifted to why Trump PAUSED a strike, and oil SLID from ~$100 on reports of PAKISTAN-BACKED Iran talks, the first credible off-ramp since the ceasefire collapsed. But escalation migrated rather than stopped: drone downed near the US consulate in Erbil, Iran claims it destroyed US infrastructure there, Saudi coalition struck Houthi targets in Yemen, IRGC declared Britain or any US-supporting nation a 'legitimate target'. Israel stood down from an expected Iranian attack ('Iran bought time'). Zelenskyy alleges Russian satellite intel aided Iran's Gulf attacks. Hormuz traffic near zero. GRADED: the 24 Jul OPEN call ('US strikes a 14th consecutive night', ~90%) resolved PARTIAL — strikes continued but the consecutive-night streak is unconfirmed and de-escalation signals appeared inside the window; lesson banked on reading capability indicators as intent. SOURCES: curated replenishment +19 (159->178), targeting the thinnest theater (iraq-syria-yemen 7->13) and offsetting 11 dead Hamas/Qassam Telegram channels; discovery candidates REJECTED this run as junk (hadshon.education.gov.il, migdal.org.ua, linkedin.com, tel.fr, partnerkin.com, macaron.im).",
   "lanes_covered": ["strikes_ops", "maritime_incidents", "naval_military_movement", "air_traffic_airspace", "war_risk_economy", "diplomacy", "leadership_internal", "threats", "proxy_axis", "nuclear", "uae_local", "cyber_sabotage", "ports_advisories", "israel_intel"],
   "theaters_covered": ["tehran-internal", "hormuz-redsea", "gulf-uae", "iraq-syria-yemen", "israel-lebanon", "cross-theater"],
-  "items": 80,
-  "signals": 20,
-  "sources_scored": {"telegram": {"hit": 6, "dark": 11, "stale": 4}, "x": {"hit": 2, "lowTempo": 16}}
+  "items": 93,
+  "signals": 24,
+  "sources_added": 19,
+  "sources_scored_x": {"hit": 2, "stale": 16},
+  "candidates_rejected": 8
 }
