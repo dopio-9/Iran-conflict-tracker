@@ -3,6 +3,10 @@ name: perplexity-gather
 # decomposed, date-stamped primaries to the log — a second recall engine that
 # complements the session's web search. Fires on push when the queries or the
 # client change (and manually). Read the run log to fold results into signals.
+# NOTE: data/sources.json is deliberately NOT a trigger. Applying a scoreboard edits
+# sources.json, which re-fired this gather, which emitted a new scoreboard — an
+# apply->commit->re-fire loop that burned ~50 Perplexity calls per registry edit.
+# The gather fires on QUERY/ENGINE changes or manually; registry edits are free.
 on:
   workflow_dispatch:
   push:
@@ -12,7 +16,6 @@ on:
       - scripts/perplexity.mjs
       - scripts/discover.mjs
       - scripts/x-gather.mjs
-      - data/sources.json
       - .github/workflows/perplexity-gather.yml
 jobs:
   gather:

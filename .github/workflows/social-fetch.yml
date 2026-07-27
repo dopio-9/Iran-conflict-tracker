@@ -9,6 +9,7 @@ on:
     branches: [claude/signals-live-layer]
     paths:
       - scripts/telegram.mjs
+      - scripts/read.mjs
       - .github/workflows/social-fetch.yml
       - data/sources.json
 jobs:
@@ -25,6 +26,8 @@ jobs:
         run: node scripts/telegram.mjs --gather
       - name: Score channels (emit SCOREBOARD for the scoring loop)
         run: node scripts/telegram.mjs --score
+      - name: RSS read (single reader engine — expert/military/naval + wires)
+        run: node scripts/read.mjs --rss
 # dispatch: fresh gather 2026-07-24T05:17Z
 # dispatch: fresh gather 2026-07-24T08:04Z
 # dispatch: fresh gather 2026-07-26T08:12Z
