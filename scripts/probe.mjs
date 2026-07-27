@@ -87,6 +87,27 @@ const ALTERNATES = [
   "https://api.adsb.lol/v2/point/26.2/56.3/50",
 ];
 
+
+/* BATCH 3 — remaining legitimate routes for the maritime-authority gap.
+   UKMTO + MARAD + NATO Shipping all 403 from CI (uniform datacenter-IP WAF policy
+   across UK/US/NATO). Not spoofing the UA to evade that — an operator's access
+   control is theirs to set. These are independent authorities and commercial
+   incident digests that publish the same advisory content openly. */
+const BATCH3 = [
+  // official / quasi-official maritime security
+  "https://www.jmic.online", "https://www.maritimeglobalsecurity.org",
+  "https://www.imo.org", "https://www.icc-ccs.org/piracy-reporting-centre",
+  // commercial incident digests that republish UKMTO advisories
+  "https://ambrey.com", "https://www.dryadglobal.com", "https://www.dryadglobal.com/feed",
+  "https://www.maritime-executive.com/rss", "https://splash247.com", "https://splash247.com/feed/",
+  "https://lloydslist.com/rss", "https://www.tradewindsnews.com",
+  // AIS / transit data alternates (the /api and /data PAGES were 200 — find the real endpoints)
+  "https://straits.live/feed.xml", "https://portwatch.imf.org/pages/port-monitor",
+  "https://api.adsb.lol/v2/mil",
+  // AP retry (errored once) + Amwaj retry (429/500 = transient)
+  "https://apnews.com/index.rss", "https://amwaj.media",
+];
+
 async function fetchWithTimeout(url) {
   const ac = new AbortController();
   const t = setTimeout(() => ac.abort(), TIMEOUT_MS);
@@ -149,7 +170,7 @@ async function runBatch(urls) {
 const argv = process.argv.slice(2);
 const feedsOnly = argv.includes("--feeds-only");
 const urls = argv.filter(a => !a.startsWith("--"));
-const targets = urls.length ? urls : [...TARGETS, ...TG_MIRRORS, ...ALTERNATES];
+const targets = urls.length ? urls : BATCH3;   // batch 3 only — keep the run tight
 
 console.log(`probe — ${targets.length} targets · runner egress · no PPLX spend\n`);
 const results = await runBatch(targets);
