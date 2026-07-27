@@ -108,6 +108,21 @@ const BATCH3 = [
   "https://apnews.com/index.rss", "https://amwaj.media",
 ];
 
+
+/* BATCH 4 — the marine stack the user supplied, tested FROM CI this time.
+   These were dismissed earlier on a sandbox-only test (403/000), which proves
+   nothing: the sandbox is proxy-blocked from every news/AIS host. Free routes get
+   tested before any paid API is requested. */
+const BATCH4 = [
+  "https://www.marinevesseltraffic.com", "https://www.marinevesseltraffic.com/HORMUZ-STRAIT/ship-traffic-tracker",
+  "https://www.marinetraffic.com", "https://www.vesselfinder.com", "https://www.shipfinder.com",
+  "https://hormuzstraitmonitor.com", "https://www.hormuztracker.com", "https://hormuztracking.com",
+  "https://www.cruisingearth.com", "https://insights.windward.ai",
+  "https://straits.live/data", "https://straits.live/vessels",
+  // does PPLX support sub-day recency? (fast lane depends on it) — doc check only
+  "https://docs.perplexity.ai/api-reference/chat-completions-post",
+];
+
 async function fetchWithTimeout(url) {
   const ac = new AbortController();
   const t = setTimeout(() => ac.abort(), TIMEOUT_MS);
@@ -170,7 +185,7 @@ async function runBatch(urls) {
 const argv = process.argv.slice(2);
 const feedsOnly = argv.includes("--feeds-only");
 const urls = argv.filter(a => !a.startsWith("--"));
-const targets = urls.length ? urls : BATCH3;   // batch 3 only — keep the run tight
+const targets = urls.length ? urls : BATCH4;   // batch 4 — marine stack from CI
 
 console.log(`probe — ${targets.length} targets · runner egress · no PPLX spend\n`);
 const results = await runBatch(targets);
