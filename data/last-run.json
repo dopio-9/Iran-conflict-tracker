@@ -1,12 +1,11 @@
 {
-  "ts": "2026-07-26T08:16Z",
-  "engines": ["web", "pplx", "direct", "x"],
-  "note": "Day 148 four-engine run (CI run 30194204307). TURN IN THE WAR: the 13-consecutive-night strike tempo is no longer reported as an unbroken streak — coverage shifted to why Trump PAUSED a strike, and oil SLID from ~$100 on reports of PAKISTAN-BACKED Iran talks, the first credible off-ramp since the ceasefire collapsed. But escalation migrated rather than stopped: drone downed near the US consulate in Erbil, Iran claims it destroyed US infrastructure there, Saudi coalition struck Houthi targets in Yemen, IRGC declared Britain or any US-supporting nation a 'legitimate target'. Israel stood down from an expected Iranian attack ('Iran bought time'). Zelenskyy alleges Russian satellite intel aided Iran's Gulf attacks. Hormuz traffic near zero. GRADED: the 24 Jul OPEN call ('US strikes a 14th consecutive night', ~90%) resolved PARTIAL — strikes continued but the consecutive-night streak is unconfirmed and de-escalation signals appeared inside the window; lesson banked on reading capability indicators as intent. SOURCES: curated replenishment +19 (159->178), targeting the thinnest theater (iraq-syria-yemen 7->13) and offsetting 11 dead Hamas/Qassam Telegram channels; discovery candidates REJECTED this run as junk (hadshon.education.gov.il, migdal.org.ua, linkedin.com, tel.fr, partnerkin.com, macaron.im).",
+  "ts": "2026-07-27T11:24Z",
+  "engines": ["web", "pplx", "direct", "x", "rss", "json"],
+  "note": "Day 149 — FIRST UPDATE BUILT ON PRIMARY TEXT. The new reader engine (read.mjs) pulled dated, linked articles directly from 14 verified feeds instead of grouping Perplexity headlines. Headline finding is primary-sourced: the Pentagon's own newsroom lists 'U.S. Concludes 13th Night of Strikes' (24 Jul) as its last strike release with nothing since — the nightly campaign appears to have STOPPED, resolving the Day-148 PENDING question and confirming the PARTIAL grade on the 24 Jul forecast. Meanwhile the maritime war escalated: Houthis declared a COMPLETE blockade of Saudi Arabia and struck Saudi oil installations (Bab el-Mandeb traffic fell Sunday; a Yanbu-bound VLCC U-turned), while Iran beats the blockade anyway — 26th tanker to Asia, ~45m barrels off Malaysia, US now disabling vessels. Sources read first-hand this run: gCaptain, Seatrade, Long War Journal, USNI, TWZ, Naval News, US DoD, CENTCOM/DVIDS, straits.live, Khaleej Times, Al Jazeera, Mehr, Israel Hayom.",
   "lanes_covered": ["strikes_ops", "maritime_incidents", "naval_military_movement", "air_traffic_airspace", "war_risk_economy", "diplomacy", "leadership_internal", "threats", "proxy_axis", "nuclear", "uae_local", "cyber_sabotage", "ports_advisories", "israel_intel"],
   "theaters_covered": ["tehran-internal", "hormuz-redsea", "gulf-uae", "iraq-syria-yemen", "israel-lebanon", "cross-theater"],
-  "items": 93,
-  "signals": 24,
-  "sources_added": 19,
-  "sources_scored_x": {"hit": 2, "stale": 16},
-  "candidates_rejected": 8
+  "items": 100,
+  "signals": 22,
+  "engines_new": ["rss (14 feeds, 13 hit)", "json (ADS-B, free)"],
+  "mediums_producing": "7 of 9 (was 2)"
 }
