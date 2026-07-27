@@ -60,6 +60,33 @@ const TG_MIRRORS = [
   "https://t.me/s/Ansarallah_media", "https://t.me/s/qassam_ar", "https://t.me/s/Hezbollah_ar",
 ];
 
+/* BATCH 2 — route alternates for batch-1 failures.
+   A 403 on a homepage is NOT proof a source is unreachable: it is proof that ONE url
+   failed. Datacenter-IP WAF rules routinely block the landing page while serving the
+   feed, the bare domain, or a republisher. Nothing may be called "blocked" until the
+   direct alternate, the beat substitute, and the republisher have all been tried. */
+const ALTERNATES = [
+  // UKMTO / maritime authority — the highest-value UAE source in the registry
+  "https://ukmto.org", "https://www.ukmto.org/rss", "https://www.ukmto.org/indian-ocean/incidents",
+  "https://www.maritime.dot.gov/msci", "https://shipping.nato.int",
+  // IAEA — declared feeds live under /newscenter on most builds
+  "https://iaea.org", "https://www.iaea.org/feeds/topnews.rss", "https://www.iaea.org/newscenter/pressreleases",
+  // CENTCOM — .mil blocks datacenter IPs; DVIDS republishes the same releases
+  "https://centcom.mil", "https://www.dvidshub.net/rss/unit/USCENTCOM", "https://www.defense.gov/DesktopModules/ArticleCS/RSS.ashx?ContentType=1&Site=945",
+  // PAKISTAN — the blind spot that hid the talks track. Zero alternatives tried before now.
+  "https://www.geo.tv", "https://www.thenews.com.pk", "https://tribune.com.pk",
+  "https://arynews.tv", "https://www.brecorder.com", "https://dawn.com",
+  // direct-feed attempts for homepage-403 outlets
+  "https://www.timesofisrael.com/feed/", "https://www.israelhayom.co.il/rss",
+  "https://english.alarabiya.net/rss", "https://www.almayadeen.net/rss",
+  "https://www.seatrade-maritime.com/rss.xml", "https://www.tasnimnews.com/en/rss/feed",
+  "https://amwaj.media/feed", "https://www.presstv.ir/rss.xml",
+  // free tracking / data alternates (TRACK layer — I wrongly called this paid-blocked)
+  "https://straits.live/api/transits", "https://portwatch.imf.org/api",
+  "https://opensky-network.org/api/states/all?lamin=22&lomin=50&lamax=30&lomax=60",
+  "https://api.adsb.lol/v2/point/26.2/56.3/50",
+];
+
 async function fetchWithTimeout(url) {
   const ac = new AbortController();
   const t = setTimeout(() => ac.abort(), TIMEOUT_MS);
@@ -122,7 +149,7 @@ async function runBatch(urls) {
 const argv = process.argv.slice(2);
 const feedsOnly = argv.includes("--feeds-only");
 const urls = argv.filter(a => !a.startsWith("--"));
-const targets = urls.length ? urls : [...TARGETS, ...TG_MIRRORS];
+const targets = urls.length ? urls : [...TARGETS, ...TG_MIRRORS, ...ALTERNATES];
 
 console.log(`probe — ${targets.length} targets · runner egress · no PPLX spend\n`);
 const results = await runBatch(targets);
