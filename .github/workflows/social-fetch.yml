@@ -30,6 +30,8 @@ jobs:
         run: node scripts/read.mjs --rss
       - name: JSON read (free TRACK APIs — ADS-B over the Gulf)
         run: node scripts/read.mjs --json
+      - name: HTML read (sites with no feed — generic JSON-LD/time extraction)
+        run: node scripts/read.mjs --html
 # dispatch: fresh gather 2026-07-24T05:17Z
 # dispatch: fresh gather 2026-07-24T08:04Z
 # dispatch: fresh gather 2026-07-26T08:12Z

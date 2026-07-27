@@ -163,6 +163,11 @@
     "dark": {
       "reason": "empty",
       "since": "2026-07-24T05:17:47.055Z"
+    },
+    "retired": {
+      "since": "2026-07-27T12:17:41.790Z",
+      "after": 4,
+      "reason": "superseded by probe-verified live mirror"
     }
   },
   {
@@ -219,6 +224,11 @@
     "dark": {
       "reason": "empty",
       "since": "2026-07-24T05:17:47.055Z"
+    },
+    "retired": {
+      "since": "2026-07-27T12:17:41.790Z",
+      "after": 4,
+      "reason": "superseded by probe-verified live mirror"
     }
   },
   {
@@ -274,6 +284,11 @@
     "dark": {
       "reason": "empty",
       "since": "2026-07-24T05:17:47.055Z"
+    },
+    "retired": {
+      "since": "2026-07-27T12:17:41.790Z",
+      "after": 4,
+      "reason": "superseded by probe-verified live mirror"
     }
   },
   {
@@ -303,6 +318,11 @@
     "dark": {
       "reason": "empty",
       "since": "2026-07-24T05:17:47.055Z"
+    },
+    "retired": {
+      "since": "2026-07-27T12:17:41.790Z",
+      "after": 4,
+      "reason": "superseded by probe-verified live mirror"
     }
   },
   {
@@ -332,6 +352,11 @@
     "dark": {
       "reason": "empty",
       "since": "2026-07-24T05:17:47.055Z"
+    },
+    "retired": {
+      "since": "2026-07-27T12:17:41.790Z",
+      "after": 4,
+      "reason": "superseded by probe-verified live mirror"
     }
   },
   {
@@ -361,6 +386,11 @@
     "dark": {
       "reason": "empty",
       "since": "2026-07-24T05:17:47.055Z"
+    },
+    "retired": {
+      "since": "2026-07-27T12:17:41.790Z",
+      "after": 4,
+      "reason": "superseded by probe-verified live mirror"
     }
   },
   {
@@ -390,6 +420,11 @@
     "dark": {
       "reason": "empty",
       "since": "2026-07-24T05:17:47.055Z"
+    },
+    "retired": {
+      "since": "2026-07-27T12:17:41.790Z",
+      "after": 4,
+      "reason": "superseded by probe-verified live mirror"
     }
   },
   {
@@ -419,6 +454,11 @@
     "dark": {
       "reason": "empty",
       "since": "2026-07-24T05:17:47.055Z"
+    },
+    "retired": {
+      "since": "2026-07-27T12:17:41.790Z",
+      "after": 4,
+      "reason": "superseded by probe-verified live mirror"
     }
   },
   {
@@ -474,6 +514,11 @@
     "dark": {
       "reason": "empty",
       "since": "2026-07-24T05:17:47.055Z"
+    },
+    "retired": {
+      "since": "2026-07-27T12:17:41.790Z",
+      "after": 4,
+      "reason": "superseded by probe-verified live mirror"
     }
   },
   {
@@ -503,6 +548,11 @@
     "dark": {
       "reason": "empty",
       "since": "2026-07-24T05:17:47.055Z"
+    },
+    "retired": {
+      "since": "2026-07-27T12:17:41.790Z",
+      "after": 4,
+      "reason": "superseded by probe-verified live mirror"
     }
   },
   {
@@ -1092,7 +1142,12 @@
     "hits": 0,
     "misses": 0,
     "notes": "",
-    "site": "bbc.com"
+    "site": "bbc.com",
+    "feed": {
+      "kind": "html",
+      "url": "https://bbc.com",
+      "verified": "probe 200"
+    }
   },
   {
     "id": 48,
@@ -1130,7 +1185,12 @@
     "hits": 0,
     "misses": 0,
     "notes": "Military balance, order of battle",
-    "site": "iiss.org"
+    "site": "iiss.org",
+    "feed": {
+      "kind": "html",
+      "url": "https://iiss.org",
+      "verified": "probe 200"
+    }
   },
   {
     "id": 50,
@@ -1205,7 +1265,12 @@
     "hits": 0,
     "misses": 0,
     "notes": "IRGC-linked - reflects IRGC position not civilian FM; confirmed faster than Tasnim on military decisions",
-    "site": "farsnews.ir"
+    "site": "farsnews.ir",
+    "feed": {
+      "kind": "html",
+      "url": "https://farsnews.ir",
+      "verified": "probe 200"
+    }
   },
   {
     "id": 54,
@@ -1246,7 +1311,12 @@
     "hits": 0,
     "misses": 0,
     "notes": "Official Iranian state agency - closer to civilian/diplomatic track than Fars/Tasnim",
-    "site": "irna.ir"
+    "site": "irna.ir",
+    "feed": {
+      "kind": "html",
+      "url": "https://irna.ir",
+      "verified": "probe 200"
+    }
   },
   {
     "id": 56,
@@ -1378,6 +1448,11 @@
     "dark": {
       "reason": "empty",
       "since": "2026-07-24T05:17:47.055Z"
+    },
+    "retired": {
+      "since": "2026-07-27T12:17:41.790Z",
+      "after": 4,
+      "reason": "superseded by probe-verified live mirror"
     }
   },
   {
@@ -1503,7 +1578,12 @@
     "hits": 0,
     "misses": 0,
     "notes": "CRITICAL: authoritative daily transit count for Hormuz; Polymarket resolution criteria; portwatch.imf.org - check for Day+1 lag; 0 transits = official closure confirmation",
-    "site": "portwatch.imf.org"
+    "site": "portwatch.imf.org",
+    "feed": {
+      "kind": "html",
+      "url": "https://portwatch.imf.org",
+      "verified": "probe 200"
+    }
   },
   {
     "id": 68,
@@ -1590,7 +1670,12 @@
     "hits": 0,
     "misses": 0,
     "notes": "Lloyd's Joint War Committee - war-risk premium authority; JWC listed area inclusion/exclusion is the insurance market signal",
-    "site": "lloydslist.com"
+    "site": "lloydslist.com",
+    "feed": {
+      "kind": "html",
+      "url": "https://lloydslist.com",
+      "verified": "probe 200"
+    }
   },
   {
     "id": 72,
@@ -1779,7 +1864,12 @@
     "hits": 0,
     "misses": 0,
     "notes": "Primary UAE English-language paper; Abu Dhabi-linked; local impact and UAE government position",
-    "site": "thenationalnews.com"
+    "site": "thenationalnews.com",
+    "feed": {
+      "kind": "html",
+      "url": "https://thenationalnews.com",
+      "verified": "probe 200"
+    }
   },
   {
     "id": 82,
@@ -1798,7 +1888,12 @@
     "hits": 0,
     "misses": 0,
     "notes": "Dubai-based; local real estate and economic impact data",
-    "site": "gulfnews.com"
+    "site": "gulfnews.com",
+    "feed": {
+      "kind": "html",
+      "url": "https://gulfnews.com",
+      "verified": "probe 200"
+    }
   },
   {
     "id": 83,
@@ -1942,7 +2037,12 @@
     "hits": 0,
     "misses": 0,
     "notes": "Institute for the Study of War; IRGC proxy tracking; Iraqi militia (IRI) activity rate analysis",
-    "site": "understandingwar.org"
+    "site": "understandingwar.org",
+    "feed": {
+      "kind": "html",
+      "url": "https://understandingwar.org",
+      "verified": "probe 200"
+    }
   },
   {
     "id": 89,
@@ -2207,7 +2307,12 @@
     "hits": 0,
     "misses": 0,
     "notes": "US military press; carrier group status and deployment confirmations",
-    "site": "stripes.com"
+    "site": "stripes.com",
+    "feed": {
+      "kind": "html",
+      "url": "https://stripes.com",
+      "verified": "probe 200"
+    }
   },
   {
     "id": 103,
@@ -2576,7 +2681,12 @@
     "hits": 0,
     "misses": 0,
     "notes": "discovery: sparse lane cyber_sabotage (2 live sources) · Bahrain, Kuwait and Qatar report Iranian attacks — english.ahram.org.eg (2026-07-20)",
-    "site": "english.ahram.org.eg"
+    "site": "english.ahram.org.eg",
+    "feed": {
+      "kind": "html",
+      "url": "https://english.ahram.org.eg",
+      "verified": "probe 200"
+    }
   },
   {
     "id": 122,
@@ -2595,7 +2705,12 @@
     "hits": 0,
     "misses": 0,
     "notes": "discovery: sparse lane cyber_sabotage (2 live sources) · US strikes Iran for ninth day; Iran says two oil tankers struck — al-monitor.com (2026-07-20)",
-    "site": "al-monitor.com"
+    "site": "al-monitor.com",
+    "feed": {
+      "kind": "html",
+      "url": "https://al-monitor.com",
+      "verified": "probe 200"
+    }
   },
   {
     "id": 123,
@@ -3484,7 +3599,12 @@
     "misses": 0,
     "consecutiveMisses": 0,
     "notes": "Independent Iraqi wire — PMF/militia movements, Erbil/Ain al-Asad incidents. Fills the Iraq gap.",
-    "site": "shafaq.com"
+    "site": "shafaq.com",
+    "feed": {
+      "kind": "html",
+      "url": "https://shafaq.com",
+      "verified": "probe 200"
+    }
   },
   {
     "id": 162,
@@ -3505,7 +3625,12 @@
     "misses": 0,
     "consecutiveMisses": 0,
     "notes": "Iraqi-Kurdistan coverage — Erbil airport/consulate strikes, Kurdish-rebel casualties. Distinct vantage from Baghdad wires.",
-    "site": "rudaw.net"
+    "site": "rudaw.net",
+    "feed": {
+      "kind": "html",
+      "url": "https://rudaw.net",
+      "verified": "probe 200"
+    }
   },
   {
     "id": 163,
@@ -3548,7 +3673,12 @@
     "misses": 0,
     "consecutiveMisses": 0,
     "notes": "Pro-axis pan-regional — fast on resistance-axis claims. Attribute framing; adversary-leaning, corroborate.",
-    "site": "almayadeen.net"
+    "site": "almayadeen.net",
+    "feed": {
+      "kind": "html",
+      "url": "https://almayadeen.net",
+      "verified": "probe 200"
+    }
   },
   {
     "id": 165,
@@ -3569,7 +3699,12 @@
     "misses": 0,
     "consecutiveMisses": 0,
     "notes": "West Asia analysis with axis sourcing — lead-finder for militia/Houthi intent, strong POV, corroborate.",
-    "site": "thecradle.co"
+    "site": "thecradle.co",
+    "feed": {
+      "kind": "html",
+      "url": "https://thecradle.co",
+      "verified": "probe 200"
+    }
   },
   {
     "id": 166,
@@ -3590,7 +3725,12 @@
     "misses": 0,
     "consecutiveMisses": 0,
     "notes": "Largest Hebrew news site — carried the Western-intel 'Iran may act first' assessment and Mossad statements.",
-    "site": "ynet.co.il"
+    "site": "ynet.co.il",
+    "feed": {
+      "kind": "html",
+      "url": "https://ynet.co.il",
+      "verified": "probe 200"
+    }
   },
   {
     "id": 167,
@@ -3611,7 +3751,12 @@
     "misses": 0,
     "consecutiveMisses": 0,
     "notes": "English Israeli daily — defence desk; corroborating medium for Israeli-origin claims.",
-    "site": "jpost.com"
+    "site": "jpost.com",
+    "feed": {
+      "kind": "html",
+      "url": "https://jpost.com",
+      "verified": "probe 200"
+    }
   },
   {
     "id": 168,
@@ -3660,7 +3805,12 @@
     "misses": 0,
     "consecutiveMisses": 0,
     "notes": "Hezbollah's own outlet — replaces the dead Hezbollah Telegram (#6). ADVERSARY-ORIGIN: DISPUTED ceiling, never confirms alone.",
-    "site": "almanar.com.lb"
+    "site": "almanar.com.lb",
+    "feed": {
+      "kind": "html",
+      "url": "https://almanar.com.lb",
+      "verified": "probe 200"
+    }
   },
   {
     "id": 170,
@@ -3681,7 +3831,12 @@
     "misses": 0,
     "consecutiveMisses": 0,
     "notes": "Israeli daily — defence-establishment reporting, often the dissenting read on war aims.",
-    "site": "haaretz.co.il"
+    "site": "haaretz.co.il",
+    "feed": {
+      "kind": "html",
+      "url": "https://haaretz.co.il",
+      "verified": "probe 200"
+    }
   },
   {
     "id": 171,
@@ -3732,7 +3887,12 @@
     "misses": 0,
     "consecutiveMisses": 0,
     "notes": "Saudi-funded Farsi opposition broadcaster — fast on internal Iran, adversarial to Tehran. Counterweight to state media; corroborate.",
-    "site": "iranintl.com"
+    "site": "iranintl.com",
+    "feed": {
+      "kind": "html",
+      "url": "https://iranintl.com",
+      "verified": "probe 200"
+    }
   },
   {
     "id": 173,
@@ -3753,7 +3913,12 @@
     "misses": 0,
     "consecutiveMisses": 0,
     "notes": "Iran's Arabic-language channel (discovery-surfaced) — how Tehran messages the Arab world. State-origin.",
-    "site": "alalam.ir"
+    "site": "alalam.ir",
+    "feed": {
+      "kind": "html",
+      "url": "https://alalam.ir",
+      "verified": "probe 200"
+    }
   },
   {
     "id": 174,
@@ -3796,7 +3961,12 @@
     "misses": 0,
     "consecutiveMisses": 0,
     "notes": "Farsi domestic news — carried IRGC Statement #40. Domestic-audience framing.",
-    "site": "khabaronline.ir"
+    "site": "khabaronline.ir",
+    "feed": {
+      "kind": "html",
+      "url": "https://khabaronline.ir",
+      "verified": "probe 200"
+    }
   },
   {
     "id": 176,
@@ -3847,7 +4017,12 @@
     "misses": 0,
     "consecutiveMisses": 0,
     "notes": "Maritime news — surfaced in the 24 Jul gather; tanker strikes, seizures, salvage detail.",
-    "site": "maritime-executive.com"
+    "site": "maritime-executive.com",
+    "feed": {
+      "kind": "html",
+      "url": "https://maritime-executive.com",
+      "verified": "probe 200"
+    }
   },
   {
     "id": 178,
@@ -3954,7 +4129,12 @@
     "misses": 0,
     "consecutiveMisses": 0,
     "notes": "Pakistani outlet — closes the mediation blind spot that hid the Pakistan-brokered talks track.",
-    "site": "geo.tv"
+    "site": "geo.tv",
+    "feed": {
+      "kind": "html",
+      "url": "https://geo.tv",
+      "verified": "probe 200"
+    }
   },
   {
     "id": 182,
@@ -3974,7 +4154,12 @@
     "misses": 0,
     "consecutiveMisses": 0,
     "notes": "Pakistani daily — mediation coverage. Probe-verified reachable.",
-    "site": "thenews.com.pk"
+    "site": "thenews.com.pk",
+    "feed": {
+      "kind": "html",
+      "url": "https://thenews.com.pk",
+      "verified": "probe 200"
+    }
   },
   {
     "id": 183,
@@ -3994,7 +4179,12 @@
     "misses": 0,
     "consecutiveMisses": 0,
     "notes": "Pakistani daily — mediation coverage. Probe-verified reachable.",
-    "site": "tribune.com.pk"
+    "site": "tribune.com.pk",
+    "feed": {
+      "kind": "html",
+      "url": "https://tribune.com.pk",
+      "verified": "probe 200"
+    }
   },
   {
     "id": 184,
@@ -4103,6 +4293,161 @@
       "url": "https://splash247.com/feed/",
       "realtime": true,
       "verified": "probe 30264278114"
+    }
+  },
+  {
+    "id": 188,
+    "name": "Al-Manar (Telegram)",
+    "platform": "Telegram",
+    "language": "Arabic",
+    "domain": "Axis channel",
+    "geography": "Regional",
+    "role": "early",
+    "tier": "SPECIALIST",
+    "theater": "israel-lebanon",
+    "lanes": [
+      "proxy_axis",
+      "threats"
+    ],
+    "medium": "SOC",
+    "hits": 0,
+    "misses": 0,
+    "consecutiveMisses": 0,
+    "notes": "Probe-verified live replacement for dark channel Hezbollah. ADVERSARY-ORIGIN: DISPUTED ceiling, never confirms alone.",
+    "feed": {
+      "kind": "telegram-web",
+      "url": "https://t.me/s/almanarnews",
+      "realtime": true,
+      "verified": "probe 30260985927"
+    }
+  },
+  {
+    "id": 189,
+    "name": "Almasirah (Telegram)",
+    "platform": "Telegram",
+    "language": "Arabic",
+    "domain": "Axis channel",
+    "geography": "Regional",
+    "role": "early",
+    "tier": "SPECIALIST",
+    "theater": "iraq-syria-yemen",
+    "lanes": [
+      "proxy_axis",
+      "maritime_incidents"
+    ],
+    "medium": "SOC",
+    "hits": 0,
+    "misses": 0,
+    "consecutiveMisses": 0,
+    "notes": "Probe-verified live replacement for dark channel Ansarallah_MC. ADVERSARY-ORIGIN: DISPUTED ceiling, never confirms alone.",
+    "feed": {
+      "kind": "telegram-web",
+      "url": "https://t.me/s/almasirah",
+      "realtime": true,
+      "verified": "probe 30260985927"
+    }
+  },
+  {
+    "id": 190,
+    "name": "Ansarallah Media (Telegram)",
+    "platform": "Telegram",
+    "language": "Arabic",
+    "domain": "Axis channel",
+    "geography": "Regional",
+    "role": "early",
+    "tier": "SPECIALIST",
+    "theater": "iraq-syria-yemen",
+    "lanes": [
+      "proxy_axis",
+      "maritime_incidents"
+    ],
+    "medium": "SOC",
+    "hits": 0,
+    "misses": 0,
+    "consecutiveMisses": 0,
+    "notes": "Probe-verified live replacement for dark channel Ansarallah_MC. ADVERSARY-ORIGIN: DISPUTED ceiling, never confirms alone.",
+    "feed": {
+      "kind": "telegram-web",
+      "url": "https://t.me/s/Ansarallah_media",
+      "realtime": true,
+      "verified": "probe 30260985927"
+    }
+  },
+  {
+    "id": 191,
+    "name": "Qassam Arabic (Telegram)",
+    "platform": "Telegram",
+    "language": "Arabic",
+    "domain": "Axis channel",
+    "geography": "Regional",
+    "role": "early",
+    "tier": "SPECIALIST",
+    "theater": "israel-lebanon",
+    "lanes": [
+      "proxy_axis"
+    ],
+    "medium": "SOC",
+    "hits": 0,
+    "misses": 0,
+    "consecutiveMisses": 0,
+    "notes": "Probe-verified live replacement for dark channel Qassam1brigades. ADVERSARY-ORIGIN: DISPUTED ceiling, never confirms alone.",
+    "feed": {
+      "kind": "telegram-web",
+      "url": "https://t.me/s/qassam_ar",
+      "realtime": true,
+      "verified": "probe 30260985927"
+    }
+  },
+  {
+    "id": 192,
+    "name": "Hezbollah Arabic (Telegram)",
+    "platform": "Telegram",
+    "language": "Arabic",
+    "domain": "Axis channel",
+    "geography": "Regional",
+    "role": "early",
+    "tier": "SPECIALIST",
+    "theater": "israel-lebanon",
+    "lanes": [
+      "proxy_axis",
+      "threats"
+    ],
+    "medium": "SOC",
+    "hits": 0,
+    "misses": 0,
+    "consecutiveMisses": 0,
+    "notes": "Probe-verified live replacement for dark channel Hezbollah. ADVERSARY-ORIGIN: DISPUTED ceiling, never confirms alone.",
+    "feed": {
+      "kind": "telegram-web",
+      "url": "https://t.me/s/Hezbollah_ar",
+      "realtime": true,
+      "verified": "probe 30260985927"
+    }
+  },
+  {
+    "id": 193,
+    "name": "Sabreen (Telegram)",
+    "platform": "Telegram",
+    "language": "Arabic",
+    "domain": "Axis channel",
+    "geography": "Regional",
+    "role": "early",
+    "tier": "SPECIALIST",
+    "theater": "iraq-syria-yemen",
+    "lanes": [
+      "proxy_axis",
+      "strikes_ops"
+    ],
+    "medium": "SOC",
+    "hits": 0,
+    "misses": 0,
+    "consecutiveMisses": 0,
+    "notes": "Probe-verified live replacement for dark channel Sabereenp1. ADVERSARY-ORIGIN: DISPUTED ceiling, never confirms alone.",
+    "feed": {
+      "kind": "telegram-web",
+      "url": "https://t.me/s/sabreenS1",
+      "realtime": true,
+      "verified": "probe 30260985927"
     }
   }
 ]

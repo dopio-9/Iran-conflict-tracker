@@ -121,6 +121,72 @@ async function runRss() {
   console.log(`\nread ${channels.length} feeds — ${hits} hit · ${empty} empty · ${channels.length - hits - empty} stale/err`);
 }
 
+/* ── route: html — sites with no feed (the largest remaining block) ───
+   72 registry sources have a .site and no feed. Rather than write a parser per site,
+   this extracts dated items generically, in order of reliability:
+     1. JSON-LD  <script type="application/ld+json"> — schema.org NewsArticle /
+        ItemList carry headline + datePublished. Most modern news CMSs emit it, and
+        it is structured data the publisher intends to be machine-read.
+     2. <time datetime="..."> — the HTML5 standard, usually adjacent to the headline.
+   Undated pages classify as stale, never hit: we do not guess freshness. A site that
+   needs bespoke selectors gets one later; this covers the common case cheaply. */
+function parseHtml(html) {
+  const items = [];
+  // 1. JSON-LD
+  for (const m of html.matchAll(/<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
+    let j; try { j = JSON.parse(m[1].trim()); } catch { continue; }
+    const walk = o => {
+      if (!o || typeof o !== "object") return;
+      if (Array.isArray(o)) return o.forEach(walk);
+      const d = o.datePublished || o.dateModified || o.uploadDate;
+      const t = o.headline || o.name;
+      if (d && t) { const ts = Date.parse(d); if (!isNaN(ts)) items.push({ title: String(t).slice(0, 160), ts, link: o.url || null }); }
+      for (const k of ["@graph", "itemListElement", "item", "mainEntity"]) if (o[k]) walk(o[k]);
+    };
+    walk(j);
+  }
+  // 2. <time datetime>
+  if (items.length < 3) {
+    for (const m of html.matchAll(/<time[^>]*datetime=["']([^"']+)["'][^>]*>([\s\S]{0,120}?)<\/time>/gi)) {
+      const ts = Date.parse(m[1]);
+      if (!isNaN(ts)) items.push({ title: decode(m[2]).slice(0, 160) || "(dated item)", ts, link: null });
+    }
+  }
+  // dedupe by ts+title
+  const seen = new Set();
+  return items.filter(i => { const k = i.ts + "|" + i.title; if (seen.has(k)) return false; seen.add(k); return true; });
+}
+
+async function readHtml(s) {
+  try {
+    const items = parseHtml(await fetchText(s.feed.url || `https://${s.site}`));
+    return { s, items, res: classify(items) };
+  } catch (e) {
+    return { s, items: [], res: { outcome: "miss", reason: "error", freshestMin: null, postCount: 0, err: e.message.slice(0, 50) } };
+  }
+}
+
+async function runHtml() {
+  const reg = JSON.parse(readFileSync(new URL("../data/sources.json", import.meta.url), "utf8"));
+  const list = reg.filter(s => s.feed?.kind === "html");
+  console.log(`HTML read — ${list.length} sites (generic JSON-LD / <time> extraction)\n`);
+  const out = [];
+  for (let i = 0; i < list.length; i += CONCURRENCY) {
+    out.push(...await Promise.all(list.slice(i, i + CONCURRENCY).map(readHtml)));
+  }
+  const channels = [];
+  for (const { s, items, res } of out) {
+    const fresh = res.freshestMin != null ? (res.freshestMin < 60 ? res.freshestMin + "m" : Math.round(res.freshestMin / 60) + "h") : "?";
+    console.log(`▸ #${s.id} ${s.name}  [${s.theater}]  ${res.outcome}/${res.reason} · ${res.postCount} dated items · freshest ${fresh}${res.err ? " · " + res.err : ""}`);
+    for (const it of items.filter(i => i.ts).sort((a, b) => b.ts - a.ts).slice(0, 3))
+      console.log(`    [${Math.round((Date.now() - it.ts) / 36e5)}h] ${it.title.slice(0, 110)}`);
+    channels.push({ id: s.id, name: s.name, outcome: res.outcome, reason: res.reason, freshestMin: res.freshestMin, postCount: res.postCount });
+  }
+  console.log("\nSCOREBOARD:" + JSON.stringify({ ts: new Date().toISOString(), engine: "html", channels }));
+  const hits = channels.filter(c => c.outcome === "hit").length;
+  console.log(`\nread ${channels.length} sites — ${hits} hit · ${channels.length - hits} stale/err`);
+}
+
 /* ── route: json — live API endpoints (TRACK medium) ──────────────────
    The TRACK layer (14 sources) had never produced a single observation because no
    engine read it, and I twice mis-diagnosed that as commercial gating. probe proved
@@ -195,7 +261,8 @@ function selftest() {
 if (import.meta.url === `file://${process.argv[1]}`) {
   const a = process.argv[2];
   if (a === "--rss") runRss().catch(e => { console.error(e.message); process.exit(1); });
+  else if (a === "--html") runHtml().catch(e => { console.error(e.message); process.exit(1); });
   else if (a === "--json") runJson().catch(e => { console.error(e.message); process.exit(1); });
   else if (a === "--selftest") selftest();
-  else { console.error("usage: node scripts/read.mjs --rss | --json | --selftest"); process.exit(2); }
+  else { console.error("usage: node scripts/read.mjs --rss | --html | --json | --selftest"); process.exit(2); }
 }
