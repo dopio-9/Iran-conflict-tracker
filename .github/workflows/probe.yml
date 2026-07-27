@@ -1,0 +1,23 @@
+name: probe
+# Adapter test loop for source activation. Runs scripts/probe.mjs ALONE — no gather,
+# no Perplexity, no secret, no credit spend. Exists because adapters must be written
+# blind (the session sandbox cannot reach news/AIS/advisory hosts) and proving one
+# previously cost a full gather run. Batches ~60 targets per run so activating the
+# registry costs a couple of cycles instead of dozens.
+on:
+  workflow_dispatch:
+  push:
+    branches: [claude/signals-live-layer]
+    paths:
+      - scripts/probe.mjs
+      - .github/workflows/probe.yml
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Probe targets (reachability · declared feeds · shape)
+        run: node scripts/probe.mjs

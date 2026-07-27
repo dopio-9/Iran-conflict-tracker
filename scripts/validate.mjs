@@ -256,6 +256,26 @@ for (const js of scripts) {
           // adversary discipline: a disputed signal must show WHY it's contested (conflict a/b or a note)
           if (s.tier === "disputed" && !s.conflict && !s.note)
             fail(`index.html signals[${i}] (${s.id}): disputed but no conflict{a,b} or note — never confirm adversary-origin silently`);
+
+          /* TIME DISCIPLINE — the page must not be able to ship while misstating time.
+             Authored age/live strings froze at writing time and the surface claimed
+             "~fresh" on 6-day-old cards for days. Age is now DERIVED from last_seen,
+             so last_seen is mandatory and the authored fields are banned outright. */
+          if (!s.last_seen)
+            fail(`index.html signals[${i}] (${s.id}): missing "last_seen" — age is derived, not authored`);
+          else if (isNaN(Date.parse(s.last_seen)))
+            fail(`index.html signals[${i}] (${s.id}): last_seen "${s.last_seen}" is not a parseable date`);
+          else if (Date.parse(s.last_seen) - Date.now() > 36e5)
+            fail(`index.html signals[${i}] (${s.id}): last_seen is in the future`);
+          if ("age" in s) fail(`index.html signals[${i}] (${s.id}): authored "age" is banned — derive from last_seen`);
+          if ("live" in s) fail(`index.html signals[${i}] (${s.id}): authored "live" is banned — derive from last_seen`);
+
+          /* A FLASH is unverified. Fresh+unverified is the product's speed lane;
+             stale+unverified is the weakest thing on the board and must be resolved
+             (promoted on evidence, converted to a watch, or dropped) — never parked. */
+          const ageH = s.last_seen ? (Date.now() - Date.parse(s.last_seen)) / 36e5 : 0;
+          if (s.tier === "flash" && ageH > 48)
+            fail(`index.html signals[${i}] (${s.id}): FLASH is ${Math.round(ageH / 24)}d old — unverified claims may not sit unresolved past 48h (promote, convert to watch, or drop)`);
         });
       }
       // FULL FEED — everything gathered, deduped, UNCAPPED (must not limit to a few visible selections)
