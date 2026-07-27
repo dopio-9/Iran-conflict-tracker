@@ -21,3 +21,9 @@ jobs:
           node-version: "22"
       - name: Probe targets (reachability · declared feeds · shape)
         run: node scripts/probe.mjs
+
+      # Reachability is not readability. This asks the separate question: do the
+      # dashboard pages actually carry their FIGURES in the served markup, or is
+      # the number painted client-side where a plain fetch can never see it?
+      - name: Comprehension probe (are the numbers readable?)
+        run: node scripts/probe.mjs --comprehend

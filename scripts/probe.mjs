@@ -123,6 +123,65 @@ const BATCH4 = [
   "https://docs.perplexity.ai/api-reference/chat-completions-post",
 ];
 
+/* BATCH 5 — COMPREHENSION probe, not a reachability probe.
+   Batch 4 proved these pages answer; it did not prove their NUMBERS are readable.
+   A dashboard's signal is the transit count, not the <title>. Three outcomes matter
+   and they have completely different costs, so they must be told apart before any
+   reader is written:
+     SERVER  — figures sit in the served markup            → plain fetch, cheap
+     API     — page hydrates from a JSON endpoint          → best case, clean json route
+     CLIENT  — canvas/JS paints it, markup holds nothing   → needs headless browser
+   Guessing between these is what produced the "0 usable feeds" line in batch 4. */
+const BATCH5 = [
+  "https://hormuzstraitmonitor.com", "https://www.hormuztracker.com", "https://hormuztracking.com",
+  "https://straits.live/vessels", "https://straits.live/data", "https://insights.windward.ai",
+  "https://www.vesselfinder.com", "https://www.shipfinder.com",
+];
+
+/** Does this page carry the FIGURES, or just the furniture?
+ *  Reports where the numbers live so a reader is written against fact, not hope. */
+function comprehend(html) {
+  const strip = html
+    .replace(/<script\b[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style\b[\s\S]*?<\/style>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  /* Hydration blobs: the whole dataset, already in the page, no endpoint needed. */
+  const blobs = [];
+  if (/__NEXT_DATA__/.test(html)) blobs.push("__NEXT_DATA__");
+  if (/__NUXT__/.test(html)) blobs.push("__NUXT__");
+  if (/application\/ld\+json/i.test(html)) blobs.push("ld+json");
+  if (/self\.__next_f/.test(html)) blobs.push("next-flight");
+
+  /* Candidate JSON endpoints referenced by the page's own scripts. Read from the
+     markup — never invented, same discipline as <link rel=alternate> for feeds. */
+  const api = new Set();
+  for (const m of html.matchAll(/["'`](\/(?:api|data|v\d)\/[A-Za-z0-9_\-\/.]{2,60})["'`]/g)) api.add(m[1]);
+  for (const m of html.matchAll(/["'`](https?:\/\/[A-Za-z0-9.\-]+\/(?:api|v\d)\/[A-Za-z0-9_\-\/.]{2,60})["'`]/g)) api.add(m[1]);
+
+  /* The actual question: are there numbers in the visible text, and do any of them
+     sit next to the vocabulary this tracker cares about? */
+  const numbers = (strip.match(/\b\d[\d,.]*\b/g) || []).length;
+  const DOMAIN = /\b(transit|vessel|ship|tanker|traffic|AIS|dark|arriv|depart|underway|anchor|escort|warship|naval)\w*\b/gi;
+  const domainHits = (strip.match(DOMAIN) || []).length;
+  const nearNumber = [];
+  for (const m of strip.matchAll(/([A-Za-z][A-Za-z ]{2,28}?)\s*[:\-–]?\s*(\d[\d,.]*)\s*(%|vessels?|ships?|transits?)?/g)) {
+    if (DOMAIN.test(m[1])) { DOMAIN.lastIndex = 0; nearNumber.push(`${m[1].trim()}=${m[2]}${m[3] || ""}`); }
+    if (nearNumber.length >= 6) break;
+  }
+
+  const verdict = nearNumber.length >= 2 ? "SERVER"
+    : blobs.length ? "BLOB"
+    : api.size ? "API"
+    : numbers < 20 && strip.length < 1200 ? "CLIENT"
+    : "THIN";
+
+  return { verdict, textLen: strip.length, numbers, domainHits, blobs, api: [...api].slice(0, 4), nearNumber, text: strip.slice(0, 260) };
+}
+
 async function fetchWithTimeout(url) {
   const ac = new AbortController();
   const t = setTimeout(() => ac.abort(), TIMEOUT_MS);
@@ -168,7 +227,8 @@ async function probe(url) {
       const title = (body.match(/<title[^>]*>([\s\S]{0,80}?)<\/title>/i) || [])[1] || "";
       sample = `HTML "${title.trim().slice(0, 46)}"`;
     }
-    return { url, ok: true, status: res.status, ms, ct, bytes: body.length, feeds, sample, kind: isFeed ? "feed" : isJson ? "json" : "html" };
+    const comp = COMPREHEND && !isFeed && !isJson ? comprehend(body) : null;
+    return { url, ok: true, status: res.status, ms, ct, bytes: body.length, feeds, sample, comp, kind: isFeed ? "feed" : isJson ? "json" : "html" };
   } catch (e) {
     return { url, ok: false, status: 0, ms: Date.now() - t0, note: e.name === "AbortError" ? "TIMEOUT" : e.message.slice(0, 60) };
   }
@@ -184,8 +244,9 @@ async function runBatch(urls) {
 
 const argv = process.argv.slice(2);
 const feedsOnly = argv.includes("--feeds-only");
+const COMPREHEND = argv.includes("--comprehend");
 const urls = argv.filter(a => !a.startsWith("--"));
-const targets = urls.length ? urls : BATCH4;   // batch 4 — marine stack from CI
+const targets = urls.length ? urls : (COMPREHEND ? BATCH5 : BATCH4);
 
 console.log(`probe — ${targets.length} targets · runner egress · no PPLX spend\n`);
 const results = await runBatch(targets);
@@ -198,6 +259,21 @@ for (const r of results) {
   const feedNote = r.feeds && r.feeds.length ? `  → DECLARES ${r.feeds.length} feed(s): ${r.feeds.slice(0, 2).join(" , ")}` : "";
   console.log(`✔ ${String(r.status).padEnd(4)} ${String(r.ms + "ms").padEnd(7)} ${r.kind.padEnd(4)} ${r.url}`);
   console.log(`     ${r.sample}${feedNote}`);
+  if (r.comp) {
+    const c = r.comp;
+    console.log(`     ${c.verdict.padEnd(6)} text=${c.textLen}b numbers=${c.numbers} domain-words=${c.domainHits}`);
+    if (c.blobs.length)      console.log(`     blob   ${c.blobs.join(", ")}`);
+    if (c.api.length)        console.log(`     api?   ${c.api.join(" , ")}`);
+    if (c.nearNumber.length) console.log(`     FIGURES ${c.nearNumber.join(" · ")}`);
+    console.log(`     text>  ${c.text.slice(0, 200)}`);
+  }
+}
+
+if (COMPREHEND) {
+  const tally = {};
+  for (const r of reachable) if (r.comp) tally[r.comp.verdict] = (tally[r.comp.verdict] || 0) + 1;
+  console.log(`\n── COMPREHENSION ──`);
+  console.log(Object.entries(tally).map(([k, v]) => `${k}:${v}`).join("  ") || "none");
 }
 
 console.log(`\n── SUMMARY ──`);
