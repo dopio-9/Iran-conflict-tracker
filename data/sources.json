@@ -1042,12 +1042,6 @@
     "misses": 1,
     "notes": "Primary wire",
     "site": "apnews.com",
-    "feed": {
-      "kind": "rss",
-      "url": "https://apnews.com/index.rss",
-      "realtime": true,
-      "verified": "probe 30260985927"
-    },
     "lastScored": "2026-07-27T11:23:55.207Z",
     "consecutiveMisses": 1
   },
@@ -4031,7 +4025,7 @@
   },
   {
     "id": 185,
-    "name": "adsb.lol Gulf",
+    "name": "adsb.lol military",
     "platform": "Web",
     "language": "English",
     "domain": "ADS-B community",
@@ -4047,13 +4041,68 @@
     "hits": 0,
     "misses": 0,
     "consecutiveMisses": 0,
-    "notes": "Free community ADS-B, probe-verified. 50nm radius on Hormuz (26.2N 56.3E) — maritime-patrol aircraft are a proxy for naval activity when warships run AIS-dark.",
+    "notes": "FREE live MILITARY aircraft feed (probe returned a C-17 in flight). Warships routinely run AIS-dark — their maritime-patrol and transport aircraft do not, so this is the observable proxy for naval activity that AIS cannot give.",
     "site": "adsb.lol",
     "feed": {
       "kind": "json",
-      "url": "https://api.adsb.lol/v2/point/26.2/56.3/50",
+      "url": "https://api.adsb.lol/v2/mil",
       "realtime": true,
       "verified": "probe 30260985927"
+    }
+  },
+  {
+    "id": 186,
+    "name": "Ambrey Analytics",
+    "platform": "Web",
+    "language": "English",
+    "domain": "Maritime security",
+    "geography": "Global",
+    "role": "confirmation",
+    "tier": "T1",
+    "theater": "hormuz-redsea",
+    "lanes": [
+      "maritime_incidents",
+      "ports_advisories",
+      "war_risk_economy"
+    ],
+    "medium": "ANALYST",
+    "hits": 0,
+    "misses": 0,
+    "consecutiveMisses": 0,
+    "notes": "Maritime security firm publishing incident advisories derived from UKMTO/industry reporting. THE substitute for UKMTO, which 403s from CI across all six routes tried (ukmto.org, /rss, /incidents, MARAD MSCI, NATO Shipping — uniform datacenter-IP WAF across UK/US/NATO). Second-hand relative to UKMTO, so tier as ANALYST relaying an official, never as OFF.",
+    "site": "ambrey.com",
+    "feed": {
+      "kind": "rss",
+      "url": "https://ambrey.com/feed/",
+      "realtime": true,
+      "verified": "probe 30264278114"
+    }
+  },
+  {
+    "id": 187,
+    "name": "Splash247",
+    "platform": "Web",
+    "language": "English",
+    "domain": "Maritime security",
+    "geography": "Global",
+    "role": "confirmation",
+    "tier": "T2",
+    "theater": "hormuz-redsea",
+    "lanes": [
+      "maritime_incidents",
+      "war_risk_economy"
+    ],
+    "medium": "ANALYST",
+    "hits": 0,
+    "misses": 0,
+    "consecutiveMisses": 0,
+    "notes": "Maritime trade press — shipping incidents and chokepoint economics. Probe-verified feed.",
+    "site": "splash247.com",
+    "feed": {
+      "kind": "rss",
+      "url": "https://splash247.com/feed/",
+      "realtime": true,
+      "verified": "probe 30264278114"
     }
   }
 ]
