@@ -72,8 +72,15 @@ async function fetchText(url) {
  *  apply-score.mjs stays engine-agnostic: hit | miss(empty|stale|error). */
 export function classify(items, { ttlH = TTL_FRESH_H, now = Date.now() } = {}) {
   if (!items.length) return { outcome: "miss", reason: "empty", freshestMin: null, postCount: 0 };
-  const ages = items.filter(i => i.ts).map(i => (now - i.ts) / 60000);
-  const freshestMin = ages.length ? Math.round(Math.min(...ages)) : null;
+  /* Future-dated items are discarded, not minimised over. entekhab.ir returned
+     freshestMin -8198 (≈5.7 days ahead), because Math.min picks the MOST negative
+     age and a publisher on a different calendar/offset then wins every sort. A
+     negative age is the frozen-"~fresh" bug wearing a different hat: it can never
+     expire and would sit at the top of the FLASH band forever. SKEW_MIN tolerates
+     ordinary clock drift; anything further ahead is not evidence of freshness. */
+  const SKEW_MIN = 90;
+  const ages = items.filter(i => i.ts).map(i => (now - i.ts) / 60000).filter(a => a >= -SKEW_MIN);
+  const freshestMin = ages.length ? Math.max(0, Math.round(Math.min(...ages))) : null;
   if (freshestMin !== null && freshestMin <= ttlH * 60)
     return { outcome: "hit", reason: "live", freshestMin, postCount: items.length };
   if (freshestMin === null)
