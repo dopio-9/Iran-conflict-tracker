@@ -28,6 +28,8 @@ jobs:
         run: node scripts/telegram.mjs --score
       - name: RSS read (single reader engine — expert/military/naval + wires)
         run: node scripts/read.mjs --rss
+      - name: JSON read (free TRACK APIs — ADS-B over the Gulf)
+        run: node scripts/read.mjs --json
 # dispatch: fresh gather 2026-07-24T05:17Z
 # dispatch: fresh gather 2026-07-24T08:04Z
 # dispatch: fresh gather 2026-07-26T08:12Z

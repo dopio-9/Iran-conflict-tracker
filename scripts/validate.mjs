@@ -128,7 +128,7 @@ if (sources) {
     if (typeof s.hits !== "number" || typeof s.misses !== "number") fail(`sources[${i}] (${s.name}): hits/misses must be numbers (intake step 4: scoring)`);
     // optional DIRECT-engine feed wiring (Telegram real-time L3 pipe)
     if (s.feed) {
-      const feedKinds = ["telegram-web", "official-web", "rss", "x-mirror", "x-only"];
+      const feedKinds = ["telegram-web", "official-web", "rss", "x-mirror", "x-only", "json"];
       if (!feedKinds.includes(s.feed.kind)) fail(`sources[${i}] (${s.name}): feed.kind "${s.feed.kind}" invalid`);
       // a wired telegram-web feed must carry a url unless explicitly flagged for handle resolution
       if (s.feed.kind === "telegram-web" && !s.feed.url && !s.feed.resolve)

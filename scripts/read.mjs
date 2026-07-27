@@ -121,6 +121,47 @@ async function runRss() {
   console.log(`\nread ${channels.length} feeds — ${hits} hit · ${empty} empty · ${channels.length - hits - empty} stale/err`);
 }
 
+/* ── route: json — live API endpoints (TRACK medium) ──────────────────
+   The TRACK layer (14 sources) had never produced a single observation because no
+   engine read it, and I twice mis-diagnosed that as commercial gating. probe proved
+   OpenSky and adsb.lol answer for free. This reads them and scores on whether the
+   endpoint returned live records — the same hit/miss contract as every other route. */
+const JSON_SHAPE = {
+  // OpenSky: {time, states:[[icao24, callsign, origin_country, ...]]}
+  "opensky-network.org": j => ({ n: (j.states || []).length, note: (j.states || []).slice(0, 3).map(s => `${(s[1] || "").trim()}(${s[2]})`).join(", ") }),
+  // adsb.lol: {ac:[...], total}
+  "api.adsb.lol": j => ({ n: j.total ?? (j.ac || []).length, note: (j.ac || []).slice(0, 3).map(a => a.flight || a.hex).join(", ") }),
+};
+
+async function readJson(s) {
+  try {
+    const txt = await fetchText(s.feed.url);
+    const j = JSON.parse(txt);
+    const host = new URL(s.feed.url).hostname.replace(/^www\./, "");
+    const shape = Object.entries(JSON_SHAPE).find(([h]) => host.includes(h))?.[1];
+    const { n, note } = shape ? shape(j) : { n: Array.isArray(j) ? j.length : Object.keys(j).length, note: "" };
+    return { s, res: n > 0
+      ? { outcome: "hit", reason: "live", freshestMin: 0, postCount: n, note }
+      : { outcome: "miss", reason: "empty", freshestMin: null, postCount: 0, note: "endpoint OK but zero records" } };
+  } catch (e) {
+    return { s, res: { outcome: "miss", reason: "error", freshestMin: null, postCount: 0, err: e.message.slice(0, 50) } };
+  }
+}
+
+async function runJson() {
+  const reg = JSON.parse(readFileSync(new URL("../data/sources.json", import.meta.url), "utf8"));
+  const eps = reg.filter(s => s.feed?.kind === "json" && s.feed.url);
+  console.log(`JSON read — ${eps.length} endpoints · free APIs, no key\n`);
+  const out = [];
+  for (const e of eps) out.push(await readJson(e));
+  const channels = out.map(({ s, res }) => {
+    console.log(`▸ #${s.id} ${s.name}  [${s.theater}]  ${res.outcome}/${res.reason} · ${res.postCount} records${res.note ? " · " + res.note : ""}${res.err ? " · " + res.err : ""}`);
+    return { id: s.id, name: s.name, outcome: res.outcome, reason: res.reason, freshestMin: res.freshestMin, postCount: res.postCount };
+  });
+  console.log("\nSCOREBOARD:" + JSON.stringify({ ts: new Date().toISOString(), engine: "json", channels }));
+  console.log(`\nread ${channels.length} endpoints — ${channels.filter(c => c.outcome === "hit").length} hit`);
+}
+
 /* offline selftest — proves the parser + classifier without network */
 function selftest() {
   const now = Date.now();
@@ -154,6 +195,7 @@ function selftest() {
 if (import.meta.url === `file://${process.argv[1]}`) {
   const a = process.argv[2];
   if (a === "--rss") runRss().catch(e => { console.error(e.message); process.exit(1); });
+  else if (a === "--json") runJson().catch(e => { console.error(e.message); process.exit(1); });
   else if (a === "--selftest") selftest();
-  else { console.error("usage: node scripts/read.mjs --rss | --selftest"); process.exit(2); }
+  else { console.error("usage: node scripts/read.mjs --rss | --json | --selftest"); process.exit(2); }
 }
