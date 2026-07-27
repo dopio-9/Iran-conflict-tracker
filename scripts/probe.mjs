@@ -138,6 +138,34 @@ const BATCH5 = [
   "https://www.vesselfinder.com", "https://www.shipfinder.com",
 ];
 
+/* BATCH 6 — CONNECT. Every registry entry that has a URL recorded but NO reader.
+   All 45 sit at h0/m0: never fetched, not once. They are not dark and not failed —
+   nothing was ever wired to them. Reuters, UKMTO, IAEA, WAM, Anadolu and Mehr are
+   in here. Chasing new sources while these sit unplugged is the same instinct as
+   pruning: it reaches for novelty instead of using what is already owned.
+   The declared-feed check is the payload — a <link rel="alternate"> hit converts an
+   entry straight into the rss route, which is the only route running at 14/15. */
+const BATCH6 = [
+  // wires · media (diplomacy 1/23 lives or dies here)
+  "https://reuters.com", "https://apnews.com", "https://aa.com.tr", "https://npr.org",
+  "https://nbcnews.com", "https://cbsnews.com", "https://cnbc.com", "https://newarab.com",
+  // official · authority (nuclear 0/4 and ports_advisories are entirely here)
+  "https://iaea.org", "https://ukmto.org", "https://idf.il", "https://jmic.online",
+  "https://iranwatch.org", "https://thesoufancenter.org", "https://iea.org",
+  // gulf · uae_local 1/8 — the household's own geography
+  "https://wam.ae", "https://qna.org.qa", "https://alarabiya.net", "https://english.alarabiya.net",
+  // iranian domestic — the regional-language early layer, 3 producing today
+  "https://mehrnews.com", "https://tasnimnews.com", "https://presstv.ir", "https://iranwire.com",
+  "https://yjc.ir", "https://entekhab.ir", "https://fa.abna24.com", "https://ir.voanews.com",
+  "https://iranmonitor.org", "https://iranwarlive.com", "https://amwaj.media",
+  // axis · regional
+  "https://almasirah.net.ye", "https://ina.iq", "https://timesofisrael.com", "https://caliber.az",
+  "https://iz.ru", "https://kommersant.ru", "https://tag24.de", "https://ironsight.noblerworks.com",
+  // track · market
+  "https://marinetraffic.com", "https://adsbexchange.com", "https://flightradar24.com",
+  "https://flightaware.com", "https://kpler.com", "https://polymarket.com", "https://hormuztracking.com",
+];
+
 /** Does this page carry the FIGURES, or just the furniture?
  *  Reports where the numbers live so a reader is written against fact, not hope. */
 function comprehend(html) {
@@ -245,8 +273,9 @@ async function runBatch(urls) {
 const argv = process.argv.slice(2);
 const feedsOnly = argv.includes("--feeds-only");
 const COMPREHEND = argv.includes("--comprehend");
+const CONNECT = argv.includes("--connect");
 const urls = argv.filter(a => !a.startsWith("--"));
-const targets = urls.length ? urls : (COMPREHEND ? BATCH5 : BATCH4);
+const targets = urls.length ? urls : CONNECT ? BATCH6 : COMPREHEND ? BATCH5 : BATCH4;
 
 console.log(`probe — ${targets.length} targets · runner egress · no PPLX spend\n`);
 const results = await runBatch(targets);

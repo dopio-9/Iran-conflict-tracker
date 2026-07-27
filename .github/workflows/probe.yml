@@ -27,3 +27,9 @@ jobs:
       # the number painted client-side where a plain fetch can never see it?
       - name: Comprehension probe (are the numbers readable?)
         run: node scripts/probe.mjs --comprehend
+
+      # The 45 registry entries that have a URL but no reader, all at h0/m0 — never
+      # fetched once. Highest-yield run available: a declared feed here converts an
+      # entry directly onto the rss route, the only route performing at 14/15.
+      - name: Connect probe (45 never-attempted sources)
+        run: node scripts/probe.mjs --connect
