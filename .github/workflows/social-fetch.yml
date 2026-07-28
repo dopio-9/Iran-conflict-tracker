@@ -10,6 +10,7 @@ on:
     paths:
       - scripts/telegram.mjs
       - scripts/read.mjs
+      - scripts/flash.mjs
       - .github/workflows/social-fetch.yml
       - data/sources.json
 jobs:
@@ -35,3 +36,10 @@ jobs:
 # dispatch: fresh gather 2026-07-24T05:17Z
 # dispatch: fresh gather 2026-07-24T08:04Z
 # dispatch: fresh gather 2026-07-26T08:12Z
+
+      # FAST LANE. Runs last so the claims ledger is written against the freshest
+      # registry state. One source is enough here — no corroboration gate — because
+      # a single scattered claim inside the window is exactly the thing this tracker
+      # exists to catch. The 24h resolve pass is what keeps that honest.
+      - name: FLASH (fast lane — novel claims inside a 6h window)
+        run: node scripts/flash.mjs --selftest && node scripts/flash.mjs --hours 6
