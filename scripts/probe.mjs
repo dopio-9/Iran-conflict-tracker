@@ -210,6 +210,35 @@ function comprehend(html) {
   return { verdict, textLen: strip.length, numbers, domainHits, blobs, api: [...api].slice(0, 4), nearNumber, text: strip.slice(0, 260) };
 }
 
+/* BATCH 7 — ADVISORY. A viral post claims the US Embassy told Americans to
+   "consider leaving the region or prepare to depart immediately". The screenshot
+   attached to it proves only that an alert was issued on 1 Aug; the quoted
+   language is the aggregator's headline, not visible in the alert. Search
+   summaries say something materially weaker — ordered departure of NON-EMERGENCY
+   GOVERNMENT PERSONNEL, in force since March. Those are different claims with
+   different consequences for a household, so the alert gets read verbatim rather
+   than through anyone's summary, including a search engine's. */
+const BATCH7 = [
+  "https://ae.usembassy.gov/security-alert-u-s-embassy-abu-dhabi-and-u-s-consulate-general-dubai-august-1-2026/",
+  "https://ae.usembassy.gov/security-alert-u-s-embassy-abu-dhabi-and-u-s-consulate-general-dubai-july-24-2026/",
+  "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/united-arab-emirates-travel-advisory.html",
+  "https://ae.usembassy.gov/",
+];
+
+/** Print the page's readable text so a CLAIM can be checked against WORDS.
+ *  --comprehend answers "are there numbers here"; this answers "what does it say". */
+function dumpText(html, chars = 3000) {
+  return html
+    .replace(/<script\b[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style\b[\s\S]*?<\/style>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/&#8217;|&rsquo;/g, "'")
+    .replace(/&quot;|&ldquo;|&rdquo;/g, '"')
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, chars);
+}
+
 async function fetchWithTimeout(url) {
   const ac = new AbortController();
   const t = setTimeout(() => ac.abort(), TIMEOUT_MS);
@@ -256,7 +285,8 @@ async function probe(url) {
       sample = `HTML "${title.trim().slice(0, 46)}"`;
     }
     const comp = COMPREHEND && !isFeed && !isJson ? comprehend(body) : null;
-    return { url, ok: true, status: res.status, ms, ct, bytes: body.length, feeds, sample, comp, kind: isFeed ? "feed" : isJson ? "json" : "html" };
+    const text = DUMP ? dumpText(body) : null;
+    return { url, ok: true, status: res.status, ms, ct, bytes: body.length, feeds, sample, comp, text, kind: isFeed ? "feed" : isJson ? "json" : "html" };
   } catch (e) {
     return { url, ok: false, status: 0, ms: Date.now() - t0, note: e.name === "AbortError" ? "TIMEOUT" : e.message.slice(0, 60) };
   }
@@ -274,8 +304,9 @@ const argv = process.argv.slice(2);
 const feedsOnly = argv.includes("--feeds-only");
 const COMPREHEND = argv.includes("--comprehend");
 const CONNECT = argv.includes("--connect");
+const DUMP = argv.includes("--dump");
 const urls = argv.filter(a => !a.startsWith("--"));
-const targets = urls.length ? urls : CONNECT ? BATCH6 : COMPREHEND ? BATCH5 : BATCH4;
+const targets = urls.length ? urls : DUMP ? BATCH7 : CONNECT ? BATCH6 : COMPREHEND ? BATCH5 : BATCH4;
 
 console.log(`probe — ${targets.length} targets · runner egress · no PPLX spend\n`);
 const results = await runBatch(targets);
@@ -288,6 +319,7 @@ for (const r of results) {
   const feedNote = r.feeds && r.feeds.length ? `  → DECLARES ${r.feeds.length} feed(s): ${r.feeds.slice(0, 2).join(" , ")}` : "";
   console.log(`✔ ${String(r.status).padEnd(4)} ${String(r.ms + "ms").padEnd(7)} ${r.kind.padEnd(4)} ${r.url}`);
   console.log(`     ${r.sample}${feedNote}`);
+  if (r.text) console.log(`     TEXT> ${r.text}\n`);
   if (r.comp) {
     const c = r.comp;
     console.log(`     ${c.verdict.padEnd(6)} text=${c.textLen}b numbers=${c.numbers} domain-words=${c.domainHits}`);

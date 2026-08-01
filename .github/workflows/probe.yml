@@ -33,3 +33,10 @@ jobs:
       # entry directly onto the rss route, the only route performing at 14/15.
       - name: Connect probe (45 never-attempted sources)
         run: node scripts/probe.mjs --connect
+
+      # Read an advisory's ACTUAL WORDS, not a summary of them. A viral post
+      # attributes "consider leaving the region" to the 1 Aug embassy alert; the
+      # attached screenshot does not show that language. Household-safety claims
+      # get checked against the primary text.
+      - name: Dump advisory text (US Embassy UAE / State Dept)
+        run: node scripts/probe.mjs --dump
