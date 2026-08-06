@@ -239,6 +239,24 @@ function dumpText(html, chars = 3000) {
     .slice(0, chars);
 }
 
+
+/* BATCH 8 — declared-feed discovery for the 22 sources on the html route.
+   Root cause established: 22 of 22 point at a bare HOMEPAGE, and the html reader
+   extracts JSON-LD datePublished / <time datetime>, which exist on ARTICLE pages
+   and not on landing pages. The reader was built to succeed only where it was
+   never pointed. These are not 22 dead sources; they are one design error, and
+   apply-score has been marking major outlets dark because of it.
+   The fix is a route change, not a parser rewrite: rss runs 20/24, html runs
+   5/27. Anything here that declares a feed moves to rss. */
+const BATCH8 = [
+  "https://bbc.com", "https://jpost.com", "https://gulfnews.com", "https://thenationalnews.com",
+  "https://irna.ir", "https://farsnews.ir", "https://khabaronline.ir", "https://alalam.ir",
+  "https://shafaq.com", "https://rudaw.net", "https://almayadeen.net", "https://thecradle.co",
+  "https://geo.tv", "https://thenews.com.pk", "https://tribune.com.pk",
+  "https://maritime-executive.com", "https://lloydslist.com", "https://portwatch.imf.org",
+  "https://stripes.com", "https://iiss.org", "https://english.ahram.org.eg", "https://al-monitor.com",
+];
+
 async function fetchWithTimeout(url) {
   const ac = new AbortController();
   const t = setTimeout(() => ac.abort(), TIMEOUT_MS);
@@ -305,8 +323,9 @@ const feedsOnly = argv.includes("--feeds-only");
 const COMPREHEND = argv.includes("--comprehend");
 const CONNECT = argv.includes("--connect");
 const DUMP = argv.includes("--dump");
+const FEEDHUNT = argv.includes("--feedhunt");
 const urls = argv.filter(a => !a.startsWith("--"));
-const targets = urls.length ? urls : DUMP ? BATCH7 : CONNECT ? BATCH6 : COMPREHEND ? BATCH5 : BATCH4;
+const targets = urls.length ? urls : FEEDHUNT ? BATCH8 : DUMP ? BATCH7 : CONNECT ? BATCH6 : COMPREHEND ? BATCH5 : BATCH4;
 
 console.log(`probe — ${targets.length} targets · runner egress · no PPLX spend\n`);
 const results = await runBatch(targets);

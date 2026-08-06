@@ -40,3 +40,8 @@ jobs:
       # get checked against the primary text.
       - name: Dump advisory text (US Embassy UAE / State Dept)
         run: node scripts/probe.mjs --dump
+
+      # The 22 sources stuck on the html route, all pointed at bare homepages.
+      # Anything that declares a feed moves to rss (20/24) from html (5/27).
+      - name: Feed hunt (22 html-route sources)
+        run: node scripts/probe.mjs --feedhunt
