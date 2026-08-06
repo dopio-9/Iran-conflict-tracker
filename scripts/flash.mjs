@@ -61,6 +61,57 @@ export function fingerprint(title) {
   return createHash("sha1").update(key).digest("hex").slice(0, 16);
 }
 
+/* ── relevance ────────────────────────────────────────────────────────────
+   The first live run produced 110 novel items of which roughly 20 mattered; the
+   rest was recipes, telehealth, provincial newspaper front pages and grape
+   farming. That is not a corroboration problem, so tier ranking would not fix it
+   — a T3 channel still has to be able to beat Reuters. It is a TOPIC problem.
+   This gate asks only "is this about the war", never "do enough sources agree",
+   so a single scattered claim still publishes. Multi-language by necessity: the
+   earliest signals arrive in Farsi, Arabic and Hebrew, and an English-only
+   vocabulary would silently discard exactly the layer this lane exists for. */
+const TOPIC = [
+  // EN
+  /\b(strike|struck|missile|drone|uav|airstrike|shelling|explosion|blast|attack)\w*/i,
+  /\b(hormuz|bandar|abbas|khark|kharg|bushehr|natanz|fordow|isfahan|esfahan)\b/i,
+  /\b(tanker|vessel|convoy|escort|warship|frigate|destroyer|carrier|naval|blockade|chokepoint|bab.?el.?mandeb|red sea|strait)\w*/i,
+  /\b(irgc|centcom|idf|houthi|ansarallah|hezbollah|revolutionary guard|pentagon)\w*/i,
+  /\b(nuclear|enrich|centrifuge|iaea|warhead|sanction|embargo)\w*/i,
+  /\b(airspace|notam|flight (ban|cancel|suspend)|airport clos|evacuat|advisory|alert)\w*/i,
+  /\b(iran|iranian|tehran|israel|yemen|gulf|uae|emirates|dubai|abu dhabi|qatar|oman|saudi)\w*/i,
+  /\b(ceasefire|truce|talks|negotiat|mediat|escalat|retaliat|ultimatum|deadline)\w*/i,
+  // FA
+  /(حمله|موشک|پهپاد|جنگ|تنگه|هرمز|نفتکش|سپاه|آمریکا|اسرائیل|مذاکره|تحریم|هسته|آتش‌بس|بندرعباس)/,
+  // AR
+  /(هجوم|قصف|صاروخ|مسيرة|حرب|مضيق|هرمز|ناقلة|الحوثي|إسرائيل|إيران|مفاوضات|حصار|تصعيد)/,
+  // HE
+  /(תקיפה|טיל|מלחמה|איראן|חות'י|מיצר|הורמוז|גרעין|הסלמה|משא ומתן)/,
+];
+/* Explicit rejects: lifestyle desks share a feed with the news desk, so a
+   general-interest outlet leaks soft content that happens to mention a country. */
+const NOT_TOPIC = [
+  /\b(recipe|cook|chef|restaurant|diet|fitness|wellness|horoscope|celebrity|fashion|beach|holiday|tourism|grape|farm|telehealth|football|soccer|basketball|cricket|movie|film|series|album)\w*/i,
+  /(מתכון|שף|טיול|חופש|כדורגל)/,
+];
+
+export function isRelevant(title) {
+  const t = String(title || "");
+  if (NOT_TOPIC.some(r => r.test(t))) return false;
+  /* Count DISTINCT MATCHED KEYWORDS, not distinct patterns. Counting patterns
+     silently penalised every non-Latin script: all Farsi terms live in one
+     regex, all Hebrew in another, so a headline like "حمله موشکی به بندرعباس"
+     could never score above 1 and was dropped while its English equivalent
+     passed. That would have discarded precisely the early regional layer this
+     lane exists to catch — the filter would have quietly recreated the blind
+     spot it was written to fix. */
+  const hits = new Set();
+  for (const r of TOPIC)
+    for (const m of t.matchAll(new RegExp(r.source, r.flags.includes("g") ? r.flags : r.flags + "g")))
+      hits.add(m[0].toLowerCase());
+  /* Two distinct terms, so a passing country mention is not enough on its own. */
+  return hits.size >= 2;
+}
+
 function loadClaims() {
   if (!existsSync(CLAIMS_PATH)) return {};
   try { return JSON.parse(readFileSync(CLAIMS_PATH, "utf8")); } catch { return {}; }
@@ -123,7 +174,7 @@ async function run({ windowH = DEFAULT_WINDOW_H } = {}) {
   const hi = now + SKEW_MIN * 60e3;
 
   const flashes = [];
-  let scanned = 0, inWindow = 0, reachable = 0;
+  let scanned = 0, inWindow = 0, reachable = 0, offTopic = 0;
 
   for (const { s, items, err } of results) {
     if (!err) reachable++;
@@ -131,6 +182,7 @@ async function run({ windowH = DEFAULT_WINDOW_H } = {}) {
       scanned++;
       if (!it.ts || it.ts < lo || it.ts > hi) continue;
       inWindow++;
+      if (!isRelevant(it.title)) { offTopic++; continue; }
       const fp = fingerprint(it.title);
       if (claims[fp]) continue;                       // seen before — not a first signal
       claims[fp] = { first_seen: new Date(it.ts).toISOString(), source: s.name, title: String(it.title).slice(0, 160) };
@@ -159,6 +211,7 @@ async function run({ windowH = DEFAULT_WINDOW_H } = {}) {
   console.log(`sources reachable : ${reachable}/${live.length}`);
   console.log(`items scanned     : ${scanned}`);
   console.log(`inside ${String(windowH).padEnd(2)}h window : ${inWindow}`);
+  console.log(`off-topic dropped : ${offTopic}`);
   console.log(`NOVEL (first seen): ${flashes.length}`);
   console.log(`claims ledger     : ${Object.keys(claims).length} fingerprints`);
   console.log(`\nFLASH:${JSON.stringify({ ts: new Date(now).toISOString(), windowH, flashes: flashes.slice(0, 80) })}`);
@@ -178,6 +231,16 @@ function selftest() {
   ok("different claims → different fingerprints",
     fingerprint("Tanker struck near Hormuz") !== fingerprint("Airport closed in Tehran"));
   ok("empty title is stable, not a crash", typeof fingerprint("") === "string");
+
+  ok("war claim in English passes",      isRelevant("Tanker struck near Hormuz as US strikes resume"));
+  ok("war claim in Farsi passes",        isRelevant("حمله موشکی به بندرعباس؛ سپاه واکنش نشان داد"));
+  ok("war claim in Hebrew passes",       isRelevant("תקיפה איראנית במיצר הורמוז"));
+  ok("war claim in Arabic passes",       isRelevant("قصف صاروخي على مضيق هرمز"));
+  ok("recipe column dropped",            !isRelevant("30 החופים הכי טובים באיטליה ל-2026"));
+  ok("telehealth filler dropped",        !isRelevant("How telehealth is helping close the healthcare gap in rural Zimbabwe"));
+  ok("UAE grape farming dropped",        !isRelevant("UAE-grown grapes: Farmer produces 10,000 grapevines in RAK mountains"));
+  ok("single country mention not enough", !isRelevant("Savannah Guthrie pleads for help to find missing mother"));
+  ok("diplomacy on the war passes",      isRelevant("Washington, Tehran close to agreeing reopening of Strait of Hormuz"));
 
   const html = `<div class="tgme_widget_message" data-post="x/1">
     <a href="https://t.me/x/1"></a><time datetime="2026-07-27T18:00:00+00:00"></time>
