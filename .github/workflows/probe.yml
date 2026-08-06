@@ -45,3 +45,8 @@ jobs:
       # Anything that declares a feed moves to rss (20/24) from html (5/27).
       - name: Feed hunt (22 html-route sources)
         run: node scripts/probe.mjs --feedhunt
+
+      # Newly discovered indirect sources: GDELT (aggregates the outlets that
+      # block us) plus OSINT dashboards harvested from source listings.
+      - name: Discover probe (GDELT + OSINT dashboards)
+        run: node scripts/probe.mjs --discover

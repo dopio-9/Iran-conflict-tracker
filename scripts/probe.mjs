@@ -248,6 +248,14 @@ function dumpText(html, chars = 3000) {
    apply-score has been marking major outlets dark because of it.
    The fix is a route change, not a parser rewrite: rss runs 20/24, html runs
    5/27. Anything here that declares a feed moves to rss. */
+const BATCH9 = [
+  // GDELT DOC 2.0 — indirect route: aggregates the outlets that block us.
+  "https://api.gdeltproject.org/api/v2/doc/doc?format=json&mode=ArtList&maxrecords=5&timespan=24h&query=%22strait%20of%20hormuz%22",
+  // OSINT dashboards found via source listings, never probed
+  "https://worldmonitor.app", "https://signalcockpit.com", "https://osintnews.it/iran-monitor/",
+  "https://www.gdeltproject.org", "https://conflictly.app",
+];
+
 const BATCH8 = [
   "https://bbc.com", "https://jpost.com", "https://gulfnews.com", "https://thenationalnews.com",
   "https://irna.ir", "https://farsnews.ir", "https://khabaronline.ir", "https://alalam.ir",
@@ -324,8 +332,9 @@ const COMPREHEND = argv.includes("--comprehend");
 const CONNECT = argv.includes("--connect");
 const DUMP = argv.includes("--dump");
 const FEEDHUNT = argv.includes("--feedhunt");
+const DISCOVER = argv.includes("--discover");
 const urls = argv.filter(a => !a.startsWith("--"));
-const targets = urls.length ? urls : FEEDHUNT ? BATCH8 : DUMP ? BATCH7 : CONNECT ? BATCH6 : COMPREHEND ? BATCH5 : BATCH4;
+const targets = urls.length ? urls : DISCOVER ? BATCH9 : FEEDHUNT ? BATCH8 : DUMP ? BATCH7 : CONNECT ? BATCH6 : COMPREHEND ? BATCH5 : BATCH4;
 
 console.log(`probe — ${targets.length} targets · runner egress · no PPLX spend\n`);
 const results = await runBatch(targets);

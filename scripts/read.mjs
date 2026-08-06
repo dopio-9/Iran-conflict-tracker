@@ -204,6 +204,27 @@ const JSON_SHAPE = {
   "opensky-network.org": j => ({ n: (j.states || []).length, note: (j.states || []).slice(0, 3).map(s => `${(s[1] || "").trim()}(${s[2]})`).join(", ") }),
   // adsb.lol: {ac:[...], total}
   "api.adsb.lol": j => ({ n: j.total ?? (j.ac || []).length, note: (j.ac || []).slice(0, 3).map(a => a.flight || a.hex).join(", ") }),
+  /* GDELT DOC 2.0 — an INDIRECT route, and the point of it is that GDELT
+     aggregates outlets whose own servers refuse us. Reuters, IAEA and the rest
+     of the datacenter-blocked set are readable here without touching their
+     hosts. It is also multilingual, which reaches Farsi/Arabic/Hebrew press we
+     have no direct reader for. Free, no key.
+     seendate is "YYYYMMDDTHHMMSSZ" — reformatted, not hand-parsed, so freshness
+     stays DERIVED from the article's own stamp rather than assumed. */
+  "api.gdeltproject.org": j => {
+    const arts = j.articles || [];
+    const ages = arts.map(a => {
+      const m = String(a.seendate || "").match(/^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})Z$/);
+      if (!m) return null;
+      const t = Date.parse(`${m[1]}-${m[2]}-${m[3]}T${m[4]}:${m[5]}:${m[6]}Z`);
+      return isNaN(t) ? null : (Date.now() - t) / 60000;
+    }).filter(a => a !== null && a >= -90);
+    return {
+      n: arts.length,
+      freshestMin: ages.length ? Math.max(0, Math.round(Math.min(...ages))) : null,
+      note: arts.slice(0, 2).map(a => (a.title || "").slice(0, 46)).join(" | "),
+    };
+  },
 };
 
 async function readJson(s) {
@@ -212,9 +233,14 @@ async function readJson(s) {
     const j = JSON.parse(txt);
     const host = new URL(s.feed.url).hostname.replace(/^www\./, "");
     const shape = Object.entries(JSON_SHAPE).find(([h]) => host.includes(h))?.[1];
-    const { n, note } = shape ? shape(j) : { n: Array.isArray(j) ? j.length : Object.keys(j).length, note: "" };
+    const { n, note, freshestMin } = shape ? shape(j) : { n: Array.isArray(j) ? j.length : Object.keys(j).length, note: "" };
+    /* freshestMin 0 was previously asserted for every json source. That is an
+       AUTHORED time, which the whole tracker bans: a live-state endpoint really
+       is "now", but a feed of dated articles is not, and claiming so would let a
+       stale GDELT result pulse as fresh. Shapes that can derive a real age now
+       supply one; only shapes that cannot fall back to 0. */
     return { s, res: n > 0
-      ? { outcome: "hit", reason: "live", freshestMin: 0, postCount: n, note }
+      ? { outcome: "hit", reason: "live", freshestMin: freshestMin ?? 0, postCount: n, note }
       : { outcome: "miss", reason: "empty", freshestMin: null, postCount: 0, note: "endpoint OK but zero records" } };
   } catch (e) {
     return { s, res: { outcome: "miss", reason: "error", freshestMin: null, postCount: 0, err: e.message.slice(0, 50) } };
