@@ -5,6 +5,12 @@ name: social-fetch
 # it actually work" gets answered, same as the Perplexity smoke.
 on:
   workflow_dispatch:
+  # The fast lane fired on push only, so it stopped whenever nobody committed —
+  # which is exactly how the page reached Day 150 while the world reached 154.
+  # An early-warning tracker cannot depend on someone happening to commit.
+  schedule:
+    - cron: "*/30 * * * *"
+
   push:
     branches: [claude/signals-live-layer]
     paths:
@@ -42,4 +48,4 @@ jobs:
       # a single scattered claim inside the window is exactly the thing this tracker
       # exists to catch. The 24h resolve pass is what keeps that honest.
       - name: FLASH (fast lane — novel claims inside a 6h window)
-        run: node scripts/flash.mjs --selftest && node scripts/flash.mjs --hours 6
+        run: node scripts/flash.mjs --selftest && node scripts/flash.mjs --hours 12
