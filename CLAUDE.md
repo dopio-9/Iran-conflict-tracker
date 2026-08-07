@@ -49,10 +49,38 @@ Until it does, the fast lane is writing cheques the repo cannot cash.
 | `apply-score.mjs` | consumes any engine's `SCOREBOARD:{...}` |
 | `validate.mjs` | ship gate. Run it before every commit, chained with `&&`. |
 
-**Split: FETCH in CI, APPLY in session.** The sandbox proxy allows only
-npm/pypi/crates/go/github/anthropic — every news, AIS and advisory host is
-blocked here. CI has open egress. Applying in CI causes commit→re-fire loops
-(one burned ~50 Perplexity calls per registry edit).
+## Where you are running — CHECK THIS FIRST
+
+The fetch strategy is not fixed; it depends on the environment. Test, do not assume:
+
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" --max-time 8 https://gcaptain.com
+```
+
+**LOCAL (laptop, residential IP) — 200.** Fetch directly. `WebFetch`, `curl` and
+every script reach news, AIS and `.gov` hosts, so run `probe.mjs`, `read.mjs` and
+`flash.mjs` in the session and skip CI entirely. No round-trip, no waiting on
+Actions, no log-scraping to read a scoreboard.
+
+**CLOUD SANDBOX — 000/403.** The proxy allows only
+npm/pypi/crates/go/github/anthropic; every news, AIS and advisory host is blocked.
+Then, and only then: **FETCH in CI, APPLY in session.** Applying in CI causes
+commit→re-fire loops (one burned ~50 Perplexity calls per registry edit).
+
+Caveat that survives both: a UAE residential IP is not strictly better, only
+differently filtered. Etisalat/du degrade some Israeli outlets, and Ynet, Haaretz
+and Israel Hayom are top performers via GitHub's runners. If one of those starts
+missing locally, that is the ISP, not the reader — verify against CI before
+scoring it dark.
+
+### Local setup
+
+Node 22+, no dependencies at all. `git clone`, then:
+```bash
+export PERPLEXITY_API_KEY=...   # the only secret; it is a GitHub secret in CI
+npm run hooks                   # points core.hooksPath at .githooks
+node scripts/validate.mjs       # ship gate, must pass before every commit
+```
 
 ## Hard-won rules
 
