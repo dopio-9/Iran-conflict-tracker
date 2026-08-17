@@ -108,6 +108,163 @@ const BATCH3 = [
   "https://apnews.com/index.rss", "https://amwaj.media",
 ];
 
+
+/* BATCH 4 — the marine stack the user supplied, tested FROM CI this time.
+   These were dismissed earlier on a sandbox-only test (403/000), which proves
+   nothing: the sandbox is proxy-blocked from every news/AIS host. Free routes get
+   tested before any paid API is requested. */
+const BATCH4 = [
+  "https://www.marinevesseltraffic.com", "https://www.marinevesseltraffic.com/HORMUZ-STRAIT/ship-traffic-tracker",
+  "https://www.marinetraffic.com", "https://www.vesselfinder.com", "https://www.shipfinder.com",
+  "https://hormuzstraitmonitor.com", "https://www.hormuztracker.com", "https://hormuztracking.com",
+  "https://www.cruisingearth.com", "https://insights.windward.ai",
+  "https://straits.live/data", "https://straits.live/vessels",
+  // does PPLX support sub-day recency? (fast lane depends on it) — doc check only
+  "https://docs.perplexity.ai/api-reference/chat-completions-post",
+];
+
+/* BATCH 5 — COMPREHENSION probe, not a reachability probe.
+   Batch 4 proved these pages answer; it did not prove their NUMBERS are readable.
+   A dashboard's signal is the transit count, not the <title>. Three outcomes matter
+   and they have completely different costs, so they must be told apart before any
+   reader is written:
+     SERVER  — figures sit in the served markup            → plain fetch, cheap
+     API     — page hydrates from a JSON endpoint          → best case, clean json route
+     CLIENT  — canvas/JS paints it, markup holds nothing   → needs headless browser
+   Guessing between these is what produced the "0 usable feeds" line in batch 4. */
+const BATCH5 = [
+  "https://hormuzstraitmonitor.com", "https://www.hormuztracker.com", "https://hormuztracking.com",
+  "https://straits.live/vessels", "https://straits.live/data", "https://insights.windward.ai",
+  "https://www.vesselfinder.com", "https://www.shipfinder.com",
+];
+
+/* BATCH 6 — CONNECT. Every registry entry that has a URL recorded but NO reader.
+   All 45 sit at h0/m0: never fetched, not once. They are not dark and not failed —
+   nothing was ever wired to them. Reuters, UKMTO, IAEA, WAM, Anadolu and Mehr are
+   in here. Chasing new sources while these sit unplugged is the same instinct as
+   pruning: it reaches for novelty instead of using what is already owned.
+   The declared-feed check is the payload — a <link rel="alternate"> hit converts an
+   entry straight into the rss route, which is the only route running at 14/15. */
+const BATCH6 = [
+  // wires · media (diplomacy 1/23 lives or dies here)
+  "https://reuters.com", "https://apnews.com", "https://aa.com.tr", "https://npr.org",
+  "https://nbcnews.com", "https://cbsnews.com", "https://cnbc.com", "https://newarab.com",
+  // official · authority (nuclear 0/4 and ports_advisories are entirely here)
+  "https://iaea.org", "https://ukmto.org", "https://idf.il", "https://jmic.online",
+  "https://iranwatch.org", "https://thesoufancenter.org", "https://iea.org",
+  // gulf · uae_local 1/8 — the household's own geography
+  "https://wam.ae", "https://qna.org.qa", "https://alarabiya.net", "https://english.alarabiya.net",
+  // iranian domestic — the regional-language early layer, 3 producing today
+  "https://mehrnews.com", "https://tasnimnews.com", "https://presstv.ir", "https://iranwire.com",
+  "https://yjc.ir", "https://entekhab.ir", "https://fa.abna24.com", "https://ir.voanews.com",
+  "https://iranmonitor.org", "https://iranwarlive.com", "https://amwaj.media",
+  // axis · regional
+  "https://almasirah.net.ye", "https://ina.iq", "https://timesofisrael.com", "https://caliber.az",
+  "https://iz.ru", "https://kommersant.ru", "https://tag24.de", "https://ironsight.noblerworks.com",
+  // track · market
+  "https://marinetraffic.com", "https://adsbexchange.com", "https://flightradar24.com",
+  "https://flightaware.com", "https://kpler.com", "https://polymarket.com", "https://hormuztracking.com",
+];
+
+/** Does this page carry the FIGURES, or just the furniture?
+ *  Reports where the numbers live so a reader is written against fact, not hope. */
+function comprehend(html) {
+  const strip = html
+    .replace(/<script\b[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style\b[\s\S]*?<\/style>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  /* Hydration blobs: the whole dataset, already in the page, no endpoint needed. */
+  const blobs = [];
+  if (/__NEXT_DATA__/.test(html)) blobs.push("__NEXT_DATA__");
+  if (/__NUXT__/.test(html)) blobs.push("__NUXT__");
+  if (/application\/ld\+json/i.test(html)) blobs.push("ld+json");
+  if (/self\.__next_f/.test(html)) blobs.push("next-flight");
+
+  /* Candidate JSON endpoints referenced by the page's own scripts. Read from the
+     markup — never invented, same discipline as <link rel=alternate> for feeds. */
+  const api = new Set();
+  for (const m of html.matchAll(/["'`](\/(?:api|data|v\d)\/[A-Za-z0-9_\-\/.]{2,60})["'`]/g)) api.add(m[1]);
+  for (const m of html.matchAll(/["'`](https?:\/\/[A-Za-z0-9.\-]+\/(?:api|v\d)\/[A-Za-z0-9_\-\/.]{2,60})["'`]/g)) api.add(m[1]);
+
+  /* The actual question: are there numbers in the visible text, and do any of them
+     sit next to the vocabulary this tracker cares about? */
+  const numbers = (strip.match(/\b\d[\d,.]*\b/g) || []).length;
+  const DOMAIN = /\b(transit|vessel|ship|tanker|traffic|AIS|dark|arriv|depart|underway|anchor|escort|warship|naval)\w*\b/gi;
+  const domainHits = (strip.match(DOMAIN) || []).length;
+  const nearNumber = [];
+  for (const m of strip.matchAll(/([A-Za-z][A-Za-z ]{2,28}?)\s*[:\-–]?\s*(\d[\d,.]*)\s*(%|vessels?|ships?|transits?)?/g)) {
+    if (DOMAIN.test(m[1])) { DOMAIN.lastIndex = 0; nearNumber.push(`${m[1].trim()}=${m[2]}${m[3] || ""}`); }
+    if (nearNumber.length >= 6) break;
+  }
+
+  const verdict = nearNumber.length >= 2 ? "SERVER"
+    : blobs.length ? "BLOB"
+    : api.size ? "API"
+    : numbers < 20 && strip.length < 1200 ? "CLIENT"
+    : "THIN";
+
+  return { verdict, textLen: strip.length, numbers, domainHits, blobs, api: [...api].slice(0, 4), nearNumber, text: strip.slice(0, 260) };
+}
+
+/* BATCH 7 — ADVISORY. A viral post claims the US Embassy told Americans to
+   "consider leaving the region or prepare to depart immediately". The screenshot
+   attached to it proves only that an alert was issued on 1 Aug; the quoted
+   language is the aggregator's headline, not visible in the alert. Search
+   summaries say something materially weaker — ordered departure of NON-EMERGENCY
+   GOVERNMENT PERSONNEL, in force since March. Those are different claims with
+   different consequences for a household, so the alert gets read verbatim rather
+   than through anyone's summary, including a search engine's. */
+const BATCH7 = [
+  "https://ae.usembassy.gov/security-alert-u-s-embassy-abu-dhabi-and-u-s-consulate-general-dubai-august-1-2026/",
+  "https://ae.usembassy.gov/security-alert-u-s-embassy-abu-dhabi-and-u-s-consulate-general-dubai-july-24-2026/",
+  "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/united-arab-emirates-travel-advisory.html",
+  "https://ae.usembassy.gov/",
+];
+
+/** Print the page's readable text so a CLAIM can be checked against WORDS.
+ *  --comprehend answers "are there numbers here"; this answers "what does it say". */
+function dumpText(html, chars = 3000) {
+  return html
+    .replace(/<script\b[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style\b[\s\S]*?<\/style>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/&#8217;|&rsquo;/g, "'")
+    .replace(/&quot;|&ldquo;|&rdquo;/g, '"')
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, chars);
+}
+
+
+/* BATCH 8 — declared-feed discovery for the 22 sources on the html route.
+   Root cause established: 22 of 22 point at a bare HOMEPAGE, and the html reader
+   extracts JSON-LD datePublished / <time datetime>, which exist on ARTICLE pages
+   and not on landing pages. The reader was built to succeed only where it was
+   never pointed. These are not 22 dead sources; they are one design error, and
+   apply-score has been marking major outlets dark because of it.
+   The fix is a route change, not a parser rewrite: rss runs 20/24, html runs
+   5/27. Anything here that declares a feed moves to rss. */
+const BATCH9 = [
+  // GDELT DOC 2.0 — indirect route: aggregates the outlets that block us.
+  "https://api.gdeltproject.org/api/v2/doc/doc?format=json&mode=ArtList&maxrecords=5&timespan=24h&query=%22strait%20of%20hormuz%22",
+  // OSINT dashboards found via source listings, never probed
+  "https://worldmonitor.app", "https://signalcockpit.com", "https://osintnews.it/iran-monitor/",
+  "https://www.gdeltproject.org", "https://conflictly.app",
+];
+
+const BATCH8 = [
+  "https://bbc.com", "https://jpost.com", "https://gulfnews.com", "https://thenationalnews.com",
+  "https://irna.ir", "https://farsnews.ir", "https://khabaronline.ir", "https://alalam.ir",
+  "https://shafaq.com", "https://rudaw.net", "https://almayadeen.net", "https://thecradle.co",
+  "https://geo.tv", "https://thenews.com.pk", "https://tribune.com.pk",
+  "https://maritime-executive.com", "https://lloydslist.com", "https://portwatch.imf.org",
+  "https://stripes.com", "https://iiss.org", "https://english.ahram.org.eg", "https://al-monitor.com",
+];
+
 async function fetchWithTimeout(url) {
   const ac = new AbortController();
   const t = setTimeout(() => ac.abort(), TIMEOUT_MS);
@@ -153,7 +310,9 @@ async function probe(url) {
       const title = (body.match(/<title[^>]*>([\s\S]{0,80}?)<\/title>/i) || [])[1] || "";
       sample = `HTML "${title.trim().slice(0, 46)}"`;
     }
-    return { url, ok: true, status: res.status, ms, ct, bytes: body.length, feeds, sample, kind: isFeed ? "feed" : isJson ? "json" : "html" };
+    const comp = COMPREHEND && !isFeed && !isJson ? comprehend(body) : null;
+    const text = DUMP ? dumpText(body) : null;
+    return { url, ok: true, status: res.status, ms, ct, bytes: body.length, feeds, sample, comp, text, kind: isFeed ? "feed" : isJson ? "json" : "html" };
   } catch (e) {
     return { url, ok: false, status: 0, ms: Date.now() - t0, note: e.name === "AbortError" ? "TIMEOUT" : e.message.slice(0, 60) };
   }
@@ -169,8 +328,13 @@ async function runBatch(urls) {
 
 const argv = process.argv.slice(2);
 const feedsOnly = argv.includes("--feeds-only");
+const COMPREHEND = argv.includes("--comprehend");
+const CONNECT = argv.includes("--connect");
+const DUMP = argv.includes("--dump");
+const FEEDHUNT = argv.includes("--feedhunt");
+const DISCOVER = argv.includes("--discover");
 const urls = argv.filter(a => !a.startsWith("--"));
-const targets = urls.length ? urls : BATCH3;   // batch 3 only — keep the run tight
+const targets = urls.length ? urls : DISCOVER ? BATCH9 : FEEDHUNT ? BATCH8 : DUMP ? BATCH7 : CONNECT ? BATCH6 : COMPREHEND ? BATCH5 : BATCH4;
 
 console.log(`probe — ${targets.length} targets · runner egress · no PPLX spend\n`);
 const results = await runBatch(targets);
@@ -183,6 +347,22 @@ for (const r of results) {
   const feedNote = r.feeds && r.feeds.length ? `  → DECLARES ${r.feeds.length} feed(s): ${r.feeds.slice(0, 2).join(" , ")}` : "";
   console.log(`✔ ${String(r.status).padEnd(4)} ${String(r.ms + "ms").padEnd(7)} ${r.kind.padEnd(4)} ${r.url}`);
   console.log(`     ${r.sample}${feedNote}`);
+  if (r.text) console.log(`     TEXT> ${r.text}\n`);
+  if (r.comp) {
+    const c = r.comp;
+    console.log(`     ${c.verdict.padEnd(6)} text=${c.textLen}b numbers=${c.numbers} domain-words=${c.domainHits}`);
+    if (c.blobs.length)      console.log(`     blob   ${c.blobs.join(", ")}`);
+    if (c.api.length)        console.log(`     api?   ${c.api.join(" , ")}`);
+    if (c.nearNumber.length) console.log(`     FIGURES ${c.nearNumber.join(" · ")}`);
+    console.log(`     text>  ${c.text.slice(0, 200)}`);
+  }
+}
+
+if (COMPREHEND) {
+  const tally = {};
+  for (const r of reachable) if (r.comp) tally[r.comp.verdict] = (tally[r.comp.verdict] || 0) + 1;
+  console.log(`\n── COMPREHENSION ──`);
+  console.log(Object.entries(tally).map(([k, v]) => `${k}:${v}`).join("  ") || "none");
 }
 
 console.log(`\n── SUMMARY ──`);
