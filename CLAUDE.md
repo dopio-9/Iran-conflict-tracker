@@ -101,34 +101,75 @@ node scripts/validate.mjs       # ship gate, must pass before every commit
   minutes after the API changed its error text.
 - Do not spoof user agents or route around an operator's access control.
 
-## State (last verified 1 Aug 2026)
+## State (last verified 2 Aug 2026)
 
-- Registry `data/sources.json`: 193 sources, 40 producing, 89 never read
+- **`main` is current — Day 154, merged from `claude/signals-live-layer` in PR #4.**
+  Develop on `claude/signals-live-layer` and merge to `main` when ready to ship;
+  the fast-lane cron only fires from the default branch, so undelivered branch
+  work does not run on schedule.
+- Registry `data/sources.json`: 201 sources, 40 producing, 92 never read
   (no reader, h0/m0), 35 dark, 15 retired (all legitimately — telegram-web
   readers, 5 real misses each, likely deplatformed axis channels).
-- Routes: telegram-web 32 · html 27 (weakest, 5/27) · x-mirror 18 (5/18) ·
-  rss 24 (best, 20/24) · json 3 (3/3).
+- Routes: telegram-web 8/32 · html 5/27 (**known bug** — all 27 point at a bare
+  homepage; the reader needs `datePublished`/`<time>`, which live on article
+  pages, not landing pages — fix is a route change, not a parser rewrite) ·
+  x-mirror 5/18 (nitter mostly dead) · rss 19/24 (best route) · json 3/8
+  (OpenSky + adsb.lol confirmed; GDELT + 2 dashboards added, unverified — never
+  fetched, `--discover`/`--feedhunt` staged and waiting on CI).
 - Dark lanes: `nuclear` 0/4, `cyber_sabotage` 1/5, `diplomacy` 2/23,
-  `uae_local` 1/8 — mostly unwired, not sourceless.
-- `index.html` at Day 150 (28 Jul) — **stale**.
+  `uae_local` 1/8 — mostly unwired, not sourceless. GDELT queries registered
+  against all four, unverified.
 - Blocked by datacenter-ASN WAFs from both sandbox AND CI: Reuters, IAEA,
   UKMTO, IDF, MarineTraffic, FlightRadar24, Al Arabiya, Times of Israel,
-  AP, CBS, all `.gov`.
+  AP, CBS, all `.gov`. **Decided fix: run from a local laptop (residential IP)
+  instead of tunnelling — see "Where you are running" above. Tailscale/VPN
+  ruled out: the cloud sandbox cannot reach the Tailscale control plane at all
+  (tested, 000 on every endpoint), so a tunnel only ever helps from inside a
+  CI runner, and CI has been unreliable — see next point.**
+- **GitHub Actions stopped firing entirely as of 1 Aug** — pushes to valid
+  trigger paths across two workflows produced zero runs while both report
+  `active`. Not diagnosed from inside the repo (likely Actions minutes/billing
+  on the private repo — check Settings → Billing → Usage, and Settings →
+  Actions → General). This is why the move to a local laptop session matters:
+  it removes the CI dependency for fetching entirely.
+- **First completed fast→slow grading cycle**: `s-hormuz-talks` published as a
+  FLASH on 28 Jul on one day's evidence (Bloomberg + Farsi domestic press),
+  stated falsifier "strikes resume, or talks denied within 24h." Four days
+  later Trump confirmed the track and cancelled a planned strike — graded
+  CONFIRMED and promoted by hand. `resolve.mjs` still does not exist to do this
+  automatically; done manually twice so far (also `s-houthi-toll-denial`,
+  graded UNRESOLVED after 11 days silent).
+- **Lane-relevance filter shipped** in `flash.mjs` (`isRelevant()`). First live
+  run: 110 novel items, ~20 relevant, rest was recipes/telehealth/grape
+  farming. Gate counts DISTINCT MATCHED KEYWORDS across EN/FA/AR/HE, not
+  matched patterns — counting patterns silently zeroed out non-Latin scripts
+  (all Farsi terms live in one regex, so a real Farsi war headline could never
+  score above 1). If you touch this function, keep counting keywords, not
+  patterns, or you will reintroduce that exact bug.
+- `flash.mjs` cron added (`*/30 * * * *` in `social-fetch.yml`) but had not yet
+  taken effect pre-merge — GitHub only runs `schedule:` from the default
+  branch. Confirm post-merge that it is actually firing on schedule, not just
+  that the YAML is valid.
+- `HANDOFF.md` exists alongside this file — a build-attempt brief for a fresh
+  session/tool (e.g. Cowork) with no context, covering pre-checks and
+  stop-and-confirm points. Keep both in sync when either changes materially.
 
 ## Open work, in order
 
-1. **Tailscale exit node in CI** for the datacenter-blocked set. Owner is
-   supplying `TS_OAUTH_CLIENT_ID` / `TS_OAUTH_SECRET` (tag:ci) + exit-node host.
-   Tunnel UP for `.gov` and blocked wires, DOWN for everything else — a UAE exit
-   IP would likely lose Ynet / Haaretz / Israel Hayom, currently top performers.
-   Control D DNS does not help: the block is source IP/ASN, not resolution.
-2. **STEP enrolment** (`step.state.gov`) → embassy alerts arrive by email →
+1. **Confirm the laptop session is actually being used for fetching** (owner
+   is moving Claude Code to a local machine specifically to get a residential
+   IP and route around both the WAF blocks and the CI outage). Verify with the
+   reachability test above before assuming either sandbox or CI is still doing
+   the work.
+2. **Diagnose/fix the GitHub Actions outage** if the fast lane is meant to run
+   on CI at all going forward — check Actions minutes/billing first.
+3. **STEP enrolment** (`step.state.gov`) → embassy alerts arrive by email →
    read verbatim via the Gmail connector. Beats scraping; primary text, pushed.
-3. **`resolve.mjs`** — the 24h grading pass. Highest integrity debt.
-4. **Cron the fast lane.** It runs on push only, so it stops when nobody commits.
-5. **Lane-relevance filter in `flash.mjs`.** Last run: 110 novel items, ~20
-   relevant; the rest was recipes, telehealth, provincial newspaper front pages.
-6. Connect the 89 unread. Wire `straits.live` CSVs (`/data/transits.csv`,
+4. **`resolve.mjs`** — the 24h grading pass, still manual. Highest integrity debt.
+5. **Fix the `html` route** — move the 27 homepage-pointed sources to `rss`
+   wherever they declare a feed (`--feedhunt` batch is staged in `probe.mjs`,
+   blocked on CI/local fetch being available).
+6. Connect the 92 unread. Wire `straits.live` CSVs (`/data/transits.csv`,
    `hormuz-index.csv`, `status.csv`, `oil.csv`) and Windward — both SERVER-rendered.
 7. Stop `perplexity.mjs` discarding synthesis; point it at specific targets.
 8. X API when the owner supplies it — the single biggest fast-lane unlock.
@@ -136,4 +177,5 @@ node scripts/validate.mjs       # ship gate, must pass before every commit
 
 ## Branch
 
-Develop and push to `claude/signals-live-layer`.
+Develop on `claude/signals-live-layer`, merge to `main` to ship — `main` is
+production and the only branch the fast-lane cron runs from.
