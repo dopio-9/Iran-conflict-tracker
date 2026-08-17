@@ -1,9 +1,27 @@
 # HORMUZ·LIVE — handoff brief for a fresh build attempt
 
-Repo: `Iran-conflict-tracker`, branch `claude/signals-live-layer` (14+ commits
-ahead of `main` — main is stale at Day 149, branch is at Day 154, not yet
-merged). Read `CLAUDE.md` in the repo root first; this brief supplements it,
-doesn't replace it.
+Repo: `Iran-conflict-tracker`. `main` is production, currently Day 154
+(merged from `claude/signals-live-layer` via PR #4). Develop on
+`claude/signals-live-layer`, merge to `main` to ship — the fast-lane cron only
+fires from the default branch. Read `CLAUDE.md` in the repo root first; this
+brief supplements it, doesn't replace it.
+
+**Fetch strategy is environment-dependent — test before assuming.** GitHub
+Actions (the CI that previously did all fetching) stopped firing entirely as of
+1 Aug: pushes to valid trigger paths across two workflows produced zero runs
+while both reported `active`. Likely Actions minutes/billing on the private
+repo, not diagnosable from inside the repo — check Settings → Billing → Usage.
+The owner is moving this session to a local laptop specifically to get a
+residential IP, which also removes the CI dependency entirely: run
+`curl -s -o /dev/null -w "%{http_code}\n" --max-time 8 https://gcaptain.com` —
+200 means fetch directly in-session, 000/403 means you're sandboxed and need
+CI (once CI is confirmed working again).
+
+Tailscale/VPN tunnelling was investigated and ruled out for this session: the
+cloud sandbox cannot reach the Tailscale control plane at all (tested, every
+endpoint returned 000), so a tunnel only ever helps from inside a CI runner —
+and CI is the thing that's currently broken. Don't re-propose it without first
+confirming CI is healthy again.
 
 ## 1. What this is
 
