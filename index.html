@@ -56,7 +56,10 @@ body{
 }
 .uaeline .k{font-family:var(--mono); font-size:9px; font-weight:700; letter-spacing:.22em; color:var(--dim); margin-bottom:5px}
 .uaeline .v{font-size:15px; line-height:1.5; color:var(--bright); font-weight:500}
-.uaeline .act{margin-top:8px; font-size:13px; color:var(--tcolor); font-weight:600}
+.uaeline .v p{margin:0 0 10px}
+.uaeline .v p:last-child{margin-bottom:0}
+.uaeline .v p:first-child{font-weight:700; color:var(--ink)}
+.uaeline .act{margin-top:10px; font-size:13px; color:var(--tcolor); font-weight:600; line-height:1.4}
 .uaeline .act::before{content:"→ "}
 .chips{position:relative; display:flex; gap:8px; margin-top:12px; overflow-x:auto; scrollbar-width:none; padding-bottom:2px}
 .chips::-webkit-scrollbar{display:none}
@@ -232,8 +235,8 @@ svg.trace .hot{fill:none; stroke:var(--danger); stroke-width:2.2}
     "level": 3,
     "word": "SEVERE",
     "direction": "▲ WORSENING",
-    "uae_line": "Day 196: the ceasefire declared in April is real on paper and hollow in practice — 125 logged violations, 56 confirmed strikes since, and Iran treats the underlying MOU as expired since 17 August. Hormuz has not reopened; it runs at roughly half normal volume, and unattributed strikes hit two vessels at its Omani entrance this week alongside an unconfirmed Iranian claim of destroying a US naval drone there. Bab el-Mandeb is worse than last checked: the Houthis have captured the port of Mokha outright, with reported Iranian direction, threatening Saudi Arabia's own Hormuz workaround at Yanbu. Satellite imagery shows renewed construction at an Iranian nuclear tunnel site, and Trump has pre-committed to a hard response if it continues. The one genuinely hopeful item: Oman hosts Iran and all six GCC states together on Hormuz security on 14 September, the first such meeting of the war, and two former Iranian presidents have broken publicly with hardline rhetoric to call for an end to it. UAE soil remains unstruck. Iran answered by hitting Jordan directly for the first time — ballistic missiles at US aircraft on Aqaba's airport, intercepted, with Israel firing Iron Dome interceptors over Eilat at the fragments — plus fresh hits on Kuwait's Al-Adiri camp and Ali Al Salem Air Base and explosions over Erbil, Iraq. UKMTO independently confirms a tanker was struck by an unknown projectile near Limah, Oman; the IRGC's own 'mines' framing is still flatly denied by CENTCOM. The Houthis say their Saudi naval blockade is 'effective immediately.' The one counterweight: Qatar, Egypt and Pakistan have put a 10-day ceasefire proposal on the table to reopen Hormuz both ways — unaccepted so far, with Trump reportedly weighing a return to all-out war instead. UAE soil remains untouched — but the maritime edge is now being tested too: UKMTO reports a vessel struck by an unknown projectile just 17NM east of Dibba, on the UAE's own Gulf-of-Oman coast (cause unverified, unattributed). Update 22 Jul: Iran is now striking Kuwait & Bahrain directly — the UAE is increasingly the last unhit GCC state; its soil remains untouched but the ring has tightened by land, sea and air.",
-    "action": "No change to daily movement. Keep fuel topped and ~2 weeks of essentials. Watch NCEMA / UAE-MOD wording and Red Sea + Gulf AIS — not viral posts. Treat any 'UAE strike' or 'evacuate' claim as unverified until an official, dated source confirms; the target set has now widened to Jordan and Iraq in 24 hours, so do not assume any state is exempt by precedent."
+    "uae_line": "Day 196: the April ceasefire is real on paper and hollow in practice.\n\n125 logged violations and 56 confirmed strikes since 8 April; Iran treats the underlying MOU as expired since 17 August. Hormuz has not reopened — it runs at roughly half normal volume, with unattributed strikes on two vessels at its Omani entrance this week and an unconfirmed Iranian claim of destroying a US naval drone there.\n\nBab el-Mandeb is worse than last checked: the Houthis have captured the port of Mokha outright, with reported Iranian direction, threatening Saudi Arabia's own Hormuz workaround at Yanbu. Satellite imagery shows renewed construction at an Iranian nuclear tunnel site, and Trump has pre-committed to a hard response if it continues.\n\nThe one genuinely hopeful item: Oman hosts Iran and all six GCC states together on Hormuz security on 14 September, the first such meeting of the war, and two former Iranian presidents have broken publicly with hardline rhetoric to call for an end to it. UAE soil remains unstruck.",
+    "action": "No change to daily movement. Keep fuel topped and ~2 weeks of essentials. Watch NCEMA / UAE-MOD wording and Hormuz + Red Sea AIS data, not viral posts. Treat any 'UAE strike' or 'evacuate' claim as unverified until an official, dated source confirms. Watch 14 Sep: the Oman-GCC-Iran talks are the one date that could move Hormuz in either direction."
   },
   "strait": {
     "status": "BLOCKADED",
@@ -305,10 +308,10 @@ svg.trace .hot{fill:none; stroke:var(--danger); stroke-width:2.2}
     },
     {
       "id": "s-khasab-attack",
-      "tier": "flash",
+      "tier": "pending",
       "region": "OMAN · KHASAB · HORMUZ ENTRANCE",
       "last_seen": "2026-09-10T13:17:30.423Z",
-      "momentum": "gaining",
+      "momentum": "flat",
       "via_recall": false,
       "claim": "Two vessels struck by unattributed projectiles off Khasab, Oman (Musandam Peninsula, at the Hormuz entrance) overnight 10-11 Sep; one caught fire. UKMTO confirmed the incident; no group has claimed responsibility.",
       "sources": [
@@ -325,7 +328,8 @@ svg.trace .hot{fill:none; stroke:var(--danger); stroke-width:2.2}
           "date": "11 Sep 2026"
         }
       ],
-      "note": "FLASH — unattributed and unclaimed. Oman is a non-combatant hosting the Sep 14 GCC-Iran talks; an attack in its waters right before that meeting is either a message or a coincidence, and nothing here tells us which. FALSIFIER: any group claims it, or investigation attributes it."
+      "note": "FLASH — unattributed and unclaimed. Oman is a non-combatant hosting the Sep 14 GCC-Iran talks; an attack in its waters right before that meeting is either a message or a coincidence, and nothing here tells us which. FALSIFIER: any group claims it, or investigation attributes it. [UNRESOLVED after 48h — no group has claimed the Khasab strikes and no investigation attribution has surfaced. Demoted from FLASH to a standing watch.]",
+      "watch": true
     },
     {
       "id": "s-saildrone-claim",
@@ -2213,6 +2217,11 @@ document.documentElement.style.setProperty('--pulse', L.pulse);
 
 const MEDIUMS = ['OFF','WIRE','OSINT','STATE','SOC'];
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+/* uae_line is authored as \n\n-separated paragraphs — the lead sentence carries
+   the headline fact, later paragraphs carry supporting detail. A single
+   unbroken block reads as noise; this restores the hierarchy without
+   inventing new markup elsewhere. */
+const paras = s => String(s).split(/\n{2,}/).map(p => `<p>${esc(p.trim())}</p>`).join('');
 
 /* ── TIME IS DERIVED, NEVER AUTHORED ───────────────────────────────
    age and the live dot are computed in the browser from last_seen, so the page
@@ -2343,7 +2352,7 @@ app.innerHTML = `
     </div>
     <div class="uaeline">
       <div class="k">YOUR LINE — UAE</div>
-      <div class="v">${esc(D.threat.uae_line)}</div>
+      <div class="v">${paras(D.threat.uae_line)}</div>
       <div class="act">${esc(D.threat.action)}</div>
     </div>
     <div class="chips">
