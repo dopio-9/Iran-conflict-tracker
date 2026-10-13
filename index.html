@@ -238,6 +238,8 @@ svg.trace .hot{fill:none; stroke:var(--danger); stroke-width:2.2}
 .rm{font-family:var(--mono);font-size:9px;color:var(--dim);margin-top:5px;line-height:1.6}
 .rm a{color:var(--flash)}
 .rawmore{display:block;margin:10px auto 0;font-size:10px;padding:6px 12px}
+.anage{font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;color:var(--pending);border:1px solid color-mix(in srgb,var(--pending) 45%,transparent);border-radius:6px;padding:8px 10px;margin:14px 0 0;line-height:1.5}
+.anage b{color:var(--bright)}
 .rawempty{font-family:var(--mono);font-size:10px;color:var(--faint);padding:10px 2px}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none !important; transition:none !important}
@@ -2243,6 +2245,16 @@ document.documentElement.style.setProperty('--pulse', L.pulse);
 
 const MEDIUMS = ['OFF','WIRE','OSINT','STATE','SOC'];
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+/* Age of the hand-written analysis, derived from its own "DD MON YYYY · HH:MM GST"
+   stamp. Shown only when it is older than 2 days, so stale advice is labelled. */
+const anAge = s => {
+  const m = String(s||'').match(/(\d{1,2}) ([A-Z]{3}) (\d{4}) · (\d{2}):(\d{2})/i);
+  if (!m) return '';
+  const mon = 'JANFEBMARAPRMAYJUNJULAUGSEPOCTNOVDEC'.indexOf(m[2].toUpperCase())/3;
+  const t = Date.UTC(+m[3], mon, +m[1], +m[4]-4, +m[5]);
+  const d = Math.floor((Date.now()-t)/86400e3);
+  return d > 2 ? '<div class="anage"><b>ANALYSIS BELOW IS '+d+' DAYS OLD</b> — last written '+esc(m[1]+' '+m[2]+' '+m[3])+'. The RAW feed above is current.</div>' : '';
+};
 /* uae_line is authored as \n\n-separated paragraphs — the lead sentence carries
    the headline fact, later paragraphs carry supporting detail. A single
    unbroken block reads as noise; this restores the hierarchy without
@@ -2365,6 +2377,11 @@ function traceSVG(t){
 }
 
 app.innerHTML = `
+  <section id="raw">
+    <div class="lanehead"><span class="live"></span><h2>RAW</h2><span class="sub">machine-collected · unvetted · newest first</span></div>
+    <div id="rawbody" class="rawbody">loading raw feed…</div>
+  </section>
+  ${anAge(D.meta.updated)}
   <header class="hero">
     <div class="field"></div>
     <div class="masthead">
@@ -2387,10 +2404,6 @@ app.innerHTML = `
     </div>
   </header>
 
-  <section id="raw">
-    <div class="lanehead"><span class="live"></span><h2>RAW</h2><span class="sub">machine-collected · unvetted · newest first</span></div>
-    <div id="rawbody" class="rawbody">loading raw feed…</div>
-  </section>
 
   <section>
     <div class="lanehead"><span class="live"></span><h2>SIGNALS</h2><span class="sub">unconfirmed lives here — never above</span></div>
@@ -2467,7 +2480,7 @@ document.querySelectorAll('.sig').forEach(el=>{
     const grade=R?' · graded so far: '+(R.echoed||0)+' echoed, '+(R['no-echo']||0)+' alone, '+(R.refuted||0)+' refuted':'';
     const head='<div class="rawstat'+(stale?' stale':'')+'">'+(stale?'<b>STALE</b> — collector silent for '+ago(age)+'. ':'')
       +'collected '+Dd(M.updated)+' '+T(M.updated)+' GST · '+ago(age)+' ago · '+(L.new??0)+' new · '
-      +(L.reachable??'?')+'/'+(L.sources??'?')+' routes answered · translate: '+esc(L.translate||'n/a')+exp+grade+'</div>'
+      +(L.reachable??'?')+'/'+(L.sources??'?')+' routes answered · translate: '+esc(/quota|401/i.test(L.translate||'')?'OFF — Perplexity credits exhausted, lines shown in original language':String(L.translate||'n/a').slice(0,70))+exp+grade+'</div>'
       +'<div class="rawfunnel">last run — fetched '+(L.fetched??0)+' → outside window '+(L.out_of_window??0)
       +' · already seen '+(L.seen_before??0)+' · off-topic '+(L.off_topic??0)+' → kept '+(L.kept??0)+'</div>';
     const badge=it=>{const r=it.res; if(!r) return '';
@@ -2476,7 +2489,7 @@ document.querySelectorAll('.sig').forEach(el=>{
       return '<span class="rb alone">alone 24h</span>';};
     const row=it=>{const u=safeUrl(it.url); return '<div class="rr'+(it.res&&it.res.status==='refuted'?' isref':'')+'">'
       +'<span class="rt">'+(Dd(it.ts)===today?'':Dd(it.ts)+' ')+T(it.ts)+'</span>'
-      +'<span class="rl"><b class="rs">'+esc(it.src)+'</b>'+badge(it)+' '+esc(it.line)+(it.untranslated?' <i class="ru">untranslated</i>':'')+'</span>'
+      +'<span class="rl"><b class="rs"><bdi>'+esc(it.src)+'</bdi></b>'+badge(it)+' <bdi>'+esc(it.line)+'</bdi>'+(it.untranslated?' <i class="ru">untranslated</i>':'')+'</span>'
       +'<button class="rshow" type="button" aria-expanded="false">show</button>'
       +'<div class="rx"><div class="ro" dir="auto">'+esc(it.orig)+'</div><div class="rm">'
       +(it.via?'via '+esc(it.via)+' · ':'')+esc(it.lang||'')+(it.tr?' · machine-translated':'')
