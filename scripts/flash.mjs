@@ -184,9 +184,17 @@ export async function collect(reg) {
   const results = [];
   for (let i = 0; i < rest.length; i += CONCURRENCY)
     results.push(...await Promise.all(rest.slice(i, i + CONCURRENCY).map(pull)));
+  /* GitHub's runners share IPs, so GDELT often answers 429 even at 1 req/5s.
+     Space queries 12s apart and back off twice (20s, 40s) on 429 before giving up. */
   for (const [i, s] of gd.entries()) {
-    if (i) await new Promise(r => setTimeout(r, 6000));
-    results.push(await pull(s));
+    if (i) await new Promise(r => setTimeout(r, 12000));
+    let res = await pull(s);
+    for (const wait of [20000, 40000]) {
+      if (!res.err || !/429/.test(res.err)) break;
+      await new Promise(r => setTimeout(r, wait));
+      res = await pull(s);
+    }
+    results.push(res);
   }
   return { live, results };
 }
