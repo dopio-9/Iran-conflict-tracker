@@ -138,16 +138,64 @@ function parseTelegram(html) {
     const text = (b.match(/<div class="tgme_widget_message_text[^"]*"[^>]*>([\s\S]*?)<\/div>/i) || [])[1] || "";
     const title = text.replace(/<br\s*\/?>/gi, " ").replace(/<[^>]+>/g, " ")
       .replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/\s+/g, " ").trim();
-    const link = (b.match(/href="(https:\/\/t\.me\/[^"]+)"/i) || [])[1] || null;
-    if (title && !isNaN(ts)) out.push({ title: title.slice(0, 240), ts, link, body: "" });
+    const post = (b.match(/data-post="([^"]+)"/i) || [])[1];
+    const link = post ? `https://t.me/${post}` : ((b.match(/href="(https:\/\/t\.me\/[^"]+)"/i) || [])[1] || null);
+    if (title && !isNaN(ts)) out.push({ title: title.slice(0, 240), orig: title.slice(0, 600), ts, link, body: "" });
   }
   return out;
+}
+
+/* GDELT DOC API (mode=artlist, format=json). GDELT indexes thousands of small
+   outlets in 100+ languages and machine-translates them for search, so English
+   query terms reach Farsi/Arabic/Urdu/Turkish local press. seendate is when GDELT
+   first saw the article — the closest thing to a timestamp it offers. */
+export function parseGdelt(txt) {
+  let j; try { j = JSON.parse(txt); } catch { return []; }
+  return (j.articles || []).map(a => {
+    const m = String(a.seendate || "").match(/^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})Z$/);
+    const ts = m ? Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], +m[6]) : NaN;
+    return { title: String(a.title || "").trim(), orig: String(a.title || "").trim(), ts: isNaN(ts) ? null : ts,
+      link: a.url || null, outlet: a.domain || null, lang: a.language || null };
+  }).filter(i => i.title);
+}
+
+/* Aggregators are routes, not sources: the outlet that published is the source.
+   Google News titles carry it as a "Headline - Outlet" suffix. */
+export function normalize(s, it) {
+  let title = it.title, outlet = it.outlet || null;
+  if (s.feed?.agg === "gnews") {
+    const i = title.lastIndexOf(" - ");
+    if (i > 10) { outlet = title.slice(i + 3).trim(); title = title.slice(0, i).trim(); }
+  }
+  const via = s.feed?.agg === "gnews" ? "Google News" : s.feed?.fmt === "gdelt" ? "GDELT"
+    : s.feed?.kind === "telegram-web" ? "Telegram" : null;
+  return { title, orig: it.orig || title, ts: it.ts, url: it.link || null,
+    src: outlet || s.name, via, lang: it.lang || s.language || "?", agg: !!(s.feed?.agg || s.feed?.fmt) };
+}
+
+export const isRealtime = s => !s.retired && s.feed?.url &&
+  (s.feed.kind === "rss" || s.feed.kind === "telegram-web" || (s.feed.kind === "json" && s.feed.fmt === "gdelt"));
+
+/* Fetch every realtime source. GDELT asks for ≤1 request per 5s, so its queries
+   run one at a time with spacing; everything else runs CONCURRENCY-wide. */
+export async function collect(reg) {
+  const live = reg.filter(isRealtime);
+  const gd = live.filter(s => s.feed.fmt === "gdelt"), rest = live.filter(s => s.feed.fmt !== "gdelt");
+  const results = [];
+  for (let i = 0; i < rest.length; i += CONCURRENCY)
+    results.push(...await Promise.all(rest.slice(i, i + CONCURRENCY).map(pull)));
+  for (const [i, s] of gd.entries()) {
+    if (i) await new Promise(r => setTimeout(r, 6000));
+    results.push(await pull(s));
+  }
+  return { live, results };
 }
 
 async function pull(s) {
   try {
     const txt = await fetchText(s.feed.url);
-    const items = s.feed.kind === "telegram-web" ? parseTelegram(txt) : parseFeed(txt);
+    const items = s.feed.kind === "telegram-web" ? parseTelegram(txt)
+      : s.feed.fmt === "gdelt" ? parseGdelt(txt) : parseFeed(txt);
     return { s, items, err: null };
   } catch (e) {
     return { s, items: [], err: e.message.slice(0, 40) };
@@ -159,14 +207,8 @@ async function run({ windowH = DEFAULT_WINDOW_H } = {}) {
   /* Realtime routes only. html has no realtime sources and returns undated text,
      which cannot be placed in a time window at all — the fast lane is entirely a
      question of WHEN, so an undated source has nothing to contribute to it. */
-  const live = reg.filter(s => !s.retired && s.feed?.url &&
-    (s.feed.kind === "rss" || s.feed.kind === "telegram-web"));
-
+  const { live, results } = await collect(reg);
   console.log(`flash — ${live.length} realtime sources · ${windowH}h window · novelty vs data/claims.json\n`);
-
-  const results = [];
-  for (let i = 0; i < live.length; i += CONCURRENCY)
-    results.push(...await Promise.all(live.slice(i, i + CONCURRENCY).map(pull)));
 
   const now = Date.now();
   const claims = loadClaims();
