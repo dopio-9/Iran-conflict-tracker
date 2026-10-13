@@ -6,11 +6,6 @@ name: probe
 # registry costs a couple of cycles instead of dozens.
 on:
   workflow_dispatch:
-  push:
-    branches: [claude/signals-live-layer]
-    paths:
-      - scripts/probe.mjs
-      - .github/workflows/probe.yml
 jobs:
   probe:
     runs-on: ubuntu-latest

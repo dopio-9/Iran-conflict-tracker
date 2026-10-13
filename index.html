@@ -213,6 +213,32 @@ svg.trace .hot{fill:none; stroke:var(--danger); stroke-width:2.2}
 .fmeta{font-family:var(--mono); font-size:9px; color:var(--faint); margin-top:3px; letter-spacing:.02em}
 .fmeta .eng{color:var(--dim)}
 
+/* RAW lane — rendered straight from data/feed.json; no model selects what shows */
+.rawbody{margin-top:4px}
+.rawstat{font-family:var(--mono);font-size:9.5px;color:var(--dim);letter-spacing:.04em;line-height:1.6;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:var(--surface);margin:0 0 6px}
+.rawstat.stale{color:var(--bright);border-color:var(--danger);background:color-mix(in srgb,var(--danger) 14%,var(--surface))}
+.rawstat.stale b{color:var(--danger)}
+.rawfunnel{font-family:var(--mono);font-size:9px;color:var(--faint);margin:0 2px 8px;line-height:1.5}
+.rr{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:2px 10px;align-items:baseline;padding:7px 2px;border-bottom:1px solid var(--line)}
+.rt{font-family:var(--mono);font-size:10px;color:var(--dim);white-space:nowrap;font-variant-numeric:tabular-nums}
+.rl{font-size:13px;line-height:1.4;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rs{font-weight:600;color:var(--bright);margin-right:4px}
+.ru{font-family:var(--mono);font-size:8.5px;color:var(--pending);font-style:normal}
+.rb{font-family:var(--mono);font-size:8.5px;padding:1px 5px;border-radius:3px;margin:0 2px 0 0}
+.rb.ech{color:var(--ver);border:1px solid color-mix(in srgb,var(--ver) 45%,transparent)}
+.rb.alone{color:var(--faint);border:1px solid var(--line2)}
+.rb.ref{color:var(--danger);border:1px solid var(--danger)}
+.isref .rl{text-decoration:line-through;color:var(--dim)}
+.rshow,.rawmore{font-family:var(--mono);font-size:9px;letter-spacing:.06em;color:var(--flash);background:none;border:1px solid var(--line2);border-radius:4px;padding:3px 8px;cursor:pointer}
+.rshow:focus-visible,.rawmore:focus-visible{outline:2px solid var(--flash);outline-offset:2px}
+.rx{display:none;grid-column:1/-1;padding:6px 0 4px}
+.rr.open .rx{display:block}
+.rr.open .rl{white-space:normal}
+.ro{font-size:13px;line-height:1.55;color:var(--ink);padding:8px 10px;background:var(--surface2);border-radius:6px;overflow-wrap:anywhere}
+.rm{font-family:var(--mono);font-size:9px;color:var(--dim);margin-top:5px;line-height:1.6}
+.rm a{color:var(--flash)}
+.rawmore{display:block;margin:10px auto 0;font-size:10px;padding:6px 12px}
+.rawempty{font-family:var(--mono);font-size:10px;color:var(--faint);padding:10px 2px}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none !important; transition:none !important}
 }
@@ -2361,6 +2387,11 @@ app.innerHTML = `
     </div>
   </header>
 
+  <section id="raw">
+    <div class="lanehead"><span class="live"></span><h2>RAW</h2><span class="sub">machine-collected · unvetted · newest first</span></div>
+    <div id="rawbody" class="rawbody">loading raw feed…</div>
+  </section>
+
   <section>
     <div class="lanehead"><span class="live"></span><h2>SIGNALS</h2><span class="sub">unconfirmed lives here — never above</span></div>
     <div class="ladder"><b class="lf">FLASH</b> raw → <b class="lp">PENDING</b> → <b class="lv">VER</b> one source → <b class="lv">VER²</b> multi-source, independent mediums → <b class="ld">DISPUTED</b> shown as conflict. Nothing tops out on one source. Dead rumors drop.</div>
@@ -2404,17 +2435,9 @@ app.innerHTML = `
     <div class="dbody">${items(D.practical)}</div>
   </details>
 
-  <details>
-    <summary>RECALL ENGINE — RULES</summary>
-    <div class="dbody"><div class="recallrule">
-      <b class="ok">STATUS: LIVE + VERIFIED.</b> The web-recall engine (Perplexity) is proven against the live API (CI run 29687989324) and runs as a <b>second recall lane beside web search</b>. It is a lead-finder, never a source: its output is decomposed to primaries, each date-stamped; it never sets a tier, never verifies, never appears as a WIRE source.<br><br>
-      <b>WHY TWO ENGINES.</b> Web search and Perplexity are independent recall paths. When both surface the same primary, confidence rises (cross-engine convergence). When they diverge, that is a flag. Perplexity's per-primary dates are the mechanism that catches recirculation — an old think-piece dressed as 'now.'<br><br>
-      <b>THE PIPE.</b> Recall proposes → primaries are extracted &amp; dated → each primary lights one medium slot → tier is earned from independent mediums only → the <span class="mono" style="color:var(--lead)">LEAD·RECALL</span> chip stays on the card as provenance. Any primary older than the claim window is flagged <span class="mono" style="color:var(--danger)">STALE PRIMARY</span> and the signal is held weightless.
-    </div></div>
-  </details>
 
   <div class="foot">
-    ONE PAGE · ONE DATA BLOCK — update by editing the JSON at the top of this file. no build, no host, no runner required.<br>
+    Analysis: the JSON block at the top of this file · RAW feed: data/feed.json, written by the GitHub collector. Times in GST.<br>
     <b>hormuz-live.html</b> · Day ${D.meta.day} · signals lane is the product
   </div>
 `;
@@ -2423,6 +2446,53 @@ app.innerHTML = `
 document.querySelectorAll('.sig').forEach(el=>{
   el.addEventListener('click', ()=> el.classList.toggle('open'));
 });
+
+/* RAW lane — straight from data/feed.json, written by the GitHub collector.
+   Every item that passed RECENT + NOVEL + TOPIC shows; nothing is chosen by a model.
+   Freshness is derived from the data's own timestamp, never authored. */
+(function(){
+  const box=document.getElementById('rawbody'); if(!box) return;
+  const tf=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Dubai',hour:'2-digit',minute:'2-digit',hour12:false});
+  const df=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Dubai',day:'2-digit',month:'short'});
+  const T=iso=>tf.format(new Date(iso)), Dd=iso=>df.format(new Date(iso));
+  const ago=ms=>{const m=Math.max(0,Math.round(ms/60000));return m<60?m+'m':m<2880?Math.round(m/60)+'h':Math.round(m/1440)+'d';};
+  const today=Dd(new Date().toISOString());
+  const safeUrl=u=>/^https?:\/\//i.test(String(u||''))?u:null;
+  fetch('data/feed.json?t='+Date.now(),{cache:'no-store'})
+  .then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
+  .then(F=>{
+    const M=F.meta||{}, L=M.last_run||{}, items=F.items||[], R=M.resolved||null;
+    const age=Date.now()-Date.parse(M.updated), stale=!(age<4*3600e3);
+    const exp=M.experiment?' · experiment: collecting until '+Dd(M.experiment.end)+' '+T(M.experiment.end)+' GST':'';
+    const grade=R?' · graded so far: '+(R.echoed||0)+' echoed, '+(R['no-echo']||0)+' alone, '+(R.refuted||0)+' refuted':'';
+    const head='<div class="rawstat'+(stale?' stale':'')+'">'+(stale?'<b>STALE</b> — collector silent for '+ago(age)+'. ':'')
+      +'collected '+Dd(M.updated)+' '+T(M.updated)+' GST · '+ago(age)+' ago · '+(L.new??0)+' new · '
+      +(L.reachable??'?')+'/'+(L.sources??'?')+' routes answered · translate: '+esc(L.translate||'n/a')+exp+grade+'</div>'
+      +'<div class="rawfunnel">last run — fetched '+(L.fetched??0)+' → outside window '+(L.out_of_window??0)
+      +' · already seen '+(L.seen_before??0)+' · off-topic '+(L.off_topic??0)+' → kept '+(L.kept??0)+'</div>';
+    const badge=it=>{const r=it.res; if(!r) return '';
+      if(r.status==='refuted') return '<span class="rb ref">REFUTED</span>';
+      if(r.status==='echoed') return '<span class="rb ech" title="'+esc((r.by||[]).join(', '))+'">×'+r.n+'</span>';
+      return '<span class="rb alone">alone 24h</span>';};
+    const row=it=>{const u=safeUrl(it.url); return '<div class="rr'+(it.res&&it.res.status==='refuted'?' isref':'')+'">'
+      +'<span class="rt">'+(Dd(it.ts)===today?'':Dd(it.ts)+' ')+T(it.ts)+'</span>'
+      +'<span class="rl"><b class="rs">'+esc(it.src)+'</b>'+badge(it)+' '+esc(it.line)+(it.untranslated?' <i class="ru">untranslated</i>':'')+'</span>'
+      +'<button class="rshow" type="button" aria-expanded="false">show</button>'
+      +'<div class="rx"><div class="ro" dir="auto">'+esc(it.orig)+'</div><div class="rm">'
+      +(it.via?'via '+esc(it.via)+' · ':'')+esc(it.lang||'')+(it.tr?' · machine-translated':'')
+      +(it.res&&it.res.note?' · '+esc(it.res.note):'')
+      +(u?' · <a href="'+esc(u)+'" target="_blank" rel="noopener noreferrer">open source ↗</a>':'')+'</div></div></div>';};
+    const N=60;
+    box.innerHTML=head+(items.length?items.slice(0,N).map(row).join(''):'<div class="rawempty">No items collected yet.</div>')
+      +(items.length>N?'<button class="rawmore" type="button">show all '+items.length+'</button>':'');
+    box.addEventListener('click',e=>{
+      const b=e.target.closest('.rshow');
+      if(b){const r=b.parentElement, o=r.classList.toggle('open'); b.textContent=o?'hide':'show'; b.setAttribute('aria-expanded',String(o)); return;}
+      const m=e.target.closest('.rawmore'); if(m){m.remove(); box.insertAdjacentHTML('beforeend',items.slice(N).map(row).join(''));}
+    });
+  })
+  .catch(err=>{box.innerHTML='<div class="rawstat stale"><b>RAW FEED UNAVAILABLE</b> — '+esc(err.message)+'. The collector has not written data/feed.json yet.</div>';});
+})();
 </script>
 </body>
 </html>

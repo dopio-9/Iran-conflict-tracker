@@ -4884,5 +4884,210 @@
     "notes": "real-time Iran conflict OSINT dashboard — found via OSINT source listings, not yet probed",
     "site": "osintnews.it/iran-monitor/",
     "consecutiveMisses": 0
+  },
+  {
+    "id": 202,
+    "platform": "Web",
+    "domain": "Aggregator route",
+    "geography": "Multi-region",
+    "role": "early",
+    "tier": "META",
+    "theater": "cross-theater",
+    "medium": "META",
+    "hits": 0,
+    "misses": 0,
+    "name": "Google News · Farsi war search",
+    "language": "Farsi",
+    "lanes": [
+      "strikes_ops",
+      "leadership_internal",
+      "threats"
+    ],
+    "notes": "Route, not a source: surfaces Iranian domestic outlets; each item is attributed to its own outlet.",
+    "feed": {
+      "kind": "rss",
+      "agg": "gnews",
+      "realtime": true,
+      "url": "https://news.google.com/rss/search?q=%D9%87%D8%B1%D9%85%D8%B2%20OR%20%D8%B3%D9%BE%D8%A7%D9%87%20OR%20%D8%AD%D9%85%D9%84%D9%87%20OR%20%D9%85%D9%88%D8%B4%DA%A9%20OR%20%D9%BE%D9%87%D9%BE%D8%A7%D8%AF%20OR%20%D8%A8%D9%86%D8%AF%D8%B1%D8%B9%D8%A8%D8%A7%D8%B3%20when%3A1d&hl=fa&gl=IR&ceid=IR%3Afa"
+    }
+  },
+  {
+    "id": 203,
+    "platform": "Web",
+    "domain": "Aggregator route",
+    "geography": "Multi-region",
+    "role": "early",
+    "tier": "META",
+    "theater": "cross-theater",
+    "medium": "META",
+    "hits": 0,
+    "misses": 0,
+    "name": "Google News · Arabic war search",
+    "language": "Arabic",
+    "lanes": [
+      "proxy_axis",
+      "maritime_incidents",
+      "strikes_ops"
+    ],
+    "notes": "Route: Gulf/Levant/Yemen Arabic outlets, attributed per outlet.",
+    "feed": {
+      "kind": "rss",
+      "agg": "gnews",
+      "realtime": true,
+      "url": "https://news.google.com/rss/search?q=%D9%87%D8%B1%D9%85%D8%B2%20OR%20%D8%A7%D9%84%D8%AD%D9%88%D8%AB%D9%8A%20OR%20%D8%A5%D9%8A%D8%B1%D8%A7%D9%86%20OR%20%D8%B5%D8%A7%D8%B1%D9%88%D8%AE%20OR%20%D9%85%D8%B3%D9%8A%D8%B1%D8%A9%20OR%20%D8%A7%D9%84%D8%AD%D8%B1%D8%B3%20%D8%A7%D9%84%D8%AB%D9%88%D8%B1%D9%8A%20when%3A1d&hl=ar&gl=AE&ceid=AE%3Aar"
+    }
+  },
+  {
+    "id": 204,
+    "platform": "Web",
+    "domain": "Aggregator route",
+    "geography": "Multi-region",
+    "role": "early",
+    "tier": "META",
+    "theater": "cross-theater",
+    "medium": "META",
+    "hits": 0,
+    "misses": 0,
+    "name": "Google News · Hebrew war search",
+    "language": "Hebrew",
+    "lanes": [
+      "israel_intel",
+      "strikes_ops",
+      "threats"
+    ],
+    "notes": "Route: Israeli outlets, attributed per outlet.",
+    "feed": {
+      "kind": "rss",
+      "agg": "gnews",
+      "realtime": true,
+      "url": "https://news.google.com/rss/search?q=%D7%90%D7%99%D7%A8%D7%90%D7%9F%20OR%20%D7%94%D7%95%D7%A8%D7%9E%D7%95%D7%96%20OR%20%D7%97%D7%95%D7%AA'%D7%99%D7%9D%20OR%20%D7%98%D7%99%D7%9C%20OR%20%D7%9B%D7%98%D7%91%22%D7%9D%20when%3A1d&hl=he&gl=IL&ceid=IL%3Ahe"
+    }
+  },
+  {
+    "id": 205,
+    "platform": "Web",
+    "domain": "Aggregator route",
+    "geography": "Multi-region",
+    "role": "early",
+    "tier": "META",
+    "theater": "cross-theater",
+    "medium": "META",
+    "hits": 0,
+    "misses": 0,
+    "name": "Google News · Gulf English search",
+    "language": "English",
+    "lanes": [
+      "maritime_incidents",
+      "uae_local",
+      "ports_advisories"
+    ],
+    "notes": "Route: UAE-edition English results — Gulf regional press, attributed per outlet.",
+    "feed": {
+      "kind": "rss",
+      "agg": "gnews",
+      "realtime": true,
+      "url": "https://news.google.com/rss/search?q=Hormuz%20OR%20IRGC%20OR%20Houthi%20OR%20%22Bandar%20Abbas%22%20OR%20UKMTO%20OR%20Fujairah%20when%3A1d&hl=en-AE&gl=AE&ceid=AE%3Aen"
+    }
+  },
+  {
+    "id": 206,
+    "platform": "Web",
+    "domain": "Aggregator route",
+    "geography": "Multi-region",
+    "role": "early",
+    "tier": "META",
+    "theater": "cross-theater",
+    "medium": "META",
+    "hits": 0,
+    "misses": 0,
+    "name": "GDELT · Farsi press",
+    "language": "Farsi",
+    "lanes": [
+      "strikes_ops",
+      "leadership_internal"
+    ],
+    "notes": "Route: GDELT machine-translated index of Farsi outlets, many too small for search engines.",
+    "feed": {
+      "kind": "json",
+      "fmt": "gdelt",
+      "realtime": true,
+      "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=(hormuz%20OR%20irgc%20OR%20%22bandar%20abbas%22%20OR%20houthi%20OR%20missile)%20sourcelang%3Afarsi&mode=artlist&maxrecords=75&timespan=12h&format=json&sort=datedesc"
+    }
+  },
+  {
+    "id": 207,
+    "platform": "Web",
+    "domain": "Aggregator route",
+    "geography": "Multi-region",
+    "role": "early",
+    "tier": "META",
+    "theater": "cross-theater",
+    "medium": "META",
+    "hits": 0,
+    "misses": 0,
+    "name": "GDELT · Arabic press",
+    "language": "Arabic",
+    "lanes": [
+      "proxy_axis",
+      "strikes_ops"
+    ],
+    "notes": "Route: GDELT index of Arabic outlets.",
+    "feed": {
+      "kind": "json",
+      "fmt": "gdelt",
+      "realtime": true,
+      "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=(hormuz%20OR%20iran%20OR%20houthi%20OR%20irgc)%20sourcelang%3Aarabic&mode=artlist&maxrecords=75&timespan=12h&format=json&sort=datedesc"
+    }
+  },
+  {
+    "id": 208,
+    "platform": "Web",
+    "domain": "Aggregator route",
+    "geography": "Multi-region",
+    "role": "early",
+    "tier": "META",
+    "theater": "cross-theater",
+    "medium": "META",
+    "hits": 0,
+    "misses": 0,
+    "name": "GDELT · Hebrew press",
+    "language": "Hebrew",
+    "lanes": [
+      "israel_intel",
+      "strikes_ops"
+    ],
+    "notes": "Route: GDELT index of Hebrew outlets.",
+    "feed": {
+      "kind": "json",
+      "fmt": "gdelt",
+      "realtime": true,
+      "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=(iran%20OR%20hormuz%20OR%20houthi%20OR%20hezbollah)%20sourcelang%3Ahebrew&mode=artlist&maxrecords=75&timespan=12h&format=json&sort=datedesc"
+    }
+  },
+  {
+    "id": 209,
+    "platform": "Web",
+    "domain": "Aggregator route",
+    "geography": "Multi-region",
+    "role": "early",
+    "tier": "META",
+    "theater": "cross-theater",
+    "medium": "META",
+    "hits": 0,
+    "misses": 0,
+    "name": "GDELT · all languages, Gulf",
+    "language": "Multi",
+    "lanes": [
+      "maritime_incidents",
+      "war_risk_economy",
+      "uae_local"
+    ],
+    "notes": "Route: every GDELT language (Urdu, Turkish, Russian, Hindi…) — the obscure layer; non-English lines are translated.",
+    "feed": {
+      "kind": "json",
+      "fmt": "gdelt",
+      "realtime": true,
+      "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=(hormuz%20OR%20%22bandar%20abbas%22%20OR%20fujairah%20OR%20%22persian%20gulf%22%20OR%20irgc)&mode=artlist&maxrecords=75&timespan=12h&format=json&sort=datedesc"
+    }
   }
 ]

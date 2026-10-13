@@ -9,14 +9,6 @@ name: perplexity-gather
 # The gather fires on QUERY/ENGINE changes or manually; registry edits are free.
 on:
   workflow_dispatch:
-  push:
-    branches: [claude/signals-live-layer]
-    paths:
-      - agents/gather-queries.json
-      - scripts/perplexity.mjs
-      - scripts/discover.mjs
-      - scripts/x-gather.mjs
-      - .github/workflows/perplexity-gather.yml
 jobs:
   gather:
     runs-on: ubuntu-latest

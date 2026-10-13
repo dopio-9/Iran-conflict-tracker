@@ -1,51 +1,91 @@
-name: social-fetch
-# Telegram DIRECT engine — proves the runner can reach + parse t.me/s (the
-# real-time L3 pipe), then walks the registry's wired channels. No secret: t.me/s
-# is public, no auth. The build sandbox cannot reach t.me — this is where "does
-# it actually work" gets answered, same as the Perplexity smoke.
+name: raw-feed collector (24h experiment)
+# Collects the RAW lane and COMMITS it, so the page updates with no Claude session
+# in the path. The previous version of this workflow gathered the same sources
+# every few hours and discarded everything — no commit, no artifact. Never again:
+# a run that cannot save its output fails red.
+#
+# Experiment window (owner decision 13 Oct 2026 — judge on output, then decide):
+#   collect + grade : until EXPERIMENT_END            (24h of collection)
+#   grade only      : until EXPERIMENT_END + 24h      (late items still get graded)
+#   after that      : every run exits immediately     (switched off by itself)
 on:
   workflow_dispatch:
-  # The fast lane fired on push only, so it stopped whenever nobody committed —
-  # which is exactly how the page reached Day 150 while the world reached 154.
-  # An early-warning tracker cannot depend on someone happening to commit.
   schedule:
-    - cron: "*/30 * * * *"
+    - cron: "7 */2 * * *"   # every 2h on paper; GitHub may delay scheduled runs
 
-  push:
-    branches: [claude/signals-live-layer]
-    paths:
-      - scripts/telegram.mjs
-      - scripts/read.mjs
-      - scripts/flash.mjs
-      - .github/workflows/social-fetch.yml
-      - data/sources.json
+permissions:
+  contents: write
+
+concurrency:
+  group: raw-feed
+  cancel-in-progress: false
+
+env:
+  EXPERIMENT_START: "2026-10-13T00:00:00Z"
+  EXPERIMENT_END: "2026-10-14T02:00:00Z"
+
 jobs:
-  social:
+  collect:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-      - name: Telegram t.me/s reachability smoke
-        run: node scripts/telegram.mjs --smoke
-      - name: Telegram DIRECT gather (registry channels)
-        run: node scripts/telegram.mjs --gather
-      - name: Score channels (emit SCOREBOARD for the scoring loop)
-        run: node scripts/telegram.mjs --score
-      - name: RSS read (single reader engine — expert/military/naval + wires)
-        run: node scripts/read.mjs --rss
-      - name: JSON read (free TRACK APIs — ADS-B over the Gulf)
-        run: node scripts/read.mjs --json
-      - name: HTML read (sites with no feed — generic JSON-LD/time extraction)
-        run: node scripts/read.mjs --html
-# dispatch: fresh gather 2026-07-24T05:17Z
-# dispatch: fresh gather 2026-07-24T08:04Z
-# dispatch: fresh gather 2026-07-26T08:12Z
+      - name: Phase
+        id: phase
+        run: |
+          now=$(date -u +%s)
+          end=$(date -u -d "$EXPERIMENT_END" +%s)
+          if   [ "$now" -lt "$end" ];            then p=collect
+          elif [ "$now" -lt $((end + 86400)) ];  then p=grade
+          else p=off; fi
+          echo "phase=$p" >> "$GITHUB_OUTPUT"
+          echo "Phase: **$p** (experiment ends $EXPERIMENT_END)" >> "$GITHUB_STEP_SUMMARY"
 
-      # FAST LANE. Runs last so the claims ledger is written against the freshest
-      # registry state. One source is enough here — no corroboration gate — because
-      # a single scattered claim inside the window is exactly the thing this tracker
-      # exists to catch. The 24h resolve pass is what keeps that honest.
-      - name: FLASH (fast lane — novel claims inside a 6h window)
-        run: node scripts/flash.mjs --selftest && node scripts/flash.mjs --hours 12
+      - uses: actions/checkout@v4
+        if: steps.phase.outputs.phase != 'off'
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        if: steps.phase.outputs.phase != 'off'
+        with:
+          node-version: "22"
+
+      - name: Selftests (fail fast)
+        if: steps.phase.outputs.phase != 'off'
+        run: |
+          node scripts/flash.mjs --selftest
+          node scripts/feed.mjs --selftest
+          node scripts/resolve.mjs --selftest
+          node scripts/translate.mjs --selftest
+
+      - name: Collect raw feed
+        if: steps.phase.outputs.phase == 'collect'
+        env:
+          PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
+        run: node scripts/feed.mjs --hours 12 | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Grade items older than 24h
+        if: steps.phase.outputs.phase != 'off'
+        run: node scripts/resolve.mjs | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Validate
+        if: steps.phase.outputs.phase != 'off'
+        run: node scripts/validate.mjs
+
+      - name: Commit and push (a failed save fails the run)
+        if: steps.phase.outputs.phase != 'off'
+        run: |
+          git config user.name  "raw-feed-collector"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/feed.json data/claims.json
+          if git diff --cached --quiet; then
+            echo "No change to commit." | tee -a "$GITHUB_STEP_SUMMARY"; exit 0
+          fi
+          runs=$(node -e "console.log(require('./data/feed.json').meta.runs)")
+          gst=$(TZ=Asia/Dubai date '+%d %b %H:%M GST')
+          git commit -q -m "feed: ${{ steps.phase.outputs.phase }} run $runs — $gst"
+          for i in 1 2 3; do
+            if git push origin HEAD:main; then echo "Saved to main (run $runs)." | tee -a "$GITHUB_STEP_SUMMARY"; exit 0; fi
+            sleep $((i * 5)); git pull --rebase origin main
+          done
+          echo "::error::Push failed 3 times — output NOT saved"; exit 1

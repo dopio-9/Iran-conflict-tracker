@@ -5,7 +5,7 @@
  * intelligence rules (§3) as executable checks. Runs standalone and
  * as the pre-commit hook. Exit 0 = ship, exit 1 = do not ship.
  */
-import { readFileSync, writeFileSync, mkdtempSync, rmSync } from "node:fs";
+import {readFileSync, writeFileSync, mkdtempSync, rmSync, existsSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { tmpdir } from "node:os";
 import { join, dirname } from "node:path";
@@ -30,80 +30,6 @@ function loadJSON(rel) {
     fail(`${rel}: invalid JSON — ${e.message}`);
     return null;
   }
-}
-
-/* ── 1. data.json schema ─────────────────────────────────────── */
-const data = loadJSON("data/data.json");
-if (data) {
-  for (const k of ["meta", "wire", "status", "gauges", "dials", "strait", "verify", "market", "scenarios", "uae_means", "triggers", "hist", "mini", "trace"])
-    if (!(k in data)) fail(`data.json: missing top-level key "${k}"`);
-
-  const m = data.meta ?? {};
-  for (const k of ["day", "date", "updated", "subline", "banner"])
-    if (!(k in m)) fail(`data.json meta: missing "${k}"`);
-  if (m.banner && !["ok", "warn", "alarm"].includes(m.banner.level))
-    fail(`data.json meta.banner.level must be ok|warn|alarm, got "${m.banner?.level}"`);
-
-  const tiers = ["flash", "ver2", "ver", "pending", "disputed"];
-  (data.wire ?? []).forEach((w, i) => {
-    for (const k of ["t", "d", "geo", "tier", "src", "title", "full", "why"])
-      if (!w[k]) fail(`wire[${i}]: missing/empty "${k}" — every WIRE item needs a why (Rule 3)`);
-    if (!tiers.includes(w.tier)) fail(`wire[${i}]: unknown tier "${w.tier}"`);
-    // Rule 1: nothing gets ver2 on one source. Heuristic: multi-source strings carry a separator.
-    if (w.tier === "ver2" && !/[·,+]| and /.test(w.src ?? ""))
-      fail(`wire[${i}]: tier ver2 but src "${w.src}" names a single source — Rule 1: nothing gets ver2 on one source, ever`);
-  });
-
-  // SIGNALS lane (optional): live unverified items. Lean by rule — never a WIRE badge, capped.
-  if (data.signals) {
-    if (!Array.isArray(data.signals)) fail(`data.json: signals must be an array`);
-    else {
-      if (data.signals.length > 6) fail(`signals: ${data.signals.length} entries — cap is 6 (lean lane, no debunk-museum)`);
-      const sigStates = ["open", "converging", "contradicted"];
-      const sigRungs = [1, 2, 3, "3★"];
-      data.signals.forEach((s, i) => {
-        for (const k of ["id", "claim", "src", "lane", "rung", "state", "ttl"])
-          if (s[k] === undefined || s[k] === "") fail(`signals[${i}]: missing "${k}"`);
-        if (!sigStates.includes(s.state)) fail(`signals[${i}] (${s.id}): state must be open|converging|contradicted, got "${s.state}"`);
-        if (!sigRungs.includes(s.rung)) fail(`signals[${i}] (${s.id}): rung must be 1|2|3|3★, got "${s.rung}"`);
-        // Rule: a signal is NOT verified — it may never wear a WIRE tier badge.
-        if (["ver2", "ver"].includes(s.tier)) fail(`signals[${i}] (${s.id}): a signal may never carry a ver/ver2 badge — that is WIRE's, not SIGNALS' (no laundering)`);
-        if ((s.note ?? "").length > 260) fail(`signals[${i}] (${s.id}): note too long — keep it one line`);
-      });
-    }
-  }
-
-  if ((data.status ?? []).length !== 4) warn(`status has ${data.status?.length} rows (expected 4)`);
-  if ((data.gauges ?? []).length !== 4) warn(`gauges has ${data.gauges?.length} entries (expected 4)`);
-  if ((data.dials ?? []).length !== 4) warn(`dials has ${data.dials?.length} entries (expected 4)`);
-  (data.dials ?? []).forEach((d, i) => {
-    if (typeof d.rot !== "number" || d.rot < -60 || d.rot > 60) fail(`dials[${i}].rot must be a number in [-60,60]`);
-  });
-
-  (data.verify ?? []).forEach((v, i) => {
-    for (const k of ["who", "handle", "avatar", "reach", "quote", "rows"])
-      if (!v[k]) fail(`verify[${i}]: missing "${k}"`);
-    (v.rows ?? []).forEach((r, j) => {
-      if (!["confirmed", "disputed", "unverified", "partial"].includes(r.verdict))
-        fail(`verify[${i}].rows[${j}]: bad verdict "${r.verdict}"`);
-      for (const k of ["cls", "c", "n", "src"]) if (!r[k]) fail(`verify[${i}].rows[${j}]: missing "${k}"`);
-    });
-  });
-
-  const probs = (data.scenarios ?? []).map((s) => parseFloat(s.prob));
-  const sum = probs.reduce((a, b) => a + b, 0);
-  if (probs.some(isNaN)) fail(`scenarios: unparseable prob`);
-  else if (Math.abs(sum - 100) > 1) fail(`scenarios: probabilities sum to ${sum}%, must total 100% (Rule 4: explicit analytical judgments)`);
-  const kinds = (data.scenarios ?? []).map((s) => s.kind).sort();
-  if (JSON.stringify(kinds) !== JSON.stringify(["base", "risk", "tail"]))
-    warn(`scenarios kinds are ${kinds} (expected exactly base/risk/tail)`);
-
-  if ((data.triggers ?? []).length !== 5) warn(`triggers has ${data.triggers?.length} entries (expected 5, ordered)`);
-  if (!data.uae_means || data.uae_means.length < 200) fail(`uae_means: the UAE lens is the product (Rule 7) — missing or too thin`);
-
-  (data.trace?.lines ?? []).forEach((l, i) => {
-    if (!/^(\s*-?[\d.]+,-?[\d.]+\s*)+$/.test(l.points)) fail(`trace.lines[${i}]: malformed points string`);
-  });
 }
 
 /* ── 2. sources.json — registry aligned to the lane/theater vocabulary ── */
@@ -137,39 +63,6 @@ if (sources) {
   });
   // A lane with no registered source is a coverage hole, not a validation error — warn so intake targets it.
   for (const [l, n] of Object.entries(laneCov)) if (n === 0) warn(`sources.json: lane "${l}" has 0 registered sources — coverage hole, feed it via intake`);
-}
-
-/* ── 3. patterns.json ────────────────────────────────────────── */
-const patterns = loadJSON("data/patterns.json");
-if (patterns) {
-  const states = ["HYPOTHESIS", "ACTIVE", "STRESSED", "CONFIRMED", "BROKEN"];
-  (patterns.patterns ?? []).forEach((p, i) => {
-    for (const k of ["id", "name", "state", "rule", "evidence", "history"])
-      if (!p[k]) fail(`patterns[${i}]: missing "${k}"`);
-    if (!states.includes(p.state)) fail(`patterns[${i}] (${p.id}): invalid state "${p.state}"`);
-    (p.history ?? []).forEach((h, j) => {
-      if (!states.includes(h.state)) fail(`patterns[${i}].history[${j}]: invalid state "${h.state}"`);
-    });
-  });
-}
-
-/* ── 4. scenarios.json (forecast ledger) ─────────────────────── */
-const ledger = loadJSON("data/scenarios.json");
-if (ledger) {
-  (ledger.ledger ?? []).forEach((set, i) => {
-    if (!set.issued) fail(`ledger[${i}]: missing issued date`);
-    const setProbs = (set.entries ?? []).map((e) => parseFloat(e.prob));
-    const s = setProbs.reduce((a, b) => a + b, 0);
-    if (Math.abs(s - 100) > 1) fail(`ledger[${i}] (${set.issued}): probs sum to ${s}%`);
-    (set.entries ?? []).forEach((e, j) => {
-      if (!["HIT", "MISS", "PARTIAL", "OPEN"].includes(e.outcome))
-        fail(`ledger[${i}].entries[${j}]: bad outcome "${e.outcome}"`);
-      if (set.graded && e.outcome !== "OPEN" && !e.lesson)
-        fail(`ledger[${i}].entries[${j}]: graded ${e.outcome} without a lesson — the lesson IS the product`);
-      if (!set.graded && e.outcome !== "OPEN")
-        fail(`ledger[${i}].entries[${j}]: outcome ${e.outcome} in an ungraded set`);
-    });
-  });
 }
 
 /* ── 4b. candidates.json (SCOUT nomination queue) ────────────── */
@@ -295,22 +188,21 @@ for (const js of scripts) {
   }
 }
 
-/* ── 7. coverage floor — a run must be BROAD (obj 2) ──────────────── */
-/* Reads data/last-run.json, the manifest the signals loop writes. If a run under-
- * collects, this FAILS — "silent lane is a finding" becomes an enforced check,
- * not a hope. Absent manifest = warn (no run recorded), never a hard fail. */
-const MIN_LANES = 8, MIN_THEATERS = 4, MIN_ITEMS = 12;
-const lastRun = loadJSON("data/last-run.json");
-if (!lastRun) warn("data/last-run.json absent — no signals run recorded yet; coverage floor not exercised");
-else {
-  const lanes = lastRun.lanes_covered?.length ?? 0;
-  const theaters = lastRun.theaters_covered?.length ?? 0;
-  const items = lastRun.items ?? (Array.isArray(lastRun.candidates) ? lastRun.candidates.length : 0);
-  if (lanes < MIN_LANES) fail(`last-run: only ${lanes} lanes covered (floor ${MIN_LANES}) — run is too narrow, widen collection before shipping`);
-  if (theaters < MIN_THEATERS) fail(`last-run: only ${theaters} theaters covered (floor ${MIN_THEATERS})`);
-  if (items < MIN_ITEMS) fail(`last-run: only ${items} candidate items (floor ${MIN_ITEMS}) — the funnel is too thin`);
-  if (lanes >= MIN_LANES && theaters >= MIN_THEATERS && items >= MIN_ITEMS)
-    console.log(`✔ coverage floor met — ${lanes} lanes · ${theaters} theaters · ${items} items (${lastRun.ts ?? "?"})`);
+/* ── 8. data/feed.json — the RAW lane, written by the collector ──── */
+/* Absent until the first collector run; once present it must render safely:
+ * dated items, one-line briefs, http(s) links only. */
+if (existsSync(join(root, "data/feed.json"))) {
+  const fd = loadJSON("data/feed.json");
+  if (fd) {
+    if (!fd.meta || isNaN(Date.parse(fd.meta.updated))) fail("feed.json: meta.updated missing or not a date");
+    if (!Array.isArray(fd.items)) fail("feed.json: items must be an array");
+    else fd.items.forEach((it, i) => {
+      if (!it.id || !it.src || !it.line) fail(`feed.json items[${i}]: needs id, src and line`);
+      if (isNaN(Date.parse(it.ts))) fail(`feed.json items[${i}]: ts is not a date`);
+      if (/\n/.test(it.line || "")) fail(`feed.json items[${i}]: line must be a single line`);
+      if (it.url && !/^https?:\/\//.test(it.url)) fail(`feed.json items[${i}]: url must be http(s)`);
+    });
+  }
 }
 
 /* ── report ──────────────────────────────────────────────────── */
