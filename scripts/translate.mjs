@@ -77,7 +77,12 @@ export async function translateLines(lines) {
         else throw e;
       }
       r.forEach((t, k) => { if (t) { out[i + k] = t; done++; } });
-    } catch (e) { failed += chunk.length; lastErr = (e.message + (e.body ? " " + e.body : "")).slice(0, 120); }
+    } catch (e) {
+      failed += chunk.length;
+      lastErr = (e.status === 401 && /quota|credit/i.test(e.body || "")) ? "Perplexity quota exhausted — add credits"
+        : (e.message + (e.body ? " " + e.body : "")).slice(0, 120);
+      if (e.status === 401) { failed += lines.length - i - chunk.length; break; }   // auth/quota: later batches fail the same way
+    }
   }
   const status = failed ? `partial: ${done} translated, ${failed} kept original (${lastErr})` : `ok: ${done} translated`;
   return { out, status };
