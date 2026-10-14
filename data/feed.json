@@ -330,12 +330,12 @@
    }
   },
   "resolved": {
-   "ts": "2026-10-14T17:03:47.083Z",
-   "graded_now": 115,
-   "echoed": 253,
-   "no-echo": 192,
+   "ts": "2026-10-14T21:36:23.681Z",
+   "graded_now": 91,
+   "echoed": 293,
+   "no-echo": 243,
    "refuted": 0,
-   "pending": 100
+   "pending": 9
   }
  },
  "items": [
@@ -457,7 +457,11 @@
    "orig": "UK warns Iran is targeting ‘military sites’ as US and allies recognize growing threat of IRGC ‘hybrid activities’",
    "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxPc1JrcUJHNnZyT0dBaWpmdXdDZm5rT0RYUVY1SU83T3RtOTVYNTJlMV9MX1ZKVXAxeDN4ZmZ4NUpEbWhZSFFSb0Ntak5XanJ5T0tYeTE0SndkTUlHSXVfdGZZaE1ySDN1NS1mc2FVSXdqV3hkdVBmWVpCUGZxbHV0bW9iUlllVzU2YWdfbEJxREJzY1REUVNhSG4zblMteS10UG1kdWV6VUxaRTE5SWR3My1pNVhZMGJDR1dPYjRGZnRPdnEwSk1ZY0pSVkZNWk83eGxr?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "c22facdeb1e54ed5",
@@ -469,7 +473,15 @@
    "orig": "الولايات المتحدة(..) سنتكوم تنفى ادعاءات إيران حول مضيق هرمز",
    "url": "https://news.google.com/rss/articles/CBMivAJBVV95cUxOQjBXSmVDclJRT3VJcHBheVkyNnp6ZUZjZ2h2LVNIMmFGd0hGTXl3N3loRkRSMklMX2Y0MFZBVVZucFZBRGhiUVVCcTR6Q3AyS3pBeEswX3doQ3hvUnlmajZpenhoSW9XcnZjYjVuTjdNZ3o5Z1JEWmM0LUNVNHJCSmcxMXE1bHR6NXZ5amN0dUI5Y2xlTGdBS0U0V2pqdC05YTlUWXZuck9vRTI2WVdsQ0ZUSmRYa1o2Z3FZazN3empQMEZNankwTTUwT0IxLVBFVnBhZ080QWlyS3BLM1VRQllQQ25ySnIzS2tlWXItUGlFQkZYMW9ZSmQ1bFJhNHU0WDc2cmdTTTZoeUZ6SDRjR3loenc4WF9penlsX1lHYm5SM1BhT200QUYwLXF0VVNsdGt6NVRCTW5SWW5l?oc=5",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "echoed",
+    "n": 1,
+    "by": [
+     "سكاي نيوز عربية"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "c8cc97c7089e24b5",
@@ -481,7 +493,15 @@
    "orig": "\"سنتكوم\" تنفي ادعاءات قائد بالحرس الثوري بشأن مضيق هرمز",
    "url": "https://news.google.com/rss/articles/CBMi0gNBVV95cUxNQW1lbUxEakVCMG1Mdks5NTdmYWpTU0pFM2pCY2c5dlR1ZGtGM3V5SzhQZEtHREx3LS1GWVFibmFqSl9XYzNvcU1iUEluRkRMbGlPZmszUmNvWGVCMlI4eEtkVS10bThEeEJXNkVieXF4SjJleWtrSFJPZmNnWDczN00xNm9HQjQxMUZHeWh3SklMRzIwTVAwaExqWFBfTXl4OTRjMnVnQ3ZnY1JHX3YyNDhfem8xeUZ5UEJlTE9Ba1dQbXo1VDJEbURWV0UwektqVlBFZzlEaFlFX29UWGJ5aVc5RWxRMTBEb2pfTlU3Q3BESXQ3S0FNZWM3N0pIRXJvOFkwWlJZMWVCSmtMMW1SdVJLMlAwMDdDbzJicE0wVFg1NFVreWUwZU95R1d5eDdjeUJJS0pxTGt3MHJKVlo1MUJLTk9FYVo4RjJWSXd2ZXA2SlJTamdHV01JY2VLTVozb3JhQVJhd1JpaXloQ0RSYVU0eWo5eWZSNEV5RUdFWFM3VlRIdmI0dXRTYnJUeVI2QTRSUWRQUUdWdnZVN1RyWnZwbU9FZE5ZQktnd1ZhMVVhNjRxdE00N1k1SWJJWmhpcHlOaG5GVmRyeVpjVU9ISFRn0gHXA0FVX3lxTE9kWkl1THJ3WFJ6UEp0TnJ2MnVtOEd1UWtRYmpqRUp5cWtuQ3Izb3NYQXNFV2F1Zy1mMFBhOEZyMHZyaXZ0Y0xjXzJkQ0xVYjhmNWtyUWZaeUVkd004U2R1dzNzOHEwWjdPRm1aa2c5b0NoZVNGb29UYW0tRTFiWVZTdWd6ejJtRXZDQWtHN3hjeHdNYlZXOXFMOUkxb3Fla2VxQzRHd24td05CR3Q2ZlJ0Ry1NdVBMbURmWFhvSjc0Uk9YM1JYWWVVZWVqLVdYTTZkcGpnLVJNSG16WW8yX2o4U1R4SXNYYTg5eEtIS1NhU3NFWDdhQi1Ndk96dmV2OHlNWDFJSk5jVjZUNWpWODVsSXpyMDVkTUdUelhHZVd1c1BCVENrUkxnNjN6VFBLOGc4YTFEdnM4TTRCWV9OM2c4dUx0anhIRVdya1BwWkpXNU5URnd3ckRkUHAzS0JNZnJBX0JMNFptT2NIRG1nT250VW9rN3c0UDNNLTZOUHc4dWtpaWhoNkdDWlQ0R0h1YnJ0R0ttYlp1ZG5sQ1pDRjN0cncza1FOR1paZTZUYUl5N0NBc3cwa1Z4TVdSOFpkSUZRc3FZWkl0V3U5QUtUMnltcUlxTk1nUQ?oc=5",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "echoed",
+    "n": 1,
+    "by": [
+     "شبكة دال"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "a18fd0e63e9ed185",
@@ -493,7 +513,16 @@
    "orig": "Iran-backed Houthi rebels warn against joining Saudi Arabia in Yemen's growing civil war",
    "url": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxONzBia2Nmc1FZNnNEVXVfTHZjRG5xaWNBLWpBZ2g5M0dMR3laXzEwZGZjNEZTQThkcjBnd1VTQldpNVpJQ0ptYklrZXlneHNqbXNaa2YxcHNORGdwend4M0JuTnRXRXVJTE5HT0hWUFY1dC1oNXJMNkNVNERobDZLb3J4V2ZTOVJCQ3pMWDJoTmY0Yy05WlZMN1FOMDJyUTFsMC1pZTBRVk94SHBhX08xRmVQUDM3YzhQQnVwMDdIcy1KWnhtcFFENTdqVkpPUVZhS3NhYjhlcTJmeE9LSVdYUlhNdUNPRGlseXZCbU5lMkhBNDJ1cHhhRHhlWXIzY1R5WHB5ZHhYVTR2dHM?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 2,
+    "by": [
+     "straits.live",
+     "DW.com"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "48934f93651e5d5b",
@@ -505,7 +534,16 @@
    "orig": "What's behind Iran’s intensifying attacks on shipping in Hormuz?",
    "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNRV9uUFA1YmNGeHgzazZpc1dadS1sUnJUWlNWZXAwRC1XallXcGxkejFXal9QaGcweG1WQVRnWnEtS0RWS3J1ZS1XSzZJM3FtYUxNNVliZmp0dmlXc3UtV0ZYdUJraHk0cnA1bWNmTXgyQmc0ME9IQTNBTk1qTzc0MDZab0JtYURBMUt2QnRVamVOS1VVb1hiY1RYenlGMERZekE?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 2,
+    "by": [
+     "Transport Topics",
+     "straits.live"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "c3d4411ccb1a7b3a",
@@ -517,7 +555,15 @@
    "orig": "فرمانده نیروی دریایی سپاه: آمریکایی‌ها اگر فکر می‌کنند تنگه هرمز باز است نزدیک‌تر بیایند/ برای غرق کردن ناوهای آمریکایی لحظه‌شماری می‌کنیم/ ناو ۱۳ میلیارد دلاری آمریکا بی‌خاصیت شده و ۷۰۰ کیلومتر از تنگه هرمز فاصله گرفته",
    "url": "https://www.entekhab.ir/fa/news/943414/فرمانده-نیروی-دریایی-سپاه-آمریکایی-ها-اگر-فکر-می-کنند-تنگه-هرمز-باز-است-نزدیک-تر-بیایند-برای-غرق-کردن-ناوهای-آمریکایی-لحظه-شماری-می-کنیم-ناو-13-میلیارد-دلاری-آمریکا-بی-خاصیت-شده-و-700-کیلومتر-از-تنگه-هرمز-فاصله-گرفته",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "echoed",
+    "n": 1,
+    "by": [
+     "Sepahcybery"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "b25e617bb7bbc93b",
@@ -529,7 +575,11 @@
    "orig": "Aramco HQ hit in Houthi attack as fire extinguished in Dhahran - Bloomberg",
    "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOMWRXNUc1Vkl1TS1lTWM2RHRtZHhySmhQejhnQll1M29RU3d1VUVUVC0wMVJYQ0JuX0F4RERlUF93RFV2MWRLNWp1OUt0eUw3MDZHeV9WekFURjBtbjEtRm9vYWRmdDJBcHY2bmlZSlJpMUVvTWlPbmY1MmJVZUtSSG96Z2U5U1dUd0tydXBhZndmaXF3TFN2akljOTRUQmZrazdMSXc4Vkttd2RnWS1xMjBld1NuVUJrUWFJdjhnd3Y1NEMzb0FKTW1B?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "2d52563977f93645",
@@ -541,7 +591,19 @@
    "orig": "US rejects Iran’s claim of control over Strait of Hormuz",
    "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQTEVZa013RHYtcFVTUDNzcDJfN0VfdWtFVjhUTXZsZW1IV1VrbUFpdUJ2U3RqVTVmdFlrYWJVM2FtRTc5WU52aW93bTZySjVQcWpZWE8zR3lHcHY3NnhqRkREUDRQTkR3OTZCNnF1a1N0Sk9tTWdZVENFdXYyelY5NUF3UzBEZGhPNjJjQXIyY2hzOHotclVPdmpaYnlRZ2M?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 5,
+    "by": [
+     "Yeni Şafak English",
+     "WV News",
+     "Transport Topics",
+     "WAOW",
+     "straits.live"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "62963f773e3619b7",
@@ -553,7 +615,11 @@
    "orig": "Food shortages in Yemen’s Taiz as Houthi siege hits supplies",
    "url": "https://www.aljazeera.com/video/newsfeed/2026/10/13/food-shortages-in-yemens-taiz-as-houthi-siege-hits-supplies?traffic_source=rss",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "dc575d5f6f7e1f92",
@@ -565,7 +631,11 @@
    "orig": "القيادة المركزية الأمريكية: قواتنا وشركاؤنا الإقليميون يسيطرون على مضيق هرمز",
    "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBoZGJ1WDBYVlFMUVQ2Mk82Q1JQVGR3MnV1eTA0ZEx0RDlKWnNpVmRKWERtSTJoX20xZ195aVA2YzF2RHJjYl9Wa19fb01FSDFlRzU0bTZnRm5xaHRtY2pfWEdSeEgzSzRzUkRaVndR?oc=5",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "c0b9487cefc57b3a",
@@ -577,7 +647,11 @@
    "orig": "איראן חידשה את ניסויי הטילים - בישראל מבהירים: אין שינוי בהערכת המצב",
    "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE50Sl9hWjJ5VmNmNHFFWndTbTBWNExzQVFzaHhrYTFVU3FrQWF3WjFvVmR0R0UyNEQ5TDd1SV82SWNLTS1sVHpSaFZscw?oc=5",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "9797038c52f19090",
@@ -589,7 +663,11 @@
    "orig": "Reuters issued a statement marking three years since its visual journalist Issam Abdallah was killed by Israeli tank fire in southern Lebanon. The attack also wounded six other journalists. The news agency said repeated requests for an explanation had produced no substantive account from the Israeli government beyond a statement that the incident remained under review. Reuters also said questions remain unanswered about the killing of its cameraman Hussam al-Masri in an Israeli strike on Nasser Hospital in Gaza on 25 August 2025.",
    "url": "https://t.me/QudsNen/241967",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "47f59152719a6bb1",
@@ -601,7 +679,11 @@
    "orig": "مساعد وزير الدفاع اليمني: الحوثيون أغلقوا أبواب الحلول السياسية.. وقرارهم يأتي من الحرس الثوري الإيراني",
    "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPMkJ1UERQRHoyTnJodVM5cGZHbjFFekdTZ2ZDWjVzTHV5N2wxUTFBVFN6LS1BMmhjSnlOQjMzRGRDRzkxbTB4SGYyMUxaeDJZT1FHZ29sLTRoTXc3VXJZejR6MW1iYUtLVjlvc1g2TklPZ01XSU5MeHcxV21EQWFGd2FXOGlneUV4cmxsQWVRSXpQY1YyeWk1dHBxRXg3WGl2b2ZwUVVSSQ?oc=5",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "41c1d3c16221d598",
@@ -613,7 +695,11 @@
    "orig": "تصاویر: وضعیت تنگه هرمز، سه‌شنبه ۲۱ مهر ۱۴۰۵",
    "url": "https://www.entekhab.ir/fa/news/943411/تصاویر-وضعیت-تنگه-هرمز-سه-شنبه-21-مهر-1405",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "4b2a9d5cd476f0da",
@@ -625,7 +711,11 @@
    "orig": "القيادة المركزية الامريكية تنفي سيطرة ايران على مضيق هرمز: الحرس الثوري لا يملك أسطولاً بحرياً",
    "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1WUjk2V083NDBnc2xDbGdUZjZhdzQtNVg2Yk9FTEw3YzhhcHBTanI0LU90Tk9YTllya0l6RS0ycU13alVBbktyUllxWFplN29EX1BjdGlTRV96TTY3RHc?oc=5",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "b83b79f83d6c651c",
@@ -637,7 +727,16 @@
    "orig": "الحرس الثوري: نترقب اقتراب السفن الأمريكية من مضيق هرمز لإغراقها",
    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBFUWdERzBDN0pYT1B4QnBYUGpWaFZFcWEyNU8zXzUtc0tPM3RvSk0xc3RnLVlUcmZOem80aXptTzRQMHVhazI4RVh6LVg1ZU5teWVmdG9IekZKTzg?oc=5",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "echoed",
+    "n": 2,
+    "by": [
+     "الثورة نت",
+     "سبأ نت"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "e7c4931e98c134c0",
@@ -649,7 +748,11 @@
    "orig": "مقام کاخ سفید به الجزیره: اطلاعات منتشرشده درباره احتمال حمله آمریکا به ایران پیش از انتخابات، نادرست است",
    "url": "https://www.entekhab.ir/fa/news/943410/مقام-کاخ-سفید-به-الجزیره-اطلاعات-منتشرشده-درباره-احتمال-حمله-آمریکا-به-ایران-پیش-از-انتخابات-نادرست-است",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "4549883b61cab184",
@@ -661,7 +764,11 @@
    "orig": "فرمانده نیروی دریایی سپاه: ناو ۱۳ میلیارد دلاری آمریکا ۷۰۰ کیلومتر از تنگه هرمز فاصله گرفته/ مقام کاخ سفید به الجزیره: اطلاعات منتشرشده درباره احتمال حمله آمریکا به ایران پیش از انتخابات، نادرست است",
    "url": "https://www.entekhab.ir/fa/news/943409/فرمانده-نیروی-دریایی-سپاه-ناو-13-میلیارد-دلاری-آمریکا-700-کیلومتر-از-تنگه-هرمز-فاصله-گرفته-مقام-کاخ-سفید-به-الجزیره-اطلاعات-منتشرشده-درباره-احتمال-حمله-آمریکا-به-ایران-پیش-از-انتخابات-نادرست-است",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "f41db29a99d75c38",
@@ -673,7 +780,11 @@
    "orig": "Funeral for Egyptian flight attendant killed in Houthi attack on Riyadh",
    "url": "https://www.aljazeera.com/video/newsfeed/2026/10/13/funeral-for-egyptian-flight-attendant-killed-in-houthi-attack-on-riyadh?traffic_source=rss",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "146610a8404bb78f",
@@ -685,7 +796,19 @@
    "orig": "Aramco Headquarters Hit During Houthi Attacks on Saudi Arabia",
    "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQZW5UZm9rTkVDR01LTzZFcTQ0MUprS3hKLTdHaWtXQkVUQzdOSzNJUWJxRlQ3WkpnbUl0TzZlMWg2eVI1bzJidmpzQnFlaC1VcVRpS1FaN0tvZENEeS1LMUVPVmFaM3o0cEI2bkx6bGhMZ1c4WXliLTg3c0djRjgwUU9YWTE5d3F5dFlVV3hlWXh4clk0eUZNWGczUnhUbmtsbElkR2ExNEFqcVRKUEJwT053?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 9,
+    "by": [
+     "Reuters",
+     "Financial Times",
+     "straits.live",
+     "NBC News",
+     "CBS News"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "8daee122e9caf91e",
@@ -697,7 +820,11 @@
    "orig": "Yemen: Houthi siege, cholera outbreak and aid cuts put civilians in the crosshairs",
    "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBaaHIzYUV1X3BrNEdmMW1LZ1czSF9kWlp6c010eS1iUW1WOXk2NnFvMXZqdDE3Ym1WX1JUamtuZjNiM3lIa3ZxaURvTUdva0gxZlE5WDFVaw?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "94a7a177a7fd986c",
@@ -709,7 +836,19 @@
    "orig": "Saudi coalition strikes Yemen oil sites after Houthi attacks",
    "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOUlN2QzNtU3R1eGN4Y0NaM2RjRXVJam8zT2dLV0ExcFMxXzVqVzh2MVE4S1JOT0wyQkthSTVEUWNma19zek1tbUNLQU5wTHFGTHA5SlFON1NkNWtrYld0bXRKMDRSbmxaWUlCbnRuaTZPTTFoc0dSMEhoak5qbTZaTGhGdW5ISGQ1Rlo3eHU5S2ZtR0lrQUpKSjJwSnV0VGF0RUVRTjlZZUw?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 6,
+    "by": [
+     "Anadolu Ajansı",
+     "straits.live",
+     "The Jerusalem Post",
+     "DW.com",
+     "Kurdistan24"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "dd84d5e2eaa78464",
@@ -721,7 +860,16 @@
    "orig": "إيران: نترقب اقتراب السفن الأمريكية من مضيق هرمز",
    "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBUeW9BSmNManJJUXdXcWw1ZFhMdEZ1M19kUGl5VnpuSDV0eEJDaUdWTkxqR1VOU2VIRWpXcEVDOFBXTFFlZ1VHMUxMY28xUQ?oc=5",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "echoed",
+    "n": 2,
+    "by": [
+     "الخبر اليمني",
+     "سبأ نت"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "85aecca9206d9ac8",
@@ -733,7 +881,11 @@
    "orig": "موقع ( لا ) الأخباري - إيران وعُمان تتوصلان إلى تفاهم بشأن مسار آمن للملاحة في هرمز",
    "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5MNU04RW5XbF9fRGc0MWxqbHppd1JMQ1prajVpb0tnaF9JWnFZcVJJaEhYWUNvQVZQcXN5Wmlnekg3OU56QnRmYXhsWmdZRmhsS2twTXhtRQ?oc=5",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "6b8fbd24788b5292",
@@ -745,7 +897,17 @@
    "orig": "Saudi-led coalition intercepts 6 Houthi missiles, 5 drones targeting Saudi Arabia",
    "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQZFJSYmpSRnFYZzlvUFh1ZVpnYVQtTjc4SF85ZzlaLWVpNFZkVmhXcnJMUk1ZWkR6Nk1HUDRLYVlpTFJBZk1uOE9YYlhLYVpIdXUya0FQbzdQWGQ1SjA2OU5CLUlZMjAzRVpsYXRBZ2ZLeXJfUVVTUDBTOWFuY25LOEZ1cS11YlFEekVGMXEwOENEM1doellNeXFwdXAtWkp2dzFILUFfYnN1RENCV3lxa3M3ZzNjN1ROLUhPdGZpVzhaSGM?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 3,
+    "by": [
+     "The Jerusalem Post",
+     "straits.live",
+     "Bloomberg.com"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "16e50a3afd19f2d1",
@@ -757,7 +919,11 @@
    "orig": "Two ships hit by projectiles in Strait of Hormuz, maritime agency says",
    "url": "https://news.google.com/rss/articles/CBMihwJBVV95cUxOX1otYU41NUVZcTRCalR0V0t4WDNzczFrbDhxNXgtTzU3dkotcVFqWDd4cGVlUHI5LUxiTU5lS0dEaEdZeEo1eGo5cWxNQk41SXR6NXNwV19UcG11R1pHMngwYU10NGI1Rk93SnVjZUNuUnpCdlRrT0hzV01KOElNT1cySnNKQzN0OWRjcVAyS3FhYVZqbDQxdFFwLS1lcjFYTE5sc0c3UENGamJlQ1l1OXEtaXphcW5TRnhHb3VUZk13SVlJYVc5cFFfa3lMZTJMRV8zclpiQU9vWjRlWE9PUzlTb3RHYkx5c21VTkpPMF9FbU1yYlhsVlRySEJObVdnSFMyS3ZQb9IBjAJBVV95cUxNcm1mNnRISTdTT0hoeldfVzM1OFpmbkd1TURwR21tb2FvRGd2a2ZuY1hEVFlYLVV5VVRGZEpqR1FsM3hLVFpqMzVnYkwycVpyblg5cVJVRU9QeFY0VEFQOVBCcFVRd0VoWXl1dTV4dXhQUGRVZTRpM1FPV3pPRjhDeUdKUHptWEhMNzRwMm1JdFNNdHJMTFNyVkVkQThrREtzSXFUc2V2bU05QVltYS1SUVFxVTdzTVpvUUpNeGJYUGVuWU1ZR1dnenB2MEZyWWdzYzV6S2NIZDBoWEduQjVDUFhyWmR4a1Z1c1hiTG9BdFljODY2b0xzOF9tNHNOT203RHp2azdwRGRQZ04w?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "da85b2318dc02104",
@@ -769,7 +935,15 @@
    "orig": "Saudi Arabia Is Building Its Own Way Around Hormuz",
    "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQN3VzZzdJR0JPN0hQX3RUYXNlVHVtNVBmdGFRVnBiMm9GTXRVYTZ0M2hIU3NmN01KVzU2MWZ4LW5HeFdfaHFMYm5keEJBQ0sxdEw1RjBUb2ZyZWgzcWRBMm9KQ2gxM1haVGpnWkx6UFRZd1R1Mzg2MG1MQ19sb2JEc21RRkkxTUdLTE9BMmZwaw?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 1,
+    "by": [
+     "Arabian Gulf Business Insight | AGBI"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "fc06cda7c8c9336f",
@@ -781,7 +955,15 @@
    "orig": "Missiles intercepted near Riyadh after Saudi coalition hits Yemen fuel depot",
    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1NTXliU09wdmZTVFFLc3dfamVjQlRpUnNuVXY3QmpLLUVGYjVXZHBZNm8taks5cTJaVUNndmNFZy01WGxNcFp0YzFlb0NZcXBQclBsZFF1T1o2SGM?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 1,
+    "by": [
+     "Anadolu Ajansı"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "4855c6f615f1591e",
@@ -793,7 +975,11 @@
    "orig": "Unknown projectiles strike container ship and tanker in Strait of Hormuz — Anadolu Agency",
    "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQRlJjclQxT3lGZEpuOVFhcnZFTXhxOGdzdEZhNFF4Ynkyek9zODc3RjNrZWJCSkhpbkg4Q19GS1ZtZjBsOGdUNHhadkpLVGRaT09YSUFVajJqRnBmaHc5Q3JBbUo1dmpwNjNzZmdNZGNVeEtjZk1USE9takowMkNUWVRhdUN6V2hGdnV2akNUQnhYZ193VXdLZ254NkNfUTE2Wk9WX09NZWdNc0xnVkZPMg?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "c9fada88fa203015",
@@ -805,7 +991,15 @@
    "orig": "اصابت پرتابه ناشناس به یک نفتکش در تنگه هرمز",
    "url": "https://www.yjc.ir/fa/news/9138512/اصابت-پرتابه-ناشناس-به-یک-نفتکش-در-تنگه-هرمز",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "echoed",
+    "n": 1,
+    "by": [
+     "entekhab.ir"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "d945c40f6540cb5a",
@@ -817,7 +1011,15 @@
    "orig": "Iranian Military Monitoring Vessels in Eastern Strait of Hormuz, Reports Oil Tanker Fire in Prohibited Zone",
    "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBvbXc1eG9teEFZNWFUWXdWeUt5bG5nWjhsVnc4Q1lxQkFmSEk2d0JBQkVvbmxBbFA1N3B4SVcxRUNCVjRZbklUcFJSckFidERxQkp2NENDaHZTaDlEd2h6THlNbGZPeVpGalR3Rjdn?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 1,
+    "by": [
+     "Latest news from Azerbaijan"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "cdd0cb023d071c57",
@@ -829,7 +1031,11 @@
    "orig": "Container ship, tanker struck by unknown projectiles in Strait of Hormuz: UK maritime agency",
    "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQMVo0dnFiZENUc3o0QjZXa2N1MWtsZUM2N3ozbndfLUY5Y0RzZG9HNGtkczN2dGFuZGR2SUg0LWZDcGVCY3JNaEhUbEYxYm9MWnJvU1ZobllDa3VvMmhKNUw5MmY1S2FnZklmMG0wcVJ4TjdJMW10VUgwUTM1RzR4R2ZQdEd3V2JxVTBzbmJ5OW1uZjc3enZrdE8zdXJoMXN5blRfWTF4c2dWQ2drQzBxY1B5SkJQTXJFZWRPSGJIMVNUSXFYME1NNnFEajlGWEJ2?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "ddf5ed7f750eb0b9",
@@ -841,7 +1047,11 @@
    "orig": "🔴 لحظه اصابت یک موشک یمنی به مقر آرامکو در ظهران عربستان سپاه سایبری پاسداران 👇🏻 ☑️ @SEPAHCYBERY",
    "url": "https://t.me/sepahcybery/153894",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "6a79d151e03665ea",
@@ -853,7 +1063,16 @@
    "orig": "IRGC Navy commander threatens to sink US warships in Hormuz",
    "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPNXNIa2U1UUR0LWlycWxPSmJ6c2FpUmlWWVRzekdSRzBRQWFYZEhPY19fWW9WNGxIQVFFRzhJakFvcXFWWEc5eFpfb1NJLUR0U3drS01SU3BrSTFWa2tsZzE4QlRPZ0kzZFlvSmYtbGQ2NDRYRTdnNHJBSjNoTWxwWmRFRXlmMnVfRVI3NTZiaUgxYlpxWnByWQ?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 2,
+    "by": [
+     "UA.NEWS",
+     "Anadolu Ajansı"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "ab1005bb6c6ac144",
@@ -865,7 +1084,11 @@
    "orig": "Yemen War Escalates, Hormuz Attacks Surge, Syria Accuses Israel – News Roundup",
    "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNbUE5czljZ0hmTkZEdHlveFdXWlZaYVFzQWVxT0huaHVQQ0wzSlZtNklpM1gxOW1hUWYtUzBGb0VsbjI2OUVnTC1zZGJYcTI0TndrUkFxU21JbFRxdEpCcjdkZ3VLaUNOUlhySUF3emtSSXdxYTlQRWRqYVJaODZ3NXpfby1HNlhrZzVPbmhTUnFXYnZMak1VVzdDc3pIYW40T2psNC01czhyRkdvWkd3?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "a664036880de5e05",
@@ -877,7 +1100,11 @@
    "orig": "Two ships struck by unknown projectiles in Strait of Hormuz",
    "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQT0VVVFg4WHoyaE15Q1U2bFRZVVRRbldxdzJ3NUYxZGtGQk9ybmRyUVJvS0dZQmdRQkYwRWxHZ1VDOF9DQzItb2w3aVB5Z1VmZi00UHFESmNQRi0yaFhrUHJmRl81aFc0M0gybWdKYmF1N2Y2dnRXS21IVWlQVXk3WEFlWWtuOWtEa0VQMWozbUJfRkRaT1RpMnNsSXpLN2JURWg0N0xR0gG4AUFVX3lxTE5SNmphcnJIOFFDVFQxbmhJMHNNWTIwVS1vV1V4SXF6UHNkUWJkSS14ZEhtN29SWFRrSjVEa0FaenlSX0hXOXVnZGJfcXF3RU1vQTFwZXhDU1lpa3paejBZekRnTHFJODdPaThLSTBOamlPNmxFRXF5MVNBNEVrOUdTRHhhUWotdEhUWUJJc211LTZJbVVrZzdOc3puOXlQQWtDWWw5X2pJUkhJbXREbjJKUnN1eU45TW8?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "c41b3776205e6557",
@@ -889,7 +1116,15 @@
    "orig": "Saudi-led coalition intercepts Houthi missiles, drones launched toward country",
    "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE92NGJLRy1EbzdGUTlQdWRRVE1yWU1UdW1fdURBMXdCNU9jV1I3U0VhRnUwUjN6c0hSTUxMQ2g4VllWbm0tOWRXMUdDYVlUU054TEpGbHlnNlZaeDNU?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 1,
+    "by": [
+     "Anadolu Ajansı"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "b4109e4426dd6419",
@@ -901,7 +1136,11 @@
    "orig": "نتانیاهو و ترامپ هفته گذشته درباره احتمال آغاز یک عملیات نظامی بزرگ علیه ایران پیش از انتخابات گفت‌و‌گو کردند / نتانیاهو گفته که ایران در حال برداشتن گام‌های نگران‌کننده‌ای برای احیای برنامه هسته‌ای است /او چند بار درباره جنگ با ترامپ صحبت کرده و رئیس‌جمهور هم گفته «خب، بی‌بی، برو و آماده شو» / هگست و فرمانده سنتکام از جدی‌ترین حامیان ازسرگیری حملات علیه ایران هستند",
    "url": "https://www.entekhab.ir/fa/news/943404/نتانیاهو-و-ترامپ-هفته-گذشته-درباره-احتمال-آغاز-یک-عملیات-نظامی-بزرگ-علیه-ایران-پیش-از-انتخابات-گفت-و-گو-کردند-نتانیاهو-گفته-که-ایران-در-حال-برداشتن-گام-های-نگران-کننده-ای-برای-احیای-برنامه-هسته-ای-است-او-چند-بار-درباره-جنگ-با-ترامپ-صحبت-کرده-و-رئیس-جمهور-هم-گفته-خب-بی-بی-برو-و-آماده-شو-هگست-و-فرمانده-سنتکام-از-جدی-ترین-حامیان-ازسرگیری-حملات-علیه-ایران-هستند",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "083ea0ef1821c21b",
@@ -913,7 +1152,11 @@
    "orig": "Container ship and tanker hit by projectiles within Hormuz strait, UKMTO says",
    "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOb2w2LW5DX2d2VHhKLWtHajMtX1BYSXhnY29DYmRXT2ZCQ1YwUGs0cGwySGNKbDJHQ0VxVFVPdngxWTNvMk5yM2dPbkZRWGF1QnppSlJmZ0RYTWJIOF9DS3hzMDAxTVFYdlR1ZXI0Q21BYWxQdDJMcmxxZmw3R2lVaC1lMVF5aHJYQV9FcFB1OC1UeUdSajNkeW5xWXNSdm9qNElHZXZxZkp3UzFSbUp1b1AycXREMHVYalVsd2IyRnpoTEJXSGxuQQ?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "d4a3551ade4cef32",
@@ -925,7 +1168,11 @@
    "orig": "كبير مستشاري قائد الحرس الثوري: أي هجوم بري أمريكي على إيران سينتهي بأسر جنود واشنطن واستسلامها",
    "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBNb0RZXzhUVG5CNHppN0tzNjNacFRER21mdnFHRlRRV1hfWVpzbzlMcW1OM0V0NzB1djMwRWM5X0x5V1VkOU5TZUlsby1mVlVTZ1hF?oc=5",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "1d6f888b97dc0662",
@@ -937,7 +1184,18 @@
    "orig": "Iran Strait of Hormuz",
    "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQaFVqeG5obUhwY3NNeElaaV8wYmdURVhiV2IwYTZRNF9Bc1JIS2ZsdUFlZy1pa2h6a2ZYeGVoWkRHaEY3cmhGZEZrU0luTXZnNGdobWNMX0hRS2hRSXoyTnU2YUJlcFVQMDFiTlo5c243bGt1bnNDaHV3eEtWT3JKZV9aWDlFMkVrNVFHcDFxQ21LMVg0WFZMb2h4UWJ0WW9IQ1JWVWMxaGJrRVE?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 4,
+    "by": [
+     "Anadolu Ajansı",
+     "Transport Topics",
+     "WAOW",
+     "straits.live"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "3556bb930e012c32",
@@ -949,7 +1207,11 @@
    "orig": "ظریف: در لامرد چهار موشک در یک منطقه غیرنظامی زدند هرکدام از اینها در نزدیکی زمین به ۱۸۰ هزار ترکش تبدیل شد؛ یعنی ۷۲۰ هزار ترکش به مردم غیرنظامی خورد / در لامرد ۷۰ درصد مردم مخالف مذاکره هستند؛ این را آمریکایی‌ها نفهمیدند که با فشار و تهدید ایرانی‌ها مقاومت می‌کنند",
    "url": "https://www.entekhab.ir/fa/news/943403/ظریف-در-لامرد-چهار-موشک-در-یک-منطقه-غیرنظامی-زدند-هرکدام-از-اینها-در-نزدیکی-زمین-به-180-هزار-ترکش-تبدیل-شد-یعنی-720-هزار-ترکش-به-مردم-غیرنظامی-خورد-در-لامرد-70-درصد-مردم-مخالف-مذاکره-هستند-این-را-آمریکایی-ها-نفهمیدند-که-با-فشار-و-تهدید-ایرانی-ها-مقاومت-می-کنند",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "54a4b36e14992b3c",
@@ -961,7 +1223,15 @@
    "orig": "Iranian IRGC Navy commander threatens to sink US ships — Anadolu Agency",
    "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOa3R2bmdjb1lPQ19oRnlZQTR0T0dfZ1hVUXFkNU1xVUhpdmEydXVUdXA0aU5fTW9QT2VGZHZ2Qzl5OFplOEpySEd3Snh5bndPQ0gwa1NLT0xYUlhDeTdJdGVoSXM5VVJzTlVuaUl1eGkwa3hfeHMtSjI2VXkwN1FLN0Rrbk1TdER1cHF2dzdaRmdXVzRKVkF1Wl9EY0d4enM?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 1,
+    "by": [
+     "Yeni Şafak English"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "623342d0e9cc268e",
@@ -973,7 +1243,11 @@
    "orig": "Container ship hit by projectile within Hormuz strait, UKMTO says",
    "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNNHp6VWU4dUNTM0hiWkYyTUttczh1aHRLTE1Qa2lHbWc4bHltVUpoRzdadDQwYThYa0JXMlh1eDNhSlNNbUptS29zT1RvcmZTSElQc3ZVSFlDZW5kSXpZOXRVVE5ibFpQZFJ4RElwdk9KcHFIRjlBY21fbHk2a1o2MldBd2F0RFN6Y3R1SzAyRGRJRk13ZHBPeWVFSmgwQ1NhNzZ2RjA1aE9pN0xjcHFfR3p2dTNJWWtzd1lR?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "e1b7d6dffdd3dc1a",
@@ -985,7 +1259,11 @@
    "orig": "Parliament Condemns Houthi Attacks on King Khalid Airport in Riyadh - Libya Update News",
    "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPTS1RSU9BU1RZX2tubzFoVWo5dERiZXN4d2JxY2RHWkdKU1pRVmp6Y3hicGtJdVFTRjc0VEVyN19KTmJtUWp5LVpueVBNczBMd3UtYUNOSFg2VmRqbnNjREpGZzZOZ2x1T2VWYnlMZm4tQm9KT2VDU01zLVNxRGRoQkVRNVlFMjRkY0NJeVREOHFjZE1HUDN3?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "bb1b10cd435791c3",
@@ -997,7 +1275,11 @@
    "orig": "🔴 سازمان عملیات تجارت دریایی انگلیس هدف قرار گرفتن دومین کشتی در تنگه هرمز را تأیید کرد. سپاه سایبری پاسداران 👇🏻 ☑️ @SEPAHCYBERY",
    "url": "https://t.me/sepahcybery/153891",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "47dc92c2fb458322",
@@ -1009,7 +1291,17 @@
    "orig": "Saudi-led coalition intercepts 2 Houthi ballistic missiles targeting eastern Saudi Arabia",
    "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPaDdIeS1kSGNWU3A5VHVfSkdMZUFjOTMwNzhXZzBNSXBwTVdlbVduaTNkUmlxQlBtazBwZThScjhwOGREdUQ5amdxVDBQYmRCRFdLTHBhVE1telhkWXdJU2VGYk0zY0VJdk0zbW1fdWMxY3JZdTBId0N1Q1U2LXNVMGI5cHlrN0h2bG9MN0U4dHFLTTBtMFpaemRyV0hORnBsX2Y5ajU3NXZtcU9qellRbTJRcU5zYS1GQ0U2WGJqZUVFQ0o1a3FFM3MxendGdDQ?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 3,
+    "by": [
+     "The Jerusalem Post",
+     "straits.live",
+     "Bloomberg.com"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "cac51d69999ea620",
@@ -1021,7 +1313,16 @@
    "orig": "Saudi Aramco HQ attacked in suspected Houthi strike",
    "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNWlJvcU95eUR0QzVMRjJzX25MNl9HWm8tNU5HNUx1R3EtOVI5U0NvRjhEdTZ2VzJtc2FPQUwzVmU3dWY2ck9ZSjhFUXd0OVRmazY1SGpWMWgtZjk0MnhlRFotQmZrMzhGY3RWUnVTVlJfOHBRVHJwNThrbDl3T0tXTnVSbXg?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 2,
+    "by": [
+     "Reuters",
+     "Bloomberg.com"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "5261846ca5219db8",
@@ -1033,7 +1334,11 @@
    "orig": "UK reports tanker hit by projectile in Hormuz Strait",
    "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPa2FiRXNoc3lScjRvV0hLVENqeWd6MkRZSzUzMFNyTjRSSTE1UXBxWWMzVVlSODl0QWZUc3lvQWl4NVMtN0hBRVlZczRMMnFmQmNZQkJfQlB4ajJ2cllrdTcyeDZUejNrNGlmSHFRRGVjRlRDV0tKZ0VCODVWSTRYMVctMVhybUJzVWdlWXQ4UFB3amRhaXllYUhKcUdhUQ?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "8de3add5474ff3cc",
@@ -1045,7 +1350,11 @@
    "orig": "🔴 هدف قرار گرفتن دومین کشتی در تنگه هرمز سپاه سایبری پاسداران 👇🏻 ☑️ @SEPAHCYBERY",
    "url": "https://t.me/sepahcybery/153890",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "97827acb46c46b93",
@@ -1057,7 +1366,18 @@
    "orig": "Iran’s IRGC Navy threatens to sink US warships approaching Strait of Hormuz",
    "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPeGxtWGtEMEstTTJYUnk0WlQyN3E1Rlg3YWNwYUdSS2l5dDZ5VjJjNExJUnVWT3VRQkQ1SGp1dXVyc1VPUWhVdFNXUUh6OFRVZHJkR1NWb3doMEl4bjZCYzJraTAzblJrdXhldWxCREg0UWtqcmd1MjB1V2huOE05N0s3Nml6X19YSm1Qc1JMc011TG5wRFNNN3JyQzJRbjlpMFVTcEtremRYWGJLOGw5LWVlWm8wWXdsMG5jOE1mZFpnNmdEQnc?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 4,
+    "by": [
+     "Yeni Şafak English",
+     "WV News",
+     "straits.live",
+     "Transport Topics"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "079a1410a17691fe",
@@ -1069,7 +1389,15 @@
    "orig": "\"If US ships approach Hormuz Strait, we will sink them\"",
    "url": "https://en.mehrnews.com/news/248568/If-US-ships-approach-Hormuz-Strait-we-will-sink-them",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 1,
+    "by": [
+     "Anadolu Ajansı"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "54a373cba5b66e29",
@@ -1081,7 +1409,11 @@
    "orig": "Houthi attacks are ‘a terrorist threat’ to the international community: Ex-CIA official",
    "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQQ3ZxMWRNamduN1A5MlhyTEJ1TjJaOTBkdzltb3FJVjFnQUxiWFhYTzluTV9pVGI1bHNpTEtIV3FYZHd3U0VtVWxmMk5UT2RYTW5hRWF1TGJOVzFwRlNfX2dvX1Q1TkJvUHVVQjhPMkVFRUIyMGRycTV3ZmZaWHB5Y3JfM2xGT29qenRESG1BdW5zSEpmc1N3aVp5Z292a2kwTHFqcXBjSHhiTHlra0ZhbWZkZzEyTmo3Z3BuSUlabWtjVngyT1NkQg?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "fc6a583bf39a17f8",
@@ -1093,7 +1425,11 @@
    "orig": "مستشار قائد الحرس الثوري الإيراني: إذا شنّت أميركا هجومًا بريًا فسيقع جنودها في الأسر",
    "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5lTGEtaTcwcmtLTC1VRU90a01KT245Y2llYnhDSlBXSFhBc3VSR1pKenA0T2dYVlItN2wybi1qZ1FhZ1hVUENRa0lLdGRiSEV3SUE?oc=5",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "eb0d438ddfddd94e",
@@ -1105,7 +1441,11 @@
    "orig": "New Wave of Hormuz Attacks Raises Stakes for Ocean Carriers Amid Falling Rates",
    "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOVkxjcmd1T2N6blhRSGoyUlNQdHo4S2JqZUlWUUNjSGhsRDhKQ1BRZWRkdk9NU0Nzbm55MS1jVy13YXJjWHFzckJtWGkyeHlLQm0yeUhUVmZwM1l6X0YxX20xYmY0aTFNLXFUUTljMnFyOTZWSXhQaGZzWWhpUEFzeG9LNnJBNUg4Mlo5U0VWZXVuMzNEd0dYZFdoVnBFMHMzaEpnZGF2VjF6c3h1RGlVWExXcS1sOVd0MjNrVTZ0a2dqX0U5LUg1RlVXYnRqUQ?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "c80448cc4f9e48b5",
@@ -1117,7 +1457,11 @@
    "orig": "بررسی اجزای سازنده پهپاد معروف اسرائیلی؛ هرون&#33; / برای نخستین‌بار 🔰 قسمت اول | پهپاد معروف صهیونیستی از نزدیک چه شکلی است؟ برای نخستین‌بار، جزئیات پهپاد هرون به‌دست‌آمده توسط #پدافند_ارتش ایران را ببینید&#33; سپاه سایبری پاسداران 👇🏻 ☑️ @SEPAHCYBERY",
    "url": "https://t.me/sepahcybery/153889",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "ac995a89867e7d70",
@@ -1129,7 +1473,16 @@
    "orig": "Saudi-led coalition says it struck resources sustaining Houthi war effort",
    "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPa0VucVZaRlJiUEQ1bERXMDA2c2gwTFFTeG92bkZaMTlsak9icVJfNktreTFoUnIxY2JRVTJTRkxfWGFiTkJtUFhqajc4bTFDWkdBeHVELVRvdmk3YkFLX2NhRlAtVGI4dXFNNlFLN1pJZ2QxbUFxbWNLRUN5aEdPZ2Z4LWJPUXlCNUh6ZVF0alF0Xzg2cFpaSWUyWXhNY29vWldfSlBqcU5HeXVFUkNNWE1taklQYjRTbHc?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 2,
+    "by": [
+     "AP News",
+     "Durango Herald"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "ad4aec354f7e0bac",
@@ -1141,7 +1494,19 @@
    "orig": "Saudi Arabia Strikes Houthi Targets as Red Sea War Escalates",
    "url": "https://gcaptain.com/saudi-arabia-strikes-houthi-targets-as-red-sea-war-escalates/",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 17,
+    "by": [
+     "Reuters",
+     "WFMZ.com",
+     "Bloomberg.com",
+     "Al-Monitor",
+     "Anadolu Ajansı"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "182aa5f95b49ea9c",
@@ -1153,7 +1518,11 @@
    "orig": "مصادر عربية: هجوم صاروخي يمني يستهدف أرامكو شرق السعودية والرياض https://almanar.com.lb/article/1259312/?s=tg",
    "url": "https://t.me/almanarnews/267885",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "9d03a8b36c29f599",
@@ -1165,7 +1534,11 @@
    "orig": "الحوثي يطل برأس الأفعى الإيراني",
    "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBiOHB4bFhoTExZOENLTjhicGNNX2NtbThHUE12d1RyMXctOEZ2cnU5cmNGM0F2LXIwRG9kYkgteDFOMlp4ZkVkempoSFFRZWxPNlRtVFdB0gFWQVVfeXFMUGI4cHhsWGhMTFk4Q0tOOGJwY01fY21tOEdQTXZ3VHIxdy04RnZydTlyY0YzQXYtcjBEb2RiSC14MU4yWnhmRWR6amhIUVFlbE82VG1UV0E?oc=5",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "ea325c7c4fdadae6",
@@ -1177,7 +1550,16 @@
    "orig": "قائد بحرية الحرس الثوري الإيراني: نترقب اقتراب السفن الأمريكية من مضيق هرمز - وكالة سبأ",
    "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE10dlNIXy1nQlotZG1NSG9JOXpsVEZLWkxBZlZJa3RYRnJZTzJOZkktaDdWa2U4UVRuYlZmQVZhS2NqMS1KdVRKNzMyNHVtR2M?oc=5",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "echoed",
+    "n": 2,
+    "by": [
+     "الخبر اليمني",
+     "الثورة نت"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "15b8a457c12f6fb5",
@@ -1189,7 +1571,11 @@
    "orig": "Hormuz ships pummeled with worst attacks of the Iran War — as oil flows plummet",
    "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPbDRzVVN2aEZGcW5ydngyVTFMNFhpQWNkV2RNRkFtc1lidWVQM2pjbHNWTGFCVWRIR1BtSndXVHBHaHV5b0NwNkxoOVBlU1B5SVo2RUs0NEpRUnpiUnNjUnJ4ZWQ5WFNvcEJNSUxaNTBqVWpDRWpWcks5b2txNEd4cjVnbS1YaTY2cHBycU8tSlpWSWZUTEVyckQ4VHJtcDZ0VEFxdFdXN01qTzJYXzdqUjhnc2lDU3B4dGE4?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "5f47bc3520d69b9f",
@@ -1201,7 +1587,17 @@
    "orig": "Coalition issues evacuation warning for site in Sanaa, reportedly strikes Houthi fuel facility",
    "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQVE9SSUxoLUpvSXNoVXFPdExZaGNqZWJJTmcxa055aTRZTFNsbG5PZ0R5dGJhdkFPUU5TN1hpUHJFZ2Z0ZjI1SlVvSGpFZ2t2X3ZkeHlhdUxRWDB6RlNoTEJJa25hLXY5TzloRmd4QUxid2F1VEE5eXNrTW5WT21reFpmWkhKVS1JRUtKaWxwNGtWR0lKdllwRnlKcGdWd3NrT3FNTlpDOU95ZDZlZ0tJbTBvU2Jlb2RvNGxXUlE5NE5nUWRzbWY2a1A1R3RRYzdQeHZTakV0cFk?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 3,
+    "by": [
+     "Kurdistan24",
+     "The Jerusalem Post",
+     "The Arab Weekly"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "81be0c3b9ecb3d4e",
@@ -1213,7 +1609,11 @@
    "orig": "اقتصاددان ارشد مؤسسه مودیز آنالیتیکس: در حال حاضر، میانگین قیمت هر گالن بنزین در آمریکا به ۴.۳۴ دلار رسیده؛ در حالی که پیش از جنگ ۲.۹۸ دلار بود / قیمت گازوئیل به دلیل اختلال در تردد از تنگه هرمز همچنان نزدیک به سطوح بی‌سابقه قرار دارد / جنگ ایران ۲۶۵ میلیارد دلار هزینه اضافی به مصرف‌کنندگان آمریکایی تحمیل کرده؛ معادل ۲ هزار دلار برای هر خانوار آمریکایی",
    "url": "https://www.entekhab.ir/fa/news/943401/اقتصاددان-ارشد-مؤسسه-مودیز-آنالیتیکس-در-حال-حاضر-میانگین-قیمت-هر-گالن-بنزین-در-آمریکا-به-4-34-دلار-رسیده-در-حالی-که-پیش-از-جنگ-2-98-دلار-بود-قیمت-گازوئیل-به-دلیل-اختلال-در-تردد-از-تنگه-هرمز-همچنان-نزدیک-به-سطوح-بی-سابقه-قرار-دارد-جنگ-ایران-265-میلیارد-دلار-هزینه-اضافی-به-مصرف-کنندگان-آمریکایی-تحمیل-کرده-معادل-2-هزار-دلار-برای-هر-خانوار-آمریکایی",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "32c2590eac6e3d96",
@@ -1225,7 +1625,11 @@
    "orig": "الأدميرال عظمائي: إذا كان الأمريكيون يعتقدون أن مضيق هرمز مفتوحا فليقتربوا منه",
    "url": "https://news.google.com/rss/articles/CBMiigRBVV95cUxOTGxpRGF2N0Y1aFlSZnVhenVZYmNGb3JRYnc2eUVRek92M3pONTNKMDl5NnU1bmRhaEtYX3c1RnNXeVN1TF9RdlI3MjlSNldpeEl3WU01cXJHTms0b21qRGNKcnlQR0JMMGoyWmNrcE1qLTdoRk5NVy05OG52S1hYYU9TRnE1QW9JeWlQTmtjNkM5M1BaVkprcWF4OFBLdnNwWDJHdi1tcWlIYm1Yck1MMkFZNFhGcUU4MHlnVHBlNTlQNFExZ3ZiaUlISDN6V1I4YW5YYmlsbERiZlJYbmp1TGV1SHpTb2YyTW9OSE5RRXRJUUM3RDFNSlptNjR5T3FDOWZ6SG5NelFONElRWGJ1ZkpiSWJQNGdVdFBVazZzUEcwa1hkcmVGaElmNm9Yc3RZSENVS3dJdi1pWkRxckNMU216VXJEU21QLVQ0R05TNVFPWUJYOFNOamJ2cGpUVFEyYmRSS282ZFBLSEh6MWZmNUJST3VZR3pQRW4zeEhVakZjX1dkWXVKUDYxTFNJWVN3ZHkwXzIwcUhqZUxvRDlXV0p6aXNvLTBxdVAtd2JsZDhkV0RiZ0dNZHpRVldhTUFVdEZuMnRIYkZmRWpCOWYyU1lBUU05WEJRak9CM0o3UzF2eU04eWRkUTFKbUszV0QyaDVTSjhqOUt6RXlfTXNzZE01eEd3elFDdnc?oc=5",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "46f5b52404fa3d74",
@@ -1237,7 +1641,11 @@
    "orig": "Suez transits on the rise even as Houthi-Saudi hostilities escalate",
    "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNa2hFNU5pa2s3V2ItYkVmT0xiNWdRaUp1a2lrNWJabnB3NEhkd0pfRnpIN0lRcWhrY1A5MEZrSHR0MkVqczVXZ0REdElmMlhHSElyY1dWcUxadVdSNGVwbTI1RnFmM1NxSDVTVDhWMnZ1XzhmZjNZTUVaamdhemdDSjdROHdLZnFaVkFLWWd4Z2gzRG5mbEY5ZXNiRWxTWlZvVC10QXZ3?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "e4932a51ac09c7fb",
@@ -1249,7 +1657,18 @@
    "orig": "What the Houthi Attacks on Saudi Airports Mean for Travel and Oil",
    "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQaElOZWplUjBqREJQZHEyNElMekV4QzNRSlJFYUNSYkhMZ09YNHlzdVFYNDNDdDF4U0R6WDBaYmxSNTZ6UkNISDFsZnBzRWc2X3pySUJSSnhqOEJ4MmFpSEswS3JodHQ0T2ZISGVwSklBYXpuRW00WXptQUNQX1RwVGpPS3p0enVuWHQyNTZ0X09zNjhlQ29RSGZJSmlRclZZdzRvZHRB?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 4,
+    "by": [
+     "11Alive.com",
+     "Anadolu Ajansı",
+     "Al-Monitor",
+     "Arab News"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "9e7b96dc514094cd",
@@ -1261,7 +1680,11 @@
    "orig": "🔴 تأسیسات آرامکو در منطقه شرقی عربستان زیر حملات موشکی نیروهای مسلح یمن قرار گرفت سپاه سایبری پاسداران 👇🏻 ☑️ @SEPAHCYBERY",
    "url": "https://t.me/sepahcybery/153888",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "548997d3da655ac3",
@@ -1273,7 +1696,11 @@
    "orig": "🎦 دریادار عظمایی: امکان برقراری امنیت اقتصادی، سیاسی و نظامی با همسایگان وجود دارد و حضور آمریکا در خلیج فارس و دریای عمان لازم نیست. 🔹 همکاری مشترک، امنیت را تضمین می‌کند. 🔹 هدف آمریکا غارت ثروت کشورهای مسلمان است. سپاه سایبری پاسداران 👇🏻 ☑️ @SEPAHCYBERY",
    "url": "https://t.me/sepahcybery/153887",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "a9c9bcfc321e808f",
@@ -1285,7 +1712,15 @@
    "orig": "🎦 فرمانده نیروی دریایی سپاه: آمریکایی‌ها اگر فکر می‌کنند تنگه هرمز باز است نزدیک‌تر بیایند سپاه سایبری پاسداران 👇🏻 ☑️ @SEPAHCYBERY",
    "url": "https://t.me/sepahcybery/153885",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "echoed",
+    "n": 1,
+    "by": [
+     "entekhab.ir"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "5780f2d3a543ba8f",
@@ -1297,7 +1732,11 @@
    "orig": "Yemen’s leader vows to continue military operation until Houthi coup ends, state institutions restored",
    "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQS3VLRmR4LUM4RGhFRTFVdFpIclhZdXh3bnFvUmlvOGpnbGwzbVhEV0lsVEE1SklmeGlMZWNhVXlFU2F4aVkwUklfQk9rSHktcnY1d3ktR0tGSmhreUJtaXhBVmxiZ2Jic01tZWFpNHh5THVwZVZMUFduRmtrR1lNTVZxNFhJOWRNWlM0cXdGYk9mS1FxWXhGZnQ5UGZMTWUwTE41RnpWa2ZETVY0RXZKUVRVYUNNT21CaE44ZmxSNy1GOWh0NlplQ1dUX2JzYU5FX0VWTHJmeTE4b0xQUVlr?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "ea3050585559debf",
@@ -1309,7 +1748,11 @@
    "orig": "فرمانده نیروی دریایی سپاه: با شناور‌های متخلف به‌صورت قاطع برخورد شده است، اما آمریکایی‌ها سکوت رسانه‌ای ایجاد کرده‌اند / ما مجبور شدیم تصاویر یکی دو مورد از این شناور‌ها را در روز‌های گذشته منتشر کنیم تا مشخص شود آمریکا به چه خفت و خواری رسیده / منتظریم ناو‌های آمریکایی به ورودی تنگۀ هرمز نزدیک شوند تا غرق‌شان کنیم",
    "url": "https://www.entekhab.ir/fa/news/943397/فرمانده-نیروی-دریایی-سپاه-با-شناور-های-متخلف-به-صورت-قاطع-برخورد-شده-است-اما-آمریکایی-ها-سکوت-رسانه-ای-ایجاد-کرده-اند-ما-مجبور-شدیم-تصاویر-یکی-دو-مورد-از-این-شناور-ها-را-در-روز-های-گذشته-منتشر-کنیم-تا-مشخص-شود-آمریکا-به-چه-خفت-و-خواری-رسیده-منتظریم-ناو-های-آمریکایی-به-ورودی-تنگه-هرمز-نزدیک-شوند-تا-غرق-شان-کنیم",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "8a11103f2bc90e2d",
@@ -1321,7 +1764,19 @@
    "orig": "Iran increases threat to Strait of Hormuz shipping",
    "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9fRWdpaXVOblJVWUNoZFVBRkl3VjhucjRzQi1MdncxZGlBLUEtWXFETFllZmdIME5LWlR5dk8yRzh2Z05KZ080clBuaWNFMEx6alZEUlFwRjBueFYyc2NYZ3pGbzR3OVAxM0tZ?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 5,
+    "by": [
+     "Al-Monitor",
+     "Anadolu Ajansı",
+     "WV News",
+     "WAOW",
+     "straits.live"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "eb2fc50c2cbcb1cf",
@@ -1333,7 +1788,17 @@
    "orig": "Strikes reported in Yemen's Sana'a following Saudi coalition evacuation order",
    "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE0zSktQWHhvd1ZDbXRNeDRuSGZqVklxZ3A0SE5TdElEdnFkNnh3UXFRZEVNUHNBMWwzcU9lYm1ET0xjalJCOHNidDFhdkNxdmw2LWJrSlZOOTNsdF93?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 3,
+    "by": [
+     "Al-Monitor",
+     "Kurdistan24",
+     "The Arab Weekly"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "e8815d8caded7d74",
@@ -1345,7 +1810,11 @@
    "orig": "Shafaq News..Trump considers Turkish role over Houthi attacks",
    "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNNTh5S1MzemJVWGQwbTVpaU9PZk1lSHJ1cjBQSGlUTkdZTVJCdWIxTlk1TXJYakJLZ21OLWI1aGphdWRWLWV6RUFQVFpJa3hrUnRhWWpuTjJSaVhnTDE0M1dJNXN3SmV4bTlLbEtDWEQzRW1uZ3dEQmZEQ2RWVnZXbklR?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "ccd5c6be4504fdf3",
@@ -1357,7 +1826,11 @@
    "orig": "Ship-to-ship oil transfers around Strait of Hormuz at risk, military institute says",
    "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPbzQ3WjVQcnBBN1V6T2lRVl9mSURLaWEzaEFyMjdLMVFNZlZhUUlGVGJuaDJxM1VmWE1LYlVXeEVONzB5ejRFNVE3VEF0V2UtTXZTZUw0aC0xdk14ek9QaFhXSFk5MkdLRTFMekx2WHlfUmxzLVhxYmJrV3Zmam5CS0xWVVA1NVZuNFZ4bDIxX21hdlVfbTE1VVFkUWpWVlNxa2ZmR1hQT2ljYWpMVDhsRjVFMG9fR2VrdF9nQVY2NFhoTTk1aFV3?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "488a5f24957e06d5",
@@ -1369,7 +1842,19 @@
    "orig": "Why advanced U.S. weapons aren’t stopping Houthi attacks in Saudi Arabia",
    "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxObUlWVHRLU2g4MU80VGtLUWNCYk9oSDNXeW1kbFV3VEJLWDRwZXFtTEpJNURtZ0JKMl91bG15d0pUQlpya2JaNzRrY1ZybUs5S1JJellKOW9QeEZsYTN5NHlXaldscEVLMlpmZDNOSDNwblFvcEFZZU9XbFZhNDM3Zl9QLThDR0oxVTJmRHVjZ3hwem9ETDEyUjZ3djVEZw?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 11,
+    "by": [
+     "Bloomberg.com",
+     "straits.live",
+     "CBS News",
+     "DW.com",
+     "Arab News"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "4c1fb869a413d3f0",
@@ -1381,7 +1866,11 @@
    "orig": "Saudi attack on Yemeni oil company amounts to war crime",
    "url": "https://en.mehrnews.com/news/248567/Saudi-attack-on-Yemeni-oil-company-amounts-to-war-crime",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "7d4c6f89854f481c",
@@ -1393,7 +1882,11 @@
    "orig": "Houthis warn of fresh attacks on Saudi Arabia after Sanaa strike",
    "url": "https://www.newarab.com/news/houthis-warn-fresh-attacks-saudi-arabia-after-sanaa-strike",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "01045ef0ba72bd04",
@@ -1405,7 +1898,17 @@
    "orig": "Houthi attacks target airports, oil facilities",
    "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQei1pLXpNUVBNcEI4cGZnYVhuTnBVd250Nkpqb2trX2FzQm92WnVkY1ZlZExfMFNUTUtjRkU5OTJJZGdwT3IwWjFzZlFXNmF5X2xJYnhZME53VGNlQWVoSXpCeTVIRnhOLVZWN0F2OHZHNGprQkRZSXV6N21KbU9RSjdSUnBndDFpVk5CbWx3dHB6dXpHRjFQOHdfeHhRR1R6M29NWGx1dDRIOVNoM3VONnRyT1pFWUJJLVg1Sw?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 3,
+    "by": [
+     "Around Prague",
+     "Anadolu Ajansı",
+     "Arab News"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "fc89a8118611e455",
@@ -1417,7 +1920,16 @@
    "orig": "Saudi Arabia strikes oil depots in Yemen and says missiles launched toward location of Saudi Aramco HQ",
    "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOd002QXExVmJ6WkZ6RmhBNlY0ZWc4Z29IQXk4b3lBdVlKWUp0bUhVVjZpQ3FLQTU3cFZWU1hIaDBzRmg3ZWpiOFhEYV8tZ0MtNUhWNllfRWxPcXBWNlM1VTJwZEQtUWJLaGxTZURFdFo2QWtpdWwtcXVhS2RybTFUUkJHb3ZzTEVJenU0dnNheTQ4bWMzXy1xTW56d0xmd295VUtwVnFQczJkQQ?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 2,
+    "by": [
+     "straits.live",
+     "The New York Times"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "ede7bbb3ae11ae0b",
@@ -1429,7 +1941,11 @@
    "orig": "هشدار سطح ۳ سفارت آمریکا در ریاض در خصوص سفر به عربستان: به دلیل خطر هدف قرار گرفتن منافع آمریکا توسط پهپاد‌ها و موشک‌های ایران و حوثی‌ها در سفر به این کشور تجدیدنظر کنید",
    "url": "https://www.entekhab.ir/fa/news/943389/هشدار-سطح-3-سفارت-آمریکا-در-ریاض-در-خصوص-سفر-به-عربستان-به-دلیل-خطر-هدف-قرار-گرفتن-منافع-آمریکا-توسط-پهپاد-ها-و-موشک-های-ایران-و-حوثی-ها-در-سفر-به-این-کشور-تجدیدنظر-کنید",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "cd8b8c43d530d0f9",
@@ -1441,7 +1957,11 @@
    "orig": "🔴 شلیک‌های موشکی از جزایر ایران به سمت کشتی‌های متخلف در تنگه هرمز سپاه سایبری پاسداران 👇🏻 ☑️ @SEPAHCYBERY",
    "url": "https://t.me/sepahcybery/153884",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "de4e454779a9b7ee",
@@ -1453,7 +1973,15 @@
    "orig": "Tanker damaged and catches fire east of Strait of Hormuz",
    "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQTFNjOHJsN0dOVVIweWxQTU1PTUt5dzBUYUVsQmtYcEJRaU54Q1NHNFdxcV9ucWV3YllaenBiNWlGcWkzZzUxcWlaQ0syNEhmb09CU3NZU3lyb3dyaTZkbjBiTFRaQ3FwY0ZXU3d5X3FlaHlzbHNJZXRVUzdYZ2lFeWlXSQ?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 1,
+    "by": [
+     "Latest news from Azerbaijan"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "e4f266ac8a16e776",
@@ -1465,7 +1993,11 @@
    "orig": "Breaking | According to Axios, citing sources, Netanyahu is discussing a joint attack on Iran with Trump before the Israeli elections, after presenting him with an alleged Iranian escalation in the nuclear field.",
    "url": "https://t.me/QudsNen/241957",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "d55b1aa89228d2af",
@@ -1477,7 +2009,15 @@
    "orig": "إيران تعلن رصد ناقلة نفط متضررة وحريق شرق مضيق هرمز",
    "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9DZGRHUGlHbUd5Rm9xYUdmLURXTlRzY3VYb283Uk1MRGQtcGZXUHFSazZpWjVpY3Z2R2F6LXRqREw1U3ZLQlhrNUlOZ1F0ZlVwczkw?oc=5",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "echoed",
+    "n": 1,
+    "by": [
+     "فلسطين أون لاين"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "426ba54f586b39d5",
@@ -1489,7 +2029,15 @@
    "orig": "Hormuz attacks spike after US airstrike on Iran-linked tanker",
    "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQOWpCTkxOYVBYY2dmVmkxZ2NiamliZnUwRTd2bE9NVnduOFh2UjAzOHpWZXJpUy1pdHVWVC1wLVZPNk12RmZ0TWI5eDRwazB5YVNrTkdmUk9NQlZnX0I1ZkNyVUVaYXhLaklsMmxrUnh3R0gxNXFNLVFKYTZZMjJJQXFBOWtlampXbG5MSW1kZXM2UWVidTlORXQ2OGpxY3oybmJlNWZn?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 1,
+    "by": [
+     "Latest news from Azerbaijan"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "f4692cc7a62b85e4",
@@ -1501,7 +2049,11 @@
    "orig": "ادعای خبرنگار اکسیوس: نتانیاهو هفته گذشته درباره احتمال ازسرگیری جنگ علیه ایران با ترامپ گفت‌و‌گو کرد / مقام‌های آمریکایی این برداشت را داشته‌اند که نتانیاهو مایل بوده پیش از برگزاری انتخابات، حملات به ایران را از سر بگیرد",
    "url": "https://www.entekhab.ir/fa/news/943385/ادعای-خبرنگار-اکسیوس-نتانیاهو-هفته-گذشته-درباره-احتمال-ازسرگیری-جنگ-علیه-ایران-با-ترامپ-گفت-و-گو-کرد-مقام-های-آمریکایی-این-برداشت-را-داشته-اند-که-نتانیاهو-مایل-بوده-پیش-از-برگزاری-انتخابات-حملات-به-ایران-را-از-سر-بگیرد",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "ea7967360eeb5c1e",
@@ -1513,7 +2065,18 @@
    "orig": "Iran increases threat to Strait of Hormuz shipping, and other Middle East developments",
    "url": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxQTFdZSExWN2Rzd1lDSEhteGo1TkNxRlgyWTBlWnBoWFVXMm1oOEJDR0FYcGJPclNHaHNSOXBhQ2JFb3ZubERHaTdjQ0lId2YzdTFWSnlNMnBCbGNYWlhFOEsxbGtUMERVejZxUzFQOTJLSncwZGhMdlZmZm02M1BvUkJPMDUzSjZuc0F5YnFRaVhIRzYxclVxUU5lSnpkdDYzMjRBQy1xVVg3TkNoV3J5QVBxS2U2SGlWd0owQjFPcFdDMXpHR0FNRjU4ajBWS2IxR3FOZXBNV3YwMFBqcHFJREJpbHd2dnJ6a3FGcXVZc2pORUU?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 4,
+    "by": [
+     "Anadolu Ajansı",
+     "WV News",
+     "Transport Topics",
+     "myMotherLode.com"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "9cfe03b88ab48a17",
@@ -1525,7 +2088,15 @@
    "orig": "Houthi-run health ministry says two killed in oil company strike",
    "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPWFJQdWdQNy1OQjBTeWtlQXBEVkhja0haZlB1YmZWSmhwRnAwZFdVYjUzQ1BXalhUUFdPbjRfVk00M3dfN0ZXS0g4RnpuekhqY29QbUZfckp3V2lwMFZ1cDRPUUNHMWRBQ2R6ZjlrRHIxVjMwcnduSkY5U25xQmJIMDJvbEdoRUhhVXNYYXhWT1dlOHl4NFB4T1UzWVRmcTVfNDNXWFJNdU5wMi1EWkNj?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 1,
+    "by": [
+     "Middle East Eye"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "829bb16e64822729",
@@ -1537,7 +2108,15 @@
    "orig": "Houthi health ministry says Saudi attack killed two people in Hodeidah",
    "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQcmlnVGp5VFdVTWgxci0yRzU5OGowZWxvSWlOcmxPTTlFR2ZKV25JQWhEcHk2U28tTjBCTlIzaFo2YkRJZWg1ODhLUUN0MzVGU2ZHbkZoU1FoX1lYd0t3SGhoZW9USmE1VXV0UmNOVmxmMUFFT1oxb0xKbVhyR1pKcnp2UzFKencxNUd2ZGZrMllNci1fVjM5cGJUQzNxWTNuYm1JY3RhT3B6eko5amlCQ0Q0Sml0SGtvRDlZUDhxMA?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 1,
+    "by": [
+     "The Times of Israel"
+    ],
+    "at": "2026-10-14T21:36:23.662Z"
+   }
   },
   {
    "id": "191ea86f94e08458",
