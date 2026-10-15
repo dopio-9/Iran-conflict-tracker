@@ -330,12 +330,12 @@
    }
   },
   "resolved": {
-   "ts": "2026-10-14T21:36:23.681Z",
-   "graded_now": 91,
-   "echoed": 293,
-   "no-echo": 243,
+   "ts": "2026-10-15T00:28:34.933Z",
+   "graded_now": 9,
+   "echoed": 296,
+   "no-echo": 249,
    "refuted": 0,
-   "pending": 9
+   "pending": 0
   }
  },
  "items": [
@@ -349,7 +349,11 @@
    "orig": "🔺 وزارت انرژی عربستان: یک ساختمان اداری متعلق به شرکت آرامکو در شهر ظهران هدف حمله قرار گرفت. سپاه سایبری پاسداران 👇🏻 ☑️ @SEPAHCYBERY",
    "url": "https://t.me/sepahcybery/153897",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-15T00:28:34.924Z"
+   }
   },
   {
    "id": "7a7162b18f489d99",
@@ -361,7 +365,11 @@
    "orig": "واشنطن تفند تهديدات الحرس الثوري بشأن \"هرمز\" وتؤكد عبور 19 مليون برميل نفط عبر المضيق",
    "url": "https://news.google.com/rss/articles/CBMiR0FVX3lxTE5aVzNteGpyOUg2YzVaQjdGOXlwX24yeVhFSThJUk1jajMwSHo3WHMxRXRFM3FxRnVWVmpRVDVjYWxNN3FHRXRF?oc=5",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-15T00:28:34.924Z"
+   }
   },
   {
    "id": "9eb17abc20692e75",
@@ -373,7 +381,15 @@
    "orig": "CENTCOM rejects Iran's Hormuz control claims",
    "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPZ2JBZURCcjUtZ0M0WWNxQjZwYWV0Y1pWcnU0Mk81Q0lGV1VZd08yV3FfT1BucDdsQU55ZDF6dENsanBhc2FZYU9qOXR6U2pqQVY0bFZQSzA0YmRJMmJHTWFCVHEtM05RZzBWTnZDRHNDMmFKc1lxVlFxaGhtbUpEWHNiUUdVUmN5QlE?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 1,
+    "by": [
+     "Anadolu Ajansı"
+    ],
+    "at": "2026-10-15T00:28:34.924Z"
+   }
   },
   {
    "id": "f46360b44825c07a",
@@ -385,7 +401,18 @@
    "orig": "Saudi-led coalition intercepts 6 Houthi missiles, 6 drones",
    "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPVWN3VUI4dHRkekk5YWQ5Y09PLUdpMTZZUlZtaUpmcVVoeWpuaF9VenRFTnZfOXRzdDVvSUhVS0hXQzByYnVDRGU3ZHdSdHp2WUJjQ2lMdXBiT0lPYUYzZzNUdU01Vk5fdEZTbFlYRUpwNzNEUWM1c1NyYXBsdGloVzlHWk53NE9WMzI3VWFtMEtoc0Q5dTYxSC1NRHJZemlUc21rcw?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 4,
+    "by": [
+     "Al-Monitor",
+     "BBC",
+     "The Jerusalem Post",
+     "Bloomberg.com"
+    ],
+    "at": "2026-10-15T00:28:34.924Z"
+   }
   },
   {
    "id": "9e5153c63df7baa6",
@@ -397,7 +424,11 @@
    "orig": "Journalist Adele Shoko reports on today&#39;s extreme Israeli settlers&#39; attacks targeting Palestinians backed by Israeli occupation forces near the village of Al-Mughayyir northeast of Ramallah in the occupied West Bank.",
    "url": "https://t.me/QudsNen/241969",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-15T00:28:34.924Z"
+   }
   },
   {
    "id": "da2ec42d7d619b09",
@@ -409,7 +440,11 @@
    "orig": "דיווח: איראן מבצרת את מתקני הגרעין לקראת תקיפות אפשריות ומאיימת בפלישה למדינות שכנות",
    "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE9DcFZZM0xGQWM3N1RtS3M5QUd1QXNxZkhpeGlLdldNRzZkWFVUbkUtdGpGMTh1bFVaYU8zZ2VGM2hyQWFKMG1ZOXI0UQ?oc=5",
    "tr": false,
-   "untranslated": true
+   "untranslated": true,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-15T00:28:34.924Z"
+   }
   },
   {
    "id": "8e58e045b90668d4",
@@ -421,7 +456,11 @@
    "orig": "Riyadh Air Relocates New Boeing 787 Dreamliners Away From Capital Amid Houthi Missile Threat",
    "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNQndqT3FqYkZ4dFVzSnFFUDVGX01nTm1HYjZlYmpXUlh4bnphVGhwaG9XQlItYVhxVXNLbWQtbW8wZ1g0MXZpYm1NQ0R3QUVLdTBXTnlVZXV1YnR2YXk2OVoxVWJZY2VjUGIwTmpiMXZvS1FXSzVjbWIzYjBpYmNWRVdBd1VwQmxRU1NKS1hfT0Q1RVlmSHVEamI1dnRKOS1sT3l5LVRlbkNTc29ZUzQ5Nk93b2xLaHdsVzBEckJvcWNPSUhYRW94ag?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-15T00:28:34.924Z"
+   }
   },
   {
    "id": "6fdc4944e9bfaf08",
@@ -433,7 +472,11 @@
    "orig": "Houthi official warns that Saudi oil and vital installations will be visited tonight by a group from Yemen",
    "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOTnoxQkZIVmNNckJNQzFrUkxlZ0dUdDdELW5ZeGlPMFVab1dWZmtUTHNSaHN3emhONzdENHZNdXZsRC1hSXh1V3J5OUpTa2Q4NjBEcFk2QVk0bWNpZlhuTktBOGpHeks2eUZBcGF0U0dmaVJOYTJwcDh4NGQ1S1Jnakd0VXNQYmlJNXlPTkFRRGl0ck9RaFk0a05yZGthWjJIWlBiZHBCR3BTYlFGRHgwVnFoWUFzdDBDbzFHQlRBaE5LZnFtOTZKWXd5WjYxdkUtdUZQMjZYQ29SUQ?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "no-echo",
+    "at": "2026-10-15T00:28:34.924Z"
+   }
   },
   {
    "id": "f299e5f8c164ad56",
@@ -445,7 +488,17 @@
    "orig": "Missile hits headquarters of Saudi Aramco, source says, as Houthi conflict escalates",
    "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPUHZtMnk3dUVFWmVkT2FmZVRqNWNrUUc5YkNkWVJMOEhWMmo1dnc2S3FlUlExbjFscTdlY3NQcExPejdxUlF1clZ5S1BKQ1JLdjhzaFdXT2l1YVBmN2VVSkFOSlJNNmlTR2w5d082MDR2b3RkY1VrTTlwWFhuclBteVRaTmtMRUczY0VPaWxBeVV1RE9vUE9kRFZaUlZEX0NnOXZqVnNtNlJIcFU3cnE2VVFTNzhfNVZ0TzZiQWFtSUJCdXJXYU5rU0JB?oc=5",
    "tr": false,
-   "untranslated": false
+   "untranslated": false,
+   "res": {
+    "status": "echoed",
+    "n": 3,
+    "by": [
+     "Bloomberg.com",
+     "Financial Times",
+     "straits.live"
+    ],
+    "at": "2026-10-15T00:28:34.924Z"
+   }
   },
   {
    "id": "730b8547244b0193",
