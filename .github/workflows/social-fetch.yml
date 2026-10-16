@@ -1,17 +1,18 @@
-name: raw-feed collector (24h experiment)
+name: raw-feed collector
 # Collects the RAW lane and COMMITS it, so the page updates with no Claude session
-# in the path. The previous version of this workflow gathered the same sources
-# every few hours and discarded everything — no commit, no artifact. Never again:
-# a run that cannot save its output fails red.
+# in the path. A run that cannot save its output fails red.
 #
-# Experiment window (owner decision 13 Oct 2026 — judge on output, then decide):
-#   collect + grade : until EXPERIMENT_END            (24h of collection)
-#   grade only      : until EXPERIMENT_END + 24h      (late items still get graded)
-#   after that      : every run exits immediately     (switched off by itself)
+# Kept after the 13–15 Oct experiment (owner decision 16 Oct 2026). Runs hourly on
+# GitHub's schedule AND is dispatched by the scheduled Claude session after it has
+# written translations / search results — GitHub delays its own schedule (the
+# experiment got 4 runs of ~12), so two triggers keep the page under the 3h STALE mark.
+#
+# The Claude session writes ONLY to data/inbox/ on branch claude/inbox. This
+# workflow reads that branch; it never merges it.
 on:
   workflow_dispatch:
   schedule:
-    - cron: "7 */2 * * *"   # every 2h on paper; GitHub may delay scheduled runs
+    - cron: "23 * * * *"
 
 permissions:
   contents: write
@@ -20,70 +21,59 @@ concurrency:
   group: raw-feed
   cancel-in-progress: false
 
-env:
-  EXPERIMENT_START: "2026-10-13T00:00:00Z"
-  EXPERIMENT_END: "2026-10-14T02:00:00Z"
-
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
-      - name: Phase
-        id: phase
-        run: |
-          now=$(date -u +%s)
-          end=$(date -u -d "$EXPERIMENT_END" +%s)
-          if   [ "$now" -lt "$end" ];            then p=collect
-          elif [ "$now" -lt $((end + 86400)) ];  then p=grade
-          else p=off; fi
-          echo "phase=$p" >> "$GITHUB_OUTPUT"
-          echo "Phase: **$p** (experiment ends $EXPERIMENT_END)" >> "$GITHUB_STEP_SUMMARY"
-
       - uses: actions/checkout@v4
-        if: steps.phase.outputs.phase != 'off'
         with:
           ref: main
 
       - uses: actions/setup-node@v4
-        if: steps.phase.outputs.phase != 'off'
         with:
           node-version: "22"
 
       - name: Selftests (fail fast)
-        if: steps.phase.outputs.phase != 'off'
         run: |
-          node scripts/flash.mjs --selftest
-          node scripts/feed.mjs --selftest
-          node scripts/resolve.mjs --selftest
-          node scripts/translate.mjs --selftest
+          for s in flash feed resolve translate trackers inbox cluster; do node scripts/$s.mjs --selftest > /dev/null || { node scripts/$s.mjs --selftest; exit 1; }; done
+          echo "selftests passed"
+
+      - name: Read the Claude session's inbox (translations, search results)
+        run: |
+          mkdir -p .inbox
+          if git fetch -q --depth=1 origin claude/inbox 2>/dev/null; then
+            for f in translations.json search.json; do
+              git show "FETCH_HEAD:data/inbox/$f" > ".inbox/$f" 2>/dev/null || rm -f ".inbox/$f"
+            done
+            echo "inbox: $(ls .inbox | tr '\n' ' ')" | tee -a "$GITHUB_STEP_SUMMARY"
+          else
+            echo "inbox: branch claude/inbox not found — collecting without it" | tee -a "$GITHUB_STEP_SUMMARY"
+          fi
 
       - name: Collect raw feed
-        if: steps.phase.outputs.phase == 'collect'
         env:
-          PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
-        run: node scripts/feed.mjs --hours 12 | tee -a "$GITHUB_STEP_SUMMARY"
+          FIRMS_KEY: ${{ secrets.FIRMS_KEY }}
+          CF_RADAR_TOKEN: ${{ secrets.CF_RADAR_TOKEN }}
+        run: node scripts/feed.mjs --hours 12 --inbox "$PWD/.inbox" | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Grade items older than 24h
-        if: steps.phase.outputs.phase != 'off'
         run: node scripts/resolve.mjs | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Validate
-        if: steps.phase.outputs.phase != 'off'
         run: node scripts/validate.mjs
 
       - name: Commit and push (a failed save fails the run)
-        if: steps.phase.outputs.phase != 'off'
         run: |
           git config user.name  "raw-feed-collector"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/feed.json data/claims.json
+          git add data/feed.json data/claims.json data/hold.json data/track.json data/health.json data/sources.json
           if git diff --cached --quiet; then
             echo "No change to commit." | tee -a "$GITHUB_STEP_SUMMARY"; exit 0
           fi
           runs=$(node -e "console.log(require('./data/feed.json').meta.runs)")
           gst=$(TZ=Asia/Dubai date '+%d %b %H:%M GST')
-          git commit -q -m "feed: ${{ steps.phase.outputs.phase }} run $runs — $gst"
+          git commit -q -m "feed: run $runs — $gst"
           for i in 1 2 3; do
             if git push origin HEAD:main; then echo "Saved to main (run $runs)." | tee -a "$GITHUB_STEP_SUMMARY"; exit 0; fi
             sleep $((i * 5)); git pull --rebase origin main

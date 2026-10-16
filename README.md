@@ -3,9 +3,12 @@
 A personal Iran-conflict early-warning tracker for one UAE household.
 Live at the Vercel project `iran-conflict-tracker-nextgen` (deploys from `main`).
 
-- **RAW** — the top of the page. Machine-collected, unvetted, translated, one line
-  per item with a "show" link to the source. Written to `data/feed.json` by a
-  GitHub Actions collector; graded 24h later as *echoed ×N* or *alone*.
+- **RAW** — the top of the page. Machine-collected, unvetted. STORIES (repeats of one
+  story grouped; the line is the earliest source's own words) with every raw item
+  under a show button, plus a trackers strip (military aircraft, nav warnings, outages).
+  Written to `data/feed.json` by an hourly GitHub Actions collector; translated and
+  searched by a scheduled Claude session (`INBOX.md`); graded 24h later as
+  *echoed ×N* or *alone*.
 - **Analysis** — the rest of the page, from the JSON block inside `index.html`.
 
 Operating rules, current state and open work: **`CLAUDE.md`**.

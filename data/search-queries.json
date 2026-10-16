@@ -1,0 +1,26 @@
+{
+ "note": "Claude-search route. The scheduled session runs PER_RUN of these each firing, rotating by hour. Add freely; topics: marine, air, military movement, strikes, regional press, outages, satellite.",
+ "per_run": 8,
+ "queries": [
+  "Strait of Hormuz tanker attack",
+  "UKMTO incident Gulf of Oman",
+  "IRGC navy statement ships",
+  "Houthi missile attack Saudi Arabia",
+  "US Navy carrier strike group Arabian Sea",
+  "US military aircraft deployment Gulf base",
+  "Israel strike Iran",
+  "UAE air defence interception",
+  "Iran internet shutdown",
+  "satellite imagery Iran damage",
+  "Fujairah port tankers",
+  "Bandar Abbas explosion",
+  "US troops deploy Middle East",
+  "Gulf airspace closure flights cancelled",
+  "Kharg Island oil terminal",
+  "Red Sea Bab el-Mandeb shipping attack",
+  "مضيق هرمز ناقلة",
+  "تنگه هرمز حمله",
+  "الحوثي صاروخ السعودية",
+  "איראן תקיפה"
+ ]
+}
