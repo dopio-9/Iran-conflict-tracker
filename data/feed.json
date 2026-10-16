@@ -1,28 +1,28 @@
 {
  "meta": {
-  "updated": "2026-10-16T20:46:13.508Z",
-  "runs": 11,
+  "updated": "2026-10-16T22:53:01.439Z",
+  "runs": 12,
   "window_h": 12,
   "last_run": {
-   "ts": "2026-10-16T20:46:13.508Z",
+   "ts": "2026-10-16T22:53:01.439Z",
    "sources": 52,
    "realtime": 44,
-   "reachable": 39,
-   "fetched": 2169,
-   "out_of_window": 1516,
-   "seen_before": 553,
-   "off_topic": 19,
-   "held": 47,
-   "kept": 46,
-   "new": 46,
+   "reachable": 43,
+   "fetched": 2268,
+   "out_of_window": 1546,
+   "seen_before": 560,
+   "off_topic": 21,
+   "held": 56,
+   "kept": 85,
+   "new": 85,
    "translate": {
-    "applied": 27,
-    "released": 12,
-    "dropped_after_translation": 81,
+    "applied": 0,
+    "released": 0,
+    "dropped_after_translation": 0,
     "expired_untranslated": 0
    },
-   "hold": 182,
-   "untranslated": 332,
+   "hold": 238,
+   "untranslated": 395,
    "search": {
     "items": 142,
     "updated": "2026-10-16T20:45:44.352Z"
@@ -30,48 +30,43 @@
    "retired_now": []
   },
   "lead": {
-   "stories_24h": 348,
-   "multi_source": 53,
+   "stories_24h": 405,
+   "multi_source": 63,
    "mainstream_later": 2,
    "ahead_of_mainstream": 2,
    "median_lead_min": 492,
-   "median_delivery_lag_min": 211
+   "median_delivery_lag_min": 177
   },
   "trackers": {
-   "ts": "2026-10-16T20:46:13.508Z",
+   "ts": "2026-10-16T22:53:01.439Z",
    "adsb-mil": [
     {
-     "hex": "ae04ff",
-     "flight": "",
-     "type": "K35R",
-     "reg": "59-1463",
-     "alt": 5925,
-     "lat": 32.172455,
-     "lon": 34.918976,
-     "squawk": "3434"
-    },
-    {
-     "hex": "af8444",
-     "flight": "",
-     "type": "B762",
-     "reg": "19-46108",
-     "alt": 27525,
-     "lat": 25.424301,
-     "lon": 55.851387,
-     "squawk": "0464"
+     "hex": "ae67d8",
+     "flight": "@@@@@@@@",
+     "type": "P8",
+     "reg": "",
+     "alt": 32000,
+     "lat": 24.507421,
+     "lon": 54.544189,
+     "squawk": "4424"
     }
    ],
    "ioda": [],
    "nga": 32,
+   "firms": {
+    "detections": 1587,
+    "cells": 479,
+    "baseline": false
+   },
    "cf-radar": null
   },
   "resolved": {
-   "ts": "2026-10-16T20:53:28.205Z",
+   "ts": "2026-10-16T22:57:28.839Z",
    "graded_now": 0,
    "echoed": 296,
    "no-echo": 249,
    "refuted": 0,
-   "pending": 481
+   "pending": 566
   },
   "sources": {
    "Sepahcybery": {
@@ -106,7 +101,7 @@
     "route": "telegram-web",
     "lang": "Arabic",
     "items": 20,
-    "new": 0,
+    "new": 2,
     "err": null
    },
    "OSINTdefender": {
@@ -127,13 +122,13 @@
     "route": "rss",
     "lang": "Arabic/English",
     "items": 25,
-    "new": 0,
+    "new": 1,
     "err": null
    },
    "CENTCOM (@CENTCOM)": {
     "route": "rss",
     "lang": "English",
-    "items": 424,
+    "items": 418,
     "new": 0,
     "err": null
    },
@@ -141,7 +136,7 @@
     "route": "rss",
     "lang": "English",
     "items": 56,
-    "new": 2,
+    "new": 1,
     "err": null
    },
    "NPR": {
@@ -175,15 +170,15 @@
    "The War Zone (TWZ)": {
     "route": "rss",
     "lang": "English",
-    "items": 41,
-    "new": 1,
+    "items": 42,
+    "new": 0,
     "err": null
    },
    "Mehr News Agency": {
     "route": "rss",
     "lang": "Farsi/English",
     "items": 30,
-    "new": 0,
+    "new": 3,
     "err": null
    },
    "Naval News": {
@@ -203,21 +198,21 @@
    "yjc.ir": {
     "route": "rss",
     "lang": "Farsi",
-    "items": 0,
-    "new": 0,
-    "err": "fetch failed"
+    "items": 20,
+    "new": 3,
+    "err": null
    },
    "entekhab.ir": {
     "route": "rss",
     "lang": "English/Farsi/Arabic",
     "items": 100,
-    "new": 6,
+    "new": 3,
     "err": null
    },
    "newarab.com": {
     "route": "rss",
     "lang": "Arabic",
-    "items": 112,
+    "items": 114,
     "new": 1,
     "err": null
    },
@@ -260,7 +255,7 @@
     "route": "rss",
     "lang": "English",
     "items": 30,
-    "new": 1,
+    "new": 0,
     "err": null
    },
    "US DoD Releases": {
@@ -288,7 +283,7 @@
     "route": "telegram-web",
     "lang": "Arabic",
     "items": 20,
-    "new": 4,
+    "new": 0,
     "err": null
    },
    "Almasirah (Telegram)": {
@@ -329,29 +324,29 @@
    "Google News · Farsi war search": {
     "route": "gnews",
     "lang": "Farsi",
-    "items": 3,
-    "new": 1,
+    "items": 4,
+    "new": 0,
     "err": null
    },
    "Google News · Arabic war search": {
     "route": "gnews",
     "lang": "Arabic",
     "items": 100,
-    "new": 6,
+    "new": 16,
     "err": null
    },
    "Google News · Hebrew war search": {
     "route": "gnews",
     "lang": "Hebrew",
-    "items": 78,
-    "new": 1,
+    "items": 84,
+    "new": 7,
     "err": null
    },
    "Google News · Gulf English search": {
     "route": "gnews",
     "lang": "English",
     "items": 100,
-    "new": 10,
+    "new": 19,
     "err": null
    },
    "GDELT · Farsi press": {
@@ -359,14 +354,14 @@
     "lang": "Farsi",
     "items": 0,
     "new": 0,
-    "err": "fetch failed"
+    "err": null
    },
    "GDELT · Arabic press": {
     "route": "gdelt",
     "lang": "Arabic",
-    "items": 0,
-    "new": 0,
-    "err": "HTTP 429"
+    "items": 75,
+    "new": 28,
+    "err": null
    },
    "GDELT · Hebrew press": {
     "route": "gdelt",
@@ -422,7 +417,7 @@
     "lang": "English",
     "items": 0,
     "new": 0,
-    "err": "fetch failed"
+    "err": null
    },
    "Cloudflare Radar outages": {
     "route": "cf-radar",
@@ -443,544 +438,381 @@
  },
  "stories": [
   {
-   "id": "40ebf7decb94392e",
-   "tag": "AIR (MIL)",
-   "line": "Military aircraft in theatre — 1 airframe today · latest: K35R · 59-1463 — FL59, 17 km from Tel Aviv (32.22N 34.86E)",
-   "first": {
-    "src": "adsb.lol military",
-    "ts": "2026-10-16T20:46:13.508Z",
-    "got": "2026-10-16T20:46:13.508Z",
-    "url": "https://globe.adsb.lol/?icao=ae04ff"
-   },
-   "n": 1,
-   "n_src": 1,
-   "srcs": [
-    "adsb.lol military"
-   ],
-   "ids": [
-    "40ebf7decb94392e"
-   ],
-   "last_ts": "2026-10-16T20:46:13.508Z",
-   "ms": null,
-   "lead_min": null,
-   "lag_min": 0,
-   "flash": true
-  },
-  {
-   "id": "c56585f9a17c28c1",
+   "id": "474957ccda651277",
    "tag": "OTHER",
-   "line": "What The Army’s Pacific Commanders Are Learning From Ukraine And Iran Conflicts",
+   "line": "عاجل| واشنطن: ميليشيات مدعومة من إيران ترسل أموالاً إلى الحرس الثوري",
    "first": {
-    "src": "The War Zone (TWZ)",
-    "ts": "2026-10-16T20:35:32.000Z",
-    "got": "2026-10-16T20:46:13.508Z",
-    "url": "https://www.twz.com/land/what-the-armys-pacific-commanders-are-learning-from-ukraine-and-iran-conflicts"
+    "src": "إرم نيوز",
+    "ts": "2026-10-16T22:49:44.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9wRnFzZkJZczlJaUVBM05fa1ZmLVY0VGdjTm1rUTFLZTRQb1k2QUhicUFUX050OGMzZmxBSnN2b3AzREtEbW1oQW1YcHNpM3A4Y19FWmR3?oc=5"
    },
    "n": 1,
    "n_src": 1,
    "srcs": [
-    "The War Zone (TWZ)"
+    "إرم نيوز"
    ],
    "ids": [
-    "c56585f9a17c28c1"
+    "474957ccda651277"
    ],
-   "last_ts": "2026-10-16T20:35:32.000Z",
+   "last_ts": "2026-10-16T22:49:44.000Z",
    "ms": null,
    "lead_min": null,
-   "lag_min": 11,
+   "lag_min": 3,
    "flash": true
   },
   {
-   "id": "5d55c3be6d9b167f",
+   "id": "a4b311e0d7fb61be",
    "tag": "OTHER",
-   "line": "Oil flows through Hormuz have largely recovered. Oil prices haven’t. David Lin’s explanation is that the real bottleneck now may be the cost of moving it.",
+   "line": "Data from the Israel Prison Service, obtained through a freedom-of-information request submitted by the Public Committee Against Torture in Israel, indicate…",
    "first": {
-    "src": "X",
-    "ts": "2026-10-16T20:32:00.000Z",
-    "got": "2026-10-16T20:46:13.508Z",
-    "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBLcDZVM1hLU1pxZTFKWE1zU0l2dXE3TXUyRHhtWm9nR2NicWhOT3diZUJtdnRaSER4X0thTkhaMjk1Yjd4MXlzZWFlZ253V3RXbERSN0h4anFNZDh5UllleXE1YzJQcndkblh4Qw?oc=5"
+    "src": "QudsNen",
+    "ts": "2026-10-16T22:34:38.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://t.me/QudsNen/242336"
    },
    "n": 1,
    "n_src": 1,
    "srcs": [
-    "X"
+    "QudsNen"
    ],
    "ids": [
-    "5d55c3be6d9b167f"
+    "a4b311e0d7fb61be"
    ],
-   "last_ts": "2026-10-16T20:32:00.000Z",
-   "ms": null,
-   "lead_min": null,
-   "lag_min": 14,
-   "flash": true
-  },
-  {
-   "id": "7749485884e767c1",
-   "tag": "STRIKE",
-   "line": "ادعای گادی آیزنکوت، رقیب نتانیاهو: اگر اطلاعات قطعی در اختیار داشته باشیم که ایران قصد حمله به اسرائیل را دارد، باید با یک حمله پیش‌دستانه به آن ضربه بزنیم",
-   "first": {
-    "src": "entekhab.ir",
-    "ts": "2026-10-16T20:31:27.000Z",
-    "got": "2026-10-16T20:46:13.508Z",
-    "url": "https://www.entekhab.ir/fa/news/943779/ادعای-گادی-آیزنکوت-رقیب-نتانیاهو-اگر-اطلاعات-قطعی-در-اختیار-داشته-باشیم-که-ایران-قصد-حمله-به-اسرائیل-را-دارد-باید-با-یک-حمله-پیش-دستانه-به-آن-ضربه-بزنیم"
-   },
-   "n": 1,
-   "n_src": 1,
-   "srcs": [
-    "entekhab.ir"
-   ],
-   "ids": [
-    "7749485884e767c1"
-   ],
-   "last_ts": "2026-10-16T20:31:27.000Z",
-   "ms": null,
-   "lead_min": null,
-   "lag_min": 15,
-   "flash": true
-  },
-  {
-   "id": "678dc7ac95ff961b",
-   "tag": "TROOPS",
-   "line": "القوات اليمنية تستهدف مقر قيادة القوات السعودية في عدن",
-   "first": {
-    "src": "Al-Manar (Telegram)",
-    "ts": "2026-10-16T20:31:18.000Z",
-    "got": "2026-10-16T20:46:13.508Z",
-    "url": "https://t.me/almanarnews/268288"
-   },
-   "n": 1,
-   "n_src": 1,
-   "srcs": [
-    "Al-Manar (Telegram)"
-   ],
-   "ids": [
-    "678dc7ac95ff961b"
-   ],
-   "last_ts": "2026-10-16T20:31:18.000Z",
-   "ms": null,
-   "lead_min": null,
-   "lag_min": 15,
-   "flash": true
-  },
-  {
-   "id": "af349495674b4f23",
-   "tag": "OTHER",
-   "line": "خطیب زاده: یکی از شروط ایران پایان جنگ‌ها در منطقه است / اگر در هر یک از این جبهه‌ها جنگ ادامه یابد این به معنای ادامه جنگ در تمام جبهه هاست",
-   "first": {
-    "src": "entekhab.ir",
-    "ts": "2026-10-16T20:12:01.000Z",
-    "got": "2026-10-16T20:46:13.508Z",
-    "url": "https://www.entekhab.ir/fa/news/943773/خطیب-زاده-یکی-از-شروط-ایران-پایان-جنگ-ها-در-منطقه-است-اگر-در-هر-یک-از-این-جبهه-ها-جنگ-ادامه-یابد-این-به-معنای-ادامه-جنگ-در-تمام-جبهه-هاست"
-   },
-   "n": 2,
-   "n_src": 1,
-   "srcs": [
-    "entekhab.ir"
-   ],
-   "ids": [
-    "af349495674b4f23",
-    "f5d3182c94ee6995"
-   ],
-   "last_ts": "2026-10-16T20:30:39.000Z",
-   "ms": null,
-   "lead_min": null,
-   "lag_min": 34,
-   "flash": true
-  },
-  {
-   "id": "c7f93599fa09be82",
-   "tag": "SHIPPING",
-   "line": "قائد «سنتكوم»: 400 سفينة تجارية عبرت مضيق هرمز خلال أسبوع",
-   "first": {
-    "src": "شبكة سرمد الإعلامية",
-    "ts": "2026-10-16T20:30:05.000Z",
-    "got": "2026-10-16T20:46:13.508Z",
-    "url": "https://news.google.com/rss/articles/CBMiP0FVX3lxTE1zVTViRHNyb181VVBBM3BudW5fYU1zMmMzWVQzR0pCS3lSdk1mZ0ppVDhIcHpjS0dmcmJlMGxyTQ?oc=5"
-   },
-   "n": 1,
-   "n_src": 1,
-   "srcs": [
-    "شبكة سرمد الإعلامية"
-   ],
-   "ids": [
-    "c7f93599fa09be82"
-   ],
-   "last_ts": "2026-10-16T20:30:05.000Z",
-   "ms": null,
-   "lead_min": null,
-   "lag_min": 16,
-   "flash": true
-  },
-  {
-   "id": "99577d94dfff8e3f",
-   "tag": "OTHER",
-   "line": "الجيش الأميركي: ميليشيات إيران تحجب رواتب عناصرها لتمويل الحرس الثوري",
-   "first": {
-    "src": "الشرق للأخبار",
-    "ts": "2026-10-16T20:28:34.000Z",
-    "got": "2026-10-16T20:46:13.508Z",
-    "url": "https://news.google.com/rss/articles/CBMi7wNBVV95cUxPR04zaUN1aDQycDNIWVBmSVFKMlB6QlJlYWROd19QQjVwdm5kUUs1bFFSRFBBY2s4N0F6S0otN2VpeHVVNnRzMkU0UUlRZm51cW5PMjFYaEpxVV91UG1KQ29OR0pJclV5T3VzUFotNUlBNUVvRTFFbENmQnJDc0pXQkRvVExFRTdYUndBMkFTYWswb3p4amE1ZnZuZ3VCNUtValRfQ05Ya3ZIUTQ3VFA4WTNJcHBLaFd1NFNmVEhxZUNfOTF6YWlSWEhUT24wOWhEREF5Rkg1akttN3FwQk5ORzQ5RHNMOU5uM1ZYM3VZZkc4RlA0SFlYMGxqczVZcHVrZWg3LXJMcTF3aVF5aFI0dUlRVWQzZWFnMmlkeWdJX1ZsRUt5S1lxeDNENVpFeFppYy1SRTJGLWY5RldmcUFQQmNTOG9hMmROVXFRWGpieFNDZ2dBRklWS05XU1kzcnNhcVlSWjFRMGdpSExYNWo2NUlzY1dmWjlsSFNWY29SOXRrdkFrRVJPWGR1WFBkVDJvWkk4ZkFVUTNGMkpaYmdsWlhSQkszd3I1cFhMSFNwcDFzZ3d3Z0pVRW94TzBCc2tha05wc09LTkVWc1RSRHJkUEQyejVTOVlKbTJ3d0piRmJJMm5JeGdILW5qSHFhUm8?oc=5"
-   },
-   "n": 1,
-   "n_src": 1,
-   "srcs": [
-    "الشرق للأخبار"
-   ],
-   "ids": [
-    "99577d94dfff8e3f"
-   ],
-   "last_ts": "2026-10-16T20:28:34.000Z",
+   "last_ts": "2026-10-16T22:34:38.000Z",
    "ms": null,
    "lead_min": null,
    "lag_min": 18,
    "flash": true
   },
   {
-   "id": "27ebd2b890008c36",
+   "id": "39001b4892375a72",
    "tag": "OTHER",
-   "line": "شبکه ۱۲ تلویزیون اسرائیل: تحقیقات جنایی بین‌المللی، رهبران نظامی و سیاسی اسرائیل را هدف قرار داده / دادستانی ایتالیا در رم دامنه تحقیقات خود را گسترش داده و…",
+   "line": "הסבר על ההסלמה חסרת התקדים של איראן במצרי הורמוז",
    "first": {
-    "src": "entekhab.ir",
-    "ts": "2026-10-16T20:27:56.000Z",
-    "got": "2026-10-16T20:46:13.508Z",
-    "url": "https://www.entekhab.ir/fa/news/943778/شبکه-12-تلویزیون-اسرائیل-تحقیقات-جنایی-بین-المللی-رهبران-نظامی-و-سیاسی-اسرائیل-را-هدف-قرار-داده-دادستانی-ایتالیا-در-رم-دامنه-تحقیقات-خود-را-گسترش-داده-و-کاتس-وزیر-جنگ-و-فهرست-بلندبالایی-از-فرماندهان-نظامی-و-امنیتی-فعلی-و-پیشین-اسرائیل-را-در-این-پرونده-گنجانده"
+    "src": "Vietnam.vn",
+    "ts": "2026-10-16T22:34:04.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOc2tPQ3U4ekxLOTMwSk5zYkdCSFNacDJnQVZiUy1iZWtkN0I5Wll5UnZTVnZ4d3lQRGFEUDZSWkNLMjU4bzdEQXUtenlaTmNqc2h2NU1sX2NyQmdwZFdYTEh3TE1FMFJhd00wMnlwNkEyTUtuUUdYaHNydWhCbVQ2N2RjTExsVGNBZTN5VDZ1dzk?oc=5"
    },
    "n": 1,
    "n_src": 1,
    "srcs": [
-    "entekhab.ir"
+    "Vietnam.vn"
    ],
    "ids": [
-    "27ebd2b890008c36"
+    "39001b4892375a72"
    ],
-   "last_ts": "2026-10-16T20:27:56.000Z",
-   "ms": null,
-   "lead_min": null,
-   "lag_min": 18,
-   "flash": true
-  },
-  {
-   "id": "ec153e8af3f82b77",
-   "tag": "OTHER",
-   "line": "Iran-backed militias sending money back to cash-starved IRGC, U.S. says",
-   "first": {
-    "src": "Axios",
-    "ts": "2026-10-16T20:27:06.000Z",
-    "got": "2026-10-16T20:46:13.508Z",
-    "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQRy1kTkRzSFhZVkt4UXhBX2RQVEhpRlZqbnVSTUlhdzJLaDBBWkh3dDVfNFJPVVZFV2NRSk5VLUx0U0prcUtuU2ZBY1hTU0xyejRQY1RqYThGWXJBUUtSU0VkU1Z6RG9ZbDJ6bGRFV3V3OTBwLUF4NWFzWFJmZXR6X1htekNINzQ?oc=5"
-   },
-   "n": 1,
-   "n_src": 1,
-   "srcs": [
-    "Axios"
-   ],
-   "ids": [
-    "ec153e8af3f82b77"
-   ],
-   "last_ts": "2026-10-16T20:27:06.000Z",
+   "last_ts": "2026-10-16T22:34:04.000Z",
    "ms": null,
    "lead_min": null,
    "lag_min": 19,
    "flash": true
   },
   {
-   "id": "2ab2cc3787fa37e8",
-   "tag": "OTHER",
-   "line": "ادعای شبکه کان: حالت آماده‌باش در اسرائیل در پی احتمال آغاز رویارویی با ایران همچنان ادامه دارد / روز گذشته نشستی با حضور مقام‌های ارشد نهاد‌های امنیتی برگزار…",
+   "id": "d3056144353ecd2c",
+   "tag": "TROOPS",
+   "line": "الجيش الأميركي: الحرس الثوري الإيراني بات عاجزا عن دفع رواتب قواته",
    "first": {
-    "src": "entekhab.ir",
-    "ts": "2026-10-16T20:25:09.000Z",
-    "got": "2026-10-16T20:46:13.508Z",
-    "url": "https://www.entekhab.ir/fa/news/943777/ادعای-شبکه-کان-حالت-آماده-باش-در-اسرائیل-در-پی-احتمال-آغاز-رویارویی-با-ایران-همچنان-ادامه-دارد-روز-گذشته-نشستی-با-حضور-مقام-های-ارشد-نهاد-های-امنیتی-برگزار-شد-همچنین-شماری-از-مقام-های-ارشد-اسرائیلی-با-مقام-های-بلندپایه-آمریکایی-گفت-و-گو-کردند"
+    "src": "Lebanon Debate",
+    "ts": "2026-10-16T18:29:38.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://news.google.com/rss/articles/CBMingRBVV95cUxNeGVjckgxYms2UDhMYmlzWF8xLWJud2dEZlVBbU5BR1dkWXRMTUdyTE1sTGNmWnhQRjlxTjR1cGY2dnVuOUFwNEdmUmpDWDNQUUwtNEtqTkJGcjVFT2lLeVdaY3NfdUpvTXVqcGNLeFJNb2YwaEFoTXdkNXdCcUJ0bzNhMm1VTzZ1LUtzQ0tMdGNPMFJwd3VLdzVTblJYc2J1bHY3Y3hRU2prVTYwZDV0djdiMzFLejFOdFduYldkRHhCWFZMYWFya3AzSDhYQ3pjYXdmbnl2MklYTjJWNnJ4LXpGZG1WT0JiZDQtczNBMUtnallUd2RhYmhLNlRoalk2YzdjZE9UdGtTU1l4cXN2MWpHRTZQcDFPOUV6R0V3dm44YzFTWjhWT3VjWkxPX1MzYmN6V01BNk82WkRIOUlQT1QwUVRVaWJEVGh1MzNFZFlZUzFiUF9TUDZQb0w2YWpwTzNuOTRTeWxDdXBYQWZ5OS03MUE3c1ZsWE9LR2RqaExSdjhYSzZLMGViVXROaFFGRG04bFFyNDBCOG5DNVUzZVVSamplQzU0YkVYUVdLVDZnQU5TXzJpREN4STYwbVdydzZhN1ZaUk5xMmN4V0xqc25MS1hyWnR5N1g1el9Iel9mWkxjS0xHU1FRT2dCdmJVYXBGUHBMM1ZBa2FYdkNQd3pVV28wUzJvd19vRWpHS1hxOFRTeGZsa1dLM3RyUQ?oc=5"
    },
-   "n": 1,
-   "n_src": 1,
+   "n": 5,
+   "n_src": 4,
    "srcs": [
-    "entekhab.ir"
+    "Lebanon Debate",
+    "MTV Lebanon",
+    "الشرق للأخبار",
+    "dostor.org"
    ],
    "ids": [
-    "2ab2cc3787fa37e8"
+    "d3056144353ecd2c",
+    "1a0dc8292ebc15b1",
+    "4644db36b01ccdfc",
+    "99577d94dfff8e3f",
+    "3b1ca927f885a4be"
    ],
-   "last_ts": "2026-10-16T20:25:09.000Z",
+   "last_ts": "2026-10-16T22:30:00.000Z",
    "ms": null,
    "lead_min": null,
-   "lag_min": 21,
+   "lag_min": 263,
    "flash": true
   },
   {
-   "id": "85f7a1fec1de42ff",
-   "tag": "MISSILE",
-   "line": "مصدر عسكري يمني: هجوم صاروخي يستهدف مقر التحالف السعودي في عدن",
+   "id": "181af940744d94ad",
+   "tag": "OTHER",
+   "line": "التحضير لها بدأ قبل عقود .. هكذا شنت أمريكا حربها على إيران",
    "first": {
-    "src": "Al-Manar (Telegram)",
-    "ts": "2026-10-16T20:21:54.000Z",
-    "got": "2026-10-16T20:46:13.508Z",
-    "url": "https://t.me/almanarnews/268284"
+    "src": "aljazeera.net",
+    "ts": "2026-10-16T22:30:00.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://www.aljazeera.net/politics/2026/10/17/%D8%A7%D9%84%D8%AA%D8%AD%D8%B6%D9%8A%D8%B1-%D9%84%D9%87%D8%A7-%D8%A8%D8%AF%D8%A3-%D9%82%D8%A8%D9%84-%D8%B9%D9%82%D9%88%D8%AF-%D9%87%D9%83%D8%B0%D8%A7-%D8%B4%D9%86%D8%AA"
    },
    "n": 1,
    "n_src": 1,
    "srcs": [
-    "Al-Manar (Telegram)"
+    "aljazeera.net"
    ],
    "ids": [
-    "85f7a1fec1de42ff"
+    "181af940744d94ad"
    ],
-   "last_ts": "2026-10-16T20:21:54.000Z",
+   "last_ts": "2026-10-16T22:30:00.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 23,
+   "flash": true
+  },
+  {
+   "id": "c4171e7bfb1dec7b",
+   "tag": "MISSILE",
+   "line": "قناة النيل للأخبار | للمرة الثانية خلال أقل من أسبوع .. الحوثيون يستهدفون مطار عدن بصاروخين باليستيين سقطا في حرمه",
+   "first": {
+    "src": "nile.eg",
+    "ts": "2026-10-16T22:30:00.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://www.nile.eg/%D9%84%D9%84%D9%85%D8%B1%D8%A9-%D8%A7%D9%84%D8%AB%D8%A7%D9%86%D9%8A%D8%A9-%D8%AE%D9%84%D8%A7%D9%84-%D8%A3%D9%82%D9%84-%D9%85%D9%86-%D8%A3%D8%B3%D8%A8%D9%88%D8%B9-%D8%A7%D9%84%D8%AD%D9%88%D8%AB"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "nile.eg"
+   ],
+   "ids": [
+    "c4171e7bfb1dec7b"
+   ],
+   "last_ts": "2026-10-16T22:30:00.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 23,
+   "flash": true
+  },
+  {
+   "id": "28539fe16e854217",
+   "tag": "MISSILE",
+   "line": "سقوط صاروخين أطلقهما الحوثيون داخل حرم مطار عدن جنوب اليمن",
+   "first": {
+    "src": "dw.com",
+    "ts": "2026-10-16T22:30:00.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://www.dw.com/ar/%D9%82%D8%B5%D9%81-%D8%AD%D9%88%D8%AB%D9%8A-%D8%A8%D8%B5%D8%A7%D8%B1%D9%88%D8%AE%D9%8A%D9%86-%D9%84%D9%85%D8%B7%D8%A7%D8%B1-%D8%B9%D8%AF%D9%86-%D9%81%D9%8A-%D8%AC%D9%86%D9%88%D8%A8-%D8%A7%D9%84%D9%8A%D9%85%D9%86/live-79665427"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "dw.com"
+   ],
+   "ids": [
+    "28539fe16e854217"
+   ],
+   "last_ts": "2026-10-16T22:30:00.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 23,
+   "flash": true
+  },
+  {
+   "id": "8eeabf1ba5dd8f90",
+   "tag": "OTHER",
+   "line": "أكسيوس : وسطاء يحثون إيران على الرد على المقترح الأمريكي قبل الانتخابات النصفية",
+   "first": {
+    "src": "dostor.org",
+    "ts": "2026-10-16T22:30:00.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://www.dostor.org/5741960"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "dostor.org"
+   ],
+   "ids": [
+    "8eeabf1ba5dd8f90"
+   ],
+   "last_ts": "2026-10-16T22:30:00.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 23,
+   "flash": true
+  },
+  {
+   "id": "ba80c24a0aaba6c9",
+   "tag": "NAVAL",
+   "line": "قناة النيل للأخبار | المنظمة البحرية الدولية : الملاحة في مضيق هرمز لا تزال غير آمنة والألغام لم تزل",
+   "first": {
+    "src": "nile.eg",
+    "ts": "2026-10-16T22:30:00.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://www.nile.eg/%D8%A7%D9%84%D9%85%D9%86%D8%B8%D9%85%D8%A9-%D8%A7%D9%84%D8%A8%D8%AD%D8%B1%D9%8A%D8%A9-%D8%A7%D9%84%D8%AF%D9%88%D9%84%D9%8A%D8%A9-%D8%A7%D9%84%D9%85%D9%84%D8%A7%D8%AD%D8%A9-%D9%81%D9%8A-%D9%85%D8%B6"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "nile.eg"
+   ],
+   "ids": [
+    "ba80c24a0aaba6c9"
+   ],
+   "last_ts": "2026-10-16T22:30:00.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 23,
+   "flash": true
+  },
+  {
+   "id": "62d8b6f6548b8966",
+   "tag": "MISSILE",
+   "line": "Missiles hit Aden airport, Saudi coalition intercepts missile",
+   "first": {
+    "src": "newarab.com",
+    "ts": "2026-10-16T22:29:00.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://www.newarab.com/news/missiles-hit-aden-airport-saudi-coalition-intercepts-missile"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "newarab.com"
+   ],
+   "ids": [
+    "62d8b6f6548b8966"
+   ],
+   "last_ts": "2026-10-16T22:29:00.000Z",
    "ms": null,
    "lead_min": null,
    "lag_min": 24,
    "flash": true
   },
   {
-   "id": "8bd3fcb4fa69f085",
-   "tag": "OTHER",
-   "line": "تریتا پارسی: قیمت نفت برنت امروز به ۱۰۹ دلار در هر بشکه رسیده است؛ بالاترین سطح از ۲۰ مه، زمانی که جنگ ایران در اوج خود قرار داشت / از توانایی ترامپ در منحرف…",
-   "first": {
-    "src": "entekhab.ir",
-    "ts": "2026-10-16T20:21:38.000Z",
-    "got": "2026-10-16T20:46:13.508Z",
-    "url": "https://www.entekhab.ir/fa/news/943776/تریتا-پارسی-قیمت-نفت-برنت-امروز-به-109-دلار-در-هر-بشکه-رسیده-است-بالاترین-سطح-از-20-مه-زمانی-که-جنگ-ایران-در-اوج-خود-قرار-داشت-از-توانایی-ترامپ-در-منحرف-کردن-توجه-رسانه-ها-و-به-اصطلاح-کارشناسان-این-حوزه-به-شدت-متعجبم-به-گونه-ای-که-آنها-صرفا-حجم-نفتی-را-که-از-تنگه-هرمز-خارج-می-شود-دنبال-می-کنند"
-   },
-   "n": 1,
-   "n_src": 1,
-   "srcs": [
-    "entekhab.ir"
-   ],
-   "ids": [
-    "8bd3fcb4fa69f085"
-   ],
-   "last_ts": "2026-10-16T20:21:38.000Z",
-   "ms": null,
-   "lead_min": null,
-   "lag_min": 25,
-   "flash": true
-  },
-  {
-   "id": "0891cf119c5240f3",
-   "tag": "MISSILE",
-   "line": "🔵 تقارير عن ضربات صاروخية على منشآت صناعية في الجبيل بالسعودية واندلاع حرائق",
-   "first": {
-    "src": "Al-Manar (Telegram)",
-    "ts": "2026-10-16T20:18:20.000Z",
-    "got": "2026-10-16T20:46:13.508Z",
-    "url": "https://t.me/almanarnews/268283"
-   },
-   "n": 1,
-   "n_src": 1,
-   "srcs": [
-    "Al-Manar (Telegram)"
-   ],
-   "ids": [
-    "0891cf119c5240f3"
-   ],
-   "last_ts": "2026-10-16T20:18:20.000Z",
-   "ms": null,
-   "lead_min": null,
-   "lag_min": 28,
-   "flash": true
-  },
-  {
-   "id": "6749b163b13f0c48",
-   "tag": "OTHER",
-   "line": "🔵 التعبئة التربوية في حزب الله في الجامعة الاميركية والجامعة اللبنانية الاميركية تبارك بفوز مرشحيها بانتخابات الجامعتين",
-   "first": {
-    "src": "Al-Manar (Telegram)",
-    "ts": "2026-10-16T20:16:18.000Z",
-    "got": "2026-10-16T20:46:13.508Z",
-    "url": "https://t.me/almanarnews/268281"
-   },
-   "n": 1,
-   "n_src": 1,
-   "srcs": [
-    "Al-Manar (Telegram)"
-   ],
-   "ids": [
-    "6749b163b13f0c48"
-   ],
-   "last_ts": "2026-10-16T20:16:18.000Z",
-   "ms": null,
-   "lead_min": null,
-   "lag_min": 30,
-   "flash": true
-  },
-  {
-   "id": "18188409ba457d98",
-   "tag": "THREAT",
-   "line": "Houthi Threats in the Red Sea: Implications for Maritime Operators",
-   "first": {
-    "src": "Crisis24",
-    "ts": "2026-10-16T20:14:31.000Z",
-    "got": "2026-10-16T20:46:13.508Z",
-    "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOY0V4c1RDNXpLTkNwU3FpUUl1NWN5LWZQbVgxYlZQbG9Gckt1WmlLM2k3NGt3Vy16OEVfQ3Uzc0V5aEdxX3Z5WVBsMGN5Sk4tV3BRLVhUeEFwWkVpV2ZpNHpnUFgtZDZPa1gzNmJuQXN1QXRGSktwZmRSNEdDSFJEM0lmbk9DdlpFLUZvQmpHLTNPRXo5NmRkY1hMdURJVjZ2?oc=5"
-   },
-   "n": 1,
-   "n_src": 1,
-   "srcs": [
-    "Crisis24"
-   ],
-   "ids": [
-    "18188409ba457d98"
-   ],
-   "last_ts": "2026-10-16T20:14:31.000Z",
-   "ms": null,
-   "lead_min": null,
-   "lag_min": 32,
-   "flash": true
-  },
-  {
-   "id": "06d03c45fd04a8e4",
-   "tag": "THREAT",
-   "line": "Iran threatens to 'expel' US from region as Tehran links Hormuz reopening to troop exit",
-   "first": {
-    "src": "MEAWW News",
-    "ts": "2026-10-16T20:03:45.000Z",
-    "got": "2026-10-16T20:46:13.508Z",
-    "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNRVZNOGZPTENnbGpueW01ZzMzVUpUOTlDaHRoMndiYy0zRlBJbldRcVl0UE9PalpLWEhOSDVrLUNjTkF1NFBTaUVWc2lORmYyekxpYTI0bG5OU0tnWFR5elJNUEFpTm1CWFdfNzI0dXVxc1hqYTBlUktzTnA0eWY1dldyaWRIdDY1cFZ2dzhJZjlRQ1dINFAwNG95WnVWR2hCX2hOVFVFZ28wVlRw?oc=5"
-   },
-   "n": 1,
-   "n_src": 1,
-   "srcs": [
-    "MEAWW News"
-   ],
-   "ids": [
-    "06d03c45fd04a8e4"
-   ],
-   "last_ts": "2026-10-16T20:03:45.000Z",
-   "ms": null,
-   "lead_min": null,
-   "lag_min": 42,
-   "flash": true
-  },
-  {
-   "id": "f8a93b67d7a49246",
+   "id": "6b0f06e8fd3badc9",
    "tag": "STRIKE",
-   "line": "Hezbollah accuses Lebanese police of violating security coordination procedure after supporters reportedly obstruct raid",
+   "line": "Coalition releases footage of strikes on Houthi weapons-smuggling operation in Hodeidah",
    "first": {
-    "src": "Long War Journal",
-    "ts": "2026-10-16T20:03:01.000Z",
-    "got": "2026-10-16T20:46:13.508Z",
-    "url": "https://www.longwarjournal.org/archives/2026/10/hezbollah-accuses-lebanese-police-of-violating-security-coordination-procedure-after-supporters-reportedly-obstruct-raid.php"
+    "src": "Arab News",
+    "ts": "2026-10-16T22:25:35.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNVHJfdFhDZnhYeUxPREJDU3J4NElhOXl5TEhoY3dvTGZqRzZJY2FoNkpmM0YzVGJaclROaXV6UlhvV0RXUUY3bkM2T3o0SXZEbnBGNnBkNFVBUThJQmxFU0xXOTdva3FCSE43UHVrVm5UcEhWdlF2SU5yUHBfN2xYX3RTVmhENXpGa1N5OXdJaXItSlYtaDIxLW1WeDk5aTMyWUg3ZXJHd2ZleUxLM0FZX2lPcG1BeVQ2ZzVpaklPaVNVdUJYWS1iV3EyelE?oc=5"
    },
    "n": 1,
    "n_src": 1,
    "srcs": [
-    "Long War Journal"
+    "Arab News"
    ],
    "ids": [
-    "f8a93b67d7a49246"
+    "6b0f06e8fd3badc9"
    ],
-   "last_ts": "2026-10-16T20:03:01.000Z",
+   "last_ts": "2026-10-16T22:25:35.000Z",
    "ms": null,
    "lead_min": null,
-   "lag_min": 43,
+   "lag_min": 27,
    "flash": true
   },
   {
-   "id": "01dee4e9f4cecb7e",
-   "tag": "SHIPPING",
-   "line": "Iranian Navy reports tanker fire in Gulf of Oman",
-   "first": {
-    "src": "straits.live",
-    "ts": "2026-10-16T19:45:00.000Z",
-    "got": "2026-10-16T20:46:13.508Z",
-    "url": "https://article.wn.com/view/2026/10/16/Iranian_Navy_reports_tanker_fire_in_Gulf_of_Oman/"
-   },
-   "n": 2,
-   "n_src": 1,
-   "srcs": [
-    "straits.live"
-   ],
-   "ids": [
-    "01dee4e9f4cecb7e",
-    "79f97a26c2c6e203"
-   ],
-   "last_ts": "2026-10-16T20:02:25.000Z",
-   "ms": null,
-   "lead_min": null,
-   "lag_min": 61,
-   "flash": true
-  },
-  {
-   "id": "1eef86eed1ddc7fb",
+   "id": "bd264dd9783db8fd",
    "tag": "OTHER",
-   "line": "\"سنتكوم\" تؤكد السيطرة الأميركية على مضيق هرمز",
+   "line": "معارك عنيفة في تعز ومأرب .. وخسائر متلاحقة في صفوف مليشيا الحوثي ( حصاد اليوم )",
    "first": {
-    "src": "Kurdistan24",
-    "ts": "2026-10-16T20:01:47.000Z",
-    "got": "2026-10-16T20:46:13.508Z",
-    "url": "https://news.google.com/rss/articles/CBMihwNBVV95cUxQTk8yblJXenF4aEVITG1OdnZ5MnF0VWhOcGc1WUdxWGZoRjE0QjlmMFNfUldGdnpOelp0cFN0ckVSMTNITzdQQTJOMk1nSUoyaDMtVmR2MVhzSndzZTdSdVpnb2RyOTIyTHljTkRJUU5QZ0Y2Y2VpVVIybXlvMFBtbU9qMTNUcjNBZ0pKLWoyZFk4MFZhS0dDTDVRYjg1dm9LbEFGYmpRRjVUem5uT1c0ZjJfOXBLSVJ1QXJnYTczUnQ0alppbENjaDV6QUE1WjBNNzhYbXRwcTRuYVpTMC1vOFVhX1VaMnV2S1prYTZtRlliWmoyeS1Xa1BYWHo3aXpPVGhFWVpaOTdabTBIdUc1cU5ETDhQQTJTZEQ5a1EtTUpacDNPVk5yX2U4ZjItQXBqeGpyMldxUG5DV0J1TmdZakdsVklmUE1meFo1a2dBSnJ0N3dGdVNxVHdJb1JkNGloZ1lKVUJsSlRjanFtTmNHeDZPWFd1MktORXMwUVRxeFpGT0g1d19R?oc=5"
+    "src": "alsahwayemen.net",
+    "ts": "2026-10-16T22:15:00.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://alsahwayemen.net/p-96338"
    },
    "n": 1,
    "n_src": 1,
    "srcs": [
-    "Kurdistan24"
+    "alsahwayemen.net"
    ],
    "ids": [
-    "1eef86eed1ddc7fb"
+    "bd264dd9783db8fd"
    ],
-   "last_ts": "2026-10-16T20:01:47.000Z",
+   "last_ts": "2026-10-16T22:15:00.000Z",
    "ms": null,
    "lead_min": null,
-   "lag_min": 44,
+   "lag_min": 38,
    "flash": true
   },
   {
-   "id": "978d7da0c4d97a81",
-   "tag": "SHIPPING",
-   "line": "CENTCOM: 400 ships cross Hormuz in a week",
-   "first": {
-    "src": "Latest news from Azerbaijan",
-    "ts": "2026-10-16T19:58:36.000Z",
-    "got": "2026-10-16T20:46:13.508Z",
-    "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBPY0xZMDdHaFVoN1lwUUpIMWdrd1JnckZEckhDTUt4NmxfVjZwQkttc05QMUJsOGVPUE93Q2hhMjFNM29UNkZoWHpnYkd6SDFxeW9NWFlld0RtM2FyekpSWGtVaHBObllTNDl6ekJn?oc=5"
-   },
-   "n": 1,
-   "n_src": 1,
-   "srcs": [
-    "Latest news from Azerbaijan"
-   ],
-   "ids": [
-    "978d7da0c4d97a81"
-   ],
-   "last_ts": "2026-10-16T19:58:36.000Z",
-   "ms": null,
-   "lead_min": null,
-   "lag_min": 48,
-   "flash": true
-  },
-  {
-   "id": "c99db5fcb86349ff",
+   "id": "bc39a9cd717785a2",
    "tag": "OTHER",
-   "line": "سنتكوم: مضيق هرمز مفتوح والحصار مستمر",
+   "line": "טראמפ על איראן: \"אנחנו שומעים כל מה שהם עושים וכל מה שהם אומרים\"",
    "first": {
-    "src": "IMLebanon",
-    "ts": "2026-10-16T19:41:19.000Z",
-    "got": "2026-10-16T20:46:13.508Z",
-    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE83Zld6MTRaNG9UVkdydV9zbm1WUUtUQzRnaE5HakZEaF9hTmktNC1TaXBqeGFjQmZpOFJjVWJiWFdQTFd5TW8yWFpON1dfRVFmTjFnaUFpZjREOUHSAWBBVV95cUxNNV9SQ3NSTjJiblFuSGJ5NG5IQWU3TUI3X1duVG9XQkhid2cyZDItYmoyb1Zzbjk2RGN0aDBqdEZUWjdqR2E3TWloOHdrOVF1cjhfZWZlM2xXYU50T0JxaF8?oc=5"
+    "src": "מעריב",
+    "ts": "2026-10-16T22:02:04.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBmYTROeU1kVHlPMTYzOXI1OS1mNzFmOVV2LVJBNzFLRkFSTVlsZEdwRG15UVpHQXFfb2ROMlVlOXdoZXRSdjhiNjVyU3I3VzF0T05GUVFzQkt6RWtVRGUxS1N3d2I?oc=5"
    },
    "n": 1,
    "n_src": 1,
    "srcs": [
-    "IMLebanon"
+    "מעריב"
    ],
    "ids": [
-    "c99db5fcb86349ff"
+    "bc39a9cd717785a2"
    ],
-   "last_ts": "2026-10-16T19:41:19.000Z",
+   "last_ts": "2026-10-16T22:02:04.000Z",
    "ms": null,
    "lead_min": null,
-   "lag_min": 65,
+   "lag_min": 51,
    "flash": true
   },
   {
-   "id": "346d3781f0b11841",
+   "id": "3679bddcf257b3f3",
    "tag": "OTHER",
-   "line": "Head of Iran's National Standards Organization arrives in Khuzestan",
+   "line": "قبائل خولان الطيال تتهم الحوثيين باغتيال أربعة من أبنائها في صنعاء وتدعو إلى اجتماع قبلي عاجل غداً السبت",
+   "first": {
+    "src": "bawabatii.com",
+    "ts": "2026-10-16T21:45:00.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://bawabatii.com/news351211.html"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "bawabatii.com"
+   ],
+   "ids": [
+    "3679bddcf257b3f3"
+   ],
+   "last_ts": "2026-10-16T21:45:00.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 68,
+   "flash": true
+  },
+  {
+   "id": "7c905c4752568d98",
+   "tag": "OTHER",
+   "line": "مقاتلو بيجاك في اشتباكات بجبال شاهو وفق إيران واير",
+   "first": {
+    "src": "cedarnews.net",
+    "ts": "2026-10-16T21:45:00.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://cedarnews.net/cool/1074642/%D9%85%D9%82%D8%A7%D8%AA%D9%84%D9%88-%D8%A8%D9%8A%D8%AC%D8%A7%D9%83/"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "cedarnews.net"
+   ],
+   "ids": [
+    "7c905c4752568d98"
+   ],
+   "last_ts": "2026-10-16T21:45:00.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 68,
+   "flash": true
+  },
+  {
+   "id": "6779700286431cbd",
+   "tag": "OTHER",
+   "line": "ادامه ادعای تکراری ترامپ درباره محاصره دریایی ایران",
    "first": {
     "src": "Mehr News Agency",
-    "ts": "2026-10-16T19:36:42.000Z",
-    "got": "2026-10-16T20:46:13.508Z",
-    "url": "https://www.mehrnews.com/news/6979833/%D8%B1%D8%A6%DB%8C%D8%B3-%D8%B3%D8%A7%D8%B2%D9%85%D8%A7%D9%86-%D9%85%D9%84%DB%8C-%D8%A7%D8%B3%D8%AA%D8%A7%D9%86%D8%AF%D8%A7%D8%B1%D8%AF-%D8%A7%DB%8C%D8%B1%D8%A7%D9%86-%D9%88%D8%A7%D8%B1%D8%AF-%D8%AE%D9%88%D8%B2%D8%B3%D8%AA%D8%A7%D9%86-%D8%B4%D8%AF"
+    "ts": "2026-10-16T21:40:34.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://www.mehrnews.com/news/6979885/%D8%A7%D8%AF%D8%A7%D9%85%D9%87-%D8%A7%D8%AF%D8%B9%D8%A7%DB%8C-%D8%AA%DA%A9%D8%B1%D8%A7%D8%B1%DB%8C-%D8%AA%D8%B1%D8%A7%D9%85%D9%BE-%D8%AF%D8%B1%D8%A8%D8%A7%D8%B1%D9%87-%D9%85%D8%AD%D8%A7%D8%B5%D8%B1%D9%87-%D8%AF%D8%B1%DB%8C%D8%A7%DB%8C%DB%8C-%D8%A7%DB%8C%D8%B1%D8%A7%D9%86"
    },
    "n": 1,
    "n_src": 1,
@@ -988,125 +820,657 @@
     "Mehr News Agency"
    ],
    "ids": [
-    "346d3781f0b11841"
+    "6779700286431cbd"
    ],
-   "last_ts": "2026-10-16T19:36:42.000Z",
+   "last_ts": "2026-10-16T21:40:34.000Z",
    "ms": null,
    "lead_min": null,
-   "lag_min": 70,
+   "lag_min": 72,
    "flash": true
   },
   {
-   "id": "869bc2b2b7d49b97",
-   "tag": "OTHER",
-   "line": "واشنطن تعلن السيطرة على مضيق هرمز وتكشف خسائر إيرانية بمليارات الدولارات",
+   "id": "afe5f4fb8207638f",
+   "tag": "STRIKE",
+   "line": "Iran rejects Saudi statements over Houthi attacks and repeats mediation offer",
    "first": {
-    "src": "وردنا",
-    "ts": "2026-10-16T19:19:47.000Z",
-    "got": "2026-10-16T20:46:13.508Z",
-    "url": "https://news.google.com/rss/articles/CBMiygRBVV95cUxQWEVUbzIzdWZYY1dLb3gzUXAyMmhRU2gxVERpUzU3aGRKcHQwTWsxOUdqX3ZBVERvdlR3a0ZqcjBiZWtxWUNrRVNWMmJGZEpRX2JNc01NZVRJcXgtMVFjQkNMaWlmWUVET2Frak9jNXpwcGVFWExwOEd6Wkpob1NsVFBqYm1mZW1XQVRpWF9MRHBGcS10bV9Ob3pUbkdIMHkwSHZjMEhWalRsNEJWc2RFX0hiVjAxQ05wcUxISmdBQXNSTXFEOV9YWDJ0N1llOFBzVG1tVDF5YnlQUDRBUEtvVTJ0dzlNTF9ydmNlNVdhVUxvMjRsQWZFWEZhT3R2NDU0SmwzQzcwTXZYc3ZickNWQzVXWmZFV1NkWElkYTNSdF9yY180cGM0akxBN2k1SktYamFFVHE0X05wU2x0c0dLZm5ZUDhfX0NQZGdTYjA1Nmg3b0JYMXJjWkxCYlNsNTZtenVUbkFJNzNsMmVLRkRTMWNoRHVhYWVsNzRSWUhBVjhieTFXOTdIRW9mYnRLMldBb21oWEJQci1xV3FPSmNvbC1WZUtMSmc1VUJ4OXl0NWtpSkpheGVfc2NLdDhockR6SlJBU0F3aVMwUld0bnlfbC1KWUNOYnp4TmstQmJXWTFsaWpEMTZyWmxmWnVocHVsU21ZS004dk1YNkpWbnBlMWs5Q04tcXZxUVdBNk9OdmdISDhjY2xrYUl2ZVFQWDYxLThXMDFkb2c2bTAxX1ZmQzZtSVBwZTI0LTgxa2s3Uy1Pa1RyaEZnUmRR?oc=5"
+    "src": "TRT World",
+    "ts": "2026-10-16T21:39:48.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5uUDF1S3pSYk9rN0RGX2M4LUtGWHJaZDBHa1lvWHFiQ1FELURPeWUxb2x0WDJWbk05Y2lQTkxPMkNrLWxmOWprSGZWWGpqQ0pTUEV1R0tqclI?oc=5"
    },
    "n": 1,
    "n_src": 1,
    "srcs": [
-    "وردنا"
+    "TRT World"
    ],
    "ids": [
-    "869bc2b2b7d49b97"
+    "afe5f4fb8207638f"
    ],
-   "last_ts": "2026-10-16T19:19:47.000Z",
+   "last_ts": "2026-10-16T21:39:48.000Z",
    "ms": null,
    "lead_min": null,
-   "lag_min": 86,
+   "lag_min": 73,
    "flash": true
   },
   {
-   "id": "34f1ece0ff9be683",
-   "tag": "DIPLOMACY",
-   "line": "Baghaei: Iran is ready to help resolve peacefully the issues between Saudi Arabia and Yemen",
+   "id": "7435ff60aae02a6e",
+   "tag": "OTHER",
+   "line": "سعید توکلی: جنگ‌ افروزی آمریکا و اسرائیل علت اصلی بحران انرژی است",
    "first": {
     "src": "Mehr News Agency",
-    "ts": "2026-10-16T18:11:42.000Z",
-    "got": "2026-10-16T20:46:13.508Z",
-    "url": "https://www.mehrnews.com/news/6979783/%D8%A8%D9%82%D8%A7%D8%A6%DB%8C-%D8%A7%DB%8C%D8%B1%D8%A7%D9%86-%D8%A2%D9%85%D8%A7%D8%AF%D9%87-%DA%A9%D9%85%DA%A9-%D8%A8%D8%B1%D8%A7%DB%8C-%D8%AD%D9%84-%D9%85%D8%B3%D8%A7%D9%84%D9%85%D8%AA-%D8%A2%D9%85%DB%8C%D8%B2-%D9%85%D8%B3%D8%A7%D8%A6%D9%84-%D8%A8%DB%8C%D9%86-%D8%B9%D8%B1%D8%A8%D8%B3%D8%AA%D8%A7%D9%86"
-   },
-   "n": 4,
-   "n_src": 4,
-   "srcs": [
-    "Mehr News Agency",
-    "Sepahcybery",
-    "entekhab.ir",
-    "26sep.net"
-   ],
-   "ids": [
-    "34f1ece0ff9be683",
-    "20c99ebd08d2d97c",
-    "9fde34d8d06880a0",
-    "cea1a8bc16d8b5c5"
-   ],
-   "last_ts": "2026-10-16T19:15:00.000Z",
-   "ms": null,
-   "lead_min": null,
-   "lag_min": 155,
-   "flash": true
-  },
-  {
-   "id": "b09a49cd7b504489",
-   "tag": "STRIKE",
-   "line": "🔵 101 Saudi attacks on Yemen in the past 24 hours",
-   "first": {
-    "src": "Al-Manar (Telegram)",
-    "ts": "2026-10-16T18:12:37.000Z",
-    "got": "2026-10-16T20:46:13.508Z",
-    "url": "https://t.me/almanarnews/268275"
+    "ts": "2026-10-16T21:34:27.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://www.mehrnews.com/news/6979883/%D8%B3%D8%B9%DB%8C%D8%AF-%D8%AA%D9%88%DA%A9%D9%84%DB%8C-%D8%AC%D9%86%DA%AF-%D8%A7%D9%81%D8%B1%D9%88%D8%B2%DB%8C-%D8%A2%D9%85%D8%B1%DB%8C%DA%A9%D8%A7-%D9%88-%D8%A7%D8%B3%D8%B1%D8%A7%D8%A6%DB%8C%D9%84-%D8%B9%D9%84%D8%AA-%D8%A7%D8%B5%D9%84%DB%8C-%D8%A8%D8%AD%D8%B1%D8%A7%D9%86-%D8%A7%D9%86%D8%B1%DA%98%DB%8C"
    },
    "n": 1,
    "n_src": 1,
    "srcs": [
-    "Al-Manar (Telegram)"
+    "Mehr News Agency"
    ],
    "ids": [
-    "b09a49cd7b504489"
+    "7435ff60aae02a6e"
    ],
-   "last_ts": "2026-10-16T18:12:37.000Z",
+   "last_ts": "2026-10-16T21:34:27.000Z",
    "ms": null,
    "lead_min": null,
-   "lag_min": 154,
+   "lag_min": 79,
    "flash": true
   },
   {
-   "id": "cf9ac40cb690c7be",
-   "tag": "NUCLEAR",
-   "line": "איראן מביעה מוכנות לדיאלוג ומסרבת לתעמולה מזיקה בנושא הגרעין - סוכנות חדשות צדא",
-   "first": {
-    "src": "وكالة صدى نيوز",
-    "ts": "2026-10-16T18:10:21.000Z",
-    "got": "2026-10-16T20:46:13.508Z",
-    "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9kSG9iei1fN3F3VmYzcGI4Z2NIRmp1dDN6dVNBX1FLMFBCdk1ad0NkQzBPZ1dkdkhJWGJaMHhLQmFaOWtaZzU4a3MyaXBDbk1LVlZFNGd3?oc=5"
-   },
-   "n": 1,
-   "n_src": 1,
-   "srcs": [
-    "وكالة صدى نيوز"
-   ],
-   "ids": [
-    "cf9ac40cb690c7be"
-   ],
-   "last_ts": "2026-10-16T18:10:21.000Z",
-   "ms": null,
-   "lead_min": null,
-   "lag_min": 156,
-   "flash": true
-  },
-  {
-   "id": "f9841c0034052c7c",
+   "id": "f0f5190353dc3a76",
    "tag": "OTHER",
-   "line": "Planning to connect Iran's rail network to Afghanistan via Uzbekistan",
+   "line": "السعودية ترحب ببيان مجلس الأمن المدين لهجمات الحوثيين",
+   "first": {
+    "src": "akhbrna.ae",
+    "ts": "2026-10-16T21:30:00.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://www.akhbrna.ae/news/alsawdya-trhb-bbyan-mjls-alamn/"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "akhbrna.ae"
+   ],
+   "ids": [
+    "f0f5190353dc3a76"
+   ],
+   "last_ts": "2026-10-16T21:30:00.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 83,
+   "flash": true
+  },
+  {
+   "id": "2d27409bcd143389",
+   "tag": "OTHER",
+   "line": "الجيش الأمريكي يؤكد استمرار حصاره لإيران وإضعاف نفوذ طهران بالمنطقة",
+   "first": {
+    "src": "الجزيرة نت",
+    "ts": "2026-10-16T21:24:33.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://news.google.com/rss/articles/CBMi2gJBVV95cUxQZ0dNVi1ybzFZUmNzblQydU9kWnNPdEJ0eEtOTC1PZEJmSzdBR0wya0gxQTFmNGtTSlhsWERIWFJVOVlrWEd1cmlkYkw2M2F5dkZ4R19wQ010WFFRbjB4aHg4Y0NUZUpsTzVLa3hFT29lLVU5YWplT1lNOEwzOG9iNEs1SC1ydzhaaDhKcW1LX0h0UWFYZm5STGRXQ1U4REJ0c2NYWW1IQmtnZ0ZkY3ZPV2dMMVpBT1p4a1VwUVFEX2FCb093LVoxUWVnYXB3RDZLZ05RNk5Ca2h1ZEJyelI5a1lDbGFUZ2ItbU9DSDdDSS1SeGtVVGpLeXFnV0E1OEtMM21jUEFvZWVLZndKQThSOXFqM3RtRUtuSC1vSTZyMWpzYjd1NHN6MDBMZGdhVWJlYnFKbElTUmhoNy1qQ0JNUVQtWnJtU2pMbWlBTjhEUXBtb25HZU53OUpn0gHfAkFVX3lxTE5OTUQ3ejZMa2RYVWc2VXg1RTBqUWY3ZTBJVmcxNXhsVC15bzNMOFd2X0I4d21fUTFCY1F5b0EtMTE1a0JaYnNfX2VJTGh2YzJDOENSUi1JR21JX1NOS0FlT2NnYXVHSXkyM0NaSUZHWGRubmo5Q2VmeUhwOVVyTmpmcFVZcFFzWkFycUVFVHdqTTh0S0JuREo1QWNjTW1QU0YzSlpybXJGV1BscEI0a0tKOFlSVzRUalE5S2lFaEpVd3A5SENlcGN2T2doNWY3Mnp1TGQ4NkREeE4zdDl5LWREM0tLTjNHX09wX1E0Njd4ajBVTkw2NHJxSWJoZzlWMmgyVmtmZjM2R050ZV85T01SZUdCRUNfVUZPeUtTLVhhSmljNkp1QVNpdjM1U3doNThDamtQNmhUeUQzdW02OEhiTVBKWVVCbHE5bWVxT1JQcmVwUmpKX2h4c3VpMGNiUQ?oc=5"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "الجزيرة نت"
+   ],
+   "ids": [
+    "2d27409bcd143389"
+   ],
+   "last_ts": "2026-10-16T21:24:33.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 88,
+   "flash": true
+  },
+  {
+   "id": "80f835f0e6e18b84",
+   "tag": "OTHER",
+   "line": "آمریکا با وارونه‌نمایی واقعیت‌ها به دنبال پیروزی در جنگ روایت‌ها است",
+   "first": {
+    "src": "Mehr News Agency",
+    "ts": "2026-10-16T21:19:34.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://www.mehrnews.com/news/6979793/%D8%A2%D9%85%D8%B1%DB%8C%DA%A9%D8%A7-%D8%A8%D8%A7-%D9%88%D8%A7%D8%B1%D9%88%D9%86%D9%87-%D9%86%D9%85%D8%A7%DB%8C%DB%8C-%D9%88%D8%A7%D9%82%D8%B9%DB%8C%D8%AA-%D9%87%D8%A7-%D8%A8%D9%87-%D8%AF%D9%86%D8%A8%D8%A7%D9%84-%D9%BE%DB%8C%D8%B1%D9%88%D8%B2%DB%8C-%D8%AF%D8%B1-%D8%AC%D9%86%DA%AF-%D8%B1%D9%88%D8%A7%DB%8C%D8%AA-%D9%87%D8%A7"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "Mehr News Agency"
+   ],
+   "ids": [
+    "80f835f0e6e18b84"
+   ],
+   "last_ts": "2026-10-16T21:19:34.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 93,
+   "flash": true
+  },
+  {
+   "id": "63cf7d58447be7b2",
+   "tag": "TROOPS",
+   "line": "أمريكا تستبعد التدخل البرى ضد إيران.. وإسرائيل ترفع التأهب طهران تؤكد جاهزية قواتها.. وتتمسك بالسيطرة على «هرمز»",
+   "first": {
+    "src": "بوابة الأهرام",
+    "ts": "2026-10-16T21:17:43.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://news.google.com/rss/articles/CBMi1ARBVV95cUxPLTZZVEstRXc3aXJtc3RINUZxVFE4dXhFRjY2NkpITnNJa0FNcldYeE5yOUFPRmhJTzRnRTBLeEstcWRKWkh0VUpRemg3U19seXRJRmIyZ1MxVFNFTzh2N1JoSVFqVzhpbGFtQmJDQlJ2aERvYWtwQkpncHZRQk94aGRYU1RSR1B3cFRVZUtXWmViNVRFVlFtVUpPN2wtSFhUbGY2dEIta185NnlhVC1nVEFSRk1SMTVscFpRSlctSXNmbEhtWVM1aEZMdzZMdVk1SHh4R2FTaWl2Y2NhRlh4S2RiZWRGLUFJMDBacndwRDg3UXVrbE9rRWQwNGE5NW9iQzhIOEVfQ0dyRjA1WDJrakQwRGZ2cUVPRGNTdDhLYmc1XzE5OEZHd1ZrQ19wQTNwUjV5NFc0cUdkcnJnaWhyOW1YR1NnRkNyOVZocnFBaGU1X3ozbUxHMTRtd043Mzlfb21IN2ItWWxhbTE4S3NDTlN3dEtwQm1YWDJ1Mklyanl1TjhMdnBoaUpWUC1CS1JudFhWZ0xMcUpzOC1qdEFwUWE5MHRQekprUXU1VXVNN2NVbWxuSElaVDYwbjB2WmdJZm1TVDljbU9vSnJsZzk1WlgyMDZaX3VGNjBIQ2tGR1VGRF9wUGFFNWFOelFHbFdQbC1sLTRHeTM2TXpaeUR2cHJTU2JKLVFLMTRFcW1ZOEVYTlcxN3pJWmtQN240OHJwRHF0djlTdkVJS216NW1pWmRCYWJzS2VOV0MtYlJwQXhpLUdlSEM4d3JHdnhlTmVtRW1lTw?oc=5"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "بوابة الأهرام"
+   ],
+   "ids": [
+    "63cf7d58447be7b2"
+   ],
+   "last_ts": "2026-10-16T21:17:43.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 95,
+   "flash": true
+  },
+  {
+   "id": "209862950e51fa56",
+   "tag": "OTHER",
+   "line": "القائد الأميركي: فصائل مسلحة في العراق بدأت ترسل الأموال إلى الحرس الثوري",
+   "first": {
+    "src": "الترا العراق",
+    "ts": "2026-10-16T21:15:47.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://news.google.com/rss/articles/CBMiwgVBVV95cUxQRDF1TzFqSXZGbXg1TzhTNDlRQ2xXWElOeVdTRTRfUFl0V2FXUXQtX0NMRXg3OGRFR3lfWS03Q21OS0RVbkE1cDdmVnhZMWRJVHVMcG1xOEhVSzlEZk9BbmY3dnU2bUNhSm9qa213QWg2UjlHM0dZTU5pVW9xMWpDdm8yeFg0bkQ0OWR3Y0ZnSHR6c1Zzd05Lell2ckl0SmFacG1TWjB1SFNHZi1ZaTd0WGNLcnl6aFNSbVRHb2t5LTlWWGpfOWRFQzZBMElvQ3NfdEg2Sl9aakVoRzRfb3JWUkJlZ0JQZG1NMVBicmowYzE5TUh0Y1ItQkdhczRKN0NiOEQ4TTlrV1RBS2lJaWR6U1FNV3ZnaE1yd1VpVE51eVFJcDFITWFLcGVqRlpKUHBqd1d2R0doX250emNseGZ6WkUyeDFXRlBKWDBFdWE2S2hlU2tQV3gtRlFnY084U2sza2tOQ21aM2o0OWwzUTRkVVJjT0RZakFTV3J1cUQ1YXNURDhURWdzR05fd1YzX1l4a0t5ZmpIVUEwRi1hX25xRnQydFQ2QVpxSTRJbnNCSDdiOGl1WEt5d3dxMDh2T01HS2pfMHFOSGg2MEVaT2lIVHhJa2EzbHZMSUhHMDd3eldOVFZSZUdwZ1ZseGxLNVBuUDNlUkd3X3ZmdURpQkx5YWdDMWpqbnF0NmhqdjFKZS1jRThEUWNWNkFvcUV5ck9KU3liRlVtSFQyMDM1NlpCaF91TUVMeXNldlRmdTE4dm5pc1F5XzNLSlg4dmIyV3U2dDhHRUhET3gtUUU2ZzJuQ0x6dHJzbVNUMmMweW81R3hmanMzSFUzLXJjV3c1RHNvdnZmMnZFd2p0NlRTQUFFR0xuUFpNUlRIVG80QkU4d2pyYm85a3pQQm1OZ1lHa1BIbmZuNVNnRFVkTUdUM0lkakR3?oc=5"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "الترا العراق"
+   ],
+   "ids": [
+    "209862950e51fa56"
+   ],
+   "last_ts": "2026-10-16T21:15:47.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 97,
+   "flash": true
+  },
+  {
+   "id": "8dd241cf440616ab",
+   "tag": "OTHER",
+   "line": "UAE-owned VLCC hit in Hormuz, Indian ministry says",
+   "first": {
+    "src": "TradeWinds News",
+    "ts": "2026-10-16T21:15:04.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxObDhxeDdST0Z1RXpqTUhYVmh2N0JuWTlTYUpXMkRlbXplNHFxd0hHN2h0R2dFXzkzV2lKSWNIejd1TWQtY2pHZGpyek9yVGFSZ0J4WGZfTzZXNjkyNmtKQ3V5V2JJM0JteGxzWXNFeWJ2cERoaFlwUmFPZmlVM3R6SHUyZGRJVzVLVUJlRHNOQmthZ1pwTS0ydzhHeGZwZ1hRVFlUT1l3?oc=5"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "TradeWinds News"
+   ],
+   "ids": [
+    "8dd241cf440616ab"
+   ],
+   "last_ts": "2026-10-16T21:15:04.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 98,
+   "flash": true
+  },
+  {
+   "id": "fe2cad810bb7901a",
+   "tag": "TROOPS",
+   "line": "القوات المسلحة تنفذ ( 1292 ) عملية وتحييد ما يزيد عن ( 430 ) عنصراً من مليشيا الحوثي",
+   "first": {
+    "src": "alsahwa-yemen.net",
+    "ts": "2026-10-16T19:45:00.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://www.alsahwa-yemen.net/p-96336"
+   },
+   "n": 2,
+   "n_src": 2,
+   "srcs": [
+    "alsahwa-yemen.net",
+    "khabaragency.net"
+   ],
+   "ids": [
+    "fe2cad810bb7901a",
+    "cf7268d2d5a7a9f8"
+   ],
+   "last_ts": "2026-10-16T21:15:00.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 188,
+   "flash": true
+  },
+  {
+   "id": "55a8b6a4a8d5da01",
+   "tag": "OTHER",
+   "line": "نزيف الجبهات يدفع الحوثيين للتعبئة القسرية .. إب تتحول إلى ساحة حشد",
+   "first": {
+    "src": "khabaragency.net",
+    "ts": "2026-10-16T21:15:00.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://www.khabaragency.net/news254420.html"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "khabaragency.net"
+   ],
+   "ids": [
+    "55a8b6a4a8d5da01"
+   ],
+   "last_ts": "2026-10-16T21:15:00.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 98,
+   "flash": true
+  },
+  {
+   "id": "b058e7c6d26fdfd3",
+   "tag": "NAVAL",
+   "line": "المنظمة البحرية الدولية : هرمز لا يزال غير آمن وإيران لم تقدم معلومات لفتحه",
+   "first": {
+    "src": "khabaragency.net",
+    "ts": "2026-10-16T21:15:00.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://www.khabaragency.net/news254431.html"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "khabaragency.net"
+   ],
+   "ids": [
+    "b058e7c6d26fdfd3"
+   ],
+   "last_ts": "2026-10-16T21:15:00.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 98,
+   "flash": true
+  },
+  {
+   "id": "1157c8bc1f36afb9",
+   "tag": "OTHER",
+   "line": "دماء الأبرياء بصبر .. جرائم الحوثي المستمرة ! | وكالة خبر للأنباء",
+   "first": {
+    "src": "khabaragency.net",
+    "ts": "2026-10-16T21:15:00.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://www.khabaragency.net/news254427.html"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "khabaragency.net"
+   ],
+   "ids": [
+    "1157c8bc1f36afb9"
+   ],
+   "last_ts": "2026-10-16T21:15:00.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 98,
+   "flash": true
+  },
+  {
+   "id": "824a938ea459179b",
+   "tag": "OTHER",
+   "line": "بيان خليجي أوروبي يدين اعتداءات إيران ووكلائها ويؤكد أهمية تنويع مصادر الطاقة",
+   "first": {
+    "src": "sana.sy",
+    "ts": "2026-10-16T21:15:00.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://sana.sy/international/2609047/"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "sana.sy"
+   ],
+   "ids": [
+    "824a938ea459179b"
+   ],
+   "last_ts": "2026-10-16T21:15:00.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 98,
+   "flash": true
+  },
+  {
+   "id": "f2ee330cc4850d2e",
+   "tag": "MISSILE",
+   "line": "الحكومة اليمنية : صاروخان حوثيان سقطا قرب طائرة متجهة إلى القاهرة أثناء استعدادها للإقلاع من عدن",
+   "first": {
+    "src": "khabaragency.net",
+    "ts": "2026-10-16T21:15:00.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://www.khabaragency.net/news254433.html"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "khabaragency.net"
+   ],
+   "ids": [
+    "f2ee330cc4850d2e"
+   ],
+   "last_ts": "2026-10-16T21:15:00.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 98,
+   "flash": true
+  },
+  {
+   "id": "26c95e1574f1d2cb",
+   "tag": "OTHER",
+   "line": "تحت وطأة الخسائر .. الحوثيون يحولون أجهزة الشرطة بصنعاء إلى أداة حرب وينقلون 40 % من عناصرها وآلياتها إلى جبهات تعز",
+   "first": {
+    "src": "khabaragency.net",
+    "ts": "2026-10-16T21:15:00.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://www.khabaragency.net/news254416.html"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "khabaragency.net"
+   ],
+   "ids": [
+    "26c95e1574f1d2cb"
+   ],
+   "last_ts": "2026-10-16T21:15:00.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 98,
+   "flash": true
+  },
+  {
+   "id": "209f243dacb230e9",
+   "tag": "STRIKE",
+   "line": "أربعة انفجارات تهز عدن بعد يوم من هجوم دامٍ استهدف قصر معاشيق",
+   "first": {
+    "src": "khabaragency.net",
+    "ts": "2026-10-16T21:15:00.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://www.khabaragency.net/news254428.html"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "khabaragency.net"
+   ],
+   "ids": [
+    "209f243dacb230e9"
+   ],
+   "last_ts": "2026-10-16T21:15:00.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 98,
+   "flash": true
+  },
+  {
+   "id": "3c0e69a09b5fa574",
+   "tag": "MISSILE",
+   "line": "דיווח בסוריה: טילי נ\"מ שוגרו לעבר כטב\"ם באזור דמשק",
+   "first": {
+    "src": "היום",
+    "ts": "2026-10-16T21:12:00.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBoSThFeDB5UzJqRUk3X1VtZW52S3ZURUlId3ZWVE11TmRCeDJGN0I2Ukt0bEtNSndpdFI0LVhYbzFXNkxyeGxVcEFMZVhMZHJuTWwwZ1BkR0Zsdy0xQUhNaUZ2bDJzWkXSAW9BVV95cUxQS2QxOU43M3JpTFJYdVdQLTdWbU9vMzZld0YySG1TS245NEFaa015eEl3Tnk0RGliYWdTaVQ3RHdOTHB1M0dlQWZ6eXFPMW1ONGsyUEw4S2EyeGhRNThTa1M4RnhDcTd4TklqSDZwcjg?oc=5"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "היום"
+   ],
+   "ids": [
+    "3c0e69a09b5fa574"
+   ],
+   "last_ts": "2026-10-16T21:12:00.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 101,
+   "flash": true
+  },
+  {
+   "id": "ace817ee1b1fb3b1",
+   "tag": "SHIPPING",
+   "line": "ادعای ترامپ: عربستان کمک اسرائیل علیه یمن را می‌پذیرد",
    "first": {
     "src": "yjc.ir",
-    "ts": "2026-10-16T18:03:14.000Z",
-    "got": "2026-10-16T20:46:13.508Z",
-    "url": "https://www.yjc.ir/fa/news/9139279/برنامه‌ریزی-برای-اتصال-شبکه-ریلی-ایران-به-افغانستان-از-مسیر-ازبکستان"
+    "ts": "2026-10-16T19:56:01.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://www.yjc.ir/fa/news/9139288/ادعای-ترامپ-عربستان-کمک-اسرائیل-علیه-یمن-را-می‌پذیرد"
+   },
+   "n": 4,
+   "n_src": 2,
+   "srcs": [
+    "yjc.ir",
+    "entekhab.ir"
+   ],
+   "ids": [
+    "ace817ee1b1fb3b1",
+    "6fc2fdd7a0382084",
+    "9b03363ac9a2c6a6",
+    "400e09f73228a030"
+   ],
+   "last_ts": "2026-10-16T21:09:05.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 177,
+   "flash": true
+  },
+  {
+   "id": "ebd96753bfb1c128",
+   "tag": "STRIKE",
+   "line": "وزارة النقل تكشف تفاصيل الهجوم الحوثي الجديد على مطار عدن الدولي",
+   "first": {
+    "src": "alwahdawi.net",
+    "ts": "2026-10-16T21:00:00.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://alwahdawi.net/news-40465"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "alwahdawi.net"
+   ],
+   "ids": [
+    "ebd96753bfb1c128"
+   ],
+   "last_ts": "2026-10-16T21:00:00.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 113,
+   "flash": true
+  },
+  {
+   "id": "cf0cd87d73bcaa0d",
+   "tag": "OTHER",
+   "line": "الأهمية الاستراتيجية لتعز في حرب اليمن وتداعيات الحصار",
+   "first": {
+    "src": "alquds.com",
+    "ts": "2026-10-16T21:00:00.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://alquds.com/ar/posts/262474"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "alquds.com"
+   ],
+   "ids": [
+    "cf0cd87d73bcaa0d"
+   ],
+   "last_ts": "2026-10-16T21:00:00.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 113,
+   "flash": true
+  },
+  {
+   "id": "759729b7263ffc88",
+   "tag": "OTHER",
+   "line": "Oil Stocks In Focus As Hormuz Risk Puts Integrated Producers Under Pressure",
+   "first": {
+    "src": "Simply Wall Street",
+    "ts": "2026-10-16T20:55:07.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQNHBUcVRRWWRPeTd3aW9tckVaeW1fTTY5RlpnOWh5OHR2UzhBalkxdTFneEVSVVppeVJlWVNTdDlLdy1zdEd0NU1KOHI5VS0wYjZwQ2pxaERRVGkya1RWWUZSTHI1ZFAxNWxMRzZfbTMwMUZyM3RYMXBRSlhoMHJYeFhwa3RHNWdsOGZvQnFKQkpObEo2eExjeHZDNF9ZTnRvNEduX1lKczFSQ3ozaEE1YmxRRmxqMGVpbDJwU2Q3R1N5dml1dVHSAcsBQVVfeXFMUE9HNUlZeXNHekViM2NyVExLWnhSZG9RWmtGVVQ2LTFyREd6WllESlZXQ20wQjdZMlptaDdaV1VzR3pHMmYwWjdHVGIwLVozUnhaZlRRQ2NVa1dWVkdjQUFuS1BUdG8xNGlrS1VlSEE0M2kybUljcnRXMWU0WmxkSWh1ZWhWZnU4VnYxZ1ljQlRYc1FjZlB6U2lOUmVkUlNYRzFmV1hPZDQyMWc5YzRRVTE3T2laZ29tcXJGWGdVampzc3JieG5GQnpRZ2s?oc=5"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "Simply Wall Street"
+   ],
+   "ids": [
+    "759729b7263ffc88"
+   ],
+   "last_ts": "2026-10-16T20:55:07.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 118,
+   "flash": true
+  },
+  {
+   "id": "0b66a19ed26ca1d8",
+   "tag": "STRIKE",
+   "line": "Oil hits $110 as Houthi strikes, Russia-Ukraine attacks lift supply fears",
+   "first": {
+    "src": "World Oil",
+    "ts": "2026-10-16T20:50:56.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQQTBSY2VwTlJWTTVZbWdsaE5YLXhrbnZkTnRrckVIcWlobkpSbnp5SkZhRFNFd1cxZmt3T1lPWl9iTGthdFd1Q2xJUU5yNWY0NzA3RzRUNUlTM0dkQXJtTkxMRzhLT2tOM0xPVEhybDZGdlV4cXZNUUo0RHpqYVRlemhEV2dIVjl0SjRIczJhZ09kV2xHQ2Q1bkhwQnMyYWZJalR0Yk9MLU9nN2I4QUE?oc=5"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "World Oil"
+   ],
+   "ids": [
+    "0b66a19ed26ca1d8"
+   ],
+   "last_ts": "2026-10-16T20:50:56.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 122,
+   "flash": true
+  },
+  {
+   "id": "1d2ba1f59b226102",
+   "tag": "OTHER",
+   "line": "سنتكوم: مضيق هرمز خاضع للسيطرة الأميركية والشركاء الإقليميين",
+   "first": {
+    "src": "العربية",
+    "ts": "2026-10-16T18:20:00.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://news.google.com/rss/articles/CBMi2wRBVV95cUxPU1A0S3NVOGY1Zm1venp3SE5RS3pyLXpBRklJQmlsSHdwbjNiUzBvOGxOUXl1bER5ck5Ca09WYXNNaTRSbWI1RmFaMGJoS0ZmRzVmQlFhUXF5SFBsTFJNN21WWUhZS0VST3VpZ2lURlNkRXowbXZXR1JEVXk0cEJuOTV6aURTcmNIUEp0cWJXNzlfeWdrZ1lUN2JXSUlSMjZnVWdRaG9uU3RLYnpxeTZoM0RIa1RTOGllU2g0dWJYUUhzY1dSRTVCamVjaEdXUGxKczlmcEFoZE9Qemh2RF9NZFdwc2FfWWN4bzMxNUhacmNDWFA0WGlUOE1aZXpndGdlSWFJTXdIY1JvWVJySVVDZUw3ZzdUWEFmUXk5b1F4aEZpdXdTaXMyQXpDamd5MDM4T3BFQl9QdFh0OHR3QTMzM3hWbDNVTGpvMy1zdjVEd2l5WnJWT2NhVUk4QUx3YnJlRy1FSXZLNzdwZjNwbU5NbXF5V3dMQnFnWmlkbVRIVUd1Y1RXOHhkclVmWXZTWnpSSnBuM1RETWhGRW14QWNTNWk1WVRxUGhOeUxmdTM4SVExQ095SG1Zbk4yNnNndHY0b1NEX21YNFFnSk9EZ3MxX1V0ZDJ2WEpsUXVKQ1lpOUVBV0kwUmVSa01kVWlNU3hZRjdjMmRDMjhSN25QOUFTYkcwUk9JblFUU2RPREFmY3VEWWp6bjUyREs4ZkNBem03ZklYb05sLXZmZklfWFF6VU9OMkZsSDhKQnRDMVJBYk5VeEFZYk1SVzFERlZPcE5qZkN0elhnRC1MazTSAdsEQVVfeXFMT1NQNEtzVThmNWZtb3p6d0hOUUt6ci16QUZJSUJpbEh3cG4zYlMwbzhsTlF5dWxEeXJOQmtPVmFzTWk0Um1iNUZhWjBiaEtGZkc1ZkJRYVFxeUhQbExSTTdtVllIWUtFUk91aWdpVEZTZEV6MG12V0dSRFV5NHBCbjk1emlEU3JjSFBKdHFiVzc5X3lna2dZVDdiV0lJUjI2Z1VnUWhvblN0S2J6cXk2aDNESGtUUzhpZVNoNHViWFFIc2NXUkU1QmplY2hHV1BsSnM5ZnBBaGRPUHpodkRfTWRXcHNhX1ljeG8zMTVIWnJjQ1hQNFhpVDhNWmV6Z3RnZUlhSU13SGNSb1lScklVQ2VMN2c3VFhBZlF5OW9ReGhGaXV3U2lzMkF6Q2pneTAzOE9wRUJfUHRYdDh0d0EzMzN4VmwzVUxqbzMtc3Y1RHdpeVpyVk9jYVVJOEFMd2JyZUctRUl2Szc3cGYzcG1OTW1xeVd3TEJxZ1ppZG1USFVHdWNUVzh4ZHJVZll2U1p6UkpwbjNURE1oRkVteEFjUzVpNVlUcVBoTnlMZnUzOElRMUNPeUhtWW5OMjZzZ3R2NG9TRF9tWDRRZ0pPRGdzMV9VdGQydlhKbFF1SkNZaTlFQVdJMFJlUmtNZFVpTVN4WUY3YzJkQzI4UjduUDlBU2JHMFJPSW5RVFNkT0RBZmN1RFlqem41MkRLOGZDQXptN2ZJWG9ObC12ZmZJX1hRelVPTjJGbEg4SkJ0QzFSQWJOVXhBWWJNUlcxREZWT3BOamZDdHpYZ0QtTGs0?oc=5"
+   },
+   "n": 3,
+   "n_src": 3,
+   "srcs": [
+    "العربية",
+    "Kurdistan24",
+    "alriyadh.com"
+   ],
+   "ids": [
+    "1d2ba1f59b226102",
+    "1eef86eed1ddc7fb",
+    "cb2889014cc19efa"
+   ],
+   "last_ts": "2026-10-16T20:45:00.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 273,
+   "flash": true
+  },
+  {
+   "id": "18c78172795f6036",
+   "tag": "OTHER",
+   "line": "إيران تحدد 3 شروط للصلح مع الولايات المتحدة",
+   "first": {
+    "src": "rtarabic.com",
+    "ts": "2026-10-16T20:45:00.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://rtarabic.com/world/1844152-%D8%A5%D9%8A%D8%B1%D8%A7%D9%86-%D8%AA%D8%AD%D8%AF%D8%AF-3-%D8%B4%D8%B1%D9%88%D8%B7-%D9%84%D9%84%D8%B5%D9%84%D8%AD-%D9%85%D8%B9-%D8%A7%D9%84%D9%88%D9%84%D8%A7%D9%8A%D8%A7%D8%AA-%D8%A7%D9%84%D9%85%D8%AA%D8%AD%D8%AF%D8%A9/"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "rtarabic.com"
+   ],
+   "ids": [
+    "18c78172795f6036"
+   ],
+   "last_ts": "2026-10-16T20:45:00.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 128,
+   "flash": true
+  },
+  {
+   "id": "6c5097f948bc2e40",
+   "tag": "OTHER",
+   "line": "Hormuz controlled by US and allies, not Iran: Centcom chief",
+   "first": {
+    "src": "Middle East Eye",
+    "ts": "2026-10-16T20:43:00.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxPOEYzbzNTMDQwN3A2X3RnaFQyUlJhVkVOeHBnb1Y2Vm1HN1JxMWF1ZHIzS3p6MFVhOWNGMDhKdVFxWXV5c21wTjFlMFl3RlYwRE9iS00tMHNKaWhkaUMycHFFNTFvRWRCZW1oY21Mc0p6ZVpsRjlzSWVWWnBQcEh2MU9aYUJybHJpVUNzYjBNR1Q2c3BJTkw1bzJtTzJXelNaZkJUTDBRYjFIWDdaNGlvVmk1M3liZlV0TkZXbExTLVcxdEItVWtnT2hEbHFhclR0dXlXSlBsR1BacEhicmNvSG82aWZtcWZTTFlRNjgtYlY?oc=5"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "Middle East Eye"
+   ],
+   "ids": [
+    "6c5097f948bc2e40"
+   ],
+   "last_ts": "2026-10-16T20:43:00.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 130,
+   "flash": true
+  },
+  {
+   "id": "e2c56f62dcea9d75",
+   "tag": "TROOPS",
+   "line": "قناة النيل للأخبار | انفجارات في محيط مطار عدن .. ووسائل إعلام حوثية تكشف استهداف مقر قيادة للقوات السعودية في عدن",
+   "first": {
+    "src": "nile.eg",
+    "ts": "2026-10-16T20:30:00.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://www.nile.eg/%D8%A7%D9%86%D9%81%D8%AC%D8%A7%D8%B1%D8%A7%D8%AA-%D9%81%D9%8A-%D9%85%D8%AD%D9%8A%D8%B7-%D9%85%D8%B7%D8%A7%D8%B1-%D8%B9%D8%AF%D9%86-%D9%88%D9%88%D8%B3%D8%A7%D8%A6%D9%84-%D8%A5%D8%B9%D9%84%D8%A7%D9%85"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "nile.eg"
+   ],
+   "ids": [
+    "e2c56f62dcea9d75"
+   ],
+   "last_ts": "2026-10-16T20:30:00.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 143,
+   "flash": true
+  },
+  {
+   "id": "c08c6ccbc60195d4",
+   "tag": "OTHER",
+   "line": "تفاهم اسلام‌آباد را آمریکا و صهیونیست‌ها نقض کردند",
+   "first": {
+    "src": "yjc.ir",
+    "ts": "2026-10-16T20:25:06.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://www.yjc.ir/fa/news/9139299/تفاهم-اسلام‌آباد-را-آمریکا-و-صهیونیست‌ها-نقض-کردند"
    },
    "n": 1,
    "n_src": 1,
@@ -1114,61 +1478,651 @@
     "yjc.ir"
    ],
    "ids": [
-    "f9841c0034052c7c"
+    "c08c6ccbc60195d4"
    ],
-   "last_ts": "2026-10-16T18:03:14.000Z",
+   "last_ts": "2026-10-16T20:25:06.000Z",
    "ms": null,
    "lead_min": null,
-   "lag_min": 163,
+   "lag_min": 148,
    "flash": true
   },
   {
-   "id": "c34daf0adb19edda",
-   "tag": "STRIKE",
-   "line": "Massive attacks from Russia: Pope calls on Putin for ceasefire",
+   "id": "0245927e70042b73",
+   "tag": "OTHER",
+   "line": "הצבא האמריקאי: מצר הורמוז פתוח והמצור על איראן נמשך",
    "first": {
-    "src": "ruhrnachrichten.de",
-    "ts": "2026-10-16T18:00:00.000Z",
-    "got": "2026-10-16T20:46:13.508Z",
-    "url": "https://www.ruhrnachrichten.de/ueberregionales/drohnenangriff-waehrend-merz-besuch-in-kiew-bruecke-in-der-hauptstadt-getroffen-16-oktober-2026-w1245972-2002221204/"
+    "src": "وكالة صدى نيوز",
+    "ts": "2026-10-16T20:21:01.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5vLUw3ZlNFNTZzY2JzS3ZkRlBhTGFZQ1Q1eGFlZDRaRmRVcjFqVmlrSzlPX19PTXozcnhfaTNiRzVSdGt2VXpXeEhiTEtzNXFwNUcwQ053?oc=5"
    },
    "n": 1,
    "n_src": 1,
    "srcs": [
-    "ruhrnachrichten.de"
+    "وكالة صدى نيوز"
    ],
    "ids": [
-    "c34daf0adb19edda"
+    "0245927e70042b73"
    ],
-   "last_ts": "2026-10-16T18:00:00.000Z",
+   "last_ts": "2026-10-16T20:21:01.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 152,
+   "flash": true
+  },
+  {
+   "id": "4d0df0011639df65",
+   "tag": "OTHER",
+   "line": "הקלף האחרון של הקונגרס; משחק הסיום של טראמפ במלחמת איראן?",
+   "first": {
+    "src": "نورنیوز",
+    "ts": "2026-10-16T20:11:07.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://news.google.com/rss/articles/CBMixwNBVV95cUxQXzh2SEZsd0tNZWJCalZhME9CTTFYMVRLV0lhaldGZ1FvaFFaT09vY3RfWWxHMEk0bUdpR3Fzd3NUV0ZRUmpIWlJsdzhJZUxtU0g5VUgyYnVmNXNsMkFNLUFsVjRNaDNFWl9MeW1ublRiYVlPWmotYnpiS0tCdzRacDJIZTFmbWNNeEloMldlYWlHc2t5YjNtd0FYZTVsV2Yzd3FNay1BMnVLenhXcWV2ZmZ5Y2FvSXMxRFV1TEV3V2FzZFNjX2tjczZtSlE5ZUptcGtrNjFrM1pvSXFKZ1k0UExPbWttdXg2V3dYU2Y0NHZ2ZElIV0kyTUNKbWxNSDZLS1BXVjZMc1hMclhwa1N0TklneGxmTGdRa1NvaUpCZmFkWmcxd1A5SkM3aHEtSjVLcnVMM0d6MjNkNDM4S2MzY21Kc2ctQlQ3VEszMkJGRS01WVRqd0k2ZHpBMzM4T2tNRVVVT0xSLUNzdlllVlcxMmZTMDM4YVd2TmRnT3ZqUm9vblBYUWxfdzJhNmJZWDBwMzJZYXlXaDhqZm9IckN1WHNkTzJFMVR0d2ExZ2NOSHZxSXh3dE5BVElITlVSSUZUQTdCNFc4dw?oc=5"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "نورنیوز"
+   ],
+   "ids": [
+    "4d0df0011639df65"
+   ],
+   "last_ts": "2026-10-16T20:11:07.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 162,
+   "flash": true
+  },
+  {
+   "id": "33509b7cba286d21",
+   "tag": "MISSILE",
+   "line": "ההתפתחויות האחרונות במלחמת ארה\"ב עם איראן; ממשבר ההגנה מפני טילים ועד לאפשרות שאיראן תפרוש מאמנת ה-NPT",
+   "first": {
+    "src": "نورنیوز",
+    "ts": "2026-10-16T20:06:42.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://news.google.com/rss/articles/CBMi2wVBVV95cUxNUmpTMXJyOHZmT2lxTjZsQXI4djd4QnpRRmtRcnB3c2hUQVgwczNqRDJhT2RTajU1SnJUMWttMVh1Sk9uUlpEVm1GaWFaQjlHZkZCNWNJQlZIX0NmN1hvUlJUMC1naGtyZWVORFk0RHF5bG50YlFzVTRfY05BS0ZHNUxxaGhmbElGbzFVSmVnaDFzR3ExT2h0MW5zcVFlSFRSTkFyLTk1VkJiM1JYdHdTMnR6ZFJZaVRoVXZ2S1llYTg1VVRTMVRfNzVYbFc2di1rWlhIN04xSHBGcHoxM1ZEV2I1Z3NOWEhlaGhCSEhvWDV0aHFoVVZtWENIeUNxMko1TTJTalh3N3dTOXNVQlUtNDlkRk9DYUVPbGV1ZGk3Q1E2a3VrYlhoRnQ0bmNTQTlnTlZneW01eDlVenFWN1NYc2xkUzNrdlI2RDBzN2RqOWNZcE50V096MllNdVNsRFZkaWd3N2IyS3c5a0FuNkZPUml1SHFyOHJIdDhlazhSMW4zSUFNZFdEWEtueU5vT0IxY2RiNFVNUGdJdDVJaDdnYUN0ZXR5S0JFZk5XdzNpNGtuYlBVQkkzZkRhT0Zmd2xYTVBITE9QMko3Z2Z2TlEzRlFfY3JWQi1BUUxIVkxKeVJKbmc5Q082eVJ5bkIyNk9iNXlINkxkR2FvUmJKeGNCbEtLdVFhU25GTW1FdnpXRGxUbm9pcHEzaElQWWVRLW53S3dEZ3ZIcUtBZzl3T0F4SjY1TDM2eFBldm9HbkNFWFFWeUtodS1teWR3aDNWa2pKd1BlbzVLN0Z0dHNseW56VzZUS3ZwQ3NEeWhZUm9fZUdBSHdjNW9jR1ljNTN1Q2Y1MW9Idkd0ZXByUm5HaFVRNno5T1psazNfLW1mSFM1Q01xTUs1MFNhci1ob1dQdDM3VDB6aGJST1hYdzJtTTNBVG5fcFF0QXNnVGlEVXlKUVVpT2xocGVCVlNLVQ?oc=5"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "نورنیوز"
+   ],
+   "ids": [
+    "33509b7cba286d21"
+   ],
+   "last_ts": "2026-10-16T20:06:42.000Z",
    "ms": null,
    "lead_min": null,
    "lag_min": 166,
    "flash": true
   },
   {
-   "id": "00113c91bda9d14f",
+   "id": "27932e819b78e095",
    "tag": "OTHER",
-   "line": "قائد «سنتكوم»: منعنا إيران من تصدير نفط بـ25 مليار دولار وجمدناً 350 مليوناً أصولاً مشفرة",
+   "line": "القيادة المركزية الأميركية: مضيق هرمز مفتوح أمام الملاحة رغم الهجمات الإيرانية",
    "first": {
-    "src": "صحيفة الوطن",
-    "ts": "2026-10-16T16:21:05.000Z",
-    "got": "2026-10-16T20:46:13.508Z",
-    "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1nRFVEdDYwVm1zd0FWVlAwdmdOeWhSQ3FpMlZfTXVrQWJ5N2R3bE5tajVZRUFmT2xob1hERS1aYmF6QUlmbU9XWHd5eGRneHY1TXBSVNIBVEFVX3lxTE1nRFVEdDYwVm1zd0FWVlAwdmdOeWhSQ3FpMlZfTXVrQWJ5N2R3bE5tajVZRUFmT2xob1hERS1aYmF6QUlmbU9XWHd5eGRneHY1TXBSVA?oc=5"
+    "src": "كل العرب",
+    "ts": "2026-10-16T20:00:19.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFB0T01JMEpubE5yNWY2Yi02bzROcWI5SVBOa3FqQW1wUTV3T1hBbllDWFZJeU5EZGpYZ3RSVk9ibzlyMXBDTXZYRHdnbjhPdEXSAU9BVV95cUxQdE9NSTBKbmxOcjVmNmItNm80TnFiOUlQTmtxakFtcFE1d09YQW5ZQ1hWSXlORGRqWGd0UlZPYm85cjFwQ012WER3Z244T3RF?oc=5"
    },
    "n": 1,
    "n_src": 1,
    "srcs": [
-    "صحيفة الوطن"
+    "كل العرب"
    ],
    "ids": [
-    "00113c91bda9d14f"
+    "27932e819b78e095"
    ],
-   "last_ts": "2026-10-16T16:21:05.000Z",
+   "last_ts": "2026-10-16T20:00:19.000Z",
    "ms": null,
    "lead_min": null,
-   "lag_min": 265,
+   "lag_min": 173,
    "flash": true
+  },
+  {
+   "id": "4abf7c1b529af950",
+   "tag": "OTHER",
+   "line": "رئيس وزراء إسبانيا : كنا على حق تماماً في رفضنا للانخراط في الحرب ضد إيران",
+   "first": {
+    "src": "dostor.org",
+    "ts": "2026-10-16T20:00:00.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://www.dostor.org/5741911"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "dostor.org"
+   ],
+   "ids": [
+    "4abf7c1b529af950"
+   ],
+   "last_ts": "2026-10-16T20:00:00.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 173,
+   "flash": true
+  },
+  {
+   "id": "a9ea8f80f48f1561",
+   "tag": "OTHER",
+   "line": "القيادة المركزية الأمريكية : إيران لا تسيطر على مضيق هرمز .. والنفط يتدفق بالمعدلات السابقة للحرب",
+   "first": {
+    "src": "shorouknews.com",
+    "ts": "2026-10-16T20:00:00.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://www.shorouknews.com/news/view.aspx?cdate=16102026&id=56645d11-560f-4eb9-b6c1-52892013a0d9"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "shorouknews.com"
+   ],
+   "ids": [
+    "a9ea8f80f48f1561"
+   ],
+   "last_ts": "2026-10-16T20:00:00.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 173,
+   "flash": true
+  },
+  {
+   "id": "8d2e5be777554e4f",
+   "tag": "SHIPPING",
+   "line": "Shafaq News..CENTCOM: 400 ships cross Hormuz in seven days",
+   "first": {
+    "src": "شفق نيوز",
+    "ts": "2026-10-16T19:36:13.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1XZ1d4UTVPTWdwcEN2dlZybVpTQjlwNWVZMXYzZUFqWm1MSy05RXI1MWpqVHpteW9oNXJzVXk5Zy1HXzUwZGdxcWFOdWtvY3ZwMDFSTnB6N2FOZ1VjZWFiWXhWemtHZ0cxSHI4NG8zbHd6MnNkelRNZUhabHM?oc=5"
+   },
+   "n": 2,
+   "n_src": 2,
+   "srcs": [
+    "شفق نيوز",
+    "Latest news from Azerbaijan"
+   ],
+   "ids": [
+    "8d2e5be777554e4f",
+    "978d7da0c4d97a81"
+   ],
+   "last_ts": "2026-10-16T19:58:36.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 197,
+   "flash": true
+  },
+  {
+   "id": "b90613e0eb8a9a4e",
+   "tag": "SHIPPING",
+   "line": "عمان از مردم خواست به کشتی غرق شده در تنگه هرمز نزدیک نشوند",
+   "first": {
+    "src": "yjc.ir",
+    "ts": "2026-10-16T19:58:01.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://www.yjc.ir/fa/news/9139293/عمان-از-مردم-خواست-به-کشتی-غرق-شده-در-تنگه-هرمز-نزدیک-نشوند"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "yjc.ir"
+   ],
+   "ids": [
+    "b90613e0eb8a9a4e"
+   ],
+   "last_ts": "2026-10-16T19:58:01.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 175,
+   "flash": true
+  },
+  {
+   "id": "a425c530d8f5ccc2",
+   "tag": "AIR",
+   "line": "اليمن .. الحوثيون يستهدفون مجددا محيط مطار عدن الدولي",
+   "first": {
+    "src": "shorouknews.com",
+    "ts": "2026-10-16T19:45:00.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://www.shorouknews.com/news/view.aspx?cdate=16102026&id=bba18840-a551-4ad2-9033-cb708dfe3245"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "shorouknews.com"
+   ],
+   "ids": [
+    "a425c530d8f5ccc2"
+   ],
+   "last_ts": "2026-10-16T19:45:00.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 188,
+   "flash": true
+  },
+  {
+   "id": "b3b109f6efccac9b",
+   "tag": "OTHER",
+   "line": "سنتكوم: العمليات الأمريكية قيدت القدرات العسكرية والاقتصادية لإيران بشكل كبير",
+   "first": {
+    "src": "شبكة تواصل الإخبارية",
+    "ts": "2026-10-16T19:40:23.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE95My0yZXF3NTBmOW53NUtCRTFka0U2bXFCVXJHNV9HcnBpaEZHU3F6eFRrYXg1alp1dGhLOFFKRloydnZuX1ZuNmRxajFtVU9LbGxB?oc=5"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "شبكة تواصل الإخبارية"
+   ],
+   "ids": [
+    "b3b109f6efccac9b"
+   ],
+   "last_ts": "2026-10-16T19:40:23.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 193,
+   "flash": true
+  },
+  {
+   "id": "b227f5fab92df86c",
+   "tag": "SHIPPING",
+   "line": "القيادة المركزية الأمريكية: عبور نحو 400 سفينة تجارية في مضيق هرمز خلال 7 أيام",
+   "first": {
+    "src": "رؤيا الإخباري",
+    "ts": "2026-10-16T19:34:39.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://news.google.com/rss/articles/CBMiwgRBVV95cUxOcVk2SUljenpZZ2Q2RVRlUy1JeDkxcElLOUdDY3U5bmhaYTUzZ3JlejNnTWZBS3Fuc25VS3VFNHg4M2d3SUphU19NQ0thOTAtYkd0VUlodzY1RjFHRDMyTWY5eVNCaFRfM1ZmaDYtTGdnUWItYWt1LUg2clFDaHRaM3FPMXplSGIzdEw1VHlpYWdiLVFUSFR6ZFNzcnhGMmdlS1FZbEJLX0ZkQ3V5aGJrdGUwam44SW9hVWVNV0RKTlIxeW9qRUhGUXBXdEh5dnBGUlBINngzdnpnZm4zQjdkTGpNcEhoRFBsSU9vUGJlNXNKM0ZSbnRwQldMYmZDakV4RGU4TGNMZ0dWUGM2S1B1d0xtYzU0MlJ6U0VaaDFSTU9TVjlBZU9fMlpTU2U0dklMazN3ODRaUFpMSmhxMzhKYzFXa19NM2RydnFTODlHUHQ0OWpOcVhrcmpSc0tuS1BrZ3ZrckljTS00b3lYbFROVWRoSzZEWF9BaV9pQU96VHFKWEVucUo3NUdWbi1qWlhRWGpEYlJkNkhkNjAyRUtyWU9CbGxtQ2llakk0c2w3ZmI4dTY1dER5S2N4SEFwQzdYbm5HNVp2cTdGQWt1MDlCbTZNNEd0QnA5R2lFTEpNQjBmM2ZoRnRLR2Z6cDBHUkUxZlRraG9ocTVFSW54WHgxalFtNWlDNHBBWE9Uc3U5YzZuZ1k1SjdSdC1HdEx6VUJINDJZOVRKNEhlWjAtbjhMeHR4UnN1MFlNLXdVSXZUMnJMQQ?oc=5"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "رؤيا الإخباري"
+   ],
+   "ids": [
+    "b227f5fab92df86c"
+   ],
+   "last_ts": "2026-10-16T19:34:39.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 198,
+   "flash": true
+  },
+  {
+   "id": "cde66ce8b4bcf71b",
+   "tag": "OTHER",
+   "line": "CENTCOM says it blocked $25 billion in Iran oil exports, IRGC struggling with paychecks",
+   "first": {
+    "src": "Iran International",
+    "ts": "2026-10-16T19:29:50.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5NUk9EZUUxanFVVDVZLWNrdk1MeFJrb21qMnVPY19kbmVHYk1jeWcxa2lBb3VMNGRlZGZhcjdVVldPMGlDYVFwUlZuUndoZXQ3LVE?oc=5"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "Iran International"
+   ],
+   "ids": [
+    "cde66ce8b4bcf71b"
+   ],
+   "last_ts": "2026-10-16T19:29:50.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 203,
+   "flash": true
+  },
+  {
+   "id": "e1a8e502c94400bb",
+   "tag": "STRIKE",
+   "line": "Trump faces new Iran war challenges as Houthi attacks threaten energy supplies",
+   "first": {
+    "src": "WBFF",
+    "ts": "2026-10-16T18:57:02.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://news.google.com/rss/articles/CBMilwJBVV95cUxObDk0aFpDM0FxbmVTUmJ0V2QwbEFRWWhVUU5pUTlUZXo0X2h5Z3pWVEltUC15emc1UFB4akcycWxqZmlUZk8tanJWRmIzS0hlNlNtRGViT1RQV1NxMGlKRUZKbDRkbEVOa2x4Ylo3bXlGbExWdDVKREhWcnQydXF2YnNnemdsMzFOaWpHZ2Jqc1BteWJsbDRVR3ZZc3ZSSXEtM0N1Vm11c25lYUlLRkVlMVdCX0EwbXZmZ2dIQVl5aDdlWVNwdTdxcld1WTk1THFES21XVmxFelRUZlFDdDBxc2x0LTBtU3NNdXRGbERXX1BWNWJIM1JZUnJDdk8yVTJxb0w5N2xnREhud29JZG1ud05LV2s3V0U?oc=5"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "WBFF"
+   ],
+   "ids": [
+    "e1a8e502c94400bb"
+   ],
+   "last_ts": "2026-10-16T18:57:02.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 236,
+   "flash": true
+  },
+  {
+   "id": "f6393500cca6fdd0",
+   "tag": "OTHER",
+   "line": "Iraq loses $60B as Iran war chokes off oil exports through Hormuz",
+   "first": {
+    "src": "Türkiye Today",
+    "ts": "2026-10-16T18:55:21.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQbEtSOVItWVAwRVJLV3RJS1JFQTRxTENvenF2SXZOVkpkZ2VzVDJLLXROaWtxT1dYSnhXbTdKN2dPRnh5NWFXYlVQdUpBcTROcWh3TS1iSUFPZmhLMzVhdF9YRFhCSnZsLXN4cFVtdFhsajdSOUNRMjE4Yl9oUnMydThXLUFtd2s2Y3liV2dvcDhvLTc2N2Z3cU81WUpLeXRKcGdTaEpXaXZZYkdyMnRF?oc=5"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "Türkiye Today"
+   ],
+   "ids": [
+    "f6393500cca6fdd0"
+   ],
+   "last_ts": "2026-10-16T18:55:21.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 238,
+   "flash": true
+  },
+  {
+   "id": "0968b5bb8bac232e",
+   "tag": "OTHER",
+   "line": "Saudi Arebiya ta kakkabo makaman Houthi a birnin Riyadh",
+   "first": {
+    "src": "DW.com",
+    "ts": "2026-10-16T18:48:05.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxORUNkSFpFNWhUbXV5WTRjeHphbFY1bEVfT1M4RkxMc3VqUFpqRkFvMk9LUmVwVzQzb2lvTlV6SnFRNUtwUmhscFlvMkpRbVZlcWM2YkZiMHc4b1NUOTNGSEk2UjVNckV5NXlTZ1RneVZuTWI1RU5SZHJHeTVscHZQdjhSbExRd1hNT2JsQklpc3JfbXo2UzhVak5sejQtZ28taWVSM0dLSEZoSk9EYkR0TzJ0WmFCWXRwTDJvQ3dKdVnSAcABQVVfeXFMTkVDZEhaRTVoVG11eVk0Y3h6YWxWNWxFX09TOEZMTHN1alBaakZBbzJPS1JlcFc0M29pb05VekpxUTVLcFJobHBZbzJKUW1WZXFjNmJGYjB3OG9TVDkzRkhJNlI1TXJFeTV5U2dUZ3lWbk1iNUVOUmRyR3k1bHB2UHY4UmxMUXdYTU9ibEJJaXNyX216NlM4VWpObHo0LWdvLWllUjNHS0hGaEpPRGJEdE8ydFphQll0cEwyb0N3SnVZ?oc=5"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "DW.com"
+   ],
+   "ids": [
+    "0968b5bb8bac232e"
+   ],
+   "last_ts": "2026-10-16T18:48:05.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 245,
+   "flash": true
+  },
+  {
+   "id": "a58c1097eca6c3cf",
+   "tag": "NUCLEAR",
+   "line": "איראן מביעה מוכנות לדיאלוג ומסרבת ל\"תעמולה מזיקה\" בנושא הגרעין",
+   "first": {
+    "src": "وكالة صدى نيوز",
+    "ts": "2026-10-16T18:10:21.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9kSG9iei1fN3F3VmYzcGI4Z2NIRmp1dDN6dVNBX1FLMFBCdk1ad0NkQzBPZ1dkdkhJWGJaMHhLQmFaOWtaZzU4a3MyaXBDbk1LVlZFNGd3?oc=5"
+   },
+   "n": 2,
+   "n_src": 1,
+   "srcs": [
+    "وكالة صدى نيوز"
+   ],
+   "ids": [
+    "a58c1097eca6c3cf",
+    "cf9ac40cb690c7be"
+   ],
+   "last_ts": "2026-10-16T18:10:21.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 283,
+   "flash": true
+  },
+  {
+   "id": "8abfbcfdff98f992",
+   "tag": "SHIPPING",
+   "line": "القيادة المركزية الأمريكية: حصار بحري على إيران وممر للسفن عبر هرمز",
+   "first": {
+    "src": "صحيفة اخبارنا",
+    "ts": "2026-10-16T16:18:48.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFA4VmFkZzN2OXF0NkNYSUQ5UnJGMGhjTERCdFpFeHM5WE5sYUdyY0hmUFdvbEpuZUNlc1dWbWpXMlZUZm5xM05nUGhwUHlpWWZ5ckpJMUJtQ3JOVDhKNUVmOTZnMC1zQmhTR0lISGlDTnBhVVE?oc=5"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "صحيفة اخبارنا"
+   ],
+   "ids": [
+    "8abfbcfdff98f992"
+   ],
+   "last_ts": "2026-10-16T16:18:48.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 394,
+   "flash": true
+  },
+  {
+   "id": "fb8233af35e0aa31",
+   "tag": "OTHER",
+   "line": "تكنولوجيا إيرانية وقطع صينية وذكاء اصطناعي.. تحليل لـ \"رويترز\": كيف يطور الحوثيون ترسانتهم العسكرية؟",
+   "first": {
+    "src": "elmaser.com",
+    "ts": "2026-10-16T14:32:51.000Z",
+    "got": "2026-10-16T22:53:01.439Z",
+    "url": "https://news.google.com/rss/articles/CBMi6gJBVV95cUxOVDZfVWp5WXJ3RDBVejNZNVA5eXlfYjhMZHNzODRlZlBuM0Nvb3MyZGxhM2FMNzN4X2dVaFAwYng1UVRoSTVRN05BUFVESDgwSHZRNFl2WnhVZHBiMl91cmVuckc4anFZNld1R1BkT3VrNnV0SC1YWF85OUJ1X1NJMmdnclpfbkRodTlGZlBxb3NFX2RVbTJJOG91djA5NnJ5bHN3bFAybVNiZXRzcHNGOUZWcEdDbXNUZ0x1VkZ0VTRvUTdDc3c4NGtNQ1FBcWlDcHRBZUx4MXJPUTRjNFBJYWdrTlQ0VTJBc2pzZ3Nacnozbmk4azF4SVhlcEdyV1BfR2lCZ2thRTVtRFByVkpjUGI4TlNLV1JSdmZaSDZmdUdQZGdBMGNoNzE3dzBkdG45WkJqN0hjRS1ONDVWTkVRV1NMZVg4OVJhZDFhVDdQLVFSdTJJZktJdzhPaGhlQkVrU0t1eHk4cUJZQQ?oc=5"
+   },
+   "n": 2,
+   "n_src": 2,
+   "srcs": [
+    "elmaser.com",
+    "الساحل الغربي"
+   ],
+   "ids": [
+    "fb8233af35e0aa31",
+    "fcf2d4833f384c3f"
+   ],
+   "last_ts": "2026-10-16T14:46:30.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 500,
+   "flash": true
+  },
+  {
+   "id": "40ebf7decb94392e",
+   "tag": "AIR (MIL)",
+   "line": "Military aircraft in theatre — 2 airframes today · latest: @@@@@@@@ — FL320, 17 km from Abu Dhabi (24.50N 54.54E)",
+   "first": {
+    "src": "adsb.lol military",
+    "ts": "2026-10-16T20:46:13.508Z",
+    "got": "2026-10-16T20:46:13.508Z",
+    "url": "https://globe.adsb.lol/?icao=ae04ff"
+   },
+   "n": 2,
+   "n_src": 1,
+   "srcs": [
+    "adsb.lol military"
+   ],
+   "ids": [
+    "40ebf7decb94392e",
+    "0f247c0155f4b588"
+   ],
+   "last_ts": "2026-10-16T22:53:01.439Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 0,
+   "flash": false
+  },
+  {
+   "id": "06abc610eb463649",
+   "tag": "MISSILE",
+   "line": "Global Markets: Houthi attacks continue to roil oil markets",
+   "first": {
+    "src": "The Western Producer",
+    "ts": "2026-10-16T14:01:51.000Z",
+    "got": "2026-10-16T17:29:55.674Z",
+    "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQd3ZqX0FxTThzVENTRUJpXzJ4Y0VYeTZDVVhybDZFTElFTmJ6c0tNbzRERmxDeXRySWhkdXJfSk5wUEFRb0hmck1SMzJKMFhyeTRwWFowWWpUeHZzdGhXc3RHalpYZzNtQjJmZ1hNTjJpTEdEcGZib2gzOUQyMEo0cWpWRkdmQkU4SmlPVGR1RnN0czJ5dWluR09Pb0dkaXM?oc=5"
+   },
+   "n": 2,
+   "n_src": 2,
+   "srcs": [
+    "The Western Producer",
+    "The Jerusalem Post"
+   ],
+   "ids": [
+    "06abc610eb463649",
+    "f4d224276c904f95"
+   ],
+   "last_ts": "2026-10-16T22:31:23.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 208,
+   "flash": false
+  },
+  {
+   "id": "94fa9bf4d88c1d4c",
+   "tag": "MISSILE",
+   "line": "Middle East: Houthis target Yemen government palace in Aden",
+   "first": {
+    "src": "DW.com",
+    "ts": "2026-10-16T10:47:48.000Z",
+    "got": "2026-10-16T19:58:39.888Z",
+    "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQRnNQZDMyQXFCRS1vRUl5enNnNzZlYkNMUng5UDlPOWw4UzZzS05IeDFzVjdVZUJhOUFOWWl2NEpkb1hBOUg3bXRsQmFPMzZYSEhFbnZsbE5lc0Fkd0s3RndFb2RWUW1ieUIzdlJ2dFhRTExRUGZNcllUN2NWQTZsOGR0aXZzbXV6UW9GWFhwY0U2UTVCMFIyUkVJd1VjbTVES3pPZQ?oc=5"
+   },
+   "n": 4,
+   "n_src": 4,
+   "srcs": [
+    "DW.com",
+    "Haaretz",
+    "NDTV",
+    "Al Jazeera"
+   ],
+   "ids": [
+    "94fa9bf4d88c1d4c",
+    "b1c543c4d4ed535d",
+    "71cc3eb3b37415ed",
+    "40ee8e820ea437ce"
+   ],
+   "last_ts": "2026-10-16T21:56:07.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 551,
+   "flash": false
+  },
+  {
+   "id": "98e3a1ea7b50e7e8",
+   "tag": "SHIPPING",
+   "line": "Indian shipping official says a crude oil tanker was targeted by a missile in the Strait of Hormuz; official also notes the Romania incident on October 14th",
+   "first": {
+    "src": "Newsquawk",
+    "ts": "2026-10-16T18:09:42.000Z",
+    "got": "2026-10-16T18:44:34.214Z",
+    "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQYkpxUXBKLVdvUUpCSExzUWJMRGJLOHVWUUpBUWg2MVg3eEZhU1ZuRW9LdHl0a2h5U2FMSHdNNXdHRk9xQjN4TERUN1pPMWNOeXFJSjlNNkZLV2ZDSE9uN2Q0dGhwX19qV1R1NWxOUy1feTVucGxaUm9vTGljcWJQVUtnYjVqU21xTG02dG1pSnVYY2ctYzhxeU53OWx2Wk8zUTlYNXMtT2FJbk1wWTNQTFdDVFZRTGxFRmR0bGxTenFYZV9ib0d5N0xFSW9VYWM?oc=5"
+   },
+   "n": 2,
+   "n_src": 2,
+   "srcs": [
+    "Newsquawk",
+    "straits.live"
+   ],
+   "ids": [
+    "98e3a1ea7b50e7e8",
+    "62ca3522c62c6628"
+   ],
+   "last_ts": "2026-10-16T21:50:56.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 35,
+   "flash": false
+  },
+  {
+   "id": "3b97713bf27662b1",
+   "tag": "DRONE",
+   "line": "Breaking | Several Palestinians injured in an Israeli drone strike targeting a group of Palestinians in the Italian area of Al-Nasr neighborhood, west of Gaza…",
+   "first": {
+    "src": "QudsNen",
+    "ts": "2026-10-16T18:53:06.000Z",
+    "got": "2026-10-16T19:58:39.888Z",
+    "url": "https://t.me/QudsNen/242318"
+   },
+   "n": 2,
+   "n_src": 1,
+   "srcs": [
+    "QudsNen"
+   ],
+   "ids": [
+    "3b97713bf27662b1",
+    "49c7f069406d4de7"
+   ],
+   "last_ts": "2026-10-16T21:27:40.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 66,
+   "flash": false
+  },
+  {
+   "id": "52b685891ed800b4",
+   "tag": "MISSILE",
+   "line": "Two guards killed, six wounded in Houthi missile attack on Presidential Palace in Aden",
+   "first": {
+    "src": "Middle East Monitor",
+    "ts": "2026-10-16T10:11:00.000Z",
+    "got": "2026-10-16T17:23:28.985Z",
+    "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOYnR3S1F5ZVM3c21CTEwwSTh4YUFGNzFDZzFIZmFEa3VBMHJGd0JhZ2R3andXNktaR1A5OWpDdGtzSjNEYTVhbVZ2MG56c3ZkRjR1ZU5lTFp3LVdaQndIQ2k0T1dfbjJvZjBCaGIzVFhyRmRVbW1HM1Z1M29aNGpvdG9KN3dyNHpzclNxckpMOFQwQThKczBTU2E5V3JERU02b0lsRk02OG80Q0dHeF9VNDdTRDJaTTFybzVBZHFVNjdwR3J5OWlvedIBzgFBVV95cUxOaFlKY29pYk9PS1dBc0hwN2E5d3V5NHJZS2hWSHNtbUxDc0ZZWFZoLU1VcTZvcEtqUUhHWkk4cElzSmxjQzNCS2FnVC14VzJibTlsRFJSWUVVX1dKYmhic3pZZmhqaEZhT1pzWVo5dTYzRHBHWjBLS3BBaTBySENweWU0eUlGYXloMmdvX0V6d2ZwbldacHFBcnQ4b2dIamRQODVodWpaZGF5SGxPTi1rZDFXa2E5bllZT0VlbE1YeTUwME9FeHlTMC1YTG4xZw?oc=5"
+   },
+   "n": 4,
+   "n_src": 4,
+   "srcs": [
+    "Middle East Monitor",
+    "Middle East Online",
+    "New York Post",
+    "Latin Times"
+   ],
+   "ids": [
+    "52b685891ed800b4",
+    "ee80477d41bfd48f",
+    "f3bfcd2b81ae74e2",
+    "ddb3c93683efac7e"
+   ],
+   "last_ts": "2026-10-16T20:49:26.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 432,
+   "flash": false
+  },
+  {
+   "id": "987878c849fe4d1b",
+   "tag": "MISSILE",
+   "line": "Saudi Arabia insists Asian Cup remains on track despite Houthi attacks",
+   "first": {
+    "src": "ESPN",
+    "ts": "2026-10-16T08:48:33.000Z",
+    "got": "2026-10-16T17:23:28.985Z",
+    "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOZlg5OE9XZGVhalZWdlZKZlQ3NWlYcTZkdm5sTUVVcWd4ajRmeDY4SUJoNXhCU3RlQTJGMS1CQ01oVkxPbTB3bmVYWFYwbzUxRWQ0UHVMY3JpNU95dWxFM2J3QTd5eXFoaFlXdklOUkxLTUR5R1Nuc0N2eHJqdEF1VkRmRzBuODdDTng0TkppaWg4OUlrcllUSHN6aUo3aTBLZkNBZTA5QmVhWTQ?oc=5"
+   },
+   "n": 9,
+   "n_src": 9,
+   "srcs": [
+    "ESPN",
+    "Breakingthenews.net",
+    "albayan.ae",
+    "Middle East Eye",
+    "Daily Sabah",
+    "Nacionale",
+    "شفق نيوز",
+    "Türkiye Today"
+   ],
+   "ids": [
+    "987878c849fe4d1b",
+    "261d4f064b907419",
+    "81048c97226b9795",
+    "390233307eec7ef0",
+    "03a03c0a2b2bb047",
+    "e33489e8f763e230",
+    "678a30bd2a9d5f58",
+    "78ee4937b9b2871a",
+    "368f551e68f5937e"
+   ],
+   "last_ts": "2026-10-16T20:47:05.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 515,
+   "flash": false
   },
   {
    "id": "2d33f55e0ae33441",
@@ -1199,6 +2153,398 @@
    "flash": false
   },
   {
+   "id": "c56585f9a17c28c1",
+   "tag": "OTHER",
+   "line": "What The Army’s Pacific Commanders Are Learning From Ukraine And Iran Conflicts",
+   "first": {
+    "src": "The War Zone (TWZ)",
+    "ts": "2026-10-16T20:35:32.000Z",
+    "got": "2026-10-16T20:46:13.508Z",
+    "url": "https://www.twz.com/land/what-the-armys-pacific-commanders-are-learning-from-ukraine-and-iran-conflicts"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "The War Zone (TWZ)"
+   ],
+   "ids": [
+    "c56585f9a17c28c1"
+   ],
+   "last_ts": "2026-10-16T20:35:32.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 11,
+   "flash": false
+  },
+  {
+   "id": "5d55c3be6d9b167f",
+   "tag": "OTHER",
+   "line": "Oil flows through Hormuz have largely recovered. Oil prices haven’t. David Lin’s explanation is that the real bottleneck now may be the cost of moving it.",
+   "first": {
+    "src": "X",
+    "ts": "2026-10-16T20:32:00.000Z",
+    "got": "2026-10-16T20:46:13.508Z",
+    "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBLcDZVM1hLU1pxZTFKWE1zU0l2dXE3TXUyRHhtWm9nR2NicWhOT3diZUJtdnRaSER4X0thTkhaMjk1Yjd4MXlzZWFlZ253V3RXbERSN0h4anFNZDh5UllleXE1YzJQcndkblh4Qw?oc=5"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "X"
+   ],
+   "ids": [
+    "5d55c3be6d9b167f"
+   ],
+   "last_ts": "2026-10-16T20:32:00.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 14,
+   "flash": false
+  },
+  {
+   "id": "8f3ebf404b8138c3",
+   "tag": "STRIKE",
+   "line": "Oil Slips as Traders Weigh IEA Reserve Releases, Hormuz Risks",
+   "first": {
+    "src": "WSJ",
+    "ts": "2026-10-16T13:43:00.000Z",
+    "got": "2026-10-16T17:23:28.985Z",
+    "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNQlhVbW1hN3VaS2xQWTRNVHc1MGNIektPR0wzd2V5LWEtcmtZUXRSY1ZWYjJjSUVZZElTaFV4c0VfSnJhbHhBdGlHbjE4bkZDN0lfTnNxLXFxeFR3bnVqY21tSl9YdkZHTlY4VjYwYTVxZmFZV181ZHo0RXVFOEw0UDJoVXNYbWpfT1d2cHUza0FBekFXZzRRMTZlUkJYd2RUSlFxWEhLTHVRNjVZRk9xa0JhQzl0UQ?oc=5"
+   },
+   "n": 2,
+   "n_src": 1,
+   "srcs": [
+    "WSJ"
+   ],
+   "ids": [
+    "8f3ebf404b8138c3",
+    "796e8fdf2a65d87e"
+   ],
+   "last_ts": "2026-10-16T20:31:51.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 220,
+   "flash": false
+  },
+  {
+   "id": "7749485884e767c1",
+   "tag": "STRIKE",
+   "line": "ادعای گادی آیزنکوت، رقیب نتانیاهو: اگر اطلاعات قطعی در اختیار داشته باشیم که ایران قصد حمله به اسرائیل را دارد، باید با یک حمله پیش‌دستانه به آن ضربه بزنیم",
+   "first": {
+    "src": "entekhab.ir",
+    "ts": "2026-10-16T20:31:27.000Z",
+    "got": "2026-10-16T20:46:13.508Z",
+    "url": "https://www.entekhab.ir/fa/news/943779/ادعای-گادی-آیزنکوت-رقیب-نتانیاهو-اگر-اطلاعات-قطعی-در-اختیار-داشته-باشیم-که-ایران-قصد-حمله-به-اسرائیل-را-دارد-باید-با-یک-حمله-پیش-دستانه-به-آن-ضربه-بزنیم"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "entekhab.ir"
+   ],
+   "ids": [
+    "7749485884e767c1"
+   ],
+   "last_ts": "2026-10-16T20:31:27.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 15,
+   "flash": false
+  },
+  {
+   "id": "678dc7ac95ff961b",
+   "tag": "TROOPS",
+   "line": "القوات اليمنية تستهدف مقر قيادة القوات السعودية في عدن",
+   "first": {
+    "src": "Al-Manar (Telegram)",
+    "ts": "2026-10-16T20:31:18.000Z",
+    "got": "2026-10-16T20:46:13.508Z",
+    "url": "https://t.me/almanarnews/268288"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "Al-Manar (Telegram)"
+   ],
+   "ids": [
+    "678dc7ac95ff961b"
+   ],
+   "last_ts": "2026-10-16T20:31:18.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 15,
+   "flash": false
+  },
+  {
+   "id": "af349495674b4f23",
+   "tag": "OTHER",
+   "line": "خطیب زاده: یکی از شروط ایران پایان جنگ‌ها در منطقه است / اگر در هر یک از این جبهه‌ها جنگ ادامه یابد این به معنای ادامه جنگ در تمام جبهه هاست",
+   "first": {
+    "src": "entekhab.ir",
+    "ts": "2026-10-16T20:12:01.000Z",
+    "got": "2026-10-16T20:46:13.508Z",
+    "url": "https://www.entekhab.ir/fa/news/943773/خطیب-زاده-یکی-از-شروط-ایران-پایان-جنگ-ها-در-منطقه-است-اگر-در-هر-یک-از-این-جبهه-ها-جنگ-ادامه-یابد-این-به-معنای-ادامه-جنگ-در-تمام-جبهه-هاست"
+   },
+   "n": 2,
+   "n_src": 1,
+   "srcs": [
+    "entekhab.ir"
+   ],
+   "ids": [
+    "af349495674b4f23",
+    "f5d3182c94ee6995"
+   ],
+   "last_ts": "2026-10-16T20:30:39.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 34,
+   "flash": false
+  },
+  {
+   "id": "c7f93599fa09be82",
+   "tag": "SHIPPING",
+   "line": "قائد «سنتكوم»: 400 سفينة تجارية عبرت مضيق هرمز خلال أسبوع",
+   "first": {
+    "src": "شبكة سرمد الإعلامية",
+    "ts": "2026-10-16T20:30:05.000Z",
+    "got": "2026-10-16T20:46:13.508Z",
+    "url": "https://news.google.com/rss/articles/CBMiP0FVX3lxTE1zVTViRHNyb181VVBBM3BudW5fYU1zMmMzWVQzR0pCS3lSdk1mZ0ppVDhIcHpjS0dmcmJlMGxyTQ?oc=5"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "شبكة سرمد الإعلامية"
+   ],
+   "ids": [
+    "c7f93599fa09be82"
+   ],
+   "last_ts": "2026-10-16T20:30:05.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 16,
+   "flash": false
+  },
+  {
+   "id": "c99db5fcb86349ff",
+   "tag": "OTHER",
+   "line": "سنتكوم: مضيق هرمز مفتوح والحصار مستمر",
+   "first": {
+    "src": "IMLebanon",
+    "ts": "2026-10-16T19:41:19.000Z",
+    "got": "2026-10-16T20:46:13.508Z",
+    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE83Zld6MTRaNG9UVkdydV9zbm1WUUtUQzRnaE5HakZEaF9hTmktNC1TaXBqeGFjQmZpOFJjVWJiWFdQTFd5TW8yWFpON1dfRVFmTjFnaUFpZjREOUHSAWBBVV95cUxNNV9SQ3NSTjJiblFuSGJ5NG5IQWU3TUI3X1duVG9XQkhid2cyZDItYmoyb1Zzbjk2RGN0aDBqdEZUWjdqR2E3TWloOHdrOVF1cjhfZWZlM2xXYU50T0JxaF8?oc=5"
+   },
+   "n": 4,
+   "n_src": 4,
+   "srcs": [
+    "IMLebanon",
+    "Alkalima Online",
+    "زاكروس عربية",
+    "nile.eg"
+   ],
+   "ids": [
+    "c99db5fcb86349ff",
+    "80dd0bab5b16afd6",
+    "6be87bf121a4ae5c",
+    "41d3b5fdf568f085"
+   ],
+   "last_ts": "2026-10-16T20:30:00.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 65,
+   "flash": false
+  },
+  {
+   "id": "27ebd2b890008c36",
+   "tag": "OTHER",
+   "line": "شبکه ۱۲ تلویزیون اسرائیل: تحقیقات جنایی بین‌المللی، رهبران نظامی و سیاسی اسرائیل را هدف قرار داده / دادستانی ایتالیا در رم دامنه تحقیقات خود را گسترش داده و…",
+   "first": {
+    "src": "entekhab.ir",
+    "ts": "2026-10-16T20:27:56.000Z",
+    "got": "2026-10-16T20:46:13.508Z",
+    "url": "https://www.entekhab.ir/fa/news/943778/شبکه-12-تلویزیون-اسرائیل-تحقیقات-جنایی-بین-المللی-رهبران-نظامی-و-سیاسی-اسرائیل-را-هدف-قرار-داده-دادستانی-ایتالیا-در-رم-دامنه-تحقیقات-خود-را-گسترش-داده-و-کاتس-وزیر-جنگ-و-فهرست-بلندبالایی-از-فرماندهان-نظامی-و-امنیتی-فعلی-و-پیشین-اسرائیل-را-در-این-پرونده-گنجانده"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "entekhab.ir"
+   ],
+   "ids": [
+    "27ebd2b890008c36"
+   ],
+   "last_ts": "2026-10-16T20:27:56.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 18,
+   "flash": false
+  },
+  {
+   "id": "ec153e8af3f82b77",
+   "tag": "OTHER",
+   "line": "Iran-backed militias sending money back to cash-starved IRGC, U.S. says",
+   "first": {
+    "src": "Axios",
+    "ts": "2026-10-16T20:27:06.000Z",
+    "got": "2026-10-16T20:46:13.508Z",
+    "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQRy1kTkRzSFhZVkt4UXhBX2RQVEhpRlZqbnVSTUlhdzJLaDBBWkh3dDVfNFJPVVZFV2NRSk5VLUx0U0prcUtuU2ZBY1hTU0xyejRQY1RqYThGWXJBUUtSU0VkU1Z6RG9ZbDJ6bGRFV3V3OTBwLUF4NWFzWFJmZXR6X1htekNINzQ?oc=5"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "Axios"
+   ],
+   "ids": [
+    "ec153e8af3f82b77"
+   ],
+   "last_ts": "2026-10-16T20:27:06.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 19,
+   "flash": false
+  },
+  {
+   "id": "2ab2cc3787fa37e8",
+   "tag": "OTHER",
+   "line": "ادعای شبکه کان: حالت آماده‌باش در اسرائیل در پی احتمال آغاز رویارویی با ایران همچنان ادامه دارد / روز گذشته نشستی با حضور مقام‌های ارشد نهاد‌های امنیتی برگزار…",
+   "first": {
+    "src": "entekhab.ir",
+    "ts": "2026-10-16T20:25:09.000Z",
+    "got": "2026-10-16T20:46:13.508Z",
+    "url": "https://www.entekhab.ir/fa/news/943777/ادعای-شبکه-کان-حالت-آماده-باش-در-اسرائیل-در-پی-احتمال-آغاز-رویارویی-با-ایران-همچنان-ادامه-دارد-روز-گذشته-نشستی-با-حضور-مقام-های-ارشد-نهاد-های-امنیتی-برگزار-شد-همچنین-شماری-از-مقام-های-ارشد-اسرائیلی-با-مقام-های-بلندپایه-آمریکایی-گفت-و-گو-کردند"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "entekhab.ir"
+   ],
+   "ids": [
+    "2ab2cc3787fa37e8"
+   ],
+   "last_ts": "2026-10-16T20:25:09.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 21,
+   "flash": false
+  },
+  {
+   "id": "85f7a1fec1de42ff",
+   "tag": "MISSILE",
+   "line": "مصدر عسكري يمني: هجوم صاروخي يستهدف مقر التحالف السعودي في عدن",
+   "first": {
+    "src": "Al-Manar (Telegram)",
+    "ts": "2026-10-16T20:21:54.000Z",
+    "got": "2026-10-16T20:46:13.508Z",
+    "url": "https://t.me/almanarnews/268284"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "Al-Manar (Telegram)"
+   ],
+   "ids": [
+    "85f7a1fec1de42ff"
+   ],
+   "last_ts": "2026-10-16T20:21:54.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 24,
+   "flash": false
+  },
+  {
+   "id": "8bd3fcb4fa69f085",
+   "tag": "OTHER",
+   "line": "تریتا پارسی: قیمت نفت برنت امروز به ۱۰۹ دلار در هر بشکه رسیده است؛ بالاترین سطح از ۲۰ مه، زمانی که جنگ ایران در اوج خود قرار داشت / از توانایی ترامپ در منحرف…",
+   "first": {
+    "src": "entekhab.ir",
+    "ts": "2026-10-16T20:21:38.000Z",
+    "got": "2026-10-16T20:46:13.508Z",
+    "url": "https://www.entekhab.ir/fa/news/943776/تریتا-پارسی-قیمت-نفت-برنت-امروز-به-109-دلار-در-هر-بشکه-رسیده-است-بالاترین-سطح-از-20-مه-زمانی-که-جنگ-ایران-در-اوج-خود-قرار-داشت-از-توانایی-ترامپ-در-منحرف-کردن-توجه-رسانه-ها-و-به-اصطلاح-کارشناسان-این-حوزه-به-شدت-متعجبم-به-گونه-ای-که-آنها-صرفا-حجم-نفتی-را-که-از-تنگه-هرمز-خارج-می-شود-دنبال-می-کنند"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "entekhab.ir"
+   ],
+   "ids": [
+    "8bd3fcb4fa69f085"
+   ],
+   "last_ts": "2026-10-16T20:21:38.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 25,
+   "flash": false
+  },
+  {
+   "id": "0891cf119c5240f3",
+   "tag": "MISSILE",
+   "line": "🔵 تقارير عن ضربات صاروخية على منشآت صناعية في الجبيل بالسعودية واندلاع حرائق",
+   "first": {
+    "src": "Al-Manar (Telegram)",
+    "ts": "2026-10-16T20:18:20.000Z",
+    "got": "2026-10-16T20:46:13.508Z",
+    "url": "https://t.me/almanarnews/268283"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "Al-Manar (Telegram)"
+   ],
+   "ids": [
+    "0891cf119c5240f3"
+   ],
+   "last_ts": "2026-10-16T20:18:20.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 28,
+   "flash": false
+  },
+  {
+   "id": "6749b163b13f0c48",
+   "tag": "OTHER",
+   "line": "🔵 التعبئة التربوية في حزب الله في الجامعة الاميركية والجامعة اللبنانية الاميركية تبارك بفوز مرشحيها بانتخابات الجامعتين",
+   "first": {
+    "src": "Al-Manar (Telegram)",
+    "ts": "2026-10-16T20:16:18.000Z",
+    "got": "2026-10-16T20:46:13.508Z",
+    "url": "https://t.me/almanarnews/268281"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "Al-Manar (Telegram)"
+   ],
+   "ids": [
+    "6749b163b13f0c48"
+   ],
+   "last_ts": "2026-10-16T20:16:18.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 30,
+   "flash": false
+  },
+  {
+   "id": "18188409ba457d98",
+   "tag": "THREAT",
+   "line": "Houthi Threats in the Red Sea: Implications for Maritime Operators",
+   "first": {
+    "src": "Crisis24",
+    "ts": "2026-10-16T20:14:31.000Z",
+    "got": "2026-10-16T20:46:13.508Z",
+    "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOY0V4c1RDNXpLTkNwU3FpUUl1NWN5LWZQbVgxYlZQbG9Gckt1WmlLM2k3NGt3Vy16OEVfQ3Uzc0V5aEdxX3Z5WVBsMGN5Sk4tV3BRLVhUeEFwWkVpV2ZpNHpnUFgtZDZPa1gzNmJuQXN1QXRGSktwZmRSNEdDSFJEM0lmbk9DdlpFLUZvQmpHLTNPRXo5NmRkY1hMdURJVjZ2?oc=5"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "Crisis24"
+   ],
+   "ids": [
+    "18188409ba457d98"
+   ],
+   "last_ts": "2026-10-16T20:14:31.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 32,
+   "flash": false
+  },
+  {
    "id": "b870e941bf1ccfc6",
    "tag": "OTHER",
    "line": "Central Command: The Strait of Hormuz is under the control of the US and regional partners, not Iran",
@@ -1225,65 +2571,103 @@
    "flash": false
   },
   {
-   "id": "987878c849fe4d1b",
-   "tag": "MISSILE",
-   "line": "Saudi Arabia insists Asian Cup remains on track despite Houthi attacks",
+   "id": "3aa6e30d8496bc3d",
+   "tag": "SHIPPING",
+   "line": "India's shipping minister: A tanker carrying crude oil with 15 Indian sailors aboard was hit by a projectile today in the Strait of Hormuz",
    "first": {
-    "src": "ESPN",
-    "ts": "2026-10-16T08:48:33.000Z",
-    "got": "2026-10-16T17:23:28.985Z",
-    "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOZlg5OE9XZGVhalZWdlZKZlQ3NWlYcTZkdm5sTUVVcWd4ajRmeDY4SUJoNXhCU3RlQTJGMS1CQ01oVkxPbTB3bmVYWFYwbzUxRWQ0UHVMY3JpNU95dWxFM2J3QTd5eXFoaFlXdklOUkxLTUR5R1Nuc0N2eHJqdEF1VkRmRzBuODdDTng0TkppaWg4OUlrcllUSHN6aUo3aTBLZkNBZTA5QmVhWTQ?oc=5"
+    "src": "entekhab.ir",
+    "ts": "2026-10-16T18:25:10.000Z",
+    "got": "2026-10-16T18:44:34.214Z",
+    "url": "https://www.entekhab.ir/fa/news/943768/وزیر-کشتیرانی-هند-یک-نفتکش-حامل-نفت-خام-که-15-ملوان-هندی-در-آن-حضور-داشتند-امروز-در-تنگه-هرمز-هدف-پرتابه-قرار-گرفت"
    },
-   "n": 6,
-   "n_src": 6,
+   "n": 3,
+   "n_src": 2,
    "srcs": [
-    "ESPN",
-    "Breakingthenews.net",
-    "albayan.ae",
-    "Middle East Eye",
-    "Daily Sabah",
-    "Nacionale"
+    "entekhab.ir",
+    "www.thenationalnews.com"
    ],
    "ids": [
-    "987878c849fe4d1b",
-    "261d4f064b907419",
-    "81048c97226b9795",
-    "390233307eec7ef0",
-    "03a03c0a2b2bb047",
-    "e33489e8f763e230"
+    "3aa6e30d8496bc3d",
+    "91ddb243173bffb9",
+    "8f16ef52d370a58e"
    ],
-   "last_ts": "2026-10-16T20:03:49.000Z",
+   "last_ts": "2026-10-16T20:04:10.000Z",
    "ms": null,
    "lead_min": null,
-   "lag_min": 515,
+   "lag_min": 19,
    "flash": false
   },
   {
-   "id": "94fa9bf4d88c1d4c",
-   "tag": "STRIKE",
-   "line": "Middle East: Houthis target Yemen government palace in Aden",
+   "id": "06d03c45fd04a8e4",
+   "tag": "THREAT",
+   "line": "Iran threatens to 'expel' US from region as Tehran links Hormuz reopening to troop exit",
    "first": {
-    "src": "DW.com",
-    "ts": "2026-10-16T10:47:48.000Z",
-    "got": "2026-10-16T19:58:39.888Z",
-    "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQRnNQZDMyQXFCRS1vRUl5enNnNzZlYkNMUng5UDlPOWw4UzZzS05IeDFzVjdVZUJhOUFOWWl2NEpkb1hBOUg3bXRsQmFPMzZYSEhFbnZsbE5lc0Fkd0s3RndFb2RWUW1ieUIzdlJ2dFhRTExRUGZNcllUN2NWQTZsOGR0aXZzbXV6UW9GWFhwY0U2UTVCMFIyUkVJd1VjbTVES3pPZQ?oc=5"
+    "src": "MEAWW News",
+    "ts": "2026-10-16T20:03:45.000Z",
+    "got": "2026-10-16T20:46:13.508Z",
+    "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNRVZNOGZPTENnbGpueW01ZzMzVUpUOTlDaHRoMndiYy0zRlBJbldRcVl0UE9PalpLWEhOSDVrLUNjTkF1NFBTaUVWc2lORmYyekxpYTI0bG5OU0tnWFR5elJNUEFpTm1CWFdfNzI0dXVxc1hqYTBlUktzTnA0eWY1dldyaWRIdDY1cFZ2dzhJZjlRQ1dINFAwNG95WnVWR2hCX2hOVFVFZ28wVlRw?oc=5"
    },
-   "n": 3,
-   "n_src": 3,
+   "n": 1,
+   "n_src": 1,
    "srcs": [
-    "DW.com",
-    "Haaretz",
-    "NDTV"
+    "MEAWW News"
    ],
    "ids": [
-    "94fa9bf4d88c1d4c",
-    "b1c543c4d4ed535d",
-    "71cc3eb3b37415ed"
+    "06d03c45fd04a8e4"
    ],
-   "last_ts": "2026-10-16T20:01:46.000Z",
+   "last_ts": "2026-10-16T20:03:45.000Z",
    "ms": null,
    "lead_min": null,
-   "lag_min": 551,
+   "lag_min": 42,
+   "flash": false
+  },
+  {
+   "id": "f8a93b67d7a49246",
+   "tag": "STRIKE",
+   "line": "Hezbollah accuses Lebanese police of violating security coordination procedure after supporters reportedly obstruct raid",
+   "first": {
+    "src": "Long War Journal",
+    "ts": "2026-10-16T20:03:01.000Z",
+    "got": "2026-10-16T20:46:13.508Z",
+    "url": "https://www.longwarjournal.org/archives/2026/10/hezbollah-accuses-lebanese-police-of-violating-security-coordination-procedure-after-supporters-reportedly-obstruct-raid.php"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "Long War Journal"
+   ],
+   "ids": [
+    "f8a93b67d7a49246"
+   ],
+   "last_ts": "2026-10-16T20:03:01.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 43,
+   "flash": false
+  },
+  {
+   "id": "01dee4e9f4cecb7e",
+   "tag": "SHIPPING",
+   "line": "Iranian Navy reports tanker fire in Gulf of Oman",
+   "first": {
+    "src": "straits.live",
+    "ts": "2026-10-16T19:45:00.000Z",
+    "got": "2026-10-16T20:46:13.508Z",
+    "url": "https://article.wn.com/view/2026/10/16/Iranian_Navy_reports_tanker_fire_in_Gulf_of_Oman/"
+   },
+   "n": 2,
+   "n_src": 1,
+   "srcs": [
+    "straits.live"
+   ],
+   "ids": [
+    "01dee4e9f4cecb7e",
+    "79f97a26c2c6e203"
+   ],
+   "last_ts": "2026-10-16T20:02:25.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 61,
    "flash": false
   },
   {
@@ -1452,6 +2836,30 @@
    "flash": false
   },
   {
+   "id": "346d3781f0b11841",
+   "tag": "OTHER",
+   "line": "Head of Iran's National Standards Organization arrives in Khuzestan",
+   "first": {
+    "src": "Mehr News Agency",
+    "ts": "2026-10-16T19:36:42.000Z",
+    "got": "2026-10-16T20:46:13.508Z",
+    "url": "https://www.mehrnews.com/news/6979833/%D8%B1%D8%A6%DB%8C%D8%B3-%D8%B3%D8%A7%D8%B2%D9%85%D8%A7%D9%86-%D9%85%D9%84%DB%8C-%D8%A7%D8%B3%D8%AA%D8%A7%D9%86%D8%AF%D8%A7%D8%B1%D8%AF-%D8%A7%DB%8C%D8%B1%D8%A7%D9%86-%D9%88%D8%A7%D8%B1%D8%AF-%D8%AE%D9%88%D8%B2%D8%B3%D8%AA%D8%A7%D9%86-%D8%B4%D8%AF"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "Mehr News Agency"
+   ],
+   "ids": [
+    "346d3781f0b11841"
+   ],
+   "last_ts": "2026-10-16T19:36:42.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 70,
+   "flash": false
+  },
+  {
    "id": "140dbe9d0ee4b6a4",
    "tag": "OTHER",
    "line": "New Iranian tactics raise concerns in the Strait of Hormuz",
@@ -1552,28 +2960,57 @@
    "flash": false
   },
   {
-   "id": "3aa6e30d8496bc3d",
-   "tag": "SHIPPING",
-   "line": "India's shipping minister: A tanker carrying crude oil with 15 Indian sailors aboard was hit by a projectile today in the Strait of Hormuz",
+   "id": "869bc2b2b7d49b97",
+   "tag": "OTHER",
+   "line": "واشنطن تعلن السيطرة على مضيق هرمز وتكشف خسائر إيرانية بمليارات الدولارات",
    "first": {
-    "src": "entekhab.ir",
-    "ts": "2026-10-16T18:25:10.000Z",
-    "got": "2026-10-16T18:44:34.214Z",
-    "url": "https://www.entekhab.ir/fa/news/943768/وزیر-کشتیرانی-هند-یک-نفتکش-حامل-نفت-خام-که-15-ملوان-هندی-در-آن-حضور-داشتند-امروز-در-تنگه-هرمز-هدف-پرتابه-قرار-گرفت"
+    "src": "وردنا",
+    "ts": "2026-10-16T19:19:47.000Z",
+    "got": "2026-10-16T20:46:13.508Z",
+    "url": "https://news.google.com/rss/articles/CBMiygRBVV95cUxQWEVUbzIzdWZYY1dLb3gzUXAyMmhRU2gxVERpUzU3aGRKcHQwTWsxOUdqX3ZBVERvdlR3a0ZqcjBiZWtxWUNrRVNWMmJGZEpRX2JNc01NZVRJcXgtMVFjQkNMaWlmWUVET2Frak9jNXpwcGVFWExwOEd6Wkpob1NsVFBqYm1mZW1XQVRpWF9MRHBGcS10bV9Ob3pUbkdIMHkwSHZjMEhWalRsNEJWc2RFX0hiVjAxQ05wcUxISmdBQXNSTXFEOV9YWDJ0N1llOFBzVG1tVDF5YnlQUDRBUEtvVTJ0dzlNTF9ydmNlNVdhVUxvMjRsQWZFWEZhT3R2NDU0SmwzQzcwTXZYc3ZickNWQzVXWmZFV1NkWElkYTNSdF9yY180cGM0akxBN2k1SktYamFFVHE0X05wU2x0c0dLZm5ZUDhfX0NQZGdTYjA1Nmg3b0JYMXJjWkxCYlNsNTZtenVUbkFJNzNsMmVLRkRTMWNoRHVhYWVsNzRSWUhBVjhieTFXOTdIRW9mYnRLMldBb21oWEJQci1xV3FPSmNvbC1WZUtMSmc1VUJ4OXl0NWtpSkpheGVfc2NLdDhockR6SlJBU0F3aVMwUld0bnlfbC1KWUNOYnp4TmstQmJXWTFsaWpEMTZyWmxmWnVocHVsU21ZS004dk1YNkpWbnBlMWs5Q04tcXZxUVdBNk9OdmdISDhjY2xrYUl2ZVFQWDYxLThXMDFkb2c2bTAxX1ZmQzZtSVBwZTI0LTgxa2s3Uy1Pa1RyaEZnUmRR?oc=5"
    },
-   "n": 2,
+   "n": 1,
    "n_src": 1,
    "srcs": [
-    "entekhab.ir"
+    "وردنا"
    ],
    "ids": [
-    "3aa6e30d8496bc3d",
-    "91ddb243173bffb9"
+    "869bc2b2b7d49b97"
    ],
-   "last_ts": "2026-10-16T19:16:41.000Z",
+   "last_ts": "2026-10-16T19:19:47.000Z",
    "ms": null,
    "lead_min": null,
-   "lag_min": 19,
+   "lag_min": 86,
+   "flash": false
+  },
+  {
+   "id": "34f1ece0ff9be683",
+   "tag": "DIPLOMACY",
+   "line": "Baghaei: Iran is ready to help resolve peacefully the issues between Saudi Arabia and Yemen",
+   "first": {
+    "src": "Mehr News Agency",
+    "ts": "2026-10-16T18:11:42.000Z",
+    "got": "2026-10-16T20:46:13.508Z",
+    "url": "https://www.mehrnews.com/news/6979783/%D8%A8%D9%82%D8%A7%D8%A6%DB%8C-%D8%A7%DB%8C%D8%B1%D8%A7%D9%86-%D8%A2%D9%85%D8%A7%D8%AF%D9%87-%DA%A9%D9%85%DA%A9-%D8%A8%D8%B1%D8%A7%DB%8C-%D8%AD%D9%84-%D9%85%D8%B3%D8%A7%D9%84%D9%85%D8%AA-%D8%A2%D9%85%DB%8C%D8%B2-%D9%85%D8%B3%D8%A7%D8%A6%D9%84-%D8%A8%DB%8C%D9%86-%D8%B9%D8%B1%D8%A8%D8%B3%D8%AA%D8%A7%D9%86"
+   },
+   "n": 4,
+   "n_src": 4,
+   "srcs": [
+    "Mehr News Agency",
+    "Sepahcybery",
+    "entekhab.ir",
+    "26sep.net"
+   ],
+   "ids": [
+    "34f1ece0ff9be683",
+    "20c99ebd08d2d97c",
+    "9fde34d8d06880a0",
+    "cea1a8bc16d8b5c5"
+   ],
+   "last_ts": "2026-10-16T19:15:00.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 155,
    "flash": false
   },
   {
@@ -1722,30 +3159,6 @@
    "ms": null,
    "lead_min": null,
    "lag_min": 65,
-   "flash": false
-  },
-  {
-   "id": "3b97713bf27662b1",
-   "tag": "DRONE",
-   "line": "Breaking | Several Palestinians injured in an Israeli drone strike targeting a group of Palestinians in the Italian area of Al-Nasr neighborhood, west of Gaza…",
-   "first": {
-    "src": "QudsNen",
-    "ts": "2026-10-16T18:53:06.000Z",
-    "got": "2026-10-16T19:58:39.888Z",
-    "url": "https://t.me/QudsNen/242318"
-   },
-   "n": 1,
-   "n_src": 1,
-   "srcs": [
-    "QudsNen"
-   ],
-   "ids": [
-    "3b97713bf27662b1"
-   ],
-   "last_ts": "2026-10-16T18:53:06.000Z",
-   "ms": null,
-   "lead_min": null,
-   "lag_min": 66,
    "flash": false
   },
   {
@@ -2057,6 +3470,30 @@
    "flash": false
   },
   {
+   "id": "b09a49cd7b504489",
+   "tag": "STRIKE",
+   "line": "🔵 101 Saudi attacks on Yemen in the past 24 hours",
+   "first": {
+    "src": "Al-Manar (Telegram)",
+    "ts": "2026-10-16T18:12:37.000Z",
+    "got": "2026-10-16T20:46:13.508Z",
+    "url": "https://t.me/almanarnews/268275"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "Al-Manar (Telegram)"
+   ],
+   "ids": [
+    "b09a49cd7b504489"
+   ],
+   "last_ts": "2026-10-16T18:12:37.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 154,
+   "flash": false
+  },
+  {
    "id": "70077712c330483b",
    "tag": "STRIKE",
    "line": "Saudi Arabia Weighs Its Response to Deadly Houthi Attack on Riyadh",
@@ -2081,27 +3518,27 @@
    "flash": false
   },
   {
-   "id": "98e3a1ea7b50e7e8",
-   "tag": "SHIPPING",
-   "line": "Indian shipping official says a crude oil tanker was targeted by a missile in the Strait of Hormuz; official also notes the Romania incident on October 14th",
+   "id": "f9841c0034052c7c",
+   "tag": "OTHER",
+   "line": "Planning to connect Iran's rail network to Afghanistan via Uzbekistan",
    "first": {
-    "src": "Newsquawk",
-    "ts": "2026-10-16T18:09:42.000Z",
-    "got": "2026-10-16T18:44:34.214Z",
-    "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQYkpxUXBKLVdvUUpCSExzUWJMRGJLOHVWUUpBUWg2MVg3eEZhU1ZuRW9LdHl0a2h5U2FMSHdNNXdHRk9xQjN4TERUN1pPMWNOeXFJSjlNNkZLV2ZDSE9uN2Q0dGhwX19qV1R1NWxOUy1feTVucGxaUm9vTGljcWJQVUtnYjVqU21xTG02dG1pSnVYY2ctYzhxeU53OWx2Wk8zUTlYNXMtT2FJbk1wWTNQTFdDVFZRTGxFRmR0bGxTenFYZV9ib0d5N0xFSW9VYWM?oc=5"
+    "src": "yjc.ir",
+    "ts": "2026-10-16T18:03:14.000Z",
+    "got": "2026-10-16T20:46:13.508Z",
+    "url": "https://www.yjc.ir/fa/news/9139279/برنامه‌ریزی-برای-اتصال-شبکه-ریلی-ایران-به-افغانستان-از-مسیر-ازبکستان"
    },
    "n": 1,
    "n_src": 1,
    "srcs": [
-    "Newsquawk"
+    "yjc.ir"
    ],
    "ids": [
-    "98e3a1ea7b50e7e8"
+    "f9841c0034052c7c"
    ],
-   "last_ts": "2026-10-16T18:09:42.000Z",
+   "last_ts": "2026-10-16T18:03:14.000Z",
    "ms": null,
    "lead_min": null,
-   "lag_min": 35,
+   "lag_min": 163,
    "flash": false
   },
   {
@@ -2162,6 +3599,30 @@
    "ms": null,
    "lead_min": null,
    "lag_min": 668,
+   "flash": false
+  },
+  {
+   "id": "c34daf0adb19edda",
+   "tag": "STRIKE",
+   "line": "Massive attacks from Russia: Pope calls on Putin for ceasefire",
+   "first": {
+    "src": "ruhrnachrichten.de",
+    "ts": "2026-10-16T18:00:00.000Z",
+    "got": "2026-10-16T20:46:13.508Z",
+    "url": "https://www.ruhrnachrichten.de/ueberregionales/drohnenangriff-waehrend-merz-besuch-in-kiew-bruecke-in-der-hauptstadt-getroffen-16-oktober-2026-w1245972-2002221204/"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "ruhrnachrichten.de"
+   ],
+   "ids": [
+    "c34daf0adb19edda"
+   ],
+   "last_ts": "2026-10-16T18:00:00.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 166,
    "flash": false
   },
   {
@@ -2725,6 +4186,62 @@
    "flash": false
   },
   {
+   "id": "3dd2fb12bc3f336c",
+   "tag": "SHIPPING",
+   "line": "UN Security Council condemns 'escalatory' Houthi strikes on Saudi Arabia",
+   "first": {
+    "src": "Middle East Eye",
+    "ts": "2026-10-16T05:54:00.000Z",
+    "got": "2026-10-16T17:23:28.985Z",
+    "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOSHFoTVNLYWRWNlRvbGw0TzhUQlVIbzRDaXR0eXFyeHF1RmUyY1JCQ1dCQjIzM21QX01yMDFVZHQwRTBKc180elE0ZGJidHZfdnNreVZBMmJkN0FybHpQbHd1RnB1UzdRdk92Y0ZSRVhfaDQtUmdmMWs3WjZ6WHItN0JpeDc5bzJSR1NSSEpBM2FaS01DTnIzTjdBMVp4bTZtM3ptWHRXNTVCVU1rN2VZeUdJSW90cVZTN2o3YUhiekRSUQ?oc=5"
+   },
+   "n": 23,
+   "n_src": 21,
+   "srcs": [
+    "Middle East Eye",
+    "The New York Sun",
+    "shorouknews.com",
+    "الأمانة العامة لمجلس التعاون لدول الخليج العربية",
+    "Yahoo",
+    "Yemen Online",
+    "The China-Global South Project",
+    "GünAz TV"
+   ],
+   "ids": [
+    "3dd2fb12bc3f336c",
+    "40f6983fdec8cf99",
+    "9ebcabba4d0597db",
+    "7d58d1402ab9d9a0",
+    "e8b23de34a97a534",
+    "c945dfa4bc619f9d",
+    "073e186ee32429d6",
+    "9dfd28572c9f8b6e",
+    "72d86043cecd870f",
+    "66be9ffaf147b0c4",
+    "9a7ea9d7f92aa941",
+    "126e906df36ca288",
+    "3c72bfcb22d06687",
+    "e265334ce027c6aa",
+    "abc3c6a1c0935bd9",
+    "19c794820718e1dc",
+    "fc8c1efe109f0412",
+    "b98e3ea063ced025",
+    "5162d9d453e8c7b5",
+    "8260f28ce15036ee",
+    "5d162cf2710a3e74",
+    "c187982f785f9ca0",
+    "17fb87bd26dca3c6"
+   ],
+   "last_ts": "2026-10-16T17:12:46.000Z",
+   "ms": {
+    "src": "DW.com",
+    "ts": "2026-10-16T14:05:51.000Z"
+   },
+   "lead_min": 492,
+   "lag_min": 689,
+   "flash": false
+  },
+  {
    "id": "e593ad6e696c926e",
    "tag": "OTHER",
    "line": "Profile: Hezbollah’s new liaison to the Lebanese state and society",
@@ -2844,61 +4361,6 @@
    "ms": null,
    "lead_min": null,
    "lag_min": 16,
-   "flash": false
-  },
-  {
-   "id": "3dd2fb12bc3f336c",
-   "tag": "SHIPPING",
-   "line": "UN Security Council condemns 'escalatory' Houthi strikes on Saudi Arabia",
-   "first": {
-    "src": "Middle East Eye",
-    "ts": "2026-10-16T05:54:00.000Z",
-    "got": "2026-10-16T17:23:28.985Z",
-    "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOSHFoTVNLYWRWNlRvbGw0TzhUQlVIbzRDaXR0eXFyeHF1RmUyY1JCQ1dCQjIzM21QX01yMDFVZHQwRTBKc180elE0ZGJidHZfdnNreVZBMmJkN0FybHpQbHd1RnB1UzdRdk92Y0ZSRVhfaDQtUmdmMWs3WjZ6WHItN0JpeDc5bzJSR1NSSEpBM2FaS01DTnIzTjdBMVp4bTZtM3ptWHRXNTVCVU1rN2VZeUdJSW90cVZTN2o3YUhiekRSUQ?oc=5"
-   },
-   "n": 22,
-   "n_src": 20,
-   "srcs": [
-    "Middle East Eye",
-    "The New York Sun",
-    "shorouknews.com",
-    "الأمانة العامة لمجلس التعاون لدول الخليج العربية",
-    "Yahoo",
-    "Yemen Online",
-    "The China-Global South Project",
-    "GünAz TV"
-   ],
-   "ids": [
-    "3dd2fb12bc3f336c",
-    "40f6983fdec8cf99",
-    "9ebcabba4d0597db",
-    "7d58d1402ab9d9a0",
-    "e8b23de34a97a534",
-    "c945dfa4bc619f9d",
-    "073e186ee32429d6",
-    "9dfd28572c9f8b6e",
-    "72d86043cecd870f",
-    "66be9ffaf147b0c4",
-    "9a7ea9d7f92aa941",
-    "126e906df36ca288",
-    "3c72bfcb22d06687",
-    "e265334ce027c6aa",
-    "abc3c6a1c0935bd9",
-    "19c794820718e1dc",
-    "fc8c1efe109f0412",
-    "b98e3ea063ced025",
-    "5162d9d453e8c7b5",
-    "8260f28ce15036ee",
-    "5d162cf2710a3e74",
-    "c187982f785f9ca0"
-   ],
-   "last_ts": "2026-10-16T17:06:14.000Z",
-   "ms": {
-    "src": "DW.com",
-    "ts": "2026-10-16T14:05:51.000Z"
-   },
-   "lead_min": 492,
-   "lag_min": 689,
    "flash": false
   },
   {
@@ -3876,6 +5338,30 @@
    "ms": null,
    "lead_min": null,
    "lag_min": 81,
+   "flash": false
+  },
+  {
+   "id": "00113c91bda9d14f",
+   "tag": "OTHER",
+   "line": "قائد «سنتكوم»: منعنا إيران من تصدير نفط بـ25 مليار دولار وجمدناً 350 مليوناً أصولاً مشفرة",
+   "first": {
+    "src": "صحيفة الوطن",
+    "ts": "2026-10-16T16:21:05.000Z",
+    "got": "2026-10-16T20:46:13.508Z",
+    "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1nRFVEdDYwVm1zd0FWVlAwdmdOeWhSQ3FpMlZfTXVrQWJ5N2R3bE5tajVZRUFmT2xob1hERS1aYmF6QUlmbU9XWHd5eGRneHY1TXBSVNIBVEFVX3lxTE1nRFVEdDYwVm1zd0FWVlAwdmdOeWhSQ3FpMlZfTXVrQWJ5N2R3bE5tajVZRUFmT2xob1hERS1aYmF6QUlmbU9XWHd5eGRneHY1TXBSVA?oc=5"
+   },
+   "n": 1,
+   "n_src": 1,
+   "srcs": [
+    "صحيفة الوطن"
+   ],
+   "ids": [
+    "00113c91bda9d14f"
+   ],
+   "last_ts": "2026-10-16T16:21:05.000Z",
+   "ms": null,
+   "lead_min": null,
+   "lag_min": 265,
    "flash": false
   },
   {
@@ -5189,34 +6675,6 @@
    "flash": false
   },
   {
-   "id": "52b685891ed800b4",
-   "tag": "MISSILE",
-   "line": "Two guards killed, six wounded in Houthi missile attack on Presidential Palace in Aden",
-   "first": {
-    "src": "Middle East Monitor",
-    "ts": "2026-10-16T10:11:00.000Z",
-    "got": "2026-10-16T17:23:28.985Z",
-    "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOYnR3S1F5ZVM3c21CTEwwSTh4YUFGNzFDZzFIZmFEa3VBMHJGd0JhZ2R3andXNktaR1A5OWpDdGtzSjNEYTVhbVZ2MG56c3ZkRjR1ZU5lTFp3LVdaQndIQ2k0T1dfbjJvZjBCaGIzVFhyRmRVbW1HM1Z1M29aNGpvdG9KN3dyNHpzclNxckpMOFQwQThKczBTU2E5V3JERU02b0lsRk02OG80Q0dHeF9VNDdTRDJaTTFybzVBZHFVNjdwR3J5OWlvedIBzgFBVV95cUxOaFlKY29pYk9PS1dBc0hwN2E5d3V5NHJZS2hWSHNtbUxDc0ZZWFZoLU1VcTZvcEtqUUhHWkk4cElzSmxjQzNCS2FnVC14VzJibTlsRFJSWUVVX1dKYmhic3pZZmhqaEZhT1pzWVo5dTYzRHBHWjBLS3BBaTBySENweWU0eUlGYXloMmdvX0V6d2ZwbldacHFBcnQ4b2dIamRQODVodWpaZGF5SGxPTi1rZDFXa2E5bllZT0VlbE1YeTUwME9FeHlTMC1YTG4xZw?oc=5"
-   },
-   "n": 3,
-   "n_src": 3,
-   "srcs": [
-    "Middle East Monitor",
-    "Middle East Online",
-    "New York Post"
-   ],
-   "ids": [
-    "52b685891ed800b4",
-    "ee80477d41bfd48f",
-    "f3bfcd2b81ae74e2"
-   ],
-   "last_ts": "2026-10-16T14:21:45.000Z",
-   "ms": null,
-   "lead_min": null,
-   "lag_min": 432,
-   "flash": false
-  },
-  {
    "id": "ed21fcb47f4e4c10",
    "tag": "STRIKE",
    "line": "New analysis by the Center for Strategic and International Studies: The US military may have only a few of its most powerful bunker-buster bombs / America…",
@@ -5435,30 +6893,6 @@
    "flash": false
   },
   {
-   "id": "06abc610eb463649",
-   "tag": "STRIKE",
-   "line": "Global Markets: Houthi attacks continue to roil oil markets",
-   "first": {
-    "src": "The Western Producer",
-    "ts": "2026-10-16T14:01:51.000Z",
-    "got": "2026-10-16T17:29:55.674Z",
-    "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQd3ZqX0FxTThzVENTRUJpXzJ4Y0VYeTZDVVhybDZFTElFTmJ6c0tNbzRERmxDeXRySWhkdXJfSk5wUEFRb0hmck1SMzJKMFhyeTRwWFowWWpUeHZzdGhXc3RHalpYZzNtQjJmZ1hNTjJpTEdEcGZib2gzOUQyMEo0cWpWRkdmQkU4SmlPVGR1RnN0czJ5dWluR09Pb0dkaXM?oc=5"
-   },
-   "n": 1,
-   "n_src": 1,
-   "srcs": [
-    "The Western Producer"
-   ],
-   "ids": [
-    "06abc610eb463649"
-   ],
-   "last_ts": "2026-10-16T14:01:51.000Z",
-   "ms": null,
-   "lead_min": null,
-   "lag_min": 208,
-   "flash": false
-  },
-  {
    "id": "52af64bf383a8f80",
    "tag": "OTHER",
    "line": "Qatar FM calls for Israeli withdrawal from Lebanon",
@@ -5573,30 +7007,6 @@
     "7484118eab88bccd"
    ],
    "last_ts": "2026-10-16T13:43:17.000Z",
-   "ms": null,
-   "lead_min": null,
-   "lag_min": 220,
-   "flash": false
-  },
-  {
-   "id": "8f3ebf404b8138c3",
-   "tag": "OTHER",
-   "line": "Oil Slips as Traders Weigh IEA Reserve Releases, Hormuz Risks",
-   "first": {
-    "src": "WSJ",
-    "ts": "2026-10-16T13:43:00.000Z",
-    "got": "2026-10-16T17:23:28.985Z",
-    "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNQlhVbW1hN3VaS2xQWTRNVHc1MGNIektPR0wzd2V5LWEtcmtZUXRSY1ZWYjJjSUVZZElTaFV4c0VfSnJhbHhBdGlHbjE4bkZDN0lfTnNxLXFxeFR3bnVqY21tSl9YdkZHTlY4VjYwYTVxZmFZV181ZHo0RXVFOEw0UDJoVXNYbWpfT1d2cHUza0FBekFXZzRRMTZlUkJYd2RUSlFxWEhLTHVRNjVZRk9xa0JhQzl0UQ?oc=5"
-   },
-   "n": 1,
-   "n_src": 1,
-   "srcs": [
-    "WSJ"
-   ],
-   "ids": [
-    "8f3ebf404b8138c3"
-   ],
-   "last_ts": "2026-10-16T13:43:00.000Z",
    "ms": null,
    "lead_min": null,
    "lag_min": 220,
@@ -8901,129 +10311,608 @@
    "lead_min": null,
    "lag_min": 704,
    "flash": false
-  },
-  {
-   "id": "1fcede6c7c5f5b7f",
-   "tag": "SHIPPING",
-   "line": "فایننشال تایمز: ترامپ در حال بررسی کاهش محدودیت‌ها علیه «ناوگان سایه» روسیه و ایران است / این اقدام می‌تواند شامل اجازه فروش کشتی‌های قرارگرفته در فهرست سیاه…",
-   "first": {
-    "src": "entekhab.ir",
-    "ts": "2026-10-16T05:37:32.000Z",
-    "got": "2026-10-16T17:23:28.985Z",
-    "url": "https://www.entekhab.ir/fa/news/943706/فایننشال-تایمز-ترامپ-در-حال-بررسی-کاهش-محدودیت-ها-علیه-ناوگان-سایه-روسیه-و-ایران-است-این-اقدام-می-تواند-شامل-اجازه-فروش-کشتی-های-قرارگرفته-در-فهرست-سیاه-به-خریداران-قانونی-و-لغو-تحریم-هایی-باشد-که-در-حال-حاضر-مانع-فعالیت-آزادانه-این-نفتکش-ها-می-شوند-این-اقدام-تلاش-ترامپ-برای-مهار-قیمت-سوخت-پیش-از-انتخابات-میان-دوره-ای-است"
-   },
-   "n": 1,
-   "n_src": 1,
-   "srcs": [
-    "entekhab.ir"
-   ],
-   "ids": [
-    "1fcede6c7c5f5b7f"
-   ],
-   "last_ts": "2026-10-16T05:37:32.000Z",
-   "ms": null,
-   "lead_min": null,
-   "lag_min": 706,
-   "flash": false
-  },
-  {
-   "id": "f92065a2057f76da",
-   "tag": "OTHER",
-   "line": "اکونومیک دیلی: چین، به‌عنوان بزرگ‌ترین واردکننده نفت خام جهان، با کاهش فعالانه واردات و تعدیل تقاضای بازار، به یکی از عوامل اصلی مهار و تثبیت قیمت جهانی نفت…",
-   "first": {
-    "src": "entekhab.ir",
-    "ts": "2026-10-16T05:37:11.000Z",
-    "got": "2026-10-16T17:23:28.985Z",
-    "url": "https://www.entekhab.ir/fa/news/943711/اکونومیک-دیلی-چین-به-عنوان-بزرگ-ترین-واردکننده-نفت-خام-جهان-با-کاهش-فعالانه-واردات-و-تعدیل-تقاضای-بازار-به-یکی-از-عوامل-اصلی-مهار-و-تثبیت-قیمت-جهانی-نفت-تبدیل-شده-پکن-برای-بازار-بی-ثبات-جهانی-انرژی-نوعی-شبکه-ایمنی-فراهم-آورده-چین-از-مارس-تا-ژوئیه-به-طور-متوسط-روزانه-تا-4-میلیون-بشکه-از-واردات-نفت-خام-خود-کاسته-رقمی-نزدیک-به-نیمی-از-شکاف-عرضه-جهانی-ناشی-از-محاصره-کنونی-تنگه-هرمز"
-   },
-   "n": 1,
-   "n_src": 1,
-   "srcs": [
-    "entekhab.ir"
-   ],
-   "ids": [
-    "f92065a2057f76da"
-   ],
-   "last_ts": "2026-10-16T05:37:11.000Z",
-   "ms": null,
-   "lead_min": null,
-   "lag_min": 706,
-   "flash": false
-  },
-  {
-   "id": "c18425c4070282eb",
-   "tag": "OTHER",
-   "line": "اوباما: اسرائیل باید بپذیرد فلسطینیان از سرزمین خود نخواهند رفت / نمی‌توان انتظار داشت فلسطینیان برای همیشه شرایط تحمیل شده بر خود را بپذیرند؛ امنیت صرفاً با…",
-   "first": {
-    "src": "entekhab.ir",
-    "ts": "2026-10-16T05:34:49.000Z",
-    "got": "2026-10-16T17:23:28.985Z",
-    "url": "https://www.entekhab.ir/fa/news/943705/اوباما-اسرائیل-باید-بپذیرد-فلسطینیان-از-سرزمین-خود-نخواهند-رفت-نمی-توان-انتظار-داشت-فلسطینیان-برای-همیشه-شرایط-تحمیل-شده-بر-خود-را-بپذیرند-امنیت-صرفا-با-دیوار-قدرت-نظامی-و-نادیده-گرفتن-حقوق-آنان-تأمین-نمی-شود"
-   },
-   "n": 1,
-   "n_src": 1,
-   "srcs": [
-    "entekhab.ir"
-   ],
-   "ids": [
-    "c18425c4070282eb"
-   ],
-   "last_ts": "2026-10-16T05:34:49.000Z",
-   "ms": null,
-   "lead_min": null,
-   "lag_min": 709,
-   "flash": false
-  },
-  {
-   "id": "e6a2678d7e38f308",
-   "tag": "STRIKE",
-   "line": "Oil Prices Head for Weekly Gain as Hormuz Attacks Rattle Markets",
-   "first": {
-    "src": "Crude Oil Prices Today | OilPrice.com",
-    "ts": "2026-10-16T05:30:00.000Z",
-    "got": "2026-10-16T17:23:28.985Z",
-    "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOR2dTRE5ET25fMHdEdDNLWFdwVnVFR280QlRmNFVhaUNRaVl0eWtlMmpXWmxEdmZXbTZydVhzUXBLU0hndDNhWGRIbC1JRV9QYzRveHNNX21ldk81eUxqZEVWUDdJTVB3bmk4SUU2S1NWT0ZyNWtxeVhDaVlxUnBfOV90dkdnQzFOWndLUmp2NkQtb013OFNxWGpyeGZHZjVsbWdCOUFhQmJxVXM4d1FtUEJoU3FycnlHMmNNOdIBwgFBVV95cUxQU1E3TFNueVBTS3J3VXlMT3h2VlAxNW5HUzNiN0NiY2JzaVVscEJWR25Od3hvZWx2a3VkUndjbWxmY3hMTnFMZUZMS2hWZ3VhLXlYMGFDNEpEOGFyMFZXdVg4ajBreG8wUi1keVBGd25oZmlESXhUY2lSR1k3akYzY0VuNXBaSElhS1hURUtxMDZJZXJXSEJURHlxYkdqXzdHczZPQUIzOTQydldCSkNrV2hWLVY1U3ZXVEtCUUtCRkdHUQ?oc=5"
-   },
-   "n": 1,
-   "n_src": 1,
-   "srcs": [
-    "Crude Oil Prices Today | OilPrice.com"
-   ],
-   "ids": [
-    "e6a2678d7e38f308"
-   ],
-   "last_ts": "2026-10-16T05:30:00.000Z",
-   "ms": null,
-   "lead_min": null,
-   "lag_min": 713,
-   "flash": false
-  },
-  {
-   "id": "157f54d34a7f932a",
-   "tag": "DIPLOMACY",
-   "line": "ترامپ: زلنسکی گزینه خوبی برای تعامل و مذاکره با ما نیست؛ او نمی‌خواهد به توافق برسد، می‌گوید که خواهان توافق است، اما در واقع چنین چیزی نمی‌خواهد / من طرفدار…",
-   "first": {
-    "src": "entekhab.ir",
-    "ts": "2026-10-16T05:27:44.000Z",
-    "got": "2026-10-16T17:23:28.985Z",
-    "url": "https://www.entekhab.ir/fa/news/943703/ترامپ-زلنسکی-گزینه-خوبی-برای-تعامل-و-مذاکره-با-ما-نیست-او-نمی-خواهد-به-توافق-برسد-می-گوید-که-خواهان-توافق-است-اما-در-واقع-چنین-چیزی-نمی-خواهد-من-طرفدار-پروپاقرص-زلنسکی-نیستم-او-اوکراین-را-نابود-کرده-روسیه-می-تواند-یک-میلیون-نفر-از-نیروهایش-را-از-دست-بدهد-و-هنوز-میلیون-ها-نفر-دیگر-هم-دارد-اوکراین-نیروی-انسانی-کافی-برای-چنین-چیزی-ندارد"
-   },
-   "n": 1,
-   "n_src": 1,
-   "srcs": [
-    "entekhab.ir"
-   ],
-   "ids": [
-    "157f54d34a7f932a"
-   ],
-   "last_ts": "2026-10-16T05:27:44.000Z",
-   "ms": null,
-   "lead_min": null,
-   "lag_min": 716,
-   "flash": false
   }
  ],
  "items": [
+  {
+   "id": "0f247c0155f4b588",
+   "ts": "2026-10-16T22:53:01.439Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "adsb.lol military",
+   "via": "Tracker",
+   "lang": "English",
+   "line": "Military aircraft in theatre: @@@@@@@@ — FL320, 17 km from Abu Dhabi (24.50N 54.54E)",
+   "orig": "Military aircraft in theatre: @@@@@@@@ — FL320, 17 km from Abu Dhabi (24.50N 54.54E)",
+   "url": "https://globe.adsb.lol/?icao=ae67d8",
+   "tr": false,
+   "untranslated": false,
+   "grp": "adsb-mil"
+  },
+  {
+   "id": "474957ccda651277",
+   "ts": "2026-10-16T22:49:44.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "إرم نيوز",
+   "via": "Google News",
+   "lang": "Arabic",
+   "line": "عاجل| واشنطن: ميليشيات مدعومة من إيران ترسل أموالاً إلى الحرس الثوري",
+   "orig": "عاجل| واشنطن: ميليشيات مدعومة من إيران ترسل أموالاً إلى الحرس الثوري",
+   "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9wRnFzZkJZczlJaUVBM05fa1ZmLVY0VGdjTm1rUTFLZTRQb1k2QUhicUFUX050OGMzZmxBSnN2b3AzREtEbW1oQW1YcHNpM3A4Y19FWmR3?oc=5",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "a4b311e0d7fb61be",
+   "ts": "2026-10-16T22:34:38.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "QudsNen",
+   "via": "Telegram",
+   "lang": "Arabic",
+   "line": "Data from the Israel Prison Service, obtained through a freedom-of-information request submitted by the Public Committee Against Torture in Israel, indicate…",
+   "orig": "Data from the Israel Prison Service, obtained through a freedom-of-information request submitted by the Public Committee Against Torture in Israel, indicate that 351 of 635 minors held in Israeli prisons during 2025 were placed in solitary confinement at least once. The data recorded 666 instances of solitary confinement. Of the children affected, 154 were isolated more than once, while 42 were isolated between four and eight times. The report said the children included 13- and 14-year-olds and that 92% of those subjected to solitary confinement had not been tried.",
+   "url": "https://t.me/QudsNen/242336",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "39001b4892375a72",
+   "ts": "2026-10-16T22:34:04.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "Vietnam.vn",
+   "via": "Google News",
+   "lang": "Hebrew",
+   "line": "הסבר על ההסלמה חסרת התקדים של איראן במצרי הורמוז",
+   "orig": "הסבר על ההסלמה חסרת התקדים של איראן במצרי הורמוז",
+   "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOc2tPQ3U4ekxLOTMwSk5zYkdCSFNacDJnQVZiUy1iZWtkN0I5Wll5UnZTVnZ4d3lQRGFEUDZSWkNLMjU4bzdEQXUtenlaTmNqc2h2NU1sX2NyQmdwZFdYTEh3TE1FMFJhd00wMnlwNkEyTUtuUUdYaHNydWhCbVQ2N2RjTExsVGNBZTN5VDZ1dzk?oc=5",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "f4d224276c904f95",
+   "ts": "2026-10-16T22:31:23.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "The Jerusalem Post",
+   "via": "Google News",
+   "lang": "English",
+   "line": "Missiles, drones intercepted over Saudi Arabia as Houthi attacks continue",
+   "orig": "Missiles, drones intercepted over Saudi Arabia as Houthi attacks continue",
+   "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE92M0dTMURCdnVfVE9xSGg0Wjc3UnN5RTZzbUtZNHFtS21nY2otdVljZzRoOGV4QzZiZWF5WHQ4WmF1RThWVTVGTXpaQlljVlEwT0lxdERnM1VQS0FY?oc=5",
+   "tr": false,
+   "untranslated": false
+  },
+  {
+   "id": "181af940744d94ad",
+   "ts": "2026-10-16T22:30:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "aljazeera.net",
+   "via": "GDELT",
+   "lang": "Arabic",
+   "line": "التحضير لها بدأ قبل عقود .. هكذا شنت أمريكا حربها على إيران",
+   "orig": "التحضير لها بدأ قبل عقود .. هكذا شنت أمريكا حربها على إيران",
+   "url": "https://www.aljazeera.net/politics/2026/10/17/%D8%A7%D9%84%D8%AA%D8%AD%D8%B6%D9%8A%D8%B1-%D9%84%D9%87%D8%A7-%D8%A8%D8%AF%D8%A3-%D9%82%D8%A8%D9%84-%D8%B9%D9%82%D9%88%D8%AF-%D9%87%D9%83%D8%B0%D8%A7-%D8%B4%D9%86%D8%AA",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "c4171e7bfb1dec7b",
+   "ts": "2026-10-16T22:30:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "nile.eg",
+   "via": "GDELT",
+   "lang": "Arabic",
+   "line": "قناة النيل للأخبار | للمرة الثانية خلال أقل من أسبوع .. الحوثيون يستهدفون مطار عدن بصاروخين باليستيين سقطا في حرمه",
+   "orig": "قناة النيل للأخبار | للمرة الثانية خلال أقل من أسبوع .. الحوثيون يستهدفون مطار عدن بصاروخين باليستيين سقطا في حرمه",
+   "url": "https://www.nile.eg/%D9%84%D9%84%D9%85%D8%B1%D8%A9-%D8%A7%D9%84%D8%AB%D8%A7%D9%86%D9%8A%D8%A9-%D8%AE%D9%84%D8%A7%D9%84-%D8%A3%D9%82%D9%84-%D9%85%D9%86-%D8%A3%D8%B3%D8%A8%D9%88%D8%B9-%D8%A7%D9%84%D8%AD%D9%88%D8%AB",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "28539fe16e854217",
+   "ts": "2026-10-16T22:30:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "dw.com",
+   "via": "GDELT",
+   "lang": "Arabic",
+   "line": "سقوط صاروخين أطلقهما الحوثيون داخل حرم مطار عدن جنوب اليمن",
+   "orig": "سقوط صاروخين أطلقهما الحوثيون داخل حرم مطار عدن جنوب اليمن",
+   "url": "https://www.dw.com/ar/%D9%82%D8%B5%D9%81-%D8%AD%D9%88%D8%AB%D9%8A-%D8%A8%D8%B5%D8%A7%D8%B1%D9%88%D8%AE%D9%8A%D9%86-%D9%84%D9%85%D8%B7%D8%A7%D8%B1-%D8%B9%D8%AF%D9%86-%D9%81%D9%8A-%D8%AC%D9%86%D9%88%D8%A8-%D8%A7%D9%84%D9%8A%D9%85%D9%86/live-79665427",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "3b1ca927f885a4be",
+   "ts": "2026-10-16T22:30:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "dostor.org",
+   "via": "GDELT",
+   "lang": "Arabic",
+   "line": "الجيش الأمريكي : ميليشيات إيران تحجب رواتب عناصرها لتمويل الحرس الثوري",
+   "orig": "الجيش الأمريكي : ميليشيات إيران تحجب رواتب عناصرها لتمويل الحرس الثوري",
+   "url": "https://www.dostor.org/5741962",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "8eeabf1ba5dd8f90",
+   "ts": "2026-10-16T22:30:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "dostor.org",
+   "via": "GDELT",
+   "lang": "Arabic",
+   "line": "أكسيوس : وسطاء يحثون إيران على الرد على المقترح الأمريكي قبل الانتخابات النصفية",
+   "orig": "أكسيوس : وسطاء يحثون إيران على الرد على المقترح الأمريكي قبل الانتخابات النصفية",
+   "url": "https://www.dostor.org/5741960",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "ba80c24a0aaba6c9",
+   "ts": "2026-10-16T22:30:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "nile.eg",
+   "via": "GDELT",
+   "lang": "Arabic",
+   "line": "قناة النيل للأخبار | المنظمة البحرية الدولية : الملاحة في مضيق هرمز لا تزال غير آمنة والألغام لم تزل",
+   "orig": "قناة النيل للأخبار | المنظمة البحرية الدولية : الملاحة في مضيق هرمز لا تزال غير آمنة والألغام لم تزل",
+   "url": "https://www.nile.eg/%D8%A7%D9%84%D9%85%D9%86%D8%B8%D9%85%D8%A9-%D8%A7%D9%84%D8%A8%D8%AD%D8%B1%D9%8A%D8%A9-%D8%A7%D9%84%D8%AF%D9%88%D9%84%D9%8A%D8%A9-%D8%A7%D9%84%D9%85%D9%84%D8%A7%D8%AD%D8%A9-%D9%81%D9%8A-%D9%85%D8%B6",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "62d8b6f6548b8966",
+   "ts": "2026-10-16T22:29:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "newarab.com",
+   "via": null,
+   "lang": "Arabic",
+   "line": "Missiles hit Aden airport, Saudi coalition intercepts missile",
+   "orig": "Missiles hit Aden airport, Saudi coalition intercepts missile",
+   "url": "https://www.newarab.com/news/missiles-hit-aden-airport-saudi-coalition-intercepts-missile",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "6b0f06e8fd3badc9",
+   "ts": "2026-10-16T22:25:35.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "Arab News",
+   "via": "Google News",
+   "lang": "English",
+   "line": "Coalition releases footage of strikes on Houthi weapons-smuggling operation in Hodeidah",
+   "orig": "Coalition releases footage of strikes on Houthi weapons-smuggling operation in Hodeidah",
+   "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNVHJfdFhDZnhYeUxPREJDU3J4NElhOXl5TEhoY3dvTGZqRzZJY2FoNkpmM0YzVGJaclROaXV6UlhvV0RXUUY3bkM2T3o0SXZEbnBGNnBkNFVBUThJQmxFU0xXOTdva3FCSE43UHVrVm5UcEhWdlF2SU5yUHBfN2xYX3RTVmhENXpGa1N5OXdJaXItSlYtaDIxLW1WeDk5aTMyWUg3ZXJHd2ZleUxLM0FZX2lPcG1BeVQ2ZzVpaklPaVNVdUJYWS1iV3EyelE?oc=5",
+   "tr": false,
+   "untranslated": false
+  },
+  {
+   "id": "bd264dd9783db8fd",
+   "ts": "2026-10-16T22:15:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "alsahwayemen.net",
+   "via": "GDELT",
+   "lang": "Arabic",
+   "line": "معارك عنيفة في تعز ومأرب .. وخسائر متلاحقة في صفوف مليشيا الحوثي ( حصاد اليوم )",
+   "orig": "معارك عنيفة في تعز ومأرب .. وخسائر متلاحقة في صفوف مليشيا الحوثي ( حصاد اليوم )",
+   "url": "https://alsahwayemen.net/p-96338",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "bc39a9cd717785a2",
+   "ts": "2026-10-16T22:02:04.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "מעריב",
+   "via": "Google News",
+   "lang": "Hebrew",
+   "line": "טראמפ על איראן: \"אנחנו שומעים כל מה שהם עושים וכל מה שהם אומרים\"",
+   "orig": "טראמפ על איראן: \"אנחנו שומעים כל מה שהם עושים וכל מה שהם אומרים\"",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBmYTROeU1kVHlPMTYzOXI1OS1mNzFmOVV2LVJBNzFLRkFSTVlsZEdwRG15UVpHQXFfb2ROMlVlOXdoZXRSdjhiNjVyU3I3VzF0T05GUVFzQkt6RWtVRGUxS1N3d2I?oc=5",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "40ee8e820ea437ce",
+   "ts": "2026-10-16T21:56:07.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "Al Jazeera",
+   "via": null,
+   "lang": "Arabic/English",
+   "line": "Yemen’s government says Houthis fired two missiles at Aden airport",
+   "orig": "Yemen’s government says Houthis fired two missiles at Aden airport",
+   "url": "https://www.aljazeera.com/news/2026/10/16/yemens-government-says-houthis-fired-two-missiles-at-aden-airport?traffic_source=rss",
+   "tr": false,
+   "untranslated": false
+  },
+  {
+   "id": "62ca3522c62c6628",
+   "ts": "2026-10-16T21:50:56.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "straits.live",
+   "via": null,
+   "lang": "English",
+   "line": "24 Indian seafarers safe after tanker incidents in Strait of Hormuz, Romania",
+   "orig": "24 Indian seafarers safe after tanker incidents in Strait of Hormuz, Romania",
+   "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQcW1qZ0pUUzBWMUhabmY3b1lLaU9jcTlGRFBEeko0SHZnSzkwWExPc3BlcURsMlZxZVJxWVpCeTU4MEJYczRfTHRIYndoMUFxaGFCTTBmc1BSaVdRZjZ1VkUwTHVWVUhmRE9wSzlfbFlMTVJXLVF5cmZ3SHR2NWFwLTM1eXZGejhVS0E3MGRaN0lxNmhFVlVJeUtmMzk4OXY5cE5fRmJZNi04ejJ3a0NaQWV2RmhyejTSAbsBQVVfeXFMT1phcEZqemdtOTl4YmpGTUE5cjdTNlBQdjF2bTF5N3VITkF2Qjh2NUJ2dHhaUjcyLUt6dXVxaE0xNUxkY25obzhUd1p0UjVQSERkeS1QWTh3WXlXLXdGbnBGeGxaZTBXRXUwQXhXWkJLdXplR2ZnUm9rT1NhQlNmU3luU2lmUXAxWnlVZUNzaFdOMjBsYmxqZ2Y4R3drQlBFTnE0anFKcG52QXdCaXhRQ0RpWWl1NGI5S1Q3MA?oc=5",
+   "tr": false,
+   "untranslated": false
+  },
+  {
+   "id": "3679bddcf257b3f3",
+   "ts": "2026-10-16T21:45:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "bawabatii.com",
+   "via": "GDELT",
+   "lang": "Arabic",
+   "line": "قبائل خولان الطيال تتهم الحوثيين باغتيال أربعة من أبنائها في صنعاء وتدعو إلى اجتماع قبلي عاجل غداً السبت",
+   "orig": "قبائل خولان الطيال تتهم الحوثيين باغتيال أربعة من أبنائها في صنعاء وتدعو إلى اجتماع قبلي عاجل غداً السبت",
+   "url": "https://bawabatii.com/news351211.html",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "7c905c4752568d98",
+   "ts": "2026-10-16T21:45:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "cedarnews.net",
+   "via": "GDELT",
+   "lang": "Arabic",
+   "line": "مقاتلو بيجاك في اشتباكات بجبال شاهو وفق إيران واير",
+   "orig": "مقاتلو بيجاك في اشتباكات بجبال شاهو وفق إيران واير",
+   "url": "https://cedarnews.net/cool/1074642/%D9%85%D9%82%D8%A7%D8%AA%D9%84%D9%88-%D8%A8%D9%8A%D8%AC%D8%A7%D9%83/",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "6779700286431cbd",
+   "ts": "2026-10-16T21:40:34.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "Mehr News Agency",
+   "via": null,
+   "lang": "Farsi/English",
+   "line": "ادامه ادعای تکراری ترامپ درباره محاصره دریایی ایران",
+   "orig": "ادامه ادعای تکراری ترامپ درباره محاصره دریایی ایران",
+   "url": "https://www.mehrnews.com/news/6979885/%D8%A7%D8%AF%D8%A7%D9%85%D9%87-%D8%A7%D8%AF%D8%B9%D8%A7%DB%8C-%D8%AA%DA%A9%D8%B1%D8%A7%D8%B1%DB%8C-%D8%AA%D8%B1%D8%A7%D9%85%D9%BE-%D8%AF%D8%B1%D8%A8%D8%A7%D8%B1%D9%87-%D9%85%D8%AD%D8%A7%D8%B5%D8%B1%D9%87-%D8%AF%D8%B1%DB%8C%D8%A7%DB%8C%DB%8C-%D8%A7%DB%8C%D8%B1%D8%A7%D9%86",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "afe5f4fb8207638f",
+   "ts": "2026-10-16T21:39:48.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "TRT World",
+   "via": "Google News",
+   "lang": "English",
+   "line": "Iran rejects Saudi statements over Houthi attacks and repeats mediation offer",
+   "orig": "Iran rejects Saudi statements over Houthi attacks and repeats mediation offer",
+   "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5uUDF1S3pSYk9rN0RGX2M4LUtGWHJaZDBHa1lvWHFiQ1FELURPeWUxb2x0WDJWbk05Y2lQTkxPMkNrLWxmOWprSGZWWGpqQ0pTUEV1R0tqclI?oc=5",
+   "tr": false,
+   "untranslated": false
+  },
+  {
+   "id": "7435ff60aae02a6e",
+   "ts": "2026-10-16T21:34:27.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "Mehr News Agency",
+   "via": null,
+   "lang": "Farsi/English",
+   "line": "سعید توکلی: جنگ‌ افروزی آمریکا و اسرائیل علت اصلی بحران انرژی است",
+   "orig": "سعید توکلی: جنگ‌ افروزی آمریکا و اسرائیل علت اصلی بحران انرژی است",
+   "url": "https://www.mehrnews.com/news/6979883/%D8%B3%D8%B9%DB%8C%D8%AF-%D8%AA%D9%88%DA%A9%D9%84%DB%8C-%D8%AC%D9%86%DA%AF-%D8%A7%D9%81%D8%B1%D9%88%D8%B2%DB%8C-%D8%A2%D9%85%D8%B1%DB%8C%DA%A9%D8%A7-%D9%88-%D8%A7%D8%B3%D8%B1%D8%A7%D8%A6%DB%8C%D9%84-%D8%B9%D9%84%D8%AA-%D8%A7%D8%B5%D9%84%DB%8C-%D8%A8%D8%AD%D8%B1%D8%A7%D9%86-%D8%A7%D9%86%D8%B1%DA%98%DB%8C",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "f0f5190353dc3a76",
+   "ts": "2026-10-16T21:30:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "akhbrna.ae",
+   "via": "GDELT",
+   "lang": "Arabic",
+   "line": "السعودية ترحب ببيان مجلس الأمن المدين لهجمات الحوثيين",
+   "orig": "السعودية ترحب ببيان مجلس الأمن المدين لهجمات الحوثيين",
+   "url": "https://www.akhbrna.ae/news/alsawdya-trhb-bbyan-mjls-alamn/",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "49c7f069406d4de7",
+   "ts": "2026-10-16T21:27:40.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "QudsNen",
+   "via": "Telegram",
+   "lang": "Arabic",
+   "line": "Palestinians bid farewell to a Palestinian killed by an Israeli occupation airstrike targeting a group of civilians in the \"Italian\" area of ​​the Al-Nasr…",
+   "orig": "Palestinians bid farewell to a Palestinian killed by an Israeli occupation airstrike targeting a group of civilians in the \"Italian\" area of ​​the Al-Nasr neighborhood, west of Gaza City.",
+   "url": "https://t.me/QudsNen/242332",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "2d27409bcd143389",
+   "ts": "2026-10-16T21:24:33.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "الجزيرة نت",
+   "via": "Google News",
+   "lang": "Arabic",
+   "line": "الجيش الأمريكي يؤكد استمرار حصاره لإيران وإضعاف نفوذ طهران بالمنطقة",
+   "orig": "الجيش الأمريكي يؤكد استمرار حصاره لإيران وإضعاف نفوذ طهران بالمنطقة",
+   "url": "https://news.google.com/rss/articles/CBMi2gJBVV95cUxQZ0dNVi1ybzFZUmNzblQydU9kWnNPdEJ0eEtOTC1PZEJmSzdBR0wya0gxQTFmNGtTSlhsWERIWFJVOVlrWEd1cmlkYkw2M2F5dkZ4R19wQ010WFFRbjB4aHg4Y0NUZUpsTzVLa3hFT29lLVU5YWplT1lNOEwzOG9iNEs1SC1ydzhaaDhKcW1LX0h0UWFYZm5STGRXQ1U4REJ0c2NYWW1IQmtnZ0ZkY3ZPV2dMMVpBT1p4a1VwUVFEX2FCb093LVoxUWVnYXB3RDZLZ05RNk5Ca2h1ZEJyelI5a1lDbGFUZ2ItbU9DSDdDSS1SeGtVVGpLeXFnV0E1OEtMM21jUEFvZWVLZndKQThSOXFqM3RtRUtuSC1vSTZyMWpzYjd1NHN6MDBMZGdhVWJlYnFKbElTUmhoNy1qQ0JNUVQtWnJtU2pMbWlBTjhEUXBtb25HZU53OUpn0gHfAkFVX3lxTE5OTUQ3ejZMa2RYVWc2VXg1RTBqUWY3ZTBJVmcxNXhsVC15bzNMOFd2X0I4d21fUTFCY1F5b0EtMTE1a0JaYnNfX2VJTGh2YzJDOENSUi1JR21JX1NOS0FlT2NnYXVHSXkyM0NaSUZHWGRubmo5Q2VmeUhwOVVyTmpmcFVZcFFzWkFycUVFVHdqTTh0S0JuREo1QWNjTW1QU0YzSlpybXJGV1BscEI0a0tKOFlSVzRUalE5S2lFaEpVd3A5SENlcGN2T2doNWY3Mnp1TGQ4NkREeE4zdDl5LWREM0tLTjNHX09wX1E0Njd4ajBVTkw2NHJxSWJoZzlWMmgyVmtmZjM2R050ZV85T01SZUdCRUNfVUZPeUtTLVhhSmljNkp1QVNpdjM1U3doNThDamtQNmhUeUQzdW02OEhiTVBKWVVCbHE5bWVxT1JQcmVwUmpKX2h4c3VpMGNiUQ?oc=5",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "80f835f0e6e18b84",
+   "ts": "2026-10-16T21:19:34.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "Mehr News Agency",
+   "via": null,
+   "lang": "Farsi/English",
+   "line": "آمریکا با وارونه‌نمایی واقعیت‌ها به دنبال پیروزی در جنگ روایت‌ها است",
+   "orig": "آمریکا با وارونه‌نمایی واقعیت‌ها به دنبال پیروزی در جنگ روایت‌ها است",
+   "url": "https://www.mehrnews.com/news/6979793/%D8%A2%D9%85%D8%B1%DB%8C%DA%A9%D8%A7-%D8%A8%D8%A7-%D9%88%D8%A7%D8%B1%D9%88%D9%86%D9%87-%D9%86%D9%85%D8%A7%DB%8C%DB%8C-%D9%88%D8%A7%D9%82%D8%B9%DB%8C%D8%AA-%D9%87%D8%A7-%D8%A8%D9%87-%D8%AF%D9%86%D8%A8%D8%A7%D9%84-%D9%BE%DB%8C%D8%B1%D9%88%D8%B2%DB%8C-%D8%AF%D8%B1-%D8%AC%D9%86%DA%AF-%D8%B1%D9%88%D8%A7%DB%8C%D8%AA-%D9%87%D8%A7",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "63cf7d58447be7b2",
+   "ts": "2026-10-16T21:17:43.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "بوابة الأهرام",
+   "via": "Google News",
+   "lang": "Arabic",
+   "line": "أمريكا تستبعد التدخل البرى ضد إيران.. وإسرائيل ترفع التأهب طهران تؤكد جاهزية قواتها.. وتتمسك بالسيطرة على «هرمز»",
+   "orig": "أمريكا تستبعد التدخل البرى ضد إيران.. وإسرائيل ترفع التأهب طهران تؤكد جاهزية قواتها.. وتتمسك بالسيطرة على «هرمز»",
+   "url": "https://news.google.com/rss/articles/CBMi1ARBVV95cUxPLTZZVEstRXc3aXJtc3RINUZxVFE4dXhFRjY2NkpITnNJa0FNcldYeE5yOUFPRmhJTzRnRTBLeEstcWRKWkh0VUpRemg3U19seXRJRmIyZ1MxVFNFTzh2N1JoSVFqVzhpbGFtQmJDQlJ2aERvYWtwQkpncHZRQk94aGRYU1RSR1B3cFRVZUtXWmViNVRFVlFtVUpPN2wtSFhUbGY2dEIta185NnlhVC1nVEFSRk1SMTVscFpRSlctSXNmbEhtWVM1aEZMdzZMdVk1SHh4R2FTaWl2Y2NhRlh4S2RiZWRGLUFJMDBacndwRDg3UXVrbE9rRWQwNGE5NW9iQzhIOEVfQ0dyRjA1WDJrakQwRGZ2cUVPRGNTdDhLYmc1XzE5OEZHd1ZrQ19wQTNwUjV5NFc0cUdkcnJnaWhyOW1YR1NnRkNyOVZocnFBaGU1X3ozbUxHMTRtd043Mzlfb21IN2ItWWxhbTE4S3NDTlN3dEtwQm1YWDJ1Mklyanl1TjhMdnBoaUpWUC1CS1JudFhWZ0xMcUpzOC1qdEFwUWE5MHRQekprUXU1VXVNN2NVbWxuSElaVDYwbjB2WmdJZm1TVDljbU9vSnJsZzk1WlgyMDZaX3VGNjBIQ2tGR1VGRF9wUGFFNWFOelFHbFdQbC1sLTRHeTM2TXpaeUR2cHJTU2JKLVFLMTRFcW1ZOEVYTlcxN3pJWmtQN240OHJwRHF0djlTdkVJS216NW1pWmRCYWJzS2VOV0MtYlJwQXhpLUdlSEM4d3JHdnhlTmVtRW1lTw?oc=5",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "209862950e51fa56",
+   "ts": "2026-10-16T21:15:47.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "الترا العراق",
+   "via": "Google News",
+   "lang": "Arabic",
+   "line": "القائد الأميركي: فصائل مسلحة في العراق بدأت ترسل الأموال إلى الحرس الثوري",
+   "orig": "القائد الأميركي: فصائل مسلحة في العراق بدأت ترسل الأموال إلى الحرس الثوري",
+   "url": "https://news.google.com/rss/articles/CBMiwgVBVV95cUxQRDF1TzFqSXZGbXg1TzhTNDlRQ2xXWElOeVdTRTRfUFl0V2FXUXQtX0NMRXg3OGRFR3lfWS03Q21OS0RVbkE1cDdmVnhZMWRJVHVMcG1xOEhVSzlEZk9BbmY3dnU2bUNhSm9qa213QWg2UjlHM0dZTU5pVW9xMWpDdm8yeFg0bkQ0OWR3Y0ZnSHR6c1Zzd05Lell2ckl0SmFacG1TWjB1SFNHZi1ZaTd0WGNLcnl6aFNSbVRHb2t5LTlWWGpfOWRFQzZBMElvQ3NfdEg2Sl9aakVoRzRfb3JWUkJlZ0JQZG1NMVBicmowYzE5TUh0Y1ItQkdhczRKN0NiOEQ4TTlrV1RBS2lJaWR6U1FNV3ZnaE1yd1VpVE51eVFJcDFITWFLcGVqRlpKUHBqd1d2R0doX250emNseGZ6WkUyeDFXRlBKWDBFdWE2S2hlU2tQV3gtRlFnY084U2sza2tOQ21aM2o0OWwzUTRkVVJjT0RZakFTV3J1cUQ1YXNURDhURWdzR05fd1YzX1l4a0t5ZmpIVUEwRi1hX25xRnQydFQ2QVpxSTRJbnNCSDdiOGl1WEt5d3dxMDh2T01HS2pfMHFOSGg2MEVaT2lIVHhJa2EzbHZMSUhHMDd3eldOVFZSZUdwZ1ZseGxLNVBuUDNlUkd3X3ZmdURpQkx5YWdDMWpqbnF0NmhqdjFKZS1jRThEUWNWNkFvcUV5ck9KU3liRlVtSFQyMDM1NlpCaF91TUVMeXNldlRmdTE4dm5pc1F5XzNLSlg4dmIyV3U2dDhHRUhET3gtUUU2ZzJuQ0x6dHJzbVNUMmMweW81R3hmanMzSFUzLXJjV3c1RHNvdnZmMnZFd2p0NlRTQUFFR0xuUFpNUlRIVG80QkU4d2pyYm85a3pQQm1OZ1lHa1BIbmZuNVNnRFVkTUdUM0lkakR3?oc=5",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "8dd241cf440616ab",
+   "ts": "2026-10-16T21:15:04.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "TradeWinds News",
+   "via": "Google News",
+   "lang": "English",
+   "line": "UAE-owned VLCC hit in Hormuz, Indian ministry says",
+   "orig": "UAE-owned VLCC hit in Hormuz, Indian ministry says",
+   "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxObDhxeDdST0Z1RXpqTUhYVmh2N0JuWTlTYUpXMkRlbXplNHFxd0hHN2h0R2dFXzkzV2lKSWNIejd1TWQtY2pHZGpyek9yVGFSZ0J4WGZfTzZXNjkyNmtKQ3V5V2JJM0JteGxzWXNFeWJ2cERoaFlwUmFPZmlVM3R6SHUyZGRJVzVLVUJlRHNOQmthZ1pwTS0ydzhHeGZwZ1hRVFlUT1l3?oc=5",
+   "tr": false,
+   "untranslated": false
+  },
+  {
+   "id": "55a8b6a4a8d5da01",
+   "ts": "2026-10-16T21:15:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "khabaragency.net",
+   "via": "GDELT",
+   "lang": "Arabic",
+   "line": "نزيف الجبهات يدفع الحوثيين للتعبئة القسرية .. إب تتحول إلى ساحة حشد",
+   "orig": "نزيف الجبهات يدفع الحوثيين للتعبئة القسرية .. إب تتحول إلى ساحة حشد",
+   "url": "https://www.khabaragency.net/news254420.html",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "b058e7c6d26fdfd3",
+   "ts": "2026-10-16T21:15:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "khabaragency.net",
+   "via": "GDELT",
+   "lang": "Arabic",
+   "line": "المنظمة البحرية الدولية : هرمز لا يزال غير آمن وإيران لم تقدم معلومات لفتحه",
+   "orig": "المنظمة البحرية الدولية : هرمز لا يزال غير آمن وإيران لم تقدم معلومات لفتحه",
+   "url": "https://www.khabaragency.net/news254431.html",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "cf7268d2d5a7a9f8",
+   "ts": "2026-10-16T21:15:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "khabaragency.net",
+   "via": "GDELT",
+   "lang": "Arabic",
+   "line": "القوات الحكومية اليمنية تعلن تنفيذ 1292 عملية استهداف ضد مليشيا الحوثي خلال الساعات الـ24 الماضية",
+   "orig": "القوات الحكومية اليمنية تعلن تنفيذ 1292 عملية استهداف ضد مليشيا الحوثي خلال الساعات الـ24 الماضية",
+   "url": "https://www.khabaragency.net/news254415.html",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "1157c8bc1f36afb9",
+   "ts": "2026-10-16T21:15:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "khabaragency.net",
+   "via": "GDELT",
+   "lang": "Arabic",
+   "line": "دماء الأبرياء بصبر .. جرائم الحوثي المستمرة ! | وكالة خبر للأنباء",
+   "orig": "دماء الأبرياء بصبر .. جرائم الحوثي المستمرة ! | وكالة خبر للأنباء",
+   "url": "https://www.khabaragency.net/news254427.html",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "824a938ea459179b",
+   "ts": "2026-10-16T21:15:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "sana.sy",
+   "via": "GDELT",
+   "lang": "Arabic",
+   "line": "بيان خليجي أوروبي يدين اعتداءات إيران ووكلائها ويؤكد أهمية تنويع مصادر الطاقة",
+   "orig": "بيان خليجي أوروبي يدين اعتداءات إيران ووكلائها ويؤكد أهمية تنويع مصادر الطاقة",
+   "url": "https://sana.sy/international/2609047/",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "f2ee330cc4850d2e",
+   "ts": "2026-10-16T21:15:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "khabaragency.net",
+   "via": "GDELT",
+   "lang": "Arabic",
+   "line": "الحكومة اليمنية : صاروخان حوثيان سقطا قرب طائرة متجهة إلى القاهرة أثناء استعدادها للإقلاع من عدن",
+   "orig": "الحكومة اليمنية : صاروخان حوثيان سقطا قرب طائرة متجهة إلى القاهرة أثناء استعدادها للإقلاع من عدن",
+   "url": "https://www.khabaragency.net/news254433.html",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "26c95e1574f1d2cb",
+   "ts": "2026-10-16T21:15:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "khabaragency.net",
+   "via": "GDELT",
+   "lang": "Arabic",
+   "line": "تحت وطأة الخسائر .. الحوثيون يحولون أجهزة الشرطة بصنعاء إلى أداة حرب وينقلون 40 % من عناصرها وآلياتها إلى جبهات تعز",
+   "orig": "تحت وطأة الخسائر .. الحوثيون يحولون أجهزة الشرطة بصنعاء إلى أداة حرب وينقلون 40 % من عناصرها وآلياتها إلى جبهات تعز",
+   "url": "https://www.khabaragency.net/news254416.html",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "209f243dacb230e9",
+   "ts": "2026-10-16T21:15:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "khabaragency.net",
+   "via": "GDELT",
+   "lang": "Arabic",
+   "line": "أربعة انفجارات تهز عدن بعد يوم من هجوم دامٍ استهدف قصر معاشيق",
+   "orig": "أربعة انفجارات تهز عدن بعد يوم من هجوم دامٍ استهدف قصر معاشيق",
+   "url": "https://www.khabaragency.net/news254428.html",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "3c0e69a09b5fa574",
+   "ts": "2026-10-16T21:12:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "היום",
+   "via": "Google News",
+   "lang": "Hebrew",
+   "line": "דיווח בסוריה: טילי נ\"מ שוגרו לעבר כטב\"ם באזור דמשק",
+   "orig": "דיווח בסוריה: טילי נ\"מ שוגרו לעבר כטב\"ם באזור דמשק",
+   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBoSThFeDB5UzJqRUk3X1VtZW52S3ZURUlId3ZWVE11TmRCeDJGN0I2Ukt0bEtNSndpdFI0LVhYbzFXNkxyeGxVcEFMZVhMZHJuTWwwZ1BkR0Zsdy0xQUhNaUZ2bDJzWkXSAW9BVV95cUxQS2QxOU43M3JpTFJYdVdQLTdWbU9vMzZld0YySG1TS245NEFaa015eEl3Tnk0RGliYWdTaVQ3RHdOTHB1M0dlQWZ6eXFPMW1ONGsyUEw4S2EyeGhRNThTa1M4RnhDcTd4TklqSDZwcjg?oc=5",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "400e09f73228a030",
+   "ts": "2026-10-16T21:09:05.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "entekhab.ir",
+   "via": null,
+   "lang": "English/Farsi/Arabic",
+   "line": "ادعای اکسیوس: سنتکام برای جلوگیری از تشدید جنگ پیش از انتخابات، در هفته‌های اخیر حملات علیه ایران در تنگه را متوقف کرده اما ایران حملات به کشتی‌ها را افزایش…",
+   "orig": "ادعای اکسیوس: سنتکام برای جلوگیری از تشدید جنگ پیش از انتخابات، در هفته‌های اخیر حملات علیه ایران در تنگه را متوقف کرده اما ایران حملات به کشتی‌ها را افزایش داده تا قیمت نفت را بالا ببرد و پیش از انتخابات، فشار بر ترامپ را افزایش دهد",
+   "url": "https://www.entekhab.ir/fa/news/943785/ادعای-اکسیوس-سنتکام-برای-جلوگیری-از-تشدید-جنگ-پیش-از-انتخابات-در-هفته-های-اخیر-حملات-علیه-ایران-در-تنگه-را-متوقف-کرده-اما-ایران-حملات-به-کشتی-ها-را-افزایش-داده-تا-قیمت-نفت-را-بالا-ببرد-و-پیش-از-انتخابات-فشار-بر-ترامپ-را-افزایش-دهد",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "ebd96753bfb1c128",
+   "ts": "2026-10-16T21:00:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "alwahdawi.net",
+   "via": "GDELT",
+   "lang": "Arabic",
+   "line": "وزارة النقل تكشف تفاصيل الهجوم الحوثي الجديد على مطار عدن الدولي",
+   "orig": "وزارة النقل تكشف تفاصيل الهجوم الحوثي الجديد على مطار عدن الدولي",
+   "url": "https://alwahdawi.net/news-40465",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "cf0cd87d73bcaa0d",
+   "ts": "2026-10-16T21:00:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "alquds.com",
+   "via": "GDELT",
+   "lang": "Arabic",
+   "line": "الأهمية الاستراتيجية لتعز في حرب اليمن وتداعيات الحصار",
+   "orig": "الأهمية الاستراتيجية لتعز في حرب اليمن وتداعيات الحصار",
+   "url": "https://alquds.com/ar/posts/262474",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "9b03363ac9a2c6a6",
+   "ts": "2026-10-16T20:57:49.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "entekhab.ir",
+   "via": null,
+   "lang": "English/Farsi/Arabic",
+   "line": "ادعای اکسیوس: کاخ سفید و میانجی‌های قطری هنوز منتظر پاسخ ایران درباره پیشنهاد متقابل آمریکا برای پایان دادن به جنگ هستند/ میانجی‌های به عراقچی گفته‌اند که…",
+   "orig": "ادعای اکسیوس: کاخ سفید و میانجی‌های قطری هنوز منتظر پاسخ ایران درباره پیشنهاد متقابل آمریکا برای پایان دادن به جنگ هستند/ میانجی‌های به عراقچی گفته‌اند که ایران نباید پاسخ خود را تا پس از انتخابات آمریکا به تعویق بیندازد؛ زیرا ممکن است ترامپ پس از انتخابات تهاجمی‌تر شود",
+   "url": "https://www.entekhab.ir/fa/news/943784/ادعای-اکسیوس-کاخ-سفید-و-میانجی-های-قطری-هنوز-منتظر-پاسخ-ایران-درباره-پیشنهاد-متقابل-آمریکا-برای-پایان-دادن-به-جنگ-هستند-میانجی-های-به-عراقچی-گفته-اند-که-ایران-نباید-پاسخ-خود-را-تا-پس-از-انتخابات-آمریکا-به-تعویق-بیندازد-زیرا-ممکن-است-ترامپ-پس-از-انتخابات-تهاجمی-تر-شود",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "759729b7263ffc88",
+   "ts": "2026-10-16T20:55:07.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "Simply Wall Street",
+   "via": "Google News",
+   "lang": "English",
+   "line": "Oil Stocks In Focus As Hormuz Risk Puts Integrated Producers Under Pressure",
+   "orig": "Oil Stocks In Focus As Hormuz Risk Puts Integrated Producers Under Pressure",
+   "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQNHBUcVRRWWRPeTd3aW9tckVaeW1fTTY5RlpnOWh5OHR2UzhBalkxdTFneEVSVVppeVJlWVNTdDlLdy1zdEd0NU1KOHI5VS0wYjZwQ2pxaERRVGkya1RWWUZSTHI1ZFAxNWxMRzZfbTMwMUZyM3RYMXBRSlhoMHJYeFhwa3RHNWdsOGZvQnFKQkpObEo2eExjeHZDNF9ZTnRvNEduX1lKczFSQ3ozaEE1YmxRRmxqMGVpbDJwU2Q3R1N5dml1dVHSAcsBQVVfeXFMUE9HNUlZeXNHekViM2NyVExLWnhSZG9RWmtGVVQ2LTFyREd6WllESlZXQ20wQjdZMlptaDdaV1VzR3pHMmYwWjdHVGIwLVozUnhaZlRRQ2NVa1dWVkdjQUFuS1BUdG8xNGlrS1VlSEE0M2kybUljcnRXMWU0WmxkSWh1ZWhWZnU4VnYxZ1ljQlRYc1FjZlB6U2lOUmVkUlNYRzFmV1hPZDQyMWc5YzRRVTE3T2laZ29tcXJGWGdVampzc3JieG5GQnpRZ2s?oc=5",
+   "tr": false,
+   "untranslated": false
+  },
+  {
+   "id": "0b66a19ed26ca1d8",
+   "ts": "2026-10-16T20:50:56.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "World Oil",
+   "via": "Google News",
+   "lang": "English",
+   "line": "Oil hits $110 as Houthi strikes, Russia-Ukraine attacks lift supply fears",
+   "orig": "Oil hits $110 as Houthi strikes, Russia-Ukraine attacks lift supply fears",
+   "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQQTBSY2VwTlJWTTVZbWdsaE5YLXhrbnZkTnRrckVIcWlobkpSbnp5SkZhRFNFd1cxZmt3T1lPWl9iTGthdFd1Q2xJUU5yNWY0NzA3RzRUNUlTM0dkQXJtTkxMRzhLT2tOM0xPVEhybDZGdlV4cXZNUUo0RHpqYVRlemhEV2dIVjl0SjRIczJhZ09kV2xHQ2Q1bkhwQnMyYWZJalR0Yk9MLU9nN2I4QUE?oc=5",
+   "tr": false,
+   "untranslated": false
+  },
+  {
+   "id": "ddb3c93683efac7e",
+   "ts": "2026-10-16T20:49:26.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "Latin Times",
+   "via": "Google News",
+   "lang": "English",
+   "line": "Houthi Missiles Hit Yemen's Presidential Palace — 5 Dead, PM Survives",
+   "orig": "Houthi Missiles Hit Yemen's Presidential Palace — 5 Dead, PM Survives",
+   "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNY0tUN2NxaHhldk5PTTBwcHFFbzlwRG5JdDJoS0FZU2JVUExsdjRUQjRCbmhSdVJFNGxIVTVIZV9YbGpsNEFBRl9wVkhyc1VLSl85RTRQS0RlM083VUxPQTFhenFES3hZcU5jTzZERW8tYmxuTG1rUy1RTFdjeUVoa2pmUnk3OENISVlTTWxabDBoUmUxNDY1MHdhT0M1VDRC?oc=5",
+   "tr": false,
+   "untranslated": false
+  },
+  {
+   "id": "368f551e68f5937e",
+   "ts": "2026-10-16T20:47:05.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "The News Pakistan",
+   "via": "Google News",
+   "lang": "English",
+   "line": "Iran rejects Saudi accusation of fuelling Houthi escalation as attacks target kingdom, Yemen",
+   "orig": "Iran rejects Saudi accusation of fuelling Houthi escalation as attacks target kingdom, Yemen",
+   "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNSW9DYTRsWElSVVFpSEdmeEdZYTRkeVJpQUcwRTc3eEJoSF8xS3RmSmcwUGRuajNVOEg2SmR5UDBxT2FYd0dDNTlqeEtadXA1UXBNUURPTmZKcmN1VTBXZG10SklUNDR3V1AtLVVsSmNnbWNjTVhyMURuOGZzN0puTUNKbUYyZ2NJX3FUbGVIX3ZqRmt3dlMyR1A0QUNPOTBsNUpsaE9hWWl5NVFWaGd5T1lyUlhoam12aHlES28xc1BOT1N0WU5j?oc=5",
+   "tr": false,
+   "untranslated": false
+  },
   {
    "id": "40ebf7decb94392e",
    "ts": "2026-10-16T20:46:13.508Z",
@@ -9037,6 +10926,58 @@
    "tr": false,
    "untranslated": false,
    "grp": "adsb-mil"
+  },
+  {
+   "id": "cb2889014cc19efa",
+   "ts": "2026-10-16T20:45:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "alriyadh.com",
+   "via": "GDELT",
+   "lang": "Arabic",
+   "line": "جريدة الرياض | القيادة المركزية : مضيق هرمز خاضع للسيطرة الأميركية والشركاء الإقليميين وليس إيران",
+   "orig": "جريدة الرياض | القيادة المركزية : مضيق هرمز خاضع للسيطرة الأميركية والشركاء الإقليميين وليس إيران",
+   "url": "https://www.alriyadh.com/2211186",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "18c78172795f6036",
+   "ts": "2026-10-16T20:45:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "rtarabic.com",
+   "via": "GDELT",
+   "lang": "Arabic",
+   "line": "إيران تحدد 3 شروط للصلح مع الولايات المتحدة",
+   "orig": "إيران تحدد 3 شروط للصلح مع الولايات المتحدة",
+   "url": "https://rtarabic.com/world/1844152-%D8%A5%D9%8A%D8%B1%D8%A7%D9%86-%D8%AA%D8%AD%D8%AF%D8%AF-3-%D8%B4%D8%B1%D9%88%D8%B7-%D9%84%D9%84%D8%B5%D9%84%D8%AD-%D9%85%D8%B9-%D8%A7%D9%84%D9%88%D9%84%D8%A7%D9%8A%D8%A7%D8%AA-%D8%A7%D9%84%D9%85%D8%AA%D8%AD%D8%AF%D8%A9/",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "78ee4937b9b2871a",
+   "ts": "2026-10-16T20:44:02.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "Türkiye Today",
+   "via": "Google News",
+   "lang": "English",
+   "line": "Houthis claim missile attack on Aden airport as Iran denies involvement",
+   "orig": "Houthis claim missile attack on Aden airport as Iran denies involvement",
+   "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQNWdCQXN3ZXVyNzF4Rk1zV2t2dld0LVlyWGpxVTlLYW5Ha0ZoZkdwM3lkODZxc2xfZGxEbzFxNTZjWnBuSEpaWFp3Z1NHWkFLcXB2RGlFZXM5RGdQeU9LSUZuWTcwMnNsaklQSVNZbi16ZlhBTW1fOWMxTFp0VUpaampiMW1uNlZrRlJiOTlqZE1fNzNxQV9Za0ZJT21Iakg4VF9DX24wcVE0bTdNN1NzVnJxcmFYdw?oc=5",
+   "tr": false,
+   "untranslated": false
+  },
+  {
+   "id": "6c5097f948bc2e40",
+   "ts": "2026-10-16T20:43:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "Middle East Eye",
+   "via": "Google News",
+   "lang": "English",
+   "line": "Hormuz controlled by US and allies, not Iran: Centcom chief",
+   "orig": "Hormuz controlled by US and allies, not Iran: Centcom chief",
+   "url": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxPOEYzbzNTMDQwN3A2X3RnaFQyUlJhVkVOeHBnb1Y2Vm1HN1JxMWF1ZHIzS3p6MFVhOWNGMDhKdVFxWXV5c21wTjFlMFl3RlYwRE9iS00tMHNKaWhkaUMycHFFNTFvRWRCZW1oY21Mc0p6ZVpsRjlzSWVWWnBQcEh2MU9aYUJybHJpVUNzYjBNR1Q2c3BJTkw1bzJtTzJXelNaZkJUTDBRYjFIWDdaNGlvVmk1M3liZlV0TkZXbExTLVcxdEItVWtnT2hEbHFhclR0dXlXSlBsR1BacEhicmNvSG82aWZtcWZTTFlRNjgtYlY?oc=5",
+   "tr": false,
+   "untranslated": false
   },
   {
    "id": "e7ccf5c739a44601",
@@ -9078,6 +11019,19 @@
    "untranslated": false
   },
   {
+   "id": "796e8fdf2a65d87e",
+   "ts": "2026-10-16T20:31:51.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "WSJ",
+   "via": "Google News",
+   "lang": "English",
+   "line": "Oil Prices Rise as Traders Weigh Saudi Aramco Attack Report, Hormuz Shipping Risks",
+   "orig": "Oil Prices Rise as Traders Weigh Saudi Aramco Attack Report, Hormuz Shipping Risks",
+   "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNZzlrRVp3SjY0Qjc1ejhzdHcxQWFQejJLS2hfZzJocWhnV3AtUi1OM1NGX2s2b0NjQkV4NnpYZUxTOGJTRVBlSEM2blAzMXRhbjNydFRjVnYyNGM4a25waTR1aGVTVWt1MXlKOURybDlzS0kxQXVrbUNlQTlRN3lxa3YxMEZ5djByOUhzTlg4MUZUYTRMT1V6MzBYODY3d2FhSk5zRkxMdWpocU1KYTV0TUVLMUtHcWZHbkJWVHVHc2NIRGFwQ1F2c0x3?oc=5",
+   "tr": false,
+   "untranslated": false
+  },
+  {
    "id": "7749485884e767c1",
    "ts": "2026-10-16T20:31:27.000Z",
    "got": "2026-10-16T20:46:13.508Z",
@@ -9104,6 +11058,19 @@
    "untranslated": true
   },
   {
+   "id": "6fc2fdd7a0382084",
+   "ts": "2026-10-16T20:30:39.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "entekhab.ir",
+   "via": null,
+   "lang": "English/Farsi/Arabic",
+   "line": "ادعای اکسیوس: کاخ سفید و میانجی‌های قطری هنوز منتظر پاسخ ایران به پیشنهاد آمریکا هستند/ میانجی‌ها به عراقچی گفته‌اند ایران نباید پاسخ خود را تا انتخابات…",
+   "orig": "ادعای اکسیوس: کاخ سفید و میانجی‌های قطری هنوز منتظر پاسخ ایران به پیشنهاد آمریکا هستند/ میانجی‌ها به عراقچی گفته‌اند ایران نباید پاسخ خود را تا انتخابات آمریکا به تعویق بیندازد، ممکن است ترامپ پس از انتخابات تهاجمی‌تر شود/ سنتکام برای جلوگیری از تشدید جنگ پیش از انتخابات، حملات علیه ایران در تنگه را متوقف کرده اما ایران حملات به کشتی‌ها را افزایش داده تا قیمت نفت را بالا ببرد",
+   "url": "https://www.entekhab.ir/fa/news/943780/ادعای-اکسیوس-کاخ-سفید-و-میانجی-های-قطری-هنوز-منتظر-پاسخ-ایران-به-پیشنهاد-آمریکا-هستند-میانجی-ها-به-عراقچی-گفته-اند-ایران-نباید-پاسخ-خود-را-تا-انتخابات-آمریکا-به-تعویق-بیندازد-ممکن-است-ترامپ-پس-از-انتخابات-تهاجمی-تر-شود-سنتکام-برای-جلوگیری-از-تشدید-جنگ-پیش-از-انتخابات-حملات-علیه-ایران-در-تنگه-را-متوقف-کرده-اما-ایران-حملات-به-کشتی-ها-را-افزایش-داده-تا-قیمت-نفت-را-بالا-ببرد",
+   "tr": false,
+   "untranslated": true
+  },
+  {
    "id": "f5d3182c94ee6995",
    "ts": "2026-10-16T20:30:39.000Z",
    "got": "2026-10-16T20:46:13.508Z",
@@ -9126,6 +11093,32 @@
    "line": "قائد «سنتكوم»: 400 سفينة تجارية عبرت مضيق هرمز خلال أسبوع",
    "orig": "قائد «سنتكوم»: 400 سفينة تجارية عبرت مضيق هرمز خلال أسبوع",
    "url": "https://news.google.com/rss/articles/CBMiP0FVX3lxTE1zVTViRHNyb181VVBBM3BudW5fYU1zMmMzWVQzR0pCS3lSdk1mZ0ppVDhIcHpjS0dmcmJlMGxyTQ?oc=5",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "41d3b5fdf568f085",
+   "ts": "2026-10-16T20:30:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "nile.eg",
+   "via": "GDELT",
+   "lang": "Arabic",
+   "line": "قناة النيل للأخبار | الجيش الأمريكي : مضيق هرمز مفتوح والحصار على إيران مستمر",
+   "orig": "قناة النيل للأخبار | الجيش الأمريكي : مضيق هرمز مفتوح والحصار على إيران مستمر",
+   "url": "https://www.nile.eg/%D8%A7%D9%84%D8%AC%D9%8A%D8%B4-%D8%A7%D9%84%D8%A3%D9%85%D8%B1%D9%8A%D9%83%D9%8A-%D9%85%D8%B6%D9%8A%D9%82-%D9%87%D8%B1%D9%85%D8%B2-%D9%85%D9%81%D8%AA%D9%88%D8%AD-%D9%88%D8%A7%D9%84%D8%AD%D8%B5%D8%A7",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "e2c56f62dcea9d75",
+   "ts": "2026-10-16T20:30:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "nile.eg",
+   "via": "GDELT",
+   "lang": "Arabic",
+   "line": "قناة النيل للأخبار | انفجارات في محيط مطار عدن .. ووسائل إعلام حوثية تكشف استهداف مقر قيادة للقوات السعودية في عدن",
+   "orig": "قناة النيل للأخبار | انفجارات في محيط مطار عدن .. ووسائل إعلام حوثية تكشف استهداف مقر قيادة للقوات السعودية في عدن",
+   "url": "https://www.nile.eg/%D8%A7%D9%86%D9%81%D8%AC%D8%A7%D8%B1%D8%A7%D8%AA-%D9%81%D9%8A-%D9%85%D8%AD%D9%8A%D8%B7-%D9%85%D8%B7%D8%A7%D8%B1-%D8%B9%D8%AF%D9%86-%D9%88%D9%88%D8%B3%D8%A7%D8%A6%D9%84-%D8%A5%D8%B9%D9%84%D8%A7%D9%85",
    "tr": false,
    "untranslated": true
   },
@@ -9182,6 +11175,32 @@
    "untranslated": true
   },
   {
+   "id": "c08c6ccbc60195d4",
+   "ts": "2026-10-16T20:25:06.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "yjc.ir",
+   "via": null,
+   "lang": "Farsi",
+   "line": "تفاهم اسلام‌آباد را آمریکا و صهیونیست‌ها نقض کردند",
+   "orig": "تفاهم اسلام‌آباد را آمریکا و صهیونیست‌ها نقض کردند",
+   "url": "https://www.yjc.ir/fa/news/9139299/تفاهم-اسلام‌آباد-را-آمریکا-و-صهیونیست‌ها-نقض-کردند",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "6be87bf121a4ae5c",
+   "ts": "2026-10-16T20:22:35.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "زاكروس عربية",
+   "via": "Google News",
+   "lang": "Arabic",
+   "line": "\"سنتكوم\": مضيق هرمز مفتوح والحصار على إيران مستمر",
+   "orig": "\"سنتكوم\": مضيق هرمز مفتوح والحصار على إيران مستمر",
+   "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE9hTWJYYnE0bG5pYm1yNDBVME9OUldNTWwyMllZTDdKY05DY1RQWno1dlR0Mm9IYl9QbHZLM3R6VUtCTlNBc0pZbVFBbko?oc=5",
+   "tr": false,
+   "untranslated": true
+  },
+  {
    "id": "85f7a1fec1de42ff",
    "ts": "2026-10-16T20:21:54.000Z",
    "got": "2026-10-16T20:46:13.508Z",
@@ -9208,6 +11227,32 @@
    "untranslated": true
   },
   {
+   "id": "0245927e70042b73",
+   "ts": "2026-10-16T20:21:01.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "وكالة صدى نيوز",
+   "via": "Google News",
+   "lang": "Hebrew",
+   "line": "הצבא האמריקאי: מצר הורמוז פתוח והמצור על איראן נמשך",
+   "orig": "הצבא האמריקאי: מצר הורמוז פתוח והמצור על איראן נמשך",
+   "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5vLUw3ZlNFNTZzY2JzS3ZkRlBhTGFZQ1Q1eGFlZDRaRmRVcjFqVmlrSzlPX19PTXozcnhfaTNiRzVSdGt2VXpXeEhiTEtzNXFwNUcwQ053?oc=5",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "678a30bd2a9d5f58",
+   "ts": "2026-10-16T20:20:40.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "شفق نيوز",
+   "via": "Google News",
+   "lang": "English",
+   "line": "Shafaq News..Houthi attacks reported near Aden airport",
+   "orig": "Shafaq News..Houthi attacks reported near Aden airport",
+   "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPVXYta21oQmZfMk1FemNqdjhtUlRISE1HRklRV0dma29pUF9GRkxRUDdPWlM1bkhxbUNtOFJmOHFTNld2blpRN2tWb0h5ejZaVi01R0pMbWtjcDRDX3hMTzltVnhxcDVJUHZqdGVmaHB4Q1RuZVhfMDNyM19JREFuQQ?oc=5",
+   "tr": false,
+   "untranslated": false
+  },
+  {
    "id": "0891cf119c5240f3",
    "ts": "2026-10-16T20:18:20.000Z",
    "got": "2026-10-16T20:46:13.508Z",
@@ -9230,6 +11275,19 @@
    "line": "🔵 التعبئة التربوية في حزب الله في الجامعة الاميركية والجامعة اللبنانية الاميركية تبارك بفوز مرشحيها بانتخابات الجامعتين",
    "orig": "🔵 التعبئة التربوية في حزب الله في الجامعة الاميركية والجامعة اللبنانية الاميركية تبارك بفوز مرشحيها بانتخابات الجامعتين https://almanar.com.lb/article/1268137/?s=tg",
    "url": "https://t.me/almanarnews/268281",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "80dd0bab5b16afd6",
+   "ts": "2026-10-16T20:15:58.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "Alkalima Online",
+   "via": "Google News",
+   "lang": "Arabic",
+   "line": "الحصار مستمر وهرمز مفتوح… \"سنتكوم\" تكشف حجم الضغط على إيران",
+   "orig": "الحصار مستمر وهرمز مفتوح… \"سنتكوم\" تكشف حجم الضغط على إيران",
+   "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1DMk55VFV3cDdZV2xlaDNMblpnYWdnTUo2MVVSbUp2d2luRzJENXFiRWtnMWY0SHlocEFZRmdqYVRfbWdKQ1BYQ09jdVVvdGJOTzdHZnFJYUVPNEdhamxB?oc=5",
    "tr": false,
    "untranslated": true
   },
@@ -9260,6 +11318,19 @@
    "untranslated": true
   },
   {
+   "id": "4d0df0011639df65",
+   "ts": "2026-10-16T20:11:07.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "نورنیوز",
+   "via": "Google News",
+   "lang": "Hebrew",
+   "line": "הקלף האחרון של הקונגרס; משחק הסיום של טראמפ במלחמת איראן?",
+   "orig": "הקלף האחרון של הקונגרס; משחק הסיום של טראמפ במלחמת איראן?",
+   "url": "https://news.google.com/rss/articles/CBMixwNBVV95cUxQXzh2SEZsd0tNZWJCalZhME9CTTFYMVRLV0lhaldGZ1FvaFFaT09vY3RfWWxHMEk0bUdpR3Fzd3NUV0ZRUmpIWlJsdzhJZUxtU0g5VUgyYnVmNXNsMkFNLUFsVjRNaDNFWl9MeW1ublRiYVlPWmotYnpiS0tCdzRacDJIZTFmbWNNeEloMldlYWlHc2t5YjNtd0FYZTVsV2Yzd3FNay1BMnVLenhXcWV2ZmZ5Y2FvSXMxRFV1TEV3V2FzZFNjX2tjczZtSlE5ZUptcGtrNjFrM1pvSXFKZ1k0UExPbWttdXg2V3dYU2Y0NHZ2ZElIV0kyTUNKbWxNSDZLS1BXVjZMc1hMclhwa1N0TklneGxmTGdRa1NvaUpCZmFkWmcxd1A5SkM3aHEtSjVLcnVMM0d6MjNkNDM4S2MzY21Kc2ctQlQ3VEszMkJGRS01WVRqd0k2ZHpBMzM4T2tNRVVVT0xSLUNzdlllVlcxMmZTMDM4YVd2TmRnT3ZqUm9vblBYUWxfdzJhNmJZWDBwMzJZYXlXaDhqZm9IckN1WHNkTzJFMVR0d2ExZ2NOSHZxSXh3dE5BVElITlVSSUZUQTdCNFc4dw?oc=5",
+   "tr": false,
+   "untranslated": true
+  },
+  {
    "id": "3972d42e910a3c80",
    "ts": "2026-10-16T20:07:37.000Z",
    "got": "2026-10-16T20:46:13.508Z",
@@ -9269,6 +11340,32 @@
    "line": "CENTCOM: Hormuz Is Under US And Partner Control, Not Iran's",
    "orig": "CENTCOM: Hormuz Is Under US And Partner Control, Not Iran's",
    "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOVERLRHpVTk41VXVPaXRyYnV4bUJzdzRMcnY5TzRZUC1CMWNXUHhPb3JVRUxBTFlQM2phWW5XNGJMR0JFajhLM2dMaVRONzhXWC1WQVlJbWxSZmgzRWZ5c09fY05ObUdGZ21LM1h0WF9pbTRwYmt3RXhLRWh1M3hNM2Nzd1IwRzZvSjNKNFFkMlVRUm9Fb2Z4Y2xrRERVUW5KR3c?oc=5",
+   "tr": false,
+   "untranslated": false
+  },
+  {
+   "id": "33509b7cba286d21",
+   "ts": "2026-10-16T20:06:42.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "نورنیوز",
+   "via": "Google News",
+   "lang": "Hebrew",
+   "line": "ההתפתחויות האחרונות במלחמת ארה\"ב עם איראן; ממשבר ההגנה מפני טילים ועד לאפשרות שאיראן תפרוש מאמנת ה-NPT",
+   "orig": "ההתפתחויות האחרונות במלחמת ארה\"ב עם איראן; ממשבר ההגנה מפני טילים ועד לאפשרות שאיראן תפרוש מאמנת ה-NPT",
+   "url": "https://news.google.com/rss/articles/CBMi2wVBVV95cUxNUmpTMXJyOHZmT2lxTjZsQXI4djd4QnpRRmtRcnB3c2hUQVgwczNqRDJhT2RTajU1SnJUMWttMVh1Sk9uUlpEVm1GaWFaQjlHZkZCNWNJQlZIX0NmN1hvUlJUMC1naGtyZWVORFk0RHF5bG50YlFzVTRfY05BS0ZHNUxxaGhmbElGbzFVSmVnaDFzR3ExT2h0MW5zcVFlSFRSTkFyLTk1VkJiM1JYdHdTMnR6ZFJZaVRoVXZ2S1llYTg1VVRTMVRfNzVYbFc2di1rWlhIN04xSHBGcHoxM1ZEV2I1Z3NOWEhlaGhCSEhvWDV0aHFoVVZtWENIeUNxMko1TTJTalh3N3dTOXNVQlUtNDlkRk9DYUVPbGV1ZGk3Q1E2a3VrYlhoRnQ0bmNTQTlnTlZneW01eDlVenFWN1NYc2xkUzNrdlI2RDBzN2RqOWNZcE50V096MllNdVNsRFZkaWd3N2IyS3c5a0FuNkZPUml1SHFyOHJIdDhlazhSMW4zSUFNZFdEWEtueU5vT0IxY2RiNFVNUGdJdDVJaDdnYUN0ZXR5S0JFZk5XdzNpNGtuYlBVQkkzZkRhT0Zmd2xYTVBITE9QMko3Z2Z2TlEzRlFfY3JWQi1BUUxIVkxKeVJKbmc5Q082eVJ5bkIyNk9iNXlINkxkR2FvUmJKeGNCbEtLdVFhU25GTW1FdnpXRGxUbm9pcHEzaElQWWVRLW53S3dEZ3ZIcUtBZzl3T0F4SjY1TDM2eFBldm9HbkNFWFFWeUtodS1teWR3aDNWa2pKd1BlbzVLN0Z0dHNseW56VzZUS3ZwQ3NEeWhZUm9fZUdBSHdjNW9jR1ljNTN1Q2Y1MW9Idkd0ZXByUm5HaFVRNno5T1psazNfLW1mSFM1Q01xTUs1MFNhci1ob1dQdDM3VDB6aGJST1hYdzJtTTNBVG5fcFF0QXNnVGlEVXlKUVVpT2xocGVCVlNLVQ?oc=5",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "8f16ef52d370a58e",
+   "ts": "2026-10-16T20:04:10.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "www.thenationalnews.com",
+   "via": "Google News",
+   "lang": "English",
+   "line": "Oil tanker struck in Strait of Hormuz, says Indian ports minister",
+   "orig": "Oil tanker struck in Strait of Hormuz, says Indian ports minister",
+   "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPaFd0ckdCY1RENXNjdndWTTdGSU52Mkh2QXhvY2dETlFpUnNTMTAzTGloaktvVXFqa2R6QzNvVjgwdGpzb3RlSzZhcXNrd2tRVGQ5c1doaV9jTjFJUVNkZXprY3JNTFpFSDg5SzlOZ1JDY3N1dXQyV0NNQkNEclM3SWJlbXFsSlNNZ3BKVG9XeGU?oc=5",
    "tr": false,
    "untranslated": false
   },
@@ -9364,6 +11461,45 @@
    "untranslated": false
   },
   {
+   "id": "27932e819b78e095",
+   "ts": "2026-10-16T20:00:19.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "كل العرب",
+   "via": "Google News",
+   "lang": "Arabic",
+   "line": "القيادة المركزية الأميركية: مضيق هرمز مفتوح أمام الملاحة رغم الهجمات الإيرانية",
+   "orig": "القيادة المركزية الأميركية: مضيق هرمز مفتوح أمام الملاحة رغم الهجمات الإيرانية",
+   "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFB0T01JMEpubE5yNWY2Yi02bzROcWI5SVBOa3FqQW1wUTV3T1hBbllDWFZJeU5EZGpYZ3RSVk9ibzlyMXBDTXZYRHdnbjhPdEXSAU9BVV95cUxQdE9NSTBKbmxOcjVmNmItNm80TnFiOUlQTmtxakFtcFE1d09YQW5ZQ1hWSXlORGRqWGd0UlZPYm85cjFwQ012WER3Z244T3RF?oc=5",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "4abf7c1b529af950",
+   "ts": "2026-10-16T20:00:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "dostor.org",
+   "via": "GDELT",
+   "lang": "Arabic",
+   "line": "رئيس وزراء إسبانيا : كنا على حق تماماً في رفضنا للانخراط في الحرب ضد إيران",
+   "orig": "رئيس وزراء إسبانيا : كنا على حق تماماً في رفضنا للانخراط في الحرب ضد إيران",
+   "url": "https://www.dostor.org/5741911",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "a9ea8f80f48f1561",
+   "ts": "2026-10-16T20:00:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "shorouknews.com",
+   "via": "GDELT",
+   "lang": "Arabic",
+   "line": "القيادة المركزية الأمريكية : إيران لا تسيطر على مضيق هرمز .. والنفط يتدفق بالمعدلات السابقة للحرب",
+   "orig": "القيادة المركزية الأمريكية : إيران لا تسيطر على مضيق هرمز .. والنفط يتدفق بالمعدلات السابقة للحرب",
+   "url": "https://www.shorouknews.com/news/view.aspx?cdate=16102026&id=56645d11-560f-4eb9-b6c1-52892013a0d9",
+   "tr": false,
+   "untranslated": true
+  },
+  {
    "id": "d901cfb24f65ab3b",
    "ts": "2026-10-16T19:58:39.888Z",
    "got": "2026-10-16T19:58:39.888Z",
@@ -9405,6 +11541,19 @@
    "untranslated": false
   },
   {
+   "id": "b90613e0eb8a9a4e",
+   "ts": "2026-10-16T19:58:01.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "yjc.ir",
+   "via": null,
+   "lang": "Farsi",
+   "line": "عمان از مردم خواست به کشتی غرق شده در تنگه هرمز نزدیک نشوند",
+   "orig": "عمان از مردم خواست به کشتی غرق شده در تنگه هرمز نزدیک نشوند",
+   "url": "https://www.yjc.ir/fa/news/9139293/عمان-از-مردم-خواست-به-کشتی-غرق-شده-در-تنگه-هرمز-نزدیک-نشوند",
+   "tr": false,
+   "untranslated": true
+  },
+  {
    "id": "fb9cbbd86831f15f",
    "ts": "2026-10-16T19:56:07.000Z",
    "got": "2026-10-16T19:58:39.888Z",
@@ -9416,6 +11565,19 @@
    "url": "https://t.me/iranictv/39899",
    "tr": true,
    "untranslated": false
+  },
+  {
+   "id": "ace817ee1b1fb3b1",
+   "ts": "2026-10-16T19:56:01.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "yjc.ir",
+   "via": null,
+   "lang": "Farsi",
+   "line": "ادعای ترامپ: عربستان کمک اسرائیل علیه یمن را می‌پذیرد",
+   "orig": "ادعای ترامپ: عربستان کمک اسرائیل علیه یمن را می‌پذیرد",
+   "url": "https://www.yjc.ir/fa/news/9139288/ادعای-ترامپ-عربستان-کمک-اسرائیل-علیه-یمن-را-می‌پذیرد",
+   "tr": false,
+   "untranslated": true
   },
   {
    "id": "31e70577bf8504fa",
@@ -9453,6 +11615,32 @@
    "line": "Israeli settlers attack US photographer covering West Bank",
    "orig": "Israeli settlers attack US photographer covering West Bank",
    "url": "https://www.newarab.com/news/israeli-settlers-attack-us-photographer-covering-west-bank",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "fe2cad810bb7901a",
+   "ts": "2026-10-16T19:45:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "alsahwa-yemen.net",
+   "via": "GDELT",
+   "lang": "Arabic",
+   "line": "القوات المسلحة تنفذ ( 1292 ) عملية وتحييد ما يزيد عن ( 430 ) عنصراً من مليشيا الحوثي",
+   "orig": "القوات المسلحة تنفذ ( 1292 ) عملية وتحييد ما يزيد عن ( 430 ) عنصراً من مليشيا الحوثي",
+   "url": "https://www.alsahwa-yemen.net/p-96336",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "a425c530d8f5ccc2",
+   "ts": "2026-10-16T19:45:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "shorouknews.com",
+   "via": "GDELT",
+   "lang": "Arabic",
+   "line": "اليمن .. الحوثيون يستهدفون مجددا محيط مطار عدن الدولي",
+   "orig": "اليمن .. الحوثيون يستهدفون مجددا محيط مطار عدن الدولي",
+   "url": "https://www.shorouknews.com/news/view.aspx?cdate=16102026&id=bba18840-a551-4ad2-9033-cb708dfe3245",
    "tr": false,
    "untranslated": true
   },
@@ -9496,6 +11684,19 @@
    "untranslated": true
   },
   {
+   "id": "b3b109f6efccac9b",
+   "ts": "2026-10-16T19:40:23.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "شبكة تواصل الإخبارية",
+   "via": "Google News",
+   "lang": "Arabic",
+   "line": "سنتكوم: العمليات الأمريكية قيدت القدرات العسكرية والاقتصادية لإيران بشكل كبير",
+   "orig": "سنتكوم: العمليات الأمريكية قيدت القدرات العسكرية والاقتصادية لإيران بشكل كبير",
+   "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE95My0yZXF3NTBmOW53NUtCRTFka0U2bXFCVXJHNV9HcnBpaEZHU3F6eFRrYXg1alp1dGhLOFFKRloydnZuX1ZuNmRxajFtVU9LbGxB?oc=5",
+   "tr": false,
+   "untranslated": true
+  },
+  {
    "id": "b1c543c4d4ed535d",
    "ts": "2026-10-16T19:37:00.000Z",
    "got": "2026-10-16T19:58:39.888Z",
@@ -9519,6 +11720,19 @@
    "url": "https://www.mehrnews.com/news/6979833/%D8%B1%D8%A6%DB%8C%D8%B3-%D8%B3%D8%A7%D8%B2%D9%85%D8%A7%D9%86-%D9%85%D9%84%DB%8C-%D8%A7%D8%B3%D8%AA%D8%A7%D9%86%D8%AF%D8%A7%D8%B1%D8%AF-%D8%A7%DB%8C%D8%B1%D8%A7%D9%86-%D9%88%D8%A7%D8%B1%D8%AF-%D8%AE%D9%88%D8%B2%D8%B3%D8%AA%D8%A7%D9%86-%D8%B4%D8%AF",
    "line": "Head of Iran's National Standards Organization arrives in Khuzestan",
    "tr": true,
+   "untranslated": false
+  },
+  {
+   "id": "8d2e5be777554e4f",
+   "ts": "2026-10-16T19:36:13.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "شفق نيوز",
+   "via": "Google News",
+   "lang": "English",
+   "line": "Shafaq News..CENTCOM: 400 ships cross Hormuz in seven days",
+   "orig": "Shafaq News..CENTCOM: 400 ships cross Hormuz in seven days",
+   "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1XZ1d4UTVPTWdwcEN2dlZybVpTQjlwNWVZMXYzZUFqWm1MSy05RXI1MWpqVHpteW9oNXJzVXk5Zy1HXzUwZGdxcWFOdWtvY3ZwMDFSTnB6N2FOZ1VjZWFiWXhWemtHZ0cxSHI4NG8zbHd6MnNkelRNZUhabHM?oc=5",
+   "tr": false,
    "untranslated": false
   },
   {
@@ -9546,6 +11760,19 @@
    "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQT055djRqSFNQZDBhQVFiLUM3UVNZenVqR1pweHVfY3lxQVN5ZkpyY2J4dXBsdE1mR2x4eVVJektvalNsUE93UFY2ckNKYmVRRU1rb3Q2ajVDV3MtdjRQcmJzSTRfQm1abVQ2RmNIUWdLSkZTdXg5T3NyVy03Q180TkloblJmcHViSUp5bDQzOHhHQWVzdzI3ckg5OUJwV3lLUUhWcHVXWjlxNDlpUHc?oc=5",
    "tr": false,
    "untranslated": false
+  },
+  {
+   "id": "b227f5fab92df86c",
+   "ts": "2026-10-16T19:34:39.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "رؤيا الإخباري",
+   "via": "Google News",
+   "lang": "Arabic",
+   "line": "القيادة المركزية الأمريكية: عبور نحو 400 سفينة تجارية في مضيق هرمز خلال 7 أيام",
+   "orig": "القيادة المركزية الأمريكية: عبور نحو 400 سفينة تجارية في مضيق هرمز خلال 7 أيام",
+   "url": "https://news.google.com/rss/articles/CBMiwgRBVV95cUxOcVk2SUljenpZZ2Q2RVRlUy1JeDkxcElLOUdDY3U5bmhaYTUzZ3JlejNnTWZBS3Fuc25VS3VFNHg4M2d3SUphU19NQ0thOTAtYkd0VUlodzY1RjFHRDMyTWY5eVNCaFRfM1ZmaDYtTGdnUWItYWt1LUg2clFDaHRaM3FPMXplSGIzdEw1VHlpYWdiLVFUSFR6ZFNzcnhGMmdlS1FZbEJLX0ZkQ3V5aGJrdGUwam44SW9hVWVNV0RKTlIxeW9qRUhGUXBXdEh5dnBGUlBINngzdnpnZm4zQjdkTGpNcEhoRFBsSU9vUGJlNXNKM0ZSbnRwQldMYmZDakV4RGU4TGNMZ0dWUGM2S1B1d0xtYzU0MlJ6U0VaaDFSTU9TVjlBZU9fMlpTU2U0dklMazN3ODRaUFpMSmhxMzhKYzFXa19NM2RydnFTODlHUHQ0OWpOcVhrcmpSc0tuS1BrZ3ZrckljTS00b3lYbFROVWRoSzZEWF9BaV9pQU96VHFKWEVucUo3NUdWbi1qWlhRWGpEYlJkNkhkNjAyRUtyWU9CbGxtQ2llakk0c2w3ZmI4dTY1dER5S2N4SEFwQzdYbm5HNVp2cTdGQWt1MDlCbTZNNEd0QnA5R2lFTEpNQjBmM2ZoRnRLR2Z6cDBHUkUxZlRraG9ocTVFSW54WHgxalFtNWlDNHBBWE9Uc3U5YzZuZ1k1SjdSdC1HdEx6VUJINDJZOVRKNEhlWjAtbjhMeHR4UnN1MFlNLXdVSXZUMnJMQQ?oc=5",
+   "tr": false,
+   "untranslated": true
   },
   {
    "id": "140dbe9d0ee4b6a4",
@@ -9613,6 +11840,19 @@
    "untranslated": false
   },
   {
+   "id": "cde66ce8b4bcf71b",
+   "ts": "2026-10-16T19:29:50.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "Iran International",
+   "via": "Google News",
+   "lang": "English",
+   "line": "CENTCOM says it blocked $25 billion in Iran oil exports, IRGC struggling with paychecks",
+   "orig": "CENTCOM says it blocked $25 billion in Iran oil exports, IRGC struggling with paychecks",
+   "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5NUk9EZUUxanFVVDVZLWNrdk1MeFJrb21qMnVPY19kbmVHYk1jeWcxa2lBb3VMNGRlZGZhcjdVVldPMGlDYVFwUlZuUndoZXQ3LVE?oc=5",
+   "tr": false,
+   "untranslated": false
+  },
+  {
    "id": "554bb002067fc109",
    "ts": "2026-10-16T19:29:03.000Z",
    "got": "2026-10-16T19:58:39.888Z",
@@ -9637,6 +11877,19 @@
    "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPXzFRSGo0eDU5QXllbWxXX0Z3UXdnT1ZDWk5FQ3VZdVpQcXEyXzkyck5pc0txbEl1QTJMX0xsbWZZNjVlNUNZWEJRUWxaaEhvaUVaQmNZdnB5NUVRMXNNVW5hanJWZGNfdFVCalBsaTNhQnBIaVRxWGRBSkduR0tDbWJvQkFiY0VaM3BTZTNYaw?oc=5",
    "tr": false,
    "untranslated": false
+  },
+  {
+   "id": "4644db36b01ccdfc",
+   "ts": "2026-10-16T19:19:47.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "MTV Lebanon",
+   "via": "Google News",
+   "lang": "Arabic",
+   "line": "الجيش الأميركي: الحرس الثوري الإيراني بات عاجزًا عن دفع رواتب قواته وميليشيات موالية لإيران توقفت عن دفع رواتب عناصرها لتحويل الأموال إلى الحرس الثوري",
+   "orig": "الجيش الأميركي: الحرس الثوري الإيراني بات عاجزًا عن دفع رواتب قواته وميليشيات موالية لإيران توقفت عن دفع رواتب عناصرها لتحويل الأموال إلى الحرس الثوري",
+   "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1od1hVcEdBU2NPZk5OdlRTbUxVQmZaZnd4ZlluUWEyenlhaGtiNldzT1JVSGREX2doeGVQR0J4WnBpODRDNXY0Wnh3Z1h3Sk5zd2RVUw?oc=5",
+   "tr": false,
+   "untranslated": true
   },
   {
    "id": "869bc2b2b7d49b97",
@@ -9743,6 +11996,19 @@
    "untranslated": false
   },
   {
+   "id": "e1a8e502c94400bb",
+   "ts": "2026-10-16T18:57:02.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "WBFF",
+   "via": "Google News",
+   "lang": "English",
+   "line": "Trump faces new Iran war challenges as Houthi attacks threaten energy supplies",
+   "orig": "Trump faces new Iran war challenges as Houthi attacks threaten energy supplies",
+   "url": "https://news.google.com/rss/articles/CBMilwJBVV95cUxObDk0aFpDM0FxbmVTUmJ0V2QwbEFRWWhVUU5pUTlUZXo0X2h5Z3pWVEltUC15emc1UFB4akcycWxqZmlUZk8tanJWRmIzS0hlNlNtRGViT1RQV1NxMGlKRUZKbDRkbEVOa2x4Ylo3bXlGbExWdDVKREhWcnQydXF2YnNnemdsMzFOaWpHZ2Jqc1BteWJsbDRVR3ZZc3ZSSXEtM0N1Vm11c25lYUlLRkVlMVdCX0EwbXZmZ2dIQVl5aDdlWVNwdTdxcld1WTk1THFES21XVmxFelRUZlFDdDBxc2x0LTBtU3NNdXRGbERXX1BWNWJIM1JZUnJDdk8yVTJxb0w5N2xnREhud29JZG1ud05LV2s3V0U?oc=5",
+   "tr": false,
+   "untranslated": false
+  },
+  {
    "id": "bf3008cefad686d9",
    "ts": "2026-10-16T18:56:45.000Z",
    "got": "2026-10-16T19:58:39.888Z",
@@ -9753,6 +12019,19 @@
    "orig": "الجيش الأميركي: مضيق هرمز مفتوح والحصار على إيران مستمر",
    "url": "https://news.google.com/rss/articles/CBMiwANBVV95cUxOeWlSbDFBeV9lTzJVdVNNbXdUamQyOE52cVpfZGNuaVNXMUpGZldCZkZiMWtFWkdpQ0NERFNlbXlMY2c5Tm0tOFZtYmtiMFMteDFaTEJON05WdDZKOXZncGF5RlR2bnVPWlZMVDdZLUpVSHhBU1U0bkZoUjJzRmFDUW1HY2w2WTNwZWF5eVJtZjdqa3VPVzF6SURGczFvR0E3Q0J5LXE1UGpXeEwwcjAzMzg0SXZlYUNkMEdOaGxOdVo1MXVHOGQ0YlVhUFdLanZEdmZSTWpLVEEta01OR3J0NHRuNXRlQnNKNkRyT3hDaVR4Nm82LWMwdGw1dHRKWWF1eWhhS2Rma2NQZXpFZDJRc0tab3F4MG9DenlIZWJTcXlFVnRZcmRoNENCMDBucmVKeVE0V3BfY0pDX2VNbHZDVGE2Mm0tbC1mcXU3cHRmQjFGMzh3VDRLcjFfSTU1QjBKOXpYendjYWRzZFJsT3FvcGVyNlliV0FCNEJuYkpPZlBRTVBXZklaTkZqNDNwVmliUEF0bF96U3Z1M2gzeHpqSGk3bll5LTlpQzFsakk3M3RyTmxLeE9jR1d2bThIeV9C0gHGA0FVX3lxTE5FRnlFSVRFQUhEZ2ctSmg3WktZZUdxMU5HYkhBZkw0WkdUcHNqNHlXeWZCR09adUprQWx5M2pWMzNWU1B6WE12ckI0SHJPMXFxbkZxSm5FY0ZwSEthcFRUWllLVDlFQVpXNHloYnU0ZTg5dXZ6eXBvYXBEVkN4WHJtcVg1MlNKaUhvaDIxOFU1c2ExR3VCajV2TlVaS2pQVGYxMm1vYkNMel9wYXc4bkYwZ04wVVQ5UHNSTlFKVnpCVmVZR2tDNVJ0UHRnRTlidGVsVHRzcnZ3THExV1JnVXZpamJTTm9OaGtFSzFJZmJrZi1iRzgwaFc3bVFncXpZR3ppN1MxTzlMdHEyQTRJQXgyS2NRWU9FbFROQWhjYkVSRlROeHlYUVFzM2J4TkNmQ3pSTXJwT1YxZ3RDb1Fncy1XTWU0cm1FcXl4QTkwcjRHNDlQX01hUnlQOGlad3JRWFlEZXpnYU1pLVUzeHJnUkZ1VTkzdEpIOGFDU0NGR2V4Q3ZZak1IWVJoTjdkN1Ywb1A1UjdNcGlKUWVra3ZFcE9aUVFNZkNXZEIwcUcwZlpOQ2pwZ1VKSFVwTlVVN3FTUGt0Zks2X0E?oc=5",
    "tr": true,
+   "untranslated": false
+  },
+  {
+   "id": "f6393500cca6fdd0",
+   "ts": "2026-10-16T18:55:21.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "Türkiye Today",
+   "via": "Google News",
+   "lang": "English",
+   "line": "Iraq loses $60B as Iran war chokes off oil exports through Hormuz",
+   "orig": "Iraq loses $60B as Iran war chokes off oil exports through Hormuz",
+   "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQbEtSOVItWVAwRVJLV3RJS1JFQTRxTENvenF2SXZOVkpkZ2VzVDJLLXROaWtxT1dYSnhXbTdKN2dPRnh5NWFXYlVQdUpBcTROcWh3TS1iSUFPZmhLMzVhdF9YRFhCSnZsLXN4cFVtdFhsajdSOUNRMjE4Yl9oUnMydThXLUFtd2s2Y3liV2dvcDhvLTc2N2Z3cU81WUpLeXRKcGdTaEpXaXZZYkdyMnRF?oc=5",
+   "tr": false,
    "untranslated": false
   },
   {
@@ -9832,6 +12111,32 @@
    "url": "https://t.me/sepahcybery/154106",
    "tr": true,
    "untranslated": false
+  },
+  {
+   "id": "0968b5bb8bac232e",
+   "ts": "2026-10-16T18:48:05.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "DW.com",
+   "via": "Google News",
+   "lang": "English",
+   "line": "Saudi Arebiya ta kakkabo makaman Houthi a birnin Riyadh",
+   "orig": "Saudi Arebiya ta kakkabo makaman Houthi a birnin Riyadh",
+   "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxORUNkSFpFNWhUbXV5WTRjeHphbFY1bEVfT1M4RkxMc3VqUFpqRkFvMk9LUmVwVzQzb2lvTlV6SnFRNUtwUmhscFlvMkpRbVZlcWM2YkZiMHc4b1NUOTNGSEk2UjVNckV5NXlTZ1RneVZuTWI1RU5SZHJHeTVscHZQdjhSbExRd1hNT2JsQklpc3JfbXo2UzhVak5sejQtZ28taWVSM0dLSEZoSk9EYkR0TzJ0WmFCWXRwTDJvQ3dKdVnSAcABQVVfeXFMTkVDZEhaRTVoVG11eVk0Y3h6YWxWNWxFX09TOEZMTHN1alBaakZBbzJPS1JlcFc0M29pb05VekpxUTVLcFJobHBZbzJKUW1WZXFjNmJGYjB3OG9TVDkzRkhJNlI1TXJFeTV5U2dUZ3lWbk1iNUVOUmRyR3k1bHB2UHY4UmxMUXdYTU9ibEJJaXNyX216NlM4VWpObHo0LWdvLWllUjNHS0hGaEpPRGJEdE8ydFphQll0cEwyb0N3SnVZ?oc=5",
+   "tr": false,
+   "untranslated": false
+  },
+  {
+   "id": "1a0dc8292ebc15b1",
+   "ts": "2026-10-16T18:47:44.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "Lebanon Debate",
+   "via": "Google News",
+   "lang": "Arabic",
+   "line": "الجيش الأميركي: الحرس الثوري الإيراني بات عاجزًا عن دفع رواتب قواته وميليشيات موالية لطهران أوقفت رواتب عناصرها لتحويل الأموال إليه",
+   "orig": "الجيش الأميركي: الحرس الثوري الإيراني بات عاجزًا عن دفع رواتب قواته وميليشيات موالية لطهران أوقفت رواتب عناصرها لتحويل الأموال إليه",
+   "url": "https://news.google.com/rss/articles/CBMiiAVBVV95cUxOMzRJQW05RFNzYTgtZ296aU1EVVdLUElHUkhXMmtTRjFyMmlGN01NYkNCYkhuQTR6WEhSYlhkMERwU2FLMlcxQXlEQXg3Z1VJd1BGRFlUNXhDUDliQWRaQkhsWEVTY3dUNDhfcUJvcDdSMUR6ZVRSQ002MzNUdjVxdEYxdzVRT2czZjVwRFZ5YWw1RDZQR2h4dEpEUEtTQU55ckUtZWl4OHZ5R2d6cDBfVGtvUFVNQkpXOGQ5di1Qem5oRUIwZUZMVUoyLUJIQ0FoSWx5SzZqWTUtWjk3V0FDZ2piUkR2a1Nyb29OaFZTZGxwS3pxQ2c5c2ZsVWNjLUdPX3pyYWNzcFAtR3R4VWRYTlowOHhrSWNubnpmMWFLZXVqamdsZFl1X0c2MXBGTVpobDRCbklVQ0VoclhZM2J0bkp3Tm10bm1UMkZMN1pRYllEbHVxanZSYllGTldQN29ILWtlN3BYX0M5OFlCZnhjZEEzaDJ2VTZuOVh2WkttS0o3TUtHNGxyOFF3SjVKbm9BTkx0cGFrNHRCQTJ3UXFQNFE1VC10amxYYVNtUllzTmxhZUNfZ29LaXlPYlJJQXNDdWhIR0hZY25KTUZwMERFLUtEQmozc3hKbHpEaklFZmlERWRQdXEwaXppMzd5V0wwc2xBS3B0LXBYc3NCZmpRUWMySTl6WFd3dmh3NGwzUTRDZ1BtYUZLMFNLaWcxTWd6enh1ckRCbU1CZWVERVc1T2Q3ZzlwVWdkZU0tQVgxMUY5aXhhQ0trRVVrSHF1Qmx5RXlNQTJ5V3hnbVV3V3RPS3BFM2RNREdaQmxFRVRZTmNha1YyM0JXT1pOMUJNYTJZdzBjVFIzNlk?oc=5",
+   "tr": false,
+   "untranslated": true
   },
   {
    "id": "fff01b25ce775bf1",
@@ -9952,6 +12257,19 @@
    "untranslated": false
   },
   {
+   "id": "d3056144353ecd2c",
+   "ts": "2026-10-16T18:29:38.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "Lebanon Debate",
+   "via": "Google News",
+   "lang": "Arabic",
+   "line": "الجيش الأميركي: الحرس الثوري الإيراني بات عاجزا عن دفع رواتب قواته",
+   "orig": "الجيش الأميركي: الحرس الثوري الإيراني بات عاجزا عن دفع رواتب قواته",
+   "url": "https://news.google.com/rss/articles/CBMingRBVV95cUxNeGVjckgxYms2UDhMYmlzWF8xLWJud2dEZlVBbU5BR1dkWXRMTUdyTE1sTGNmWnhQRjlxTjR1cGY2dnVuOUFwNEdmUmpDWDNQUUwtNEtqTkJGcjVFT2lLeVdaY3NfdUpvTXVqcGNLeFJNb2YwaEFoTXdkNXdCcUJ0bzNhMm1VTzZ1LUtzQ0tMdGNPMFJwd3VLdzVTblJYc2J1bHY3Y3hRU2prVTYwZDV0djdiMzFLejFOdFduYldkRHhCWFZMYWFya3AzSDhYQ3pjYXdmbnl2MklYTjJWNnJ4LXpGZG1WT0JiZDQtczNBMUtnallUd2RhYmhLNlRoalk2YzdjZE9UdGtTU1l4cXN2MWpHRTZQcDFPOUV6R0V3dm44YzFTWjhWT3VjWkxPX1MzYmN6V01BNk82WkRIOUlQT1QwUVRVaWJEVGh1MzNFZFlZUzFiUF9TUDZQb0w2YWpwTzNuOTRTeWxDdXBYQWZ5OS03MUE3c1ZsWE9LR2RqaExSdjhYSzZLMGViVXROaFFGRG04bFFyNDBCOG5DNVUzZVVSamplQzU0YkVYUVdLVDZnQU5TXzJpREN4STYwbVdydzZhN1ZaUk5xMmN4V0xqc25MS1hyWnR5N1g1el9Iel9mWkxjS0xHU1FRT2dCdmJVYXBGUHBMM1ZBa2FYdkNQd3pVV28wUzJvd19vRWpHS1hxOFRTeGZsa1dLM3RyUQ?oc=5",
+   "tr": false,
+   "untranslated": true
+  },
+  {
    "id": "9fde34d8d06880a0",
    "ts": "2026-10-16T18:29:01.000Z",
    "got": "2026-10-16T20:46:13.508Z",
@@ -10043,6 +12361,19 @@
    "untranslated": false
   },
   {
+   "id": "1d2ba1f59b226102",
+   "ts": "2026-10-16T18:20:00.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "العربية",
+   "via": "Google News",
+   "lang": "Arabic",
+   "line": "سنتكوم: مضيق هرمز خاضع للسيطرة الأميركية والشركاء الإقليميين",
+   "orig": "سنتكوم: مضيق هرمز خاضع للسيطرة الأميركية والشركاء الإقليميين",
+   "url": "https://news.google.com/rss/articles/CBMi2wRBVV95cUxPU1A0S3NVOGY1Zm1venp3SE5RS3pyLXpBRklJQmlsSHdwbjNiUzBvOGxOUXl1bER5ck5Ca09WYXNNaTRSbWI1RmFaMGJoS0ZmRzVmQlFhUXF5SFBsTFJNN21WWUhZS0VST3VpZ2lURlNkRXowbXZXR1JEVXk0cEJuOTV6aURTcmNIUEp0cWJXNzlfeWdrZ1lUN2JXSUlSMjZnVWdRaG9uU3RLYnpxeTZoM0RIa1RTOGllU2g0dWJYUUhzY1dSRTVCamVjaEdXUGxKczlmcEFoZE9Qemh2RF9NZFdwc2FfWWN4bzMxNUhacmNDWFA0WGlUOE1aZXpndGdlSWFJTXdIY1JvWVJySVVDZUw3ZzdUWEFmUXk5b1F4aEZpdXdTaXMyQXpDamd5MDM4T3BFQl9QdFh0OHR3QTMzM3hWbDNVTGpvMy1zdjVEd2l5WnJWT2NhVUk4QUx3YnJlRy1FSXZLNzdwZjNwbU5NbXF5V3dMQnFnWmlkbVRIVUd1Y1RXOHhkclVmWXZTWnpSSnBuM1RETWhGRW14QWNTNWk1WVRxUGhOeUxmdTM4SVExQ095SG1Zbk4yNnNndHY0b1NEX21YNFFnSk9EZ3MxX1V0ZDJ2WEpsUXVKQ1lpOUVBV0kwUmVSa01kVWlNU3hZRjdjMmRDMjhSN25QOUFTYkcwUk9JblFUU2RPREFmY3VEWWp6bjUyREs4ZkNBem03ZklYb05sLXZmZklfWFF6VU9OMkZsSDhKQnRDMVJBYk5VeEFZYk1SVzFERlZPcE5qZkN0elhnRC1MazTSAdsEQVVfeXFMT1NQNEtzVThmNWZtb3p6d0hOUUt6ci16QUZJSUJpbEh3cG4zYlMwbzhsTlF5dWxEeXJOQmtPVmFzTWk0Um1iNUZhWjBiaEtGZkc1ZkJRYVFxeUhQbExSTTdtVllIWUtFUk91aWdpVEZTZEV6MG12V0dSRFV5NHBCbjk1emlEU3JjSFBKdHFiVzc5X3lna2dZVDdiV0lJUjI2Z1VnUWhvblN0S2J6cXk2aDNESGtUUzhpZVNoNHViWFFIc2NXUkU1QmplY2hHV1BsSnM5ZnBBaGRPUHpodkRfTWRXcHNhX1ljeG8zMTVIWnJjQ1hQNFhpVDhNWmV6Z3RnZUlhSU13SGNSb1lScklVQ2VMN2c3VFhBZlF5OW9ReGhGaXV3U2lzMkF6Q2pneTAzOE9wRUJfUHRYdDh0d0EzMzN4VmwzVUxqbzMtc3Y1RHdpeVpyVk9jYVVJOEFMd2JyZUctRUl2Szc3cGYzcG1OTW1xeVd3TEJxZ1ppZG1USFVHdWNUVzh4ZHJVZll2U1p6UkpwbjNURE1oRkVteEFjUzVpNVlUcVBoTnlMZnUzOElRMUNPeUhtWW5OMjZzZ3R2NG9TRF9tWDRRZ0pPRGdzMV9VdGQydlhKbFF1SkNZaTlFQVdJMFJlUmtNZFVpTVN4WUY3YzJkQzI4UjduUDlBU2JHMFJPSW5RVFNkT0RBZmN1RFlqem41MkRLOGZDQXptN2ZJWG9ObC12ZmZJX1hRelVPTjJGbEg4SkJ0QzFSQWJOVXhBWWJNUlcxREZWT3BOamZDdHpYZ0QtTGs0?oc=5",
+   "tr": false,
+   "untranslated": true
+  },
+  {
    "id": "37b3531f2e51eef8",
    "ts": "2026-10-16T18:20:00.000Z",
    "got": "2026-10-16T19:58:39.888Z",
@@ -10132,6 +12463,19 @@
    "line": "Baghaei: Iran is ready to help resolve peacefully the issues between Saudi Arabia and Yemen",
    "tr": true,
    "untranslated": false
+  },
+  {
+   "id": "a58c1097eca6c3cf",
+   "ts": "2026-10-16T18:10:21.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "وكالة صدى نيوز",
+   "via": "Google News",
+   "lang": "Hebrew",
+   "line": "איראן מביעה מוכנות לדיאלוג ומסרבת ל\"תעמולה מזיקה\" בנושא הגרעין",
+   "orig": "איראן מביעה מוכנות לדיאלוג ומסרבת ל\"תעמולה מזיקה\" בנושא הגרעין",
+   "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9kSG9iei1fN3F3VmYzcGI4Z2NIRmp1dDN6dVNBX1FLMFBCdk1ad0NkQzBPZ1dkdkhJWGJaMHhLQmFaOWtaZzU4a3MyaXBDbk1LVlZFNGd3?oc=5",
+   "tr": false,
+   "untranslated": true
   },
   {
    "id": "cf9ac40cb690c7be",
@@ -10631,6 +12975,19 @@
    "tr": false,
    "untranslated": false,
    "grp": "adsb-mil"
+  },
+  {
+   "id": "17fb87bd26dca3c6",
+   "ts": "2026-10-16T17:12:46.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "Arnold & Porter",
+   "via": "Google News",
+   "lang": "English",
+   "line": "Amb. Barbara Leaf Joins BBC News to Discuss Houthi Attacks on Saudi Arabia",
+   "orig": "Amb. Barbara Leaf Joins BBC News to Discuss Houthi Attacks on Saudi Arabia",
+   "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxNVWp0dkJQTEtHRThzN2hJVHRkX2JfUlBNS19LRWVZQ0pkUXBIejJTN3JnVjhOZTVkYmptV2p4LWtZd2RCZ0Ztek50ck9ldWZ2ZS10dVNBQWlENDNBazM2ZjBxMVFWXzFnWmRSVjUwMVNSX1lvMDFDRTNmQW1TQk5PZFFYRjdjencwcThpZmthcDdlNXpBdkFvdEdNSXJmbjJmZllTOGhPRDlZUklndVBKcUxtQUc5Wjk1OEVRcXhwZTdDc1RPZnRxaXdRUXZqLVdFdVZ1OXdkdHE?oc=5",
+   "tr": false,
+   "untranslated": false
   },
   {
    "id": "e593ad6e696c926e",
@@ -11292,6 +13649,19 @@
    "line": "قائد «سنتكوم»: منعنا إيران من تصدير نفط بـ25 مليار دولار وجمدناً 350 مليوناً أصولاً مشفرة",
    "orig": "قائد «سنتكوم»: منعنا إيران من تصدير نفط بـ25 مليار دولار وجمدناً 350 مليوناً أصولاً مشفرة",
    "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1nRFVEdDYwVm1zd0FWVlAwdmdOeWhSQ3FpMlZfTXVrQWJ5N2R3bE5tajVZRUFmT2xob1hERS1aYmF6QUlmbU9XWHd5eGRneHY1TXBSVNIBVEFVX3lxTE1nRFVEdDYwVm1zd0FWVlAwdmdOeWhSQ3FpMlZfTXVrQWJ5N2R3bE5tajVZRUFmT2xob1hERS1aYmF6QUlmbU9XWHd5eGRneHY1TXBSVA?oc=5",
+   "tr": false,
+   "untranslated": true
+  },
+  {
+   "id": "8abfbcfdff98f992",
+   "ts": "2026-10-16T16:18:48.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "صحيفة اخبارنا",
+   "via": "Google News",
+   "lang": "Arabic",
+   "line": "القيادة المركزية الأمريكية: حصار بحري على إيران وممر للسفن عبر هرمز",
+   "orig": "القيادة المركزية الأمريكية: حصار بحري على إيران وممر للسفن عبر هرمز",
+   "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFA4VmFkZzN2OXF0NkNYSUQ5UnJGMGhjTERCdFpFeHM5WE5sYUdyY0hmUFdvbEpuZUNlc1dWbWpXMlZUZm5xM05nUGhwUHlpWWZ5ckpJMUJtQ3JOVDhKNUVmOTZnMC1zQmhTR0lISGlDTnBhVVE?oc=5",
    "tr": false,
    "untranslated": true
   },
@@ -12089,6 +14459,19 @@
    "untranslated": true
   },
   {
+   "id": "fcf2d4833f384c3f",
+   "ts": "2026-10-16T14:46:30.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "الساحل الغربي",
+   "via": "Google News",
+   "lang": "Arabic",
+   "line": "رويترز: تكنولوجيا إيرانية وقطع صينية وذكاء اصطناعي.. كيف يطور الحوثيون ترسانتهم العسكرية؟",
+   "orig": "رويترز: تكنولوجيا إيرانية وقطع صينية وذكاء اصطناعي.. كيف يطور الحوثيون ترسانتهم العسكرية؟",
+   "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE82dXZXSFBmVHlaWE93Sk1BYTFRc1N4Rk1xa1dCQjZyZHo3WTJKMDhOeV9wUDcyeDExTkpsMXJXMnJfamhHY21ReVpxd1psV3M?oc=5",
+   "tr": false,
+   "untranslated": true
+  },
+  {
    "id": "6386e1332790070c",
    "ts": "2026-10-16T14:46:20.000Z",
    "got": "2026-10-16T17:23:28.985Z",
@@ -12178,6 +14561,19 @@
    "url": "https://t.me/QudsNen/242296",
    "tr": true,
    "untranslated": false
+  },
+  {
+   "id": "fb8233af35e0aa31",
+   "ts": "2026-10-16T14:32:51.000Z",
+   "got": "2026-10-16T22:53:01.439Z",
+   "src": "elmaser.com",
+   "via": "Google News",
+   "lang": "Arabic",
+   "line": "تكنولوجيا إيرانية وقطع صينية وذكاء اصطناعي.. تحليل لـ \"رويترز\": كيف يطور الحوثيون ترسانتهم العسكرية؟",
+   "orig": "تكنولوجيا إيرانية وقطع صينية وذكاء اصطناعي.. تحليل لـ \"رويترز\": كيف يطور الحوثيون ترسانتهم العسكرية؟",
+   "url": "https://news.google.com/rss/articles/CBMi6gJBVV95cUxOVDZfVWp5WXJ3RDBVejNZNVA5eXlfYjhMZHNzODRlZlBuM0Nvb3MyZGxhM2FMNzN4X2dVaFAwYng1UVRoSTVRN05BUFVESDgwSHZRNFl2WnhVZHBiMl91cmVuckc4anFZNld1R1BkT3VrNnV0SC1YWF85OUJ1X1NJMmdnclpfbkRodTlGZlBxb3NFX2RVbTJJOG91djA5NnJ5bHN3bFAybVNiZXRzcHNGOUZWcEdDbXNUZ0x1VkZ0VTRvUTdDc3c4NGtNQ1FBcWlDcHRBZUx4MXJPUTRjNFBJYWdrTlQ0VTJBc2pzZ3Nacnozbmk4azF4SVhlcEdyV1BfR2lCZ2thRTVtRFByVkpjUGI4TlNLV1JSdmZaSDZmdUdQZGdBMGNoNzE3dzBkdG45WkJqN0hjRS1ONDVWTkVRV1NMZVg4OVJhZDFhVDdQLVFSdTJJZktJdzhPaGhlQkVrU0t1eHk4cUJZQQ?oc=5",
+   "tr": false,
+   "untranslated": true
   },
   {
    "id": "d7d63cbf150ba3e7",
