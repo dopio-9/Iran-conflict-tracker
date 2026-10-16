@@ -4443,10 +4443,10 @@
     "notes": "FREE live MILITARY aircraft feed (probe returned a C-17 in flight). Warships routinely run AIS-dark — their maritime-patrol and transport aircraft do not, so this is the observable proxy for naval activity that AIS cannot give.",
     "site": "adsb.lol",
     "feed": {
-      "kind": "json",
+      "kind": "tracker",
+      "fmt": "adsb-mil",
       "url": "https://api.adsb.lol/v2/mil",
-      "realtime": true,
-      "verified": "probe 30260985927"
+      "realtime": true
     },
     "lastScored": "2026-07-27T19:04:15.649Z",
     "lastFreshMin": 0
@@ -5088,6 +5088,162 @@
       "fmt": "gdelt",
       "realtime": true,
       "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=(hormuz%20OR%20%22bandar%20abbas%22%20OR%20fujairah%20OR%20%22persian%20gulf%22%20OR%20irgc)&mode=artlist&maxrecords=75&timespan=12h&format=json&sort=datedesc"
+    }
+  },
+  {
+    "id": 210,
+    "platform": "Web",
+    "role": "early",
+    "tier": "META",
+    "theater": "cross-theater",
+    "medium": "TRACK",
+    "hits": 0,
+    "misses": 0,
+    "language": "English",
+    "geography": "Gulf / Red Sea / Levant",
+    "name": "adsb.fi military",
+    "domain": "ADS-B community",
+    "lanes": [
+      "air_traffic_airspace",
+      "naval_military_movement"
+    ],
+    "notes": "Open data API (personal, non-commercial). Military-flagged aircraft inside the theatre box; second community network alongside adsb.lol.",
+    "site": "adsb.fi",
+    "feed": {
+      "kind": "tracker",
+      "fmt": "adsb-mil",
+      "url": "https://opendata.adsb.fi/api/v2/mil",
+      "realtime": true
+    }
+  },
+  {
+    "id": 211,
+    "platform": "Web",
+    "role": "early",
+    "tier": "META",
+    "theater": "cross-theater",
+    "medium": "TRACK",
+    "hits": 0,
+    "misses": 0,
+    "language": "English",
+    "geography": "Gulf / Red Sea / Levant",
+    "name": "IODA internet outages",
+    "domain": "Internet measurement (Georgia Tech)",
+    "lanes": [
+      "leadership_internal",
+      "strikes_ops"
+    ],
+    "notes": "Country outage alerts (BGP, active probing, telescope). An Iranian shutdown often precedes or accompanies strikes.",
+    "site": "ioda.inetintel.cc.gatech.edu",
+    "feed": {
+      "kind": "tracker",
+      "fmt": "ioda",
+      "url": "https://api.ioda.inetintel.cc.gatech.edu/v2/outages/alerts",
+      "realtime": true
+    }
+  },
+  {
+    "id": 212,
+    "platform": "Web",
+    "role": "early",
+    "tier": "META",
+    "theater": "cross-theater",
+    "medium": "TRACK",
+    "hits": 0,
+    "misses": 0,
+    "language": "English",
+    "geography": "Gulf / Red Sea / Levant",
+    "name": "NGA navigational warnings",
+    "domain": "Official maritime safety (US NGA MSI)",
+    "lanes": [
+      "maritime_incidents",
+      "naval_military_movement",
+      "ports_advisories"
+    ],
+    "notes": "Active broadcast warnings filtered to Gulf / Hormuz / Gulf of Oman / Arabian Sea / Red Sea / Aden text.",
+    "site": "msi.nga.mil",
+    "feed": {
+      "kind": "tracker",
+      "fmt": "nga",
+      "url": "https://msi.nga.mil/api/publications/broadcast-warn?output=json&status=active",
+      "realtime": true
+    }
+  },
+  {
+    "id": 213,
+    "platform": "Web",
+    "role": "early",
+    "tier": "META",
+    "theater": "cross-theater",
+    "medium": "TRACK",
+    "hits": 0,
+    "misses": 0,
+    "language": "English",
+    "geography": "Gulf / Red Sea / Levant",
+    "name": "MARAD maritime advisories",
+    "domain": "Official maritime security (US MARAD MSCI)",
+    "lanes": [
+      "maritime_incidents",
+      "ports_advisories"
+    ],
+    "notes": "New US Maritime Advisories; read from the advisories table.",
+    "site": "maritime.dot.gov",
+    "feed": {
+      "kind": "tracker",
+      "fmt": "marad",
+      "url": "https://www.maritime.dot.gov/msci-advisories",
+      "realtime": true
+    }
+  },
+  {
+    "id": 214,
+    "platform": "Web",
+    "role": "early",
+    "tier": "META",
+    "theater": "cross-theater",
+    "medium": "TRACK",
+    "hits": 0,
+    "misses": 0,
+    "language": "English",
+    "geography": "Gulf / Red Sea / Levant",
+    "name": "NASA FIRMS fire detections",
+    "domain": "Satellite (VIIRS)",
+    "lanes": [
+      "strikes_ops",
+      "war_risk_economy"
+    ],
+    "notes": "New fire spots within 40 km of named sites; standing gas flares learned and excluded. Needs FIRMS_KEY secret.",
+    "site": "firms.modaps.eosdis.nasa.gov",
+    "feed": {
+      "kind": "tracker",
+      "fmt": "firms",
+      "url": "https://firms.modaps.eosdis.nasa.gov/api/area/csv",
+      "realtime": true
+    }
+  },
+  {
+    "id": 215,
+    "platform": "Web",
+    "role": "early",
+    "tier": "META",
+    "theater": "cross-theater",
+    "medium": "TRACK",
+    "hits": 0,
+    "misses": 0,
+    "language": "English",
+    "geography": "Gulf / Red Sea / Levant",
+    "name": "Cloudflare Radar outages",
+    "domain": "Internet measurement (Cloudflare)",
+    "lanes": [
+      "leadership_internal"
+    ],
+    "notes": "Outage annotations for theatre countries. Needs CF_RADAR_TOKEN secret.",
+    "site": "radar.cloudflare.com",
+    "feed": {
+      "kind": "tracker",
+      "fmt": "cf-radar",
+      "url": "https://api.cloudflare.com/client/v4/radar/annotations/outages",
+      "realtime": true
     }
   }
 ]

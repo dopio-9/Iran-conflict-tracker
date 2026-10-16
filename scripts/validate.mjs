@@ -54,7 +54,7 @@ if (sources) {
     if (typeof s.hits !== "number" || typeof s.misses !== "number") fail(`sources[${i}] (${s.name}): hits/misses must be numbers (intake step 4: scoring)`);
     // optional DIRECT-engine feed wiring (Telegram real-time L3 pipe)
     if (s.feed) {
-      const feedKinds = ["telegram-web", "official-web", "rss", "x-mirror", "x-only", "json", "html"];
+      const feedKinds = ["telegram-web", "official-web", "rss", "x-mirror", "x-only", "json", "html", "tracker"];
       if (!feedKinds.includes(s.feed.kind)) fail(`sources[${i}] (${s.name}): feed.kind "${s.feed.kind}" invalid`);
       // a wired telegram-web feed must carry a url unless explicitly flagged for handle resolution
       if (s.feed.kind === "telegram-web" && !s.feed.url && !s.feed.resolve)
@@ -202,6 +202,21 @@ if (existsSync(join(root, "data/feed.json"))) {
       if (/\n/.test(it.line || "")) fail(`feed.json items[${i}]: line must be a single line`);
       if (it.url && !/^https?:\/\//.test(it.url)) fail(`feed.json items[${i}]: url must be http(s)`);
     });
+    /* Stories are a grouping of items, never new text: every member must exist, and
+       the story line must be one of its members' own lines (or the tracker count line). */
+    if (fd.stories !== undefined) {
+      const byId = new Map((fd.items || []).map(x => [x.id, x]));
+      if (!Array.isArray(fd.stories)) fail("feed.json: stories must be an array");
+      else fd.stories.forEach((c, i) => {
+        if (!c.tag || !c.line || !Array.isArray(c.ids) || !c.ids.length) fail(`feed.json stories[${i}]: needs tag, line, ids`);
+        else {
+          const missing = c.ids.filter(id => !byId.has(id));
+          if (missing.length) fail(`feed.json stories[${i}]: ${missing.length} member id(s) not in items`);
+          else if (!/^Military aircraft in theatre — /.test(c.line) && !c.ids.some(id => byId.get(id).line === c.line))
+            fail(`feed.json stories[${i}]: line is not any member's own line — stories may not author text`);
+        }
+      });
+    }
   }
 }
 

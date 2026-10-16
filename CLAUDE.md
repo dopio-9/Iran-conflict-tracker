@@ -3,6 +3,8 @@
 Personal Iran-conflict early-warning tracker for one UAE household. Two surfaces,
 one page (`index.html`):
 - **RAW** (top of page) — renders `data/feed.json`, written by the GitHub collector.
+  STORIES (mechanical de-dupe, earliest source's own line) on top, trackers strip,
+  every raw item under a show button.
 - **Analysis** (below) — renders the inline `<script id="data" type="application/json">`
   block in `index.html`, still updated by hand in a session.
 
@@ -46,33 +48,46 @@ the fast lane printed to CI logs that nothing saved. So:
 - The day counter is OURS, anchored to our own start date (war began 28 Feb 2026).
   External sites disagreeing about it is not a signal and never reaches the page.
 
+### Owner decisions, 14–16 Oct 2026 (binding)
+
+- Experiment judged: **keep**. Collection is permanent and hourly.
+- Translation and search use **Claude on the owner's plan** (scheduled session), not a
+  paid API. Revisit an API only if cost/benefit becomes clear.
+- **Claude search is an extra feed route**, never a replacement for the raw lane.
+- **Dead sources are retired after 7 days of no output** (replaces "sources are never
+  pruned"). Retired = not polled; the registry entry stays, with date and reason.
+- Free trackers wired (aircraft, nav warnings, MARAD, internet outages); key-gated ones
+  (FIRMS, Cloudflare Radar) switch on when the owner adds the secret.
+- Home-computer runner: not now; add later only if datacenter blocking makes it necessary.
+
 ## How it runs
 
 | piece | role | where |
 |---|---|---|
-| `scripts/feed.mjs` | collects every realtime route (Telegram web, RSS, Google News FA/AR/HE/EN, GDELT), gates, translates, writes `data/feed.json` + `data/claims.json`, counts every drop | GitHub Actions — `.github/workflows/social-fetch.yml` |
-| `scripts/translate.mjs` | translation only; reply must match the input count or originals are kept | inside feed.mjs |
-| `scripts/resolve.mjs` | 24h grade: `echoed ×N` / `no-echo`. `refuted` is set only by hand and never overwritten | CI after each run, or locally (no network) |
-| `scripts/flash.mjs` | shared collection, topic filter (EN/FA/AR/HE), fingerprints; also a stdout mode | used by feed.mjs |
-| `scripts/validate.mjs` | ship gate: registry, index.html, inline data, feed.json | before every commit (`&&`), and in CI |
-| `probe` `read` `telegram` `perplexity` `x-gather` `discover` `candidates` `promote` `apply-score` | source-health and registry tools, run by hand | manual workflows `probe.yml`, `perplexity-gather.yml` |
+| `scripts/feed.mjs` | collects every route, gates, holds non-English off-keyword items for translation, applies inbox English, clusters, retires 7-day-silent sources; writes `data/feed.json` (+ claims, hold, track, health, sources) | GitHub Actions `social-fetch.yml`, hourly + dispatched by the inbox session |
+| `scripts/flash.mjs` | shared collection (RSS, Telegram web, Google News, GDELT), topic filter (EN/FA/AR/HE; one strong actor term or two terms), fingerprints | used by feed.mjs |
+| `scripts/trackers.mjs` | adsb.lol / adsb.fi military aircraft in theatre, IODA outages, NGA nav warnings, MARAD advisories, FIRMS fires (key), Cloudflare Radar (key) | used by feed.mjs |
+| `scripts/cluster.mjs` | de-dupe into stories (word overlap, 12h burst); tag by keyword; lead time vs first mainstream + collection lag | used by feed.mjs |
+| `scripts/inbox.mjs` | contract between the Claude session and the collector: count-checked translation batches, verbatim search results, query rotation | the inbox session (`INBOX.md`) |
+| `scripts/resolve.mjs` | 24h grade: `echoed ×N` / `no-echo`. `refuted` is set only by hand and never overwritten | CI after each run |
+| `scripts/validate.mjs` | ship gate: registry, index.html, inline data, feed.json (stories may not author text) | before every commit (`&&`), and in CI |
+| `probe` `read` `telegram` `perplexity` `x-gather` `discover` `candidates` `promote` `apply-score` | source-health and registry tools, run by hand | manual workflows |
 
 Every script has `--selftest`. Run them after any change.
 
-## Experiment in progress — 13 to 15 Oct 2026
-
-The collector runs every 2h (GitHub may delay schedules) until **14 Oct 06:00 GST**,
-then grades only until **15 Oct 06:00 GST**, then exits on every run by itself
-(`EXPERIMENT_END` in `social-fetch.yml`). The owner judges on output, then decides
-to keep, change or stop it. Do not extend or make it permanent without that call.
+**Inbox session.** A persistent Claude Code session fires hourly (Routine) and follows
+`INBOX.md`: translates pending lines, runs this hour's searches
+(`data/search-queries.json`), force-pushes `data/inbox/` to branch `claude/inbox`, and
+dispatches the collector. The collector reads that branch and never merges it.
 
 ## Safeguards — why the old failures should not recur
 
 - The collector commits its own output; a failed push fails the run red.
 - Zero reachable sources fails the run red.
-- The page derives freshness from `feed.json` and shows **STALE** after 4h silence.
+- The page derives freshness from `feed.json` and shows **STALE** after 3h silence.
 - Every drop is counted in `meta.last_run` (fetched → outside window · already seen
-  · off-topic → kept) and per source in `meta.sources`. Read those, not exit codes.
+  · off-topic · held → kept; translate applied/released/dropped/expired) and per source
+  in `meta.sources`. Lead time is in `meta.lead`. Read those, not exit codes.
 - No authored status text on the page ("LIVE + VERIFIED" panels were removed).
 
 ## Where you are running — check first
@@ -102,18 +117,21 @@ source dark.
 - **Future dates are not freshness.** Items >90m ahead are dropped.
 - **Topic filter counts distinct matched keywords, not patterns** — counting patterns
   silently zeroed out Farsi/Arabic/Hebrew headlines.
-- **Signals decay. Sources do not get pruned.**
+- **Signals decay. Sources are retired only by the 7-day rule, never by judgement.**
 - **Bounded waits only.** Never an unbounded polling loop.
 - Do not spoof user agents or route around an operator's access control.
 
-## Repo state (verified 13 Oct 2026)
+## Repo state (verified 16 Oct 2026)
 
 - `main` is production. Vercel project `iran-conflict-tracker-nextgen` deploys every
   push to `main`.
-- Repo is public, so Actions minutes are free, and Actions do fire on schedule
-  (156 runs 13 Sep–12 Oct). The 2 Aug note that Actions had stopped is obsolete.
+- Repo is public, so Actions minutes are free. GitHub's schedule is unreliable: the
+  experiment's 2h cron fired 3 times in 24h. Hence hourly cron + dispatch by the inbox session.
+- Experiment result (13–14 Oct): 4 runs, 545 items, all saved; translation 0 (Perplexity
+  credits out); GDELT 0; regional Telegram first on the Aramco HQ strike and the 2nd ship
+  hit, but 5–8h between runs meant the page showed them after Reuters/Bloomberg.
 - The analysis section was last updated Day 196 (12 Sep).
-- Registry: 209 sources, 44 realtime routes wired, 92 with no route yet.
+- Registry: 215 sources (16 Oct): 44 realtime routes, 7 tracker routes, 92 with no route yet.
 - Khamenei Telegram — rated the only reliable IRGC-intent signal — is still unwired;
   it needs the verified channel handle, not a guess.
 - Old branches: preserved in `claude/archive-old-branches` (one commit whose parents
@@ -123,12 +141,15 @@ source dark.
 
 ## Open work, in order
 
-1. Owner judges the experiment.
-2. If kept: remove the window, add a lead-time measure (first_seen vs first mainstream sighting).
-3. Wire the 92 unrouted sources and the Khamenei channel; X API when the owner supplies it.
-4. Analysis from the feed: a scheduled session that reads `feed.json` and writes the
+1. Owner: add free keys as repo secrets — `FIRMS_KEY`, `CF_RADAR_TOKEN` (wired);
+   `AISSTREAM_KEY`, `FAA_NOTAM_KEY` (not yet wired).
+2. Wire aisstream (bounded snapshot) and FAA NOTAM when their keys exist.
+3. Source learning: per-topic gap counts; mine t.me links/forwards in collected posts for
+   candidate channels; one feed-discovery attempt for each of the 92 unrouted sources, else retire.
+4. Khamenei Telegram (verified handle only); X API if the owner supplies it.
+5. Analysis from the feed: a scheduled session that reads `feed.json` and writes the
    inline analysis — it never runs its own searches.
-5. STEP enrolment (`step.state.gov`) → embassy alerts by email, read via Gmail.
+6. STEP enrolment (`step.state.gov`) → embassy alerts by email, read via Gmail.
 
 ## Branch
 

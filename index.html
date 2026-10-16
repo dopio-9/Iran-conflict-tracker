@@ -240,6 +240,19 @@ svg.trace .hot{fill:none; stroke:var(--danger); stroke-width:2.2}
 .rawmore{display:block;margin:10px auto 0;font-size:10px;padding:6px 12px}
 .anage{font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;color:var(--pending);border:1px solid color-mix(in srgb,var(--pending) 45%,transparent);border-radius:6px;padding:8px 10px;margin:14px 0 0;line-height:1.5}
 .anage b{color:var(--bright)}
+.rawtrk{font-family:var(--mono);font-size:9px;color:var(--dim);line-height:1.6;padding:6px 10px;border:1px solid var(--line);border-radius:6px;margin:0 0 8px;overflow-wrap:anywhere}
+.rawtrk b{color:var(--bright);letter-spacing:.06em}
+.rawtrk i{color:var(--faint)}
+.sub2{margin-top:10px}
+.sub2 h3{font-size:12px;letter-spacing:.12em;margin:0}
+.st{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:2px 10px;align-items:baseline;padding:8px 2px;border-bottom:1px solid var(--line)}
+.st>.rx{grid-column:1/-1;display:none;padding:2px 0 6px 12px;border-left:2px solid var(--line2)}
+.st.open>.rx{display:block}
+.sl{font-size:13.5px;line-height:1.45;color:var(--ink);overflow-wrap:anywhere}
+.sg{font-family:var(--mono);font-size:8.5px;letter-spacing:.06em;color:var(--bright);border:1px solid var(--line2);border-radius:3px;padding:1px 5px;margin-right:4px}
+.sf{font-family:var(--mono);font-size:8.5px;letter-spacing:.06em;color:var(--danger);border:1px solid var(--danger);border-radius:3px;padding:1px 5px;margin-right:4px}
+.sm{display:block;font-family:var(--mono);font-size:9px;color:var(--dim);margin-top:2px}
+.rawlist{margin-top:6px}
 .rawempty{font-family:var(--mono);font-size:10px;color:var(--faint);padding:10px 2px}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none !important; transition:none !important}
@@ -2378,7 +2391,7 @@ function traceSVG(t){
 
 app.innerHTML = `
   <section id="raw">
-    <div class="lanehead"><span class="live"></span><h2>RAW</h2><span class="sub">machine-collected · unvetted · newest first</span></div>
+    <div class="lanehead"><span class="live"></span><h2>RAW</h2><span class="sub">machine-collected · unvetted · times GST</span></div>
     <div id="rawbody" class="rawbody">loading raw feed…</div>
   </section>
   ${anAge(D.meta.updated)}
@@ -2461,7 +2474,8 @@ document.querySelectorAll('.sig').forEach(el=>{
 });
 
 /* RAW lane — straight from data/feed.json, written by the GitHub collector.
-   Every item that passed RECENT + NOVEL + TOPIC shows; nothing is chosen by a model.
+   STORIES = the collector's mechanical de-dupe: each line is the earliest source's
+   own line; every raw item sits underneath. Nothing is chosen or written by a model.
    Freshness is derived from the data's own timestamp, never authored. */
 (function(){
   const box=document.getElementById('rawbody'); if(!box) return;
@@ -2469,39 +2483,72 @@ document.querySelectorAll('.sig').forEach(el=>{
   const df=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Dubai',day:'2-digit',month:'short'});
   const T=iso=>tf.format(new Date(iso)), Dd=iso=>df.format(new Date(iso));
   const ago=ms=>{const m=Math.max(0,Math.round(ms/60000));return m<60?m+'m':m<2880?Math.round(m/60)+'h':Math.round(m/1440)+'d';};
+  const mins=m=>m==null?'':m<60?m+'m':Math.round(m/6)/10+'h';
   const today=Dd(new Date().toISOString());
+  const when=iso=>(Dd(iso)===today?'':Dd(iso)+' ')+T(iso);
   const safeUrl=u=>/^https?:\/\//i.test(String(u||''))?u:null;
   fetch('data/feed.json?t='+Date.now(),{cache:'no-store'})
   .then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
   .then(F=>{
-    const M=F.meta||{}, L=M.last_run||{}, items=F.items||[], R=M.resolved||null;
-    const age=Date.now()-Date.parse(M.updated), stale=!(age<4*3600e3);
-    const exp=M.experiment?' · experiment: collecting until '+Dd(M.experiment.end)+' '+T(M.experiment.end)+' GST':'';
-    const grade=R?' · graded so far: '+(R.echoed||0)+' echoed, '+(R['no-echo']||0)+' alone, '+(R.refuted||0)+' refuted':'';
+    const M=F.meta||{}, L=M.last_run||{}, items=F.items||[], stories=F.stories||[], R=M.resolved||null, LD=M.lead||null;
+    const byId=new Map(items.map(x=>[x.id,x]));
+    const age=Date.now()-Date.parse(M.updated), stale=!(age<3*3600e3);
+    const tr=L.translate||{}, srch=L.search||{};
+    const grade=R?' · graded at 24h: '+(R.echoed||0)+' echoed, '+(R['no-echo']||0)+' alone, '+(R.refuted||0)+' refuted':'';
     const head='<div class="rawstat'+(stale?' stale':'')+'">'+(stale?'<b>STALE</b> — collector silent for '+ago(age)+'. ':'')
-      +'collected '+Dd(M.updated)+' '+T(M.updated)+' GST · '+ago(age)+' ago · '+(L.new??0)+' new · '
-      +(L.reachable??'?')+'/'+(L.sources??'?')+' routes answered · translate: '+esc(/quota|401/i.test(L.translate||'')?'OFF — Perplexity credits exhausted, lines shown in original language':String(L.translate||'n/a').slice(0,70))+exp+grade+'</div>'
+      +'collected '+when(M.updated)+' GST · '+ago(age)+' ago · '+(L.new??0)+' new · '
+      +(L.reachable??'?')+'/'+(L.sources??'?')+' routes answered'
+      +' · English from Claude session: '+(typeof tr==='object'?(tr.applied||0)+(tr.released||0):0)+' this run, '+(L.untranslated??0)+' waiting'
+      +' · Claude search: '+(srch.items||0)+(srch.updated?' results, updated '+when(srch.updated):' results')+grade+'</div>'
       +'<div class="rawfunnel">last run — fetched '+(L.fetched??0)+' → outside window '+(L.out_of_window??0)
-      +' · already seen '+(L.seen_before??0)+' · off-topic '+(L.off_topic??0)+' → kept '+(L.kept??0)+'</div>';
+      +' · already seen '+(L.seen_before??0)+' · off-topic '+(L.off_topic??0)+' · held for translation '+(L.held??0)+' → kept '+(L.kept??0)
+      +(LD?'<br>last 24h — '+LD.stories_24h+' stories · '+LD.multi_source+' multi-source · '+LD.ahead_of_mainstream+' first seen here before a mainstream outlet'
+        +(LD.median_lead_min!=null?' (median '+mins(LD.median_lead_min)+' ahead)':'')
+        +(LD.median_delivery_lag_min!=null?' · median posted→collected '+mins(LD.median_delivery_lag_min):''):'')
+      +((L.retired_now||[]).length?'<br>retired this run (7 days silent): '+esc(L.retired_now.join(', ')):'')+'</div>';
+    /* Trackers: what the data says now. Key-gated routes show that the key is missing. */
+    const S=M.sources||{}, TK=M.trackers||{};
+    const trk=Object.entries(S).filter(([,v])=>['adsb-mil','ioda','nga','marad','firms','cf-radar'].includes(v.route));
+    const ac=Array.isArray(TK['adsb-mil'])?TK['adsb-mil']:[];
+    const trackers=trk.length?'<div class="rawtrk"><b>TRACKERS</b> '
+      +(ac.length?'· military aircraft in theatre now: '+ac.length+' ('+esc(ac.slice(0,6).map(a=>[a.flight,a.type].filter(Boolean).join(' ')).join(', '))+(ac.length>6?'…':'')+') ':'')
+      +trk.map(([n,v])=>'· '+esc(n)+': '+(v.note?'<i>'+esc(v.note)+'</i>':v.err?'<i>'+esc(v.err)+'</i>':v.new+' new')).join(' ')+'</div>':'';
     const badge=it=>{const r=it.res; if(!r) return '';
       if(r.status==='refuted') return '<span class="rb ref">REFUTED</span>';
       if(r.status==='echoed') return '<span class="rb ech" title="'+esc((r.by||[]).join(', '))+'">×'+r.n+'</span>';
       return '<span class="rb alone">alone 24h</span>';};
     const row=it=>{const u=safeUrl(it.url); return '<div class="rr'+(it.res&&it.res.status==='refuted'?' isref':'')+'">'
-      +'<span class="rt">'+(Dd(it.ts)===today?'':Dd(it.ts)+' ')+T(it.ts)+'</span>'
+      +'<span class="rt">'+when(it.ts)+'</span>'
       +'<span class="rl"><b class="rs"><bdi>'+esc(it.src)+'</bdi></b>'+badge(it)+' <bdi>'+esc(it.line)+'</bdi>'+(it.untranslated?' <i class="ru">untranslated</i>':'')+'</span>'
       +'<button class="rshow" type="button" aria-expanded="false">show</button>'
       +'<div class="rx"><div class="ro" dir="auto">'+esc(it.orig)+'</div><div class="rm">'
       +(it.via?'via '+esc(it.via)+' · ':'')+esc(it.lang||'')+(it.tr?' · machine-translated':'')
+      +(it.got?' · collected '+when(it.got):'')
       +(it.res&&it.res.note?' · '+esc(it.res.note):'')
       +(u?' · <a href="'+esc(u)+'" target="_blank" rel="noopener noreferrer">open source ↗</a>':'')+'</div></div></div>';};
-    const N=60;
-    box.innerHTML=head+(items.length?items.slice(0,N).map(row).join(''):'<div class="rawempty">No items collected yet.</div>')
-      +(items.length>N?'<button class="rawmore" type="button">show all '+items.length+'</button>':'');
+    const story=c=>{const mem=c.ids.map(id=>byId.get(id)).filter(Boolean).sort((a,b)=>Date.parse(a.ts)-Date.parse(b.ts));
+      return '<div class="st'+(c.flash?' fl':'')+'"><span class="rt">'+when(c.first.ts)+'</span>'
+      +'<span class="sl">'+(c.flash?'<b class="sf">FLASH</b>':'')+'<b class="sg">'+esc(c.tag)+'</b> <bdi>'+esc(c.line)+'</bdi>'
+      +'<span class="sm">'+c.n_src+' source'+(c.n_src>1?'s':'')+' · first <bdi>'+esc(c.first.src)+'</bdi>'
+      +(c.ms?' · <bdi>'+esc(c.ms.src)+'</bdi> '+(c.lead_min>=0?'+':'')+mins(c.lead_min)+' later':'')
+      +(c.lag_min!=null?' · collected after '+mins(c.lag_min):'')+'</span></span>'
+      +'<button class="rshow" type="button" data-n="'+c.n+'" aria-expanded="false">'+c.n+' raw</button>'
+      +'<div class="rx">'+mem.map(row).join('')+'</div></div>';};
+    const N=40;
+    box.innerHTML=head+trackers
+      +'<div class="lanehead sub2"><h3>STORIES</h3><span class="sub">de-duped · flash first, then latest · line = earliest source\'s own words</span></div>'
+      +(stories.length?stories.slice(0,N).map(story).join(''):'<div class="rawempty">No stories in the last 48h.</div>')
+      +(stories.length>N?'<button class="rawmore" data-k="st" type="button">show all '+stories.length+' stories</button>':'')
+      +'<button class="rawmore rawall" data-k="raw" type="button">show all raw items ('+items.length+')</button><div class="rawlist" hidden></div>';
     box.addEventListener('click',e=>{
       const b=e.target.closest('.rshow');
-      if(b){const r=b.parentElement, o=r.classList.toggle('open'); b.textContent=o?'hide':'show'; b.setAttribute('aria-expanded',String(o)); return;}
-      const m=e.target.closest('.rawmore'); if(m){m.remove(); box.insertAdjacentHTML('beforeend',items.slice(N).map(row).join(''));}
+      if(b){const r=b.parentElement, o=r.classList.toggle('open');
+        b.textContent=o?'hide':(b.dataset.n?b.dataset.n+' raw':'show');
+        b.setAttribute('aria-expanded',String(o)); return;}
+      const m=e.target.closest('.rawmore'); if(!m) return;
+      if(m.dataset.k==='st'){m.remove(); box.querySelector('.rawall').insertAdjacentHTML('beforebegin',stories.slice(N).map(story).join(''));}
+      else {const l=box.querySelector('.rawlist'); if(l.hidden&&!l.innerHTML) l.innerHTML=items.map(row).join('');
+        l.hidden=!l.hidden; m.textContent=l.hidden?'show all raw items ('+items.length+')':'hide raw items';}
     });
   })
   .catch(err=>{box.innerHTML='<div class="rawstat stale"><b>RAW FEED UNAVAILABLE</b> — '+esc(err.message)+'. The collector has not written data/feed.json yet.</div>';});

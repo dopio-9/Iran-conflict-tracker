@@ -81,11 +81,21 @@ const TOPIC = [
   /\b(iran|iranian|tehran|israel|yemen|gulf|uae|emirates|dubai|abu dhabi|qatar|oman|saudi)\w*/i,
   /\b(ceasefire|truce|talks|negotiat|mediat|escalat|retaliat|ultimatum|deadline)\w*/i,
   // FA
-  /(حمله|موشک|پهپاد|جنگ|تنگه|هرمز|نفتکش|سپاه|آمریکا|اسرائیل|مذاکره|تحریم|هسته|آتش‌بس|بندرعباس)/,
+  /(حمله|موشک|پهپاد|جنگ|تنگه|هرمز|نفتکش|سپاه|آمریکا|اسرائیل|مذاکره|تحریم|هسته|آتش‌بس|بندرعباس|ایران|ترامپ|پایگاه|نظامی|سفیر|صهیونیست|ارتش|ناو|کشتی|انفجار|شهید)/,
   // AR
-  /(هجوم|قصف|صاروخ|مسيرة|حرب|مضيق|هرمز|ناقلة|الحوثي|إسرائيل|إيران|مفاوضات|حصار|تصعيد)/,
+  /(هجوم|قصف|صاروخ|مسيرة|حرب|مضيق|هرمز|ناقلة|الحوثي|إسرائيل|إيران|مفاوضات|حصار|تصعيد|حرس الثوري|قاعدة|عسكري|سفير|ترامب|أمريكا|الولايات المتحدة|غارة|انفجار|سفينة|البحرية|اليمن|السعودية|الإمارات)/,
   // HE
-  /(תקיפה|טיל|מלחמה|איראן|חות'י|מיצר|הורמוז|גרעין|הסלמה|משא ומתן)/,
+  /(תקיפה|טיל|מלחמה|איראן|חות'י|מיצר|הורמוז|גרעין|הסלמה|משא ומתן|צה"ל|כטב"ם|יירוט|אזעקה|פיגוע|חיזבאללה|טראמפ|בסיס|משמרות המהפכה)/,
+];
+/* ONE of these is enough on its own. Run 1–4 showed the two-term rule dropping war
+   news whose headline names only the actor ("29 countries stand against Iran",
+   "IRGC ground forces in drills", "Hormuz risk moves metals"). Farsi ایران is NOT
+   here: Iranian press names Iran in nearly every domestic story. */
+const STRONG = [
+  /\b(iran|iranian|irgc|hormuz|houthi|ansarallah|hezbollah|tehran|centcom|khamenei|revolutionary guard)/i,
+  /(سپاه|هرمز|صهیونیست|اسرائیل)/,
+  /(إيران|إيراني|حرس الثوري|هرمز|الحوثي|حزب الله)/,
+  /(איראן|הורמוז|חות'י|חיזבאללה|משמרות המהפכה)/,
 ];
 /* Explicit rejects: lifestyle desks share a feed with the news desk, so a
    general-interest outlet leaks soft content that happens to mention a country. */
@@ -108,8 +118,8 @@ export function isRelevant(title) {
   for (const r of TOPIC)
     for (const m of t.matchAll(new RegExp(r.source, r.flags.includes("g") ? r.flags : r.flags + "g")))
       hits.add(m[0].toLowerCase());
-  /* Two distinct terms, so a passing country mention is not enough on its own. */
-  return hits.size >= 2;
+  /* Two distinct terms — or one STRONG war-actor term. */
+  return hits.size >= 2 || STRONG.some(r => r.test(t));
 }
 
 function loadClaims() {
@@ -117,9 +127,9 @@ function loadClaims() {
   try { return JSON.parse(readFileSync(CLAIMS_PATH, "utf8")); } catch { return {}; }
 }
 
-async function fetchText(url) {
+async function fetchText(url, ms = TIMEOUT_MS) {
   const ac = new AbortController();
-  const timer = setTimeout(() => ac.abort(), TIMEOUT_MS);
+  const timer = setTimeout(() => ac.abort(), ms);
   try {
     const res = await fetch(url, { signal: ac.signal, redirect: "follow", headers: { "User-Agent": UA, "Accept": "*/*" } });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -161,15 +171,21 @@ export function parseGdelt(txt) {
 
 /* Aggregators are routes, not sources: the outlet that published is the source.
    Google News titles carry it as a "Headline - Outlet" suffix. */
+/* Telegram and some feeds leave HTML entities in text ("today&#39;s", "&#33;"). */
+export const decode = t => String(t || "").replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(+n))
+  .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16)))
+  .replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
+
 export function normalize(s, it) {
-  let title = it.title, outlet = it.outlet || null;
+  let title = decode(it.title), outlet = it.outlet || null;
   if (s.feed?.agg === "gnews") {
     const i = title.lastIndexOf(" - ");
     if (i > 10) { outlet = title.slice(i + 3).trim(); title = title.slice(0, i).trim(); }
   }
   const via = s.feed?.agg === "gnews" ? "Google News" : s.feed?.fmt === "gdelt" ? "GDELT"
+    : s.feed?.agg === "search" ? "Claude search" : s.feed?.kind === "tracker" ? "Tracker"
     : s.feed?.kind === "telegram-web" ? "Telegram" : null;
-  return { title, orig: it.orig || title, ts: it.ts, url: it.link || null,
+  return { title, orig: decode(it.orig) || title, ts: it.ts, url: it.link || null,
     src: outlet || s.name, via, lang: it.lang || s.language || "?", agg: !!(s.feed?.agg || s.feed?.fmt) };
 }
 
@@ -184,24 +200,25 @@ export async function collect(reg) {
   const results = [];
   for (let i = 0; i < rest.length; i += CONCURRENCY)
     results.push(...await Promise.all(rest.slice(i, i + CONCURRENCY).map(pull)));
-  /* GitHub's runners share IPs, so GDELT often answers 429 even at 1 req/5s.
-     Space queries 12s apart and back off twice (20s, 40s) on 429 before giving up. */
+  /* GitHub's runners share IPs, so GDELT often answers 429 even at 1 req/5s, and
+     in run 4 it simply timed out ("fetch failed", "aborted"). Space queries 15s
+     apart, allow 40s per request, and retry twice (20s, 40s) on ANY error. */
   for (const [i, s] of gd.entries()) {
-    if (i) await new Promise(r => setTimeout(r, 12000));
-    let res = await pull(s);
+    if (i) await new Promise(r => setTimeout(r, 15000));
+    let res = await pull(s, 40000);
     for (const wait of [20000, 40000]) {
-      if (!res.err || !/429/.test(res.err)) break;
+      if (!res.err) break;
       await new Promise(r => setTimeout(r, wait));
-      res = await pull(s);
+      res = await pull(s, 40000);
     }
     results.push(res);
   }
   return { live, results };
 }
 
-async function pull(s) {
+async function pull(s, ms) {
   try {
-    const txt = await fetchText(s.feed.url);
+    const txt = await fetchText(s.feed.url, ms);
     const items = s.feed.kind === "telegram-web" ? parseTelegram(txt)
       : s.feed.fmt === "gdelt" ? parseGdelt(txt) : parseFeed(txt);
     return { s, items, err: null };
@@ -290,6 +307,11 @@ function selftest() {
   ok("telehealth filler dropped",        !isRelevant("How telehealth is helping close the healthcare gap in rural Zimbabwe"));
   ok("UAE grape farming dropped",        !isRelevant("UAE-grown grapes: Farmer produces 10,000 grapevines in RAK mountains"));
   ok("single country mention not enough", !isRelevant("Savannah Guthrie pleads for help to find missing mother"));
+  ok("one strong actor term is enough",  isRelevant("29 מדינות קמו נגד איראן: האזהרה החריפה"));
+  ok("Arabic IRGC alone is enough",      isRelevant("القوات البرية للحرس الثوري تسجل حضور قوي في مناورات"));
+  ok("Farsi Trump + Iran passes",        isRelevant("ادعای ترامپ: انتخابات آمریکا تأثیری بر تصمیمم در قبال ایران ندارد"));
+  ok("Farsi chicken prices still dropped", !isRelevant("قیمت مرغ امروز سه‌شنبه ۲۱ مهر ۱۴۰۵"));
+  ok("entities decoded in normalize", normalize({ name: "x", feed: { kind: "rss" } }, { title: "today&#39;s strike&#33;", ts: 1 }).title === "today's strike!");
   ok("diplomacy on the war passes",      isRelevant("Washington, Tehran close to agreeing reopening of Strait of Hormuz"));
 
   const html = `<div class="tgme_widget_message" data-post="x/1">
@@ -313,4 +335,4 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   }
 }
 
-export { run, parseTelegram };
+export { run, parseTelegram, fetchText };
