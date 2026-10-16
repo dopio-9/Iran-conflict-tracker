@@ -199,7 +199,7 @@ export async function collect(reg) {
   const gd = live.filter(s => s.feed.fmt === "gdelt"), rest = live.filter(s => s.feed.fmt !== "gdelt");
   const results = [];
   for (let i = 0; i < rest.length; i += CONCURRENCY)
-    results.push(...await Promise.all(rest.slice(i, i + CONCURRENCY).map(pull)));
+    results.push(...await Promise.all(rest.slice(i, i + CONCURRENCY).map(s => pull(s))));
   /* GitHub's runners share IPs, so GDELT often answers 429 even at 1 req/5s, and
      in run 4 it simply timed out ("fetch failed", "aborted"). Space queries 15s
      apart, allow 40s per request, and retry twice (20s, 40s) on ANY error. */
@@ -216,7 +216,8 @@ export async function collect(reg) {
   return { live, results };
 }
 
-async function pull(s, ms) {
+async function pull(s, ms = TIMEOUT_MS) {
+  ms = Number.isFinite(ms) && ms >= 1000 ? ms : TIMEOUT_MS;   // never a sub-second timeout (run 5: map() passed the index)
   try {
     const txt = await fetchText(s.feed.url, ms);
     const items = s.feed.kind === "telegram-web" ? parseTelegram(txt)
