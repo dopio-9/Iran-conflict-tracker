@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="data:,">
+<title>X3 — ILLUMINATED CHRONICLE</title>
+<style>
+  :root{
+    --lapis:#14235c; --lapis2:#0e1a48; --gold:#c9a227; --goldhi:#ecd07a; --golddark:#8a6d14;
+    --parch:#eadfbe; --parch2:#e0d2a8; --red:#a63226; --turq:#2e8f8a; --inkblue:#1b2f6e;
+    --serif:'Bitstream Charter',serif; --mono:'DejaVu Sans Mono',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#0c0e14;display:flex;justify-content:center;padding:30px 0;font-family:var(--serif)}
+  .folio{width:430px;background:var(--lapis);position:relative;box-shadow:0 34px 90px rgba(0,0,0,.85);
+    padding:10px}
+  .girih{border:2px solid var(--gold);padding:7px;background:
+    radial-gradient(circle at 50% 20%, #1a2c6e 0%, var(--lapis) 60%)}
+  .girih-inner{border:1px solid var(--gold);padding:16px 16px 18px;position:relative}
+
+  /* corner fans */
+  .fan{position:absolute;width:64px;height:64px;opacity:.9}
+  .fan svg{display:block}
+  .f-tl{top:0;left:0}.f-tr{top:0;right:0;transform:rotate(90deg)}
+  .f-br{bottom:0;right:0;transform:rotate(180deg)}.f-bl{bottom:0;left:0;transform:rotate(270deg)}
+
+  /* title cartouche ('unwan) */
+  .unwan{position:relative;margin:6px 22px 0;text-align:center}
+  .unwan .farsi{font-family:'DejaVu Sans',sans-serif;color:var(--goldhi);font-size:15px;letter-spacing:.05em;margin-bottom:7px}
+  .cart{position:relative;background:linear-gradient(180deg,var(--goldhi),var(--gold) 55%,var(--golddark));
+    padding:11px 26px 10px;clip-path:polygon(0 50%, 7% 0, 93% 0, 100% 50%, 93% 100%, 7% 100%);
+    box-shadow:0 2px 10px rgba(0,0,0,.4)}
+  .cart h1{color:var(--lapis2);font-size:19.5px;font-weight:bold;letter-spacing:.14em}
+  .unwan .sub{color:var(--goldhi);font-size:8.5px;letter-spacing:.3em;margin-top:8px;font-family:var(--mono)}
+  .rosette-row{display:flex;justify-content:center;gap:8px;margin-top:8px;color:var(--gold);font-size:10px;letter-spacing:.4em}
+
+  /* the miniature panel */
+  .mini{margin-top:14px;background:var(--parch);border:1.5px solid var(--gold);
+    box-shadow:inset 0 0 0 3px var(--parch), inset 0 0 0 4.5px var(--golddark);padding:5px}
+  .mini svg{display:block;width:100%}
+
+  /* chronicle text columns */
+  .chron{display:flex;gap:14px;margin-top:14px}
+  .ccol{flex:1;color:#dfe4f4;font-size:10.8px;line-height:1.7;font-style:italic;text-align:justify}
+  .ccol .init{color:var(--goldhi);font-style:normal;font-weight:bold;font-size:15px}
+  .vsep{color:var(--gold);font-style:normal;padding:0 3px;font-size:11px}
+  .ccol b{color:var(--goldhi);font-weight:bold;font-style:normal}
+  .ccol .redw{color:#e08a7e;font-style:normal;font-weight:bold}
+
+  /* roundels */
+  .rounds{display:flex;justify-content:space-evenly;margin-top:16px}
+  .round{text-align:center}
+  .rg{width:86px;height:86px;border-radius:50%;margin:0 auto;position:relative;
+    display:flex;align-items:center;justify-content:center;
+    background:radial-gradient(circle at 38% 30%, #223a86, var(--lapis2) 70%)}
+  .rg::before{content:"";position:absolute;inset:0;border-radius:50%;border:2.5px solid var(--gold)}
+  .rg::after{content:"";position:absolute;inset:6px;border-radius:50%;border:1px solid var(--gold);opacity:.75}
+  .rg .num{font-size:23px;font-weight:bold;color:var(--goldhi)}
+  .rg .num small{font-size:12px}
+  .round .rl{margin-top:8px;font-family:var(--mono);font-size:7px;letter-spacing:.22em;color:#aab6dd}
+  .round.r-risk .rg::before{border-color:var(--turq)}
+  .round.r-risk .num{color:#8fd8d2}
+  .round.r-tail .rg::before{border-color:var(--red)}
+  .round.r-tail .num{color:#e89286}
+  .rounds-cap{color:#8b99c9;text-align:center;font-size:8px;font-family:var(--mono);letter-spacing:.18em;margin-top:10px}
+
+  /* colophon */
+  .colo{margin-top:14px;border-top:1px solid var(--gold);padding-top:9px;text-align:center;
+    color:#9aa7d4;font-size:9.5px;line-height:1.7;font-style:italic}
+  .colo b{color:var(--goldhi);font-style:normal}
+</style>
+</head>
+<body>
+<div class="folio">
+<div class="girih">
+<div class="girih-inner">
+
+  <!-- corner fans -->
+  <span class="fan f-tl"><svg viewBox="0 0 64 64">
+    <path d="M0,0 L64,0 A64,64 0 0 1 0,64 Z" fill="none" stroke="#c9a227" stroke-width="1"/>
+    <path d="M0,0 L44,0 A44,44 0 0 1 0,44 Z" fill="none" stroke="#c9a227" stroke-width=".8"/>
+    <path d="M0,0 L26,0 A26,26 0 0 1 0,26 Z" fill="#c9a227" opacity=".85"/>
+    <g stroke="#c9a227" stroke-width=".7">
+      <line x1="0" y1="0" x2="59" y2="24"/><line x1="0" y1="0" x2="45" y2="45"/><line x1="0" y1="0" x2="24" y2="59"/>
+    </g>
+  </svg></span>
+  <span class="fan f-tr"><svg viewBox="0 0 64 64"><path d="M0,0 L64,0 A64,64 0 0 1 0,64 Z" fill="none" stroke="#c9a227" stroke-width="1"/><path d="M0,0 L44,0 A44,44 0 0 1 0,44 Z" fill="none" stroke="#c9a227" stroke-width=".8"/><path d="M0,0 L26,0 A26,26 0 0 1 0,26 Z" fill="#c9a227" opacity=".85"/><g stroke="#c9a227" stroke-width=".7"><line x1="0" y1="0" x2="59" y2="24"/><line x1="0" y1="0" x2="45" y2="45"/><line x1="0" y1="0" x2="24" y2="59"/></g></svg></span>
+  <span class="fan f-br"><svg viewBox="0 0 64 64"><path d="M0,0 L64,0 A64,64 0 0 1 0,64 Z" fill="none" stroke="#c9a227" stroke-width="1"/><path d="M0,0 L44,0 A44,44 0 0 1 0,44 Z" fill="none" stroke="#c9a227" stroke-width=".8"/><path d="M0,0 L26,0 A26,26 0 0 1 0,26 Z" fill="#c9a227" opacity=".85"/><g stroke="#c9a227" stroke-width=".7"><line x1="0" y1="0" x2="59" y2="24"/><line x1="0" y1="0" x2="45" y2="45"/><line x1="0" y1="0" x2="24" y2="59"/></g></svg></span>
+  <span class="fan f-bl"><svg viewBox="0 0 64 64"><path d="M0,0 L64,0 A64,64 0 0 1 0,64 Z" fill="none" stroke="#c9a227" stroke-width="1"/><path d="M0,0 L44,0 A44,44 0 0 1 0,44 Z" fill="none" stroke="#c9a227" stroke-width=".8"/><path d="M0,0 L26,0 A26,26 0 0 1 0,26 Z" fill="#c9a227" opacity=".85"/><g stroke="#c9a227" stroke-width=".7"><line x1="0" y1="0" x2="59" y2="24"/><line x1="0" y1="0" x2="45" y2="45"/><line x1="0" y1="0" x2="24" y2="59"/></g></svg></span>
+
+  <!-- TITLE -->
+  <div class="unwan">
+    <div class="farsi">دفترِ جنگِ خلیج</div>
+    <div class="cart"><h1>IRAN CONFLICT TRACKER</h1></div>
+    <div class="sub">A CHRONICLE OF THE WAR IN THE GULF · FOLIO 135</div>
+    <div class="rosette-row">۞ ✦ ۞</div>
+  </div>
+
+  <!-- MINIATURE -->
+  <div class="mini">
+    <svg viewBox="0 0 368 250">
+      <defs>
+        <pattern id="waves" width="26" height="16" patternUnits="userSpaceOnUse">
+          <path d="M2,12 a5,5 0 1 1 5,-5 a3.4,3.4 0 1 0 3.4,-3.4" fill="none" stroke="#1f6f7e" stroke-width="1"/>
+          <path d="M15,15 a5,5 0 1 1 5,-5 a3.4,3.4 0 1 0 3.4,-3.4" fill="none" stroke="#2a8a90" stroke-width=".9" opacity=".7"/>
+        </pattern>
+        <linearGradient id="flame" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0" stop-color="#a63226"/><stop offset=".55" stop-color="#d9622c"/><stop offset="1" stop-color="#ecd07a"/>
+        </linearGradient>
+      </defs>
+
+      <!-- sea -->
+      <rect x="0" y="52" width="368" height="152" fill="#7fbdb4"/>
+      <rect x="0" y="52" width="368" height="152" fill="url(#waves)" opacity=".85"/>
+
+      <!-- northern land (Persia) -->
+      <path d="M0,0 H368 V40 C332,52 300,44 268,56 C236,66 208,50 176,58 C140,66 108,50 72,58 C44,64 20,54 0,60 Z" fill="#d8c084" stroke="#8a6d14" stroke-width="1.6"/>
+      <path d="M0,0 H368 V14 H0 Z" fill="#c9a227" opacity=".25"/>
+      <!-- hills -->
+      <path d="M36,38 q13,-16 26,0 M84,34 q13,-16 26,0 M300,36 q13,-16 26,0" fill="none" stroke="#8a6d14" stroke-width="1.2"/>
+      <text x="150" y="30" font-family="Bitstream Charter" font-size="12" letter-spacing="6" fill="#6e5510" font-weight="bold">PERSIA</text>
+
+      <!-- southern land (Arabia) -->
+      <path d="M0,250 H368 V216 C330,206 300,214 264,206 C230,198 196,212 160,204 C124,196 92,210 56,202 C30,197 12,204 0,200 Z" fill="#d8c084" stroke="#8a6d14" stroke-width="1.6"/>
+      <text x="128" y="238" font-family="Bitstream Charter" font-size="11" letter-spacing="5" fill="#6e5510" font-weight="bold">ARABIA</text>
+
+      <!-- shamsa sun -->
+      <g transform="translate(330,86)">
+        <circle r="15" fill="#ecd07a" stroke="#8a6d14" stroke-width="1.2"/>
+        <g stroke="#c9a227" stroke-width="1.6">
+          <line x1="0" y1="-24" x2="0" y2="-18"/><line x1="0" y1="24" x2="0" y2="18"/>
+          <line x1="-24" y1="0" x2="-18" y2="0"/><line x1="24" y1="0" x2="18" y2="0"/>
+          <line x1="-17" y1="-17" x2="-13" y2="-13"/><line x1="17" y1="-17" x2="13" y2="-13"/>
+          <line x1="-17" y1="17" x2="-13" y2="13"/><line x1="17" y1="17" x2="13" y2="13"/>
+        </g>
+        <circle r="6" fill="none" stroke="#8a6d14" stroke-width="1"/>
+      </g>
+
+      <!-- flames on the northern coast -->
+      <g transform="translate(70,52)"><path d="M0,0 C-7,-9 -3,-20 0,-26 C2,-18 8,-16 7,-8 C6,-3 4,0 0,0 Z" fill="url(#flame)" stroke="#7e2318" stroke-width=".8"/></g>
+      <g transform="translate(180,58)"><path d="M0,0 C-8,-10 -3,-23 0,-30 C3,-21 9,-18 8,-9 C7,-3 4,0 0,0 Z" fill="url(#flame)" stroke="#7e2318" stroke-width=".8"/></g>
+      <g transform="translate(252,56)"><path d="M0,0 C-6,-8 -3,-18 0,-23 C2,-16 7,-14 6,-7 C5,-2 3,0 0,0 Z" fill="url(#flame)" stroke="#7e2318" stroke-width=".8"/></g>
+
+      <!-- healthy dhow, west, sails full -->
+      <g transform="translate(56,150)">
+        <path d="M-20,10 Q0,20 22,10 L16,2 L-16,2 Z" fill="#c9a227" stroke="#6e5510" stroke-width="1"/>
+        <path d="M-2,2 L-2,-26 L18,-6 Z" fill="#f2e6c4" stroke="#8a6d14" stroke-width="1"/>
+        <line x1="-2" y1="2" x2="-2" y2="-28" stroke="#6e5510" stroke-width="1.4"/>
+      </g>
+
+      <!-- stricken dhow, east, tilted + flame -->
+      <g transform="translate(276,164) rotate(14)">
+        <path d="M-20,10 Q0,20 22,10 L16,2 L-16,2 Z" fill="#b98f4a" stroke="#6e5510" stroke-width="1"/>
+        <path d="M-2,2 L-2,-22 L14,-5 Z" fill="#e0cfa0" stroke="#8a6d14" stroke-width="1"/>
+        <g transform="translate(6,-2)"><path d="M0,0 C-5,-6 -2,-13 0,-17 C2,-12 5,-10 4,-5 C3,-1 2,0 0,0 Z" fill="url(#flame)" stroke="#7e2318" stroke-width=".7"/></g>
+      </g>
+
+      <!-- closure chain across the strait -->
+      <g stroke="#a63226" stroke-width="2" opacity=".9">
+        <line x1="10" y1="128" x2="358" y2="118" stroke-dasharray="10 7"/>
+      </g>
+      <g fill="#a63226">
+        <circle cx="10" cy="128" r="3.4"/><circle cx="358" cy="118" r="3.4"/><circle cx="184" cy="123" r="3.4"/>
+      </g>
+      <text x="118" y="112" font-family="Bitstream Charter" font-style="italic" font-size="10.5" fill="#7e2318">the strait, declared shut</text>
+    </svg>
+  </div>
+
+  <!-- CHRONICLE TEXT -->
+  <div class="chron">
+    <div class="ccol">
+      <span class="init">O</span>n the hundred-and-thirty-fifth day, the Guard declared the water closed until further notice <span class="vsep">۞</span> and a merchant ship was struck upon the southern lane, one soul unaccounted <span class="vsep">۞</span> and for the third night in five, fire answered fire along the Persian shore.
+    </div>
+    <div class="ccol">
+      <span class="init">Y</span>et in the same hour envoys gathered at <b>Muscat</b> bearing a formula of two corridors <span class="vsep">۞</span> and the Emirates' lamps burned untouched, by design and not by chance <span class="vsep">۞</span> and the wise weighed the futures thus: <span class="redw">and graded their own prophecies when the time expired.</span>
+    </div>
+  </div>
+
+  <!-- ROUNDELS -->
+  <div class="rounds">
+    <div class="round">
+      <div class="rg"><span class="num">40<small>%</small></span></div>
+      <div class="rl">THE TRUCE HOLDS</div>
+    </div>
+    <div class="round r-risk">
+      <div class="rg"><span class="num">35<small>%</small></span></div>
+      <div class="rl">THE WATER STAYS SHUT</div>
+    </div>
+    <div class="round r-tail">
+      <div class="rg"><span class="num">25<small>%</small></span></div>
+      <div class="rl">A THIRD SWORD ENTERS</div>
+    </div>
+  </div>
+  <div class="rounds-cap">THE AUGURIES · NEXT SEVENTY-TWO HOURS · JUDGMENT, NOT PROPHECY</div>
+
+  <!-- COLOPHON -->
+  <div class="colo">
+    Written at the <b>Gulf Desk</b> for the resident of the Emirates, in the year 2026,<br>
+    being the 135th day of the war <span class="vsep">۞</span> <b>speed first · verify second · forecast third</b>
+  </div>
+
+</div>
+</div>
+</div>
+</body>
+</html>

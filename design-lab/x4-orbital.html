@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="data:,">
+<title>X4 — ORBITAL NOCTURNE</title>
+<style>
+  :root{ --hud:#cfe0e8; --dim:#5f7683; --sodium:#ffce8a; --mono:'DejaVu Sans Mono',monospace; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#000;display:flex;justify-content:center;padding:30px 0;font-family:var(--mono)}
+  .frame{width:430px;height:900px;position:relative;overflow:hidden;
+    background:linear-gradient(180deg,#000006 0%, #010209 12%, #04070f 30%, #05080f 100%);
+    box-shadow:0 34px 90px rgba(0,0,0,.9)}
+
+  /* space + atmosphere limb */
+  .stars i{position:absolute;border-radius:50%;background:#dfe9f2}
+  .limb{position:absolute;top:74px;left:-80px;right:-80px;height:36px;border-radius:50%;
+    background:radial-gradient(ellipse 60% 100% at 50% 100%, rgba(90,200,230,.5), rgba(40,110,170,.22) 55%, transparent 78%);
+    filter:blur(6px)}
+  .limb2{position:absolute;top:96px;left:-60px;right:-60px;height:8px;border-radius:50%;
+    background:linear-gradient(90deg,transparent, rgba(140,220,245,.75), transparent);filter:blur(1.6px)}
+  .earthedge{position:absolute;top:104px;left:-120px;right:-120px;height:1200px;border-radius:50% 50% 0 0/120px 120px 0 0;
+    background:linear-gradient(180deg,#070b14 0%, #04060d 22%, #03040a 100%)}
+
+  /* moonglint band on water */
+  .glint{position:absolute;top:340px;left:60px;width:340px;height:260px;transform:rotate(-24deg);
+    background:radial-gradient(ellipse 34% 46% at 50% 50%, rgba(140,170,200,.10), transparent 72%);filter:blur(10px)}
+
+  /* coastlines */
+  svg.map{position:absolute;top:104px;left:0;width:430px;height:796px}
+  .coast{fill:none;stroke:#20344a;stroke-width:1;opacity:.85}
+  .landtint{fill:#0a121e;opacity:.55}
+
+  /* city lights: glow layers */
+  .city{position:absolute;border-radius:50%;mix-blend-mode:screen}
+  .halo{filter:blur(14px);background:radial-gradient(circle, rgba(255,190,110,.55) 0%, rgba(255,150,60,.18) 55%, transparent 78%)}
+  .corehalo{filter:blur(5px);background:radial-gradient(circle, rgba(255,235,200,.95) 0%, rgba(255,190,110,.5) 55%, transparent 80%)}
+  .speck{position:absolute;border-radius:50%;background:#ffd9a0;box-shadow:0 0 3px rgba(255,200,120,.9)}
+  .string{position:absolute;height:1.4px;background:linear-gradient(90deg,transparent, rgba(255,190,110,.5), rgba(255,190,110,.65), rgba(255,190,110,.5), transparent);
+    filter:blur(.4px);mix-blend-mode:screen}
+
+  /* strike blooms */
+  .bloom{position:absolute;mix-blend-mode:screen}
+  .bloom .flash{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;
+    background:radial-gradient(circle, #ffffff 0%, #ffe9c0 30%, rgba(255,140,60,.7) 55%, transparent 78%)}
+  .bloom .ring{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;
+    border:1px solid rgba(255,190,140,.75)}
+  .bloom .ring2{border-color:rgba(255,150,90,.35)}
+
+  /* dark city (blackout) */
+  .dark{position:absolute;border:1px dashed rgba(120,150,180,.5);border-radius:50%}
+
+  /* orbital ground track */
+  .track{position:absolute;inset:0}
+  .track path{fill:none;stroke:rgba(150,200,230,.5);stroke-width:1;stroke-dasharray:2 7}
+  .sat{position:absolute;width:9px;height:9px;transform:rotate(45deg);border:1.4px solid #bfe6f5;
+    box-shadow:0 0 10px rgba(140,220,250,.8)}
+
+  /* labels */
+  .lbl{position:absolute;font-size:7.5px;letter-spacing:.16em;color:var(--hud);white-space:nowrap}
+  .lbl .ld{color:var(--dim);letter-spacing:.1em}
+  .lbl.warm{color:var(--sodium)}
+  .leader{position:absolute;width:1px;background:linear-gradient(180deg,rgba(200,220,235,.6),transparent)}
+
+  /* HUD chrome */
+  .hudtop{position:absolute;top:20px;left:22px;right:22px;z-index:6}
+  .ht1{display:flex;justify-content:space-between;font-size:8.5px;letter-spacing:.2em;color:var(--dim)}
+  .ht2{font-size:16px;font-weight:bold;letter-spacing:.3em;color:#eef6fa;margin-top:7px}
+  .ht3{font-size:7.5px;letter-spacing:.24em;color:var(--dim);margin-top:5px}
+  .telem{position:absolute;left:22px;right:22px;bottom:20px;z-index:6;border-top:1px solid rgba(120,150,175,.35);
+    padding-top:10px;font-size:8px;letter-spacing:.13em;line-height:2;color:var(--hud)}
+  .telem b{font-weight:normal;color:var(--sodium)}
+  .telem .quiet{color:#8fb8d8}
+  .scanline{position:absolute;inset:0;pointer-events:none;opacity:.35;
+    background:repeating-linear-gradient(180deg,rgba(0,0,0,.14) 0 1px,transparent 1px 4px)}
+  .vig{position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(ellipse 85% 75% at 50% 45%, transparent 60%, rgba(0,0,4,.6) 100%)}
+</style>
+</head>
+<body>
+<div class="frame">
+
+  <!-- stars -->
+  <div class="stars">
+    <i style="top:18px;left:60px;width:1.4px;height:1.4px"></i>
+    <i style="top:40px;left:180px;width:1px;height:1px;opacity:.7"></i>
+    <i style="top:26px;left:300px;width:1.6px;height:1.6px"></i>
+    <i style="top:58px;left:360px;width:1px;height:1px;opacity:.6"></i>
+    <i style="top:66px;left:120px;width:1.2px;height:1.2px;opacity:.8"></i>
+    <i style="top:12px;left:400px;width:1.1px;height:1.1px;opacity:.7"></i>
+    <i style="top:50px;left:250px;width:1px;height:1px;opacity:.5"></i>
+  </div>
+  <div class="earthedge"></div>
+  <div class="limb"></div>
+  <div class="limb2"></div>
+  <div class="glint"></div>
+
+  <!-- coastlines -->
+  <svg class="map" viewBox="0 0 430 796">
+    <!-- Iran coast -->
+    <path class="landtint" d="M0,0 H430 V210 C388,224 356,208 318,222 C280,236 246,220 208,232 C170,244 130,228 92,238 C58,246 26,238 0,246 Z"/>
+    <path class="coast" d="M0,246 C26,238 58,246 92,238 C130,228 170,244 208,232 C246,220 280,236 318,222 C356,208 388,224 430,210"/>
+    <!-- Qeshm -->
+    <path class="coast" d="M96,286 C140,274 196,278 232,292 C204,304 148,302 96,286 Z"/>
+    <!-- Musandam / Oman -->
+    <path class="landtint" d="M258,796 C266,700 282,636 310,588 C330,554 352,540 366,510 C378,486 388,478 402,482 C420,488 424,516 416,552 C402,614 376,680 362,738 C354,772 352,796 352,796 Z"/>
+    <path class="coast" d="M258,796 C266,700 282,636 310,588 C330,554 352,540 366,510 C378,486 388,478 402,482 C420,488 424,516 416,552 C402,614 376,680 362,738"/>
+    <!-- UAE coast -->
+    <path class="landtint" d="M0,796 V620 C36,608 84,618 130,634 C176,650 216,676 244,700 C264,718 274,760 276,796 Z"/>
+    <path class="coast" d="M0,620 C36,608 84,618 130,634 C176,650 216,676 244,700 C264,718 274,760 276,796"/>
+  </svg>
+
+  <!-- ══ CITY LIGHT: Bandar Abbas (partial blackout) ══ -->
+  <div class="city halo" style="top:186px;left:120px;width:110px;height:64px"></div>
+  <div class="city corehalo" style="top:204px;left:150px;width:44px;height:26px;opacity:.7"></div>
+  <span class="speck" style="top:212px;left:160px;width:2px;height:2px"></span>
+  <span class="speck" style="top:218px;left:172px;width:2.4px;height:2.4px"></span>
+  <span class="speck" style="top:208px;left:184px;width:1.8px;height:1.8px"></span>
+  <div class="dark" style="top:196px;left:196px;width:52px;height:30px"></div>
+
+  <!-- Iranian coast strings -->
+  <div class="string" style="top:226px;left:60px;width:120px;transform:rotate(-4deg)"></div>
+  <div class="string" style="top:214px;left:230px;width:130px;transform:rotate(-6deg);opacity:.55"></div>
+
+  <!-- ══ STRIKE BLOOMS ══ -->
+  <div class="bloom" style="top:236px;left:106px">
+    <span class="flash" style="width:30px;height:30px"></span>
+    <span class="ring" style="width:52px;height:52px"></span>
+    <span class="ring ring2" style="width:78px;height:78px"></span>
+  </div>
+  <div class="bloom" style="top:296px;left:300px">
+    <span class="flash" style="width:22px;height:22px"></span>
+    <span class="ring" style="width:40px;height:40px"></span>
+    <span class="ring ring2" style="width:62px;height:62px"></span>
+  </div>
+  <div class="bloom" style="top:318px;left:170px">
+    <span class="flash" style="width:16px;height:16px"></span>
+    <span class="ring" style="width:30px;height:30px"></span>
+  </div>
+
+  <!-- stricken vessel adrift: lone cold light -->
+  <span class="speck" style="top:470px;left:330px;width:2.6px;height:2.6px;background:#bcd6ff;box-shadow:0 0 6px rgba(160,200,255,.9)"></span>
+
+  <!-- ══ UAE: full bright grid ══ -->
+  <div class="city halo" style="top:640px;left:28px;width:200px;height:120px;opacity:.95"></div>
+  <div class="city corehalo" style="top:668px;left:70px;width:96px;height:52px"></div>
+  <div class="city corehalo" style="top:700px;left:150px;width:66px;height:38px;opacity:.85"></div>
+  <span class="speck" style="top:686px;left:96px;width:3px;height:3px"></span>
+  <span class="speck" style="top:678px;left:118px;width:2.4px;height:2.4px"></span>
+  <span class="speck" style="top:700px;left:132px;width:2.6px;height:2.6px"></span>
+  <span class="speck" style="top:712px;left:170px;width:2.2px;height:2.2px"></span>
+  <span class="speck" style="top:722px;left:190px;width:2px;height:2px"></span>
+  <div class="string" style="top:706px;left:40px;width:180px;transform:rotate(9deg)"></div>
+  <div class="string" style="top:668px;left:60px;width:120px;transform:rotate(6deg);opacity:.7"></div>
+
+  <!-- Muscat glow SE -->
+  <div class="city halo" style="top:756px;left:330px;width:90px;height:50px;opacity:.6"></div>
+  <span class="speck" style="top:772px;left:366px;width:2px;height:2px"></span>
+
+  <!-- ══ ORBITAL TRACK ══ -->
+  <div class="track">
+    <svg width="430" height="900"><path d="M-20,180 C120,254 300,420 450,640"/></svg>
+    <span class="sat" style="top:306px;left:196px"></span>
+  </div>
+
+  <!-- ══ LABELS ══ -->
+  <span class="leader" style="top:234px;left:96px;height:26px"></span>
+  <div class="lbl" style="top:200px;left:30px">BANDAR ABBAS<br><span class="ld">GRID 40% DARK</span></div>
+
+  <span class="leader" style="top:300px;left:342px;height:30px"></span>
+  <div class="lbl" style="top:284px;left:326px">SIRIK<br><span class="ld">BLOOM +2H</span></div>
+
+  <span class="leader" style="top:330px;left:166px;height:34px"></span>
+  <div class="lbl" style="top:368px;left:130px">QESHM · BLOOM +4H</div>
+
+  <div class="lbl" style="top:462px;left:236px"><span class="ld">M/V — ADRIFT · COLD ⟶</span></div>
+
+  <div class="lbl warm" style="top:648px;left:236px">DUBAI — FULL GRID<br><span class="ld" style="color:#b98f5e">LIFE, AS NORMAL</span></div>
+  <div class="lbl" style="top:770px;left:250px;color:#8aa4b4">MUSCAT<br><span class="ld">TALKS BURN LATE ·</span></div>
+
+  <!-- ══ HUD ══ -->
+  <div class="hudtop">
+    <div class="ht1"><span>NIGHT PASS · LEO 410KM</span><span>04:13 GST</span></div>
+    <div class="ht2">IRAN CONFLICT TRACKER</div>
+    <div class="ht3">ORBITAL NOCTURNE · REV 2141 · DAY 135 OF THE WAR</div>
+  </div>
+
+  <div class="telem">
+    THIS PASS&nbsp;: <b>3 BLOOMS RESOLVED · 1 GRID PARTIALLY DARK</b><br>
+    UNCHANGED : <b class="quiet">EMIRATES GRID AT FULL LUMINANCE — 135 NIGHTS RUNNING</b><br>
+    NEXT PASS : +92 MIN · FORECAST 40/35/25 · T−36 TO WINDOW
+  </div>
+
+  <div class="scanline"></div>
+  <div class="vig"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="data:,">
+<title>X1 — REDACTED</title>
+<style>
+  :root{
+    --paper:#e9e1cd; --paper2:#e2d8bf; --ink:#26221a; --faded:#6e6754;
+    --bar:#141210; --red:#a01e18; --blue:#274a80;
+    --tw:'Courier 10 Pitch',monospace; --sans:'Liberation Sans',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#101012;display:flex;justify-content:center;padding:30px 0;font-family:var(--tw)}
+  .sheet{width:430px;background:var(--paper);color:var(--ink);position:relative;
+    box-shadow:0 34px 90px rgba(0,0,0,.85);
+    background-image:
+      radial-gradient(rgba(38,34,26,.05) 1px,transparent 1px),
+      linear-gradient(180deg,rgba(160,140,90,.09),transparent 140px);
+    background-size:4px 4px,100% 100%}
+  /* torn corner */
+  .sheet::after{content:"";position:absolute;top:0;right:0;width:54px;height:54px;
+    background:#101012;clip-path:polygon(100% 0,0 0,100% 100%)}
+  .sheet::before{content:"";position:absolute;top:2px;right:2px;width:50px;height:50px;
+    background:var(--paper2);clip-path:polygon(100% 0,0 0,100% 100%);z-index:1;
+    filter:drop-shadow(-2px 2px 2px rgba(0,0,0,.3))}
+
+  /* punch holes */
+  .holes{position:absolute;left:12px;top:0;bottom:0;width:14px;display:flex;flex-direction:column;
+    justify-content:space-evenly;z-index:2}
+  .holes i{width:13px;height:13px;border-radius:50%;background:#101012;
+    box-shadow:inset 0 2px 3px rgba(0,0,0,.6), 0 1px 0 rgba(255,255,255,.35)}
+
+  .inner{padding:0 26px 26px 44px;position:relative}
+
+  /* classification banners */
+  .classif{background:var(--bar);color:var(--paper);text-align:center;font-family:var(--sans);
+    font-weight:bold;font-size:10px;letter-spacing:.42em;padding:6px 0}
+  .classif.foot{margin-top:18px}
+
+  /* header block */
+  .filehead{padding:18px 0 10px;border-bottom:2.4px solid var(--ink)}
+  .fh-row{display:flex;justify-content:space-between;font-size:9px;letter-spacing:.06em;color:var(--faded)}
+  h1{font-size:29px;font-weight:bold;letter-spacing:.015em;line-height:1.06;margin-top:12px}
+  h1 .bar{display:inline-block;background:var(--bar);color:transparent;user-select:none}
+  .subject{font-size:10px;margin-top:9px;line-height:1.6}
+  .subject b{font-weight:bold}
+
+  /* stamps */
+  .stamp{position:absolute;font-family:var(--sans);font-weight:bold;border:3px double var(--red);
+    color:var(--red);padding:5px 12px;letter-spacing:.24em;font-size:13px;opacity:.82;
+    transform:rotate(-8deg);mix-blend-mode:multiply;z-index:3}
+  .stamp.s1{top:88px;right:30px}
+  .stamp.s2{top:610px;left:58px;transform:rotate(4deg);font-size:11px;border-width:2.6px}
+  .stamp.blue{border-color:var(--blue);color:var(--blue)}
+  .recv{position:absolute;top:206px;right:24px;transform:rotate(-3deg);z-index:3;
+    border:2px solid var(--blue);border-radius:50%;width:96px;height:96px;display:flex;
+    flex-direction:column;align-items:center;justify-content:center;color:var(--blue);
+    font-family:var(--sans);font-size:7px;font-weight:bold;letter-spacing:.14em;text-align:center;
+    line-height:1.7;opacity:.55;mix-blend-mode:multiply}
+  .recv b{font-size:13px;letter-spacing:.04em}
+
+  /* redacted prose */
+  .prose{margin-top:16px;font-size:11.5px;line-height:2.05}
+  .prose p{margin-bottom:12px}
+  .r{display:inline-block;background:var(--bar);color:transparent;border-radius:1px;
+    height:13px;vertical-align:-2px;user-select:none}
+  .keep{background:#f5ef7a66;padding:0 2px;font-weight:bold}
+  .marginalia{position:relative}
+  .note{display:block;font-family:'Bitstream Charter',serif;font-style:italic;
+    color:var(--blue);font-size:11.5px;transform:rotate(-1.2deg);text-align:right;margin-top:2px}
+
+  /* the redaction chart */
+  .chart{margin-top:8px;border:1.6px solid var(--ink);padding:12px 14px 10px}
+  .chart .ct{font-size:9px;letter-spacing:.2em;font-weight:bold;margin-bottom:10px}
+  .cr{display:flex;align-items:center;gap:9px;margin-bottom:7px}
+  .cr .cl{width:66px;font-size:8.5px;letter-spacing:.05em;flex-shrink:0;color:var(--faded)}
+  .cr .cb{height:11px;background:var(--bar)}
+  .cr:last-child .cb{background:var(--red)}
+  .cr:last-child .cl{color:var(--red);font-weight:bold}
+  .chart .cf{font-size:7.5px;color:var(--faded);margin-top:8px;letter-spacing:.08em}
+
+  /* assessment strip */
+  .assess{margin-top:16px;display:flex;gap:0;border:1.6px solid var(--ink)}
+  .as{flex:1;padding:10px 8px;text-align:center;border-right:1.6px solid var(--ink)}
+  .as:last-child{border-right:none}
+  .as .av{font-size:20px;font-weight:bold}
+  .as .ak{font-size:7px;letter-spacing:.16em;color:var(--faded);display:block;margin-top:3px}
+  .as.hot .av{color:var(--red)}
+  .as .avr{display:inline-block;background:var(--bar);width:44px;height:16px;vertical-align:-2px}
+
+  .distrib{margin-top:14px;font-size:8.5px;line-height:1.9;color:var(--faded)}
+  .distrib b{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="holes"><i></i><i></i><i></i></div>
+  <div class="classif">TOP SECRET // HCS-P // NOFORN // ORCON</div>
+
+  <div class="inner">
+    <div class="filehead">
+      <div class="fh-row"><span>MEMORANDUM — DAILY READING</span><span>COPY 3 OF 7</span></div>
+      <div class="fh-row" style="margin-top:3px"><span>CASE: GULF/STRAIT</span><span>SERIAL 135-A</span></div>
+      <h1>IRAN CONFLICT<br>TRACKER</h1>
+      <div class="subject">SUBJECT: STATE OF THE STRAIT AND PROBABLE COURSES OF ACTION — <b>DAY 135.</b> PERIOD ENDING <b>12 JUL, 1400 LOCAL.</b></div>
+    </div>
+
+    <span class="stamp s1">SECRET</span>
+    <div class="recv"><span>RECEIVED</span><b>12 JUL</b><span>GULF DESK<br>REGISTRY</span></div>
+
+    <div class="prose">
+      <p>1. (TS) The strait is <span class="keep">DECLARED CLOSED</span> by <span class="r" style="width:118px"></span> effective <span class="r" style="width:64px"></span>. Enforcement observed against <span class="r" style="width:92px"></span> including one <span class="keep">merchant vessel disabled</span>, crew status <span class="r" style="width:76px"></span>.</p>
+      <p class="marginalia">2. (TS//OC) Retaliatory action of <span class="r" style="width:57px"></span> struck <span class="r" style="width:141px"></span> in the third round in five days. Assess intent as <span class="keep">enforcement of route authority</span>, not <span class="r" style="width:88px"></span>.</p>
+      <span class="note">— the omission IS the finding. see ¶3 ↓</span>
+      <p>3. (S) Notably absent from target sets: <span class="keep">THE EMIRATES</span>. The exemption is assessed as <span class="r" style="width:170px"></span><span class="r" style="width:203px;margin-top:4px"></span> and reversible without warning.</p>
+      <p>4. (TS) A negotiating channel is open at <span class="r" style="width:71px"></span> carrying a <span class="keep">two-corridor formula</span>. Delegation includes <span class="r" style="width:180px"></span><span class="r" style="width:130px"></span>.</p>
+    </div>
+
+    <div class="chart">
+      <div class="ct">FIG. 1 — ESCALATION BY WEEK (REDACTED SERIES)</div>
+      <div class="cr"><span class="cl">W-5</span><span class="cb" style="width:24%"></span></div>
+      <div class="cr"><span class="cl">W-4</span><span class="cb" style="width:15%"></span></div>
+      <div class="cr"><span class="cl">W-3</span><span class="cb" style="width:31%"></span></div>
+      <div class="cr"><span class="cl">W-2</span><span class="cb" style="width:47%"></span></div>
+      <div class="cr"><span class="cl">THIS WEEK</span><span class="cb" style="width:86%"></span></div>
+      <div class="cf">BAR LENGTH DECLASSIFIED. VALUES REMAIN CODEWORD.</div>
+    </div>
+
+    <div class="assess">
+      <div class="as"><span class="av">40<small>%</small></span><span class="ak">TALKS HOLD</span></div>
+      <div class="as"><span class="av">35<small>%</small></span><span class="ak">CLOSURE HARDENS</span></div>
+      <div class="as hot"><span class="av">25<small>%</small></span><span class="ak">THIRD PARTY ENTERS</span></div>
+      <div class="as"><span class="avr"></span><span class="ak">[WITHHELD]</span></div>
+    </div>
+
+    <span class="stamp s2 blue">DECLASSIFY ON: 12 JUL 2076</span>
+
+    <div class="distrib">
+      DISTRIBUTION: <b>GULF DESK</b> / <span class="r" style="width:52px"></span> / <span class="r" style="width:70px"></span> / RESIDENT, DUBAI<br>
+      HANDLE VIA <b>HORMUZ CHANNEL</b> ONLY. REPRODUCTION FORBIDDEN.
+    </div>
+  </div>
+
+  <div class="classif foot">TOP SECRET // HCS-P // NOFORN // ORCON</div>
+</div>
+</body>
+</html>

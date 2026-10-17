@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="data:,">
+<title>COMP B — THE GULF EXTRA</title>
+<style>
+  :root{
+    --paper:#f4ecdd; --paper2:#efe5d2; --ink:#1c1812; --ink2:#4a4437; --faded:#8a8271;
+    --rule:#28231a; --stamp:#b3261e; --pencil:#2c4f8a;
+    --serif:'Bitstream Charter',serif; --mono:'DejaVu Sans Mono',monospace;
+    --sans:'Liberation Sans',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#17171a;display:flex;justify-content:center;padding:26px 0;font-family:var(--serif)}
+  .phone{width:430px;background:var(--paper);color:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.8);
+    background-image:radial-gradient(rgba(28,24,18,.045) 1px,transparent 1px);background-size:5px 5px}
+  .pad{padding:0 16px}
+
+  /* ── masthead ─────────────────────────────────── */
+  .ears{display:flex;justify-content:space-between;padding:10px 16px 0}
+  .ear{border:1.4px solid var(--ink);padding:4px 7px;font-family:var(--sans);font-size:7.5px;
+    font-weight:bold;letter-spacing:.14em;text-align:center;line-height:1.5}
+  .ear b{display:block;font-size:12px;letter-spacing:.04em}
+  .masthead{text-align:center;padding:6px 16px 0}
+  .masthead h1{font-size:56px;font-weight:bold;letter-spacing:.01em;line-height:.95;
+    transform:scaleY(1.12);transform-origin:top}
+  .masthead .mh-sub{font-size:8.5px;letter-spacing:.42em;color:var(--ink2);margin-top:8px;font-family:var(--sans);font-weight:bold}
+  .dateline{margin:9px 16px 0;border-top:2.6px solid var(--ink);border-bottom:1px solid var(--ink);
+    padding:4px 0;display:flex;justify-content:space-between;font-family:var(--sans);
+    font-size:7.6px;font-weight:bold;letter-spacing:.12em}
+  .dateline .red{color:var(--stamp)}
+
+  /* ── EXTRA headline ───────────────────────────── */
+  .extra{position:relative;padding:16px 16px 12px;border-bottom:1.4px solid var(--ink)}
+  .stampbox{position:absolute;top:14px;right:12px;border:2.6px solid var(--stamp);color:var(--stamp);
+    font-family:var(--sans);font-weight:bold;font-size:13px;letter-spacing:.24em;padding:5px 9px;
+    transform:rotate(6deg);opacity:.92}
+  .hl{font-size:47px;font-weight:bold;line-height:.97;letter-spacing:-.005em;transform:scaleY(1.16);
+    transform-origin:top left;max-width:360px}
+  .deck{font-size:15px;line-height:1.4;font-style:italic;color:var(--ink2);margin-top:38px;max-width:380px}
+  .hl-meta{margin-top:10px;font-family:var(--sans);font-size:7.5px;font-weight:bold;
+    letter-spacing:.14em;color:var(--faded)}
+  .hl-meta b{color:var(--stamp)}
+
+  /* ── verification key strip ───────────────────── */
+  .vkey{margin:0 16px;border-bottom:1px solid var(--rule);padding:6px 0;display:flex;gap:12px;
+    justify-content:center;font-family:var(--sans);font-size:7.2px;font-weight:bold;letter-spacing:.1em;color:var(--ink2)}
+  .vkey span i{font-style:normal;font-family:var(--mono)}
+  .vkey .r{color:var(--stamp)} .vkey .b{color:var(--pencil)}
+
+  /* ── columns ──────────────────────────────────── */
+  .cols{display:flex;gap:0;padding:12px 16px 0}
+  .colL{flex:1.15;padding-right:12px;border-right:1px solid var(--rule)}
+  .colR{flex:1;padding-left:12px}
+  .kick{font-family:var(--sans);font-size:8px;font-weight:bold;letter-spacing:.22em;color:var(--stamp);margin-bottom:5px}
+  .lede{font-size:12.5px;line-height:1.52;text-align:justify;hyphens:auto}
+  .lede .dc{float:left;font-size:41px;line-height:.82;font-weight:bold;padding:4px 6px 0 0}
+  .lede p+p{margin-top:8px;text-indent:12px}
+  .pull{margin:12px 0;padding:9px 0;border-top:2.4px solid var(--ink);border-bottom:1px solid var(--ink)}
+  .pull p{font-size:14.5px;line-height:1.35;font-weight:bold;font-style:italic}
+  .pull .attr{font-family:var(--sans);font-size:7px;font-weight:bold;letter-spacing:.18em;color:var(--faded);margin-top:5px}
+
+  .rhead{font-family:var(--sans);font-size:8.5px;font-weight:bold;letter-spacing:.2em;
+    border-top:2.4px solid var(--ink);border-bottom:1px solid var(--rule);padding:4px 0 3px;margin-bottom:7px}
+  .wireitem{padding:6px 0;border-bottom:1px dotted var(--faded)}
+  .wireitem:last-child{border-bottom:none}
+  .wi-h{font-size:11px;font-weight:bold;line-height:1.3}
+  .wi-h .mk{font-family:var(--mono);font-size:9px;letter-spacing:0}
+  .mk.r{color:var(--stamp)} .mk.b{color:var(--pencil)} .mk.k{color:var(--ink)}
+  .wi-src{font-family:var(--sans);font-size:6.8px;font-weight:bold;letter-spacing:.12em;color:var(--faded);margin-top:2px}
+
+  /* odds card */
+  .odds{margin-top:12px;border:1.4px solid var(--ink);padding:8px 9px 9px;background:var(--paper2)}
+  .odds .oh{font-family:var(--sans);font-size:8px;font-weight:bold;letter-spacing:.2em;text-align:center;
+    border-bottom:1px solid var(--rule);padding-bottom:4px;margin-bottom:6px}
+  .orow{display:flex;align-items:baseline;gap:6px;padding:3.5px 0}
+  .orow .op{font-family:var(--mono);font-weight:bold;font-size:14px;width:38px}
+  .orow .ol{flex:1;font-size:9.5px;line-height:1.25}
+  .obar{height:4px;background:var(--ink);margin-top:2px}
+  .orow .obar{background:var(--ink)}
+  .orow.tail .op{color:var(--stamp)}
+  .orow.tail .obar{background:var(--stamp)}
+  .odds .on{font-family:var(--sans);font-size:6.6px;letter-spacing:.08em;color:var(--faded);
+    text-align:center;margin-top:5px;font-weight:bold}
+
+  /* ── emirates op-ed band ──────────────────────── */
+  .oped{margin:14px 16px 0;border:2.6px solid var(--pencil);padding:11px 13px;position:relative}
+  .oped .tag{position:absolute;top:-9px;left:12px;background:var(--paper);padding:0 7px;
+    font-family:var(--sans);font-size:8px;font-weight:bold;letter-spacing:.22em;color:var(--pencil)}
+  .oped p{font-size:12.5px;line-height:1.55}
+  .oped .dc{float:left;font-size:38px;line-height:.85;font-weight:bold;padding:3px 6px 0 0;color:var(--pencil)}
+  .oped b{background:rgba(44,79,138,.14)}
+
+  /* ── claims desk + chronicle ──────────────────── */
+  .bottom{display:flex;gap:0;padding:12px 16px 0}
+  .claims{flex:1.15;padding-right:12px;border-right:1px solid var(--rule)}
+  .chron{flex:1;padding-left:12px}
+  .crow{padding:6px 0;border-bottom:1px dotted var(--faded);font-size:10px;line-height:1.35}
+  .crow:last-child{border-bottom:none}
+  .cstamp{font-family:var(--sans);font-weight:bold;font-size:8px;letter-spacing:.1em;
+    border:1.6px solid;padding:1px 5px;display:inline-block;transform:rotate(-2deg);margin-bottom:3px}
+  .cs-ok{color:#20601c;border-color:#20601c}
+  .cs-no{color:var(--stamp);border-color:var(--stamp)}
+  .cs-half{color:var(--pencil);border-color:var(--pencil)}
+  .trow{display:flex;gap:7px;padding:3.5px 0;font-size:9.5px;line-height:1.35;border-bottom:1px dotted var(--faded)}
+  .trow:last-child{border-bottom:none}
+  .trow .td{font-family:var(--mono);font-size:8px;font-weight:bold;white-space:nowrap;padding-top:1px}
+
+  /* ── ticker footer ────────────────────────────── */
+  .ticker{margin-top:14px;background:var(--ink);color:var(--paper);font-family:var(--mono);
+    font-size:9px;letter-spacing:.06em;padding:7px 14px;display:flex;justify-content:space-between}
+  .ticker .up{color:#e8b64c}
+  .colophon{text-align:center;font-family:var(--sans);font-size:6.8px;font-weight:bold;
+    letter-spacing:.3em;color:var(--faded);padding:9px 0 12px}
+</style>
+</head>
+<body>
+<div class="phone">
+
+  <!-- MASTHEAD -->
+  <div class="ears">
+    <div class="ear">DAY<b>135</b>OF THE WAR</div>
+    <div class="ear" style="border-color:var(--stamp);color:var(--stamp)">TOLL EXPIRY<b>T−36</b>17 AUG</div>
+  </div>
+  <div class="masthead">
+    <h1>THE STRAIT</h1>
+    <div class="mh-sub">HORMUZ·LIVE — GULF DESK PRESS</div>
+  </div>
+  <div class="dateline">
+    <span class="red">★ EXTRA EDITION</span>
+    <span>SUNDAY 12 JULY 2026 · 14:00 GST</span>
+    <span>FILS 25</span>
+  </div>
+
+  <!-- EXTRA HEADLINE -->
+  <div class="extra">
+    <div class="stampbox">EXTRA</div>
+    <div class="hl">IRGC DECLARES THE STRAIT CLOSED</div>
+    <div class="deck">“Until further notice” — third American strike round in five days answers; container ship GFS Galaxy disabled off Oman, one crew member missing.</div>
+    <div class="hl-meta"><b>VERIFIED ×2</b> — IRGC NAVY STATEMENT · BLOOMBERG · TIMES OF ISRAEL</div>
+  </div>
+
+  <!-- VERIFICATION KEY -->
+  <div class="vkey">
+    <span><i class="r">⚡</i> FLASH</span>
+    <span><i>●●</i> VERIFIED ×2</span>
+    <span><i>●</i> VERIFIED</span>
+    <span><i class="b">○</i> PENDING</span>
+    <span><i class="b">◐</i> DISPUTED</span>
+  </div>
+
+  <!-- BODY COLUMNS -->
+  <div class="cols">
+    <div class="colL">
+      <div class="kick">THE ROUTE WAR, IN ONE SHOT</div>
+      <div class="lede">
+        <p><span class="dc">T</span>he Revolutionary Guard called it a “warning shot at a vessel on an unapproved route.” CENTCOM called it a “blatant attack” on a ship in international transit. Both are describing the same hole in the same engine room — and that dispute, not the fire itself, is the entire war now.</p>
+        <p>Iran did not close Bab-el-Mandeb, and it did not leave the NPT — the options it floated on Tuesday. It closed the one strait it physically commands, converting every southern-lane transit into a claimed violation of Iranian law.</p>
+      </div>
+      <div class="pull">
+        <p>“Note what Iran executed: not the options it floated — the one option it fully controls.”</p>
+        <div class="attr">— ANALYST’S WHY · WIRE 22:30</div>
+      </div>
+      <div class="lede">
+        <p>Washington answered twice: with ordnance at Bandar Abbas, Sirik and Qeshm — and with the most senior delegation of the war, dispatched toward Muscat within hours of the President declaring the deal dead.</p>
+      </div>
+    </div>
+
+    <div class="colR">
+      <div class="rhead">ON THE WIRE</div>
+      <div class="wireitem"><div class="wi-h"><span class="mk r">⚡</span> Round-3 strikes hit three coastal cities</div><div class="wi-src">03:15 · CENTCOM · CNN · MEHR</div></div>
+      <div class="wireitem"><div class="wi-h"><span class="mk k">●●</span> Trump–Mojtaba trade personal threats</div><div class="wi-src">17:00 · PBS/AP · FRANCE 24</div></div>
+      <div class="wireitem"><div class="wi-h"><span class="mk k">●●</span> Oman circulates two-corridor draft; no tolls</div><div class="wi-src">14:00 · CNN · MUSCAT DAILY</div></div>
+      <div class="wireitem"><div class="wi-h"><span class="mk b">○</span> Israel “poised” to rejoin — no T2 confirm</div><div class="wi-src">12:00 · YNET · TOI · FOX</div></div>
+      <div class="wireitem"><div class="wi-h"><span class="mk k">●●</span> Southern lane at zero AIS intent</div><div class="wi-src">10 JUL · CBS OSINT · KPLER · IMO</div></div>
+
+      <div class="odds">
+        <div class="oh">THE ODDS · NEXT 72 HRS</div>
+        <div class="orow"><span class="op">40%</span><div class="ol">Muscat pause; closure stays declaratory<div class="obar" style="width:80%"></div></div></div>
+        <div class="orow"><span class="op">35%</span><div class="ol">Closure hardens; round four<div class="obar" style="width:70%"></div></div></div>
+        <div class="orow tail"><span class="op">25%</span><div class="ol">Israel re-enters; the deal dies<div class="obar" style="width:50%"></div></div></div>
+        <div class="on">ANALYST JUDGMENT — NOT SOURCED FACT · GRADED AT EXPIRY</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EMIRATES OP-ED -->
+  <div class="oped">
+    <span class="tag">WHAT IT MEANS IN THE EMIRATES</span>
+    <p><span class="dc">Y</span>our skies are open — three strike rounds and not one new flight restriction. Your exposure is <b>maritime</b>: war-risk cover near 5% of hull value now feeds import costs and fuel. And note the quietest fact on this page: Iran has struck Bahrain, Kuwait, Qatar and Jordan this round — <b>and has not touched the UAE</b>. That exemption is a decision. Watch WAM and UAE MOD language for the first crack in it.</p>
+  </div>
+
+  <!-- CLAIMS DESK + CHRONICLE -->
+  <div class="bottom">
+    <div class="claims">
+      <div class="rhead">CLAIMS DESK</div>
+      <div class="crow"><span class="cstamp cs-ok">CONFIRMED</span><br>Southern-lane traffic has genuinely collapsed — zero vessels broadcasting intent. <i>CBS OSINT · IMO.</i></div>
+      <div class="crow"><span class="cstamp cs-half">DISPUTED</span><br>Whether Iran can enforce closure against opposed traffic. US: Iran “does not control” the strait. The Guard keeps hitting unescorted merchants. Both stand.</div>
+      <div class="crow"><span class="cstamp cs-no">UNVERIFIED</span><br>Fate of the GFS Galaxy’s missing crew member — would be the first mariner killed since the MOU.</div>
+    </div>
+    <div class="chron">
+      <div class="rhead">CHRONICLE</div>
+      <div class="trow"><span class="td">28 FEB</span><span>War begins; Khamenei killed</span></div>
+      <div class="trow"><span class="td">17 JUN</span><span>MOU signed; tolls suspended</span></div>
+      <div class="trow"><span class="td">04 JUL</span><span>Funeral; death-to-Trump chants</span></div>
+      <div class="trow"><span class="td">07 JUL</span><span>Two tankers struck; ~90 targets hit</span></div>
+      <div class="trow"><span class="td">08–09</span><span>Iran hits four Gulf states</span></div>
+      <div class="trow"><span class="td">10 JUL</span><span>Southern lane empties</span></div>
+      <div class="trow"><span class="td">11 JUL</span><span><b>Strait declared closed</b></span></div>
+    </div>
+  </div>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <span>BRENT 75.5 <span class="up">▲4.7%</span></span>
+    <span>NORMAL-BY-31JUL 4.5%</span>
+    <span>HULL RISK ~5%</span>
+  </div>
+  <div class="colophon">SPEED FIRST · VERIFY SECOND · FORECAST THIRD</div>
+</div>
+</body>
+</html>

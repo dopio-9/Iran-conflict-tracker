@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="data:,">
+<title>COMP D — SEISMIC LEDGER</title>
+<style>
+  :root{
+    --abyss:#071018; --card:#0c1926; --card2:#0e1e2e; --line:#16344a; --faint:#28495f;
+    --ink:#d4e6ee; --bright:#ffffff; --mute:#5f8398;
+    --spine:#5fd7e6; --hot:#ff5a49; --amber:#ffb648; --green:#45d693;
+    --mono:'DejaVu Sans Mono',monospace; --sans:'Liberation Sans',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#111318;display:flex;justify-content:center;padding:26px 0;font-family:var(--mono)}
+  .phone{width:430px;background:var(--abyss);color:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.85);overflow:hidden}
+
+  /* header */
+  .hd{display:flex;justify-content:space-between;align-items:baseline;padding:16px 18px 12px;border-bottom:1px solid var(--line)}
+  .hd h1{font-family:var(--sans);font-weight:bold;font-size:15px;letter-spacing:.14em;color:#fff}
+  .hd h1 i{color:var(--spine);font-style:normal}
+  .hd .st{font-size:8px;letter-spacing:.16em;color:var(--mute)}
+
+  /* ══ FUTURE CONE ══ */
+  .future{position:relative;padding:14px 18px 0 0;background:
+    repeating-linear-gradient(-55deg, rgba(95,215,230,.035) 0 2px, transparent 2px 9px)}
+  .fl{position:absolute;top:10px;left:86px;font-size:7.5px;letter-spacing:.3em;color:var(--mute)}
+  .conewrap{position:relative;height:236px}
+  .conewrap svg.cone{position:absolute;inset:0;width:100%;height:100%}
+  .coneline{stroke:var(--faint);stroke-width:1;stroke-dasharray:4 4;fill:none}
+  .scen{position:absolute;right:16px;background:var(--card);border:1px solid var(--line);border-radius:6px;
+    padding:8px 11px;display:flex;align-items:center;gap:10px}
+  .scen .p{font-family:var(--sans);font-weight:bold;font-size:19px;width:52px}
+  .scen .l{flex:1;font-size:8.6px;line-height:1.45;color:var(--ink)}
+  .scen .k{font-size:6.4px;font-weight:bold;letter-spacing:.18em;display:block;margin-bottom:2px}
+  .s-base{border-left:3px solid var(--green)} .s-base .p,.s-base .k{color:var(--green)}
+  .s-risk{border-left:3px solid var(--amber)} .s-risk .p,.s-risk .k{color:var(--amber)}
+  .s-tail{border-left:3px solid var(--hot)} .s-tail .p,.s-tail .k{color:var(--hot)}
+  .horizon{position:absolute;left:86px;right:16px;top:-2px;font-size:7px;color:var(--faint);letter-spacing:.2em}
+
+  /* ══ NOW LINE ══ */
+  .now{position:relative;border-top:2.5px solid var(--hot);background:linear-gradient(180deg,rgba(255,90,73,.10),transparent 72%);
+    padding:10px 18px 12px 86px}
+  .now .dot{position:absolute;left:57px;top:-9px;width:16px;height:16px;border-radius:50%;
+    background:var(--hot);border:3.5px solid var(--abyss);box-shadow:0 0 0 2px var(--hot),0 0 18px rgba(255,90,73,.8)}
+  .now .nt{font-family:var(--sans);font-weight:bold;font-size:16px;color:#fff;letter-spacing:.05em}
+  .now .ns{font-size:8px;letter-spacing:.14em;color:var(--mute);margin-top:3px;display:flex;gap:10px;flex-wrap:wrap}
+  .now .chip{color:var(--amber);border:1px solid var(--amber);padding:1px 6px;font-weight:bold}
+
+  /* ══ STREAM ══ */
+  .stream{position:relative}
+  .stream::before{content:"";position:absolute;left:64px;top:0;bottom:0;width:2px;
+    background:linear-gradient(180deg,var(--hot) 0%, var(--hot) 46%, var(--spine) 62%, var(--faint) 100%)}
+  .row{position:relative;display:flex;padding:9px 16px 9px 0}
+  .rail{width:86px;flex-shrink:0;position:relative;text-align:right;padding-right:30px}
+  .rail .t{font-size:8.6px;font-weight:bold;color:var(--ink);display:block;padding-top:3px}
+  .rail .d{font-size:7px;color:var(--mute);letter-spacing:.08em}
+  .node{position:absolute;right:14px;top:5px;width:15px;height:15px}
+  .node svg{display:block;width:15px;height:15px;overflow:visible}
+  .node.glow{filter:drop-shadow(0 0 6px rgba(255,90,73,.9))}
+  .spike{position:absolute;right:21px;top:12px;height:2px;background:var(--hot)}
+  .rcard{flex:1;background:var(--card);border:1px solid var(--line);border-radius:7px;padding:9px 12px;min-width:0}
+  .rcard.hot{border-color:rgba(255,90,73,.55);background:linear-gradient(180deg,rgba(255,90,73,.08),var(--card) 60%)}
+  .rcard.diplo{border-left:3px solid var(--green)}
+  .rcard.pend{border-left:3px solid var(--amber)}
+  .rhl{font-family:var(--sans);font-size:12px;font-weight:bold;line-height:1.35;color:#fff}
+  .rtx{font-size:9px;line-height:1.55;color:var(--mute);margin-top:5px}
+  .rtx b{color:var(--ink);font-weight:normal}
+  .rmeta{display:flex;gap:8px;margin-top:6px;font-size:6.8px;letter-spacing:.1em;color:var(--mute);flex-wrap:wrap}
+  .badge{font-weight:bold;padding:1px 5px;border:1px solid}
+  .b-fl{color:var(--hot);border-color:var(--hot)}
+  .b-v2{color:var(--green);border-color:var(--green)}
+  .b-pd{color:var(--amber);border-color:var(--amber)}
+  .b-dp{color:var(--spine);border-color:var(--spine)}
+  .why{font-style:italic;color:var(--spine);font-size:8.6px;line-height:1.5;margin-top:6px;
+    border-top:1px dashed var(--faint);padding-top:6px}
+
+  /* verify branch stubs */
+  .stubs{margin-top:7px;border-top:1px dashed var(--faint);padding-top:6px;display:flex;flex-direction:column;gap:4px}
+  .stub{display:flex;gap:7px;font-size:8px;line-height:1.4;color:var(--mute);align-items:baseline}
+  .stub i{font-style:normal;font-family:var(--mono);font-weight:bold;flex-shrink:0;width:64px;font-size:6.6px;letter-spacing:.1em}
+  .st-ok{color:var(--green)} .st-dp{color:var(--spine)} .st-un{color:var(--hot)}
+
+  /* graded ledger row */
+  .ledger{margin:6px 16px 6px 86px;border:1px dashed var(--faint);border-radius:7px;padding:8px 12px;
+    background:rgba(95,215,230,.03)}
+  .ledger .lh{font-size:7px;letter-spacing:.22em;color:var(--mute);margin-bottom:6px}
+  .lrow{display:flex;justify-content:space-between;align-items:center;font-size:8.6px;color:var(--ink);padding:2.5px 0}
+  .lrow .g{font-family:var(--sans);font-weight:bold;font-size:8px;letter-spacing:.1em;padding:1px 6px;border:1.4px solid;transform:rotate(-2deg)}
+  .g-hit{color:var(--green);border-color:var(--green)}
+  .g-miss{color:var(--hot);border-color:var(--hot)}
+  .ledger .lesson{font-size:7.8px;font-style:italic;color:var(--spine);margin-top:5px;line-height:1.5}
+
+  /* deep history ruler */
+  .deep{position:relative;padding:4px 16px 18px 0}
+  .drow{display:flex;align-items:baseline;padding:4px 0}
+  .drow .rail{padding-right:30px}
+  .drow .rail .d{font-size:7.6px;font-weight:bold;color:var(--mute)}
+  .drow .dv{font-size:8.6px;color:var(--mute);letter-spacing:.04em}
+  .drow .tick{position:absolute;right:18px;top:50%;width:8px;height:1.5px;background:var(--faint)}
+  .fade{height:44px;background:linear-gradient(180deg,transparent,var(--abyss));margin-top:-44px;position:relative;pointer-events:none}
+  .ft{ text-align:center;font-size:7px;letter-spacing:.3em;color:var(--mute);padding:12px 0 16px}
+</style>
+</head>
+<body>
+<div class="phone">
+
+  <div class="hd">
+    <h1>HORMUZ<i>▮</i>LIVE</h1>
+    <span class="st">DAY 135 · SEISMIC LEDGER</span>
+  </div>
+
+  <!-- FUTURE CONE -->
+  <div class="future">
+    <span class="fl">FORECAST CONE — NEXT 72H · ANALYST JUDGMENT, GRADED ON EXPIRY</span>
+    <div class="conewrap">
+      <svg class="cone" viewBox="0 0 430 236" preserveAspectRatio="none">
+        <line class="coneline" x1="404" y1="16" x2="66" y2="236"/>
+        <line class="coneline" x1="180" y1="16" x2="65" y2="236"/>
+      </svg>
+      <div class="horizon" style="top:22px">+72H HORIZON</div>
+      <div class="scen s-tail" style="top:34px;width:216px">
+        <span class="p">25%</span>
+        <span class="l"><span class="k">▲ TAIL</span>Israel re-enters — the MOU dies in fact, not just rhetoric.</span>
+      </div>
+      <div class="scen s-risk" style="top:100px;width:262px">
+        <span class="p">35%</span>
+        <span class="l"><span class="k">◆ RISK</span>Closure hardens — enforcement fire on any southern transit; round four.</span>
+      </div>
+      <div class="scen s-base" style="top:166px;width:306px">
+        <span class="p">40%</span>
+        <span class="l"><span class="k">● BASE</span>Muscat produces a strikes pause; the closure stays declaratory and becomes a bargaining chip.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOW -->
+  <div class="now">
+    <span class="dot"></span>
+    <div class="nt">NOW — 12 JUL · 14:00 GST</div>
+    <div class="ns"><span>STRAIT: DECLARED CLOSED</span><span class="chip">T−36 TOLL EXPIRY</span><span>MUSCAT: LIVE</span></div>
+  </div>
+
+  <!-- PAST STREAM -->
+  <div class="stream">
+
+    <div class="row">
+      <div class="rail">
+        <span class="t">03:15</span><span class="d">12 JUL</span>
+        <span class="node glow"><svg viewBox="0 0 15 15"><circle cx="7.5" cy="7.5" r="3" fill="#ff5a49"/><path d="M7.5,0 V4 M15,7.5 H11 M7.5,15 V11 M0,7.5 H4 M13,2 L10,5 M13,13 L10,10 M2,13 L5,10 M2,2 L5,5" stroke="#ff5a49" stroke-width="1.4"/></svg></span>
+      </div>
+      <div class="rcard hot">
+        <div class="rhl">Third US strike round in five days</div>
+        <div class="rtx">Bandar Abbas ×3 · Sirik ×2 · Qeshm — ordered by Trump, targeting <b>“Iran’s ability to attack commercial vessels.”</b></div>
+        <div class="rmeta"><span class="badge b-fl">FLASH</span><span>CENTCOM · CNN · MEHR/IRIB</span></div>
+        <div class="why">↳ This is a naval-access war now — no longer a punitive exchange.</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="rail">
+        <span class="t">22:30</span><span class="d">11 JUL</span>
+        <span class="node glow"><svg viewBox="0 0 15 15"><circle cx="7.5" cy="7.5" r="6.4" fill="none" stroke="#45d693" stroke-width="1.4"/><circle cx="7.5" cy="7.5" r="2.6" fill="#45d693"/></svg></span>
+      </div>
+      <div class="rcard hot">
+        <div class="rhl">IRGC Navy declares the strait CLOSED “until further notice”</div>
+        <div class="rtx">First formal closure since the MOU — framed as lasting until the end of US <b>“interference.”</b> US: Iran “does not control” the strait.</div>
+        <div class="rmeta"><span class="badge b-v2">VERIFIED ×2</span><span>IRGC STMT · BLOOMBERG · TOI</span></div>
+        <div class="why">↳ Iran executed the one maximal option it fully controls — not the options it floated. The float is misdirection as much as signal.</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="rail">
+        <span class="t">18:40</span><span class="d">11 JUL</span>
+        <span class="node"><svg viewBox="0 0 15 15"><circle cx="7.5" cy="7.5" r="6.4" fill="none" stroke="#5fd7e6" stroke-width="1.4"/><path d="M7.5,1.1 A6.4,6.4 0 0 1 7.5,13.9 Z" fill="#5fd7e6"/></svg></span>
+      </div>
+      <div class="rcard">
+        <div class="rhl">M/V GFS Galaxy disabled — one crew member missing</div>
+        <div class="rtx">Hit 9nm E of Oman: engine-room fire, cannot continue. The claim splits — and stays split:</div>
+        <div class="stubs">
+          <div class="stub"><i class="st-ok">✓ CONFIRMED</i><span>Vessel hit, disabled, crew missing — CENTCOM detail; Iran doesn’t deny firing.</span></div>
+          <div class="stub"><i class="st-dp">◐ DISPUTED</i><span>“Blatant attack” vs “warning shot at unapproved route” — the route war itself. Rendered, not resolved.</span></div>
+          <div class="stub"><i class="st-un">? UNVERIFIED</i><span>Fate of the missing mariner — would be the first killed since the MOU.</span></div>
+        </div>
+        <div class="rmeta" style="margin-top:7px"><span class="badge b-dp">DECOMPOSED</span><span>CENTCOM vs IRGC · ABC/MEE</span></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="rail">
+        <span class="t">14:00</span><span class="d">11 JUL</span>
+        <span class="node"><svg viewBox="0 0 15 15"><rect x="3" y="3" width="9" height="9" transform="rotate(45 7.5 7.5)" fill="none" stroke="#45d693" stroke-width="1.4"/><circle cx="7.5" cy="7.5" r="2" fill="#45d693"/></svg></span>
+      </div>
+      <div class="rcard diplo">
+        <div class="rhl">Muscat channel live — the counter-track</div>
+        <div class="rtx">Araghchi meets Omani FM; Oman circulates a <b>two-corridor draft (permits yes, tolls no)</b>. Vance, Rubio, Witkoff, Kushner expected. Article 5 wording is the war now.</div>
+        <div class="rmeta"><span class="badge b-v2">VERIFIED ×2</span><span>CNN · MUSCAT DAILY · CBS</span></div>
+        <div class="why">↳ Strikes and talks are parallel tracks, not alternatives — grade each separately.</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="rail">
+        <span class="t">12:00</span><span class="d">11 JUL</span>
+        <span class="node"><svg viewBox="0 0 15 15"><circle cx="7.5" cy="7.5" r="6" fill="none" stroke="#ffb648" stroke-width="1.5" stroke-dasharray="3 2.4"/></svg></span>
+      </div>
+      <div class="rcard pend">
+        <div class="rhl">Israel signals readiness to rejoin strikes</div>
+        <div class="rtx">“More serious than any other time in the past” — but <b>all Israeli-official sourcing, zero T2 confirmation.</b> Leaks during negotiations are also pressure instruments.</div>
+        <div class="rmeta"><span class="badge b-pd">PENDING</span><span>YNET · TOI · FOX</span></div>
+      </div>
+    </div>
+
+    <!-- GRADED FORECAST IN THE STREAM -->
+    <div class="ledger">
+      <div class="lh">FORECAST SET · ISSUED 09 JUL — CROSSED INTO THE PAST · GRADED 12 JUL</div>
+      <div class="lrow"><span>40% — sustained campaign, no de-escalation trigger</span><span class="g g-hit">HIT</span></div>
+      <div class="lrow"><span>35% — two-night peak, then step-back</span><span class="g g-miss">MISS</span></div>
+      <div class="lrow"><span>25% — Iran executes a floated option</span><span class="g g-miss">MISS</span></div>
+      <div class="lesson">Lesson kept: weight the un-floated option Iran controls most directly. Misses stay on the record.</div>
+    </div>
+
+    <!-- DEEP HISTORY -->
+    <div class="deep">
+      <div class="drow"><div class="rail"><span class="d">10 JUL</span><span class="tick"></span></div><span class="dv">Southern lane empties — zero AIS intent</span></div>
+      <div class="drow"><div class="rail"><span class="d">08–09</span><span class="tick"></span></div><span class="dv">Iran hits four Gulf states · 14 killed in Iran</span></div>
+      <div class="drow"><div class="rail"><span class="d">07 JUL</span><span class="tick"></span></div><span class="dv">Al Rekayat + Wedyan struck · ~90 targets hit</span></div>
+      <div class="drow"><div class="rail"><span class="d">17 JUN</span><span class="tick"></span></div><span class="dv">MOU signed — 60-day toll-free window</span></div>
+      <div class="drow"><div class="rail"><span class="d">28 FEB</span><span class="tick"></span></div><span class="dv">War begins — Ali Khamenei killed</span></div>
+    </div>
+    <div class="fade"></div>
+  </div>
+
+  <div class="ft">ABOVE THE LINE: JUDGMENT · BELOW THE LINE: RECORD</div>
+</div>
+</body>
+</html>
