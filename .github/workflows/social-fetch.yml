@@ -11,8 +11,11 @@ name: raw-feed collector
 # workflow reads that branch; it never merges it.
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "23 * * * *"
+  # PAUSED 17 Oct 2026 (owner) while the search design is reworked.
+  # To resume: uncomment the two lines below; change the cron to set frequency
+  # ("23 */6 * * *" = every 6h at :23 UTC). Manual runs still work while paused.
+  # schedule:
+  #   - cron: "23 * * * *"
 
 permissions:
   contents: write
