@@ -1,4 +1,4 @@
-name: perplexity-gather
+name: Perplexity-search
 # Runs the Perplexity recall lane against agents/gather-queries.json and prints
 # decomposed, date-stamped primaries to the log — a second recall engine that
 # complements the session's web search. Fires on push when the queries or the
