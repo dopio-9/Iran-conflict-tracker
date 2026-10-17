@@ -21,4 +21,3 @@ python3 -m http.server 8080                # then open http://localhost:8080/
 
 No dependencies. Node 22+. The collector needs open internet, so it runs in
 GitHub Actions (`.github/workflows/social-fetch.yml`), not the cloud sandbox.
-Retired material is in `archive/`.

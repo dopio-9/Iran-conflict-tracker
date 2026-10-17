@@ -1,30 +1,30 @@
-name: prune archived branches (one-shot)
+name: delete branches (manual)
 # The cloud sandbox cannot delete branches, so this runs it from GitHub's side.
-# Each branch is deleted only if its tip is preserved in claude/archive-old-branches.
+# Give branch names separated by spaces. main, claude/inbox and claude/design-lab are
+# refused, whatever is typed.
 on:
   workflow_dispatch:
+    inputs:
+      branches:
+        description: "Branch names to delete, space-separated"
+        required: true
 
 permissions:
   contents: write
 
 jobs:
-  prune:
+  delete:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Delete branches preserved in the archive
+      - name: Delete the named branches
+        env:
+          BRANCHES: ${{ inputs.branches }}
         run: |
-          git fetch -q origin '+refs/heads/*:refs/remotes/origin/*'
-          for b in conflict-tracker-gather-layer-xhd6lz day196-deep-research-update design-lab-archive \
-                   fix-hero-content-and-layout fix-vercel-output-dir flatten-to-root \
-                   hormuz-live-tracker-update-vd6731 seismograph-v2-design-mm12b5 signals-live-layer; do
-            ref="origin/claude/$b"
-            if ! git rev-parse -q --verify "$ref" >/dev/null; then echo "already gone: $b"; continue; fi
-            if git merge-base --is-ancestor "$ref" origin/claude/archive-old-branches; then
-              git push origin --delete "claude/$b" && echo "deleted: $b" | tee -a "$GITHUB_STEP_SUMMARY"
-            else
-              echo "::warning::kept claude/$b — not preserved in the archive branch"
-            fi
+          for b in $BRANCHES; do
+            case "$b" in
+              main|claude/inbox|claude/design-lab) echo "::warning::refused: $b is protected"; continue ;;
+            esac
+            if ! git ls-remote --exit-code --heads origin "$b" >/dev/null; then echo "already gone: $b"; continue; fi
+            git push origin --delete "$b" && echo "deleted: $b" | tee -a "$GITHUB_STEP_SUMMARY"
           done
