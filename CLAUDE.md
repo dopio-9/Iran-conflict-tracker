@@ -34,7 +34,7 @@ the fast lane printed to CI logs that nothing saved. So:
    press, GDELT's small outlets. Official sources are context, not the gate.
 5. **Judged on output only** — items surfaced, lead time vs mainstream, later
    refuted. No self-graded status text, diagrams or green ticks on the page or in
-   reports. Do not revive the LLM-mediated gather pipeline in `archive/`.
+   reports. Do not revive the LLM-mediated gather pipeline (retired; lessons below).
 
 ### Standing instructions (owner)
 
@@ -121,6 +121,26 @@ source dark.
 - **Bounded waits only.** Never an unbounded polling loop.
 - Do not spoof user agents or route around an operator's access control.
 
+## Lessons kept from the retired agent pipeline (archive/ deleted 17 Oct 2026)
+
+- **Search engines blend time.** AI/aggregator search (Perplexity, Exa) fuses months-old
+  items into a present-tense "latest". Read every result's own publish date; a claim whose
+  only dated instance is stale is RECIRCULATION, not news. (Observed: Perplexity, 17 Jul;
+  Exa, 16 Oct — 122 of 145 results older than 12h.)
+- **Independence.** Reports that quote, screenshot, translate or share one origin count as
+  one source. Same-substrate echo is not confirmation.
+- **Partition by language and medium, not topic.** FA Telegram → AR wires → EN press: the
+  travel path of one event is the speed signal. Topic splits re-read the same wire copy.
+- **Silence is a finding.** "UKMTO silent", "lane quiet" — record it, don't omit it.
+- **Close a dispute with the source class that can settle it** (Oman strike → Omani
+  official wires), not more copies of the same outlets.
+- **Thin coverage, July audit:** Iraq–Syria–Yemen (4 sources), cyber (2), nuclear (3).
+- **No commit-triggers-itself loops.** A CI job that commits into its own `paths:` trigger
+  burned ~50 Perplexity calls once. Check `on:` triggers before a workflow writes files.
+- **Branch deletion runs from GitHub's side.** This sandbox can't delete branches;
+  `.github/workflows/prune-branches.yml` (manual, takes branch names) does it, and refuses
+  `main`, `claude/inbox` and `claude/design-lab`.
+
 ## Repo state (verified 16 Oct 2026)
 
 - `main` is production. Vercel project `iran-conflict-tracker-nextgen` deploys every
@@ -134,10 +154,10 @@ source dark.
 - Registry: 215 sources (16 Oct): 44 realtime routes, 7 tracker routes, 92 with no route yet.
 - Khamenei Telegram — rated the only reliable IRGC-intent signal — is still unwired;
   it needs the verified channel handle, not a guess.
-- Old branches: preserved in `claude/archive-old-branches` (one commit whose parents
-  are the old tips; restore with `git branch <name> <sha>`).
-- `archive/` holds retired docs (agent pipeline, HANDOFF) and frozen data
-  (`data.json`, `patterns.json`, `scenarios.json`, `last-run.json`, Days 140–149). Not live.
+- Branches (17 Oct): `main`, `claude/inbox` (session outbox), `claude/design-lab` (page
+  design concepts, reference only). `claude/archive-old-branches`, the merged
+  `claude/hormuz-tracker-nextgen-cbjlfy` and the `archive/` folder were deleted by owner
+  decision; `archive/` remains in git history before commit "Remove archive/".
 
 ## Open work, in order
 
