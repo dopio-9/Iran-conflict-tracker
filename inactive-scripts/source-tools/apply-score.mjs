@@ -3,7 +3,7 @@
  * apply-score — the write half of the scoring loop (objective 1).
  *
  * Reads a SCOREBOARD emitted by an engine (telegram.mjs --score, later
- * perplexity.mjs) and writes the outcome back into data/sources.json so the
+ * perplexity.mjs) and writes the outcome back into collector/data/sources.json so the
  * registry LEARNS across runs: hits/misses accumulate, dark sources self-flag,
  * and the replenishment loop (objective 6) reads those flags to know what to
  * replace. This is the wiring that converts "collects well once" into "improves
@@ -38,7 +38,7 @@ function readScoreboard(arg) {
   return JSON.parse(m[1]);
 }
 
-const path = new URL("../data/sources.json", import.meta.url);
+const path = new URL("../../collector/data/sources.json", import.meta.url);
 const reg = JSON.parse(readFileSync(path, "utf8"));
 const byId = new Map(reg.map((s) => [s.id, s]));
 

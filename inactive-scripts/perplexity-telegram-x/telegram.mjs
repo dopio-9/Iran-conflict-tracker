@@ -97,7 +97,7 @@ async function smoke() {
  * (intake "wire" step). Prints latest posts, date-stamped, per channel. */
 async function gather() {
   const fs = await import("node:fs");
-  const reg = JSON.parse(fs.readFileSync(new URL("../data/sources.json", import.meta.url), "utf8"));
+  const reg = JSON.parse(fs.readFileSync(new URL("../../collector/data/sources.json", import.meta.url), "utf8"));
   const tg = reg.filter((s) => s.feed?.kind === "telegram-web" && s.feed.url);
   const unresolved = reg.filter((s) => s.feed?.kind === "telegram-web" && !s.feed.url);
   console.log(`Telegram DIRECT gather — ${tg.length} wired channels (${unresolved.length} awaiting handle resolution)\n`);
@@ -133,7 +133,7 @@ async function gather() {
 const TTL_FRESH_MIN = 4320; // 3 days — a channel silent longer is not feeding signals now
 async function score() {
   const fs = await import("node:fs");
-  const reg = JSON.parse(fs.readFileSync(new URL("../data/sources.json", import.meta.url), "utf8"));
+  const reg = JSON.parse(fs.readFileSync(new URL("../../collector/data/sources.json", import.meta.url), "utf8"));
   const tg = reg.filter((s) => s.feed?.kind === "telegram-web" && s.feed.url);
   const channels = [];
   for (const s of tg) {
@@ -166,5 +166,5 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   else if (arg === "--gather") gather().catch((e) => { console.error(e.message); process.exit(1); });
   else if (arg === "--score") score().catch((e) => { console.error(e.message); process.exit(1); });
   else if (arg && !arg.startsWith("--")) fetchChannel(arg).then((h) => console.log(JSON.stringify(parsePosts(h).slice(-5), null, 2))).catch((e) => { console.error(e.message); process.exit(1); });
-  else { console.error('usage: node scripts/telegram.mjs --smoke | --gather | --score | <handle>'); process.exit(2); }
+  else { console.error('usage: node inactive-scripts/perplexity-telegram-x/telegram.mjs --smoke | --gather | --score | <handle>'); process.exit(2); }
 }

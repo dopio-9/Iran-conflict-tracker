@@ -19,9 +19,9 @@
  *   3. SHAPE?      content-type, size, and a short body sample, so a parser can
  *      be written against something observed rather than imagined.
  *
- * Usage:  node scripts/probe.mjs                 → probe the built-in target list
- *         node scripts/probe.mjs <url> [url...]  → probe specific URLs
- *         node scripts/probe.mjs --feeds-only    → only report feed discovery
+ * Usage:  node inactive-scripts/source-tools/probe.mjs                 → probe the built-in target list
+ *         node inactive-scripts/source-tools/probe.mjs <url> [url...]  → probe specific URLs
+ *         node inactive-scripts/source-tools/probe.mjs --feeds-only    → only report feed discovery
  */
 
 const UA = "Mozilla/5.0 (compatible; HormuzLiveProbe/1.0; +https://github.com/dopio-9/Iran-conflict-tracker)";

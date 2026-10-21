@@ -2,7 +2,7 @@
 
 Personal Iran-conflict early-warning tracker for one UAE household. Two surfaces,
 one page (`index.html`):
-- **RAW** (top of page) — renders `data/feed.json`, written by the GitHub collector.
+- **RAW** (top of page) — renders `collector/data/news-collector.json`, written by the GitHub collector.
   STORIES (mechanical de-dupe, earliest source's own line) on top, trackers strip,
   every raw item under a show button.
 - **Analysis** (below) — renders the inline `<script id="data" type="application/json">`
@@ -29,7 +29,7 @@ the fast lane printed to CI logs that nothing saved. So:
 2. **No model between source and page in the fast lane.** Scripts collect verbatim.
    The only gates are RECENT, NOVEL and TOPIC (keywords — never credibility).
    Translation is the only model step and may not drop, merge, shorten or reword.
-3. **Verification after publication, never before** — `resolve.mjs` grades at 24h.
+3. **Verification after publication, never before** — `news-grading.mjs` grades at 24h.
 4. **Regional and native-language sources first** — FA/AR/HE Telegram, regional
    press, GDELT's small outlets. Official sources are context, not the gate.
 5. **Judged on output only** — items surfaced, lead time vs mainstream, later
@@ -45,6 +45,8 @@ the fast lane printed to CI logs that nothing saved. So:
   into an active thread.
 - **All times in GST (UTC+4).**
 - Communication: brief, accurate, professional. Not verbose.
+- **Claude Code has full access** to every branch and file in this repo (owner, 17 Oct 2026).
+  Replaces the earlier "session writes only to the inbox" rule.
 - The day counter is OURS, anchored to our own start date (war began 28 Feb 2026).
   External sites disagreeing about it is not a signal and never reaches the page.
 
@@ -62,29 +64,38 @@ the fast lane printed to CI logs that nothing saved. So:
 
 ## How it runs
 
+Layout (owner, 21 Oct 2026): `collector/scripts/` + `collector/data/` = active;
+`inactive-scripts/` = kept, not run. Data files: `news-collector.json` (page data),
+`to-translate.json` (held for English), `de-dupe.json` (already seen),
+`source-retire.json` (last produced, 7-day rule), `tracker-list.json` (tracker memory),
+`exa-queries.json` (search rotation), `sources.json` (registry). Inbox branch files:
+`collector/data/inbox/translations.json`, `exa-feed.json`.
+
 | piece | role | where |
 |---|---|---|
-| `scripts/feed.mjs` | collects every route, gates, holds non-English off-keyword items for translation, applies inbox English, clusters, retires 7-day-silent sources; writes `data/feed.json` (+ claims, hold, track, health, sources) | GitHub Actions `social-fetch.yml`, hourly + dispatched by the inbox session |
-| `scripts/flash.mjs` | shared collection (RSS, Telegram web, Google News, GDELT), topic filter (EN/FA/AR/HE; one strong actor term or two terms), fingerprints | used by feed.mjs |
-| `scripts/trackers.mjs` | adsb.lol / adsb.fi military aircraft in theatre, IODA outages, NGA nav warnings, MARAD advisories, FIRMS fires (key), Cloudflare Radar (key) | used by feed.mjs |
-| `scripts/cluster.mjs` | de-dupe into stories (word overlap, 12h burst); tag by keyword; lead time vs first mainstream + collection lag | used by feed.mjs |
-| `scripts/inbox.mjs` | contract between the Claude session and the collector: count-checked translation batches, verbatim search results, query rotation | the inbox session (`INBOX.md`) |
-| `scripts/resolve.mjs` | 24h grade: `echoed ×N` / `no-echo`. `refuted` is set only by hand and never overwritten | CI after each run |
-| `scripts/validate.mjs` | ship gate: registry, index.html, inline data, feed.json (stories may not author text) | before every commit (`&&`), and in CI |
-| `probe` `read` `telegram` `perplexity` `x-gather` `discover` `candidates` `promote` `apply-score` | source-health and registry tools, run by hand | manual workflows |
+| `collector/scripts/feed-manager.mjs` | collects every route, gates, holds non-English off-keyword items for translation, applies inbox English, clusters, retires 7-day-silent sources; writes `collector/data/news-collector.json` (+ de-dupe, to-translate, tracker-list, source-retire, sources) | GitHub Actions `social-fetch.yml`, hourly + dispatched by the inbox session |
+| `collector/scripts/web-feed.mjs` | shared collection (RSS, Telegram web, Google News, GDELT), topic filter (EN/FA/AR/HE; one strong actor term or two terms), fingerprints | used by feed-manager.mjs |
+| `collector/scripts/tracker-refresh.mjs` | adsb.lol / adsb.fi military aircraft in theatre, IODA outages, NGA nav warnings, MARAD advisories, FIRMS fires (key), Cloudflare Radar (key) | used by feed-manager.mjs |
+| `collector/scripts/news-clustering.mjs` | de-dupe into stories (word overlap, 12h burst); tag by keyword; lead time vs first mainstream + collection lag | used by feed-manager.mjs |
+| `collector/scripts/inbox.mjs` | contract between the Claude session and the collector: count-checked translation batches, verbatim search results, query rotation | the inbox session (`INBOX.md`) |
+| `collector/scripts/news-grading.mjs` | 24h grade: `echoed ×N` / `no-echo`. `refuted` is set only by hand and never overwritten | CI after each run |
+| `collector/scripts/validate.mjs` | ship gate: registry, index.html, inline data, news-collector.json (stories may not author text) | before every commit (`&&`), and in CI |
+| `collector/scripts/read.mjs` | feed parser used by web-feed.mjs; also reads sources by hand | used by web-feed.mjs |
+| `collector/scripts/translate.mjs` | decides which lines need English (the session translates) | used by feed-manager.mjs |
+| `inactive-scripts/` | `perplexity-telegram-x/` (perplexity, x-gather, discover, telegram, gather-queries.json) · `source-tools/` (probe, apply-score, candidates, promote, candidates.json). Kept, not run on a schedule | manual workflows |
 
 Every script has `--selftest`. Run them after any change.
 
 **Inbox session.** A persistent Claude Code session fires hourly (Routine) and follows
 `INBOX.md`: translates pending lines, runs this hour's searches
-(`data/search-queries.json`), force-pushes `data/inbox/` to branch `claude/inbox`, and
+(`collector/data/exa-queries.json`), force-pushes `collector/data/inbox/` to branch `claude/inbox`, and
 dispatches the collector. The collector reads that branch and never merges it.
 
 ## Safeguards — why the old failures should not recur
 
 - The collector commits its own output; a failed push fails the run red.
 - Zero reachable sources fails the run red.
-- The page derives freshness from `feed.json` and shows **STALE** after 3h silence.
+- The page derives freshness from `news-collector.json` and shows **STALE** after 3h silence.
 - Every drop is counted in `meta.last_run` (fetched → outside window · already seen
   · off-topic · held → kept; translate applied/released/dropped/expired) and per source
   in `meta.sources`. Lead time is in `meta.lead`. Read those, not exit codes.
@@ -167,7 +178,7 @@ source dark.
 3. Source learning: per-topic gap counts; mine t.me links/forwards in collected posts for
    candidate channels; one feed-discovery attempt for each of the 92 unrouted sources, else retire.
 4. Khamenei Telegram (verified handle only); X API if the owner supplies it.
-5. Analysis from the feed: a scheduled session that reads `feed.json` and writes the
+5. Analysis from the feed: a scheduled session that reads `news-collector.json` and writes the
    inline analysis — it never runs its own searches.
 6. STEP enrolment (`step.state.gov`) → embassy alerts by email, read via Gmail.
 

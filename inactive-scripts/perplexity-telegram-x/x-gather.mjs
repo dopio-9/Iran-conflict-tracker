@@ -63,7 +63,7 @@ export function classify(primaries, handle, { recencyDays = TTL_FRESH_DAYS } = {
 
 /* ── score: per-handle outcome for the scoring loop (runs in CI) ──── */
 async function score() {
-  const reg = JSON.parse(readFileSync(new URL("../data/sources.json", import.meta.url), "utf8"));
+  const reg = JSON.parse(readFileSync(new URL("../../collector/data/sources.json", import.meta.url), "utf8"));
   const xs = reg.filter((s) => s.feed?.kind === "x-mirror" && s.feed.url);
   const channels = [];
   for (const s of xs) {
@@ -118,5 +118,5 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const arg = process.argv[2];
   if (arg === "--score") score().catch((e) => { console.error(e.message); process.exit(1); });
   else if (arg === "--selftest") selftest();
-  else { console.error("usage: node scripts/x-gather.mjs --score | --selftest"); process.exit(2); }
+  else { console.error("usage: node inactive-scripts/perplexity-telegram-x/x-gather.mjs --score | --selftest"); process.exit(2); }
 }

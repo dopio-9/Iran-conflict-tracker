@@ -1,5 +1,5 @@
 name: probe
-# Adapter test loop for source activation. Runs scripts/probe.mjs ALONE — no gather,
+# Adapter test loop for source activation. Runs inactive-scripts/source-tools/probe.mjs ALONE — no gather,
 # no Perplexity, no secret, no credit spend. Exists because adapters must be written
 # blind (the session sandbox cannot reach news/AIS/advisory hosts) and proving one
 # previously cost a full gather run. Batches ~60 targets per run so activating the
@@ -15,33 +15,33 @@ jobs:
         with:
           node-version: "22"
       - name: Probe targets (reachability · declared feeds · shape)
-        run: node scripts/probe.mjs
+        run: node inactive-scripts/source-tools/probe.mjs
 
       # Reachability is not readability. This asks the separate question: do the
       # dashboard pages actually carry their FIGURES in the served markup, or is
       # the number painted client-side where a plain fetch can never see it?
       - name: Comprehension probe (are the numbers readable?)
-        run: node scripts/probe.mjs --comprehend
+        run: node inactive-scripts/source-tools/probe.mjs --comprehend
 
       # The 45 registry entries that have a URL but no reader, all at h0/m0 — never
       # fetched once. Highest-yield run available: a declared feed here converts an
       # entry directly onto the rss route, the only route performing at 14/15.
       - name: Connect probe (45 never-attempted sources)
-        run: node scripts/probe.mjs --connect
+        run: node inactive-scripts/source-tools/probe.mjs --connect
 
       # Read an advisory's ACTUAL WORDS, not a summary of them. A viral post
       # attributes "consider leaving the region" to the 1 Aug embassy alert; the
       # attached screenshot does not show that language. Household-safety claims
       # get checked against the primary text.
       - name: Dump advisory text (US Embassy UAE / State Dept)
-        run: node scripts/probe.mjs --dump
+        run: node inactive-scripts/source-tools/probe.mjs --dump
 
       # The 22 sources stuck on the html route, all pointed at bare homepages.
       # Anything that declares a feed moves to rss (20/24) from html (5/27).
       - name: Feed hunt (22 html-route sources)
-        run: node scripts/probe.mjs --feedhunt
+        run: node inactive-scripts/source-tools/probe.mjs --feedhunt
 
       # Newly discovered indirect sources: GDELT (aggregates the outlets that
       # block us) plus OSINT dashboards harvested from source listings.
       - name: Discover probe (GDELT + OSINT dashboards)
-        run: node scripts/probe.mjs --discover
+        run: node inactive-scripts/source-tools/probe.mjs --discover

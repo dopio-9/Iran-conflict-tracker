@@ -14,10 +14,10 @@
  * Key-gated trackers (FIRMS_KEY, CF_RADAR_TOKEN) report "no key" and produce
  * nothing until the secret exists. That is recorded, not hidden.
  *
- * Usage: imported by feed.mjs.   node scripts/trackers.mjs --selftest
+ * Usage: imported by feed-manager.mjs.   node collector/scripts/tracker-refresh.mjs --selftest
  */
 
-import { fetchText } from "./flash.mjs";
+import { fetchText } from "./web-feed.mjs";
 
 /* Theatre box: Red Sea → Gulf of Oman, Levant → Yemen. */
 const BOX = { s: 12, n: 38, w: 32, e: 63 };

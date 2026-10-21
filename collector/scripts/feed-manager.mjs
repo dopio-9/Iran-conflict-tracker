@@ -4,36 +4,36 @@
  *
  * Collects every realtime route (RSS, Telegram web, Google News, GDELT), the
  * trackers (aircraft, nav warnings, outages, fires) and the Claude-search inbox,
- * gates them, and WRITES data/feed.json, which the collector workflow commits and
+ * gates them, and WRITES collector/data/news-collector.json, which the collector workflow commits and
  * the page renders directly.
  *
  * Gates, and only these (each one counted in the run record):
  *   1. RECENT  — inside the window (default 12h; future-dated beyond 90m is dropped)
- *   2. NOVEL   — fingerprint not already in data/claims.json
+ *   2. NOVEL   — fingerprint not already in collector/data/de-dupe.json
  *   3. TOPIC   — about the war (EN/FA/AR/HE keywords). A non-English item that misses
- *                the keywords is HELD (data/hold.json), not dropped, until the Claude
+ *                the keywords is HELD (collector/data/to-translate.json), not dropped, until the Claude
  *                session has translated it; then it is re-checked on the English.
  * Trackers skip TOPIC (in-theatre by construction) and apply their own windows.
  * Never: source-tier ranking, corroboration, or a model choosing items.
  *
  * Also, every run:
- *   - applies English from the inbox (data/inbox/translations.json, written by the session);
- *   - groups items into stories (cluster.mjs) and measures lead time vs mainstream;
+ *   - applies English from the inbox (collector/data/inbox/translations.json, written by the session);
+ *   - groups items into stories (news-clustering.mjs) and measures lead time vs mainstream;
  *   - records each source's last output; a source silent for 7 days is retired
  *     from polling (owner decision 14 Oct 2026) — kept in the registry, marked why.
  *
  * Exit code 1 when zero sources were reachable — a dead pipe must show red.
  *
- * Usage:  node scripts/feed.mjs [--hours 12] [--inbox <dir>]   (needs open internet: CI)
- *         node scripts/feed.mjs --selftest
+ * Usage:  node collector/scripts/feed-manager.mjs [--hours 12] [--inbox <dir>]   (needs open internet: CI)
+ *         node collector/scripts/feed-manager.mjs --selftest
  */
 
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
-import { collect, normalize, fingerprint, isRelevant, decode } from "./flash.mjs";
+import { collect, normalize, fingerprint, isRelevant, decode } from "./web-feed.mjs";
 import { needsTranslation } from "./translate.mjs";
-import { track } from "./trackers.mjs";
+import { track } from "./tracker-refresh.mjs";
 import { readInbox } from "./inbox.mjs";
-import { cluster, leadSummary } from "./cluster.mjs";
+import { cluster, leadSummary } from "./news-clustering.mjs";
 
 const ROOT = new URL("../", import.meta.url);
 const P = f => new URL(`data/${f}`, ROOT);
@@ -120,11 +120,11 @@ export function health(reg, results, hl, now) {
 async function run({ windowH = 12, inboxDir = null } = {}) {
   const now = Date.now(), nowIso = new Date(now).toISOString();
   const reg = readJSON(P("sources.json"), []);
-  const claims = readJSON(P("claims.json"), {});
-  const feed = readJSON(P("feed.json"), { meta: {}, items: [] });
-  const hold = readJSON(P("hold.json"), {});
-  const tstate = readJSON(P("track.json"), {});
-  const hl = readJSON(P("health.json"), {});
+  const claims = readJSON(P("de-dupe.json"), {});
+  const feed = readJSON(P("news-collector.json"), { meta: {}, items: [] });
+  const hold = readJSON(P("to-translate.json"), {});
+  const tstate = readJSON(P("tracker-list.json"), {});
+  const hl = readJSON(P("source-retire.json"), {});
   const inbox = readInbox(inboxDir);
 
   const { live, results } = await collect(reg);
@@ -167,11 +167,11 @@ async function run({ windowH = 12, inboxDir = null } = {}) {
     resolved: feed.meta?.resolved || null,
     sources,
   };
-  writeFileSync(P("feed.json"), JSON.stringify({ meta, stories: stories.slice(0, 400), items }, null, 1) + "\n");
-  writeFileSync(P("claims.json"), JSON.stringify(claims) + "\n");
-  writeFileSync(P("hold.json"), JSON.stringify(hold) + "\n");
-  writeFileSync(P("track.json"), JSON.stringify(tstate) + "\n");
-  writeFileSync(P("health.json"), JSON.stringify(hl, null, 1) + "\n");
+  writeFileSync(P("news-collector.json"), JSON.stringify({ meta, stories: stories.slice(0, 400), items }, null, 1) + "\n");
+  writeFileSync(P("de-dupe.json"), JSON.stringify(claims) + "\n");
+  writeFileSync(P("to-translate.json"), JSON.stringify(hold) + "\n");
+  writeFileSync(P("tracker-list.json"), JSON.stringify(tstate) + "\n");
+  writeFileSync(P("source-retire.json"), JSON.stringify(hl, null, 1) + "\n");
   if (retiredNow.length) writeFileSync(P("sources.json"), JSON.stringify(reg, null, 2) + "\n");
 
   console.log(`feed — run ${meta.runs} · ${results.length} routes (${live.length} realtime + trackers + search) · ${windowH}h window`);
