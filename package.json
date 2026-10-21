@@ -2,10 +2,10 @@
   "name": "iran-conflict-tracker",
   "version": "2.0.0",
   "private": true,
-  "description": "HORMUZ·LIVE — data/template split intelligence tracker. Zero runtime dependencies; the site is a static template that fetches /data/*.json.",
+  "description": "HORMUZ·LIVE — data/template split intelligence tracker. Zero runtime dependencies; the site is a static template that fetches /collector/data/*.json.",
   "type": "module",
   "scripts": {
-    "validate": "node scripts/validate.mjs",
+    "validate": "node collector/scripts/validate.mjs",
     "serve": "python3 -m http.server 8080",
     "hooks": "git config core.hooksPath .githooks"
   }

@@ -4,10 +4,10 @@
  *
  * The collector (GitHub Actions) has no model. Two jobs need one, and both run in
  * a scheduled Claude Code session on the owner's plan, which writes ONLY to
- * data/inbox/ on the branch `claude/inbox`. The collector reads that branch.
+ * collector/data/inbox/ on the branch `claude/inbox`. The collector reads that branch.
  *
  *   translations.json  { id: { en, at } }   — English for items the feed holds
- *   search.json        { updated, items }   — Claude web-search results, verbatim
+ *   exa-feed.json        { updated, items }   — Claude web-search results, verbatim
  *
  * Contracts this script enforces (the session cannot bypass them):
  *   TRANSLATION — the reply is a JSON array with exactly one string per pending
@@ -17,18 +17,18 @@
  *     query are copied as given. Nothing is summarised: the title is the outlet's.
  *
  * Usage (in the session):
- *   node scripts/inbox.mjs --pending  [--data <dir>] [--max 120] > pending.json
- *   node scripts/inbox.mjs --apply pending.json reply.json
- *   node scripts/inbox.mjs --queries            (this run's search queries, one per line)
- *   node scripts/inbox.mjs --add-search batch.json
- *   node scripts/inbox.mjs --selftest
+ *   node collector/scripts/inbox.mjs --pending  [--data <dir>] [--max 120] > pending.json
+ *   node collector/scripts/inbox.mjs --apply pending.json reply.json
+ *   node collector/scripts/inbox.mjs --queries            (this run's search queries, one per line)
+ *   node collector/scripts/inbox.mjs --add-search batch.json
+ *   node collector/scripts/inbox.mjs --selftest
  */
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from "node:fs";
 
 const ROOT = new URL("../", import.meta.url);
 const INBOX = new URL("data/inbox/", ROOT);
-const TR = new URL("translations.json", INBOX), SR = new URL("search.json", INBOX);
+const TR = new URL("translations.json", INBOX), SR = new URL("exa-feed.json", INBOX);
 const DAY = 86400e3;
 const readJSON = (u, d) => { try { return existsSync(u) ? JSON.parse(readFileSync(u, "utf8")) : d; } catch { return d; } };
 
@@ -73,11 +73,11 @@ export function addSearch(store, batch, now = Date.now()) {
   return { added, rejected };
 }
 
-/** Collector side: read what the session left (dir = an extracted copy of data/inbox). */
+/** Collector side: read what the session left (dir = an extracted copy of collector/data/inbox). */
 export function readInbox(dir) {
   const base = dir ? new URL(`file://${dir.replace(/\/?$/, "/")}`) : INBOX;
   return { translations: readJSON(new URL("translations.json", base), {}),
-    search: readJSON(new URL("search.json", base), { items: [] }) };
+    search: readJSON(new URL("exa-feed.json", base), { items: [] }) };
 }
 
 /** This run's search queries: PER_RUN of the list, rotating by UTC hour so every query runs within a few hours. */
@@ -94,7 +94,7 @@ function cli(argv) {
   const arg = k => { const i = argv.indexOf(k); return i >= 0 ? argv[i + 1] : null; };
   if (argv.includes("--pending")) {
     const d = arg("--data") ? new URL(`file://${arg("--data").replace(/\/?$/, "/")}`) : new URL("data/", ROOT);
-    const p = pending(readJSON(new URL("feed.json", d), {}), readJSON(new URL("hold.json", d), {}), readJSON(TR, {}),
+    const p = pending(readJSON(new URL("news-collector.json", d), {}), readJSON(new URL("to-translate.json", d), {}), readJSON(TR, {}),
       { max: Number(arg("--max")) || 120 });
     process.stdout.write(JSON.stringify(p, null, 1) + "\n");
     console.error(`pending: ${p.length} lines`);
@@ -110,7 +110,7 @@ function cli(argv) {
     const r = addSearch(store, JSON.parse(readFileSync(arg("--add-search"), "utf8")));
     save(SR, store); console.log(`search: +${r.added} · rejected ${r.rejected} · ${store.items.length} held (48h)`);
   } else if (argv.includes("--queries")) {
-    for (const q of queriesFor(readJSON(new URL("data/search-queries.json", ROOT), {}))) console.log(q);
+    for (const q of queriesFor(readJSON(new URL("data/exa-queries.json", ROOT), {}))) console.log(q);
   } else console.error("usage: --queries | --pending | --apply pending.json reply.json | --add-search batch.json | --selftest");
 }
 

@@ -21,7 +21,7 @@ import { readFileSync } from "node:fs";
 const MIN_LIVE = 3;       // a lane with fewer live sources is sparse
 const MAX_QUERIES = 6;    // cap Perplexity calls per discovery run
 
-const reg = JSON.parse(readFileSync(new URL("../data/sources.json", import.meta.url), "utf8"));
+const reg = JSON.parse(readFileSync(new URL("../../collector/data/sources.json", import.meta.url), "utf8"));
 const LANES = ["strikes_ops", "threats", "cyber_sabotage", "diplomacy", "leadership_internal", "maritime_incidents", "naval_military_movement", "air_traffic_airspace", "ports_advisories", "proxy_axis", "war_risk_economy", "uae_local", "israel_intel", "nuclear"];
 
 // lane → (what to search for, native-language hint, likely theater)
@@ -119,7 +119,7 @@ async function discover() {
     }
   }
   console.log(`\nCANDIDATES:${JSON.stringify(out)}`);
-  console.log(`\ndiscovered ${out.length} candidate source(s) across ${work.length} gaps — apply with: node scripts/candidates.mjs --apply '<paste CANDIDATES line>'`);
+  console.log(`\ndiscovered ${out.length} candidate source(s) across ${work.length} gaps — apply with: node inactive-scripts/source-tools/candidates.mjs --apply '<paste CANDIDATES line>'`);
 }
 
 discover().catch((e) => { console.error(String(e.message).replace(/pplx-[A-Za-z0-9]+/g, "pplx-REDACTED")); process.exit(1); });

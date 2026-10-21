@@ -14,12 +14,12 @@
  * Telegram post can be echoed by an Arabic outlet or a Western wire.
  * No network. Runs in CI after each collection, or locally at any time.
  *
- * Usage:  node scripts/resolve.mjs [--hours 24]   |   node scripts/resolve.mjs --selftest
+ * Usage:  node collector/scripts/news-grading.mjs [--hours 24]   |   node collector/scripts/news-grading.mjs --selftest
  */
 
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 
-const FEED = new URL("../data/feed.json", import.meta.url);
+const FEED = new URL("../data/news-collector.json", import.meta.url);
 const STOP = new Set(("the a an of in on at to for and or is are was were be by with from as that this it its has have had " +
   "says say said after over amid new report reports reported near into about than more will would could also").split(" "));
 
@@ -59,7 +59,7 @@ export function resolve(items, { now = Date.now(), afterH = 24, threshold = 0.5,
 }
 
 function run({ afterH = 24 } = {}) {
-  if (!existsSync(FEED)) { console.log("resolve: no data/feed.json yet — nothing to grade"); return; }
+  if (!existsSync(FEED)) { console.log("resolve: no collector/data/news-collector.json yet — nothing to grade"); return; }
   const feed = JSON.parse(readFileSync(FEED, "utf8"));
   const n = resolve(feed.items || [], { afterH });
   const tally = { echoed: 0, "no-echo": 0, refuted: 0, pending: 0 };

@@ -11,7 +11,7 @@ import { tmpdir } from "node:os";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const root = join(dirname(fileURLToPath(import.meta.url)), "..");
+const root = join(dirname(fileURLToPath(import.meta.url)), "..", "..");   // repo root
 const errors = [];
 const warns = [];
 const fail = (m) => errors.push(m);
@@ -33,7 +33,7 @@ function loadJSON(rel) {
 }
 
 /* ── 2. sources.json — registry aligned to the lane/theater vocabulary ── */
-const sources = loadJSON("data/sources.json");
+const sources = loadJSON("collector/data/sources.json");
 if (sources) {
   if (!Array.isArray(sources) || sources.length < 100) fail(`sources.json: expected the full ~110-entry registry, got ${sources?.length}`);
   const validTiers = ["T1", "T2", "T1-ELEVATED", "T1-UNRELIABLE", "SPECIALIST", "META"];
@@ -66,7 +66,7 @@ if (sources) {
 }
 
 /* ── 4b. candidates.json (SCOUT nomination queue) ────────────── */
-const candidates = loadJSON("data/candidates.json");
+const candidates = loadJSON("inactive-scripts/source-tools/candidates.json");
 if (candidates) {
   const cStatuses = ["nominated", "approved", "rejected", "stale"];
   const cTypes = ["new-source", "mirror", "retier", "replace-placeholder"];
@@ -127,7 +127,7 @@ for (const js of scripts) {
 
 /* ── 6. index.html inline data block — the LIVE surface (obj 5) ──── */
 /* The deployed tracker renders from <script id="data">…</script>, not the split
- * data/data.json (now legacy/optional). This validates the file Vercel serves. */
+ * collector/data/data.json (now legacy/optional). This validates the file Vercel serves. */
 {
   const m = html.match(/<script id="data" type="application\/json">([\s\S]*?)<\/script>/);
   if (!m) fail("index.html: no inline <script id=\"data\"> block — the live surface is missing");
@@ -188,32 +188,32 @@ for (const js of scripts) {
   }
 }
 
-/* ── 8. data/feed.json — the RAW lane, written by the collector ──── */
+/* ── 8. collector/data/news-collector.json — the RAW lane, written by the collector ──── */
 /* Absent until the first collector run; once present it must render safely:
  * dated items, one-line briefs, http(s) links only. */
-if (existsSync(join(root, "data/feed.json"))) {
-  const fd = loadJSON("data/feed.json");
+if (existsSync(join(root, "collector/data/news-collector.json"))) {
+  const fd = loadJSON("collector/data/news-collector.json");
   if (fd) {
-    if (!fd.meta || isNaN(Date.parse(fd.meta.updated))) fail("feed.json: meta.updated missing or not a date");
-    if (!Array.isArray(fd.items)) fail("feed.json: items must be an array");
+    if (!fd.meta || isNaN(Date.parse(fd.meta.updated))) fail("news-collector.json: meta.updated missing or not a date");
+    if (!Array.isArray(fd.items)) fail("news-collector.json: items must be an array");
     else fd.items.forEach((it, i) => {
-      if (!it.id || !it.src || !it.line) fail(`feed.json items[${i}]: needs id, src and line`);
-      if (isNaN(Date.parse(it.ts))) fail(`feed.json items[${i}]: ts is not a date`);
-      if (/\n/.test(it.line || "")) fail(`feed.json items[${i}]: line must be a single line`);
-      if (it.url && !/^https?:\/\//.test(it.url)) fail(`feed.json items[${i}]: url must be http(s)`);
+      if (!it.id || !it.src || !it.line) fail(`news-collector.json items[${i}]: needs id, src and line`);
+      if (isNaN(Date.parse(it.ts))) fail(`news-collector.json items[${i}]: ts is not a date`);
+      if (/\n/.test(it.line || "")) fail(`news-collector.json items[${i}]: line must be a single line`);
+      if (it.url && !/^https?:\/\//.test(it.url)) fail(`news-collector.json items[${i}]: url must be http(s)`);
     });
     /* Stories are a grouping of items, never new text: every member must exist, and
        the story line must be one of its members' own lines (or the tracker count line). */
     if (fd.stories !== undefined) {
       const byId = new Map((fd.items || []).map(x => [x.id, x]));
-      if (!Array.isArray(fd.stories)) fail("feed.json: stories must be an array");
+      if (!Array.isArray(fd.stories)) fail("news-collector.json: stories must be an array");
       else fd.stories.forEach((c, i) => {
-        if (!c.tag || !c.line || !Array.isArray(c.ids) || !c.ids.length) fail(`feed.json stories[${i}]: needs tag, line, ids`);
+        if (!c.tag || !c.line || !Array.isArray(c.ids) || !c.ids.length) fail(`news-collector.json stories[${i}]: needs tag, line, ids`);
         else {
           const missing = c.ids.filter(id => !byId.has(id));
-          if (missing.length) fail(`feed.json stories[${i}]: ${missing.length} member id(s) not in items`);
+          if (missing.length) fail(`news-collector.json stories[${i}]: ${missing.length} member id(s) not in items`);
           else if (!/^Military aircraft in theatre — /.test(c.line) && !c.ids.some(id => byId.get(id).line === c.line))
-            fail(`feed.json stories[${i}]: line is not any member's own line — stories may not author text`);
+            fail(`news-collector.json stories[${i}]: line is not any member's own line — stories may not author text`);
         }
       });
     }

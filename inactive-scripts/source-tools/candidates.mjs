@@ -2,7 +2,7 @@
 /**
  * candidates — the write side of the replenishment loop (objective 6).
  *
- * Two intake paths, one queue (data/candidates.json), same dedup + schema:
+ * Two intake paths, one queue (inactive-scripts/source-tools/candidates.json), same dedup + schema:
  *   --add '<json>'    a source YOU supply (a news snippet I classified) → one candidate
  *   --apply '<json>'  discovery output (discover.mjs CANDIDATES:[...]) → many candidates
  *   --list            show the current nomination queue
@@ -19,8 +19,8 @@
  */
 import { readFileSync, writeFileSync } from "node:fs";
 
-const SRC = new URL("../data/sources.json", import.meta.url);
-const CAND = new URL("../data/candidates.json", import.meta.url);
+const SRC = new URL("../../collector/data/sources.json", import.meta.url);
+const CAND = new URL("./candidates.json", import.meta.url);
 const sources = JSON.parse(readFileSync(SRC, "utf8"));
 const cand = JSON.parse(readFileSync(CAND, "utf8"));
 
@@ -102,6 +102,6 @@ else if (mode === "--list") {
   console.log(`queue: ${cand.queue.length} candidates (updated ${cand.meta.updated})`);
   for (const c of cand.queue) console.log(`  ${c.id} [${c.status}] ${c.name} — ${c.type}/${c.proposed_tier} — ${(c.fills || "").slice(0, 60)}`);
 } else {
-  console.error('usage: node scripts/candidates.mjs --add \'<json>\' | --apply \'<CANDIDATES json|path>\' | --list');
+  console.error('usage: node inactive-scripts/source-tools/candidates.mjs --add \'<json>\' | --apply \'<CANDIDATES json|path>\' | --list');
   process.exit(2);
 }

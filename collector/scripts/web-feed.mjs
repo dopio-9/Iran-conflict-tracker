@@ -14,7 +14,7 @@
  *   1. RECENT  — the item is inside the flash window (default 6h). Anything
  *      older belongs to the slow lane, which can weigh and confirm it.
  *   2. NOVEL   — this claim has not been seen before. First sighting is
- *      recorded in data/claims.json with a first_seen timestamp, so a story
+ *      recorded in collector/data/de-dupe.json with a first_seen timestamp, so a story
  *      that has been running for three days stops being a flash after its
  *      first appearance, no matter how often it is republished.
  *
@@ -26,9 +26,9 @@
  *     apply, the same split every other engine uses: FETCH in CI where egress
  *     is open, APPLY in session, so CI never commits back and re-fires itself.
  *
- * Usage:  node scripts/flash.mjs              → default 6h window
- *         node scripts/flash.mjs --hours 12
- *         node scripts/flash.mjs --selftest
+ * Usage:  node collector/scripts/web-feed.mjs              → default 6h window
+ *         node collector/scripts/web-feed.mjs --hours 12
+ *         node collector/scripts/web-feed.mjs --selftest
  */
 
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
@@ -40,7 +40,7 @@ const TIMEOUT_MS = 12000;
 const CONCURRENCY = 8;
 const DEFAULT_WINDOW_H = 6;
 const SKEW_MIN = 90;          // same tolerance read.mjs uses; a future date is not freshness
-const CLAIMS_PATH = new URL("../data/claims.json", import.meta.url);
+const CLAIMS_PATH = new URL("../data/de-dupe.json", import.meta.url);
 
 /* ── novelty ──────────────────────────────────────────────────────────────
    Fingerprint on the CLAIM, not the URL. The same story reaches us from a
@@ -234,7 +234,7 @@ async function run({ windowH = DEFAULT_WINDOW_H } = {}) {
      which cannot be placed in a time window at all — the fast lane is entirely a
      question of WHEN, so an undated source has nothing to contribute to it. */
   const { live, results } = await collect(reg);
-  console.log(`flash — ${live.length} realtime sources · ${windowH}h window · novelty vs data/claims.json\n`);
+  console.log(`flash — ${live.length} realtime sources · ${windowH}h window · novelty vs collector/data/de-dupe.json\n`);
 
   const now = Date.now();
   const claims = loadClaims();

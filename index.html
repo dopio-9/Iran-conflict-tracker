@@ -213,7 +213,7 @@ svg.trace .hot{fill:none; stroke:var(--danger); stroke-width:2.2}
 .fmeta{font-family:var(--mono); font-size:9px; color:var(--faint); margin-top:3px; letter-spacing:.02em}
 .fmeta .eng{color:var(--dim)}
 
-/* RAW lane — rendered straight from data/feed.json; no model selects what shows */
+/* RAW lane — rendered straight from collector/data/news-collector.json; no model selects what shows */
 .rawbody{margin-top:4px}
 .rawstat{font-family:var(--mono);font-size:9.5px;color:var(--dim);letter-spacing:.04em;line-height:1.6;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:var(--surface);margin:0 0 6px}
 .rawstat.stale{color:var(--bright);border-color:var(--danger);background:color-mix(in srgb,var(--danger) 14%,var(--surface))}
@@ -2463,7 +2463,7 @@ app.innerHTML = `
 
 
   <div class="foot">
-    Analysis: the JSON block at the top of this file · RAW feed: data/feed.json, written by the GitHub collector. Times in GST.<br>
+    Analysis: the JSON block at the top of this file · RAW feed: collector/data/news-collector.json, written by the GitHub collector. Times in GST.<br>
     <b>hormuz-live.html</b> · Day ${D.meta.day} · signals lane is the product
   </div>
 `;
@@ -2473,7 +2473,7 @@ document.querySelectorAll('.sig').forEach(el=>{
   el.addEventListener('click', ()=> el.classList.toggle('open'));
 });
 
-/* RAW lane — straight from data/feed.json, written by the GitHub collector.
+/* RAW lane — straight from collector/data/news-collector.json, written by the GitHub collector.
    STORIES = the collector's mechanical de-dupe: each line is the earliest source's
    own line; every raw item sits underneath. Nothing is chosen or written by a model.
    Freshness is derived from the data's own timestamp, never authored. */
@@ -2487,7 +2487,7 @@ document.querySelectorAll('.sig').forEach(el=>{
   const today=Dd(new Date().toISOString());
   const when=iso=>(Dd(iso)===today?'':Dd(iso)+' ')+T(iso);
   const safeUrl=u=>/^https?:\/\//i.test(String(u||''))?u:null;
-  fetch('data/feed.json?t='+Date.now(),{cache:'no-store'})
+  fetch('collector/data/news-collector.json?t='+Date.now(),{cache:'no-store'})
   .then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
   .then(F=>{
     const M=F.meta||{}, L=M.last_run||{}, items=F.items||[], stories=F.stories||[], R=M.resolved||null, LD=M.lead||null;
@@ -2551,7 +2551,7 @@ document.querySelectorAll('.sig').forEach(el=>{
         l.hidden=!l.hidden; m.textContent=l.hidden?'show all raw items ('+items.length+')':'hide raw items';}
     });
   })
-  .catch(err=>{box.innerHTML='<div class="rawstat stale"><b>RAW FEED UNAVAILABLE</b> — '+esc(err.message)+'. The collector has not written data/feed.json yet.</div>';});
+  .catch(err=>{box.innerHTML='<div class="rawstat stale"><b>RAW FEED UNAVAILABLE</b> — '+esc(err.message)+'. The collector has not written collector/data/news-collector.json yet.</div>';});
 })();
 </script>
 </body>

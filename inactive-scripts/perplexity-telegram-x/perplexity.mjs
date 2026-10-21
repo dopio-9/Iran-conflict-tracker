@@ -127,19 +127,19 @@ async function smoke() {
 }
 
 /* ── gather lane: real recall to COMPLEMENT web search (runs in CI) ──── */
-/* Reads agents/gather-queries.json, runs each through Perplexity, prints the
+/* Reads inactive-scripts/perplexity-telegram-x/gather-queries.json, runs each through Perplexity, prints the
  * decomposed + date-stamped primaries. This is the second, independent recall
  * engine: convergence between this and the session's web search raises signal
  * confidence; its per-primary dates are what catch recirculation. */
 async function gather() {
   const fs = await import("node:fs");
-  const qpath = new URL("../agents/gather-queries.json", import.meta.url);
+  const qpath = new URL("./gather-queries.json", import.meta.url);
   const raw = JSON.parse(fs.readFileSync(qpath, "utf8"));
   const groups = Array.isArray(raw) ? { all: raw } : raw; // categorized matrix or flat list
   // OBJ 3 — source-driven: steer each lane's queries by the REGISTRY's live sources
   // for that lane (dark excluded), ranked by tier then hit-rate. This ties the
   // engine to the curated + scored registry instead of freeform topic strings.
-  const reg = JSON.parse(fs.readFileSync(new URL("../data/sources.json", import.meta.url), "utf8"));
+  const reg = JSON.parse(fs.readFileSync(new URL("../../collector/data/sources.json", import.meta.url), "utf8"));
   const TIER_RANK = { "T1-ELEVATED": 0, "T1": 1, "T2": 2, "SPECIALIST": 3, "META": 4, "T1-UNRELIABLE": 5 };
   const steerFor = (lane) => {
     const live = reg.filter((s) => Array.isArray(s.lanes) && s.lanes.includes(lane) && !s.dark && !s.retired);
@@ -187,7 +187,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   else if (arg === "--smoke") smoke().catch((e) => { console.error(String(e.message).replace(/pplx-[A-Za-z0-9]+/g, "pplx-REDACTED")); process.exit(1); });
   else if (arg === "--gather") gather().catch((e) => { console.error(String(e.message).replace(/pplx-[A-Za-z0-9]+/g, "pplx-REDACTED")); process.exit(1); });
   else if (!arg) {
-    console.error('usage: node scripts/perplexity.mjs "<query>"   |   --selftest');
+    console.error('usage: node inactive-scripts/perplexity-telegram-x/perplexity.mjs "<query>"   |   --selftest');
     process.exit(2);
   } else {
     queryPerplexity(arg)

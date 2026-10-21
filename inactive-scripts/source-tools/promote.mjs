@@ -3,7 +3,7 @@
  * promote — auto-promotion of nominated candidates into the live registry.
  *
  * POLICY (set by the operator, 20 Jul): NO manual review gate. Every nominated
- * candidate is promoted straight into data/sources.json; the SCORING loop is the
+ * candidate is promoted straight into collector/data/sources.json; the SCORING loop is the
  * review — sources earn their place by hit-rate and are dark-pruned when they go
  * silent. This replaces the old SCOUT "human approves" doctrine.
  *
@@ -13,8 +13,8 @@
  */
 import { readFileSync, writeFileSync } from "node:fs";
 
-const SRC = new URL("../data/sources.json", import.meta.url);
-const CAND = new URL("../data/candidates.json", import.meta.url);
+const SRC = new URL("../../collector/data/sources.json", import.meta.url);
+const CAND = new URL("./candidates.json", import.meta.url);
 const sources = JSON.parse(readFileSync(SRC, "utf8"));
 const cand = JSON.parse(readFileSync(CAND, "utf8"));
 

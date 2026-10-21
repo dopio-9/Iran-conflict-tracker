@@ -7,7 +7,7 @@ name: raw-feed collector
 # written translations / search results — GitHub delays its own schedule (the
 # experiment got 4 runs of ~12), so two triggers keep the page under the 3h STALE mark.
 #
-# The Claude session writes ONLY to data/inbox/ on branch claude/inbox. This
+# The Claude session writes ONLY to collector/data/inbox/ on branch claude/inbox. This
 # workflow reads that branch; it never merges it.
 on:
   workflow_dispatch:
@@ -39,15 +39,15 @@ jobs:
 
       - name: Selftests (fail fast)
         run: |
-          for s in flash feed resolve translate trackers inbox cluster; do node scripts/$s.mjs --selftest > /dev/null || { node scripts/$s.mjs --selftest; exit 1; }; done
+          for s in web-feed feed-manager news-grading translate tracker-refresh inbox news-clustering read; do node collector/scripts/$s.mjs --selftest > /dev/null || { node collector/scripts/$s.mjs --selftest; exit 1; }; done
           echo "selftests passed"
 
       - name: Read the Claude session's inbox (translations, search results)
         run: |
           mkdir -p .inbox
           if git fetch -q --depth=1 origin claude/inbox 2>/dev/null; then
-            for f in translations.json search.json; do
-              git show "FETCH_HEAD:data/inbox/$f" > ".inbox/$f" 2>/dev/null || rm -f ".inbox/$f"
+            for f in translations.json exa-feed.json; do
+              git show "FETCH_HEAD:collector/data/inbox/$f" > ".inbox/$f" 2>/dev/null || rm -f ".inbox/$f"
             done
             echo "inbox: $(ls .inbox | tr '\n' ' ')" | tee -a "$GITHUB_STEP_SUMMARY"
           else
@@ -58,23 +58,23 @@ jobs:
         env:
           FIRMS_KEY: ${{ secrets.FIRMS_KEY }}
           CF_RADAR_TOKEN: ${{ secrets.CF_RADAR_TOKEN }}
-        run: node scripts/feed.mjs --hours 12 --inbox "$PWD/.inbox" | tee -a "$GITHUB_STEP_SUMMARY"
+        run: node collector/scripts/feed-manager.mjs --hours 12 --inbox "$PWD/.inbox" | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Grade items older than 24h
-        run: node scripts/resolve.mjs | tee -a "$GITHUB_STEP_SUMMARY"
+        run: node collector/scripts/news-grading.mjs | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Validate
-        run: node scripts/validate.mjs
+        run: node collector/scripts/validate.mjs
 
       - name: Commit and push (a failed save fails the run)
         run: |
           git config user.name  "raw-feed-collector"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/feed.json data/claims.json data/hold.json data/track.json data/health.json data/sources.json
+          git add collector/data/news-collector.json collector/data/de-dupe.json collector/data/to-translate.json collector/data/tracker-list.json collector/data/source-retire.json collector/data/sources.json
           if git diff --cached --quiet; then
             echo "No change to commit." | tee -a "$GITHUB_STEP_SUMMARY"; exit 0
           fi
-          runs=$(node -e "console.log(require('./data/feed.json').meta.runs)")
+          runs=$(node -e "console.log(require('./collector/data/news-collector.json').meta.runs)")
           gst=$(TZ=Asia/Dubai date '+%d %b %H:%M GST')
           git commit -q -m "feed: run $runs — $gst"
           for i in 1 2 3; do
