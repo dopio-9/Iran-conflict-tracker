@@ -64,8 +64,8 @@ the fast lane printed to CI logs that nothing saved. So:
 
 ## How it runs
 
-Layout (owner, 21 Oct 2026): `collector/scripts/` + `collector/data/` = active;
-`inactive-scripts/` = kept, not run. Data files: `news-collector.json` (page data),
+Layout (owner, 21 Oct 2026): `collector/scripts/` + `collector/data/` = active.
+`inactive-scripts/` (Perplexity, source tools) removed 22 Oct 2026; recoverable from git history. Data files: `news-collector.json` (page data),
 `to-translate.json` (held for English), `de-dupe.json` (already seen),
 `source-retire.json` (last produced, 7-day rule), `tracker-list.json` (tracker memory),
 `search-queries.json` (search rotation), `sources.json` (registry). Inbox branch files:
@@ -82,7 +82,6 @@ Layout (owner, 21 Oct 2026): `collector/scripts/` + `collector/data/` = active;
 | `collector/scripts/validate.mjs` | ship gate: registry, index.html, inline data, news-collector.json (stories may not author text) | before every commit (`&&`), and in CI |
 | `collector/scripts/feed-parser.mjs` | feed parser used by web-social-feed.mjs; also reads sources by hand | used by web-social-feed.mjs |
 | `collector/scripts/translate-check.mjs` | decides which lines need English (the session translates) | used by collector.mjs |
-| `inactive-scripts/` | `perplexity-telegram-x/` (perplexity, x-gather, discover, telegram, gather-queries.json) · `source-tools/` (probe, apply-score, candidates, promote, candidates.json). Kept, not run on a schedule | manual workflows |
 
 Every script has `--selftest`. Run them after any change.
 
