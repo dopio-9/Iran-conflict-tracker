@@ -5245,5 +5245,959 @@
       "url": "https://api.cloudflare.com/client/v4/radar/annotations/outages",
       "realtime": true
     }
+  },
+  {
+    "id": 216,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search; leaning: IRGC-aligned. Judged on output.",
+    "name": "Sepah Pasdaran news (TG)",
+    "platform": "Telegram",
+    "language": "Farsi",
+    "domain": "Conflict Telegram",
+    "geography": "Iran",
+    "theater": "tehran-internal",
+    "medium": "SOC",
+    "lanes": [
+      "strikes_ops",
+      "maritime_incidents",
+      "threats"
+    ],
+    "feed": {
+      "kind": "telegram-web",
+      "url": "https://t.me/s/sepah_pasdaran",
+      "realtime": true
+    }
+  },
+  {
+    "id": 217,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search; leaning: state broadcaster. Judged on output.",
+    "name": "IRIB News (TG)",
+    "platform": "Telegram",
+    "language": "Farsi",
+    "domain": "Conflict Telegram",
+    "geography": "Iran",
+    "theater": "tehran-internal",
+    "medium": "STATE",
+    "lanes": [
+      "strikes_ops",
+      "leadership_internal",
+      "maritime_incidents"
+    ],
+    "feed": {
+      "kind": "telegram-web",
+      "url": "https://t.me/s/iribnews",
+      "realtime": true
+    }
+  },
+  {
+    "id": 218,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search; leaning: resistance-axis. Judged on output.",
+    "name": "Akhbar Jebhe Moqavemat (TG)",
+    "platform": "Telegram",
+    "language": "Farsi",
+    "domain": "Conflict Telegram",
+    "geography": "Iran",
+    "theater": "tehran-internal",
+    "medium": "SOC",
+    "lanes": [
+      "proxy_axis",
+      "diplomacy",
+      "strikes_ops"
+    ],
+    "feed": {
+      "kind": "telegram-web",
+      "url": "https://t.me/s/Akhbarjm",
+      "realtime": true
+    }
+  },
+  {
+    "id": 219,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search; leaning: local reports incl. Hormozgan. Judged on output.",
+    "name": "Akhbar Nezami Iran va Jahan (TG)",
+    "platform": "Telegram",
+    "language": "Farsi",
+    "domain": "Conflict Telegram",
+    "geography": "Iran",
+    "theater": "tehran-internal",
+    "medium": "SOC",
+    "lanes": [
+      "strikes_ops",
+      "threats"
+    ],
+    "feed": {
+      "kind": "telegram-web",
+      "url": "https://t.me/s/wars_news",
+      "realtime": true
+    }
+  },
+  {
+    "id": 220,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search; leaning: mass aggregator. Judged on output.",
+    "name": "Khabar Fori jang (TG, ~2M)",
+    "platform": "Telegram",
+    "language": "Farsi",
+    "domain": "Conflict Telegram",
+    "geography": "Iran",
+    "theater": "tehran-internal",
+    "medium": "SOC",
+    "lanes": [
+      "strikes_ops",
+      "diplomacy",
+      "threats"
+    ],
+    "feed": {
+      "kind": "telegram-web",
+      "url": "https://t.me/s/khabarehir",
+      "realtime": true
+    }
+  },
+  {
+    "id": 221,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search; leaning: mass aggregator. Judged on output.",
+    "name": "Khabar Fori akhbar jang (TG, ~2.2M)",
+    "platform": "Telegram",
+    "language": "Farsi",
+    "domain": "Conflict Telegram",
+    "geography": "Iran",
+    "theater": "tehran-internal",
+    "medium": "SOC",
+    "lanes": [
+      "strikes_ops",
+      "maritime_incidents"
+    ],
+    "feed": {
+      "kind": "telegram-web",
+      "url": "https://t.me/s/adsvipz",
+      "realtime": true
+    }
+  },
+  {
+    "id": 222,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search; leaning: mass aggregator. Judged on output.",
+    "name": "Akhbar Fori Jang Amrika (TG, ~2.2M)",
+    "platform": "Telegram",
+    "language": "Farsi",
+    "domain": "Conflict Telegram",
+    "geography": "Iran",
+    "theater": "tehran-internal",
+    "medium": "SOC",
+    "lanes": [
+      "strikes_ops",
+      "threats"
+    ],
+    "feed": {
+      "kind": "telegram-web",
+      "url": "https://t.me/s/M0_HM",
+      "realtime": true
+    }
+  },
+  {
+    "id": 223,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search. Judged on output.",
+    "name": "KhabarAzMa (TG)",
+    "platform": "Telegram",
+    "language": "Farsi",
+    "domain": "Conflict Telegram",
+    "geography": "Iran",
+    "theater": "tehran-internal",
+    "medium": "SOC",
+    "lanes": [
+      "strikes_ops",
+      "diplomacy"
+    ],
+    "feed": {
+      "kind": "telegram-web",
+      "url": "https://t.me/s/KhabarAzMa",
+      "realtime": true
+    }
+  },
+  {
+    "id": 224,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search; leaning: silent since 10 Oct per tg.me. Judged on output.",
+    "name": "Akhbar Fori Jang (TG)",
+    "platform": "Telegram",
+    "language": "Farsi",
+    "domain": "Conflict Telegram",
+    "geography": "Iran",
+    "theater": "tehran-internal",
+    "medium": "SOC",
+    "lanes": [
+      "strikes_ops",
+      "maritime_incidents"
+    ],
+    "feed": {
+      "kind": "telegram-web",
+      "url": "https://t.me/s/jang_com",
+      "realtime": true
+    }
+  },
+  {
+    "id": 225,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search. Judged on output.",
+    "name": "Khalij Fars (TG)",
+    "platform": "Telegram",
+    "language": "Farsi",
+    "domain": "Conflict Telegram",
+    "geography": "Iran",
+    "theater": "hormuz-redsea",
+    "medium": "SOC",
+    "lanes": [
+      "maritime_incidents",
+      "naval_military_movement"
+    ],
+    "feed": {
+      "kind": "telegram-web",
+      "url": "https://t.me/s/pershian_gulf_ir",
+      "realtime": true
+    }
+  },
+  {
+    "id": 226,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search. Judged on output.",
+    "name": "Military News IR (TG)",
+    "platform": "Telegram",
+    "language": "Farsi",
+    "domain": "Conflict Telegram",
+    "geography": "Iran",
+    "theater": "tehran-internal",
+    "medium": "ANALYST",
+    "lanes": [
+      "naval_military_movement",
+      "strikes_ops"
+    ],
+    "feed": {
+      "kind": "telegram-web",
+      "url": "https://t.me/s/militarynews_ir",
+      "realtime": true
+    }
+  },
+  {
+    "id": 227,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search; leaning: satellite STS counts off Fujairah/Khor Fakkan. Judged on output.",
+    "name": "Project Meshkat (TG)",
+    "platform": "Telegram",
+    "language": "Farsi",
+    "domain": "Conflict Telegram",
+    "geography": "Iran",
+    "theater": "hormuz-redsea",
+    "medium": "OSINT",
+    "lanes": [
+      "maritime_incidents",
+      "war_risk_economy",
+      "uae_local"
+    ],
+    "feed": {
+      "kind": "telegram-web",
+      "url": "https://t.me/s/projectmeshkat",
+      "realtime": true
+    }
+  },
+  {
+    "id": 228,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search; leaning: Saudi-owned. Judged on output.",
+    "name": "Asharq Breaking (TG)",
+    "platform": "Telegram",
+    "language": "Arabic",
+    "domain": "Conflict Telegram",
+    "geography": "Gulf",
+    "theater": "gulf-uae",
+    "medium": "WIRE",
+    "lanes": [
+      "strikes_ops",
+      "uae_local",
+      "diplomacy"
+    ],
+    "feed": {
+      "kind": "telegram-web",
+      "url": "https://t.me/s/AsharqNewsBreaking",
+      "realtime": true
+    }
+  },
+  {
+    "id": 229,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search; leaning: UAE NMC-licensed. Judged on output.",
+    "name": "Barq Al Emarat (TG)",
+    "platform": "Telegram",
+    "language": "Arabic",
+    "domain": "Conflict Telegram",
+    "geography": "UAE",
+    "theater": "gulf-uae",
+    "medium": "SOC",
+    "lanes": [
+      "uae_local",
+      "strikes_ops"
+    ],
+    "feed": {
+      "kind": "telegram-web",
+      "url": "https://t.me/s/uae_barq",
+      "realtime": true
+    }
+  },
+  {
+    "id": 230,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search; leaning: UAE state agency. Judged on output.",
+    "name": "WAM (TG, English)",
+    "platform": "Telegram",
+    "language": "English",
+    "domain": "Conflict Telegram",
+    "geography": "UAE",
+    "theater": "gulf-uae",
+    "medium": "STATE",
+    "lanes": [
+      "uae_local",
+      "diplomacy"
+    ],
+    "feed": {
+      "kind": "telegram-web",
+      "url": "https://t.me/s/wamnews_en",
+      "realtime": true
+    }
+  },
+  {
+    "id": 231,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search; leaning: Iran-aligned Arabic. Judged on output.",
+    "name": "Iran bel Arabi (TG)",
+    "platform": "Telegram",
+    "language": "Arabic",
+    "domain": "Conflict Telegram",
+    "geography": "Iran",
+    "theater": "tehran-internal",
+    "medium": "SOC",
+    "lanes": [
+      "strikes_ops",
+      "uae_local"
+    ],
+    "feed": {
+      "kind": "telegram-web",
+      "url": "https://t.me/s/Iran_bel_Arabi",
+      "realtime": true
+    }
+  },
+  {
+    "id": 232,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search. Judged on output.",
+    "name": "Roaa War Studies (TG)",
+    "platform": "Telegram",
+    "language": "Arabic",
+    "domain": "Conflict Telegram",
+    "geography": "Gulf",
+    "theater": "hormuz-redsea",
+    "medium": "OSINT",
+    "lanes": [
+      "strikes_ops",
+      "maritime_incidents"
+    ],
+    "feed": {
+      "kind": "telegram-web",
+      "url": "https://t.me/s/RoaaWarStudies",
+      "realtime": true
+    }
+  },
+  {
+    "id": 233,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search; leaning: names vessels, carrier tracking. Judged on output.",
+    "name": "MenchOsint (TG)",
+    "platform": "Telegram",
+    "language": "English",
+    "domain": "Conflict Telegram",
+    "geography": "Multi-region",
+    "theater": "hormuz-redsea",
+    "medium": "OSINT",
+    "lanes": [
+      "maritime_incidents",
+      "naval_military_movement",
+      "uae_local"
+    ],
+    "feed": {
+      "kind": "telegram-web",
+      "url": "https://t.me/s/MenchOsint",
+      "realtime": true
+    }
+  },
+  {
+    "id": 234,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search; leaning: fast, sometimes unverified. Judged on output.",
+    "name": "Middle East Spectator (TG)",
+    "platform": "Telegram",
+    "language": "English",
+    "domain": "Conflict Telegram",
+    "geography": "Multi-region",
+    "theater": "cross-theater",
+    "medium": "OSINT",
+    "lanes": [
+      "strikes_ops",
+      "uae_local"
+    ],
+    "feed": {
+      "kind": "telegram-web",
+      "url": "https://t.me/s/Middle_East_Spectator",
+      "realtime": true
+    }
+  },
+  {
+    "id": 235,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search. Judged on output.",
+    "name": "Clash Report (TG)",
+    "platform": "Telegram",
+    "language": "English",
+    "domain": "Conflict Telegram",
+    "geography": "Multi-region",
+    "theater": "cross-theater",
+    "medium": "OSINT",
+    "lanes": [
+      "strikes_ops",
+      "maritime_incidents"
+    ],
+    "feed": {
+      "kind": "telegram-web",
+      "url": "https://t.me/s/ClashReport",
+      "realtime": true
+    }
+  },
+  {
+    "id": 236,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search. Judged on output.",
+    "name": "AMK Mapping (TG)",
+    "platform": "Telegram",
+    "language": "English",
+    "domain": "Conflict Telegram",
+    "geography": "Multi-region",
+    "theater": "cross-theater",
+    "medium": "OSINT",
+    "lanes": [
+      "strikes_ops",
+      "air_traffic_airspace"
+    ],
+    "feed": {
+      "kind": "telegram-web",
+      "url": "https://t.me/s/AMK_Mapping",
+      "realtime": true
+    }
+  },
+  {
+    "id": 237,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search; leaning: pro-Iran. Judged on output.",
+    "name": "Fotros Resistance (TG)",
+    "platform": "Telegram",
+    "language": "English",
+    "domain": "Conflict Telegram",
+    "geography": "Iran",
+    "theater": "tehran-internal",
+    "medium": "SOC",
+    "lanes": [
+      "strikes_ops",
+      "maritime_incidents"
+    ],
+    "feed": {
+      "kind": "telegram-web",
+      "url": "https://t.me/s/FotrosResistancee",
+      "realtime": true
+    }
+  },
+  {
+    "id": 238,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search; leaning: pro-IRGC. Judged on output.",
+    "name": "Iran Military News (TG)",
+    "platform": "Telegram",
+    "language": "English",
+    "domain": "Conflict Telegram",
+    "geography": "Iran",
+    "theater": "tehran-internal",
+    "medium": "SOC",
+    "lanes": [
+      "strikes_ops",
+      "maritime_incidents"
+    ],
+    "feed": {
+      "kind": "telegram-web",
+      "url": "https://t.me/s/iranmilitary_irgc",
+      "realtime": true
+    }
+  },
+  {
+    "id": 239,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search; judged on output.",
+    "name": "Khabar Agency",
+    "platform": "Web",
+    "language": "Arabic",
+    "domain": "Regional press",
+    "geography": "Iraq",
+    "theater": "iraq-syria-yemen",
+    "medium": "SOC",
+    "lanes": [
+      "proxy_axis",
+      "strikes_ops"
+    ],
+    "site": "khabaragency.net",
+    "feed": {
+      "kind": "rss",
+      "agg": "gnews",
+      "realtime": true,
+      "url": "https://news.google.com/rss/search?q=site%3Akhabaragency.net%20when%3A1d&hl=ar&gl=IQ&ceid=IQ%3Aar"
+    }
+  },
+  {
+    "id": 240,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search; judged on output.",
+    "name": "Al Montasaf",
+    "platform": "Web",
+    "language": "Arabic",
+    "domain": "Regional press",
+    "geography": "Yemen",
+    "theater": "iraq-syria-yemen",
+    "medium": "SOC",
+    "lanes": [
+      "proxy_axis",
+      "strikes_ops"
+    ],
+    "site": "almontasaf.net",
+    "feed": {
+      "kind": "rss",
+      "agg": "gnews",
+      "realtime": true,
+      "url": "https://news.google.com/rss/search?q=site%3Aalmontasaf.net%20when%3A1d&hl=ar&gl=YE&ceid=YE%3Aar"
+    }
+  },
+  {
+    "id": 241,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search; judged on output.",
+    "name": "Akhbrna (UAE)",
+    "platform": "Web",
+    "language": "Arabic",
+    "domain": "Regional press",
+    "geography": "UAE",
+    "theater": "gulf-uae",
+    "medium": "SOC",
+    "lanes": [
+      "uae_local"
+    ],
+    "site": "akhbrna.ae",
+    "feed": {
+      "kind": "rss",
+      "agg": "gnews",
+      "realtime": true,
+      "url": "https://news.google.com/rss/search?q=site%3Aakhbrna.ae%20when%3A1d&hl=ar&gl=AE&ceid=AE%3Aar"
+    }
+  },
+  {
+    "id": 242,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search; judged on output.",
+    "name": "Okaz",
+    "platform": "Web",
+    "language": "Arabic",
+    "domain": "Regional press",
+    "geography": "Saudi Arabia",
+    "theater": "gulf-uae",
+    "medium": "SOC",
+    "lanes": [
+      "strikes_ops",
+      "proxy_axis"
+    ],
+    "site": "okaz.com.sa",
+    "feed": {
+      "kind": "rss",
+      "agg": "gnews",
+      "realtime": true,
+      "url": "https://news.google.com/rss/search?q=site%3Aokaz.com.sa%20when%3A1d&hl=ar&gl=SA&ceid=SA%3Aar"
+    }
+  },
+  {
+    "id": 243,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search; judged on output.",
+    "name": "26 September (Yemen)",
+    "platform": "Web",
+    "language": "Arabic",
+    "domain": "Regional press",
+    "geography": "Yemen",
+    "theater": "iraq-syria-yemen",
+    "medium": "STATE",
+    "lanes": [
+      "proxy_axis",
+      "strikes_ops"
+    ],
+    "site": "26sep.net",
+    "feed": {
+      "kind": "rss",
+      "agg": "gnews",
+      "realtime": true,
+      "url": "https://news.google.com/rss/search?q=site%3A26sep.net%20when%3A1d&hl=ar&gl=YE&ceid=YE%3Aar"
+    }
+  },
+  {
+    "id": 244,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search; judged on output.",
+    "name": "Al Sahwa Yemen",
+    "platform": "Web",
+    "language": "Arabic",
+    "domain": "Regional press",
+    "geography": "Yemen",
+    "theater": "iraq-syria-yemen",
+    "medium": "SOC",
+    "lanes": [
+      "proxy_axis"
+    ],
+    "site": "alsahwa-yemen.net",
+    "feed": {
+      "kind": "rss",
+      "agg": "gnews",
+      "realtime": true,
+      "url": "https://news.google.com/rss/search?q=site%3Aalsahwa-yemen.net%20when%3A1d&hl=ar&gl=YE&ceid=YE%3Aar"
+    }
+  },
+  {
+    "id": 245,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search; judged on output.",
+    "name": "IRNA English",
+    "platform": "Web",
+    "language": "English",
+    "domain": "Regional press",
+    "geography": "Iran",
+    "theater": "tehran-internal",
+    "medium": "STATE",
+    "lanes": [
+      "leadership_internal",
+      "diplomacy",
+      "strikes_ops"
+    ],
+    "site": "en.irna.ir",
+    "feed": {
+      "kind": "rss",
+      "agg": "gnews",
+      "realtime": true,
+      "url": "https://news.google.com/rss/search?q=site%3Aen.irna.ir%20when%3A1d&hl=en&gl=US&ceid=US%3Aen"
+    }
+  },
+  {
+    "id": 246,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search; judged on output.",
+    "name": "Al Jazeera Arabic",
+    "platform": "Web",
+    "language": "Arabic",
+    "domain": "Regional press",
+    "geography": "Qatar",
+    "theater": "cross-theater",
+    "medium": "WIRE",
+    "lanes": [
+      "strikes_ops",
+      "diplomacy",
+      "uae_local"
+    ],
+    "site": "aljazeera.net",
+    "feed": {
+      "kind": "rss",
+      "agg": "gnews",
+      "realtime": true,
+      "url": "https://news.google.com/rss/search?q=site%3Aaljazeera.net%20when%3A1d&hl=ar&gl=QA&ceid=QA%3Aar"
+    }
+  },
+  {
+    "id": 247,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search; judged on output.",
+    "name": "El Watan News",
+    "platform": "Web",
+    "language": "Arabic",
+    "domain": "Regional press",
+    "geography": "Egypt",
+    "theater": "cross-theater",
+    "medium": "SOC",
+    "lanes": [
+      "diplomacy",
+      "strikes_ops"
+    ],
+    "site": "elwatannews.com",
+    "feed": {
+      "kind": "rss",
+      "agg": "gnews",
+      "realtime": true,
+      "url": "https://news.google.com/rss/search?q=site%3Aelwatannews.com%20when%3A1d&hl=ar&gl=EG&ceid=EG%3Aar"
+    }
+  },
+  {
+    "id": 248,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026 by Claude open-web search; judged on output.",
+    "name": "Newsquawk",
+    "platform": "Web",
+    "language": "English",
+    "domain": "Regional press",
+    "geography": "Global",
+    "theater": "cross-theater",
+    "medium": "MARKET",
+    "lanes": [
+      "war_risk_economy",
+      "strikes_ops"
+    ],
+    "site": "newsquawk.com",
+    "feed": {
+      "kind": "rss",
+      "agg": "gnews",
+      "realtime": true,
+      "url": "https://news.google.com/rss/search?q=site%3Anewsquawk.com%20when%3A1d&hl=en&gl=US&ceid=US%3Aen"
+    }
+  },
+  {
+    "id": 249,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026; no verified feed yet — live map page",
+    "name": "Monitor the Situation · Hormuz map",
+    "platform": "Web",
+    "language": "English",
+    "domain": "Tracker / aggregator",
+    "geography": "Multi-region",
+    "theater": "hormuz-redsea",
+    "medium": "TRACK",
+    "lanes": [
+      "maritime_incidents"
+    ],
+    "site": "monitor-the-situation.com"
+  },
+  {
+    "id": 250,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026; no verified feed yet — aggregates Telegram OSINT with confidence scores",
+    "name": "Intel Mapper",
+    "platform": "Web",
+    "language": "English",
+    "domain": "Tracker / aggregator",
+    "geography": "Multi-region",
+    "theater": "hormuz-redsea",
+    "medium": "OSINT",
+    "lanes": [
+      "maritime_incidents",
+      "strikes_ops"
+    ],
+    "site": "intelmapper.com"
+  },
+  {
+    "id": 251,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026; no verified feed yet — X/Telegram dashboard",
+    "name": "Iran News Live",
+    "platform": "Web",
+    "language": "English",
+    "domain": "Tracker / aggregator",
+    "geography": "Multi-region",
+    "theater": "hormuz-redsea",
+    "medium": "META",
+    "lanes": [
+      "strikes_ops"
+    ],
+    "site": "irannews.live"
+  },
+  {
+    "id": 252,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026; no verified feed yet — live tracker page",
+    "name": "Political.org Hormuz tracker",
+    "platform": "Web",
+    "language": "English",
+    "domain": "Tracker / aggregator",
+    "geography": "Multi-region",
+    "theater": "hormuz-redsea",
+    "medium": "TRACK",
+    "lanes": [
+      "maritime_incidents"
+    ],
+    "site": "political.org"
+  },
+  {
+    "id": 253,
+    "hits": 0,
+    "misses": 0,
+    "role": "early",
+    "tier": "T2",
+    "discovered": "2026-10-22",
+    "notes": "Discovered 22 Oct 2026; no verified feed yet — html list; RSS routes for UKMTO already exist",
+    "name": "UKMTO recent incidents page",
+    "platform": "Web",
+    "language": "English",
+    "domain": "Tracker / aggregator",
+    "geography": "Multi-region",
+    "theater": "hormuz-redsea",
+    "medium": "OFF",
+    "lanes": [
+      "maritime_incidents",
+      "ports_advisories"
+    ],
+    "site": "ukmto.org/recent-incidents"
   }
 ]
