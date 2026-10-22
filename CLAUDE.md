@@ -66,8 +66,8 @@ the fast lane printed to CI logs that nothing saved. So:
 
 Layout (owner, 21 Oct 2026): `collector/scripts/` + `collector/data/` = active.
 `inactive-scripts/` (Perplexity, source tools) removed 22 Oct 2026; recoverable from git history. Data files: `news-collector.json` (page data),
-`to-translate.json` (held for English), `de-dupe.json` (already seen),
-`source-retire.json` (last produced, 7-day rule), `tracker-list.json` (tracker memory),
+`to-translate.json` (held for English), `story-dedupe.json` (already seen),
+`source-retire.json` (last produced, 7-day rule), `trackers.json` (tracker memory),
 `search-queries.json` (search rotation), `sources.json` (registry). Inbox branch files:
 `collector/data/inbox/translations.json`, `exa-feed.json`.
 

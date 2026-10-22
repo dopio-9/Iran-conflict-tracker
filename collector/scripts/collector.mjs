@@ -9,7 +9,7 @@
  *
  * Gates, and only these (each one counted in the run record):
  *   1. RECENT  — inside the window (default 12h; future-dated beyond 90m is dropped)
- *   2. NOVEL   — fingerprint not already in collector/data/de-dupe.json
+ *   2. NOVEL   — fingerprint not already in collector/data/story-dedupe.json
  *   3. TOPIC   — about the war (EN/FA/AR/HE keywords). A non-English item that misses
  *                the keywords is HELD (collector/data/to-translate.json), not dropped, until the Claude
  *                session has translated it; then it is re-checked on the English.
@@ -120,10 +120,10 @@ export function health(reg, results, hl, now) {
 async function run({ windowH = 12, inboxDir = null } = {}) {
   const now = Date.now(), nowIso = new Date(now).toISOString();
   const reg = readJSON(P("sources.json"), []);
-  const claims = readJSON(P("de-dupe.json"), {});
+  const claims = readJSON(P("story-dedupe.json"), {});
   const feed = readJSON(P("news-collector.json"), { meta: {}, items: [] });
   const hold = readJSON(P("to-translate.json"), {});
-  const tstate = readJSON(P("tracker-list.json"), {});
+  const tstate = readJSON(P("trackers.json"), {});
   const hl = readJSON(P("source-retire.json"), {});
   const inbox = readInbox(inboxDir);
 
@@ -168,9 +168,9 @@ async function run({ windowH = 12, inboxDir = null } = {}) {
     sources,
   };
   writeFileSync(P("news-collector.json"), JSON.stringify({ meta, stories: stories.slice(0, 400), items }, null, 1) + "\n");
-  writeFileSync(P("de-dupe.json"), JSON.stringify(claims) + "\n");
+  writeFileSync(P("story-dedupe.json"), JSON.stringify(claims) + "\n");
   writeFileSync(P("to-translate.json"), JSON.stringify(hold) + "\n");
-  writeFileSync(P("tracker-list.json"), JSON.stringify(tstate) + "\n");
+  writeFileSync(P("trackers.json"), JSON.stringify(tstate) + "\n");
   writeFileSync(P("source-retire.json"), JSON.stringify(hl, null, 1) + "\n");
   if (retiredNow.length) writeFileSync(P("sources.json"), JSON.stringify(reg, null, 2) + "\n");
 
