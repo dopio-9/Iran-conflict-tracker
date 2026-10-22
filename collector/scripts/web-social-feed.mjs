@@ -14,7 +14,7 @@
  *   1. RECENT  — the item is inside the flash window (default 6h). Anything
  *      older belongs to the slow lane, which can weigh and confirm it.
  *   2. NOVEL   — this claim has not been seen before. First sighting is
- *      recorded in collector/data/story-dedupe.json with a first_seen timestamp, so a story
+ *      recorded in collector/data/news-dedupe.json with a first_seen timestamp, so a story
  *      that has been running for three days stops being a flash after its
  *      first appearance, no matter how often it is republished.
  *
@@ -40,7 +40,7 @@ const TIMEOUT_MS = 12000;
 const CONCURRENCY = 8;
 const DEFAULT_WINDOW_H = 6;
 const SKEW_MIN = 90;          // same tolerance feed-parser.mjs uses; a future date is not freshness
-const CLAIMS_PATH = new URL("../data/story-dedupe.json", import.meta.url);
+const CLAIMS_PATH = new URL("../data/news-dedupe.json", import.meta.url);
 
 /* ── novelty ──────────────────────────────────────────────────────────────
    Fingerprint on the CLAIM, not the URL. The same story reaches us from a
@@ -234,7 +234,7 @@ async function run({ windowH = DEFAULT_WINDOW_H } = {}) {
      which cannot be placed in a time window at all — the fast lane is entirely a
      question of WHEN, so an undated source has nothing to contribute to it. */
   const { live, results } = await collect(reg);
-  console.log(`flash — ${live.length} realtime sources · ${windowH}h window · novelty vs collector/data/story-dedupe.json\n`);
+  console.log(`flash — ${live.length} realtime sources · ${windowH}h window · novelty vs collector/data/news-dedupe.json\n`);
 
   const now = Date.now();
   const claims = loadClaims();
