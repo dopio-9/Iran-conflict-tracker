@@ -297,5 +297,5 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   else if (a === "--html") runHtml().catch(e => { console.error(e.message); process.exit(1); });
   else if (a === "--json") runJson().catch(e => { console.error(e.message); process.exit(1); });
   else if (a === "--selftest") selftest();
-  else { console.error("usage: node collector/scripts/read.mjs --rss | --html | --json | --selftest"); process.exit(2); }
+  else { console.error("usage: node collector/scripts/feed-parser.mjs --rss | --html | --json | --selftest"); process.exit(2); }
 }

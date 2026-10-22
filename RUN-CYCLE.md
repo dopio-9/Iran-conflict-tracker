@@ -53,7 +53,7 @@ node collector/scripts/inbox.mjs --add-search /tmp/batch.json
 git add collector/data/inbox && git commit -q -m "inbox: $(TZ=Asia/Dubai date '+%d %b %H:%M GST')" || true
 git push -q --force-with-lease origin claude/inbox
 ```
-Then dispatch workflow `social-fetch.yml` on `main` (GitHub MCP
+Then dispatch workflow `collector.yml` on `main` (GitHub MCP
 `actions_run_trigger`, method `run_workflow`).
 
 ### 4. Report

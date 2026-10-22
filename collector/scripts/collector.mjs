@@ -18,22 +18,22 @@
  *
  * Also, every run:
  *   - applies English from the inbox (collector/data/inbox/translations.json, written by the session);
- *   - groups items into stories (news-clustering.mjs) and measures lead time vs mainstream;
+ *   - groups items into stories (story-clustering.mjs) and measures lead time vs mainstream;
  *   - records each source's last output; a source silent for 7 days is retired
  *     from polling (owner decision 14 Oct 2026) — kept in the registry, marked why.
  *
  * Exit code 1 when zero sources were reachable — a dead pipe must show red.
  *
- * Usage:  node collector/scripts/feed-manager.mjs [--hours 12] [--inbox <dir>]   (needs open internet: CI)
- *         node collector/scripts/feed-manager.mjs --selftest
+ * Usage:  node collector/scripts/collector.mjs [--hours 12] [--inbox <dir>]   (needs open internet: CI)
+ *         node collector/scripts/collector.mjs --selftest
  */
 
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
-import { collect, normalize, fingerprint, isRelevant, decode } from "./web-feed.mjs";
-import { needsTranslation } from "./translate.mjs";
-import { track } from "./tracker-refresh.mjs";
+import { collect, normalize, fingerprint, isRelevant, decode } from "./web-social-feed.mjs";
+import { needsTranslation } from "./translate-check.mjs";
+import { track } from "./military-trackers.mjs";
 import { readInbox } from "./inbox.mjs";
-import { cluster, leadSummary } from "./news-clustering.mjs";
+import { cluster, leadSummary } from "./story-clustering.mjs";
 
 const ROOT = new URL("../", import.meta.url);
 const P = f => new URL(`data/${f}`, ROOT);

@@ -26,20 +26,20 @@
  *     apply, the same split every other engine uses: FETCH in CI where egress
  *     is open, APPLY in session, so CI never commits back and re-fires itself.
  *
- * Usage:  node collector/scripts/web-feed.mjs              → default 6h window
- *         node collector/scripts/web-feed.mjs --hours 12
- *         node collector/scripts/web-feed.mjs --selftest
+ * Usage:  node collector/scripts/web-social-feed.mjs              → default 6h window
+ *         node collector/scripts/web-social-feed.mjs --hours 12
+ *         node collector/scripts/web-social-feed.mjs --selftest
  */
 
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { createHash } from "node:crypto";
-import { parseFeed } from "./read.mjs";
+import { parseFeed } from "./feed-parser.mjs";
 
 const UA = "Mozilla/5.0 (compatible; HormuzLiveFlash/1.0; +https://github.com/dopio-9/Iran-conflict-tracker)";
 const TIMEOUT_MS = 12000;
 const CONCURRENCY = 8;
 const DEFAULT_WINDOW_H = 6;
-const SKEW_MIN = 90;          // same tolerance read.mjs uses; a future date is not freshness
+const SKEW_MIN = 90;          // same tolerance feed-parser.mjs uses; a future date is not freshness
 const CLAIMS_PATH = new URL("../data/de-dupe.json", import.meta.url);
 
 /* ── novelty ──────────────────────────────────────────────────────────────
