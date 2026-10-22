@@ -14,7 +14,7 @@
  * Telegram post can be echoed by an Arabic outlet or a Western wire.
  * No network. Runs in CI after each collection, or locally at any time.
  *
- * Usage:  node collector/scripts/news-grading.mjs [--hours 24]   |   node collector/scripts/news-grading.mjs --selftest
+ * Usage:  node collector/scripts/story-grading.mjs [--hours 24]   |   node collector/scripts/story-grading.mjs --selftest
  */
 
 import { readFileSync, writeFileSync, existsSync } from "node:fs";

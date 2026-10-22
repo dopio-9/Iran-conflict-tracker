@@ -39,7 +39,7 @@ jobs:
 
       - name: Selftests (fail fast)
         run: |
-          for s in web-feed feed-manager news-grading translate tracker-refresh inbox news-clustering read; do node collector/scripts/$s.mjs --selftest > /dev/null || { node collector/scripts/$s.mjs --selftest; exit 1; }; done
+          for s in web-social-feed collector story-grading translate-check military-trackers inbox story-clustering feed-parser; do node collector/scripts/$s.mjs --selftest > /dev/null || { node collector/scripts/$s.mjs --selftest; exit 1; }; done
           echo "selftests passed"
 
       - name: Read the Claude session's inbox (translations, search results)
@@ -58,10 +58,10 @@ jobs:
         env:
           FIRMS_KEY: ${{ secrets.FIRMS_KEY }}
           CF_RADAR_TOKEN: ${{ secrets.CF_RADAR_TOKEN }}
-        run: node collector/scripts/feed-manager.mjs --hours 12 --inbox "$PWD/.inbox" | tee -a "$GITHUB_STEP_SUMMARY"
+        run: node collector/scripts/collector.mjs --hours 12 --inbox "$PWD/.inbox" | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Grade items older than 24h
-        run: node collector/scripts/news-grading.mjs | tee -a "$GITHUB_STEP_SUMMARY"
+        run: node collector/scripts/story-grading.mjs | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Validate
         run: node collector/scripts/validate.mjs

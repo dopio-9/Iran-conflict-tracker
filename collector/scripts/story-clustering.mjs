@@ -14,10 +14,10 @@
  * sighting vs the first mainstream outlet carrying it, and the delivery lag
  * (when the collector actually got the first item vs when it was posted).
  *
- * Usage: imported by feed-manager.mjs.   node collector/scripts/news-clustering.mjs --selftest
+ * Usage: imported by collector.mjs.   node collector/scripts/story-clustering.mjs --selftest
  */
 
-import { keys } from "./news-grading.mjs";
+import { keys } from "./story-grading.mjs";
 
 /* Theatre words appear in almost every headline; they say nothing about WHICH story. */
 const COMMON = new Set(("iran iranian iran's israel israeli strait hormuz gulf persian middle east news live update updates " +

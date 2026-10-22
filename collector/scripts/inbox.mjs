@@ -110,7 +110,7 @@ function cli(argv) {
     const r = addSearch(store, JSON.parse(readFileSync(arg("--add-search"), "utf8")));
     save(SR, store); console.log(`search: +${r.added} · rejected ${r.rejected} · ${store.items.length} held (48h)`);
   } else if (argv.includes("--queries")) {
-    for (const q of queriesFor(readJSON(new URL("data/exa-queries.json", ROOT), {}))) console.log(q);
+    for (const q of queriesFor(readJSON(new URL("data/search-queries.json", ROOT), {}))) console.log(q);
   } else console.error("usage: --queries | --pending | --apply pending.json reply.json | --add-search batch.json | --selftest");
 }
 

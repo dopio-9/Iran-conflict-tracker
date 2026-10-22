@@ -29,7 +29,7 @@ the fast lane printed to CI logs that nothing saved. So:
 2. **No model between source and page in the fast lane.** Scripts collect verbatim.
    The only gates are RECENT, NOVEL and TOPIC (keywords — never credibility).
    Translation is the only model step and may not drop, merge, shorten or reword.
-3. **Verification after publication, never before** — `news-grading.mjs` grades at 24h.
+3. **Verification after publication, never before** — `story-grading.mjs` grades at 24h.
 4. **Regional and native-language sources first** — FA/AR/HE Telegram, regional
    press, GDELT's small outlets. Official sources are context, not the gate.
 5. **Judged on output only** — items surfaced, lead time vs mainstream, later
@@ -68,27 +68,27 @@ Layout (owner, 21 Oct 2026): `collector/scripts/` + `collector/data/` = active;
 `inactive-scripts/` = kept, not run. Data files: `news-collector.json` (page data),
 `to-translate.json` (held for English), `de-dupe.json` (already seen),
 `source-retire.json` (last produced, 7-day rule), `tracker-list.json` (tracker memory),
-`exa-queries.json` (search rotation), `sources.json` (registry). Inbox branch files:
+`search-queries.json` (search rotation), `sources.json` (registry). Inbox branch files:
 `collector/data/inbox/translations.json`, `exa-feed.json`.
 
 | piece | role | where |
 |---|---|---|
-| `collector/scripts/feed-manager.mjs` | collects every route, gates, holds non-English off-keyword items for translation, applies inbox English, clusters, retires 7-day-silent sources; writes `collector/data/news-collector.json` (+ de-dupe, to-translate, tracker-list, source-retire, sources) | GitHub Actions `social-fetch.yml`, hourly + dispatched by the inbox session |
-| `collector/scripts/web-feed.mjs` | shared collection (RSS, Telegram web, Google News, GDELT), topic filter (EN/FA/AR/HE; one strong actor term or two terms), fingerprints | used by feed-manager.mjs |
-| `collector/scripts/tracker-refresh.mjs` | adsb.lol / adsb.fi military aircraft in theatre, IODA outages, NGA nav warnings, MARAD advisories, FIRMS fires (key), Cloudflare Radar (key) | used by feed-manager.mjs |
-| `collector/scripts/news-clustering.mjs` | de-dupe into stories (word overlap, 12h burst); tag by keyword; lead time vs first mainstream + collection lag | used by feed-manager.mjs |
-| `collector/scripts/inbox.mjs` | contract between the Claude session and the collector: count-checked translation batches, verbatim search results, query rotation | the inbox session (`INBOX.md`) |
-| `collector/scripts/news-grading.mjs` | 24h grade: `echoed ×N` / `no-echo`. `refuted` is set only by hand and never overwritten | CI after each run |
+| `collector/scripts/collector.mjs` | collects every route, gates, holds non-English off-keyword items for translation, applies inbox English, clusters, retires 7-day-silent sources; writes `collector/data/news-collector.json` (+ de-dupe, to-translate, tracker-list, source-retire, sources) | GitHub Actions `collector.yml`, hourly + dispatched by the inbox session |
+| `collector/scripts/web-social-feed.mjs` | shared collection (RSS, Telegram web, Google News, GDELT), topic filter (EN/FA/AR/HE; one strong actor term or two terms), fingerprints | used by collector.mjs |
+| `collector/scripts/military-trackers.mjs` | adsb.lol / adsb.fi military aircraft in theatre, IODA outages, NGA nav warnings, MARAD advisories, FIRMS fires (key), Cloudflare Radar (key) | used by collector.mjs |
+| `collector/scripts/story-clustering.mjs` | de-dupe into stories (word overlap, 12h burst); tag by keyword; lead time vs first mainstream + collection lag | used by collector.mjs |
+| `collector/scripts/inbox.mjs` | contract between the Claude session and the collector: count-checked translation batches, verbatim search results, query rotation | the inbox session (`RUN-CYCLE.md`) |
+| `collector/scripts/story-grading.mjs` | 24h grade: `echoed ×N` / `no-echo`. `refuted` is set only by hand and never overwritten | CI after each run |
 | `collector/scripts/validate.mjs` | ship gate: registry, index.html, inline data, news-collector.json (stories may not author text) | before every commit (`&&`), and in CI |
-| `collector/scripts/read.mjs` | feed parser used by web-feed.mjs; also reads sources by hand | used by web-feed.mjs |
-| `collector/scripts/translate.mjs` | decides which lines need English (the session translates) | used by feed-manager.mjs |
+| `collector/scripts/feed-parser.mjs` | feed parser used by web-social-feed.mjs; also reads sources by hand | used by web-social-feed.mjs |
+| `collector/scripts/translate-check.mjs` | decides which lines need English (the session translates) | used by collector.mjs |
 | `inactive-scripts/` | `perplexity-telegram-x/` (perplexity, x-gather, discover, telegram, gather-queries.json) · `source-tools/` (probe, apply-score, candidates, promote, candidates.json). Kept, not run on a schedule | manual workflows |
 
 Every script has `--selftest`. Run them after any change.
 
 **Inbox session.** A persistent Claude Code session fires hourly (Routine) and follows
-`INBOX.md`: translates pending lines, runs this hour's searches
-(`collector/data/exa-queries.json`), force-pushes `collector/data/inbox/` to branch `claude/inbox`, and
+`RUN-CYCLE.md`: translates pending lines, runs this hour's searches
+(`collector/data/search-queries.json`), force-pushes `collector/data/inbox/` to branch `claude/inbox`, and
 dispatches the collector. The collector reads that branch and never merges it.
 
 ## Safeguards — why the old failures should not recur
