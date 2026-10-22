@@ -73,7 +73,7 @@ Layout (owner, 21 Oct 2026): `collector/scripts/` + `collector/data/` = active.
 
 | piece | role | where |
 |---|---|---|
-| `collector/scripts/collector.mjs` | collects every route, gates, holds non-English off-keyword items for translation, applies inbox English, clusters, retires 7-day-silent sources; writes `collector/data/news-collector.json` (+ de-dupe, to-translate, tracker-list, source-retire, sources) | GitHub Actions `collector.yml`, hourly + dispatched by the inbox session |
+| `collector/scripts/collector.mjs` | collects every route, gates, holds non-English off-keyword items for translation, applies inbox English, clusters, retires 7-day-silent sources; writes `collector/data/news-collector.json` (+ story-dedupe, to-translate, trackers, source-retire, sources) | GitHub Actions `collector.yml`, hourly + dispatched by the inbox session |
 | `collector/scripts/web-social-feed.mjs` | shared collection (RSS, Telegram web, Google News, GDELT), topic filter (EN/FA/AR/HE; one strong actor term or two terms), fingerprints | used by collector.mjs |
 | `collector/scripts/military-trackers.mjs` | adsb.lol / adsb.fi military aircraft in theatre, IODA outages, NGA nav warnings, MARAD advisories, FIRMS fires (key), Cloudflare Radar (key) | used by collector.mjs |
 | `collector/scripts/story-clustering.mjs` | de-dupe into stories (word overlap, 12h burst); tag by keyword; lead time vs first mainstream + collection lag | used by collector.mjs |
