@@ -1,0 +1,45 @@
+name: check API keys (manual)
+# Tests each repo secret against its service and prints only pass/fail and counts.
+# Never prints a key. Run from Actions → "check API keys" → Run workflow.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Which secrets are set
+        env:
+          OPENSKY_CLIENT_ID: ${{ secrets.OPENSKY_CLIENT_ID }}
+          OPENSKY_CLIENT_SECRET: ${{ secrets.OPENSKY_CLIENT_SECRET }}
+          AISSTREAM_KEY: ${{ secrets.AISSTREAM_KEY }}
+          FAA_NOTAM_KEY: ${{ secrets.FAA_NOTAM_KEY }}
+          CF_RADAR_TOKEN: ${{ secrets.CF_RADAR_TOKEN }}
+          FIRMS_KEY: ${{ secrets.FIRMS_KEY }}
+          BRAVE_SEARCH_KEY: ${{ secrets.BRAVE_SEARCH_KEY }}
+        run: |
+          for n in OPENSKY_CLIENT_ID OPENSKY_CLIENT_SECRET AISSTREAM_KEY FAA_NOTAM_KEY CF_RADAR_TOKEN FIRMS_KEY BRAVE_SEARCH_KEY; do
+            if [ -n "${!n}" ]; then echo "set:     $n"; else echo "missing: $n"; fi
+          done | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: OpenSky — token + one regional query
+        env:
+          ID: ${{ secrets.OPENSKY_CLIENT_ID }}
+          SECRET: ${{ secrets.OPENSKY_CLIENT_SECRET }}
+        run: |
+          [ -z "$ID" ] && { echo "OpenSky: skipped (no key)" | tee -a "$GITHUB_STEP_SUMMARY"; exit 0; }
+          tok=$(curl -s --max-time 20 -X POST \
+            https://auth.opensky-network.org/auth/realms/opensky-network/protocol/openid-connect/token \
+            -d grant_type=client_credentials --data-urlencode "client_id=$ID" --data-urlencode "client_secret=$SECRET" \
+            | python3 -c 'import sys,json; print(json.load(sys.stdin).get("access_token",""))' 2>/dev/null)
+          [ -z "$tok" ] && { echo "OpenSky: FAIL — login rejected (check ID/secret)" | tee -a "$GITHUB_STEP_SUMMARY"; exit 1; }
+          code=$(curl -s --max-time 30 -D h.txt -o s.json -w '%{http_code}' -H "Authorization: Bearer $tok" \
+            "https://opensky-network.org/api/states/all?lamin=12&lomin=32&lamax=38&lomax=63")
+          n=$(python3 -c 'import json; print(len(json.load(open("s.json")).get("states") or []))' 2>/dev/null || echo "?")
+          left=$(grep -i '^x-rate-limit-remaining' h.txt | tr -d '\r' | cut -d' ' -f2)
+          echo "OpenSky: HTTP $code · aircraft in region now: $n · credits left today: ${left:-?}" | tee -a "$GITHUB_STEP_SUMMARY"
+          [ "$code" = "200" ]
